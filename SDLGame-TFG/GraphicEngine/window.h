@@ -19,6 +19,7 @@ class Window
         virtual ~Window();
         bool createWindow();
         void closeWindow();
+        void render();
 
 
     protected:
@@ -26,7 +27,6 @@ class Window
     private:
         SDL_Window* window;
         SDL_GLContext context;
-        SDL_Surface* image;
         string title;
         int height;
         int width;

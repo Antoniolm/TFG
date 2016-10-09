@@ -47,24 +47,11 @@ bool Window::createWindow(){
     SDL_GL_SetSwapInterval(1);
     glewExperimental=true;
     GLenum err=glewInit();
-
-    bool quit = false;
-    SDL_Event event;
-    while (!quit)
-    {
-        while (SDL_PollEvent(&event)){
-
-            if (event.type == SDL_QUIT){
-                quit = true;
-            }
-
-        }
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        SDL_GL_SwapWindow(window);
-        SDL_Delay(1000 / 60); // 60 FPS
-    }
     return salida;
+}
+
+void Window::render(){
+    SDL_GL_SwapWindow(window);
+    SDL_Delay(1000 / 60); // 60 FPS
 }
 
