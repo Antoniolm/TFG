@@ -8,7 +8,6 @@ Game::Game(){
 Game::~Game(){
 }
 
-
 void Game::loop(){
     bool quit = false;
     SDL_Event event;
@@ -23,6 +22,7 @@ void Game::loop(){
         }
         //glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         //glClear(GL_COLOR_BUFFER_BIT);
-        //window->render();
+
+        window->onRender();
     }
 }

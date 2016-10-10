@@ -348,9 +348,9 @@
 	<stdint.h>
 	<inttypes.h>
 
-1476032834 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\main.cpp
+1476091696 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\main.cpp
 	<stdio.h>
-	"game.h"
+	"VideoGame/game.h"
 
 1476032903 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\game.cpp
 	"game.h"
@@ -358,7 +358,7 @@
 1476032874 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\game.h
 	"GraphicEngine/window.h"
 
-1476032685 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
+1476102456 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
 	<glew.h>
 	<SDL.h>
 	<SDL_opengl.h>
@@ -366,4 +366,10 @@
 	<gl/gl.h>
 	<stdio.h>
 	<string>
+
+1476102139 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+	"../GraphicEngine/window.h"
+
+1476091486 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+	"window.h"
 

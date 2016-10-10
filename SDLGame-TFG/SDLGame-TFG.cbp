@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="GraphicEngine" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="GraphicEngine" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,9 +40,25 @@
 			<Add directory="C:/sdl2/lib" />
 			<Add directory="C:/glew-1.10.0/lib" />
 		</Linker>
+		<Unit filename="GraphicEngine/matrix4f.cpp" />
+		<Unit filename="GraphicEngine/matrix4f.h" />
+		<Unit filename="GraphicEngine/window.cpp" />
+		<Unit filename="GraphicEngine/window.h" />
+		<Unit filename="VideoGame/game.cpp" />
+		<Unit filename="VideoGame/game.h" />
+		<Unit filename="game.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="game.h">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="main.cpp" />
-		<Unit filename="window.cpp" />
-		<Unit filename="window.h" />
+		<Unit filename="window.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="window.h">
+			<Option target="Release" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -50,7 +50,7 @@ bool Window::createWindow(){
     return salida;
 }
 
-void Window::render(){
+void Window::onRender(){
     SDL_GL_SwapWindow(window);
     SDL_Delay(1000 / 60); // 60 FPS
 }

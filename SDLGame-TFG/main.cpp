@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "game.h"
+#include "VideoGame/game.h"
+
 int main(int argc, char* args[])
 {
     Game game;
