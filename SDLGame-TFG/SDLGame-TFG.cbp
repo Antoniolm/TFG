@@ -42,6 +42,8 @@
 		</Linker>
 		<Unit filename="GraphicEngine/matrix4f.cpp" />
 		<Unit filename="GraphicEngine/matrix4f.h" />
+		<Unit filename="GraphicEngine/object3d.cpp" />
+		<Unit filename="GraphicEngine/object3d.h" />
 		<Unit filename="GraphicEngine/window.cpp" />
 		<Unit filename="GraphicEngine/window.h" />
 		<Unit filename="VideoGame/game.cpp" />

@@ -1,3 +1,7 @@
+////////////////////////////////////////
+//  Author: Antonio David López Machado
+////////////////////////////////////////
+
 #include "window.h"
 
 Window::Window(){
@@ -6,11 +10,15 @@ Window::Window(){
     width=600;
 }
 
+//**********************************************************************\\
+
 Window::~Window(){
     SDL_GL_DeleteContext(context);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
+
+//**********************************************************************\\
 
 Window::Window(string aTitle,int aHeight,int aWidth){
     title=aTitle;
@@ -18,12 +26,8 @@ Window::Window(string aTitle,int aHeight,int aWidth){
     width=aWidth;
 }
 
+//**********************************************************************\\
 
-/////////////////
-//
-//
-//
-/////////////////
 bool Window::createWindow(){
     bool salida=true;
 
@@ -50,7 +54,9 @@ bool Window::createWindow(){
     return salida;
 }
 
-void Window::onRender(){
+//**********************************************************************\\
+
+void Window::updateScreen(){
     SDL_GL_SwapWindow(window);
     SDL_Delay(1000 / 60); // 60 FPS
 }

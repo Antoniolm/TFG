@@ -2,12 +2,14 @@
 //  Author: Antonio David López Machado
 ////////////////////////////////////////
 
-#include <stdio.h>
-#include "VideoGame/game.h"
+#include "object3d.h"
 
-int main(int argc, char* args[])
+Object3D::Object3D()
 {
-    Game game;
-    game.loop();
-	return 0;
+    //ctor
+}
+
+Object3D::~Object3D()
+{
+    //dtor
 }
