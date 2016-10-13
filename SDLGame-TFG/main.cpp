@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include "VideoGame/game.h"
+#include <iostream>
 
 int main(int argc, char* args[])
 {

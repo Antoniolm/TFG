@@ -5,6 +5,7 @@
 #ifndef OBJECT3D_H
 #define OBJECT3D_H
 
+#include "context.h"
 
 class Object3D
 {
@@ -22,7 +23,7 @@ class Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void visualization();
+        virtual void visualization(Context & cv);
 
         //////////////////////////////////////////////////////////////////////////
         /**
