@@ -2,18 +2,17 @@
 //  Author: Antonio David López Machado
 ////////////////////////////////////////
 
-#include "linearmovement.h"
+#include "axisrotation.h"
 
-LinearMovement::LinearMovement()
+AxisRotation::AxisRotation()
 {
     //ctor
 }
 
-LinearMovement::~LinearMovement()
+AxisRotation::~AxisRotation()
 {
     //dtor
 }
-
-Matrix4f LinearMovement::updateState(float time){
+Matrix4f AxisRotation::updateState(float time){
     return currentMatrix;
 }

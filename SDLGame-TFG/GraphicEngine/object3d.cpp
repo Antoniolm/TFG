@@ -13,3 +13,8 @@ Object3D::~Object3D()
 {
     //dtor
 }
+
+void Object3D::visualization(){}
+
+void Object3D::updateState(float time){}
+

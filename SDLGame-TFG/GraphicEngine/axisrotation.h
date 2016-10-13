@@ -2,14 +2,13 @@
 //  Author: Antonio David López Machado
 ////////////////////////////////////////
 
-
-#ifndef LINEARMOVEMENT_H
-#define LINEARMOVEMENT_H
+#ifndef AXISROTATION_H
+#define AXISROTATION_H
 
 #include "matrix4fdinamic.h"
 
-class LinearMovement : public Matrix4fDinamic {
-
+class AxisRotation : public Matrix4fDinamic
+{
     public:
 
         //////////////////////////////////////////////////////////////////////////
@@ -17,14 +16,14 @@ class LinearMovement : public Matrix4fDinamic {
         *   Constructor
         */
         //////////////////////////////////////////////////////////////////////////
-        LinearMovement();
+        AxisRotation();
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    Destructor
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~LinearMovement();
+        virtual ~AxisRotation();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -34,10 +33,13 @@ class LinearMovement : public Matrix4fDinamic {
         */
         //////////////////////////////////////////////////////////////////////////
         Matrix4f updateState(float time);
+
+
     protected:
 
     private:
-        //vec3f velocity
+        float angularVelocity;
+        //vec3f axis;
 };
 
-#endif // LINEARMOVEMENT_H
+#endif // AXISROTATION_H
