@@ -40,8 +40,12 @@
 			<Add directory="C:/sdl2/lib" />
 			<Add directory="C:/glew-1.10.0/lib" />
 		</Linker>
+		<Unit filename="GraphicEngine/linearmovement.cpp" />
+		<Unit filename="GraphicEngine/linearmovement.h" />
 		<Unit filename="GraphicEngine/matrix4f.cpp" />
 		<Unit filename="GraphicEngine/matrix4f.h" />
+		<Unit filename="GraphicEngine/matrix4fdinamic.cpp" />
+		<Unit filename="GraphicEngine/matrix4fdinamic.h" />
 		<Unit filename="GraphicEngine/object3d.cpp" />
 		<Unit filename="GraphicEngine/object3d.h" />
 		<Unit filename="GraphicEngine/window.cpp" />
@@ -55,6 +59,8 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="main.cpp" />
+		<Unit filename="matrix4fdinamic.cpp" />
+		<Unit filename="matrix4fdinamic.h" />
 		<Unit filename="window.cpp">
 			<Option target="Release" />
 		</Unit>

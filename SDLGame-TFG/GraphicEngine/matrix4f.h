@@ -12,21 +12,21 @@ class Matrix4f
     public:
 
         //////////////////////////////////////////////////////////////////////////
-        /**  \brief Matrix4f::Matrix4f
+        /**
         *    Constructor primitive
         */
         //////////////////////////////////////////////////////////////////////////
         Matrix4f();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  \brief Matrix4f::~Matrix4f
+        /**
         *    Destructor primitive
         */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Matrix4f();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  \brief Matrix4f::Translation
+        /**
         *    The method will make a translation transform
         *    \return void
         */
@@ -34,7 +34,7 @@ class Matrix4f
         void translation(double x,double y,double z);
 
         //////////////////////////////////////////////////////////////////////////
-        /**  \brief Matrix4f::Scale
+        /**
         *    The method will make a Scale transform
         *    \return void
         */
@@ -42,7 +42,7 @@ class Matrix4f
         void scale(double x,double y,double z);
 
         //////////////////////////////////////////////////////////////////////////
-        /**  \brief Matrix4f::rotation
+        /**
         *    The method will make a rotation transform
         *    \return void
         */
@@ -50,7 +50,7 @@ class Matrix4f
         void rotation();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  \brief Matrix4f::~Matrix4f
+        /**
         *    \return Return our current matrix4f
         */
         //////////////////////////////////////////////////////////////////////////

@@ -11,22 +11,19 @@ class Game
 {
     public:
 
-        //////////////////////////////////////////////////////////////////////////
-        /**  \brief Game::Game
-        *    Constructor primitive
-        */
-        //////////////////////////////////////////////////////////////////////////
+
+        /** Default destructor */
         Game();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  \brief Game::~Game
+        /**
         *    Destructor primitive
         */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Game();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  \brief Game::loop()
+        /**
         *    Method will contain the main loop of the videoGame
         *    In that loop will have the detection of keyboard events
         *    \return void
