@@ -9,10 +9,14 @@ LinearMovement::LinearMovement()
     //ctor
 }
 
+//**********************************************************************//
+
 LinearMovement::~LinearMovement()
 {
     //dtor
 }
+
+//**********************************************************************//
 
 Matrix4f LinearMovement::updateState(float time){
     return currentMatrix;

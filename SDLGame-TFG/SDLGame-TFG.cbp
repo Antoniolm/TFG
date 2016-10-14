@@ -42,12 +42,18 @@
 		</Linker>
 		<Unit filename="GraphicEngine/axisrotation.cpp" />
 		<Unit filename="GraphicEngine/axisrotation.h" />
+		<Unit filename="GraphicEngine/context.cpp" />
+		<Unit filename="GraphicEngine/context.h" />
 		<Unit filename="GraphicEngine/linearmovement.cpp" />
 		<Unit filename="GraphicEngine/linearmovement.h" />
 		<Unit filename="GraphicEngine/matrix4f.cpp" />
 		<Unit filename="GraphicEngine/matrix4f.h" />
 		<Unit filename="GraphicEngine/matrix4fdinamic.cpp" />
 		<Unit filename="GraphicEngine/matrix4fdinamic.h" />
+		<Unit filename="GraphicEngine/mesh.cpp" />
+		<Unit filename="GraphicEngine/mesh.h" />
+		<Unit filename="GraphicEngine/nodescenegraph.cpp" />
+		<Unit filename="GraphicEngine/nodescenegraph.h" />
 		<Unit filename="GraphicEngine/object3d.cpp" />
 		<Unit filename="GraphicEngine/object3d.h" />
 		<Unit filename="GraphicEngine/window.cpp" />
