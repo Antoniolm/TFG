@@ -6,6 +6,8 @@
 #define GAME_H
 
 #include "../GraphicEngine/window.h"
+#include "../GraphicEngine/mesh.h"
+#include "../GraphicEngine/context.h"
 
 class Game
 {
