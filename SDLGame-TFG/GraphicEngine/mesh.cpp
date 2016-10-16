@@ -6,7 +6,13 @@
 
 Mesh::Mesh()
 {
-    //ctor
+    vertex.push_back(*(new vec3f(-0.5f,0.5f,0.0f)));
+    vertex.push_back(*(new vec3f(-0.5f,-0.5f,0.0f)));
+    vertex.push_back(*(new vec3f(0.5f,-0.5f,0.0f)));
+    vertex.push_back(*(new vec3f(0.5f,0.5f,0.0f)));
+
+    triangles.push_back(*(new vec3i(0,1,2)));
+    triangles.push_back(*(new vec3i(0,2,3)));
 }
 
 //**********************************************************************//
@@ -33,27 +39,37 @@ Mesh::~Mesh()
 //**********************************************************************//
 
 void Mesh::init(){
-    glGenVertexArrays(1,&VertexArrayID);
-    glBindVertexArray(VertexArrayID);
-
     LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-
-    vertex.push_back(*(new vec3f(-1.0,-1.0,0.0)));
-    vertex.push_back(*(new vec3f(1.0, -1.0, 0.0)));
-    vertex.push_back(*(new vec3f(0.0,  1.0, 0.0)));
+    glEnableVertexAttribArray(0);
 
     int j=0;
-	for(int i=0;i<vertex.size();i++)
-    {
-        vertexBufferData[j]=vertex[i].x;
-        vertexBufferData[j+1]=vertex[i].y;
-        vertexBufferData[j+2]=vertex[i].z;
+    GLfloat verts[vertex.size()*3];
+    for(int i=0;i<vertex.size();i++){
+        verts[j]=vertex[i].x;
+        verts[j+1]=vertex[i].y;
+        verts[j+2]=vertex[i].z;
         j+=3;
     }
 
     glGenBuffers(1,&vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER,sizeof(vertexBufferData),vertexBufferData,GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(verts),verts,GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
+
+    j=0;
+    GLushort index[triangles.size()*3];
+    for(int i=0;i<triangles.size();i++){
+        index[j]=triangles[i].x;
+        index[j+1]=triangles[i].y;
+        index[j+2]=triangles[i].z;
+        j+=3;
+    }
+
+    glGenBuffers(1,&trianglebuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(index),index,GL_STATIC_DRAW);
+
 }
 
 //**********************************************************************//
@@ -64,15 +80,8 @@ void Mesh::visualization(Context & vis){
 
 	//Use our program
 	glUseProgram(programID);
-
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,(void*)0);
-
-	//Draw the object
-	glDrawArrays(GL_TRIANGLES, 0, vertex.size());
-
-	glDisableVertexAttribArray(0);
+    glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_SHORT,0);
+	glUseProgram(NULL);
 }
 
 //**********************************************************************//
@@ -83,7 +92,7 @@ void Mesh::updateState(float time){}
 
 void Mesh::clean(){
     glDeleteBuffers(1,&vertexbuffer);
-    glDeleteVertexArrays(1,&VertexArrayID);
+    glDeleteBuffers(1,&trianglebuffer);
 }
 
 //**********************************************************************//
@@ -165,7 +174,7 @@ string Mesh::LoadFileTxt(string file){
         sourceFile.close();
 	}
     else{
-        content="Fail";
+        content="Unable to access the file"+ file;
     }
 
     return content;

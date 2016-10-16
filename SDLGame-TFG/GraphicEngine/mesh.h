@@ -27,6 +27,16 @@ struct vec3f{
     }
 };
 
+struct vec3i{
+    int x;
+    int y;
+    int z;
+    vec3i(int dx,int dy,int dz){
+        x=dx;
+        y=dy;
+        z=dz;
+    }
+};
 using namespace std;
 
 class Mesh
@@ -51,6 +61,7 @@ class Mesh
         /** Default destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Mesh();
+
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -98,15 +109,14 @@ class Mesh
     protected:
 
     private:
-        vector<vec3f> Triangle;
+        vector<vec3i> triangles;
         vector<vec3f> vertex;
         unsigned char type;
         float height;
         float width;
-        GLuint VertexArrayID;
         GLuint programID;
-        GLfloat vertexBufferData[9];
         GLuint vertexbuffer;
+        GLuint trianglebuffer;
         string texture;
 
         //////////////////////////////////////////////////////////////////////////
