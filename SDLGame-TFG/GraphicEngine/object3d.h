@@ -12,11 +12,6 @@ class Object3D
     public:
         Object3D();
         virtual ~Object3D();
-
-    protected:
-        float currentTime;
-    private:
-
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
@@ -33,6 +28,13 @@ class Object3D
         */
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
+
+    protected:
+        float currentTime;
+
+    private:
+
+
 };
 
 #endif // OBJECT3D_H

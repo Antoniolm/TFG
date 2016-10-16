@@ -8,6 +8,7 @@
 #include "../GraphicEngine/window.h"
 #include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/context.h"
+#include "../GraphicEngine/nodescenegraph.h"
 
 class Game
 {

@@ -20,8 +20,11 @@ void Game::loop(){
     bool quit = false;
     SDL_Event event;
 
-    Mesh aObject;
-    aObject.init();
+    NodeSceneGraph root;
+    Mesh * aObject=new Mesh();
+    aObject->init();
+    root.add(static_cast<Object3D*>(aObject));
+
     Context aContext;
 
     while (!quit)
@@ -34,7 +37,7 @@ void Game::loop(){
         }
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        aObject.visualization(aContext);
+        root.visualization(aContext);
         window->updateScreen();
     }
 }

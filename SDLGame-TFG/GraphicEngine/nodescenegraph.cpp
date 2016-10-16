@@ -7,20 +7,29 @@
 
 NodeSceneGraph::NodeSceneGraph()
 {
-    //ctor
+
 }
 
 //**********************************************************************//
 
 NodeSceneGraph::~NodeSceneGraph()
 {
-    //dtor
+
 }
 
 //**********************************************************************//
 
 void NodeSceneGraph::visualization(Context & cv){
-
+    vector<EntranceNGE>::iterator it;
+    for(it=entrance.begin();it!=entrance.end();it++){
+            switch((*it).type){
+            case 0:
+                (*it).obj->visualization(cv);
+                break;
+            case 1:
+                glMultMatrixd((*it).matrix->getMatrix());
+            }
+    }
 }
 
 //**********************************************************************//
@@ -30,10 +39,20 @@ void NodeSceneGraph::updateState(float time){
 }
 
 //**********************************************************************//
-void NodeSceneGraph::add(EntranceNGE * anEntrance){}
+void NodeSceneGraph::add(EntranceNGE * anEntrance){
+    entrance.push_back(*anEntrance);
+}
 
 //**********************************************************************//
-void NodeSceneGraph::add(Object3D * anObject){}
+
+void NodeSceneGraph::add(Object3D * anObject){
+    EntranceNGE newEntrance(anObject);
+    entrance.push_back(newEntrance);
+}
 
 //**********************************************************************//
-void NodeSceneGraph::add(const Matrix4fDinamic & aMatrix){}
+void NodeSceneGraph::add(Matrix4f * aMatrix){
+    EntranceNGE newEntrance(aMatrix);
+    entrance.push_back(newEntrance);
+
+}

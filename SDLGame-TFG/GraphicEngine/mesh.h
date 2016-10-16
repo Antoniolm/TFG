@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include "context.h"
+#include "object3d.h"
 #include <glew.h>
 #include <SDL.h>
 #include <SDL_opengl.h>
@@ -39,7 +40,7 @@ struct vec3i{
 };
 using namespace std;
 
-class Mesh
+class Mesh : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////

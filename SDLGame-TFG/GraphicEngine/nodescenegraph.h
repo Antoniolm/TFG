@@ -9,6 +9,7 @@
 #include "object3d.h"
 #include "context.h"
 #include "matrix4fdinamic.h"
+#include "matrix4f.h"
 #include <vector>
 
 using namespace std;
@@ -26,14 +27,16 @@ struct EntranceNGE
 	union
 	{
         Object3D * obj;   //ptr. to Object3D
-        Matrix4fDinamic * matrix;   //ptr. to matrix4fDinamico
+        Matrix4f * matrix;   //ptr. to matrix4fDinamico
 	};
 
 	EntranceNGE(Object3D * aObject){
-        //this=aObject;
+        obj=aObject;
+        type=0;
 	}
-	EntranceNGE(const Matrix4fDinamic & pMatrix){
-        //this=pmatrix;
+	EntranceNGE(Matrix4f * pMatrix){
+        matrix=pMatrix;
+        type=1;
 	}
 };
 
@@ -96,7 +99,7 @@ class NodeSceneGraph : public Object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
-        void add(const Matrix4fDinamic & aMatrix);
+        void add(Matrix4f * aMatrix);
 
     protected:
 
