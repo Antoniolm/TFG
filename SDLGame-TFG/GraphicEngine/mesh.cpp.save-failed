@@ -1,21 +1,6 @@
-// *********************************************************************
-// **
-// ** Copyright (C) 2016 Antonio David López Machado
-// **
-// ** This program is free software: you can redistribute it and/or modify
-// ** it under the terms of the GNU General Public License as published by
-// ** the Free Software Foundation, either version 3 of the License, or
-// ** (at your option) any later version.
-// **
-// ** This program is distributed in the hope that it will be useful,
-// ** but WITHOUT ANY WARRANTY; without even the implied warranty of
-// ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// ** GNU General Public License for more details.
-// **
-// ** You should have received a copy of the GNU General Public License
-// ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// **
-// *********************************************************************
+////////////////////////////////////////
+//  Author: Antonio David López Machado
+////////////////////////////////////////
 
 #include "mesh.h"
 
@@ -97,12 +82,11 @@ void Mesh::visualization(Context & vis){
 	glClear( GL_COLOR_BUFFER_BIT );
 
 	//Set value to uniform variable
-	glUseProgram(programID);
-    GLint transformaLocation= glGetUniformLocation(programID,"transform");
-    glUniformMatrix4dv(transformaLocation,1,GL_FALSE,matrix->getMatrix());
+    //GLint transformaLocation= glGetUniformLocation(programID,"transform");
+    //glUniformMatrix4dv(transformaLocation,1,GL_FALSE,matrix->getMatrix());
 
 	//Use our program
-
+	glUseProgram(programID);
     glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_SHORT,0);
 	glUseProgram(NULL);
 }

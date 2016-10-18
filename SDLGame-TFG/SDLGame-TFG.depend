@@ -348,10 +348,11 @@
 	<stdint.h>
 	<inttypes.h>
 
-1476459458 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\main.cpp
+1476695479 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\main.cpp
 	<stdio.h>
 	"VideoGame/game.h"
 	<iostream>
+	<SDL_mixer.h>
 
 1476032903 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\game.cpp
 	"game.h"
@@ -359,25 +360,28 @@
 1476032874 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\game.h
 	"GraphicEngine/window.h"
 
-1476379309 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
+1476718786 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
 	<glew.h>
 	<SDL.h>
 	<SDL_opengl.h>
+	<SDL_mixer.h>
 	<gl/glu.h>
 	<gl/gl.h>
 	<stdio.h>
 	<string>
+	"sound.h"
 
-1476639511 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1476721126 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/mesh.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
+	"../GraphicEngine/sound.h"
 
-1476616390 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1476720410 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 
-1476459637 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1476721169 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1476394330 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -395,11 +399,11 @@
 1476386323 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdinamic.h
 	"matrix4f.h"
 
-1476634488 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4f.h
+1476657208 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4f.h
 	<SDL_opengl.h>
 	<math.h>
 
-1476634958 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4f.cpp
+1476657213 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4f.cpp
 	"matrix4f.h"
 
 1476394348 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdinamic.cpp
@@ -416,7 +420,7 @@
 
 1476383301 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
 
-1476639398 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
+1476657875 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
 1476639370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
@@ -426,7 +430,7 @@
 	"matrix4f.h"
 	<vector>
 
-1476638089 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
+1476657548 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
 	<vector>
 	<string>
 	"context.h"
@@ -437,8 +441,36 @@
 	<gl/glu.h>
 	<gl/gl.h>
 	<fstream>
+	"matrix4f.h"
 	<iostream>
 
-1476633601 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
+1476660971 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
+
+1451805405 c:\sdl2_mixer-2.0.1\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1451805391 c:\sdl2_mixer-2.0.1\i686-w64-mingw32\include\sdl2\sdl_mixer.h
+	"SDL_stdinc.h"
+	"SDL_rwops.h"
+	"SDL_audio.h"
+	"SDL_endian.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1476724171 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.h
+	<SDL_mixer.h>
+	<string>
+	<iostream>
+	<unistd.h>
+
+1476726310 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.cpp
+	"sound.h"
 

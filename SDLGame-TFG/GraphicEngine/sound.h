@@ -17,39 +17,49 @@
 // **
 // *********************************************************************
 
-#ifndef OBJECT3D_H
-#define OBJECT3D_H
+#ifndef SOUND_H
+#define SOUND_H
 
-#include "context.h"
+#include <SDL_mixer.h>
+#include <string>
+#include <iostream>
+#include <unistd.h>
 
-class Object3D
+using namespace std;
+
+class sound
 {
     public:
-        Object3D();
-        virtual ~Object3D();
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will show the object in our interface
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & cv);
+        /** Default constructor */
+        sound();
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will update the state of the object. That change need the
-        *    current time in our application
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time);
+        sound(const sound & aSound);
+        sound(const string & aFile,unsigned int aType);
+
+        /** Default destructor */
+        virtual ~sound();
+
+        bool loadSound(const string & aFile,unsigned int aType);
+        void play();
+        void stop();
+        void pause();
+        void resume();
+        bool isPlaying();
+        bool isPause();
+        unsigned int getType();
+        string & getFile();
 
     protected:
-        float currentTime;
 
     private:
+        unsigned int type;   //0=background music, 1=effect
 
+        union{
+            Mix_Music * music;
+            Mix_Chunk * effect;
+        };
 
+        string file;
 };
 
-#endif // OBJECT3D_H
+#endif // SOUND_H

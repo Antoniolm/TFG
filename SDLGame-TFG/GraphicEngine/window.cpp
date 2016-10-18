@@ -1,6 +1,21 @@
-////////////////////////////////////////
-//  Author: Antonio David López Machado
-////////////////////////////////////////
+// *********************************************************************
+// **
+// ** Copyright (C) 2016 Antonio David López Machado
+// **
+// ** This program is free software: you can redistribute it and/or modify
+// ** it under the terms of the GNU General Public License as published by
+// ** the Free Software Foundation, either version 3 of the License, or
+// ** (at your option) any later version.
+// **
+// ** This program is distributed in the hope that it will be useful,
+// ** but WITHOUT ANY WARRANTY; without even the implied warranty of
+// ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// ** GNU General Public License for more details.
+// **
+// ** You should have received a copy of the GNU General Public License
+// ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// **
+// *********************************************************************
 
 #include "window.h"
 
@@ -15,7 +30,9 @@ Window::Window(){
 Window::~Window(){
     SDL_GL_DeleteContext(context);
 	SDL_DestroyWindow(window);
+	Mix_Quit();
 	SDL_Quit();
+
 }
 
 //**********************************************************************//
@@ -43,6 +60,11 @@ bool Window::createWindow(){
 			salida=false;
 		}
 		else {
+            //Initialize SDL_mixer
+            if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 ){
+                    printf( "SDL_mxer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+                    salida = false;
+            }
 			context = SDL_GL_CreateContext(window);
 			glOrtho(0.0f, 900.0f, 650.0f, 0.0f, -1.0f, 1.0f);
 
@@ -51,6 +73,7 @@ bool Window::createWindow(){
     SDL_GL_SetSwapInterval(1);
     glewExperimental=true;
     GLenum err=glewInit();
+
     return salida;
 }
 
