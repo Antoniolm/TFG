@@ -67,12 +67,12 @@ void sound::play(){
     switch(type){
         case 0:
             if(Mix_PlayingMusic()==0)
-                Mix_PlayMusic(music, -1);
+                Mix_PlayMusic(music, loop);
         break;
 
         case 1:
             if(Mix_Playing(channel)==0)
-                Mix_PlayChannel(channel,effect,0);
+                Mix_PlayChannel(channel,effect,loop);
 
         break;
     }

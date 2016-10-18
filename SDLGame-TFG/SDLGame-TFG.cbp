@@ -32,15 +32,15 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="C:/sdl2/include/SDL2" />
-			<Add directory="C:/glew-1.10.0/include/GL" />
-			<Add directory="C:/SDL2_mixer-2.0.1/i686-w64-mingw32/include/SDL2" />
+			<Add directory="lib/sdl2/include/SDL2" />
+			<Add directory="lib/SDL2_mixer-2.0.1/i686-w64-mingw32/include/SDL2" />
+			<Add directory="lib/glew-1.10.0/include/GL" />
 		</Compiler>
 		<Linker>
 			<Add option="-lmingw32 -lSDL2main -lSDL2 -lopengl32 -lglu32 -lglew32 -lglew32mx -lSDL2_mixer" />
-			<Add directory="C:/sdl2/lib" />
-			<Add directory="C:/glew-1.10.0/lib" />
-			<Add directory="C:/SDL2_mixer-2.0.1/i686-w64-mingw32/lib" />
+			<Add directory="lib/sdl2/lib" />
+			<Add directory="lib/glew-1.10.0/lib" />
+			<Add directory="lib/SDL2_mixer-2.0.1/i686-w64-mingw32/lib" />
 		</Linker>
 		<Unit filename="GraphicEngine/axisrotation.cpp" />
 		<Unit filename="GraphicEngine/axisrotation.h" />

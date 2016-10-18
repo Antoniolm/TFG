@@ -43,7 +43,8 @@ void Game::loop(){
     Context aContext;
 
     sound sonido;
-    sonido.loadSound("beat.wav",0);
+    sonido.loadSound("beat.wav",0,0);
+    sonido.play();
 
     while (!quit)
     {
@@ -52,11 +53,16 @@ void Game::loop(){
             if (event.type == SDL_QUIT){
                 quit = true;
             }
+            if( event.type== SDL_KEYDOWN){
+                sonido.pause();
+            }
+            if( event.type== SDL_KEYUP){
+                sonido.resume();
+            }
         }
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         root.visualization(aContext);
         window->updateScreen();
-        sonido.play();
     }
 }
