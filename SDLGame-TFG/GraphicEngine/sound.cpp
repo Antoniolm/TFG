@@ -41,9 +41,11 @@ sound::sound(const sound & aSound){
 
 //**********************************************************************//
 
-sound::sound(const string & aFile,unsigned int aType){
+sound::sound(const string & aFile,unsigned int aType,int aChannel,int aloop){
     file=aFile;
     type=aType;
+    channel=aChannel;
+    loop=aloop;
 
     switch(type){
         case 0:
@@ -61,61 +63,119 @@ sound::sound(const string & aFile,unsigned int aType){
 //**********************************************************************//
 
 void sound::play(){
-    if(type==0 && Mix_PlayingMusic()==0)
-        Mix_PlayMusic(music, -1);
 
-    else if(type==1)
-        Mix_PlayChannel(0,effect,0);
+    switch(type){
+        case 0:
+            if(Mix_PlayingMusic()==0)
+                Mix_PlayMusic(music, -1);
+        break;
+
+        case 1:
+            if(Mix_Playing(channel)==0)
+                Mix_PlayChannel(channel,effect,0);
+
+        break;
+    }
 }
 
 //**********************************************************************//
 
 void sound::stop(){
-    if(type==0 && Mix_PlayingMusic()==1){
-        Mix_HaltMusic();
-    }
-    else if(type==1){
-        Mix_HaltChannel(0);
+    switch(type){
+        case 0:
+            if(Mix_PlayingMusic()==1)
+                Mix_HaltMusic();
+        break;
+
+        case 1:
+            if(Mix_Playing(channel)==1)
+                Mix_HaltChannel(channel);
+
+        break;
     }
 }
 
 //**********************************************************************//
 
 void sound::pause(){
-    if(type==0 && Mix_PausedMusic()==0)
-        Mix_PauseMusic();
-    else if(type==1){
-        Mix_Pause(0);
+    switch(type){
+        case 0:
+            if(Mix_PausedMusic()==0)
+                Mix_PauseMusic();
+        break;
+
+        case 1:
+            if(Mix_Paused(channel)==0)
+                Mix_Pause(channel);
+
+        break;
     }
 }
 
 //**********************************************************************//
 
 void sound::resume(){
-    if(type==0 && Mix_PausedMusic()==1)
-        Mix_ResumeMusic();
-    else if(type==1){
-        Mix_Resume(0);
+    switch(type){
+        case 0:
+            if(Mix_PausedMusic()==1)
+                Mix_ResumeMusic();
+        break;
+
+        case 1:
+            if(Mix_Paused(channel)==1)
+                Mix_Resume(channel);
+
+        break;
     }
+
 }
 
 //**********************************************************************//
 
 bool sound::isPlaying(){
-    return true;
+    bool result=false;
+    switch(type){
+        case 0:
+            if(Mix_PlayingMusic()==1)
+                result=true;
+        break;
+
+        case 1:
+            if(Mix_Playing(channel)==1)
+                result=true;
+        break;
+    }
+
+    return result;
 }
 
 //**********************************************************************//
 
 bool sound::isPause(){
-    return true;
+    bool result=false;
+
+    switch(type){
+        case 0:
+            if(Mix_PausedMusic()==1)
+                result=true;
+        break;
+
+        case 1:
+            if(Mix_Paused(channel)==1)
+                result=true;
+
+        break;
+    }
+    return result;
 }
 
 //**********************************************************************//
 
-bool sound::loadSound(const string & aFile,unsigned int aType){
+bool sound::loadSound(const string & aFile,unsigned int aType,int aChannel,int aloop){
     file=aFile;
     type=aType;
+    channel=aChannel;
+    loop=aloop;
 
     bool result = true;
 

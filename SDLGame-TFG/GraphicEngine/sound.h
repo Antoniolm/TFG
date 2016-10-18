@@ -30,30 +30,111 @@ using namespace std;
 class sound
 {
     public:
-        /** Default constructor */
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
         sound();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**  Copy constructor */
+        //////////////////////////////////////////////////////////////////////////
         sound(const sound & aSound);
-        sound(const string & aFile,unsigned int aType);
 
-        /** Default destructor */
+        //////////////////////////////////////////////////////////////////////////
+        /**  Constructor with some parameters
+        *    \param aFile -> string with the name of a file.
+        *    \param aType -> int with the type of element(music or effect)
+        */
+        //////////////////////////////////////////////////////////////////////////
+        sound(const string & aFile,unsigned int aType,int aChannel=-1, int aloop=-1);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
         virtual ~sound();
 
-        bool loadSound(const string & aFile,unsigned int aType);
+        /////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will load the sound file
+        *    \param aFile -> string with the name of a file.
+        *    \param aType -> int with the type of element(music or effect)
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool loadSound(const string & aFile,unsigned int aType, int aChannel=-1, int aloop=-1);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will play the loaded sound
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void play();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will stop the loaded sound
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void stop();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will pause the loaded sound.
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void pause();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will resume the loaded sound
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void resume();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will show if the sound is playing or not
+        *    \return bool true-> The sound is playing
+        *                 false-> The sound is not playing
+        */
+        //////////////////////////////////////////////////////////////////////////
         bool isPlaying();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will show if the sound is paused or not
+        *    \return bool true-> The sound is paused
+        *                 false-> The sound is not paused
+        */
+        //////////////////////////////////////////////////////////////////////////
         bool isPause();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the type of sound that the object has.
+        *    \return unsigned int
+        */
+        //////////////////////////////////////////////////////////////////////////
         unsigned int getType();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the name of sound file
+        *    \return string
+        */
+        //////////////////////////////////////////////////////////////////////////
         string & getFile();
 
     protected:
 
     private:
         unsigned int type;   //0=background music, 1=effect
-
+        int channel; //Variable for effect
+        int loop; //Variable for all type of sound. -> Number of loop in a reproduction
         union{
             Mix_Music * music;
             Mix_Chunk * effect;
