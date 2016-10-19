@@ -72,8 +72,6 @@ void Mesh::init(){
     glGenBuffers(1,&vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
     glBufferData(GL_ARRAY_BUFFER,sizeof(verts),verts,GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
 
     j=0;
     GLushort index[triangles.size()*3];
@@ -99,12 +97,16 @@ void Mesh::visualization(Context & vis){
 	//Set value to uniform variable
 	glUseProgram(programID);
     GLint transformaLocation= glGetUniformLocation(programID,"transform");
-    glUniformMatrix4dv(transformaLocation,1,GL_FALSE,matrix->getMatrix());
+    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,matrix->getMatrix());
 
-	//Use our program
+    glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
 
-    glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_SHORT,0);
-	glUseProgram(NULL);
+    //Draw our object
+    glDrawElements(GL_TRIANGLES,triangles.size()*3,GL_UNSIGNED_SHORT,0);
+	glUseProgram(0);
 }
 
 //**********************************************************************//

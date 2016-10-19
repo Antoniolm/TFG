@@ -6,8 +6,15 @@
 
 	uniform mat4 transform;
 
+	mat4 m = mat4(
+   		1.0, 0.0, 0.0,0.0, 
+   		0.0, 1.0, 0.0,0.0, 
+   		0.0, 0.0, 1.0,0.0, 
+   		0.2, -0.5, 0.0,1.0
+	);
+
 	void main(void)
 	{
-		gl_Position = vec4(in_Position,1.0f);
+		gl_Position = transform * vec4(in_Position,1.0f);
 		ex_Color = in_Color;
 	}

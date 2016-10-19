@@ -47,7 +47,7 @@ class Matrix4f
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void translation(double x,double y,double z);
+        void translation(float x,float y,float z);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -55,7 +55,7 @@ class Matrix4f
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void scale(double x,double y,double z);
+        void scale(float x,float y,float z);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -70,12 +70,12 @@ class Matrix4f
         *    \return Return our current matrix4f
         */
         //////////////////////////////////////////////////////////////////////////
-        GLdouble * getMatrix();
+        GLfloat * getMatrix();
 
     protected:
 
     private:
-        GLdouble * matrix;
+        GLfloat * matrix;
 };
 
 #endif // MATRIX4F_H

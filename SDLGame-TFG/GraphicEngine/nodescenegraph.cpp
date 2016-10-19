@@ -36,7 +36,6 @@ NodeSceneGraph::~NodeSceneGraph()
 
 void NodeSceneGraph::visualization(Context & cv){
     vector<EntranceNGE>::iterator it;
-    //glPushMatrix();
     for(it=entrance.begin();it!=entrance.end();it++){
             switch((*it).type){
             case 0:
@@ -47,7 +46,6 @@ void NodeSceneGraph::visualization(Context & cv){
                 break;
             }
     }
-    //glPopMatrix();
 }
 
 //**********************************************************************//
