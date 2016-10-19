@@ -52,6 +52,8 @@
 		<Unit filename="GraphicEngine/matrix4f.h" />
 		<Unit filename="GraphicEngine/matrix4fdinamic.cpp" />
 		<Unit filename="GraphicEngine/matrix4fdinamic.h" />
+		<Unit filename="GraphicEngine/matrixstack.cpp" />
+		<Unit filename="GraphicEngine/matrixstack.h" />
 		<Unit filename="GraphicEngine/mesh.cpp" />
 		<Unit filename="GraphicEngine/mesh.h" />
 		<Unit filename="GraphicEngine/nodescenegraph.cpp" />
