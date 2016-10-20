@@ -88,6 +88,19 @@ void Matrix4f::identity(){
 
 //**********************************************************************//
 
+void Matrix4f::product(const GLfloat * aMatrix){
+        GLfloat * newMatrix=new GLfloat[16];
+        for(int j=0;j<16;j=j+4){
+            for(int k=0;k<4;k++){
+                newMatrix[j+k]=(matrix[j]*aMatrix[k])+(matrix[j+1]*aMatrix[k+4])+(matrix[j+2]*aMatrix[k+8])+(matrix[j+3]*aMatrix[k+12]);
+            }
+        }
+        delete [] matrix;
+        matrix=newMatrix;
+}
+
+//**********************************************************************//
+
 GLfloat * Matrix4f::getMatrix(){
     return matrix;
 }

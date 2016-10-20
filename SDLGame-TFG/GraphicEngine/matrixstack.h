@@ -30,13 +30,70 @@ class MatrixStack
         MatrixStack();
         /** Default destructor */
         virtual ~MatrixStack();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will push a new Matrix in the stack
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void push();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will pop the matrix in the top of stack
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void pop();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will asign the identity matrix to the currentMatrix
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void asignIdentity();
-        void cMatrix( const Matrix4f & mat ) ;
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will make the product between the currentMatrix and the matrix parameter
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void cMatrix( Matrix4f & mat ) ;
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will make the product between the currentMatrix and a translation matrix
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void cTraslation( const float dx, const float dy, const float dz ) ;
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will make the product between the currentMatrix and a scale matrix
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void cScale ( const float sx, const float sy, const float sz ) ;
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will make the product between the currentMatrix and a rotation matrix
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void cRotation ( const float ang_gra,const float ex, const float ey, const float ez ) ;
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the currentMatrix
+        *    \return GLfloat -> the matrix
+        */
+        //////////////////////////////////////////////////////////////////////////
+        GLfloat * getMatrix();
 
     protected:
 

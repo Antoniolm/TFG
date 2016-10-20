@@ -29,8 +29,8 @@ Mesh::Mesh()
     triangles.push_back(*(new vec3i(0,1,2)));
     triangles.push_back(*(new vec3i(0,2,3)));
 
-    matrix=new Matrix4f();
-    matrix->translation(0.0f,0.5f,0.0f);
+    //matrix=new Matrix4f();
+    //matrix->translation(0.0f,0.5f,0.0f);
 }
 
 //**********************************************************************//
@@ -97,7 +97,7 @@ void Mesh::visualization(Context & vis){
 	//Set value to uniform variable
 	glUseProgram(programID);
     GLint transformaLocation= glGetUniformLocation(programID,"transform");
-    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,matrix->getMatrix());
+    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,vis.matrixStack.getMatrix());
 
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
     glEnableVertexAttribArray(0);

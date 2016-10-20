@@ -35,6 +35,7 @@ MatrixStack::~MatrixStack()
 
 void MatrixStack::push(){
     currentMatrix=new Matrix4f();
+    currentMatrix->identity();
     mainStack.push_back((*currentMatrix));
 }
 
@@ -54,24 +55,34 @@ void MatrixStack::asignIdentity(){
 
 //**********************************************************************//
 
-void MatrixStack::cMatrix( const Matrix4f & mat ){
-
+void MatrixStack::cMatrix( Matrix4f & mat ){
+    currentMatrix->product(mat.getMatrix());
 }
 
 //**********************************************************************//
 
 void MatrixStack::cTraslation( const float dx, const float dy, const float dz ){
-
+    Matrix4f auxMatrix;
+    auxMatrix.translation(dx,dy,dz);
+    currentMatrix->product(auxMatrix.getMatrix());
 }
 
 //**********************************************************************//
 
 void MatrixStack::cScale ( const float sx, const float sy, const float sz ){
-
+    Matrix4f auxMatrix;
+    auxMatrix.scale(sx,sy,sz);
+    currentMatrix->product(auxMatrix.getMatrix());
 }
 
 //**********************************************************************//
 
 void MatrixStack::cRotation ( const float ang_gra,const float ex, const float ey, const float ez ){
 
+}
+
+//**********************************************************************//
+
+GLfloat * MatrixStack::getMatrix(){
+    return currentMatrix->getMatrix();
 }

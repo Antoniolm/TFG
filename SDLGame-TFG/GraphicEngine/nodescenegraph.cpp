@@ -35,6 +35,7 @@ NodeSceneGraph::~NodeSceneGraph()
 //**********************************************************************//
 
 void NodeSceneGraph::visualization(Context & cv){
+    cv.matrixStack.push();
     vector<EntranceNGE>::iterator it;
     for(it=entrance.begin();it!=entrance.end();it++){
             switch((*it).type){
@@ -42,10 +43,12 @@ void NodeSceneGraph::visualization(Context & cv){
                 (*it).obj->visualization(cv);
                 break;
             case 1:
+                cv.matrixStack.cMatrix((*(*it).matrix));
                 //glMultMatrixd((*it).matrix->getMatrix());
                 break;
             }
     }
+    cv.matrixStack.pop();
 }
 
 //**********************************************************************//

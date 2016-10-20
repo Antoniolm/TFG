@@ -39,12 +39,23 @@ void Game::loop(){
     NodeSceneGraph root;
     Mesh * aObject=new Mesh();
     aObject->init();
-    root.add(static_cast<Object3D*>(aObject));
+
     Context aContext;
 
     sound sonido;
     sonido.loadSound("beat.wav",0,0);
-    sonido.play();
+    //sonido.play();
+
+    Matrix4f matrixone;
+    matrixone.scale(1.5,1,1);
+
+    Matrix4f matrixtwo;
+    matrixtwo.translation(0.5,0.5,0);
+
+    root.add(&matrixone);
+    root.add(&matrixtwo);
+    root.add(static_cast<Object3D*>(aObject));
+    //matrixone.product(matrixtwo.getMatrix());
 
     while (!quit)
     {

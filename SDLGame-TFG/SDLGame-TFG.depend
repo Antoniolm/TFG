@@ -381,7 +381,7 @@
 1476743672 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 
-1476793933 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1476958593 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1476743734 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -399,11 +399,12 @@
 1476743828 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdinamic.h
 	"matrix4f.h"
 
-1476913281 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4f.h
-	<SDL_opengl.h>
+1476961134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4f.h
+	<glew.h>
 	<math.h>
+	<iostream>
 
-1476913321 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4f.cpp
+1476958829 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4f.cpp
 	"matrix4f.h"
 
 1476743747 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdinamic.cpp
@@ -418,9 +419,10 @@
 1476743738 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.cpp
 	"context.h"
 
-1476743858 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
+1476960713 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
+	"matrixstack.h"
 
-1476873427 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
+1476961241 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
 1476743693 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
@@ -444,7 +446,7 @@
 	"matrix4f.h"
 	<iostream>
 
-1476903711 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
+1476961508 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
 
 1451805405 c:\sdl2_mixer-2.0.1\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
@@ -819,4 +821,11 @@
 	"SDL_version.h"
 	"begin_code.h"
 	"close_code.h"
+
+1476961524 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixstack.cpp
+	"matrixstack.h"
+
+1476961535 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixstack.h
+	"matrix4f.h"
+	<vector>
 

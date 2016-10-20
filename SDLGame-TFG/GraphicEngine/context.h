@@ -20,6 +20,7 @@
 #ifndef CONTEXT_H
 #define CONTEXT_H
 
+#include "matrixstack.h"
 
 class Context
 {
@@ -31,6 +32,7 @@ class Context
 
         unsigned visualization_mode;
         unsigned camera_mode;
+        MatrixStack matrixStack;
 
     protected:
 
