@@ -64,6 +64,7 @@
 		<Unit filename="GraphicEngine/object3d.h" />
 		<Unit filename="GraphicEngine/sound.cpp" />
 		<Unit filename="GraphicEngine/sound.h" />
+		<Unit filename="GraphicEngine/structdata.h" />
 		<Unit filename="GraphicEngine/window.cpp" />
 		<Unit filename="GraphicEngine/window.h" />
 		<Unit filename="VideoGame/game.cpp" />

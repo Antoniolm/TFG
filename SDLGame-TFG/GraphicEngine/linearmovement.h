@@ -22,6 +22,7 @@
 #define LINEARMOVEMENT_H
 
 #include "matrix4fdinamic.h"
+#include "structdata.h"
 
 class LinearMovement : public Matrix4fDinamic {
 
@@ -31,7 +32,8 @@ class LinearMovement : public Matrix4fDinamic {
         /** Constructor*/
         //////////////////////////////////////////////////////////////////////////
         LinearMovement();
-
+        LinearMovement(float x,float y,float z);
+        LinearMovement(vec3f aVelocity);
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
@@ -48,7 +50,7 @@ class LinearMovement : public Matrix4fDinamic {
     protected:
 
     private:
-        //vec3f velocity
+        vec3f velocity;
 };
 
 #endif // LINEARMOVEMENT_H

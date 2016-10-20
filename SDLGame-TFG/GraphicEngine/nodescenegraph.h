@@ -26,6 +26,7 @@
 #include "matrix4fdinamic.h"
 #include "matrix4f.h"
 #include <vector>
+#include <SDL.h>
 
 using namespace std;
 
@@ -62,16 +63,12 @@ class NodeSceneGraph : public Object3D
     public:
 
         //////////////////////////////////////////////////////////////////////////
-        /**
-        *    Constructor
-        */
+        /** Constructor */
         /////////////////////////////////////////////////////////////////////////
         NodeSceneGraph();
 
         //////////////////////////////////////////////////////////////////////////
-        /**
-        *    Destructor
-        */
+        /** Destructor */
         /////////////////////////////////////////////////////////////////////////
         virtual ~NodeSceneGraph();
 

@@ -50,10 +50,23 @@ void Game::loop(){
     matrixone.scale(0.5,0.2,1);
 
     Matrix4f matrixtwo;
-    matrixtwo.translation(0.5,0.5,0);
+    matrixtwo.translation(-0.5,-0.5,0);
+
+    LinearMovement movet(0,0.1,0.0);
+
 
     MatrixStatic matrix(matrixone);
     MatrixStatic matrix2(matrixtwo);
+
+    NodeSceneGraph *root2;
+    matrixtwo.translation(0.5,0.5,0.0);
+    MatrixStatic matrix3(matrixtwo);
+    //root2->add(&matrix3);
+    //root2->add(static_cast<Object3D*>(aObject));
+    root.add(&matrix);
+    root.add(static_cast<Object3D*>(aObject));
+
+    //root.add(&movet);
     root.add(&matrix);
     root.add(&matrix2);
     root.add(static_cast<Object3D*>(aObject));

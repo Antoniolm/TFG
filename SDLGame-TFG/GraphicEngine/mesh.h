@@ -32,28 +32,8 @@
 #include <fstream>
 #include "matrix4f.h"
 #include <iostream>
+#include "structdata.h"
 
-struct vec3f{
-    float x;
-    float y;
-    float z;
-    vec3f(float dx,float dy,float dz){
-        x=dx;
-        y=dy;
-        z=dz;
-    }
-};
-
-struct vec3i{
-    int x;
-    int y;
-    int z;
-    vec3i(int dx,int dy,int dz){
-        x=dx;
-        y=dy;
-        z=dz;
-    }
-};
 using namespace std;
 
 class Mesh : public Object3D

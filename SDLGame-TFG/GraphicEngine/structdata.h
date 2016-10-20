@@ -16,46 +16,33 @@
 // ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // **
 // *********************************************************************
-#include "linearmovement.h"
 
-LinearMovement::LinearMovement()
-{
-    //dtor
-}
+#ifndef STRUCTDATA_H
+#define STRUCTDATA_H
 
-//**********************************************************************//
 
-LinearMovement::LinearMovement(float x,float y,float z){
-    velocity.x=x;
-    velocity.y=y;
-    velocity.z=z;
-}
+struct vec3f{
+    float x;
+    float y;
+    float z;
+    vec3f(){}
+    vec3f(float dx,float dy,float dz){
+        x=dx;
+        y=dy;
+        z=dz;
+    }
+};
 
-//**********************************************************************//
+struct vec3i{
+    int x;
+    int y;
+    int z;
+    vec3i(){}
+    vec3i(int dx,int dy,int dz){
+        x=dx;
+        y=dy;
+        z=dz;
+    }
+};
 
-LinearMovement::LinearMovement(vec3f aVelocity)
-{
-    velocity=aVelocity;
-}
-
-//**********************************************************************//
-
-LinearMovement::~LinearMovement()
-{
-    //dtor
-}
-
-//**********************************************************************//
-
-Matrix4f & LinearMovement::updateState(float time){
-    time=time/1000;
-
-    cout<< "Time --> "<< time;
-    velocity.x*=time;
-    velocity.y*=time;
-    velocity.z*=time;
-
-    currentMatrix.translation(velocity.x,velocity.y,velocity.z);
-
-    return currentMatrix;
-}
+#endif

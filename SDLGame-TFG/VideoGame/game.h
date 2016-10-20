@@ -26,6 +26,7 @@
 #include "../GraphicEngine/nodescenegraph.h"
 #include "../GraphicEngine/sound.h"
 #include "../GraphicEngine/matrixstatic.h"
+#include "../GraphicEngine/linearmovement.h"
 
 class Game
 {

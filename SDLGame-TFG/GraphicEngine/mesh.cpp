@@ -58,7 +58,6 @@ Mesh::~Mesh()
 
 void Mesh::init(){
     LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    glEnableVertexAttribArray(0);
 
     int j=0;
     GLfloat verts[vertex.size()*3];
@@ -91,8 +90,7 @@ void Mesh::init(){
 //**********************************************************************//
 
 void Mesh::visualization(Context & vis){
-    //Clear the screen
-	glClear( GL_COLOR_BUFFER_BIT );
+
 
 	//Set value to uniform variable
 	glUseProgram(programID);
