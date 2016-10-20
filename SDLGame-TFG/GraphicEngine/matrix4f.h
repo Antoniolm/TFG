@@ -81,6 +81,7 @@ class Matrix4f
         //////////////////////////////////////////////////////////////////////////
         GLfloat * getMatrix();
 
+
     protected:
 
     private:

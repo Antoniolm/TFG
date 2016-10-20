@@ -43,8 +43,7 @@ void NodeSceneGraph::visualization(Context & cv){
                 (*it).obj->visualization(cv);
                 break;
             case 1:
-                cv.matrixStack.cMatrix((*(*it).matrix));
-                //glMultMatrixd((*it).matrix->getMatrix());
+                cv.matrixStack.cMatrix((*(*it).matrix).updateState(0.0f));
                 break;
             }
     }
@@ -70,7 +69,7 @@ void NodeSceneGraph::add(Object3D * anObject){
 }
 
 //**********************************************************************//
-void NodeSceneGraph::add(Matrix4f * aMatrix){
+void NodeSceneGraph::add(Matrix4fDinamic * aMatrix){
     EntranceNGE newEntrance(aMatrix);
     entrance.push_back(newEntrance);
 

@@ -32,6 +32,6 @@ LinearMovement::~LinearMovement()
 
 //**********************************************************************//
 
-Matrix4f LinearMovement::updateState(float time){
+Matrix4f & LinearMovement::updateState(float time){
     return currentMatrix;
 }

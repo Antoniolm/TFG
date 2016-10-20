@@ -32,6 +32,6 @@ AxisRotation::~AxisRotation()
 
 //**********************************************************************//
 
-Matrix4f AxisRotation::updateState(float time){
+Matrix4f & AxisRotation::updateState(float time){
     return currentMatrix;
 }

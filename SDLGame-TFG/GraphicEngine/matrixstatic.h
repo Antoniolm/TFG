@@ -17,25 +17,26 @@
 // **
 // *********************************************************************
 
-#ifndef AXISROTATION_H
-#define AXISROTATION_H
+#ifndef MATRIXSTATIC_H
+#define MATRIXSTATIC_H
 
 #include "matrix4fdinamic.h"
 
-class AxisRotation : public Matrix4fDinamic
+class MatrixStatic : public Matrix4fDinamic
 {
     public:
+        //////////////////////////////////////////////////////////////////////////
+        /** Default constructor */
+        //////////////////////////////////////////////////////////////////////////
+        MatrixStatic();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Default destructor */
         //////////////////////////////////////////////////////////////////////////
-        AxisRotation();
+        virtual ~MatrixStatic();
 
-        //////////////////////////////////////////////////////////////////////////
-        /** Destructor */
-        //////////////////////////////////////////////////////////////////////////
-        virtual ~AxisRotation();
 
+        MatrixStatic(Matrix4f & matrix);
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will update the state of the Matrix4xf. That change need the
@@ -45,12 +46,9 @@ class AxisRotation : public Matrix4fDinamic
         //////////////////////////////////////////////////////////////////////////
         virtual Matrix4f & updateState(float time);
 
-
     protected:
 
     private:
-        float angularVelocity;
-        //vec3f axis;
 };
 
-#endif // AXISROTATION_H
+#endif // MATRIXSTATIC_H

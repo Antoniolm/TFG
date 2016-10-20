@@ -42,14 +42,14 @@ struct EntranceNGE
 	union
 	{
         Object3D * obj;   //ptr. to Object3D
-        Matrix4f * matrix;   //ptr. to matrix4fDinamico
+        Matrix4fDinamic * matrix;   //ptr. to matrix4fDinamico
 	};
 
 	EntranceNGE(Object3D * aObject){
         obj=aObject;
         type=0;
 	}
-	EntranceNGE(Matrix4f * pMatrix){
+	EntranceNGE(Matrix4fDinamic * pMatrix){
         matrix=pMatrix;
         type=1;
 	}
@@ -114,7 +114,7 @@ class NodeSceneGraph : public Object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
-        void add(Matrix4f * aMatrix);
+        void add(Matrix4fDinamic * aMatrix);
 
     protected:
 

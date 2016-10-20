@@ -28,16 +28,12 @@ class LinearMovement : public Matrix4fDinamic {
     public:
 
         //////////////////////////////////////////////////////////////////////////
-        /**
-        *   Constructor
-        */
+        /** Constructor*/
         //////////////////////////////////////////////////////////////////////////
         LinearMovement();
 
         //////////////////////////////////////////////////////////////////////////
-        /**
-        *    Destructor
-        */
+        /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~LinearMovement();
 
@@ -48,7 +44,7 @@ class LinearMovement : public Matrix4fDinamic {
         *    \return the new state of the matrix4f
         */
         //////////////////////////////////////////////////////////////////////////
-        Matrix4f updateState(float time);
+        virtual Matrix4f & updateState(float time);
     protected:
 
     private:

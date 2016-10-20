@@ -104,3 +104,4 @@ void Matrix4f::product(const GLfloat * aMatrix){
 GLfloat * Matrix4f::getMatrix(){
     return matrix;
 }
+

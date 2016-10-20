@@ -47,15 +47,16 @@ void Game::loop(){
     //sonido.play();
 
     Matrix4f matrixone;
-    matrixone.scale(1.5,1,1);
+    matrixone.scale(0.5,0.2,1);
 
     Matrix4f matrixtwo;
     matrixtwo.translation(0.5,0.5,0);
 
-    root.add(&matrixone);
-    root.add(&matrixtwo);
+    MatrixStatic matrix(matrixone);
+    MatrixStatic matrix2(matrixtwo);
+    root.add(&matrix);
+    root.add(&matrix2);
     root.add(static_cast<Object3D*>(aObject));
-    //matrixone.product(matrixtwo.getMatrix());
 
     while (!quit)
     {
