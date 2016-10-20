@@ -91,12 +91,12 @@ void Mesh::init(){
 
 void Mesh::visualization(Context & vis){
 
-
 	//Set value to uniform variable
 	glUseProgram(programID);
     GLint transformaLocation= glGetUniformLocation(programID,"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,vis.matrixStack.getMatrix());
 
+    //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
@@ -174,7 +174,7 @@ bool Mesh::LoadShader(string vertexShaderFile,string fragmentShaderFile){
         result = false;
 	}
 
-	//Delete compiled shaderss
+	//Delete compiled shaders
 	glDeleteShader(VertexShaderID);
     glDeleteShader(FragmentShaderID);
 

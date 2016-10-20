@@ -58,15 +58,12 @@ void Game::loop(){
     MatrixStatic matrix(matrixone);
     MatrixStatic matrix2(matrixtwo);
 
-    NodeSceneGraph *root2;
-    matrixtwo.translation(0.5,0.5,0.0);
-    MatrixStatic matrix3(matrixtwo);
-    //root2->add(&matrix3);
-    //root2->add(static_cast<Object3D*>(aObject));
-    root.add(&matrix);
-    root.add(static_cast<Object3D*>(aObject));
+    NodeSceneGraph root2;
+    root2.add(&matrix);
+    root2.add(static_cast<Object3D*>(aObject));
+    root.add(static_cast<Object3D*>(&root2));
 
-    //root.add(&movet);
+    root.add(&movet);
     root.add(&matrix);
     root.add(&matrix2);
     root.add(static_cast<Object3D*>(aObject));
