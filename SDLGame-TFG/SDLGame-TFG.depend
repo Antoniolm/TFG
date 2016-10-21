@@ -371,7 +371,7 @@
 	<string>
 	"sound.h"
 
-1476981955 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1477044815 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/mesh.h"
 	"../GraphicEngine/context.h"
@@ -379,20 +379,22 @@
 	"../GraphicEngine/sound.h"
 	"../GraphicEngine/matrixstatic.h"
 	"../GraphicEngine/linearmovement.h"
+	"../GraphicEngine/axisrotation.h"
 
 1476743672 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 
-1477039857 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1477043961 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
-1476966902 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
+1477044775 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
 	"axisrotation.h"
 
-1476966879 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.h
+1477044671 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.h
 	"matrix4fdinamic.h"
+	"structdata.h"
 
-1476982087 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\linearmovement.cpp
+1477044054 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\linearmovement.cpp
 	"linearmovement.h"
 
 1476976408 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\linearmovement.h
@@ -425,7 +427,7 @@
 1476960713 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
 	"matrixstack.h"
 
-1476982735 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
+1477043910 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
 1476982707 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h

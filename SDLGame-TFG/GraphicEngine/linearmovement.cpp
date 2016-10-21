@@ -50,12 +50,7 @@ LinearMovement::~LinearMovement()
 Matrix4f & LinearMovement::updateState(float time){
     time=time/1000;
 
-    cout<< "Time --> "<< time;
-    velocity.x*=time;
-    velocity.y*=time;
-    velocity.z*=time;
-
-    currentMatrix.translation(velocity.x,velocity.y,velocity.z);
+    currentMatrix.translation(velocity.x*time,velocity.y*time,velocity.z*time);
 
     return currentMatrix;
 }

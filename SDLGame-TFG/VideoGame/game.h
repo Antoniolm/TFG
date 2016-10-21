@@ -27,6 +27,7 @@
 #include "../GraphicEngine/sound.h"
 #include "../GraphicEngine/matrixstatic.h"
 #include "../GraphicEngine/linearmovement.h"
+#include "../GraphicEngine/axisrotation.h"
 
 class Game
 {

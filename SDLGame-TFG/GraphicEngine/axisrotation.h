@@ -21,6 +21,7 @@
 #define AXISROTATION_H
 
 #include "matrix4fdinamic.h"
+#include "structdata.h"
 
 class AxisRotation : public Matrix4fDinamic
 {
@@ -30,6 +31,11 @@ class AxisRotation : public Matrix4fDinamic
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         AxisRotation();
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
+        AxisRotation(float anAVelocity,float x,float y,float z);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -50,7 +56,7 @@ class AxisRotation : public Matrix4fDinamic
 
     private:
         float angularVelocity;
-        //vec3f axis;
+        vec3f axis;
 };
 
 #endif // AXISROTATION_H

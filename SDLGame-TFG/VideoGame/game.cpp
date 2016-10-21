@@ -37,7 +37,7 @@ void Game::loop(){
     SDL_Event event;
 
     NodeSceneGraph root;
-    string p("geometries/ramp.ply");
+    string p("geometries/cube.ply");
     Mesh * aObject=new Mesh(p);
     aObject->init();
 
@@ -48,32 +48,29 @@ void Game::loop(){
     //sonido.play();
 
     Matrix4f matrixone;
-    matrixone.scale(0.5,0.5,0.5);
+    matrixone.scale(0.1,0.1,0.1);
 
     Matrix4f matrixtwo;
-    matrixtwo.rotation(45,0,1,0);
+    matrixtwo.translation(-0.5,-0.5,0);
 
-    Matrix4f matrixthree;
-    matrixthree.translation(0,0,0);
-
-    LinearMovement movet(0,0.1,0.0);
+    LinearMovement movet(0,2,0.0);
+    AxisRotation axisRot(20,1,0,0);
 
 
     MatrixStatic matrix(matrixone);
     MatrixStatic matrix2(matrixtwo);
-    MatrixStatic matrix3(matrixthree);
 
     NodeSceneGraph root2;
     root2.add(&matrix);
     root2.add(&matrix2);
-    root2.add(&matrix3);
+    root2.add(&axisRot);
     root2.add(static_cast<Object3D*>(aObject));
     root.add(static_cast<Object3D*>(&root2));
 
-    //root.add(&movet);
-    //root.add(&matrix);
-    //root.add(&matrix2);
-    //root.add(static_cast<Object3D*>(aObject));
+    root.add(&movet);
+    root.add(&matrix);
+    root.add(&matrix2);
+    root.add(static_cast<Object3D*>(aObject));
 
     while (!quit)
     {

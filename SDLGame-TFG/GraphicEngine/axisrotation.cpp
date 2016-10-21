@@ -25,6 +25,15 @@ AxisRotation::AxisRotation()
 
 //**********************************************************************//
 
+AxisRotation::AxisRotation(float anAVelocity,float x,float y,float z){
+    angularVelocity=anAVelocity;
+    axis.x=x;
+    axis.y=y;
+    axis.z=z;
+}
+
+//**********************************************************************//
+
 AxisRotation::~AxisRotation()
 {
     //dtor
@@ -33,5 +42,9 @@ AxisRotation::~AxisRotation()
 //**********************************************************************//
 
 Matrix4f & AxisRotation::updateState(float time){
+    time=time/1000;
+
+    currentMatrix.rotation(angularVelocity*time,axis.x,axis.y,axis.z);
+
     return currentMatrix;
 }
