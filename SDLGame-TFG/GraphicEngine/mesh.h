@@ -33,6 +33,7 @@
 #include "matrix4f.h"
 #include <iostream>
 #include "structdata.h"
+#include <file_ply_stl.hpp>
 
 using namespace std;
 

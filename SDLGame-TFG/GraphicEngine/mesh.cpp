@@ -21,16 +21,6 @@
 
 Mesh::Mesh()
 {
-    vertex.push_back(*(new vec3f(-0.5f,0.5f,0.0f)));
-    vertex.push_back(*(new vec3f(-0.5f,-0.5f,0.0f)));
-    vertex.push_back(*(new vec3f(0.5f,-0.5f,0.0f)));
-    vertex.push_back(*(new vec3f(0.5f,0.5f,0.0f)));
-
-    triangles.push_back(*(new vec3i(0,1,2)));
-    triangles.push_back(*(new vec3i(0,2,3)));
-
-    //matrix=new Matrix4f();
-    //matrix->translation(0.0f,0.5f,0.0f);
 }
 
 //**********************************************************************//
@@ -44,7 +34,16 @@ Mesh::Mesh(string & aTextur,float aHeight,float aWidth,unsigned char aType){
 
 //**********************************************************************//
 Mesh::Mesh(string & aFile){
+    std::vector<float> vertex_ply ; // vertex
+    std::vector<int>   faces_ply ;    // face
 
+    ply::read( aFile.c_str(), vertex_ply,faces_ply);
+    for(int i=0;i<vertex_ply.size();i=i+3){
+        vertex.push_back(*(new vec3f(vertex_ply[i],vertex_ply[i+1],vertex_ply[i+2])));
+    }
+    for(int i=0;i<faces_ply.size();i=i+3){
+        triangles.push_back(*(new vec3i(faces_ply[i],faces_ply[i+1],faces_ply[i+2])));
+	}
 }
 
 //**********************************************************************//
@@ -103,7 +102,7 @@ void Mesh::visualization(Context & vis){
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
 
     //Draw our object
-    glDrawElements(GL_TRIANGLES,triangles.size()*3,GL_UNSIGNED_SHORT,0);
+    glDrawElements(GL_LINES,triangles.size()*3,GL_UNSIGNED_SHORT,0);
 	glUseProgram(0);
 }
 
