@@ -39,6 +39,7 @@ void Game::loop(){
     NodeSceneGraph root;
     string p("geometries/ant.ply");
     Mesh * aObject=new Mesh(p);
+    aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject->init();
 
     Context aContext;

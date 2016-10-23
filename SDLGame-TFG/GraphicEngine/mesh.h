@@ -33,6 +33,7 @@
 #include "matrix4f.h"
 #include <iostream>
 #include "structdata.h"
+#include "shader.h"
 #include <file_ply_stl.hpp>
 
 using namespace std;
@@ -48,7 +49,7 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**  Constructor */
         /////////////////////////////////////////////////////////////////////////
-        Mesh(string & aTextur,float aHeight,float aWidth,unsigned char aType);
+        Mesh(string & aTextur,unsigned char aType);
 
         //////////////////////////////////////////////////////////////////////////
         /**  Constructor */
@@ -99,7 +100,7 @@ class Mesh : public Object3D
         *    The method will load the files(vexterShader,FragmentShader) and it
         *    links the shaders to a program too.
         *    \return bool true -> Shaders load successfully
-        *                 false-> Shaders don't successfully
+        *                 false-> Shaders don't load successfully
         */
         //////////////////////////////////////////////////////////////////////////
         bool LoadShader(string vertexShader,string FragmentShader);
@@ -111,23 +112,10 @@ class Mesh : public Object3D
         vector<vec3f> vertex;
         vec4f position;
         unsigned char type;
-        float height;
-        float width;
-        GLuint programID;
         GLuint vertexbuffer;
         GLuint trianglebuffer;
-        Matrix4f * matrix;
-
+        Shader shaders;
         string texture;
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will load a text file. This type of file contains the GLSL code
-        *    for our shader
-        *    \return string -> That string contains the text in the file
-        */
-        //////////////////////////////////////////////////////////////////////////
-        string LoadFileTxt(string file);
 };
 
 #endif // MESH_H

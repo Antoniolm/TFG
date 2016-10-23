@@ -25,10 +25,8 @@ Mesh::Mesh()
 
 //**********************************************************************//
 
-Mesh::Mesh(string & aTextur,float aHeight,float aWidth,unsigned char aType){
+Mesh::Mesh(string & aTextur,unsigned char aType){
     texture=aTextur;
-    height=aHeight;
-    width=aWidth;
     type=aType;
 }
 
@@ -56,8 +54,6 @@ Mesh::~Mesh()
 //**********************************************************************//
 
 void Mesh::init(){
-    LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-
     int j=0;
     GLfloat verts[vertex.size()*3];
     for(int i=0;i<vertex.size();i++){
@@ -93,8 +89,8 @@ void Mesh::visualization(Context & vis){
     Matrix4f * matrix = vis.matrixStack.getMatrix();
 
 	//Set value to uniform variable
-	glUseProgram(programID);
-    GLint transformaLocation= glGetUniformLocation(programID,"transform");
+	glUseProgram(shaders.getProgram());
+    GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,matrix->getMatrix());
 
     //Obtain the new position
@@ -126,85 +122,10 @@ void Mesh::clean(){
 //**********************************************************************//
 
 bool Mesh::LoadShader(string vertexShaderFile,string fragmentShaderFile){
-
-    bool result=true;
-    GLint isShaderCompiled;
-    GLint isProgramRight;
-    GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-    GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-
-    string vShaderCode;
-    string fShaderCode;
-
-    //Obtaining the code of our shaders
-    vShaderCode = LoadFileTxt(vertexShaderFile);
-    fShaderCode = LoadFileTxt(fragmentShaderFile);
-
-    //Compiling our vertexShader
-    const char *VertexSourcePointer = vShaderCode.c_str();
-    glShaderSource(VertexShaderID,1,&VertexSourcePointer,NULL);
-    glCompileShader(VertexShaderID);
-
-    //Check Vertex Shader
-    glGetShaderiv( VertexShaderID, GL_COMPILE_STATUS, &isShaderCompiled );
-    if(!isShaderCompiled)
-    {
-        cout<< "Unable to compile vertex shader"<< vertexShaderFile<<endl;
-        result = false;
-    }
-
-	//Compiling our FragmentShader
-    char const * FragmentSourcePointer = fShaderCode.c_str();
-	glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer , NULL);
-	glCompileShader(FragmentShaderID);
-
-	//Check Fragment Shader
-	glGetShaderiv(FragmentShaderID, GL_COMPILE_STATUS, &isShaderCompiled);
-    if(!isShaderCompiled)
-    {
-        cout<< "Unable to compile Fragment shader"<< fragmentShaderFile<<endl;
-        result = false;
-    }
-
-	//Creating our program and linking the shaders
-    programID = glCreateProgram();
-    glAttachShader(programID, VertexShaderID);
-    glAttachShader(programID, FragmentShaderID);
-    glLinkProgram(programID);
-
-    //Check the program
-	glGetProgramiv(programID, GL_LINK_STATUS, &isProgramRight);
-	if (!isProgramRight){
-        cout<< "Unable to link the program"<<endl;
-        result = false;
-	}
-
-	//Delete compiled shaders
-	glDeleteShader(VertexShaderID);
-    glDeleteShader(FragmentShaderID);
-
+    shaders.setFiles(vertexShaderFile,fragmentShaderFile);
+    bool result=shaders.createProgram();
     return result;
-
 }
 
-//**********************************************************************//
-//* Private Methods
 
-string Mesh::LoadFileTxt(string file){
-
-    string content;
-    ifstream sourceFile;
-    sourceFile.open(file.c_str(),ifstream::in);
-
-    if( sourceFile.is_open() )
-	{
-        content.assign( ( istreambuf_iterator< char >( sourceFile ) ), istreambuf_iterator< char >() );
-        sourceFile.close();
-	}
-    else{
-        content="Unable to access the file"+ file;
-    }
-
-    return content;
-}
 

@@ -384,7 +384,7 @@
 1476743672 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 
-1477218369 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1477222862 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1477044775 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -439,7 +439,7 @@
 	<vector>
 	<SDL.h>
 
-1477169624 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
+1477225851 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
 	<vector>
 	<string>
 	"context.h"
@@ -453,9 +453,10 @@
 	"matrix4f.h"
 	<iostream>
 	"structdata.h"
+	"shader.h"
 	<file_ply_stl.hpp>
 
-1477222809 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
+1477227276 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
 
 1451805405 c:\sdl2_mixer-2.0.1\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
@@ -866,4 +867,13 @@
 
 1477166639 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
+
+1477227595 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.h
+	<glew.h>
+	<string>
+	<iostream>
+	<fstream>
+
+1477227917 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
+	"shader.h"
 
