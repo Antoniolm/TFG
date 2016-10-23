@@ -28,6 +28,7 @@
 #include "../GraphicEngine/matrixstatic.h"
 #include "../GraphicEngine/linearmovement.h"
 #include "../GraphicEngine/axisrotation.h"
+#include "../GraphicEngine/rootmap.h"
 
 class Game
 {
@@ -57,6 +58,7 @@ class Game
 
     private:
         Window *window;
+        RootMap * rootMap;
 };
 
 #endif // GAME_H

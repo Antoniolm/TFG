@@ -21,18 +21,52 @@
 #define ROOTMAP_H
 
 #include "object3d.h"
+#include "nodescenegraph.h"
+#include <list>
+#include <vector>
+#include "matrix4f.h"
+#include "matrix4fdinamic.h"
+#include "linearmovement.h"
+#include "axisrotation.h"
+#include "matrixstatic.h"
+#include "mesh.h"
+
+using namespace std;
 
 class RootMap : public Object3D
 {
     public:
+        //////////////////////////////////////////////////////////////////////////
         /** Default constructor */
+        //////////////////////////////////////////////////////////////////////////
         RootMap();
+
+        //////////////////////////////////////////////////////////////////////////
         /** Default destructor */
+        //////////////////////////////////////////////////////////////////////////
         virtual ~RootMap();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will show the object in our interface
+        *    \return void
+        */
+        /////////////////////////////////////////////////////////////////////////
+        virtual void visualization(Context & vis);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will update the state of the object. That change need the
+        *    current time in our application
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        virtual void updateState(float time);
     protected:
 
     private:
+
+        vector<Object3D *> objectList;
 };
 
 #endif // ROOTMAP_H

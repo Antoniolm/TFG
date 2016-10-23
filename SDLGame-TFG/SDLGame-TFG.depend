@@ -371,7 +371,7 @@
 	<string>
 	"sound.h"
 
-1477044815 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1477244749 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/mesh.h"
 	"../GraphicEngine/context.h"
@@ -380,11 +380,12 @@
 	"../GraphicEngine/matrixstatic.h"
 	"../GraphicEngine/linearmovement.h"
 	"../GraphicEngine/axisrotation.h"
+	"../GraphicEngine/rootmap.h"
 
 1476743672 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 
-1477222862 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1477247020 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1477044775 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -428,7 +429,7 @@
 1477177561 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
 	"matrixstack.h"
 
-1477218762 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
+1477246982 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
 1476982707 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
@@ -439,7 +440,7 @@
 	<vector>
 	<SDL.h>
 
-1477225851 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
+1477228617 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
 	<vector>
 	<string>
 	"context.h"
@@ -456,7 +457,7 @@
 	"shader.h"
 	<file_ply_stl.hpp>
 
-1477227276 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
+1477228316 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
 
 1451805405 c:\sdl2_mixer-2.0.1\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
@@ -862,13 +863,22 @@
 1417092102 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1477164574 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1477246963 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 
-1477166639 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1477246255 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
+	"nodescenegraph.h"
+	<list>
+	<vector>
+	"matrix4f.h"
+	"matrix4fdinamic.h"
+	"linearmovement.h"
+	"axisrotation.h"
+	"matrixstatic.h"
+	"mesh.h"
 
-1477227595 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.h
+1477228815 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.h
 	<glew.h>
 	<string>
 	<iostream>

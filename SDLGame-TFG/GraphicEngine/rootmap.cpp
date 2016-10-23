@@ -21,10 +21,62 @@
 
 RootMap::RootMap()
 {
-    //ctor
+
+    NodeSceneGraph * root=new NodeSceneGraph();
+    string p("geometries/ant.ply");
+    Mesh * aObject=new Mesh(p);
+    aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    aObject->init();
+
+    Matrix4f *matrixone =new Matrix4f();
+    matrixone->scale(0.05,0.05,0.05);
+
+    Matrix4f * matrixtwo=new Matrix4f();
+    matrixtwo->translation(-0.5,-0.5,0);
+
+    LinearMovement * movet=new LinearMovement(0,0.5,0.0);
+    AxisRotation * axisRot=new AxisRotation(20,0.5,0.5,0.5);
+
+    MatrixStatic *matrix=new MatrixStatic((*matrixone));
+    MatrixStatic *matrix2=new MatrixStatic((*matrixtwo));
+
+    NodeSceneGraph * root2=new NodeSceneGraph();
+    //root2.add(matrix);
+    //root2.add(matrix2);
+    root2->add(axisRot);
+    root2->add(static_cast<Object3D*>(aObject));
+    root->add(matrix);
+    //root.add(movet);
+    //root.add(axisRot);
+    root->add(static_cast<Object3D*>(root2));
+
+
+    //root.add(&matrix);
+    root->add(matrix2);
+    //root.add(&movet);
+    //root.add(&axisRot);
+    root->add(static_cast<Object3D*>(aObject));
+    objectList.push_back(root);
 }
+
+//**********************************************************************//
 
 RootMap::~RootMap()
 {
     //dtor
+}
+
+//**********************************************************************//
+
+void RootMap::visualization(Context & cv){
+    vector<Object3D *>::iterator it;
+
+    for(int i=0;i<objectList.size();i++)
+        (objectList[i])->visualization(cv);
+}
+
+//**********************************************************************//
+
+void RootMap::updateState(float time){
+
 }
