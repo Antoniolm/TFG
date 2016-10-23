@@ -93,7 +93,7 @@ class MatrixStack
         *    \return GLfloat -> the matrix
         */
         //////////////////////////////////////////////////////////////////////////
-        GLfloat * getMatrix();
+        Matrix4f * getMatrix();
 
     protected:
 

@@ -109,6 +109,7 @@ class Mesh : public Object3D
     private:
         vector<vec3i> triangles;
         vector<vec3f> vertex;
+        vec4f position;
         unsigned char type;
         float height;
         float width;

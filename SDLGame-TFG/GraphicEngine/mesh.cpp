@@ -90,10 +90,16 @@ void Mesh::init(){
 
 void Mesh::visualization(Context & vis){
 
+    Matrix4f * matrix = vis.matrixStack.getMatrix();
+
 	//Set value to uniform variable
 	glUseProgram(programID);
     GLint transformaLocation= glGetUniformLocation(programID,"transform");
-    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,vis.matrixStack.getMatrix());
+    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,matrix->getMatrix());
+
+    //Obtain the new position
+    //matrix->product(position);
+    //cout<< "x : "<<position.x<< ", y : "<< position.y<< ", z : "<< position.z << ", w : "<< position.w<< endl;
 
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);

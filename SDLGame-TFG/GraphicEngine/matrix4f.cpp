@@ -31,6 +31,13 @@ Matrix4f::~Matrix4f()
     delete [] matrix;
 }
 
+Matrix4f::matrix4f(Matrix4f & aMatrix){
+    matrix=new GLfloat[16];
+    GLfloat * apoint=aMatrix.getMatrix();
+    for(int i=0;i<16;i++)
+        matrix[i]=apoint[i];
+}
+
 //**********************************************************************//
 
 void Matrix4f::translation(float x,float y,float z){
@@ -82,6 +89,21 @@ void Matrix4f::product(const GLfloat * aMatrix){
         }
         delete [] matrix;
         matrix=newMatrix;
+}
+
+//**********************************************************************//
+
+vec4f Matrix4f::product(const vec4f aVector){
+        vec4f result(0.0,0.0,0.0,1.0);
+        GLfloat * newMatrix=new GLfloat[16];
+        int cont=0;
+        //cout<< "VECTOR --> x : "<<aVector.x<< ", y : "<< aVector.y<< ", z : "<< aVector.z << ", w : "<< aVector.w<< endl;
+        for(int j=0;j<16;j=j+4){
+            result.setValue(cont,(matrix[j]*aVector.x)+(matrix[j+1]*aVector.y)+(matrix[j+2]*aVector.z)+(matrix[j+3]*aVector.w));
+            cont++;
+        }
+        //cout<< "RESULT --> x : "<<result.x<< ", y : "<< result.y<< ", z : "<< result.z << ", w : "<< result.w<< endl;
+        return result;
 }
 
 //**********************************************************************//

@@ -17,64 +17,22 @@
 // **
 // *********************************************************************
 
-#ifndef STRUCTDATA_H
-#define STRUCTDATA_H
+#ifndef ROOTMAP_H
+#define ROOTMAP_H
 
+#include "object3d.h"
 
-struct vec3f{
-    float x;
-    float y;
-    float z;
-    vec3f(){}
-    vec3f(float dx,float dy,float dz){
-        x=dx;
-        y=dy;
-        z=dz;
-    }
+class RootMap : public Object3D
+{
+    public:
+        /** Default constructor */
+        RootMap();
+        /** Default destructor */
+        virtual ~RootMap();
+
+    protected:
+
+    private:
 };
 
-struct vec4f{
-    float x;
-    float y;
-    float z;
-    float w;
-    vec4f(){x=0;y=0;z=0;w=1;}
-    vec4f(float dx,float dy,float dz,float dw){
-        x=dx;
-        y=dy;
-        z=dz;
-        w=dw;
-    }
-    void setValue(int in,float value){
-        switch(in){
-            case 0:
-                x=value;
-            break;
-            case 1:
-                y=value;
-            break;
-            case 2:
-                z=value;
-            break;
-            case 3:
-                w=value;
-            break;
-        }
-    }
-
-
-};
-
-struct vec3i{
-    int x;
-    int y;
-    int z;
-    vec3i(){}
-    vec3i(int dx,int dy,int dz){
-        x=dx;
-        y=dy;
-        z=dz;
-    }
-};
-
-#endif
+#endif // ROOTMAP_H

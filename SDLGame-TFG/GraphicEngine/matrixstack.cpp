@@ -34,8 +34,15 @@ MatrixStack::~MatrixStack()
 //**********************************************************************//
 
 void MatrixStack::push(){
+    int tam=mainStack.size();
     currentMatrix=new Matrix4f();
-    currentMatrix->identity();
+
+    if(tam>0){
+        currentMatrix=new Matrix4f(mainStack[tam-1]);
+    }
+    else{
+        currentMatrix->identity();
+    }
     mainStack.push_back((*currentMatrix));
 }
 
@@ -43,7 +50,11 @@ void MatrixStack::push(){
 
 void MatrixStack::pop(){
     mainStack.pop_back();
-    currentMatrix=&mainStack[mainStack.size()-1];
+    if(mainStack.size()>0)
+        currentMatrix=&mainStack[mainStack.size()-1];
+    else{
+        currentMatrix->identity();
+    }
 
 }
 
@@ -57,6 +68,7 @@ void MatrixStack::asignIdentity(){
 
 void MatrixStack::cMatrix( Matrix4f & mat ){
     currentMatrix->product(mat.getMatrix());
+    mainStack[mainStack.size()-1]=(*currentMatrix);
 }
 
 //**********************************************************************//
@@ -65,6 +77,7 @@ void MatrixStack::cTraslation( const float dx, const float dy, const float dz ){
     Matrix4f auxMatrix;
     auxMatrix.translation(dx,dy,dz);
     currentMatrix->product(auxMatrix.getMatrix());
+    mainStack[mainStack.size()-1]=(*currentMatrix);
 }
 
 //**********************************************************************//
@@ -73,16 +86,20 @@ void MatrixStack::cScale ( const float sx, const float sy, const float sz ){
     Matrix4f auxMatrix;
     auxMatrix.scale(sx,sy,sz);
     currentMatrix->product(auxMatrix.getMatrix());
+    mainStack[mainStack.size()-1]=(*currentMatrix);
 }
 
 //**********************************************************************//
 
 void MatrixStack::cRotation ( const float ang_gra,const float ex, const float ey, const float ez ){
-
+    Matrix4f auxMatrix;
+    auxMatrix.rotation(ang_gra,ex,ey,ez);
+    currentMatrix->product(auxMatrix.getMatrix());
+    mainStack[mainStack.size()-1]=(*currentMatrix);
 }
 
 //**********************************************************************//
 
-GLfloat * MatrixStack::getMatrix(){
-    return currentMatrix->getMatrix();
+Matrix4f * MatrixStack::getMatrix(){
+    return currentMatrix;
 }
