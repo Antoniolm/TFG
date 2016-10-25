@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ Matrix4f::Matrix4f(const Matrix4f & aMatrix){
 
 //**********************************************************************//
 
-void Matrix4f::translation(float x,float y,float z){
+void Matrix4f::translation(const float x,const float y, const float z){
     matrix[0]=1;  matrix[1]=0;  matrix[2]=0;  matrix[3]=0;
 	matrix[4]=0;  matrix[5]=1;  matrix[6]=0;  matrix[7]=0;
 	matrix[8]=0;  matrix[9]=0;  matrix[10]=1; matrix[11]=0;
@@ -50,7 +50,7 @@ void Matrix4f::translation(float x,float y,float z){
 
 //**********************************************************************//
 
-void Matrix4f::scale(float x,float y,float z){
+void Matrix4f::scale(const float x,const float y,const float z){
 
 	matrix[0]= x; matrix[1]=0;  matrix[2]=0;  matrix[3]=0;
 	matrix[4]=0;  matrix[5]=y;  matrix[6]=0;  matrix[7]=0;
@@ -61,7 +61,7 @@ void Matrix4f::scale(float x,float y,float z){
 
 //**********************************************************************//
 
-void Matrix4f::rotation(float grade,const float x,const float y,const float z){
+void Matrix4f::rotation(const float grade,const float x,const float y,const float z){
     float rad=(grade*3.14159)/180.0;
 
     matrix[0]= cos(rad)+((x*x)*(1-cos(rad)));     matrix[1]=((x*y)*(1-cos(rad)))-z*sin(rad);  matrix[2]=((x*z)*(1-cos(rad)))+y*sin(rad);   matrix[3]=0;
@@ -98,12 +98,12 @@ vec4f Matrix4f::product(const vec4f aVector){
         vec4f result(0.0,0.0,0.0,1.0);
         GLfloat * newMatrix=new GLfloat[16];
         int cont=0;
-        //cout<< "VECTOR --> x : "<<aVector.x<< ", y : "<< aVector.y<< ", z : "<< aVector.z << ", w : "<< aVector.w<< endl;
+
         for(int j=0;j<16;j=j+4){
             result.setValue(cont,(matrix[j]*aVector.x)+(matrix[j+1]*aVector.y)+(matrix[j+2]*aVector.z)+(matrix[j+3]*aVector.w));
             cont++;
         }
-        //cout<< "RESULT --> x : "<<result.x<< ", y : "<< result.y<< ", z : "<< result.z << ", w : "<< result.w<< endl;
+
         return result;
 }
 

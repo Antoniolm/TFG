@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ Window::~Window(){
 
 //**********************************************************************//
 
-Window::Window(string aTitle,int aHeight,int aWidth){
+Window::Window(const string & aTitle,int aHeight,int aWidth){
     title=aTitle;
     height=aHeight;
     width=aWidth;

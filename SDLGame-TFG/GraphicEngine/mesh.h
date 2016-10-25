@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -49,12 +49,12 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**  Constructor */
         /////////////////////////////////////////////////////////////////////////
-        Mesh(string & aTextur,unsigned char aType);
+        Mesh(const string & aTextur,unsigned char aType);
 
         //////////////////////////////////////////////////////////////////////////
         /**  Constructor */
         /////////////////////////////////////////////////////////////////////////
-        Mesh(string & aFile);
+        Mesh(const string & aFile);
 
         //////////////////////////////////////////////////////////////////////////
         /** Default destructor */
@@ -103,7 +103,7 @@ class Mesh : public Object3D
         *                 false-> Shaders don't load successfully
         */
         //////////////////////////////////////////////////////////////////////////
-        bool LoadShader(string vertexShader,string FragmentShader);
+        bool LoadShader(const string & vertexShader,const string & FragmentShader);
 
     protected:
 

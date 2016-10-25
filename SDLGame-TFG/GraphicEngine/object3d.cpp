@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -22,6 +22,8 @@ Object3D::Object3D()
 {
     //ctor
 }
+
+//**********************************************************************//
 
 Object3D::~Object3D()
 {

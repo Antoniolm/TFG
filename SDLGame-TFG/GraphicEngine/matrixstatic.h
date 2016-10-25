@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -26,17 +26,20 @@ class MatrixStatic : public Matrix4fDinamic
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Default constructor */
+        /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         MatrixStatic();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Default destructor */
+        /** Copy constructor */
+        //////////////////////////////////////////////////////////////////////////
+        MatrixStatic(Matrix4f & matrix);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~MatrixStatic();
 
-
-        MatrixStatic(Matrix4f & matrix);
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will update the state of the Matrix4xf. That change need the

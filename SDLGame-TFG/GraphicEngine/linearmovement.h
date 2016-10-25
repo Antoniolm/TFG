@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -32,8 +32,17 @@ class LinearMovement : public Matrix4fDinamic {
         /** Constructor*/
         //////////////////////////////////////////////////////////////////////////
         LinearMovement();
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with parameters*/
+        //////////////////////////////////////////////////////////////////////////
         LinearMovement(float x,float y,float z);
-        LinearMovement(vec3f aVelocity);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with parameters*/
+        //////////////////////////////////////////////////////////////////////////
+        LinearMovement(const vec3f & aVelocity);
+
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////

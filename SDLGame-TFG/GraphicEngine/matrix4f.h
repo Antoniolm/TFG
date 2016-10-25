@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ class Matrix4f
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void translation(float x,float y,float z);
+        void translation(const float x,const float y, const float z);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -60,7 +60,7 @@ class Matrix4f
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void scale(float x,float y,float z);
+        void scale(const float x,const float y,const float z);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -68,7 +68,7 @@ class Matrix4f
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void rotation(float grade,const float x,const float y,const float z);
+        void rotation(const float grade,const float x,const float y,const float z);
 
         //////////////////////////////////////////////////////////////////////////
         /**

@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ LinearMovement::LinearMovement(float x,float y,float z){
 
 //**********************************************************************//
 
-LinearMovement::LinearMovement(vec3f aVelocity)
+LinearMovement::LinearMovement(const vec3f & aVelocity)
 {
     velocity=aVelocity;
 }

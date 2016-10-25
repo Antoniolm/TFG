@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -25,13 +25,13 @@ Mesh::Mesh()
 
 //**********************************************************************//
 
-Mesh::Mesh(string & aTextur,unsigned char aType){
+Mesh::Mesh(const string & aTextur,unsigned char aType){
     texture=aTextur;
     type=aType;
 }
 
 //**********************************************************************//
-Mesh::Mesh(string & aFile){
+Mesh::Mesh(const string & aFile){
     std::vector<float> vertex_ply ; // vertex
     std::vector<int>   faces_ply ;    // face
 
@@ -122,7 +122,7 @@ void Mesh::clean(){
 
 //**********************************************************************//
 
-bool Mesh::LoadShader(string vertexShaderFile,string fragmentShaderFile){
+bool Mesh::LoadShader(const string & vertexShaderFile,const string & fragmentShaderFile){
     shaders.setFiles(vertexShaderFile,fragmentShaderFile);
     bool result=shaders.createProgram();
     return result;

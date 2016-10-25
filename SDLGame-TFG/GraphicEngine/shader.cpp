@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ Shader::Shader()
 
 //**********************************************************************//
 
-Shader::Shader(string aVertexfile, string aFragmentfile){
+Shader::Shader(const string & aVertexfile,const string  & aFragmentfile){
     vertexfile=aVertexfile;
     fragmentfile=aFragmentfile;
 }
@@ -40,14 +40,14 @@ Shader::~Shader()
 
 //**********************************************************************//
 
-void Shader::setFiles(string aVertexfile,string aFragmentfile){
+void Shader::setFiles(const string & aVertexfile,const string & aFragmentfile){
     vertexfile=aVertexfile;
     fragmentfile=aFragmentfile;
 }
 
 //**********************************************************************//
 
-bool Shader::compileFragmentShaders(string aFragmentfile){
+bool Shader::compileFragmentShaders(const string & aFragmentfile){
     //Check the parameters
     if(aFragmentfile!="")
         fragmentfile=aFragmentfile;
@@ -78,7 +78,7 @@ bool Shader::compileFragmentShaders(string aFragmentfile){
 
 //**********************************************************************//
 
-bool Shader::compileVertexShaders(string aVertexfile){
+bool Shader::compileVertexShaders(const string & aVertexfile){
     //Check the parameters
     if(aVertexfile!="")
         vertexfile=aVertexfile;
@@ -135,7 +135,7 @@ bool Shader::linkShaders(){
 
 //**********************************************************************//
 
-bool Shader::createProgram(string aVertexfile,string aFragmentfile){
+bool Shader::createProgram(const string & aVertexfile,const string & aFragmentfile){
     //Check the parameters
     if(aVertexfile!="" && aFragmentfile!=""){
         vertexfile=aVertexfile;
@@ -159,7 +159,7 @@ GLuint Shader::getProgram(){
 //**********************************************************************//
 //* Private Methods
 
-string Shader::LoadFileTxt(string file){
+string Shader::LoadFileTxt(const string & file){
 
     string content;
     ifstream sourceFile;

@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ class Shader
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Shader(string aVertexfile,string aFragmentfile);
+        Shader(const string & aVertexfile,const string & aFragmentfile);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -51,7 +51,7 @@ class Shader
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setFiles(string aVertexfile,string aFragmentfile);
+        void setFiles(const string & aVertexfile,const string & aFragmentfile);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -60,7 +60,7 @@ class Shader
         *                 false-> fragmentShaders was not  compiled successfully
         */
         //////////////////////////////////////////////////////////////////////////
-        bool compileFragmentShaders(string aFragmentfile="");
+        bool compileFragmentShaders(const string & aFragmentfile="");
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -69,7 +69,7 @@ class Shader
         *                 false-> VertexShaders was not  compiled successfully
         */
         //////////////////////////////////////////////////////////////////////////
-        bool compileVertexShaders(string aVertexfile="");
+        bool compileVertexShaders(const string & aVertexfile="");
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -87,7 +87,7 @@ class Shader
         *                 false-> Program don't created successfully
         */
         //////////////////////////////////////////////////////////////////////////
-        bool createProgram(string aVertexfile="",string aFragmentfile="");
+        bool createProgram(const string & aVertexfile="",const string & aFragmentfile="");
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -95,7 +95,6 @@ class Shader
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-
         GLuint getProgram();
 
     protected:
@@ -111,7 +110,7 @@ class Shader
         *    \return string -> That string contains the text in the file
         */
         //////////////////////////////////////////////////////////////////////////
-        string LoadFileTxt(string file);
+        string LoadFileTxt(const string & file);
 };
 
 #endif // SHADER_H

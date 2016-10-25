@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -36,25 +36,14 @@ class Window
     public:
 
         //////////////////////////////////////////////////////////////////////////
-        /**
-        *    Constructor
-        */
+        /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         Window();
 
         //////////////////////////////////////////////////////////////////////////
-        /**
-        *    Constructor per copy
-        */
+        /** Constructor with some parameters */
         //////////////////////////////////////////////////////////////////////////
-        Window(const Window & aWin);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    Constructor with some parameters
-        */
-        //////////////////////////////////////////////////////////////////////////
-        Window(string aFile,int aHeight,int aWidth);
+        Window(const string & aFile,int aHeight,int aWidth);
 
         //////////////////////////////////////////////////////////////////////////
         /**
