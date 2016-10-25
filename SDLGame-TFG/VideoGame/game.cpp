@@ -37,7 +37,6 @@ void Game::loop(){
     bool quit = false;
     SDL_Event event;
     Context aContext;
-
     while (!quit)
     {
         while (SDL_PollEvent(&event)){

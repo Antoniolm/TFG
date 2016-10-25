@@ -31,11 +31,12 @@ Matrix4f::~Matrix4f()
     delete [] matrix;
 }
 
-Matrix4f::matrix4f(Matrix4f & aMatrix){
+Matrix4f::Matrix4f(const Matrix4f & aMatrix){
     matrix=new GLfloat[16];
-    GLfloat * apoint=aMatrix.getMatrix();
-    for(int i=0;i<16;i++)
+    const GLfloat * apoint=aMatrix.getMatrixc();
+    for(int i=0;i<16;i++){
         matrix[i]=apoint[i];
+    }
 }
 
 //**********************************************************************//
@@ -111,4 +112,12 @@ vec4f Matrix4f::product(const vec4f aVector){
 GLfloat * Matrix4f::getMatrix(){
     return matrix;
 }
+
+//**********************************************************************//
+
+const GLfloat * Matrix4f::getMatrixc() const{
+    return matrix;
+}
+
+
 

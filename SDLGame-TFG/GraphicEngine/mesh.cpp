@@ -86,13 +86,14 @@ void Mesh::init(){
 
 void Mesh::visualization(Context & vis){
 
-    Matrix4f * matrix = vis.matrixStack.getMatrix();
+    Matrix4f matrix = vis.matrixStack.getMatrix();
 
 	//Set value to uniform variable
 	glUseProgram(shaders.getProgram());
     GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
-    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,matrix->getMatrix());
+    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,matrix.getMatrix());
 
+    GLfloat * mat=matrix.getMatrix();
     //Obtain the new position
     //matrix->product(position);
     //cout<< "x : "<<position.x<< ", y : "<< position.y<< ", z : "<< position.z << ", w : "<< position.w<< endl;

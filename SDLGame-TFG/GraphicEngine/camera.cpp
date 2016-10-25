@@ -17,32 +17,16 @@
 // **
 // *********************************************************************
 
-#ifndef CONTEXT_H
-#define CONTEXT_H
+#include "camera.h"
 
-#include "matrixstack.h"
-
-class Context
+Camera::Camera()
 {
-    public:
+    position=vec3f(0.0,0.0,-3.0);
+    target=vec3f(0.0,0.0,1.0);
+    up=vec3f(0.0,1.0,0.0);
+}
 
-        //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
-        //////////////////////////////////////////////////////////////////////////
-        Context();
-
-        //////////////////////////////////////////////////////////////////////////
-        /** Destructor */
-        //////////////////////////////////////////////////////////////////////////
-        virtual ~Context();
-
-        unsigned visualization_mode;
-        unsigned camera_mode;
-        MatrixStack matrixStack;
-
-    protected:
-
-    private:
-};
-
-#endif // CONTEXT_H
+Camera::~Camera()
+{
+    //dtor
+}

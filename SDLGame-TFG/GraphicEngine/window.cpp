@@ -66,8 +66,6 @@ bool Window::createWindow(){
                     salida = false;
             }
 			context = SDL_GL_CreateContext(window);
-			glOrtho(0.0f, 900.0f, 650.0f, 0.0f, -1.0f, 1.0f);
-
 		}
 	}
     SDL_GL_SetSwapInterval(1);

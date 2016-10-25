@@ -36,7 +36,7 @@ NodeSceneGraph::~NodeSceneGraph()
 
 void NodeSceneGraph::visualization(Context & cv){
     float time=SDL_GetTicks();
-    int cont=0;
+
     cv.matrixStack.push();
     vector<EntranceNGE>::iterator it;
     for(it=entrance.begin();it!=entrance.end();it++){
