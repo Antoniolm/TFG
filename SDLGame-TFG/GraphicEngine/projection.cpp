@@ -53,9 +53,9 @@ void Projection::createPerspective(float fov, float aspect, float near, float fa
 
 void Projection::createOrthographic(float left,float right,float bottom,float top,float near,float far ){
     GLfloat * matrix=new GLfloat[16];
-    matrix[0]=2/(right-left);           matrix[1]=0;                        matrix[2]=0;                 matrix[3]=-((right+left)/(right-left));
-	matrix[4]=0;                        matrix[5]=2/(top-bottom);           matrix[6]=0;                 matrix[7]=-((top+bottom)/(top-bottom));
-	matrix[8]=0;                        matrix[9]=0;                        matrix[10]=-(2/(far-near));  matrix[11]=-((far+near)/(far-near));
+    matrix[0]=2/(right-left);           matrix[1]=0;                        matrix[2]=0;                 matrix[3]=((right+left)/(right-left));
+	matrix[4]=0;                        matrix[5]=2/(top-bottom);           matrix[6]=0;                 matrix[7]=((top+bottom)/(top-bottom));
+	matrix[8]=0;                        matrix[9]=0;                        matrix[10]=(-2/(far-near));  matrix[11]=((far+near)/(far-near));
 	matrix[12]=0;                       matrix[13]=0;                       matrix[14]=0;                matrix[15]=1;
 
 	perspective.setMatrix(matrix);

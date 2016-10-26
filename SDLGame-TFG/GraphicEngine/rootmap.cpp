@@ -34,13 +34,13 @@ RootMap::RootMap()
     aObject2->init();
 
     Matrix4f *matrixone =new Matrix4f();
-    matrixone->scale(0.01,0.01,0.01);
+    matrixone->scale(0.05,0.05,0.05);
 
     Matrix4f * matrixtwo=new Matrix4f();
     matrixtwo->translation(0,-0.1,0);
 
     Matrix4f * matrixthree=new Matrix4f();
-    matrixthree->translation(-0.5,0,0);
+    matrixthree->translation(-3,0,0);
 
     LinearMovement * movet=new LinearMovement(0,0.5,0.0);
     AxisRotation * axisRot=new AxisRotation(20,0,0,1);
