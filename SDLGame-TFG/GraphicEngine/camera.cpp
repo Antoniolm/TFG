@@ -32,17 +32,12 @@ Camera::Camera(vec3f eye,vec3f aTarget,vec3f aUp){
     position=eye;
     target=aTarget;
     up=aUp;
+
     zCamera=position-target;
     float modulo=zCamera.normalize();
-    cout<< "Modulo :"<< modulo;
     zCamera.x=zCamera.x/modulo;
     zCamera.y=zCamera.y/modulo;
     zCamera.z=zCamera.z/modulo;
-
-    cout<< "Prueba"<< endl;
-    cout<< "X : "<< zCamera.x<<endl;
-    cout<< "Y : "<< zCamera.y<<endl;
-    cout<< "Z : "<< zCamera.z<<endl;
 
     xCamera=up.cross(zCamera);
     modulo=xCamera.normalize();
@@ -50,21 +45,11 @@ Camera::Camera(vec3f eye,vec3f aTarget,vec3f aUp){
     xCamera.y=xCamera.y/modulo;
     xCamera.z=xCamera.z/modulo;
 
-    cout<< "Prueba"<< endl;
-    cout<< "X : "<< xCamera.x<<endl;
-    cout<< "Y : "<< xCamera.y<<endl;
-    cout<< "Z : "<< xCamera.z<<endl;
-
     yCamera=zCamera.cross(xCamera);
     modulo=yCamera.normalize();
     yCamera.x=yCamera.x/modulo;
     yCamera.y=yCamera.y/modulo;
     yCamera.z=yCamera.z/modulo;
-
-    cout<< "Prueba"<< endl;
-    cout<< "X : "<< yCamera.x<<endl;
-    cout<< "Y : "<< yCamera.y<<endl;
-    cout<< "Z : "<< yCamera.z<<endl;
 
     GLfloat * matrix=new GLfloat[16];
     matrix[0]=xCamera.x;  matrix[1]=xCamera.y;  matrix[2]=xCamera.z;  matrix[3]=0;

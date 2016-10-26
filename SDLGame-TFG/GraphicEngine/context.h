@@ -23,6 +23,7 @@
 #include "matrixstack.h"
 #include "camera.h"
 #include "structdata.h";
+#include "projection.h"
 
 class Context
 {
@@ -42,6 +43,7 @@ class Context
         unsigned camera_mode;
         MatrixStack matrixStack;
         Camera camera;
+        Projection aProjection;
 
     protected:
 

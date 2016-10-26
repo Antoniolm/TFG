@@ -66,6 +66,8 @@
 		<Unit filename="GraphicEngine/nodescenegraph.h" />
 		<Unit filename="GraphicEngine/object3d.cpp" />
 		<Unit filename="GraphicEngine/object3d.h" />
+		<Unit filename="GraphicEngine/projection.cpp" />
+		<Unit filename="GraphicEngine/projection.h" />
 		<Unit filename="GraphicEngine/rootmap.cpp" />
 		<Unit filename="GraphicEngine/rootmap.h" />
 		<Unit filename="GraphicEngine/shader.cpp" />

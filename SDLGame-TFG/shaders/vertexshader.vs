@@ -6,9 +6,10 @@
 
 	uniform mat4 transform;
 	uniform mat4 view;
+	uniform mat4 projection;
 
 	void main(void)
 	{
-		gl_Position = transform * view * vec4(in_Position,1.0f);
+		gl_Position = projection * view * transform *vec4(in_Position,1.0f);
 		ex_Color = in_Color;
 	}
