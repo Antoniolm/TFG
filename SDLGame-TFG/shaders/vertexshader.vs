@@ -5,9 +5,10 @@
 	out vec4 ex_Color;
 
 	uniform mat4 transform;
+	uniform mat4 view;
 
 	void main(void)
 	{
-		gl_Position = transform * vec4(in_Position,1.0f);
+		gl_Position = transform * view * vec4(in_Position,1.0f);
 		ex_Color = in_Color;
 	}

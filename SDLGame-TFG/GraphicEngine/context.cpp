@@ -24,6 +24,11 @@ Context::Context()
 {
     camera_mode=0;
     visualization_mode=0;
+
+    vec3f position(1.0,-3.0,1.0);
+    vec3f direction(0.0,0.0,0.0);
+    vec3f up(0.0,1.0,0.0);
+    camera=(*new Camera(position,direction,up));
 }
 
 //**********************************************************************//

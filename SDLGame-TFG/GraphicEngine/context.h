@@ -21,6 +21,8 @@
 #define CONTEXT_H
 
 #include "matrixstack.h"
+#include "camera.h"
+#include "structdata.h";
 
 class Context
 {
@@ -39,6 +41,7 @@ class Context
         unsigned visualization_mode;
         unsigned camera_mode;
         MatrixStack matrixStack;
+        Camera camera;
 
     protected:
 

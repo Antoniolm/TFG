@@ -93,10 +93,8 @@ void Mesh::visualization(Context & vis){
     GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,matrix.getMatrix());
 
-    GLfloat * mat=matrix.getMatrix();
-    //Obtain the new position
-    //matrix->product(position);
-    //cout<< "x : "<<position.x<< ", y : "<< position.y<< ", z : "<< position.z << ", w : "<< position.w<< endl;
+    GLint viewLocation= glGetUniformLocation(shaders.getProgram(),"view");
+    glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
 
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);

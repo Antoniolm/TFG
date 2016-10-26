@@ -29,6 +29,8 @@
 #include "../GraphicEngine/linearmovement.h"
 #include "../GraphicEngine/axisrotation.h"
 #include "../GraphicEngine/rootmap.h"
+#include "../GraphicEngine/Camera.h"
+#include "../GraphicEngine/structdata.h"
 
 class Game
 {

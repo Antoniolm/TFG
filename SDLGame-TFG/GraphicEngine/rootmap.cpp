@@ -23,7 +23,7 @@ RootMap::RootMap()
 {
     NodeSceneGraph * root=new NodeSceneGraph();
     NodeSceneGraph * root3=new NodeSceneGraph();
-    string p("geometries/cube.ply");
+    string p("geometries/ant.ply");
     Mesh * aObject=new Mesh(p);
     aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject->init();
@@ -34,7 +34,7 @@ RootMap::RootMap()
     aObject2->init();
 
     Matrix4f *matrixone =new Matrix4f();
-    matrixone->scale(0.1,0.1,0.1);
+    matrixone->scale(0.01,0.01,0.01);
 
     Matrix4f * matrixtwo=new Matrix4f();
     matrixtwo->translation(0,-0.1,0);
@@ -51,15 +51,15 @@ RootMap::RootMap()
     MatrixStatic *matrix3=new MatrixStatic((*matrixthree));
 
     NodeSceneGraph * root2=new NodeSceneGraph();
-    root2->add(matrix2); //tr y -0.1
+    root2->add(matrix); //tr y -0.1
     root2->add(static_cast<Object3D*>(aObject));
-    root2->add(matrix4); //tr y -0.1
+    root2->add(matrix3); //tr y -0.1
     root2->add(static_cast<Object3D*>(aObject));
-    root->add(matrix3);
+    //root->add(matrix3);
     root->add(static_cast<Object3D*>(root2));
-    root->add(matrix3); //tr x -0.5
+    //root->add(matrix3); //tr x -0.5
     //root->add(static_cast<Object3D*>(aObject));
-    root->add(static_cast<Object3D*>(root2));
+    //root->add(static_cast<Object3D*>(root2));
     objectList.push_back(root);
 }
 

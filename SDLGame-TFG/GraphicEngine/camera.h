@@ -1,6 +1,6 @@
 // *********************************************************************
 // **
-// ** Copyright (C) 2016 Antonio David López Machado
+// ** Copyright (C) 2016-2017 Antonio David López Machado
 // **
 // ** This program is free software: you can redistribute it and/or modify
 // ** it under the terms of the GNU General Public License as published by
@@ -22,23 +22,30 @@
 
 #include "structdata.h"
 #include "matrix4f.h"
+#include <glew.h>
 
 class Camera
 {
     public:
         /** Default constructor */
         Camera();
+        Camera(vec3f eye,vec3f aTarget,vec3f aUp);
         /** Default destructor */
         virtual ~Camera();
+
+        Matrix4f & getCamera();
+        GLfloat * getView();
 
     protected:
 
     private:
-        Matrix4f perspective;
+        Matrix4f camera;
         vec3f position;
         vec3f target;
         vec3f up;
-
+        vec3f zCamera;
+        vec3f yCamera;
+        vec3f xCamera;
 };
 
 #endif // CAMERA_H

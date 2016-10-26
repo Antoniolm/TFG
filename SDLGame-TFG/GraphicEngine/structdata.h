@@ -20,16 +20,54 @@
 #ifndef STRUCTDATA_H
 #define STRUCTDATA_H
 
+#include <math.h>
 
 struct vec3f{
     float x;
     float y;
     float z;
-    vec3f(){}
+    vec3f(){
+        x=0;
+        y=0;
+        z=0;
+    }
     vec3f(float dx,float dy,float dz){
         x=dx;
         y=dy;
         z=dz;
+    }
+    vec3f operator=(vec3f aVec){
+        x=aVec.x;
+        y=aVec.y;
+        z=aVec.z;
+
+        return *this;
+    }
+    vec3f operator+(vec3f aVec){
+        x+=aVec.x;
+        y+=aVec.y;
+        z+=aVec.z;
+
+        return *this;
+    }
+    vec3f operator-(vec3f aVec){
+        x-=aVec.x;
+        y-=aVec.y;
+        z-=aVec.z;
+
+        return *this;
+    }
+    vec3f cross(vec3f aVec){
+       vec3f result;
+       result.x=(y*aVec.z)-(z*aVec.y);
+       result.y=-((x*aVec.z)-(z*aVec.x));
+       result.z=(x*aVec.y)-(y*aVec.x);
+       return result;
+    }
+    float normalize(){
+        float result=0;
+        result=sqrt((x*x)+(y*y)+(z*z));
+        return result;
     }
 };
 

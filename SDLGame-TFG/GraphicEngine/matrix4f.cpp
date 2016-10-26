@@ -109,6 +109,13 @@ vec4f Matrix4f::product(const vec4f aVector){
 
 //**********************************************************************//
 
+void Matrix4f::setMatrix(const GLfloat * aMatrix){
+    for(int i=0;i<16;i++)
+        matrix[i]=aMatrix[i];
+}
+
+//**********************************************************************//
+
 GLfloat * Matrix4f::getMatrix(){
     return matrix;
 }

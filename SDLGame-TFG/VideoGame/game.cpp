@@ -37,6 +37,11 @@ void Game::loop(){
     bool quit = false;
     SDL_Event event;
     Context aContext;
+    //vec3f position(0.0,0.5,1.0);
+    //vec3f direction(0.0,0.0,0.0);
+    //vec3f up(0.0,1.0,0.0);
+    //aContext.camera.setVectors(position,direction,up);
+
     while (!quit)
     {
         while (SDL_PollEvent(&event)){
