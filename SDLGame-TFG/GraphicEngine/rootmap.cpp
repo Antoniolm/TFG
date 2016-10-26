@@ -40,7 +40,7 @@ RootMap::RootMap()
     matrixtwo->translation(0,-0.1,0);
 
     Matrix4f * matrixthree=new Matrix4f();
-    matrixthree->translation(-3,0,0);
+    matrixthree->translation(-3,1,-2);
 
     LinearMovement * movet=new LinearMovement(0,0.5,0.0);
     AxisRotation * axisRot=new AxisRotation(20,0,0,1);
@@ -54,6 +54,7 @@ RootMap::RootMap()
     root2->add(matrix); //tr y -0.1
     root2->add(static_cast<Object3D*>(aObject));
     root2->add(matrix3); //tr y -0.1
+    root2->add(axisRot);
     root2->add(static_cast<Object3D*>(aObject));
     //root->add(matrix3);
     root->add(static_cast<Object3D*>(root2));

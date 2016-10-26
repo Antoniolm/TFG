@@ -99,8 +99,8 @@ vec4f Matrix4f::product(const vec4f aVector){
         GLfloat * newMatrix=new GLfloat[16];
         int cont=0;
 
-        for(int j=0;j<16;j=j+4){
-            result.setValue(cont,(matrix[j]*aVector.x)+(matrix[j+1]*aVector.y)+(matrix[j+2]*aVector.z)+(matrix[j+3]*aVector.w));
+        for(int j=0;j<4;j++){
+            result.setValue(cont,(matrix[j]*aVector.x)+(matrix[j+4]*aVector.y)+(matrix[j+8]*aVector.z)+(matrix[j+12]*aVector.w));
             cont++;
         }
 
