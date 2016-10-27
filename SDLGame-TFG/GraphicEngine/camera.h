@@ -33,7 +33,12 @@ class Camera
         Camera();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor with parameters */
+        /**
+        *   Constructor with parameters
+        *   \param eye -> Position of the camera
+        *   \param Target -> Target of the camera
+        *   \param up -> The inclination of the camera
+        */
         //////////////////////////////////////////////////////////////////////////
         Camera(vec3f eye,vec3f aTarget,vec3f aUp);
 
@@ -43,37 +48,71 @@ class Camera
         virtual ~Camera();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  */
+        /**
+        *   Set the value of some parameters in the object
+        *   \param eye -> Position of the camera
+        *   \param Target -> Target of the camera
+        *   \param up -> The inclination of the camera
+        *   \return void
+        */
         //////////////////////////////////////////////////////////////////////////
         void setCamera(vec3f eye,vec3f aTarget,vec3f aUp);
 
         //////////////////////////////////////////////////////////////////////////
-        /**  */
+        /**
+        *   Set the value for the projection
+        *   \param fov
+        *   \param aspect
+        *   \param near
+        *   \param far
+        *   \return void
+        */
         //////////////////////////////////////////////////////////////////////////
         void setPerspectiveProjection(float fov, float aspect, float near, float far);
 
         //////////////////////////////////////////////////////////////////////////
-        /**  */
+        /**
+        *   Set the value for the projection
+        *   \param left
+        *   \param right
+        *   \param bottom
+        *   \param top
+        *   \param near
+        *   \param far
+        *   \return void
+        */
         //////////////////////////////////////////////////////////////////////////
         void setOrthographicProjection(float left,float right,float bottom,float top,float near = -1.0f,float far = 1.0f );
 
         //////////////////////////////////////////////////////////////////////////
-        /**  */
+        /**
+        *   This method will create the matrix of the object
+        *   \return void
+        */
         //////////////////////////////////////////////////////////////////////////
         void createCamera();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  */
+        /**
+        *   This method will return our matrix camera
+        *   \return Matrix4f
+        */
         //////////////////////////////////////////////////////////////////////////
         Matrix4f & getCamera();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  */
+        /**
+        *   This method will return our projection
+        *   \return GLfloat
+        */
         //////////////////////////////////////////////////////////////////////////
         GLfloat * getProjection();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  */
+        /**
+        *   This method will return our camera
+        *   \return GLfloat
+         */
         //////////////////////////////////////////////////////////////////////////
         GLfloat * getView();
 
