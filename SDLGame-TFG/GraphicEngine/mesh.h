@@ -111,6 +111,7 @@ class Mesh : public Object3D
         vector<vec3i> triangles;
         vector<vec3f> vertex;
         vec4f position;
+        Matrix4f transformation;
         unsigned char type;
         GLuint vertexbuffer;
         GLuint trianglebuffer;

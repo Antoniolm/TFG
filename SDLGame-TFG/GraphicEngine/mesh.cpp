@@ -87,12 +87,15 @@ void Mesh::init(){
 void Mesh::visualization(Context & vis){
     position=(*new vec4f());
 
-    Matrix4f matrix = vis.matrixStack.getMatrix();
+    if(!vis.visualization_static){
+        //cout<<"False false"<< endl;
+        transformation = vis.matrixStack.getMatrix();
+    }
 
 	//Set value to uniform variable
 	glUseProgram(shaders.getProgram());
     GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
-    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,matrix.getMatrix());
+    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation.getMatrix());
 
     GLint viewLocation= glGetUniformLocation(shaders.getProgram(),"view");
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
@@ -100,7 +103,7 @@ void Mesh::visualization(Context & vis){
     GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
-    position=matrix.product(position);
+    position=transformation.product(position);
 
     //cout<< "Position --> x:"<< position.x << " y : "<< position.y<< " z: "<< position.z<< endl;
     //Bind our buffer

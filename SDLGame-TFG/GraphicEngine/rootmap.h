@@ -63,11 +63,14 @@ class RootMap : public Object3D
         */
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
+
+        void initStatic();
     protected:
 
     private:
 
-        vector<Object3D *> objectList;
+        list<Object3D *> objectStatic;
+        list<Object3D *> objectDinamic;
 };
 
 #endif // ROOTMAP_H

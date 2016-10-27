@@ -68,8 +68,6 @@
 		<Unit filename="GraphicEngine/object3d.h" />
 		<Unit filename="GraphicEngine/oscillaterotation.cpp" />
 		<Unit filename="GraphicEngine/oscillaterotation.h" />
-		<Unit filename="GraphicEngine/projection.cpp" />
-		<Unit filename="GraphicEngine/projection.h" />
 		<Unit filename="GraphicEngine/rootmap.cpp" />
 		<Unit filename="GraphicEngine/rootmap.h" />
 		<Unit filename="GraphicEngine/shader.cpp" />

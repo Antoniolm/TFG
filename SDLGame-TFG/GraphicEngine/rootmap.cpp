@@ -53,16 +53,18 @@ RootMap::RootMap()
 
     NodeSceneGraph * root2=new NodeSceneGraph();
     root2->add(matrix); //tr y -0.1
-    root2->add(static_cast<Object3D*>(aObject));
+    //root2->add(static_cast<Object3D*>(aObject));
     root2->add(matrix3); //tr y -0.1
-    root2->add(osci);
+    //root2->add(axisRot);
     root2->add(static_cast<Object3D*>(aObject));
     //root->add(matrix3);
-    root->add(static_cast<Object3D*>(root2));
+    root->add(matrix);
+    root->add(static_cast<Object3D*>(aObject2));
     //root->add(matrix3); //tr x -0.5
     //root->add(static_cast<Object3D*>(aObject));
     //root->add(static_cast<Object3D*>(root2));
-    objectList.push_back(root);
+    objectDinamic.push_back(root2);
+    objectStatic.push_back(root);
 }
 
 //**********************************************************************//
@@ -75,10 +77,27 @@ RootMap::~RootMap()
 //**********************************************************************//
 
 void RootMap::visualization(Context & cv){
-    vector<Object3D *>::iterator it;
+    list<Object3D *>::iterator it;
 
-    for(int i=0;i<objectList.size();i++)
-        (objectList[i])->visualization(cv);
+    cv.visualization_static=false;
+    for(it=objectDinamic.begin();it!=objectDinamic.end();it++)
+        (*it)->visualization(cv);
+
+    cv.visualization_static=true;
+    for(it=objectStatic.begin();it!=objectStatic.end();it++)
+        (*it)->visualization(cv);
+}
+
+//**********************************************************************//
+
+void RootMap::initStatic(){
+    list<Object3D *>::iterator it;
+    Context cv;
+
+    cv.visualization_static=false;
+    for(it=objectStatic.begin();it!=objectStatic.end();it++)
+        (*it)->visualization(cv);
+    cout<< "Holap"<<endl;
 }
 
 //**********************************************************************//

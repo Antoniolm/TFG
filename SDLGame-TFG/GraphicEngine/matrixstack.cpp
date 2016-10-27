@@ -67,7 +67,7 @@ void MatrixStack::asignIdentity(){
 
 void MatrixStack::cMatrix(const Matrix4f & mat ){
     currentMatrix.product(mat.getMatrixc());
-    mainStack[mainStack.size()-1]=currentMatrix;
+    mainStack[mainStack.size()-1]=*new Matrix4f(currentMatrix);
 
 }
 

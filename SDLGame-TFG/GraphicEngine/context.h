@@ -38,7 +38,7 @@ class Context
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Context();
-
+        bool visualization_static;
         unsigned visualization_mode;
         unsigned camera_mode;
         MatrixStack matrixStack;

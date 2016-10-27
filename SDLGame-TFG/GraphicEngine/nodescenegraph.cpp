@@ -45,7 +45,8 @@ void NodeSceneGraph::visualization(Context & cv){
                 (*it).obj->visualization(cv);
                 break;
             case 1:
-                cv.matrixStack.cMatrix((*(*it).matrix).updateState(time));
+                if(!cv.visualization_static)
+                    cv.matrixStack.cMatrix((*(*it).matrix).updateState(time));
                 break;
             }
     }
