@@ -25,6 +25,10 @@ Mesh::Mesh()
 
 //**********************************************************************//
 
+Mesh::Mesh(const Mesh & aMesh){
+
+}
+//**********************************************************************//
 Mesh::Mesh(const string & aTextur,unsigned char aType){
     texture=aTextur;
     type=aType;

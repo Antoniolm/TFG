@@ -23,7 +23,7 @@ RootMap::RootMap()
 {
     NodeSceneGraph * root=new NodeSceneGraph();
     NodeSceneGraph * root3=new NodeSceneGraph();
-    string p("geometries/ant.ply");
+    string p("geometries/cube.ply");
     Mesh * aObject=new Mesh(p);
     aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject->init();
@@ -34,37 +34,36 @@ RootMap::RootMap()
     aObject2->init();
 
     Matrix4f *matrixone =new Matrix4f();
-    matrixone->scale(0.05,0.05,0.05);
+    matrixone->scale(0.5,0.5,0.5);
 
     Matrix4f * matrixtwo=new Matrix4f();
-    matrixtwo->translation(0,-0.1,0);
+    matrixtwo->translation(0,0,-1);
 
     Matrix4f * matrixthree=new Matrix4f();
-    matrixthree->translation(-3,1,-2);
+    matrixthree->translation(-1,0,0);
 
     LinearMovement * movet=new LinearMovement(0,0.5,0.0);
     AxisRotation * axisRot=new AxisRotation(20,0,0,1);
     OscillateRotation * osci=new OscillateRotation(true,90,30,50,30,vec3f(0,0,1));
-
     MatrixStatic *matrix=new MatrixStatic((*matrixone));
     MatrixStatic *matrix2=new MatrixStatic((*matrixtwo));
     MatrixStatic *matrix4=new MatrixStatic((*matrixtwo));
     MatrixStatic *matrix3=new MatrixStatic((*matrixthree));
 
     NodeSceneGraph * root2=new NodeSceneGraph();
-    root2->add(matrix); //tr y -0.1
-    //root2->add(static_cast<Object3D*>(aObject));
-    root2->add(matrix3); //tr y -0.1
-    //root2->add(axisRot);
-    root2->add(static_cast<Object3D*>(aObject));
-    //root->add(matrix3);
-    root->add(matrix);
-    root->add(static_cast<Object3D*>(aObject2));
-    //root->add(matrix3); //tr x -0.5
-    //root->add(static_cast<Object3D*>(aObject));
-    //root->add(static_cast<Object3D*>(root2));
-    objectDinamic.push_back(root2);
-    objectStatic.push_back(root);
+    root2->add(matrix);
+
+    for(int i=0;i<4;i++){
+        root2->add(matrix2);
+        root2->add(static_cast<Object3D*>(aObject));
+    }
+
+    for(int i=0;i<10;i++){
+        root->add(matrix3);
+        root->add(static_cast<Object3D*>(root2));
+    }
+    objectDinamic.push_back(root);
+
 }
 
 //**********************************************************************//
@@ -97,7 +96,7 @@ void RootMap::initStatic(){
     cv.visualization_static=false;
     for(it=objectStatic.begin();it!=objectStatic.end();it++)
         (*it)->visualization(cv);
-    cout<< "Holap"<<endl;
+
 }
 
 //**********************************************************************//

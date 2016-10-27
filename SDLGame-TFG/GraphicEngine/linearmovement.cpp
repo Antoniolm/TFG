@@ -47,6 +47,20 @@ LinearMovement::~LinearMovement()
 
 //**********************************************************************//
 
+void LinearMovement::setParameters(float x,float y,float z){
+    velocity.x=x;
+    velocity.y=y;
+    velocity.z=z;
+}
+
+//**********************************************************************//
+
+void LinearMovement::setParameters(const vec3f & aVelocity){
+    velocity=aVelocity;
+}
+
+//**********************************************************************//
+
 Matrix4f & LinearMovement::updateState(float time){
     time=time/1000;
 

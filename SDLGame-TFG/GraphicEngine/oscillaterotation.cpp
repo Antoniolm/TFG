@@ -26,13 +26,6 @@ OscillateRotation::OscillateRotation()
 
 //**********************************************************************//
 
-OscillateRotation::~OscillateRotation()
-{
-    //dtor
-}
-
-//**********************************************************************//
-
 OscillateRotation::OscillateRotation(bool incre,float maxG,float minG,float initG,float velocity,vec3f dir){
     increment=incre;
     maxGrade=maxG;
@@ -46,6 +39,28 @@ OscillateRotation::OscillateRotation(bool incre,float maxG,float minG,float init
 }
 
 //**********************************************************************//
+
+OscillateRotation::~OscillateRotation()
+{
+    //dtor
+}
+
+//**********************************************************************//
+
+void OscillateRotation::setParameters(bool incre,float maxG,float minG,float initG,float velocity,vec3f dir){
+    increment=incre;
+    maxGrade=maxG;
+    minGrade=minG;
+    initialGrade=initG;
+    angularVelocity=velocity;
+    direction=dir;
+
+    currentGrade=initialGrade;
+    currentTime=0;
+}
+
+//**********************************************************************//
+
 Matrix4f & OscillateRotation::updateState(float time){
     time=time/1000;
 

@@ -43,6 +43,20 @@ class OscillateRotation : public Matrix4fDinamic
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *   Set the value of some parameters in the object
+        *   \param incre -> Initial increment or decrement grade
+        *   \param maxG -> max Grade in our movement
+        *   \param minG -> min Grade in our movement
+        *   \param initG -> Initial Grade in our movement
+        *   \param velocity -> Grade per second
+        *   \param dir -> axis of movement
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setParameters(bool incre,float maxG,float minG,float initG,float velocity,vec3f dir);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will update the state of the Matrix4xf. That change need the
         *    current time in our application
         *    \return the new state of the matrix4f

@@ -50,12 +50,35 @@ class LinearMovement : public Matrix4fDinamic {
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *   Set the value of some parameters in the object
+        *   \param x -> axis X
+        *   \param y -> axis Y
+        *   \param z -> axis Z
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setParameters(float x,float y,float z);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   Set the value of some parameters in the object
+        *   \param x -> axis X
+        *   \param y -> axis Y
+        *   \param z -> axis Z
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setParameters(const vec3f & aVelocity);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will update the state of the Matrix4xf. That change need the
         *    current time in our application
         *    \return the new state of the matrix4f
         */
         //////////////////////////////////////////////////////////////////////////
         virtual Matrix4f & updateState(float time);
+
     protected:
 
     private:
