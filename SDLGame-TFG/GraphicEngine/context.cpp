@@ -28,8 +28,9 @@ Context::Context()
     vec3f position(0.0,0.0,0.1);
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
-    camera=(*new Camera(position,direction,up));
-    aProjection.createOrthographic(-5,5,-5,5,-5,5);
+    camera.setCamera(position,direction,up);
+    camera.createCamera();
+    camera.setOrthographicProjection(-5,5,-5,5,-5,5);
 }
 
 //**********************************************************************//

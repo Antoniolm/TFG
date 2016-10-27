@@ -52,7 +52,6 @@ Matrix4f & OscillateRotation::updateState(float time){
 
     float grade;
 
-    cout<< "Current grade -->"<< currentGrade<< endl;
     if(currentGrade>= maxGrade){
         increment=false;
     }
@@ -61,11 +60,9 @@ Matrix4f & OscillateRotation::updateState(float time){
     }
 
     if(!increment){
-        cout<< "No increment"<< endl;
         currentGrade-=angularVelocity*(time-currentTime);
     }
     else{
-        cout<< "Incremenet"<< endl;
         currentGrade+=angularVelocity*(time-currentTime);
     }
 

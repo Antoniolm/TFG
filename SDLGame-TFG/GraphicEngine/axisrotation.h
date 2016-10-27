@@ -57,6 +57,7 @@ class AxisRotation : public Matrix4fDinamic
     private:
         float angularVelocity;
         vec3f axis;
+        float currentGrade;
 };
 
 #endif // AXISROTATION_H

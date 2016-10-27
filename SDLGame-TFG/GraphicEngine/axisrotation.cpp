@@ -43,7 +43,6 @@ AxisRotation::~AxisRotation()
 
 Matrix4f & AxisRotation::updateState(float time){
     time=time/1000;
-
     currentMatrix.rotation(angularVelocity*time,axis.x,axis.y,axis.z);
 
     return currentMatrix;

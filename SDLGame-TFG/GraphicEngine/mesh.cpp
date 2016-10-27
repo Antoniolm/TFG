@@ -98,11 +98,11 @@ void Mesh::visualization(Context & vis){
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
 
     GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
-    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.aProjection.getProjection());
+    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
     position=matrix.product(position);
 
-    cout<< "Position --> x:"<< position.x << " y : "<< position.y<< " z: "<< position.z<< endl;
+    //cout<< "Position --> x:"<< position.x << " y : "<< position.y<< " z: "<< position.z<< endl;
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
     glEnableVertexAttribArray(0);

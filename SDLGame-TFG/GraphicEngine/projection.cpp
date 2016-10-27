@@ -35,7 +35,7 @@ Projection::~Projection()
 
 void Projection::createPerspective(float fov, float aspect, float near, float far){
     float top, right,left,bottom;
-    top =0; //(float) (near * Math.tan(fov * Math.PI / 360.0));
+    top =(float) (near * tan(fov * 3.1416 / 360.0));
     right = top * aspect;
     left= -right;
     bottom=-top;
@@ -52,6 +52,7 @@ void Projection::createPerspective(float fov, float aspect, float near, float fa
 //**********************************************************************//
 
 void Projection::createOrthographic(float left,float right,float bottom,float top,float near,float far ){
+    cout<< "pedo de mono"<<endl;
     GLfloat * matrix=new GLfloat[16];
     matrix[0]=2/(right-left);           matrix[1]=0;                        matrix[2]=0;                 matrix[3]=((right+left)/(right-left));
 	matrix[4]=0;                        matrix[5]=2/(top-bottom);           matrix[6]=0;                 matrix[7]=((top+bottom)/(top-bottom));
