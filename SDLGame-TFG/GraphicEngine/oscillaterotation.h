@@ -17,57 +17,51 @@
 // **
 // *********************************************************************
 
-#ifndef ROOTMAP_H
-#define ROOTMAP_H
+#ifndef OSCILLATEROTATION_H
+#define OSCILLATEROTATION_H
 
-#include "object3d.h"
-#include "nodescenegraph.h"
-#include <list>
-#include <vector>
-#include "matrix4f.h"
 #include "matrix4fdinamic.h"
-#include "linearmovement.h"
-#include "axisrotation.h"
-#include "matrixstatic.h"
-#include "oscillaterotation.h"
-#include "mesh.h"
 
-using namespace std;
-
-class RootMap : public Object3D
+class OscillateRotation : public Matrix4fDinamic
 {
     public:
-        //////////////////////////////////////////////////////////////////////////
-        /** Default constructor */
-        //////////////////////////////////////////////////////////////////////////
-        RootMap();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Default destructor */
+        /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~RootMap();
+        OscillateRotation();
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with parameters*/
+        //////////////////////////////////////////////////////////////////////////
+        OscillateRotation(bool incre,float maxG,float minG,float initG,float velocity,vec3f dir);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
+        virtual ~OscillateRotation();
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will show the object in our interface
-        *    \return void
-        */
-        /////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & vis);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will update the state of the object. That change need the
+        *    The method will update the state of the Matrix4xf. That change need the
         *    current time in our application
-        *    \return void
+        *    \return the new state of the matrix4f
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time);
+        virtual Matrix4f & updateState(float time);
+
     protected:
 
     private:
+        vec3f direction;
+        float maxGrade;
+        float minGrade;
+        float initialGrade;
+        float currentGrade;
+        float angularVelocity;
+        float currentTime;
+        bool increment;
 
-        vector<Object3D *> objectList;
 };
 
-#endif // ROOTMAP_H
+#endif // OSCILLATEROTATION_H

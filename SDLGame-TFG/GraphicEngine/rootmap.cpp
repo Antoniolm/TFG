@@ -44,6 +44,7 @@ RootMap::RootMap()
 
     LinearMovement * movet=new LinearMovement(0,0.5,0.0);
     AxisRotation * axisRot=new AxisRotation(20,0,0,1);
+    OscillateRotation * osci=new OscillateRotation(true,90,30,50,30,vec3f(0,0,1));
 
     MatrixStatic *matrix=new MatrixStatic((*matrixone));
     MatrixStatic *matrix2=new MatrixStatic((*matrixtwo));
@@ -54,7 +55,7 @@ RootMap::RootMap()
     root2->add(matrix); //tr y -0.1
     root2->add(static_cast<Object3D*>(aObject));
     root2->add(matrix3); //tr y -0.1
-    root2->add(axisRot);
+    root2->add(osci);
     root2->add(static_cast<Object3D*>(aObject));
     //root->add(matrix3);
     root->add(static_cast<Object3D*>(root2));
