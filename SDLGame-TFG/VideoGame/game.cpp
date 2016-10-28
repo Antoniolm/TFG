@@ -37,7 +37,7 @@ void Game::loop(){
     bool quit = false;
     SDL_Event event;
     Context aContext;
-    vec3f position(0.0,0.0,1);
+    vec3f position(1.0,1.0,-1.0);
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
     aContext.camera.setOrthographicProjection(-5,5,-5,5,-5,5);
@@ -47,9 +47,7 @@ void Game::loop(){
     rootMap->initStatic();
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-    Matrix4f movCamera,auxCamera;
-    vec4f posCamera;
-
+    Matrix4f movCamera;
     while (!quit)
     {
         while (SDL_PollEvent(&event)){
@@ -57,8 +55,6 @@ void Game::loop(){
             if (event.type == SDL_QUIT){
                 quit = true;
             }
-            //movCamera.translation(position.x,position.y,position.z);
-            posCamera=vec4f();
             //case: Player push a buttom
             if (event.type == SDL_KEYDOWN){
 
@@ -96,15 +92,13 @@ void Game::loop(){
                         break;
                 }
 
-                //posCamera.x=position.x;posCamera.y=position.y;posCamera.z=position.z;posCamera.w=1;
-                /*movCamera.product(auxCamera.getMatrix());
-                posCamera=movCamera.product(posCamera);
-                position.x+=posCamera.x; position.y+=posCamera.y; position.z+=0;
-                cout<< "posCamera: x-> "<< posCamera.x<< " y-> "<< posCamera.y<<" z-> "<< posCamera.z<<endl;
+                aContext.camera.moveCamera(movCamera);
+                /*vec4f pos;
+                pos=aContext.camera.getCamera().product(pos);
+                position.x=pos.x; position.y=pos.y; position.z=pos.z;
                 cout<< "Position: x-> "<< position.x<< " y-> "<< position.y<<" z-> "<< position.z<<endl;
                 aContext.camera.setCamera(position,direction,up);
                 aContext.camera.createCamera();*/
-                aContext.camera.moveCamera(movCamera);
             }
         }
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);

@@ -37,7 +37,7 @@ RootMap::RootMap()
     matrixone->scale(0.03,0.03,0.03);
 
     Matrix4f * matrixtwo=new Matrix4f();
-    matrixtwo->translation(0,0,-1.1);
+    matrixtwo->translation(0.0,0,-1.1);
 
     Matrix4f * matrixthree=new Matrix4f();
     matrixthree->translation(-1.1,0,0);
@@ -55,10 +55,10 @@ RootMap::RootMap()
     MatrixStatic *matrix3=new MatrixStatic((*matrixthree));
 
     NodeSceneGraph * root2=new NodeSceneGraph();
-    root->add(matrix);
-    root->add(static_cast<Object3D*>(prueba));
     for(int i=0;i<4;i++){
+        //root2->add(axisRot);
         root2->add(matrix2);
+        root2->add(matrix);
         root2->add(static_cast<Object3D*>(new Mesh(*aObject)));
     }
 
@@ -88,17 +88,19 @@ void RootMap::visualization(Context & cv){
 
     object=cv.posObject;
     vec4f pos;
-    /*cout<< "///////INIT///////"<<endl;
+
+
+    cv.visualization_static=true;
+    for(it=objectStatic.begin();it!=objectStatic.end();it++)
+        (*it)->visualization(cv);
+
+    cout<< "///////INIT///////"<<endl;
     for(it=object.begin();it!=object.end();it++){
         pos=(*it)->getPosition();
 
         cout<< pos.x<< " "<< pos.y<< " "<< pos.z<< endl;
     }
-    cout<< "//////////////////"<<endl;*/
-
-    cv.visualization_static=true;
-    for(it=objectStatic.begin();it!=objectStatic.end();it++)
-        (*it)->visualization(cv);
+    cout<< "//////////////////"<<endl;
 }
 
 //**********************************************************************//
@@ -110,7 +112,8 @@ void RootMap::initStatic(){
     cv.visualization_static=false;
     for(it=objectStatic.begin();it!=objectStatic.end();it++)
         (*it)->visualization(cv);
-
+    //objectStatic.clear();
+    //objectStatic=cv.posObject;
 }
 
 //**********************************************************************//

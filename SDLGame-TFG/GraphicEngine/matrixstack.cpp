@@ -35,26 +35,38 @@ MatrixStack::~MatrixStack()
 
 void MatrixStack::push(){
     int tam=mainStack.size();
-    if(tam>0){
-        currentMatrix=(*new Matrix4f(mainStack[tam-1]));
-    }
-    else{
-        currentMatrix.identity();
-    }
+
+    currentMatrix.identity();
     Matrix4f newMatrix(currentMatrix);
-    mainStack.push_back(newMatrix);
+    pair<int,Matrix4f> aux;
+    aux.first=0;
+    aux.second=newMatrix;
+    mainStack.push_back(aux);
 }
 
 //**********************************************************************//
 
 void MatrixStack::pop(){
-    mainStack.pop_back();
-    if(mainStack.size()>0){
-        currentMatrix=(*new Matrix4f(mainStack[mainStack.size()-1]));
+    vector<pair<int,Matrix4f> >::reverse_iterator it;
+    bool finish=false;
+
+    for(it=mainStack.rbegin();it!=mainStack.rend() && !finish;it++){
+        if((*it).first==0){
+            finish=false;
+        }
+        mainStack.erase(it.base());
     }
-    else{
-        currentMatrix.identity();
+    //mainStack.pop_back();
+    for(int i=0;i<mainStack.size();i++){
+        cout<< "<"<< mainStack[i].first<<"> "<<endl;
+        GLfloat *matrix=mainStack[i].second.getMatrix();
+        cout<< matrix[0]<< " "<<matrix[1]<< " "<<matrix[2]<< " "<<matrix[3]<< " "<< endl;
+        cout<< matrix[4]<< " "<<matrix[5]<< " "<<matrix[6]<< " "<<matrix[7]<< " "<< endl;
+        cout<< matrix[8]<< " "<<matrix[9]<< " "<<matrix[10]<< " "<<matrix[11]<< " "<< endl;
+        cout<< matrix[12]<< " "<<matrix[13]<< " "<<matrix[14]<< " "<<matrix[15]<< " "<< endl;
     }
+
+
 }
 
 //**********************************************************************//
@@ -65,37 +77,42 @@ void MatrixStack::asignIdentity(){
 
 //**********************************************************************//
 
-void MatrixStack::cMatrix(const Matrix4f & mat ){
-    currentMatrix.product(mat.getMatrixc());
-    mainStack[mainStack.size()-1]=*new Matrix4f(currentMatrix);
+void MatrixStack::cMatrix(int cont,const Matrix4f & mat ){
+    Matrix4f newMatrix(mat);
+    pair<int,Matrix4f> aux;
+    aux.first=cont;
+    aux.second=newMatrix;
+    mainStack.push_back(aux);
+    //currentMatrix.product(mat.getMatrixc());
+    //mainStack[mainStack.size()-1]=*new Matrix4f(currentMatrix);
 
 }
 
 //**********************************************************************//
 
 void MatrixStack::cTraslation( const float dx, const float dy, const float dz ){
-    Matrix4f auxMatrix;
+    /*Matrix4f auxMatrix;
     auxMatrix.translation(dx,dy,dz);
     currentMatrix.product(auxMatrix.getMatrix());
-    mainStack[mainStack.size()-1]=currentMatrix;
+    mainStack[mainStack.size()-1]=currentMatrix;*/
 }
 
 //**********************************************************************//
 
 void MatrixStack::cScale ( const float sx, const float sy, const float sz ){
-    Matrix4f auxMatrix;
+    /*Matrix4f auxMatrix;
     auxMatrix.scale(sx,sy,sz);
     currentMatrix.product(auxMatrix.getMatrix());
-    mainStack[mainStack.size()-1]=currentMatrix;
+    mainStack[mainStack.size()-1]=currentMatrix;*/
 }
 
 //**********************************************************************//
 
 void MatrixStack::cRotation ( const float ang_gra,const float ex, const float ey, const float ez ){
-    Matrix4f auxMatrix;
+    /*Matrix4f auxMatrix;
     auxMatrix.rotation(ang_gra,ex,ey,ez);
     currentMatrix.product(auxMatrix.getMatrix());
-    mainStack[mainStack.size()-1]=currentMatrix;
+    mainStack[mainStack.size()-1]=currentMatrix;*/
 }
 
 void MatrixStack::clean(){
@@ -104,5 +121,23 @@ void MatrixStack::clean(){
 //**********************************************************************//
 
 Matrix4f & MatrixStack::getMatrix(){
+    vector<pair<int,Matrix4f> >::reverse_iterator it;
+    bool finish=false;
+
+    currentMatrix.identity();
+    for(it=mainStack.rbegin();it!=mainStack.rend() && !finish;it++){
+        if((*it).first==0){
+            finish=false;
+        }
+        currentMatrix.product((*it).second.getMatrix());
+    }
+    it--;
+
+    /*currentMatrix.identity();
+    vector<pair<int,Matrix4f> >::iterator it2;
+    it2=it.base();
+    for(;it2!=mainStack.end() && !finish;it2++){
+        currentMatrix.product((*it2).second.getMatrix());
+    }*/
     return currentMatrix;
 }
