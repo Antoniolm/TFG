@@ -16,40 +16,30 @@
 // ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // **
 // *********************************************************************
+////////////////////////////////////////
 
-#ifndef OBJECT3D_H
-#define OBJECT3D_H
+#ifndef SCRIPTANIMATION_H
+#define SCRIPTANIMATION_H
 
-#include "context.h"
-#include "structdata.h"
+#include "matrix4f.h"
 
-class Context;
-
-class Object3D
+class ScriptAnimation
 {
     public:
-
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Object3D();
+        ScriptAnimation();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~Object3D();
+        virtual ~ScriptAnimation();
+
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will show the object in our interface
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & cv);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will update the state of the object. That change need the
+        *    The method will update the state of all our Matrix4xfDinamic. That change need the
         *    current time in our application
         *    \return void
         */
@@ -58,18 +48,16 @@ class Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    \return vec4f with the mesh position
+        *    The method will return one of our Matrix4fDinamic.
+        *    \param index -> The position in the vector of our return Matrix
+        *    \return Matrix4f
         */
         //////////////////////////////////////////////////////////////////////////
-        vec4f getPosition();
-
+        virtual Matrix4f readMatrix(int index);
     protected:
-        float currentTime;
-        vec4f position;
 
     private:
-
-
+        float initialTime;
 };
 
-#endif // OBJECT3D_H
+#endif // SCRIPTANIMATION_H

@@ -26,8 +26,14 @@ Mesh::Mesh()
 //**********************************************************************//
 
 Mesh::Mesh(const Mesh & aMesh){
-
+    triangles=aMesh.triangles;
+    vertex=aMesh.vertex;
+    transformation=aMesh.transformation;
+    vertexbuffer=aMesh.vertexbuffer;
+    trianglebuffer=aMesh.trianglebuffer;
+    shaders=aMesh.shaders;
 }
+
 //**********************************************************************//
 Mesh::Mesh(const string & aTextur,unsigned char aType){
     texture=aTextur;
