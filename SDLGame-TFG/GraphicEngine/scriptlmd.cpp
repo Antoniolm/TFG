@@ -17,32 +17,38 @@
 // **
 // *********************************************************************
 
-#include "matrix4fdinamic.h"
+#include "scriptlmd.h"
 
-Matrix4fDinamic::Matrix4fDinamic()
+ScriptLMD::ScriptLMD()
 {
     //ctor
 }
 
-Matrix4fDinamic::Matrix4fDinamic(const Matrix4fDinamic & aMatrix){
-    currentMatrix=aMatrix.currentMatrix;
-}
-
 //**********************************************************************//
 
-Matrix4fDinamic::~Matrix4fDinamic()
+ScriptLMD::~ScriptLMD()
 {
     //dtor
 }
 
 //**********************************************************************//
 
-Matrix4f & Matrix4fDinamic::updateState(float time){
-    return currentMatrix;
+ void ScriptLMD::add(const Matrix4fDinamic & aMatrix){
+    script.push_back(aMatrix);
+ }
+
+//**********************************************************************//
+
+void ScriptLMD::updateState(float time){
+    vector<Matrix4fDinamic>::iterator it;
+
+    for(it=script.begin();it!=script.end();it++){
+            (*it).updateState(time);
+    }
 }
 
 //**********************************************************************//
 
-Matrix4f & Matrix4fDinamic::getMatrix(){
-    return currentMatrix;
+Matrix4f ScriptLMD::readMatrix(int index){
+    return script[index].getMatrix();
 }

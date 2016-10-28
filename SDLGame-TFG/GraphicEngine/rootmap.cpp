@@ -23,7 +23,7 @@ RootMap::RootMap()
 {
     NodeSceneGraph * root=new NodeSceneGraph();
     NodeSceneGraph * root3=new NodeSceneGraph();
-    string p("geometries/cube.ply");
+    string p("geometries/ant.ply");
     Mesh * aObject=new Mesh(p);
     aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject->init();
@@ -34,7 +34,7 @@ RootMap::RootMap()
     aObject2->init();
 
     Matrix4f *matrixone =new Matrix4f();
-    matrixone->scale(0.5,0.5,0.5);
+    matrixone->scale(0.03,0.03,0.03);
 
     Matrix4f * matrixtwo=new Matrix4f();
     matrixtwo->translation(0,0,-1.1);
@@ -88,13 +88,13 @@ void RootMap::visualization(Context & cv){
 
     object=cv.posObject;
     vec4f pos;
-    cout<< "///////INIT///////"<<endl;
+    /*cout<< "///////INIT///////"<<endl;
     for(it=object.begin();it!=object.end();it++){
         pos=(*it)->getPosition();
 
         cout<< pos.x<< " "<< pos.y<< " "<< pos.z<< endl;
     }
-    cout<< "//////////////////"<<endl;
+    cout<< "//////////////////"<<endl;*/
 
     cv.visualization_static=true;
     for(it=objectStatic.begin();it!=objectStatic.end();it++)

@@ -38,6 +38,8 @@ class Matrix4fDinamic
         //////////////////////////////////////////////////////////////////////////
         virtual Matrix4f & updateState(float time);
 
+        Matrix4f & getMatrix();
+
     protected:
         Matrix4f currentMatrix;
     private:
