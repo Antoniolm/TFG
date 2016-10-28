@@ -38,3 +38,6 @@ void Object3D::visualization(Context & cv){}
 
 void Object3D::updateState(float time){}
 
+vec4f Object3D::getPosition(){
+    return position;
+}

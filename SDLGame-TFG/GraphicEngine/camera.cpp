@@ -118,6 +118,12 @@ void Camera::createCamera(){
 
 //**********************************************************************//
 
+void Camera::moveCamera(const Matrix4f & transformation){
+    camera.product(transformation.getMatrixc());
+}
+
+//**********************************************************************//
+
 Matrix4f & Camera::getCamera(){
     return camera;
 }

@@ -109,12 +109,19 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         bool LoadShader(const string & vertexShader,const string & FragmentShader);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return the position
+        *    \return vec3f with the position of our object
+        */
+        //////////////////////////////////////////////////////////////////////////
+        vec4f getPosition();
+
     protected:
 
     private:
         vector<vec3i> triangles;
         vector<vec3f> vertex;
-        vec4f position;
         Matrix4f transformation;
         unsigned char type;
         GLuint vertexbuffer;

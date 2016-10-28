@@ -37,12 +37,17 @@ void Game::loop(){
     bool quit = false;
     SDL_Event event;
     Context aContext;
+    vec3f position(0.0,-0.01,0.1);
+    vec3f direction(0.0,0.0,0.0);
+    vec3f up(0.0,1.0,0.0);
+    aContext.camera.setOrthographicProjection(-5,5,-5,5,-5,5);
+    aContext.camera.setCamera(position,direction,up);
+    aContext.camera.createCamera();
+
     rootMap->initStatic();
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    //vec3f position(0.0,0.5,1.0);
-    //vec3f direction(0.0,0.0,0.0);
-    //vec3f up(0.0,1.0,0.0);
-    //aContext.camera.setVectors(position,direction,up);
+
+    Matrix4f movCamera;
 
     while (!quit)
     {
@@ -51,10 +56,50 @@ void Game::loop(){
             if (event.type == SDL_QUIT){
                 quit = true;
             }
+
+            //case: Player push a buttom
+            if (event.type == SDL_KEYDOWN){
+
+                switch (event.key.keysym.sym){
+
+                    case SDLK_LEFT:
+                        movCamera.translation(-0.1,0.0,0.0);
+                        break;
+                    case SDLK_RIGHT:
+                        movCamera.translation(0.1,0.0,0.0);
+                        break;
+                    case SDLK_UP:
+                        movCamera.translation(0.0,0.1,0.0);
+                        break;
+                    case SDLK_DOWN:
+                        movCamera.translation(0.0,-0.1,0.0);
+                        break;
+                    case SDLK_k:
+                        movCamera.scale(1.1,1.1,1.1);
+                        break;
+                    case SDLK_l:
+                        movCamera.scale(0.9,0.9,0.9);
+                        break;
+                    case SDLK_w:
+                        movCamera.rotation(5,1.0,0.0,0.0);
+                        break;
+                    case SDLK_s:
+                        movCamera.rotation(-5,1.0,0.0,0.0);
+                        break;
+                    case SDLK_a:
+                        movCamera.rotation(5,0.0,1.0,0.0);
+                        break;
+                    case SDLK_d:
+                        movCamera.rotation(-5,0.0,1.0,0.0);
+                        break;
+                }
+                aContext.camera.moveCamera(movCamera);
+            }
         }
         glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         rootMap->visualization(aContext);
+        aContext.posObject.clear();
         window->updateScreen();
     }
 }

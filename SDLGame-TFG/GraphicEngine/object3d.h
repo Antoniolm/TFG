@@ -21,6 +21,9 @@
 #define OBJECT3D_H
 
 #include "context.h"
+#include "structdata.h"
+
+class Context;
 
 class Object3D
 {
@@ -53,8 +56,12 @@ class Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
+
+        vec4f getPosition();
+
     protected:
         float currentTime;
+        vec4f position;
 
     private:
 

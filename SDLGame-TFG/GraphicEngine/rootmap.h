@@ -68,7 +68,7 @@ class RootMap : public Object3D
     protected:
 
     private:
-
+        list<Object3D *> object;
         list<Object3D *> objectStatic;
         list<Object3D *> objectDinamic;
 };

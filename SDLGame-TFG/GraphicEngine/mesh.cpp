@@ -108,7 +108,7 @@ void Mesh::visualization(Context & vis){
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
     position=transformation.product(position);
-
+    vis.posObject.push_back(this);
     //cout<< "Position --> x:"<< position.x << " y : "<< position.y<< " z: "<< position.z<< endl;
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
@@ -117,7 +117,7 @@ void Mesh::visualization(Context & vis){
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
 
     //Draw our object
-    glDrawElements(GL_LINES,triangles.size()*3,GL_UNSIGNED_SHORT,0);
+    glDrawElements(GL_TRIANGLES,triangles.size()*3,GL_UNSIGNED_SHORT,0);
 	glUseProgram(0);
 }
 
@@ -130,6 +130,12 @@ void Mesh::updateState(float time){}
 void Mesh::clean(){
     glDeleteBuffers(1,&vertexbuffer);
     glDeleteBuffers(1,&trianglebuffer);
+}
+
+//**********************************************************************//
+
+vec4f Mesh::getPosition(){
+    return position;
 }
 
 //**********************************************************************//

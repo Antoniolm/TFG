@@ -24,6 +24,10 @@
 #include "camera.h"
 #include "structdata.h"
 #include "projection.h"
+#include "object3d.h"
+#include <list>
+
+class Object3D;
 
 class Context
 {
@@ -43,6 +47,7 @@ class Context
         unsigned camera_mode;
         MatrixStack matrixStack;
         Camera camera;
+        list<Object3D *> posObject;
 
     protected:
 
