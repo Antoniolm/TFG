@@ -34,36 +34,19 @@ MatrixStack::~MatrixStack()
 //**********************************************************************//
 
 void MatrixStack::push(){
-    int tam=mainStack.size();
-
     currentMatrix.identity();
     Matrix4f newMatrix(currentMatrix);
-    pair<int,Matrix4f> aux;
-    aux.first=0;
-    aux.second=newMatrix;
-    mainStack.push_back(aux);
+    mainStack.push_back(newMatrix);
 }
 
 //**********************************************************************//
 
-void MatrixStack::pop(){
-    vector<pair<int,Matrix4f> >::reverse_iterator it;
-    bool finish=false;
-
-    for(it=mainStack.rbegin();it!=mainStack.rend() && !finish;it++){
-        if((*it).first==0){
-            finish=false;
-        }
-        mainStack.erase(it.base());
-    }
-    //mainStack.pop_back();
-    for(int i=0;i<mainStack.size();i++){
-        cout<< "<"<< mainStack[i].first<<"> "<<endl;
-        GLfloat *matrix=mainStack[i].second.getMatrix();
-        cout<< matrix[0]<< " "<<matrix[1]<< " "<<matrix[2]<< " "<<matrix[3]<< " "<< endl;
-        cout<< matrix[4]<< " "<<matrix[5]<< " "<<matrix[6]<< " "<<matrix[7]<< " "<< endl;
-        cout<< matrix[8]<< " "<<matrix[9]<< " "<<matrix[10]<< " "<<matrix[11]<< " "<< endl;
-        cout<< matrix[12]<< " "<<matrix[13]<< " "<<matrix[14]<< " "<<matrix[15]<< " "<< endl;
+void MatrixStack::pop(int cont){
+    int tam=mainStack.size()-1;
+    int iter=0;
+    for(int i=tam;i>0 && iter<cont;i--){
+        mainStack.pop_back();
+        iter++;
     }
 
 
@@ -77,12 +60,11 @@ void MatrixStack::asignIdentity(){
 
 //**********************************************************************//
 
-void MatrixStack::cMatrix(int cont,const Matrix4f & mat ){
+void MatrixStack::cMatrix(const Matrix4f & mat ){
+
     Matrix4f newMatrix(mat);
-    pair<int,Matrix4f> aux;
-    aux.first=cont;
-    aux.second=newMatrix;
-    mainStack.push_back(aux);
+    mainStack.push_back(mat);
+
     //currentMatrix.product(mat.getMatrixc());
     //mainStack[mainStack.size()-1]=*new Matrix4f(currentMatrix);
 
@@ -121,23 +103,10 @@ void MatrixStack::clean(){
 //**********************************************************************//
 
 Matrix4f & MatrixStack::getMatrix(){
-    vector<pair<int,Matrix4f> >::reverse_iterator it;
-    bool finish=false;
+   currentMatrix.identity();
 
-    currentMatrix.identity();
-    for(it=mainStack.rbegin();it!=mainStack.rend() && !finish;it++){
-        if((*it).first==0){
-            finish=false;
-        }
-        currentMatrix.product((*it).second.getMatrix());
-    }
-    it--;
+   for(int i=mainStack.size()-1;i>=0;i--)
+        currentMatrix.product(mainStack[i].getMatrix());
 
-    /*currentMatrix.identity();
-    vector<pair<int,Matrix4f> >::iterator it2;
-    it2=it.base();
-    for(;it2!=mainStack.end() && !finish;it2++){
-        currentMatrix.product((*it2).second.getMatrix());
-    }*/
     return currentMatrix;
 }

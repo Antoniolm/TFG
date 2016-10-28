@@ -51,7 +51,7 @@ class MatrixStack
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void pop();
+        void pop(int cont);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -67,7 +67,7 @@ class MatrixStack
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void cMatrix(int cont,const Matrix4f & mat ) ;
+        void cMatrix(const Matrix4f & mat ) ;
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -107,7 +107,7 @@ class MatrixStack
 
     private:
         Matrix4f currentMatrix;
-        std::vector<pair<int,Matrix4f> > mainStack;
+        std::vector<Matrix4f> mainStack;
 };
 
 #endif // MATRIXSTACK_H

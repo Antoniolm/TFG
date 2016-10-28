@@ -54,13 +54,13 @@ void NodeSceneGraph::visualization(Context & cv){
                 break;
             case 1:
                 if(!cv.visualization_static){
-                    cv.matrixStack.cMatrix(contMatrix,(*(*it).matrix).updateState(time));
+                    cv.matrixStack.cMatrix((*(*it).matrix).updateState(time));
                     contMatrix++;
                 }
                 break;
             }
     }
-    cv.matrixStack.pop();
+    cv.matrixStack.pop(contMatrix);
     currentTime=time;
 }
 
