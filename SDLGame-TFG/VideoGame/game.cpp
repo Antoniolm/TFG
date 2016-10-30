@@ -37,15 +37,15 @@ void Game::loop(){
     bool quit = false;
     SDL_Event event;
     Context aContext;
-    vec3f position(1.0,1.0,-1.0);
+    vec3f position(0.0,0.0,0.1);
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
     aContext.camera.setOrthographicProjection(-5,5,-5,5,-5,5);
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
 
-    //rootMap->initStatic();
-    //glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    rootMap->initStatic();
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
     Matrix4f movCamera;
     while (!quit)

@@ -65,36 +65,30 @@ void MatrixStack::cMatrix(const Matrix4f & mat ){
     Matrix4f newMatrix(mat);
     mainStack.push_back(mat);
 
-    //currentMatrix.product(mat.getMatrixc());
-    //mainStack[mainStack.size()-1]=*new Matrix4f(currentMatrix);
-
 }
 
 //**********************************************************************//
 
 void MatrixStack::cTraslation( const float dx, const float dy, const float dz ){
-    /*Matrix4f auxMatrix;
+    Matrix4f auxMatrix;
     auxMatrix.translation(dx,dy,dz);
-    currentMatrix.product(auxMatrix.getMatrix());
-    mainStack[mainStack.size()-1]=currentMatrix;*/
+    mainStack.push_back(auxMatrix);
 }
 
 //**********************************************************************//
 
 void MatrixStack::cScale ( const float sx, const float sy, const float sz ){
-    /*Matrix4f auxMatrix;
+    Matrix4f auxMatrix;
     auxMatrix.scale(sx,sy,sz);
-    currentMatrix.product(auxMatrix.getMatrix());
-    mainStack[mainStack.size()-1]=currentMatrix;*/
+    mainStack.push_back(auxMatrix);
 }
 
 //**********************************************************************//
 
 void MatrixStack::cRotation ( const float ang_gra,const float ex, const float ey, const float ez ){
-    /*Matrix4f auxMatrix;
+    Matrix4f auxMatrix;
     auxMatrix.rotation(ang_gra,ex,ey,ez);
-    currentMatrix.product(auxMatrix.getMatrix());
-    mainStack[mainStack.size()-1]=currentMatrix;*/
+    mainStack.push_back(auxMatrix);
 }
 
 void MatrixStack::clean(){

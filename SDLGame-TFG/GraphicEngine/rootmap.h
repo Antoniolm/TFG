@@ -34,6 +34,33 @@
 
 using namespace std;
 
+/////////////////////////////////////////////////////////////////////////
+/**
+*    Struct --> This object contain the information for an objectStatic
+*    On this way, We only need to create the transformation matrix one time
+*/
+//////////////////////////////////////////////////////////////////////////
+struct ObjectStatic{
+    Object3D * object;
+    Matrix4f * matrix;
+};
+
+/////////////////////////////////////////////////////////////////////////
+/**
+*    Struct --> Our RootMap will contain one or more object of this type
+*    That struct can contain an objectStatic or an objectDinamic
+*/
+//////////////////////////////////////////////////////////////////////////
+struct EntranceMap{
+    unsigned char type; // 0= object Dinamic , 1= Object static
+    vec3f position;
+
+    union{
+        ObjectStatic objectStatic;
+        Object3D * objectDinamic;
+    };
+};
+
 class RootMap : public Object3D
 {
     public:

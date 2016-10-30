@@ -33,13 +33,13 @@ RootMap::RootMap()
     aObject2->init();
 
     Matrix4f *matrixone =new Matrix4f();
-    matrixone->scale(0.03,0.03,0.03);
+    matrixone->scale(0.1,0.1,0.1);
 
     Matrix4f * matrixtwo=new Matrix4f();
     matrixtwo->translation(0.0,0,-2.1);
 
     Matrix4f * matrixthree=new Matrix4f();
-    matrixthree->translation(-1.1,0,0);
+    matrixthree->translation(1.1,1.1,0);
 
     Matrix4f * matrixt=new Matrix4f();
     matrixt->rotation(90,0.0,1.0,0.0);

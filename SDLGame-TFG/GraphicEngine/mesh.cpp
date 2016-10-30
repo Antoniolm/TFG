@@ -116,6 +116,7 @@ void Mesh::visualization(Context & vis){
     position=transformation.product(position);
     vis.posObject.push_back(this);
     //cout<< "Position --> x:"<< position.x << " y : "<< position.y<< " z: "<< position.z<< endl;
+
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
     glEnableVertexAttribArray(0);
