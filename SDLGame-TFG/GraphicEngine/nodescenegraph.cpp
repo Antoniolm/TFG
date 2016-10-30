@@ -45,7 +45,7 @@ void NodeSceneGraph::visualization(Context & cv){
 
     int contMatrix=1;
     cv.matrixStack.push();
-
+    cout<< "mielda"<< endl;
     vector<EntranceNGE>::iterator it;
     for(it=entrance.begin();it!=entrance.end();it++){
             switch((*it).type){
@@ -53,7 +53,7 @@ void NodeSceneGraph::visualization(Context & cv){
                 (*it).obj->visualization(cv);
                 break;
             case 1:
-                if(!cv.visualization_static){
+                if(cv.visualization_mode!=1){
                     cv.matrixStack.cMatrix((*(*it).matrix).updateState(time));
                     contMatrix++;
                 }

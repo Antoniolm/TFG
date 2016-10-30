@@ -1,35 +1,57 @@
-////////////////////////////////////////
-//  Author: Antonio David López Machado
-////////////////////////////////////////
+// *********************************************************************
+// **
+// ** Copyright (C) 2016-2017 Antonio David López Machado
+// **
+// ** This program is free software: you can redistribute it and/or modify
+// ** it under the terms of the GNU General Public License as published by
+// ** the Free Software Foundation, either version 3 of the License, or
+// ** (at your option) any later version.
+// **
+// ** This program is distributed in the hope that it will be useful,
+// ** but WITHOUT ANY WARRANTY; without even the implied warranty of
+// ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// ** GNU General Public License for more details.
+// **
+// ** You should have received a copy of the GNU General Public License
+// ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// **
+// *********************************************************************
 
 #include "mesh.h"
 
 Mesh::Mesh()
 {
-    vertex.push_back(*(new vec3f(-0.5f,0.5f,0.0f)));
-    vertex.push_back(*(new vec3f(-0.5f,-0.5f,0.0f)));
-    vertex.push_back(*(new vec3f(0.5f,-0.5f,0.0f)));
-    vertex.push_back(*(new vec3f(0.5f,0.5f,0.0f)));
-
-    triangles.push_back(*(new vec3i(0,1,2)));
-    triangles.push_back(*(new vec3i(0,2,3)));
-
-    matrix=new Matrix4f();
-    matrix->translation(0.0f,0.5f,0.0f);
 }
 
 //**********************************************************************//
 
-Mesh::Mesh(string & aTextur,float aHeight,float aWidth,unsigned char aType){
+Mesh::Mesh(const Mesh & aMesh){
+    triangles=aMesh.triangles;
+    vertex=aMesh.vertex;
+    transformation=aMesh.transformation;
+    vertexbuffer=aMesh.vertexbuffer;
+    trianglebuffer=aMesh.trianglebuffer;
+    shaders=aMesh.shaders;
+}
+
+//**********************************************************************//
+Mesh::Mesh(const string & aTextur,unsigned char aType){
     texture=aTextur;
-    height=aHeight;
-    width=aWidth;
     type=aType;
 }
 
 //**********************************************************************//
-Mesh::Mesh(string & aFile){
+Mesh::Mesh(const string & aFile){
+    std::vector<float> vertex_ply ; // vertex
+    std::vector<int>   faces_ply ;    // face
 
+    ply::read( aFile.c_str(), vertex_ply,faces_ply);
+    for(int i=0;i<vertex_ply.size();i=i+3){
+        vertex.push_back(*(new vec3f(vertex_ply[i],vertex_ply[i+1],vertex_ply[i+2])));
+    }
+    for(int i=0;i<faces_ply.size();i=i+3){
+        triangles.push_back(*(new vec3i(faces_ply[i],faces_ply[i+1],faces_ply[i+2])));
+	}
 }
 
 //**********************************************************************//
@@ -42,9 +64,6 @@ Mesh::~Mesh()
 //**********************************************************************//
 
 void Mesh::init(){
-    LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    glEnableVertexAttribArray(0);
-
     int j=0;
     GLfloat verts[vertex.size()*3];
     for(int i=0;i<vertex.size();i++){
@@ -57,8 +76,6 @@ void Mesh::init(){
     glGenBuffers(1,&vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
     glBufferData(GL_ARRAY_BUFFER,sizeof(verts),verts,GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
 
     j=0;
     GLushort index[triangles.size()*3];
@@ -78,17 +95,54 @@ void Mesh::init(){
 //**********************************************************************//
 
 void Mesh::visualization(Context & vis){
-    //Clear the screen
-	glClear( GL_COLOR_BUFFER_BIT );
+    position=(*new vec4f());
+    EntranceMap newEntrance;
+    GLfloat * matrix;
+    switch(vis.visualization_mode){
+    case 0: //Initial Mode
+        cout<< "Initial mode"<< endl;
+        newEntrance= EntranceMap(this,new Matrix4f(vis.matrixStack.getMatrix()));
+        vis.posObject.push_back(newEntrance);
+        transformation=&(vis.matrixStack.getMatrix());
+        break;
+    case 1: //Static mode
+        //transformation = vis.matrixStatic;
+        //matrix=transformation->getMatrix();
+        //transformation->identity();
+        cout<< "Hola"<< endl;
+        break;
+    case 2: //Dynamic mode
+        transformation = &(vis.matrixStack.getMatrix());
+        newEntrance=EntranceMap(this);
+        vis.posObject.push_back(newEntrance);
+        break;
+    }
 
+    cout<< "/////////////////Puta Mierda/////////////////////"<< endl;
+    position=transformation->product(position);
+    cout<< "/////////////////Wep2/////////////////////"<< endl;
 	//Set value to uniform variable
-    //GLint transformaLocation= glGetUniformLocation(programID,"transform");
-    //glUniformMatrix4dv(transformaLocation,1,GL_FALSE,matrix->getMatrix());
+	glUseProgram(shaders.getProgram());
+    GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
+    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation->getMatrix());
+    cout<< "/////////////////Wep3/////////////////////"<< endl;
+    GLint viewLocation= glGetUniformLocation(shaders.getProgram(),"view");
+    glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
+    cout<< "/////////////////Wep4/////////////////////"<< endl;
+    GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
+    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
-	//Use our program
-	glUseProgram(programID);
-    glDrawElements(GL_TRIANGLES,6,GL_UNSIGNED_SHORT,0);
-	glUseProgram(NULL);
+    //cout<< "Position --> x:"<< position.x << " y : "<< position.y<< " z: "<< position.z<< endl;
+
+    //Bind our buffer
+    glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
+
+    //Draw our object
+    glDrawElements(GL_LINES,triangles.size()*3,GL_UNSIGNED_SHORT,0);
+	glUseProgram(0);
 }
 
 //**********************************************************************//
@@ -104,86 +158,17 @@ void Mesh::clean(){
 
 //**********************************************************************//
 
-bool Mesh::LoadShader(string vertexShaderFile,string fragmentShaderFile){
-
-    bool result=true;
-    GLint isShaderCompiled;
-    GLint isProgramRight;
-    GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-    GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-
-    string vShaderCode;
-    string fShaderCode;
-
-    //Obtaining the code of our shaders
-    vShaderCode = LoadFileTxt(vertexShaderFile);
-    fShaderCode = LoadFileTxt(fragmentShaderFile);
-
-    //Compiling our vertexShader
-    const char *VertexSourcePointer = vShaderCode.c_str();
-    glShaderSource(VertexShaderID,1,&VertexSourcePointer,NULL);
-    glCompileShader(VertexShaderID);
-
-    //Check Vertex Shader
-    glGetShaderiv( VertexShaderID, GL_COMPILE_STATUS, &isShaderCompiled );
-    if(!isShaderCompiled)
-    {
-        cout<< "Unable to compile vertex shader"<< vertexShaderFile<<endl;
-        result = false;
-    }
-
-	//Compiling our FragmentShader
-    char const * FragmentSourcePointer = fShaderCode.c_str();
-	glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer , NULL);
-	glCompileShader(FragmentShaderID);
-
-	//Check Fragment Shader
-	glGetShaderiv(FragmentShaderID, GL_COMPILE_STATUS, &isShaderCompiled);
-    if(!isShaderCompiled)
-    {
-        cout<< "Unable to compile Fragment shader"<< fragmentShaderFile<<endl;
-        result = false;
-    }
-
-	//Creating our program and linking the shaders
-    programID = glCreateProgram();
-    glAttachShader(programID, VertexShaderID);
-    glAttachShader(programID, FragmentShaderID);
-    glLinkProgram(programID);
-
-    //Check the program
-	glGetProgramiv(programID, GL_LINK_STATUS, &isProgramRight);
-	if (!isProgramRight){
-        cout<< "Unable to link the program"<<endl;
-        result = false;
-	}
-
-	//Delete compiled shaderss
-	glDeleteShader(VertexShaderID);
-    glDeleteShader(FragmentShaderID);
-
-    return result;
-
+vec4f Mesh::getPosition(){
+    return position;
 }
 
 //**********************************************************************//
-//* Private Methods
 
-string Mesh::LoadFileTxt(string file){
-
-    string content;
-    ifstream sourceFile;
-    sourceFile.open(file.c_str(),ifstream::in);
-
-    if( sourceFile.is_open() )
-	{
-        content.assign( ( istreambuf_iterator< char >( sourceFile ) ), istreambuf_iterator< char >() );
-        sourceFile.close();
-	}
-    else{
-        content="Unable to access the file"+ file;
-    }
-
-    return content;
+bool Mesh::LoadShader(const string & vertexShaderFile,const string & fragmentShaderFile){
+    shaders.setFiles(vertexShaderFile,fragmentShaderFile);
+    bool result=shaders.createProgram();
+    return result;
 }
+
+
 

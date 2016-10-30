@@ -59,12 +59,12 @@ RootMap::RootMap()
     //root3->add(static_cast<Object3D*>(new Mesh(*aObject)));
     NodeSceneGraph * root=new NodeSceneGraph();
     root->add(matrix);
-    root->add(static_cast<Object3D*>(new Mesh(*aObject)));
+    root->add(static_cast<Object3D*>(aObject));
     //for(int i=0;i<4;i++){
 
         root2->add(matrix3);
         root2->add(static_cast<Object3D*>(root));
-        root2->add(osci);
+        //root2->add(osci);
         root2->add(matrix3);
         root2->add(static_cast<Object3D*>(root));
     //}
@@ -73,7 +73,7 @@ RootMap::RootMap()
         root3->add(matrix3);
         root3->add(static_cast<Object3D*>(root2));
     }
-    objectDinamic.push_back(root3);
+    objectStatic.push_back(root3);
 
 }
 
@@ -87,13 +87,14 @@ RootMap::~RootMap()
 //**********************************************************************//
 
 void RootMap::visualization(Context & cv){
+
     list<Object3D *>::iterator it;
 
-    cv.visualization_static=false;
+    cv.visualization_mode=2;
     for(it=objectDinamic.begin();it!=objectDinamic.end();it++)
         (*it)->visualization(cv);
 
-    object=cv.posObject;
+    /*object=cv.posObject;
     vec4f pos;
 
     cout<< "///////INIT///////"<<endl;
@@ -102,12 +103,15 @@ void RootMap::visualization(Context & cv){
 
         cout<< pos.x<< " "<< pos.y<< " "<< pos.z<< endl;
     }
-    cout<< "//////////////////"<<endl;
+    cout<< "//////////////////"<<endl;*/
 
-    cv.visualization_static=true;
-    for(it=objectStatic.begin();it!=objectStatic.end();it++)
-        (*it)->visualization(cv);
-
+    list<EntranceMap>::iterator it2;
+    cv.visualization_mode=1;
+    for(it2=objectStatic2.begin();it2!=objectStatic2.end();it2++){
+        cv.matrixStatic=(*it2).matrix;
+        cout<< "wat?";
+        (*it2).object->visualization(cv);
+    }
 
 }
 
@@ -117,11 +121,13 @@ void RootMap::initStatic(){
     list<Object3D *>::iterator it;
     Context cv;
 
-    cv.visualization_static=false;
-    for(it=objectStatic.begin();it!=objectStatic.end();it++)
+    cv.visualization_mode=0;
+    for(it=objectStatic.begin();it!=objectStatic.end();it++){
         (*it)->visualization(cv);
-    //objectStatic.clear();
-    //objectStatic=cv.posObject;
+    }
+    objectStatic.clear();
+    cout<< "cv.posObject ->"<< cv.posObject.size();
+    objectStatic2=cv.posObject;
 }
 
 //**********************************************************************//

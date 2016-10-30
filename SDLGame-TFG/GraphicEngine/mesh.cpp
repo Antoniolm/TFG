@@ -95,17 +95,39 @@ void Mesh::init(){
 //**********************************************************************//
 
 void Mesh::visualization(Context & vis){
+    cout<< "Hola2"<< endl;
     position=(*new vec4f());
+    EntranceMap newEntrance;
+    GLfloat * matrix;
 
-    if(!vis.visualization_static){
-        //cout<<"False false"<< endl;
-        transformation = vis.matrixStack.getMatrix();
+    switch(vis.visualization_mode){
+    case 0: //Initial Mode
+        cout<< "Initial mode"<< endl;
+        newEntrance= EntranceMap(this,new Matrix4f(vis.matrixStack.getMatrix()));
+        cout<< "Prueba1-2"<<endl;
+        newEntrance.object->visualization(vis);
+        cout<< "Prueba2-2"<<endl;
+        vis.posObject.push_back(newEntrance);
+        transformation=&(vis.matrixStack.getMatrix());
+        break;
+    case 1: //Static mode
+        transformation = vis.matrixStatic;
+        matrix=transformation->getMatrix();
+        break;
+    case 2: //Dynamic mode
+        transformation = &(vis.matrixStack.getMatrix());
+        newEntrance=EntranceMap(this);
+        vis.posObject.push_back(newEntrance);
+        break;
     }
+
+
+    position=transformation->product(position);
 
 	//Set value to uniform variable
 	glUseProgram(shaders.getProgram());
     GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
-    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation.getMatrix());
+    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation->getMatrix());
 
     GLint viewLocation= glGetUniformLocation(shaders.getProgram(),"view");
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
@@ -113,8 +135,6 @@ void Mesh::visualization(Context & vis){
     GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
-    position=transformation.product(position);
-    vis.posObject.push_back(this);
     //cout<< "Position --> x:"<< position.x << " y : "<< position.y<< " z: "<< position.z<< endl;
 
     //Bind our buffer

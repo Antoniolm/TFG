@@ -26,6 +26,7 @@
 #include "projection.h"
 #include "object3d.h"
 #include <list>
+#include "structdata2.h"
 
 class Object3D;
 
@@ -42,12 +43,13 @@ class Context
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Context();
-        bool visualization_static;
-        unsigned visualization_mode;
+
+        Matrix4f * matrixStatic;
+        unsigned int visualization_mode; //0=initial 1=Static 2=Dynamic
         unsigned camera_mode;
         MatrixStack matrixStack;
         Camera camera;
-        list<Object3D *> posObject;
+        list<EntranceMap> posObject;
 
     protected:
 

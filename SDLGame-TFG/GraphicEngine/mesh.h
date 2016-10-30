@@ -33,6 +33,7 @@
 #include "matrix4f.h"
 #include <iostream>
 #include "structdata.h"
+#include "structdata2.h"
 #include "shader.h"
 #include <file_ply_stl.hpp>
 
@@ -122,7 +123,7 @@ class Mesh : public Object3D
     private:
         vector<vec3i> triangles;
         vector<vec3f> vertex;
-        Matrix4f transformation;
+        Matrix4f * transformation;
         unsigned char type;
         GLuint vertexbuffer;
         GLuint trianglebuffer;
