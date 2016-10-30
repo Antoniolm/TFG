@@ -33,7 +33,7 @@
 #include "matrix4f.h"
 #include <iostream>
 #include "structdata.h"
-#include "structdata2.h"
+#include "rootmap.h"
 #include "shader.h"
 #include <file_ply_stl.hpp>
 

@@ -36,7 +36,7 @@ RootMap::RootMap()
     matrixone->scale(0.1,0.1,0.1);
 
     Matrix4f * matrixtwo=new Matrix4f();
-    matrixtwo->translation(0.0,0,-2.1);
+    matrixtwo->translation(-5.0,1,0.0);
 
     Matrix4f * matrixthree=new Matrix4f();
     matrixthree->translation(1.1,1.1,0);
@@ -54,6 +54,7 @@ RootMap::RootMap()
     MatrixStatic *matrix3=new MatrixStatic((*matrixthree));
 
     NodeSceneGraph * root2=new NodeSceneGraph();
+    NodeSceneGraph * root4=new NodeSceneGraph();
 
     //root3->add(matrix);
     //root3->add(static_cast<Object3D*>(new Mesh(*aObject)));
@@ -67,13 +68,18 @@ RootMap::RootMap()
         //root2->add(osci);
         root2->add(matrix3);
         root2->add(static_cast<Object3D*>(root));
+
+        root4->add(osci);
+        root4->add(matrix2);
+        root4->add(static_cast<Object3D*>(root));
     //}
 
-    for(int i=0;i<4;i++){
+    for(int i=0;i<1;i++){
         root3->add(matrix3);
         root3->add(static_cast<Object3D*>(root2));
     }
     objectStatic.push_back(root3);
+    objectDinamic.push_back(root4);
 
 }
 
@@ -109,7 +115,6 @@ void RootMap::visualization(Context & cv){
     cv.visualization_mode=1;
     for(it2=objectStatic2.begin();it2!=objectStatic2.end();it2++){
         cv.matrixStatic=(*it2).matrix;
-        cout<< "wat?";
         (*it2).object->visualization(cv);
     }
 
@@ -127,7 +132,17 @@ void RootMap::initStatic(){
     }
     objectStatic.clear();
     cout<< "cv.posObject ->"<< cv.posObject.size();
-    objectStatic2=cv.posObject;
+
+    list<Object3D *>::iterator itObject;
+    list<Matrix4f>::iterator itMatrix;
+    itMatrix=cv.TransObject.begin();
+    EntranceMap newEntrance;
+    for(itObject=cv.posObject.begin();itObject!=cv.posObject.end();itObject++){
+        newEntrance=EntranceMap((*itObject),new Matrix4f(*itMatrix));
+        objectStatic2.push_back(newEntrance);
+        itMatrix++;
+    }
+    //objectStatic2=cv.posObject;
 }
 
 //**********************************************************************//

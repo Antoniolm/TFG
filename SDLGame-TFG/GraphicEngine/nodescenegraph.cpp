@@ -45,7 +45,6 @@ void NodeSceneGraph::visualization(Context & cv){
 
     int contMatrix=1;
     cv.matrixStack.push();
-    cout<< "mielda"<< endl;
     vector<EntranceNGE>::iterator it;
     for(it=entrance.begin();it!=entrance.end();it++){
             switch((*it).type){

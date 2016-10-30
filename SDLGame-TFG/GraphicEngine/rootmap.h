@@ -31,9 +31,35 @@
 #include "matrixstatic.h"
 #include "oscillaterotation.h"
 #include "mesh.h"
-#include "structdata2.h"
 
 using namespace std;
+
+/////////////////////////////////////////////////////////////////////////
+/**
+*    Struct --> Our RootMap will contain one or more object of this type
+*    That struct can contain an objectStatic or an objectDinamic
+*/
+//////////////////////////////////////////////////////////////////////////
+struct EntranceMap{
+    unsigned char type; // 0= object Dinamic , 1= Object static
+    vec3f position;
+
+    Matrix4f * matrix;
+    Object3D * object;
+
+    EntranceMap(){}
+    EntranceMap(Object3D * aObject){
+        object=aObject;
+        type=0;
+	}
+	EntranceMap(Object3D * aObject,Matrix4f * pMatrix){
+        //aObject->updateState(20);
+        object=aObject;
+        matrix=new Matrix4f((*pMatrix));
+        type=1;
+	}
+
+};
 
 class RootMap : public Object3D
 {
