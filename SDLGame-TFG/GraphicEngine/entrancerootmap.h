@@ -34,12 +34,17 @@ class EntranceRootMap
         EntranceRootMap();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor with parameters*/
+        /** Constructor with parameters
+        *   \param aObject -> Reference to our object
+        */
         //////////////////////////////////////////////////////////////////////////
         EntranceRootMap(Object3D * aObject);
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor with parameters*/
+        /** Constructor with parameters
+        *   \param aObject -> Reference to our object
+        *   \param pMatrix -> Reference to the transformation matrix of our object
+        */
         //////////////////////////////////////////////////////////////////////////
         EntranceRootMap(Object3D * aObject,Matrix4f * pMatrix);
 

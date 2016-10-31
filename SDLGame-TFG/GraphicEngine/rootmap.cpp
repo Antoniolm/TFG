@@ -32,26 +32,21 @@ RootMap::RootMap()
     aObject2->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject2->init();
 
-    Matrix4f *matrixone =new Matrix4f();
-    matrixone->scale(0.1,0.1,0.1);
+    Matrix4f *matrix =new Matrix4f();
+    matrix->scale(0.1,0.1,0.1);
 
-    Matrix4f * matrixtwo=new Matrix4f();
-    matrixtwo->translation(-5.0,1,0.0);
+    Matrix4f * matrix2=new Matrix4f();
+    matrix2->translation(-5.0,1,0.0);
 
-    Matrix4f * matrixthree=new Matrix4f();
-    matrixthree->translation(1.1,1.1,0);
+    Matrix4f * matrix3=new Matrix4f();
+    matrix3->translation(1.1,1.1,0);
 
     Matrix4f * matrixt=new Matrix4f();
     matrixt->rotation(90,0.0,1.0,0.0);
 
-    LinearMovement * movet=new LinearMovement(0,0.5,0.0);
-    AxisRotation * axisRot=new AxisRotation(40,0,0,1);
-    OscillateRotation * osci=new OscillateRotation(true,90,30,50,30,vec3f(0,0,1));
-
-    MatrixStatic *matrix=new MatrixStatic((*matrixone));
-    MatrixStatic *matrix2=new MatrixStatic((*matrixtwo));
-    MatrixStatic *matrix4=new MatrixStatic((*matrixt));
-    MatrixStatic *matrix3=new MatrixStatic((*matrixthree));
+    //LinearMovement * movet=new LinearMovement(0,0.5,0.0);
+    //AxisRotation * axisRot=new AxisRotation(40,0,0,1);
+    //OscillateRotation * osci=new OscillateRotation(true,90,30,50,30,vec3f(0,0,1));
 
     NodeSceneGraph * root2=new NodeSceneGraph();
     NodeSceneGraph * root4=new NodeSceneGraph();
@@ -66,7 +61,7 @@ RootMap::RootMap()
         root2->add(matrix3);
         root2->add(static_cast<Object3D*>(root));
 
-        root4->add(osci);
+        //root4->add(osci);
         root4->add(matrix2);
         root4->add(static_cast<Object3D*>(root));
 

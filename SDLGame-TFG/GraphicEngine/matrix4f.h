@@ -49,6 +49,7 @@ class Matrix4f
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will make a translation transform
+        *    \param x,y,z -> Value for a translation matrix
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -57,6 +58,7 @@ class Matrix4f
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will make a Scale transform
+        *    \param x,y,z -> Value for a scale matrix
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -65,6 +67,7 @@ class Matrix4f
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will make a rotation transform
+        *    \param grade,x,y,z -> Value for a rotation matrix
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -82,6 +85,7 @@ class Matrix4f
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will make a matrix product
+        *    \param aMatrix -> the other matrix to make the matrix product
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -90,6 +94,7 @@ class Matrix4f
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will make the product between matrix and a vector
+        *    \param aVector -> The vector for the product
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

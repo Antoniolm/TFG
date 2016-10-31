@@ -17,42 +17,31 @@
 // **
 // *********************************************************************
 
-#ifndef ROOTMAP_H
-#define ROOTMAP_H
+#ifndef AVATAR_H
+#define AVATAR_H
 
-#include "object3d.h"
-#include "nodescenegraph.h"
-#include <list>
-#include <vector>
-#include "matrix4f.h"
-#include "matrix4fdinamic.h"
-#include "linearmovement.h"
-#include "axisrotation.h"
-#include "matrixstatic.h"
-#include "oscillaterotation.h"
-#include "mesh.h"
+#include "../GraphicEngine/object3d.h"
+#include "../GraphicEngine/context.h"
 
-using namespace std;
-
-class RootMap : public Object3D
+class Avatar: public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        RootMap();
+        Avatar();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~RootMap();
+        virtual ~Avatar();
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
         *    \return void
         */
-        /////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
         virtual void visualization(Context & vis);
 
         //////////////////////////////////////////////////////////////////////////
@@ -64,14 +53,10 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
-        void initStatic();
     protected:
 
     private:
-        vector<vector<list<Object3D *> > > object;
-        list<Object3D *> bufferStatic;
-        list<EntranceRootMap> objectStatic;
-        list<Object3D *> objectDinamic;
+        NodeSceneGraph * root;
 };
 
-#endif // ROOTMAP_H
+#endif // AVATAR_H

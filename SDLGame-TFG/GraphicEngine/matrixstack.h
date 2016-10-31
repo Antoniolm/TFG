@@ -48,6 +48,7 @@ class MatrixStack
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will pop the matrix in the top of stack
+        *    \param cont -> Number of matrix that our method will pop
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -64,6 +65,7 @@ class MatrixStack
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will make the product between the currentMatrix and the matrix parameter
+        *    \param mat -> this matrix4f will push in our stack
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -72,6 +74,7 @@ class MatrixStack
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will make the product between the currentMatrix and a translation matrix
+        *    \param sx,sy,sz -> Value for a new transformation matrix
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -80,6 +83,7 @@ class MatrixStack
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will make the product between the currentMatrix and a scale matrix
+        *    \param sx,sy,sz -> Value for a new transformation matrix
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -88,6 +92,7 @@ class MatrixStack
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will make the product between the currentMatrix and a rotation matrix
+        *    \param ang_gra,ex,ey,ez -> Value for a new transformation matrix
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

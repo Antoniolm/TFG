@@ -53,7 +53,7 @@ void NodeSceneGraph::visualization(Context & cv){
                 break;
             case 1:
                 if(cv.visualization_mode!=1){
-                    cv.matrixStack.cMatrix((*(*it).matrix).updateState(time));
+                    cv.matrixStack.cMatrix((*(*it).matrix));
                     contMatrix++;
                 }
                 break;
@@ -82,7 +82,7 @@ void NodeSceneGraph::add(Object3D * anObject){
 }
 
 //**********************************************************************//
-void NodeSceneGraph::add(Matrix4fDinamic * aMatrix){
+void NodeSceneGraph::add(Matrix4f * aMatrix){
     EntranceNGE newEntrance(aMatrix);
     entrance.push_back(newEntrance);
 
