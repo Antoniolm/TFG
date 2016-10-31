@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="GraphicEngine" />
+					<Add directory="VideoGame" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +25,7 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="GraphicEngine" />
+					<Add directory="VideoGame" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -83,8 +85,12 @@
 		<Unit filename="GraphicEngine/structdata.h" />
 		<Unit filename="GraphicEngine/window.cpp" />
 		<Unit filename="GraphicEngine/window.h" />
+		<Unit filename="VideoGame/avatar.cpp" />
+		<Unit filename="VideoGame/avatar.h" />
 		<Unit filename="VideoGame/game.cpp" />
 		<Unit filename="VideoGame/game.h" />
+		<Unit filename="VideoGame/hero.cpp" />
+		<Unit filename="VideoGame/hero.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

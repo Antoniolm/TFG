@@ -387,7 +387,7 @@
 1477389282 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 
-1477850444 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1477951932 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1477601763 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -900,7 +900,7 @@
 1477389144 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1477660275 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1477951903 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 
 1477658557 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
@@ -961,6 +961,6 @@
 	"../GraphicEngine/context.h"
 	<vector>
 
-1477948743 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1477956767 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 

@@ -93,12 +93,12 @@ void Game::loop(){
                 }
 
                 aContext.camera.moveCamera(movCamera);
-                /*vec4f pos;
+                vec4f pos;
                 pos=aContext.camera.getCamera().product(pos);
                 position.x=pos.x; position.y=pos.y; position.z=pos.z;
                 cout<< "Position: x-> "<< position.x<< " y-> "<< position.y<<" z-> "<< position.z<<endl;
                 aContext.camera.setCamera(position,direction,up);
-                aContext.camera.createCamera();*/
+                aContext.camera.createCamera();
             }
         }
         //glClearColor(0.0f, 0.0f, 0.0f, 0.0f);

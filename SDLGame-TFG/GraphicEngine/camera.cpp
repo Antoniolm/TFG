@@ -111,9 +111,13 @@ void Camera::createCamera(){
     matrix[0]=xCamera.x;  matrix[1]=xCamera.y;  matrix[2]=xCamera.z;  matrix[3]=0;
 	matrix[4]=yCamera.x;  matrix[5]=yCamera.y;  matrix[6]=yCamera.y;  matrix[7]=0;
 	matrix[8]=zCamera.x;  matrix[9]=zCamera.y;  matrix[10]=zCamera.z; matrix[11]=0;
-	matrix[12]=position.x; matrix[13]=position.y; matrix[14]=position.z; matrix[15]=1;
+	matrix[12]=0; matrix[13]=0; matrix[14]=0; matrix[15]=1;
 
 	camera.setMatrix(matrix);
+
+	Matrix4f posMatrix;
+	posMatrix.translation(position.x,position.y,position.z);
+	camera.product(posMatrix.getMatrix());
 }
 
 //**********************************************************************//

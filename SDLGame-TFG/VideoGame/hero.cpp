@@ -38,26 +38,42 @@ Hero::Hero()
     cylinder->init();
 
     Matrix4f *scaleMatrix=new Matrix4f();
-    scaleMatrix->scale(0.3,0.5,1);
+    scaleMatrix->scale(0.3,0.3,0.7);
 
     Matrix4f *scaleSphere=new Matrix4f();
-    scaleSphere->scale(0.28,0.28,0.28);
+    scaleSphere->scale(0.2,0.2,0.2);
+
+    Matrix4f *scaleCylinder=new Matrix4f();
+    scaleCylinder->scale(0.1,0.1,0.7);
+
+    Matrix4f *scaleCylinder2=new Matrix4f();
+    scaleCylinder2->scale(0.1,0.1,0.5);
+
+    Matrix4f *transCylinder=new Matrix4f();
+    transCylinder->translation(0.0,-0.8,0.0);
+
+    Matrix4f *rotateCylinder=new Matrix4f();
+    rotateCylinder->rotation(90,1.0,0.0,0.0);
 
     Matrix4f *transMatrix=new Matrix4f();
     transMatrix->translation(0.0,0.0,0.5);
 
     Matrix4f *AnkFootransMatrix=new Matrix4f();
-    AnkFootransMatrix->translation(0.0,-1.0,0.0);
+    AnkFootransMatrix->translation(0.0,-1,0.0);
 
-    //Createa new Movement
-    Matrix4f * moveAnkle=new Matrix4f();
-    moveAnkle->identity();
-    moveMatrix.push_back(moveAnkle);
+    //Create a new Movement
+    Matrix4f * moveKnee=new Matrix4f();
+    moveKnee->identity();
+    moveMatrix.push_back(moveKnee);
 
-    OscillateRotation * oscillate=new OscillateRotation(true,90,30,50,30,vec3f(1,0,0));
-    animation.add(oscillate);
+    Matrix4f * moveLeg=new Matrix4f();
+    moveLeg->identity();
+    moveMatrix.push_back(moveLeg);
 
-
+    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,0,50,vec3f(1,0,0));
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,0,50,vec3f(1,0,0));
+    animation.add(oscillateKnee);
+    animation.add(oscillateLeg);
 
     //Ankle + foot
     NodeSceneGraph * ankle=new NodeSceneGraph();
@@ -69,11 +85,33 @@ Hero::Hero()
     foot->add(scaleMatrix);
     foot->add(static_cast<Object3D*>(cube));
     ankle_foot->add(AnkFootransMatrix);
-    ankle_foot->add(moveAnkle);
+    //ankle_foot->add(moveAnkle);
     ankle_foot->add(static_cast<Object3D*>(ankle));
     ankle_foot->add(static_cast<Object3D*>(foot));
 
-    root->add(static_cast<Object3D*>(ankle_foot));
+    //knee + ankle
+    NodeSceneGraph * knee_ankle=new NodeSceneGraph();
+
+    knee_ankle->add(transCylinder);
+    knee_ankle->add(moveKnee);
+    knee_ankle->add(static_cast<Object3D*>(ankle));
+    knee_ankle->add(transCylinder);
+    knee_ankle->add(static_cast<Object3D*>(ankle_foot));
+    knee_ankle->add(rotateCylinder);
+    knee_ankle->add(scaleCylinder);
+    knee_ankle->add(static_cast<Object3D*>(cylinder));
+
+    //Leg
+    NodeSceneGraph * leg=new NodeSceneGraph();
+    leg->add(moveLeg);
+    leg->add(static_cast<Object3D*>(ankle));
+    leg->add(transCylinder);
+    leg->add(static_cast<Object3D*>(knee_ankle));
+    leg->add(rotateCylinder);
+    leg->add(scaleCylinder2);
+    leg->add(static_cast<Object3D*>(cylinder));
+
+    root->add(static_cast<Object3D*>(leg));
 }
 
 //**********************************************************************//
@@ -90,13 +128,9 @@ void Hero::visualization(Context & cv){
     float time=SDL_GetTicks();
     animation.updateState(time);
     GLfloat * matrix=animation.readMatrix(0).getMatrix();
-    cout<< "//////////////////////Prob//////////////////"<<endl;
-    cout<< matrix[0]<< " "<< matrix[1]<< " "<< matrix[2]<< " "<< matrix[3]<< endl;
-    cout<< matrix[4]<< " "<< matrix[5]<< " "<< matrix[6]<< " "<< matrix[7]<< endl;
-    cout<< matrix[8]<< " "<< matrix[9]<< " "<< matrix[10]<< " "<< matrix[11]<< endl;
-    cout<< matrix[12]<< " "<< matrix[13]<< " "<< matrix[14]<< " "<< matrix[15]<< endl;
-    cout<< "////////////////////////////////////////////"<<endl;
 
-    moveMatrix[0]->setMatrix(animation.readMatrix(0).getMatrix());
+    for(int i=0;i<2;i++)
+    moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
+
     root->visualization(cv);
 }
