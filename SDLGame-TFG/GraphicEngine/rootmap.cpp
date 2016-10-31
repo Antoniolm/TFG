@@ -56,12 +56,9 @@ RootMap::RootMap()
     NodeSceneGraph * root2=new NodeSceneGraph();
     NodeSceneGraph * root4=new NodeSceneGraph();
 
-    //root3->add(matrix);
-    //root3->add(static_cast<Object3D*>(new Mesh(*aObject)));
     NodeSceneGraph * root=new NodeSceneGraph();
     root->add(matrix);
     root->add(static_cast<Object3D*>(aObject));
-    //for(int i=0;i<4;i++){
 
         root2->add(matrix3);
         root2->add(static_cast<Object3D*>(root));
@@ -72,13 +69,13 @@ RootMap::RootMap()
         root4->add(osci);
         root4->add(matrix2);
         root4->add(static_cast<Object3D*>(root));
-    //}
 
-    for(int i=0;i<1;i++){
+    for(int i=0;i<3;i++){
+        root3->add(matrix3);
         root3->add(matrix3);
         root3->add(static_cast<Object3D*>(root2));
     }
-    objectStatic.push_back(root3);
+    bufferStatic.push_back(root3);
     objectDinamic.push_back(root4);
 
 }
@@ -96,26 +93,17 @@ void RootMap::visualization(Context & cv){
 
     list<Object3D *>::iterator it;
 
+    //Draw the dynamic object
     cv.visualization_mode=2;
     for(it=objectDinamic.begin();it!=objectDinamic.end();it++)
         (*it)->visualization(cv);
 
-    /*object=cv.posObject;
-    vec4f pos;
-
-    cout<< "///////INIT///////"<<endl;
-    for(it=object.begin();it!=object.end();it++){
-        pos=(*it)->getPosition();
-
-        cout<< pos.x<< " "<< pos.y<< " "<< pos.z<< endl;
-    }
-    cout<< "//////////////////"<<endl;*/
-
-    list<EntranceMap>::iterator it2;
+    //Draw the static object
+    list<EntranceRootMap>::iterator it2;
     cv.visualization_mode=1;
-    for(it2=objectStatic2.begin();it2!=objectStatic2.end();it2++){
-        cv.matrixStatic=(*it2).matrix;
-        (*it2).object->visualization(cv);
+    for(it2=objectStatic.begin();it2!=objectStatic.end();it2++){
+        cv.matrixStatic=(*it2).getMatrix();
+        (*it2).getObject()->visualization(cv);
     }
 
 }
@@ -127,22 +115,11 @@ void RootMap::initStatic(){
     Context cv;
 
     cv.visualization_mode=0;
-    for(it=objectStatic.begin();it!=objectStatic.end();it++){
+    for(it=bufferStatic.begin();it!=bufferStatic.end();it++){
         (*it)->visualization(cv);
     }
-    objectStatic.clear();
-    cout<< "cv.posObject ->"<< cv.posObject.size();
 
-    list<Object3D *>::iterator itObject;
-    list<Matrix4f>::iterator itMatrix;
-    itMatrix=cv.TransObject.begin();
-    EntranceMap newEntrance;
-    for(itObject=cv.posObject.begin();itObject!=cv.posObject.end();itObject++){
-        newEntrance=EntranceMap((*itObject),new Matrix4f(*itMatrix));
-        objectStatic2.push_back(newEntrance);
-        itMatrix++;
-    }
-    //objectStatic2=cv.posObject;
+    objectStatic=cv.posObject;
 }
 
 //**********************************************************************//

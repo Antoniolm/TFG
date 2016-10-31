@@ -97,12 +97,11 @@ void Mesh::init(){
 void Mesh::visualization(Context & vis){
     position=(*new vec4f());
     GLfloat * matrix;
-
+    EntranceRootMap newEntrance;
     switch(vis.visualization_mode){
     case 0: //Initial Mode
-        //newEntrance= EntranceMap(this,new Matrix4f(vis.matrixStack.getMatrix()));
-        vis.posObject.push_back(this);
-        vis.TransObject.push_back(Matrix4f(vis.matrixStack.getMatrix()));
+        newEntrance= EntranceRootMap(this,new Matrix4f(vis.matrixStack.getMatrix()));
+        vis.posObject.push_back(newEntrance);
         transformation=&(vis.matrixStack.getMatrix());
         break;
     case 1: //Static mode
@@ -111,8 +110,8 @@ void Mesh::visualization(Context & vis){
         break;
     case 2: //Dynamic mode
         transformation = &(vis.matrixStack.getMatrix());
-        //newEntrance=EntranceMap(this);
-        vis.posObject.push_back(this);
+        newEntrance=EntranceRootMap(this);
+        vis.posObject.push_back(newEntrance);
         break;
     }
 

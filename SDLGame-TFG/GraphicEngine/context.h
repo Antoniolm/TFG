@@ -26,9 +26,10 @@
 #include "projection.h"
 #include "object3d.h"
 #include <list>
+#include "entrancerootmap.h"
 
 class Object3D;
-
+class EntranceRootMap;
 
 class Context
 {
@@ -49,8 +50,7 @@ class Context
         unsigned camera_mode;
         MatrixStack matrixStack;
         Camera camera;
-        list<Object3D*> posObject;
-        list<Matrix4f> TransObject;
+        list<EntranceRootMap> posObject;
 
     protected:
 

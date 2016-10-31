@@ -17,61 +17,60 @@
 // **
 // *********************************************************************
 
-#ifndef ROOTMAP_H
-#define ROOTMAP_H
+#ifndef ENTRANCEROOTMAP_H
+#define ENTRANCEROOTMAP_H
 
 #include "object3d.h"
-#include "nodescenegraph.h"
-#include <list>
-#include <vector>
 #include "matrix4f.h"
-#include "matrix4fdinamic.h"
-#include "linearmovement.h"
-#include "axisrotation.h"
-#include "matrixstatic.h"
-#include "oscillaterotation.h"
-#include "mesh.h"
 
-using namespace std;
+class Object3D;
 
-class RootMap : public Object3D
+class EntranceRootMap
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Default constructor */
+        /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        RootMap();
+        EntranceRootMap();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Default destructor */
+        /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        virtual ~RootMap();
+        EntranceRootMap(Object3D * aObject);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with parameters*/
+        //////////////////////////////////////////////////////////////////////////
+        EntranceRootMap(Object3D * aObject,Matrix4f * pMatrix);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
+        virtual ~EntranceRootMap();
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will show the object in our interface
-        *    \return void
+        *    \return Return our transformation matrix4f
         */
-        /////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & vis);
+        //////////////////////////////////////////////////////////////////////////
+        Matrix4f * getMatrix();
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will update the state of the object. That change need the
-        *    current time in our application
-        *    \return void
+        *    \return Return our object
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time);
+        Object3D * getObject();
 
-        void initStatic();
     protected:
 
     private:
-        vector<vector<list<Object3D *> > > object;
-        list<Object3D *> bufferStatic;
-        list<EntranceRootMap> objectStatic;
-        list<Object3D *> objectDinamic;
+        unsigned char type; // 0= object Dinamic , 1= Object static
+        vec3f position;
+
+        Matrix4f * matrix;
+        Object3D * object;
+
 };
 
-#endif // ROOTMAP_H
+#endif // ENTRANCEROOTMAP_H

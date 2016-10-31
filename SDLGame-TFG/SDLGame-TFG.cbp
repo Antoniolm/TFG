@@ -48,6 +48,8 @@
 		<Unit filename="GraphicEngine/camera.h" />
 		<Unit filename="GraphicEngine/context.cpp" />
 		<Unit filename="GraphicEngine/context.h" />
+		<Unit filename="GraphicEngine/entrancerootmap.cpp" />
+		<Unit filename="GraphicEngine/entrancerootmap.h" />
 		<Unit filename="GraphicEngine/file_ply_stl.cpp" />
 		<Unit filename="GraphicEngine/file_ply_stl.hpp" />
 		<Unit filename="GraphicEngine/linearmovement.cpp" />
@@ -79,7 +81,6 @@
 		<Unit filename="GraphicEngine/sound.cpp" />
 		<Unit filename="GraphicEngine/sound.h" />
 		<Unit filename="GraphicEngine/structdata.h" />
-		<Unit filename="GraphicEngine/structdata2.h" />
 		<Unit filename="GraphicEngine/window.cpp" />
 		<Unit filename="GraphicEngine/window.h" />
 		<Unit filename="VideoGame/game.cpp" />
