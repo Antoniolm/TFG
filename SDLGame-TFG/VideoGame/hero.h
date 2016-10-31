@@ -23,6 +23,10 @@
 #include "avatar.h"
 #include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/scriptlmd.h"
+#include "../GraphicEngine/context.h"
+#include <vector>
+
+using namespace std;
 
 class Hero: public Avatar
 {
@@ -37,10 +41,14 @@ class Hero: public Avatar
         //////////////////////////////////////////////////////////////////////////
         virtual ~Hero();
 
+        virtual void visualization(Context & cv);
+
     protected:
 
     private:
+        vector<Matrix4f *> moveMatrix;
         ScriptLMD animation;
 };
 
 #endif // HERO_H
+

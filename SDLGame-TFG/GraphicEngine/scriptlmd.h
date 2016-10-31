@@ -45,7 +45,7 @@ class ScriptLMD : public ScriptAnimation
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void add(const Matrix4fDinamic & aMatrix);
+        void add(Matrix4fDinamic * aMatrix);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -67,7 +67,7 @@ class ScriptLMD : public ScriptAnimation
     protected:
 
     private:
-        vector<Matrix4fDinamic> script;
+        vector<Matrix4fDinamic *> script;
         float currentTime;
 
 };

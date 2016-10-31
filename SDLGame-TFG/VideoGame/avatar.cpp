@@ -34,8 +34,8 @@ Avatar::~Avatar()
 //**********************************************************************//
 
 void Avatar::visualization(Context & cv){
-    cv.visualization_mode=2;
-    root->visualization(cv);
+    //cv.visualization_mode=2;
+    //root->visualization(cv);
 }
 
 //**********************************************************************//

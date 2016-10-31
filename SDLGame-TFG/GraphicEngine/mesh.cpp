@@ -136,7 +136,7 @@ void Mesh::visualization(Context & vis){
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
 
     //Draw our object
-    glDrawElements(GL_LINES,triangles.size()*3,GL_UNSIGNED_SHORT,0);
+    glDrawElements(GL_TRIANGLES,triangles.size()*3,GL_UNSIGNED_SHORT,0);
 	glUseProgram(0);
 }
 
