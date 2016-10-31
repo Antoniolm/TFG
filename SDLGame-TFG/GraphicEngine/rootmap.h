@@ -31,9 +31,11 @@
 #include "matrixstatic.h"
 #include "oscillaterotation.h"
 #include "mesh.h"
+#include "../VideoGame/hero.h"
 
 using namespace std;
 
+class Hero;
 class RootMap : public Object3D
 {
     public:
@@ -72,6 +74,7 @@ class RootMap : public Object3D
         list<Object3D *> bufferStatic;
         list<EntranceRootMap> objectStatic;
         list<Object3D *> objectDinamic;
+        Hero * hero;
 };
 
 #endif // ROOTMAP_H

@@ -17,47 +17,30 @@
 // **
 // *********************************************************************
 
-#ifndef AVATAR_H
-#define AVATAR_H
+#ifndef HERO_H
+#define HERO_H
 
-#include "../GraphicEngine/object3d.h"
-#include "../GraphicEngine/context.h"
-#include "../GraphicEngine/nodescenegraph.h"
+#include "avatar.h"
+#include "../GraphicEngine/mesh.h"
+#include "../GraphicEngine/scriptlmd.h"
 
-class Avatar: public Object3D
+class Hero: public Avatar
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Avatar();
+        Hero();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~Avatar();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will show the object in our interface
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & vis);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will update the state of the object. That change need the
-        *    current time in our application
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time);
+        virtual ~Hero();
 
     protected:
-        NodeSceneGraph * root;
-    private:
 
+    private:
+        ScriptLMD animation;
 };
 
-#endif // AVATAR_H
+#endif // HERO_H

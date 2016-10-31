@@ -22,13 +22,13 @@
 RootMap::RootMap()
 {
     NodeSceneGraph * root3=new NodeSceneGraph();
-    string p("geometries/ant.ply");
-    Mesh * aObject=new Mesh(p);
+    string file("geometries/ant.ply");
+    Mesh * aObject=new Mesh(file);
     aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject->init();
-    Mesh * prueba=new Mesh(*aObject);
-    string p2("geometries/cylinder.ply");
-    Mesh * aObject2=new Mesh(p2);
+
+    file=string("geometries/cylinder.ply");
+    Mesh * aObject2=new Mesh(file);
     aObject2->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject2->init();
 
@@ -73,6 +73,9 @@ RootMap::RootMap()
     bufferStatic.push_back(root3);
     objectDinamic.push_back(root4);
 
+    //Create the hero
+    hero=new Hero();
+
 }
 
 //**********************************************************************//
@@ -101,6 +104,8 @@ void RootMap::visualization(Context & cv){
         (*it2).getObject()->visualization(cv);
     }
 
+    //Draw hero
+    hero->visualization(cv);
 }
 
 //**********************************************************************//
