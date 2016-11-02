@@ -25,7 +25,7 @@
 #include <list>
 #include <vector>
 #include "matrix4f.h"
-#include "matrix4fdinamic.h"
+#include "matrix4fdynamic.h"
 #include "linearmovement.h"
 #include "axisrotation.h"
 #include "matrixstatic.h"

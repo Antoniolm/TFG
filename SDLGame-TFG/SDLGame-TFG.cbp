@@ -50,8 +50,6 @@
 		<Unit filename="GraphicEngine/camera.h" />
 		<Unit filename="GraphicEngine/context.cpp" />
 		<Unit filename="GraphicEngine/context.h" />
-		<Unit filename="GraphicEngine/entrancerootmap.cpp" />
-		<Unit filename="GraphicEngine/entrancerootmap.h" />
 		<Unit filename="GraphicEngine/file_ply_stl.cpp" />
 		<Unit filename="GraphicEngine/file_ply_stl.hpp" />
 		<Unit filename="GraphicEngine/linearmovement.cpp" />
@@ -60,6 +58,8 @@
 		<Unit filename="GraphicEngine/matrix4f.h" />
 		<Unit filename="GraphicEngine/matrix4fdynamic.cpp" />
 		<Unit filename="GraphicEngine/matrix4fdynamic.h" />
+		<Unit filename="GraphicEngine/matrixscript.cpp" />
+		<Unit filename="GraphicEngine/matrixscript.h" />
 		<Unit filename="GraphicEngine/matrixstack.cpp" />
 		<Unit filename="GraphicEngine/matrixstack.h" />
 		<Unit filename="GraphicEngine/matrixstatic.cpp" />

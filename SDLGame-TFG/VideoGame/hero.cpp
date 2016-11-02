@@ -75,8 +75,24 @@ Hero::Hero()
 
     OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,0,50,vec3f(1,0,0));
     OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,0,50,vec3f(1,0,0));
-    animation.add(oscillateKnee);
-    animation.add(oscillateLeg);
+    MatrixStatic * notMove=new MatrixStatic();
+    MatrixScript * KneeScript=new MatrixScript();
+    MatrixScript * LegScript=new MatrixScript();
+    KneeScript->add(1.55,oscillateKnee);
+    KneeScript->add(1.55,notMove);
+    LegScript->add(1.55,oscillateLeg);
+    LegScript->add(1.55,notMove);
+    animation.add(KneeScript);
+    animation.add(LegScript);
+
+    MatrixScript * KneeScriptR=new MatrixScript();
+    MatrixScript * LegScriptR=new MatrixScript();
+    KneeScriptR->add(1.55,notMove);
+    KneeScriptR->add(1.55,oscillateKnee);
+    LegScriptR->add(1.55,notMove);
+    LegScriptR->add(1.55,oscillateLeg);
+    animation.add(KneeScriptR);
+    animation.add(LegScriptR);
 
     //Ankle + foot
     NodeSceneGraph * ankle=new NodeSceneGraph();
@@ -117,9 +133,12 @@ Hero::Hero()
 
     Matrix4f *mat=new Matrix4f();
     mat->translation(-0.8,0.0,0.0);
-    root->add(static_cast<Object3D*>(leg));
-    root->add(mat);
-    root->add(static_cast<Object3D*>(leg));
+    legLeft=new NodeSceneGraph();
+    legRight=new NodeSceneGraph();
+    legLeft->add(static_cast<Object3D*>(leg));
+    legRight->add(mat);
+    legRight->add(static_cast<Object3D*>(leg));
+    currentTime=0;
 }
 
 //**********************************************************************//
@@ -134,11 +153,19 @@ Hero::~Hero()
 void Hero::visualization(Context & cv){
     cv.visualization_mode=2;
     float time=SDL_GetTicks();
-    animation.updateState(time);
-    GLfloat * matrix=animation.readMatrix(0).getMatrix();
+
+    animation.updateState(time-currentTime);
+    GLfloat * matrix;
 
     for(int i=0;i<2;i++)
-    moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
+        moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
 
-    root->visualization(cv);
+    legLeft->visualization(cv);
+
+    for(int i=0;i<2;i++)
+        moveMatrix[i]->setMatrix(animation.readMatrix(i+2).getMatrix());
+
+    legRight->visualization(cv);
+
+    currentTime+=(time-currentTime);
 }

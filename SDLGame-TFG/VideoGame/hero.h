@@ -24,6 +24,7 @@
 #include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/scriptlmd.h"
 #include "../GraphicEngine/context.h"
+#include "../GraphicEngine/matrixscript.h"
 #include <vector>
 
 using namespace std;
@@ -47,8 +48,12 @@ class Hero: public Avatar
 
     private:
         vector<Matrix4f *> moveMatrix;
+        float currentTime;
         ScriptLMD animation;
+        NodeSceneGraph * legLeft;
+        NodeSceneGraph * legRight;
 };
 
 #endif // HERO_H
+
 

@@ -21,7 +21,7 @@
 
 MatrixStatic::MatrixStatic()
 {
-    //ctor
+    currentMatrix.identity();
 }
 
 

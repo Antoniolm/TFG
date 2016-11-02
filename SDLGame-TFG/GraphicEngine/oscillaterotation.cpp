@@ -64,7 +64,6 @@ void OscillateRotation::setParameters(bool incre,float maxG,float minG,float ini
 Matrix4f & OscillateRotation::updateState(float time){
     time=time/1000;
 
-
     float grade;
 
     if(currentGrade>= maxGrade){
@@ -75,14 +74,14 @@ Matrix4f & OscillateRotation::updateState(float time){
     }
 
     if(!increment){
-        currentGrade-=angularVelocity*(time-currentTime);
+        currentGrade-=angularVelocity*(time);
     }
     else{
-        currentGrade+=angularVelocity*(time-currentTime);
+        currentGrade+=angularVelocity*(time);
     }
 
     currentMatrix.rotation(currentGrade,direction.x,direction.y,direction.z);
-    currentTime=time;
+    currentTime+=time;
     return currentMatrix;
 
 

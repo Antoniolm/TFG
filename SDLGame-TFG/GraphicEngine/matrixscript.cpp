@@ -21,7 +21,8 @@
 
 MatrixScript::MatrixScript()
 {
-    //ctor
+    currentMove=0;
+    currentTime=0.0f;
 }
 
 //**********************************************************************//
@@ -31,17 +32,39 @@ MatrixScript::~MatrixScript()
     //dtor
 }
 
-void MatrixScript::add(float time, Matrix4fDynamic & matrix){
-    pair<float,Matrix4fDynamic> newElement;
+//**********************************************************************//
+
+void MatrixScript::add(float time, Matrix4fDynamic * matrix){
+    pair<float,Matrix4fDynamic*> newElement;
     newElement.first=time;
     newElement.second=matrix;
 
     script.push_back(newElement);
-
 }
 
 //**********************************************************************//
 
 Matrix4f & MatrixScript::updateState(float time){
+    float auxTime=time/1000;
+
+    currentTime+=auxTime;
+    //cout<< "CurrentTime ->"<< currentTime<< endl;
+    if(currentTime>script[currentMove].first){
+        currentTime=0;
+        currentMove++;
+        if(currentMove==script.size()){
+            //cout<< "Current matrix ->"<< currentMove<< endl;
+            currentMove=0;
+        }
+    }
+    currentMatrix=(script[currentMove].second)->updateState(time);
     return currentMatrix;
+}
+
+//**********************************************************************//
+
+Matrix4f & MatrixScript::getMatrix(){
+    cout<< "Aqui esta el fucking problem"<< endl;
+    return currentMatrix;
+
 }

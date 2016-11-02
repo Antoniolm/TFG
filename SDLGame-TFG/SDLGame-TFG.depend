@@ -440,10 +440,10 @@
 1477942047 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
-1477941839 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
+1478113616 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
 	"object3d.h"
 	"context.h"
-	"matrix4fdinamic.h"
+	"matrix4fdynamic.h"
 	"matrix4f.h"
 	<vector>
 	<SDL.h>
@@ -849,7 +849,7 @@
 	"matrix4f.h"
 	<vector>
 
-1477388773 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixstatic.cpp
+1478112739 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixstatic.cpp
 	"matrixstatic.h"
 
 1478003729 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixstatic.h
@@ -876,13 +876,13 @@
 1478090480 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 
-1478090394 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1478113655 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
 	<vector>
 	"matrix4f.h"
-	"matrix4fdinamic.h"
+	"matrix4fdynamic.h"
 	"linearmovement.h"
 	"axisrotation.h"
 	"matrixstatic.h"
@@ -918,7 +918,7 @@
 1478003694 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\oscillaterotation.h
 	"matrix4fdynamic.h"
 
-1477602028 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\oscillaterotation.cpp
+1478115593 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\oscillaterotation.cpp
 	"oscillaterotation.h"
 
 1477651430 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\scriptanimation.cpp
@@ -953,14 +953,15 @@
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 
-1477948011 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
+1478119385 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
 	"avatar.h"
 	"../GraphicEngine/mesh.h"
 	"../GraphicEngine/scriptlmd.h"
 	"../GraphicEngine/context.h"
+	"../GraphicEngine/matrixscript.h"
 	<vector>
 
-1478004367 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1478118366 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478003629 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -969,10 +970,10 @@
 1478003668 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.cpp
 	"matrix4fdynamic.h"
 
-1478093870 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixscript.cpp
+1478118455 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixscript.cpp
 	"matrixscript.h"
 
-1478094823 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixscript.h
+1478118374 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixscript.h
 	<vector>
 	"matrix4fdynamic.h"
 

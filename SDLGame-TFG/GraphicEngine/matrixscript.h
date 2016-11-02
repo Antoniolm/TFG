@@ -35,7 +35,7 @@ class MatrixScript : public Matrix4fDynamic
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~MatrixScript();
-        void add(float time, Matrix4fDynamic & matrix);
+        void add(float time, Matrix4fDynamic * matrix);
 
         int getNumElement();
 
@@ -48,12 +48,13 @@ class MatrixScript : public Matrix4fDynamic
         //////////////////////////////////////////////////////////////////////////
         virtual Matrix4f & updateState(float time);
 
-
+        Matrix4f & getMatrix();
     protected:
 
     private:
         float currentTime;
-        vector<pair<float,Matrix4fDynamic> > script;
+        int currentMove;
+        vector<pair<float,Matrix4fDynamic *> > script;
 };
 
 #endif // MATRIXSCRIPT_H
