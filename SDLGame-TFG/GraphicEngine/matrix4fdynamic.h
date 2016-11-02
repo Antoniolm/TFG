@@ -17,17 +17,18 @@
 // **
 // *********************************************************************
 
-#ifndef MATRIX4FDINAMIC_H
-#define MATRIX4FDINAMIC_H
+#ifndef MATRIX4FDYNAMIC_H
+#define MATRIX4FDYNAMIC_H
 
 #include "matrix4f.h"
 
-class Matrix4fDinamic
+class Matrix4fDynamic
 {
     public:
-        Matrix4fDinamic();
-        Matrix4fDinamic(const Matrix4fDinamic & aMatrix);
-        virtual ~Matrix4fDinamic();
+        /** Default constructor */
+        Matrix4fDynamic();
+        Matrix4fDynamic(const Matrix4fDynamic & aMatrix);
+        virtual ~Matrix4fDynamic();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -42,8 +43,8 @@ class Matrix4fDinamic
 
     protected:
         Matrix4f currentMatrix;
-    private:
 
+    private:
 };
 
-#endif // MATRIX4FDINAMIC_H
+#endif // MATRIX4FDYNAMIC_H

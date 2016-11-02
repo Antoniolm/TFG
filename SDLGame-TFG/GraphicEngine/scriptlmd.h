@@ -21,7 +21,7 @@
 #define SCRIPTLMD_H
 
 #include "scriptanimation.h"
-#include "matrix4fdinamic.h"
+#include "matrix4fdynamic.h"
 #include <vector>
 
 using namespace std;
@@ -45,7 +45,7 @@ class ScriptLMD : public ScriptAnimation
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void add(Matrix4fDinamic * aMatrix);
+        void add(Matrix4fDynamic * aMatrix);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -67,7 +67,7 @@ class ScriptLMD : public ScriptAnimation
     protected:
 
     private:
-        vector<Matrix4fDinamic *> script;
+        vector<Matrix4fDynamic *> script;
         float currentTime;
 
 };

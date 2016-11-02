@@ -33,14 +33,14 @@ ScriptLMD::~ScriptLMD()
 
 //**********************************************************************//
 
- void ScriptLMD::add(Matrix4fDinamic * aMatrix){
+ void ScriptLMD::add(Matrix4fDynamic * aMatrix){
     script.push_back(aMatrix);
  }
 
 //**********************************************************************//
 
 void ScriptLMD::updateState(float time){
-    vector<Matrix4fDinamic*>::iterator it;
+    vector<Matrix4fDynamic*>::iterator it;
 
     for(it=script.begin();it!=script.end();it++){
             (*it)->updateState(time);

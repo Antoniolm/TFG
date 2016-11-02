@@ -20,9 +20,9 @@
 #ifndef OSCILLATEROTATION_H
 #define OSCILLATEROTATION_H
 
-#include "matrix4fdinamic.h"
+#include "matrix4fdynamic.h"
 
-class OscillateRotation : public Matrix4fDinamic
+class OscillateRotation : public Matrix4fDynamic
 {
     public:
 

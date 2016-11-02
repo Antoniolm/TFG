@@ -38,19 +38,22 @@ Hero::Hero()
     cylinder->init();
 
     Matrix4f *scaleMatrix=new Matrix4f();
-    scaleMatrix->scale(0.3,0.3,0.7);
+    scaleMatrix->scale(0.3,0.3,0.6);
 
     Matrix4f *scaleSphere=new Matrix4f();
-    scaleSphere->scale(0.2,0.2,0.2);
+    scaleSphere->scale(0.15,0.15,0.15);
 
     Matrix4f *scaleCylinder=new Matrix4f();
     scaleCylinder->scale(0.1,0.1,0.7);
 
     Matrix4f *scaleCylinder2=new Matrix4f();
-    scaleCylinder2->scale(0.1,0.1,0.5);
+    scaleCylinder2->scale(0.1,0.1,0.6);
 
     Matrix4f *transCylinder=new Matrix4f();
-    transCylinder->translation(0.0,-0.8,0.0);
+    transCylinder->translation(0.0,-0.7,0.0);
+
+    Matrix4f *transLeg=new Matrix4f();
+    transLeg->translation(0.0,-0.6,0.0);
 
     Matrix4f *rotateCylinder=new Matrix4f();
     rotateCylinder->rotation(90,1.0,0.0,0.0);
@@ -59,7 +62,7 @@ Hero::Hero()
     transMatrix->translation(0.0,0.0,0.5);
 
     Matrix4f *AnkFootransMatrix=new Matrix4f();
-    AnkFootransMatrix->translation(0.0,-1,0.0);
+    AnkFootransMatrix->translation(0.0,-0.8,0.0);
 
     //Create a new Movement
     Matrix4f * moveKnee=new Matrix4f();
@@ -105,12 +108,17 @@ Hero::Hero()
     NodeSceneGraph * leg=new NodeSceneGraph();
     leg->add(moveLeg);
     leg->add(static_cast<Object3D*>(ankle));
-    leg->add(transCylinder);
+    leg->add(transLeg);
     leg->add(static_cast<Object3D*>(knee_ankle));
     leg->add(rotateCylinder);
     leg->add(scaleCylinder2);
     leg->add(static_cast<Object3D*>(cylinder));
 
+
+    Matrix4f *mat=new Matrix4f();
+    mat->translation(-0.8,0.0,0.0);
+    root->add(static_cast<Object3D*>(leg));
+    root->add(mat);
     root->add(static_cast<Object3D*>(leg));
 }
 

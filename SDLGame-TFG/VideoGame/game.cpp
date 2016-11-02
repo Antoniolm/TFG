@@ -44,9 +44,6 @@ void Game::loop(){
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
 
-    rootMap->initStatic();
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-
     Matrix4f movCamera;
     while (!quit)
     {

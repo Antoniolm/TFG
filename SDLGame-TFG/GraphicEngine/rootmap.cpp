@@ -70,7 +70,7 @@ RootMap::RootMap()
         root3->add(matrix3);
         root3->add(static_cast<Object3D*>(root2));
     }
-    bufferStatic.push_back(root3);
+    objectStatic.push_back(root3);
     objectDinamic.push_back(root4);
 
     //Create the hero
@@ -92,34 +92,16 @@ void RootMap::visualization(Context & cv){
     list<Object3D *>::iterator it;
 
     //Draw the dynamic object
-    cv.visualization_mode=2;
     for(it=objectDinamic.begin();it!=objectDinamic.end();it++)
         (*it)->visualization(cv);
 
     //Draw the static object
-    list<EntranceRootMap>::iterator it2;
-    cv.visualization_mode=1;
-    for(it2=objectStatic.begin();it2!=objectStatic.end();it2++){
-        cv.matrixStatic=(*it2).getMatrix();
-        (*it2).getObject()->visualization(cv);
+    for(it=objectStatic.begin();it!=objectStatic.end();it++){
+        (*it)->visualization(cv);
     }
 
     //Draw hero
     hero->visualization(cv);
-}
-
-//**********************************************************************//
-
-void RootMap::initStatic(){
-    list<Object3D *>::iterator it;
-    Context cv;
-
-    cv.visualization_mode=0;
-    for(it=bufferStatic.begin();it!=bufferStatic.end();it++){
-        (*it)->visualization(cv);
-    }
-
-    objectStatic=cv.posObject;
 }
 
 //**********************************************************************//

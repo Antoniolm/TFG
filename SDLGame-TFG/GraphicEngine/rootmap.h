@@ -66,13 +66,11 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
-        void initStatic();
     protected:
 
     private:
         vector<vector<list<Object3D *> > > object;
-        list<Object3D *> bufferStatic;
-        list<EntranceRootMap> objectStatic;
+        list<Object3D *> objectStatic;
         list<Object3D *> objectDinamic;
         Hero * hero;
 };

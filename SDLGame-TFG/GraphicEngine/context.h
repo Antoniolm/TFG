@@ -26,10 +26,9 @@
 #include "projection.h"
 #include "object3d.h"
 #include <list>
-#include "entrancerootmap.h"
+
 
 class Object3D;
-class EntranceRootMap;
 
 class Context
 {
@@ -46,11 +45,11 @@ class Context
         virtual ~Context();
 
         Matrix4f * matrixStatic;
-        unsigned int visualization_mode; //0=initial 1=Static 2=Dynamic
+        unsigned int visualization_mode;
         unsigned camera_mode;
         MatrixStack matrixStack;
         Camera camera;
-        list<EntranceRootMap> posObject;
+        list<Object3D *> posObject;
 
     protected:
 

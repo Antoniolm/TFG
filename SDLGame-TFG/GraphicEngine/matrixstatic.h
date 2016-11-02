@@ -20,9 +20,9 @@
 #ifndef MATRIXSTATIC_H
 #define MATRIXSTATIC_H
 
-#include "matrix4fdinamic.h"
+#include "matrix4fdynamic.h"
 
-class MatrixStatic : public Matrix4fDinamic
+class MatrixStatic : public Matrix4fDynamic
 {
     public:
         //////////////////////////////////////////////////////////////////////////

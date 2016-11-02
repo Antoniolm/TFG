@@ -20,10 +20,10 @@
 #ifndef AXISROTATION_H
 #define AXISROTATION_H
 
-#include "matrix4fdinamic.h"
+#include "matrix4fdynamic.h"
 #include "structdata.h"
 
-class AxisRotation : public Matrix4fDinamic
+class AxisRotation : public Matrix4fDynamic
 {
     public:
 

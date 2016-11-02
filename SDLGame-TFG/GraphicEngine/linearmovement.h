@@ -21,10 +21,10 @@
 #ifndef LINEARMOVEMENT_H
 #define LINEARMOVEMENT_H
 
-#include "matrix4fdinamic.h"
+#include "matrix4fdynamic.h"
 #include "structdata.h"
 
-class LinearMovement : public Matrix4fDinamic {
+class LinearMovement : public Matrix4fDynamic {
 
     public:
 
