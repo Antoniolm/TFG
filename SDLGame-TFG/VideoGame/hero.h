@@ -44,14 +44,15 @@ class Hero: public Avatar
 
         virtual void visualization(Context & cv);
 
+        void moveBody(Matrix4f * moveMatrix);
+
     protected:
 
     private:
         vector<Matrix4f *> moveMatrix;
         float currentTime;
         ScriptLMD animation;
-        NodeSceneGraph * legLeft;
-        NodeSceneGraph * legRight;
+        Matrix4f * moveHero;
 };
 
 #endif // HERO_H

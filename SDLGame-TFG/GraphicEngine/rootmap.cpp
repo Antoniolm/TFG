@@ -72,10 +72,6 @@ RootMap::RootMap()
     }
     objectStatic.push_back(root3);
     objectDinamic.push_back(root4);
-
-    //Create the hero
-    hero=new Hero();
-
 }
 
 //**********************************************************************//
@@ -83,6 +79,12 @@ RootMap::RootMap()
 RootMap::~RootMap()
 {
     //dtor
+}
+
+//**********************************************************************//
+
+void RootMap::setHero(Hero * theHero){
+    hero=theHero;
 }
 
 //**********************************************************************//

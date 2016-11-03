@@ -66,6 +66,7 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
+        void setHero(Hero * theHero);
     protected:
 
     private:

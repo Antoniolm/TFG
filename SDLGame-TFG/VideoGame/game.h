@@ -31,6 +31,7 @@
 #include "../GraphicEngine/rootmap.h"
 #include "../GraphicEngine/Camera.h"
 #include "../GraphicEngine/structdata.h"
+#include "hero.h"
 
 class Game
 {
@@ -60,6 +61,7 @@ class Game
     private:
         Window *window;
         RootMap * rootMap;
+        Hero * hero;
 };
 
 #endif // GAME_H

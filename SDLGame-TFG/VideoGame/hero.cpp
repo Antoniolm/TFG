@@ -65,34 +65,53 @@ Hero::Hero()
     AnkFootransMatrix->translation(0.0,-0.8,0.0);
 
     //Create a new Movement
-    Matrix4f * moveKnee=new Matrix4f();
-    moveKnee->identity();
-    moveMatrix.push_back(moveKnee);
+    Matrix4f * moveKneeRight=new Matrix4f();
+    moveKneeRight->identity();
+    moveMatrix.push_back(moveKneeRight);
 
-    Matrix4f * moveLeg=new Matrix4f();
-    moveLeg->identity();
-    moveMatrix.push_back(moveLeg);
+    Matrix4f * moveKneeLeft=new Matrix4f();
+    moveKneeLeft->identity();
+    moveMatrix.push_back(moveKneeLeft);
+
+    Matrix4f * moveLegRight=new Matrix4f();
+    moveLegRight->identity();
+    moveMatrix.push_back(moveLegRight);
+
+    Matrix4f * moveLegLeft=new Matrix4f();
+    moveLegLeft->identity();
+    moveMatrix.push_back(moveLegLeft);
 
     OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,0,50,vec3f(1,0,0));
     OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,0,50,vec3f(1,0,0));
     MatrixStatic * notMove=new MatrixStatic();
-    MatrixScript * KneeScript=new MatrixScript();
-    MatrixScript * LegScript=new MatrixScript();
-    KneeScript->add(1.55,oscillateKnee);
-    KneeScript->add(1.55,notMove);
-    LegScript->add(1.55,oscillateLeg);
-    LegScript->add(1.55,notMove);
-    animation.add(KneeScript);
-    animation.add(LegScript);
 
-    MatrixScript * KneeScriptR=new MatrixScript();
-    MatrixScript * LegScriptR=new MatrixScript();
-    KneeScriptR->add(1.55,notMove);
-    KneeScriptR->add(1.55,oscillateKnee);
-    LegScriptR->add(1.55,notMove);
-    LegScriptR->add(1.55,oscillateLeg);
-    animation.add(KneeScriptR);
-    animation.add(LegScriptR);
+    //Movement to the first leg
+    MatrixScript * KneeScriptLeft=new MatrixScript();
+    MatrixScript * LegScriptLeft=new MatrixScript();
+    KneeScriptLeft->add(1.55,oscillateKnee);
+    KneeScriptLeft->add(1.55,notMove);
+    LegScriptLeft->add(1.55,oscillateLeg);
+    LegScriptLeft->add(1.55,notMove);
+
+
+    //Movement to the second leg
+    MatrixScript * KneeScriptRight=new MatrixScript();
+    MatrixScript * LegScriptRight=new MatrixScript();
+    KneeScriptRight->add(1.55,notMove);
+    KneeScriptRight->add(1.55,oscillateKnee);
+    LegScriptRight->add(1.55,notMove);
+    LegScriptRight->add(1.55,oscillateLeg);
+
+    //Add the script to our animation
+    animation.add(KneeScriptRight);
+    animation.add(KneeScriptLeft);
+    animation.add(LegScriptRight);
+    animation.add(LegScriptLeft);
+
+    //Movement for our hero
+    moveHero=new Matrix4f();
+    moveHero->identity();
+    moveHero->translation(0.5,0.1,-1);
 
     //Ankle + foot
     NodeSceneGraph * ankle=new NodeSceneGraph();
@@ -104,15 +123,14 @@ Hero::Hero()
     foot->add(scaleMatrix);
     foot->add(static_cast<Object3D*>(cube));
     ankle_foot->add(AnkFootransMatrix);
-    //ankle_foot->add(moveAnkle);
     ankle_foot->add(static_cast<Object3D*>(ankle));
     ankle_foot->add(static_cast<Object3D*>(foot));
 
     //knee + ankle
     NodeSceneGraph * knee_ankle=new NodeSceneGraph();
 
-    knee_ankle->add(transCylinder);
-    knee_ankle->add(moveKnee);
+    //knee_ankle->add(transCylinder);
+    //knee_ankle->add(moveKnee);
     knee_ankle->add(static_cast<Object3D*>(ankle));
     knee_ankle->add(transCylinder);
     knee_ankle->add(static_cast<Object3D*>(ankle_foot));
@@ -121,23 +139,43 @@ Hero::Hero()
     knee_ankle->add(static_cast<Object3D*>(cylinder));
 
     //Leg
-    NodeSceneGraph * leg=new NodeSceneGraph();
-    leg->add(moveLeg);
-    leg->add(static_cast<Object3D*>(ankle));
-    leg->add(transLeg);
-    leg->add(static_cast<Object3D*>(knee_ankle));
-    leg->add(rotateCylinder);
-    leg->add(scaleCylinder2);
-    leg->add(static_cast<Object3D*>(cylinder));
+    NodeSceneGraph * knee_ankleRight=new NodeSceneGraph();
+    knee_ankleRight->add(transCylinder);
+    knee_ankleRight->add(moveKneeRight);
+    knee_ankleRight->add(static_cast<Object3D*>(knee_ankle));
+
+    NodeSceneGraph * knee_ankleLeft=new NodeSceneGraph();
+    knee_ankleLeft->add(transCylinder);
+    knee_ankleLeft->add(moveKneeLeft);
+    knee_ankleLeft->add(static_cast<Object3D*>(knee_ankle));
+
+    //Leg Left
+    NodeSceneGraph * legLeft=new NodeSceneGraph();
+    legLeft->add(moveLegLeft);
+    legLeft->add(static_cast<Object3D*>(ankle));
+    legLeft->add(transLeg);
+    legLeft->add(static_cast<Object3D*>(knee_ankleLeft));
+    legLeft->add(rotateCylinder);
+    legLeft->add(scaleCylinder2);
+    legLeft->add(static_cast<Object3D*>(cylinder));
+
+    //Leg Right
+    NodeSceneGraph * legRight=new NodeSceneGraph();
+    legRight->add(moveLegRight);
+    legRight->add(static_cast<Object3D*>(ankle));
+    legRight->add(transLeg);
+    legRight->add(static_cast<Object3D*>(knee_ankleRight));
+    legRight->add(rotateCylinder);
+    legRight->add(scaleCylinder2);
+    legRight->add(static_cast<Object3D*>(cylinder));
 
 
     Matrix4f *mat=new Matrix4f();
     mat->translation(-0.8,0.0,0.0);
-    legLeft=new NodeSceneGraph();
-    legRight=new NodeSceneGraph();
-    legLeft->add(static_cast<Object3D*>(leg));
-    legRight->add(mat);
-    legRight->add(static_cast<Object3D*>(leg));
+    root->add(moveHero);
+    root->add(static_cast<Object3D*>(legLeft));
+    root->add(mat);
+    root->add(static_cast<Object3D*>(legRight));
     currentTime=0;
 }
 
@@ -157,15 +195,16 @@ void Hero::visualization(Context & cv){
     animation.updateState(time-currentTime);
     GLfloat * matrix;
 
-    for(int i=0;i<2;i++)
+    for(int i=0;i<4;i++)
         moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
 
-    legLeft->visualization(cv);
-
-    for(int i=0;i<2;i++)
-        moveMatrix[i]->setMatrix(animation.readMatrix(i+2).getMatrix());
-
-    legRight->visualization(cv);
+    root->visualization(cv);
 
     currentTime+=(time-currentTime);
+}
+
+//**********************************************************************//
+
+void Hero::moveBody(Matrix4f * moveMatrix){
+    moveHero->product(moveMatrix->getMatrix());
 }

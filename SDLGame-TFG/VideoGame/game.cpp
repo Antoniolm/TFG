@@ -44,7 +44,11 @@ void Game::loop(){
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
 
+    hero=new Hero();
+    rootMap->setHero(hero);
     Matrix4f movCamera;
+    Matrix4f * moveHero=new Matrix4f();
+    moveHero->identity();
     while (!quit)
     {
         while (SDL_PollEvent(&event)){
@@ -58,16 +62,24 @@ void Game::loop(){
                 switch (event.key.keysym.sym){
 
                     case SDLK_LEFT:
-                        movCamera.translation(-0.1,0.0,0.0);
+                        //movCamera.translation(-0.1,0.0,0.0);
+                        movCamera.identity();
+                        moveHero->translation(-0.1,0.0,0.0);
                         break;
                     case SDLK_RIGHT:
-                        movCamera.translation(0.1,0.0,0.0);
+                        //movCamera.translation(0.1,0.0,0.0);
+                        movCamera.identity();
+                        moveHero->translation(0.1,0.0,0.0);
                         break;
                     case SDLK_UP:
-                        movCamera.translation(0.0,0.1,0.0);
+                        //movCamera.translation(0.0,0.1,0.0);
+                        movCamera.identity();
+                        moveHero->translation(0.0,0.0,0.1);
                         break;
                     case SDLK_DOWN:
-                        movCamera.translation(0.0,-0.1,0.0);
+                        //movCamera.translation(0.0,-0.1,0.0);
+                        movCamera.identity();
+                        moveHero->translation(0.0,0.0,0.1);
                         break;
                     case SDLK_k:
                         movCamera.scale(1.1,1.1,1.1);
@@ -88,7 +100,7 @@ void Game::loop(){
                         movCamera.rotation(-5,0.0,1.0,0.0);
                         break;
                 }
-
+                hero->moveBody(moveHero);
                 aContext.camera.moveCamera(movCamera);
                 vec4f pos;
                 pos=aContext.camera.getCamera().product(pos);
