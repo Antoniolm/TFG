@@ -64,6 +64,10 @@ Hero::Hero()
     Matrix4f *AnkFootransMatrix=new Matrix4f();
     AnkFootransMatrix->translation(0.0,-0.8,0.0);
 
+    //////////////////////////////////////////////////////
+    /////                  LEGS                      /////
+    //////////////////////////////////////////////////////
+
     //Create a new Movement
     Matrix4f * moveKneeRight=new Matrix4f();
     moveKneeRight->identity();
@@ -169,13 +173,135 @@ Hero::Hero()
     legRight->add(scaleCylinder2);
     legRight->add(static_cast<Object3D*>(cylinder));
 
+    //////////////////////////////////////////////////////
+    /////                  Arms                      /////
+    //////////////////////////////////////////////////////
+
+
+    //Create a new Movement
+    /*Matrix4f * moveKneeRight=new Matrix4f();
+    moveKneeRight->identity();
+    moveMatrix.push_back(moveKneeRight);
+
+    Matrix4f * moveKneeLeft=new Matrix4f();
+    moveKneeLeft->identity();
+    moveMatrix.push_back(moveKneeLeft);
+
+    Matrix4f * moveLegRight=new Matrix4f();
+    moveLegRight->identity();
+    moveMatrix.push_back(moveLegRight);
+
+    Matrix4f * moveLegLeft=new Matrix4f();
+    moveLegLeft->identity();
+    moveMatrix.push_back(moveLegLeft);
+
+    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,0,50,vec3f(1,0,0));
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,0,50,vec3f(1,0,0));
+    MatrixStatic * notMove=new MatrixStatic();
+
+    //Movement to the first leg
+    MatrixScript * KneeScriptLeft=new MatrixScript();
+    MatrixScript * LegScriptLeft=new MatrixScript();
+    KneeScriptLeft->add(1.55,oscillateKnee);
+    KneeScriptLeft->add(1.55,notMove);
+    LegScriptLeft->add(1.55,oscillateLeg);
+    LegScriptLeft->add(1.55,notMove);
+
+
+    //Movement to the second leg
+    MatrixScript * KneeScriptRight=new MatrixScript();
+    MatrixScript * LegScriptRight=new MatrixScript();
+    KneeScriptRight->add(1.55,notMove);
+    KneeScriptRight->add(1.55,oscillateKnee);
+    LegScriptRight->add(1.55,notMove);
+    LegScriptRight->add(1.55,oscillateLeg);
+
+    //Add the script to our animation
+    animation.add(KneeScriptRight);
+    animation.add(KneeScriptLeft);
+    animation.add(LegScriptRight);
+    animation.add(LegScriptLeft);
+*/
+
+    Matrix4f * scaleHand=new Matrix4f();
+    scaleHand->scale(0.1,0.6,0.4);
+
+    Matrix4f * transHand=new Matrix4f();
+    transHand->translation(0.0,-0.4,0.0);
+
+    Matrix4f * wristHandTransMatrix=new Matrix4f();
+    wristHandTransMatrix->translation(0.0,-0.6,0.0);
+
+    //wrist + hand
+    NodeSceneGraph * wrist=new NodeSceneGraph();
+    NodeSceneGraph * hand=new NodeSceneGraph();
+    NodeSceneGraph * wrist_hand=new NodeSceneGraph();
+    wrist->add(scaleSphere);
+    wrist->add(static_cast<Object3D*>(sphere));
+    hand->add(transHand);
+    hand->add(scaleHand);
+    hand->add(static_cast<Object3D*>(cube));
+    wrist_hand->add(wristHandTransMatrix);
+    wrist_hand->add(static_cast<Object3D*>(wrist));
+    wrist_hand->add(static_cast<Object3D*>(hand));
+
+    //elbow + wrist
+    NodeSceneGraph * elbow_wrist=new NodeSceneGraph();
+
+    Matrix4f * scaleElbowCylin=new Matrix4f();
+    scaleElbowCylin->scale(0.1,0.1,0.5);
+
+    elbow_wrist->add(static_cast<Object3D*>(wrist));
+    elbow_wrist->add(transCylinder);
+    elbow_wrist->add(static_cast<Object3D*>(wrist_hand));
+    elbow_wrist->add(rotateCylinder);
+    elbow_wrist->add(scaleElbowCylin);
+    elbow_wrist->add(static_cast<Object3D*>(cylinder));
+
+    //Leg
+    /*NodeSceneGraph * elbow_wristRight=new NodeSceneGraph();
+    elbow_wristRight->add(transCylinder);
+    elbow_wristRight->add(moveKneeRight);
+    elbow_wristRight->add(static_cast<Object3D*>(elbow_wrist));
+
+    NodeSceneGraph * knee_ankleLeft=new NodeSceneGraph();
+    knee_ankleLeft->add(transCylinder);
+    knee_ankleLeft->add(moveKneeLeft);
+    knee_ankleLeft->add(static_cast<Object3D*>(knee_ankle));
+
+    //Leg Left
+    NodeSceneGraph * legLeft=new NodeSceneGraph();
+    legLeft->add(moveLegLeft);
+    legLeft->add(static_cast<Object3D*>(ankle));
+    legLeft->add(transLeg);
+    legLeft->add(static_cast<Object3D*>(knee_ankleLeft));
+    legLeft->add(rotateCylinder);
+    legLeft->add(scaleCylinder2);
+    legLeft->add(static_cast<Object3D*>(cylinder));
+
+    //Leg Right
+    NodeSceneGraph * legRight=new NodeSceneGraph();
+    legRight->add(moveLegRight);
+    legRight->add(static_cast<Object3D*>(ankle));
+    legRight->add(transLeg);
+    legRight->add(static_cast<Object3D*>(knee_ankleRight));
+    legRight->add(rotateCylinder);
+    legRight->add(scaleCylinder2);
+    legRight->add(static_cast<Object3D*>(cylinder));*/
+
 
     Matrix4f *mat=new Matrix4f();
     mat->translation(-0.8,0.0,0.0);
     root->add(moveHero);
-    root->add(static_cast<Object3D*>(legLeft));
-    root->add(mat);
-    root->add(static_cast<Object3D*>(legRight));
+
+    file=string("geometries/cylinder.ply");
+    Mesh * aObjectTest=new Mesh(file,'0');
+    aObjectTest->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    aObjectTest->init();
+
+    root->add(static_cast<Object3D*>(aObjectTest));
+    //root->add(mat);
+    //root->add(static_cast<Object3D*>(legRight));
     currentTime=0;
 }
 

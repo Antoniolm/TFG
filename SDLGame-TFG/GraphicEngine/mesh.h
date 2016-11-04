@@ -36,6 +36,7 @@
 #include "rootmap.h"
 #include "shader.h"
 #include <file_ply_stl.hpp>
+#include <file_obj.h>
 
 using namespace std;
 

@@ -35,9 +35,20 @@ Mesh::Mesh(const Mesh & aMesh){
 }
 
 //**********************************************************************//
+
 Mesh::Mesh(const string & aTextur,unsigned char aType){
     texture=aTextur;
     type=aType;
+    std::vector<float> vertex_obj; // vertex
+    std::vector<int>   faces_obj ;    // face
+    cout<< "Mission complete"<< endl;
+    obj::readMesh("geometries/foot.obj",vertex_obj,faces_obj);
+    for(int i=0;i<vertex_obj.size();i=i+3){
+        vertex.push_back(*(new vec3f(vertex_obj[i],vertex_obj[i+1],vertex_obj[i+2])));
+    }
+    for(int i=0;i<faces_obj.size();i=i+3){
+        triangles.push_back(*(new vec3i(faces_obj[i],faces_obj[i+1],faces_obj[i+2])));
+	}
 }
 
 //**********************************************************************//

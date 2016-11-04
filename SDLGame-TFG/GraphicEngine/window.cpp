@@ -18,6 +18,7 @@
 // *********************************************************************
 
 #include "window.h"
+#include "file_obj.h"
 
 Window::Window(){
     title="Test";
@@ -47,7 +48,6 @@ Window::Window(const string & aTitle,int aHeight,int aWidth){
 
 bool Window::createWindow(){
     bool salida=true;
-
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		printf("SDL_Error: %s\n", SDL_GetError());
 		salida=false;
