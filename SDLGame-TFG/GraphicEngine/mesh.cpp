@@ -46,7 +46,7 @@ Mesh::Mesh(const string & aTextur,unsigned char aType){
     std::vector<int>   faces_obj ;    // face
     std::vector<int>   texturef_obj ;    // face
     cout<< "Mission complete"<< endl;
-    obj::readEverything("geometries/foot.obj",vertex_obj,faces_obj,normal_obj,normalf_obj,textureCoord_obj,texturef_obj);
+    obj::readMesh("geometries/foot.obj",vertex_obj,faces_obj);//,normal_obj,normalf_obj,textureCoord_obj,texturef_obj);
     for(int i=0;i<vertex_obj.size();i=i+3){
         vertex.push_back(*(new vec3f(vertex_obj[i],vertex_obj[i+1],vertex_obj[i+2])));
     }

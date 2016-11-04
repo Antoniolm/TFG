@@ -45,22 +45,12 @@ void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<int>
         }
         else if (line.substr(0,2) == "f ")
         {
-            line=line.substr(2);
-            value=atoi(&line[0]);
-            value--;
-            cout<< "Valor-> "<< value<< endl;
-            triangles.push_back(value);
-            while(!line.empty()){
-                while(!line.empty() && line.substr(0,1)!=" "){
-                    line=line.substr(1);
-                }
-                if(!line.empty()){
-                    line=line.substr(1);
-                    value=atoi(&line[0]);
-                    value--;
-                    cout<< "Valor-> "<< value<< endl;
-                    triangles.push_back(value);
-                }
+            istringstream s(line.substr(2));
+            string aux;
+            for(int i=0;i<3;i++){
+                s >> value;
+                triangles.push_back(--value);
+                s >> aux;
             }
         }
     }
@@ -96,17 +86,17 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
                 //Extract the triangle face
                 s >> value;
                 cout<< "Value->"<< value-1<< endl;
-                triangles.push_back(value--);
+                triangles.push_back(--value);
 
                 //Extract the texture face
                 s >> charValue; //Extract the char between element
                 s >> value;
-                textureFaces.push_back(value--);
+                textureFaces.push_back(--value);
 
                 //Extract the normals face
                 s >> charValue; //Extract the char between element
                 s >> value;
-                normalFaces.push_back(value--);
+                normalFaces.push_back(--value);
             }
         }
         else if (line.substr(0,3) == "vn "){
