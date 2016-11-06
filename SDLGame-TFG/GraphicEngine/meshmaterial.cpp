@@ -27,11 +27,18 @@ MeshMaterial::MeshMaterial()
 //**********************************************************************//
 
 MeshMaterial::MeshMaterial(const string & aFile,vec3f aColor){
+    color=aColor;
     std::vector<int> normalf_obj; // vertex
     std::vector<float> textureCoord_obj; // vertex
     std::vector<int>   texturef_obj ;    // face
     cout<< "Mission complete"<< endl;
-    obj::readEverything("geometries/foot.obj",vertex,triangles,normals,normalf_obj,textureCoord_obj,texturef_obj);
+    obj::readEverything("geometries/untitled3.obj",vertex,triangles,normals,normalf_obj,textureCoord_obj,texturef_obj);
+    for(int i=0;i<vertex.size();i=i+3){
+        vec3f vert=vec3f(vertex[i],vertex[i+1],vertex[i+2]);
+        vec3f norm=vec3f(normals[i],normals[i+1],normals[i+2]);
+        Vertex aux(vert,norm);
+        vertexAndNormal.push_back(aux);
+    }
 }
 
 //**********************************************************************//
@@ -40,7 +47,7 @@ void MeshMaterial::init(){
 
     glGenBuffers(1,&vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER,sizeof(float)*vertex.size(),&vertex[0],GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(float)*vertexAndNormal.size()*6,&vertexAndNormal[0],GL_STATIC_DRAW);
 
     glGenBuffers(1,&trianglebuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
@@ -83,20 +90,32 @@ void MeshMaterial::visualization(Context & vis){
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,6*sizeof(float), (GLvoid*)0);
 
     // Vertex Normals
-    //sglEnableVertexAttribArray(1);
-    //glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float),(GLvoid*)offsetof(float, float));
+    glEnableVertexAttribArray(1);
+    //glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float)*3,(GLvoid*)sizeof(normals.size()));
+    //glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float)*3,&normals[0]);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
 
     //Draw our object
     glDrawElements(GL_TRIANGLES,triangles.size(),GL_UNSIGNED_SHORT,0);
+
+    glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
 	glUseProgram(0);
 }
 
 //**********************************************************************//
 
 void MeshMaterial::updateState(float time){
+}
+
+//**********************************************************************//
+
+bool MeshMaterial::LoadShader(const string & vertexShaderFile,const string & fragmentShaderFile){
+    shaders.setFiles(vertexShaderFile,fragmentShaderFile);
+    bool result=shaders.createProgram();
+    return result;
 }

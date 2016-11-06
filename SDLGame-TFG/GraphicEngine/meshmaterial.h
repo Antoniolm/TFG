@@ -20,12 +20,37 @@
 #ifndef MESHMATERIAL_H
 #define MESHMATERIAL_H
 
-#include "mesh.h"
-#include "structdata.h"
 #include <vector>
-#include "file_obj.h"
+#include <string>
+#include "context.h"
+#include "object3d.h"
+#include <glew.h>
+#include <SDL.h>
+#include <SDL_opengl.h>
+#include <gl/glu.h>
+#include <gl/gl.h>
+#include <fstream>
+#include "matrix4f.h"
+#include <iostream>
+#include "structdata.h"
+#include "rootmap.h"
+#include "shader.h"
+#include <file_ply_stl.hpp>
+#include <file_obj.h>
+#include <../lib/glm/glm.hpp>
 
-class MeshMaterial :public Mesh
+struct Vertex {
+    vec3f position;
+    vec3f normal;
+    Vertex(vec3f pos,vec3f norm){
+        position=pos;
+        normal=norm;
+    }
+};
+
+using namespace std;
+
+class MeshMaterial : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
@@ -68,13 +93,31 @@ class MeshMaterial :public Mesh
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will load the files(vexterShader,FragmentShader) and it
+        *    links the shaders to a program too.
+        *    \return bool true -> Shaders load successfully
+        *                 false-> Shaders don't load successfully
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool LoadShader(const string & vertexShader,const string & FragmentShader);
+
     protected:
 
     private:
+        vector<GLushort> triangles;
+        vector<float> vertex;
+        vector<Vertex> vertexAndNormal;
         vector<float> normals;
         vector<int> normalFaces;
         vector<float> textureCord;
         vector<int> textureFaces;
+        vec3f color;
+        Matrix4f * transformation;
+        GLuint vertexbuffer;
+        Shader shaders;
+        GLuint trianglebuffer;
 };
 
 #endif // MESHMATERIAL_H

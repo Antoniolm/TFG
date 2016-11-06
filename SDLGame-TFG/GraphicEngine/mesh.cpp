@@ -95,6 +95,8 @@ void Mesh::visualization(Context & vis){
     GLint viewLocation= glGetUniformLocation(shaders.getProgram(),"view");
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
 
+    //glm::mat4 ProjectionMatrix= glm::mat4(1.0f);
+    //ProjectionMatrix*= glm::perspective(45.0f, 1024.0f / 768.0f, 0.1f, 200.0f);
     GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
