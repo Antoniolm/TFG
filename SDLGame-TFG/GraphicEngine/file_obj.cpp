@@ -40,7 +40,6 @@ void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<GLus
             s >> x;
             s >> y;
             s >> z;
-            cout<< "x->"<< x<< " y->"<< y<< " z->"<< z<< endl;
             vertex.push_back(x);vertex.push_back(y);vertex.push_back(z);
         }
         else if (line.substr(0,2) == "f ")
@@ -77,7 +76,6 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
             s >> x;
             s >> y;
             s >> z;
-            cout<< "x->"<< x<< " y->"<< y<< " z->"<< z<< endl;
             vertex.push_back(x);vertex.push_back(y);vertex.push_back(z);
         }
         else if (line.substr(0,2) == "f "){
@@ -86,7 +84,6 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
             for(int i=0;i<3;i++){
                 //Extract the triangle face
                 s >> value;
-                cout<< "Value->"<< value-1<< endl;
                 triangles.push_back((GLushort)--value);
 
                 //Extract the texture face
@@ -106,7 +103,6 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
             s >> x;
             s >> y;
             s >> z;
-            cout<< "x->"<< x<< " y->"<< y<< " z->"<< z<< endl;
             normalsVertex.push_back(x);normalsVertex.push_back(y);normalsVertex.push_back(z);
 
         }

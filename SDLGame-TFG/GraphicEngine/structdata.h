@@ -128,4 +128,25 @@ struct vec3i{
     }
 };
 
+/////////////////////////////////////////////////////////////////////////
+/**
+*    Struct --> This struct will let us make a vector with 2 float value
+*/
+//////////////////////////////////////////////////////////////////////////
+struct vec2f{
+    float x;
+    float y;
+    vec2f(){x=0;y=0;}
+    vec2f(float dx,float dy){
+        x=dx;
+        y=dy;
+    }
+    vec2f operator=(vec2f aVec){
+        x=aVec.x;
+        y=aVec.y;
+
+        return *this;
+    }
+};
+
 #endif

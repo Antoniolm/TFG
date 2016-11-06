@@ -37,14 +37,16 @@
 #include "shader.h"
 #include <file_ply_stl.hpp>
 #include <file_obj.h>
-#include <../lib/glm/glm.hpp>
+//#include <../lib/glm/glm.hpp>
 
 struct Vertex {
     vec3f position;
     vec3f normal;
-    Vertex(vec3f pos,vec3f norm){
+    vec2f textCoord;
+    Vertex(vec3f pos,vec3f norm,vec2f tCoord){
         position=pos;
         normal=norm;
+        textCoord=tCoord;
     }
 };
 

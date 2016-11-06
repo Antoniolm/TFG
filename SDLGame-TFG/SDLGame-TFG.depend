@@ -450,7 +450,7 @@
 	<vector>
 	<SDL.h>
 
-1478449847 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
+1478455915 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
 	<vector>
 	<string>
 	"context.h"
@@ -468,9 +468,6 @@
 	"shader.h"
 	<file_ply_stl.hpp>
 	<file_obj.h>
-	<../lib/glm/glm.hpp>
-	<../lib/glm/gtc/matrix_transform.hpp>
-	<../lib/glm/gtc/type_ptr.hpp>
 
 1478452978 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
@@ -861,7 +858,7 @@
 1478003729 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixstatic.h
 	"matrix4fdynamic.h"
 
-1477916342 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\structdata.h
+1478456549 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\structdata.h
 	<math.h>
 
 1417088498 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.cpp
@@ -993,13 +990,13 @@
 	"glew.h"
 	<cstdlib>
 
-1478443486 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
+1478456077 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
 	"file_obj.h"
 
-1478455707 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
+1478456316 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
 	"meshmaterial.h"
 
-1478455327 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
+1478456708 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
 	<vector>
 	<string>
 	"context.h"
@@ -1017,7 +1014,6 @@
 	"shader.h"
 	<file_ply_stl.hpp>
 	<file_obj.h>
-	<../lib/glm/glm.hpp>
 
 1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\glm.hpp
 	"detail/_fixes.hpp"
