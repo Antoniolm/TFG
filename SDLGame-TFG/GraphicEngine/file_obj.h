@@ -30,9 +30,9 @@
 
 namespace obj{
 
-void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<int> & triangles);
+void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<GLushort> & triangles);
 
-void readEverything(const char * fileName,std::vector<float> & vertex,std::vector<int> & triangles,std::vector<float> & normals,std::vector<float> & normalFaces,std::vector<float> & textureCord,std::vector<int> & textureFaces);
+void readEverything(const char * fileName,std::vector<float> & vertex,std::vector<GLushort> & triangles,std::vector<float> & normals,std::vector<int> & normalFaces,std::vector<float> & textureCord,std::vector<int> & textureFaces);
 
 };
 

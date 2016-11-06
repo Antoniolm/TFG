@@ -22,7 +22,7 @@
 namespace obj{
 using namespace std;
 
-void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<int> & triangles){
+void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<GLushort> & triangles){
     int value;
     ifstream in(fileName, ios::in);
     if (!in)
@@ -49,7 +49,7 @@ void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<int>
             string aux;
             for(int i=0;i<3;i++){
                 s >> value;
-                triangles.push_back(--value);
+                triangles.push_back((GLushort)--value);
                 s >> aux;
             }
         }
@@ -57,9 +57,10 @@ void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<int>
 
 }
 
-void readEverything(const char * fileName,std::vector<float> & vertex,std::vector<int> & triangles,std::vector<float> & normals,std::vector<float> & normalFaces,std::vector<float> & textureCord,std::vector<int> & textureFaces){
+void readEverything(const char * fileName,std::vector<float> & vertex,std::vector<GLushort> & triangles,std::vector<float> & normals,std::vector<int> & normalFaces,std::vector<float> & textureCord,std::vector<int> & textureFaces){
     int value;
     char charValue;
+    std::vector<float> normalsVertex;
     ifstream in(fileName, ios::in);
     if (!in)
     {
@@ -86,7 +87,7 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
                 //Extract the triangle face
                 s >> value;
                 cout<< "Value->"<< value-1<< endl;
-                triangles.push_back(--value);
+                triangles.push_back((GLushort)--value);
 
                 //Extract the texture face
                 s >> charValue; //Extract the char between element
@@ -106,7 +107,7 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
             s >> y;
             s >> z;
             cout<< "x->"<< x<< " y->"<< y<< " z->"<< z<< endl;
-            normals.push_back(x);normals.push_back(y);normals.push_back(z);
+            normalsVertex.push_back(x);normalsVertex.push_back(y);normalsVertex.push_back(z);
 
         }
         else if (line.substr(0,3) == "vt "){
@@ -119,6 +120,13 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
         }
     }
 
+    //Calculate normals
+    for(int i=0;i<normalFaces.size();i++){
+        normals.push_back(normalsVertex[normalFaces[i]*3]);
+        normals.push_back(normalsVertex[(normalFaces[i]*3)+1]);
+        normals.push_back(normalsVertex[(normalFaces[i]*3)+2]);
+        cout<< normalsVertex[normalFaces[i]*3]<< " "<< normalsVertex[(normalFaces[i]*3)+1]<< " "<<normalsVertex[(normalFaces[i]*3)+2]<< endl;
+    }
 }
 
 

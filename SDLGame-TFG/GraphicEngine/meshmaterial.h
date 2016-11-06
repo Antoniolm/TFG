@@ -17,56 +17,31 @@
 // **
 // *********************************************************************
 
-#ifndef MESH_H
-#define MESH_H
+#ifndef MESHMATERIAL_H
+#define MESHMATERIAL_H
 
-#include <vector>
-#include <string>
-#include "context.h"
-#include "object3d.h"
-#include <glew.h>
-#include <SDL.h>
-#include <SDL_opengl.h>
-#include <gl/glu.h>
-#include <gl/gl.h>
-#include <fstream>
-#include "matrix4f.h"
-#include <iostream>
+#include "mesh.h"
 #include "structdata.h"
-#include "rootmap.h"
-#include "shader.h"
-#include <file_ply_stl.hpp>
-#include <file_obj.h>
+#include <vector>
+#include "file_obj.h"
 
-using namespace std;
-
-class Mesh : public Object3D
+class MeshMaterial :public Mesh
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Default constructor */
+        /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Mesh();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**  Copy constructor */
-        /////////////////////////////////////////////////////////////////////////
-        Mesh(const Mesh & aMesh);
+        MeshMaterial();
 
         //////////////////////////////////////////////////////////////////////////
         /**  Constructor */
         /////////////////////////////////////////////////////////////////////////
-        Mesh(const string & aTextur,unsigned char aType);
+        MeshMaterial(const string & aFile,vec3f aColor=vec3f(1.0,0.5,0.5));
 
         //////////////////////////////////////////////////////////////////////////
-        /**  Constructor */
-        /////////////////////////////////////////////////////////////////////////
-        Mesh(const string & aFile,vec3f aColor=vec3f(1.0,0.5,0.5));
-
+        /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        /** Default destructor */
-        //////////////////////////////////////////////////////////////////////////
-        virtual ~Mesh();
+        virtual ~MeshMaterial();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -93,43 +68,13 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will clean the object
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void clean();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will load the files(vexterShader,FragmentShader) and it
-        *    links the shaders to a program too.
-        *    \return bool true -> Shaders load successfully
-        *                 false-> Shaders don't load successfully
-        */
-        //////////////////////////////////////////////////////////////////////////
-        bool LoadShader(const string & vertexShader,const string & FragmentShader);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will return the position
-        *    \return vec3f with the position of our object
-        */
-        //////////////////////////////////////////////////////////////////////////
-        vec4f getPosition();
-
     protected:
-        vector<GLushort> triangles;
-        vector<float> vertex;
-        vec3f color;
-        Matrix4f * transformation;
-        GLuint vertexbuffer;
-        GLuint trianglebuffer;
-        Shader shaders;
-        string texture;
-    private:
 
+    private:
+        vector<float> normals;
+        vector<int> normalFaces;
+        vector<float> textureCord;
+        vector<int> textureFaces;
 };
 
-#endif // MESH_H
+#endif // MESHMATERIAL_H

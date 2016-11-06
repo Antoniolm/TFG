@@ -17,57 +17,26 @@
 // **
 // *********************************************************************
 
-#include "mesh.h"
+#include "meshmaterial.h"
 
-Mesh::Mesh()
+MeshMaterial::MeshMaterial()
 {
+    //ctor
 }
 
 //**********************************************************************//
 
-Mesh::Mesh(const Mesh & aMesh){
-    triangles=aMesh.triangles;
-    vertex=aMesh.vertex;
-    transformation=aMesh.transformation;
-    vertexbuffer=aMesh.vertexbuffer;
-    trianglebuffer=aMesh.trianglebuffer;
-    shaders=aMesh.shaders;
-}
-
-//**********************************************************************//
-
-Mesh::Mesh(const string & aTextur,unsigned char aType){
-    texture=aTextur;
-    color=vec3f(1.0,0.5,0.5);
-    std::vector<float> normal_obj; // vertex
+MeshMaterial::MeshMaterial(const string & aFile,vec3f aColor){
     std::vector<int> normalf_obj; // vertex
     std::vector<float> textureCoord_obj; // vertex
     std::vector<int>   texturef_obj ;    // face
-    //obj::readMesh("geometries/foot.obj",vertex,triangles);
-    obj::readEverything("geometries/foot.obj",vertex,triangles,normal_obj,normalf_obj,textureCoord_obj,texturef_obj);
-
-}
-
-//**********************************************************************//
-Mesh::Mesh(const string & aFile,vec3f aColor){
-    color=aColor;
-
-    std::vector<int>   faces_obj ;    // face
-    ply::read( aFile.c_str(), vertex,faces_obj);
-    for(int i=0;i<faces_obj.size();i++)
-        triangles.push_back((GLushort)faces_obj[i]);
+    cout<< "Mission complete"<< endl;
+    obj::readEverything("geometries/foot.obj",vertex,triangles,normals,normalf_obj,textureCoord_obj,texturef_obj);
 }
 
 //**********************************************************************//
 
-Mesh::~Mesh()
-{
-    //dtor
-}
-
-//**********************************************************************//
-
-void Mesh::init(){
+void MeshMaterial::init(){
 
     glGenBuffers(1,&vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
@@ -76,12 +45,19 @@ void Mesh::init(){
     glGenBuffers(1,&trianglebuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(GLushort)*triangles.size(),&triangles[0],GL_STATIC_DRAW);
+}
 
+
+//**********************************************************************//
+
+MeshMaterial::~MeshMaterial()
+{
+    //dtor
 }
 
 //**********************************************************************//
 
-void Mesh::visualization(Context & vis){
+void MeshMaterial::visualization(Context & vis){
     position=(*new vec4f());
 
     transformation = &(vis.matrixStack.getMatrix());
@@ -102,12 +78,17 @@ void Mesh::visualization(Context & vis){
     GLint objectColorLoc = glGetUniformLocation(shaders.getProgram(), "objectColor");
     GLint lightColorLoc = glGetUniformLocation(shaders.getProgram(), "lightColor");
     glUniform3f(objectColorLoc, color.x, color.y, color.z);
-    glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
+    glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f); // Also set light’s color (
 
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
+
+    // Vertex Normals
+    //sglEnableVertexAttribArray(1);
+    //glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float),(GLvoid*)offsetof(float, float));
+
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
 
     //Draw our object
@@ -117,29 +98,5 @@ void Mesh::visualization(Context & vis){
 
 //**********************************************************************//
 
-void Mesh::updateState(float time){
+void MeshMaterial::updateState(float time){
 }
-
-//**********************************************************************//
-
-void Mesh::clean(){
-    glDeleteBuffers(1,&vertexbuffer);
-    glDeleteBuffers(1,&trianglebuffer);
-}
-
-//**********************************************************************//
-
-vec4f Mesh::getPosition(){
-    return position;
-}
-
-//**********************************************************************//
-
-bool Mesh::LoadShader(const string & vertexShaderFile,const string & fragmentShaderFile){
-    shaders.setFiles(vertexShaderFile,fragmentShaderFile);
-    bool result=shaders.createProgram();
-    return result;
-}
-
-
-
