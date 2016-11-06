@@ -102,10 +102,12 @@ void MeshMaterial::visualization(Context & vis){
     glUniform1f(matShineLoc,    32.0f);
 
     //Set value to uniform about light
+    GLint lightPosLoc      = glGetUniformLocation(shaders.getProgram(), "light.position");
     GLint lightAmbientLoc  = glGetUniformLocation(shaders.getProgram(), "light.ambient");
     GLint lightDiffuseLoc  = glGetUniformLocation(shaders.getProgram(), "light.diffuse");
     GLint lightSpecularLoc = glGetUniformLocation(shaders.getProgram(), "light.specular");
 
+    glUniform3f(lightPosLoc,  1.2f, 1.0f, 2.0f);
     glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
     glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f);
     glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);

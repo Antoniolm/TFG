@@ -17,6 +17,7 @@ struct Light {
 };
   
 in vec3 Normal;
+in vec3 FragPos;  
 
 uniform Light light;  
 uniform Material material;
