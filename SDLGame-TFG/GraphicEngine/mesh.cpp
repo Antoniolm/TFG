@@ -56,9 +56,11 @@ Mesh::Mesh(const string & aTextur,unsigned char aType){
 }
 
 //**********************************************************************//
-Mesh::Mesh(const string & aFile){
+Mesh::Mesh(const string & aFile,vec3f aColor){
     std::vector<float> vertex_ply ; // vertex
     std::vector<int>   faces_ply ;    // face
+
+    color=aColor;
 
     ply::read( aFile.c_str(), vertex_ply,faces_ply);
     for(int i=0;i<vertex_ply.size();i=i+3){
@@ -115,7 +117,7 @@ void Mesh::visualization(Context & vis){
     transformation = &(vis.matrixStack.getMatrix());
     position=transformation->product(position);
 
-	//Set value to uniform variable
+	//Set value to uniform variable in vertexshader
 	glUseProgram(shaders.getProgram());
     GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation->getMatrix());
@@ -125,6 +127,12 @@ void Mesh::visualization(Context & vis){
 
     GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
+
+    //Set value to uniform variable in fragmentshader
+    GLint objectColorLoc = glGetUniformLocation(shaders.getProgram(), "objectColor");
+    GLint lightColorLoc = glGetUniformLocation(shaders.getProgram(), "lightColor");
+    glUniform3f(objectColorLoc, color.x, color.y, color.z);
+    glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f); // Also set light’s color (
 
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);

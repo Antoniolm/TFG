@@ -61,7 +61,7 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**  Constructor */
         /////////////////////////////////////////////////////////////////////////
-        Mesh(const string & aFile);
+        Mesh(const string & aFile,vec3f aColor=vec3f(1.0,0.5,0.5));
 
         //////////////////////////////////////////////////////////////////////////
         /** Default destructor */
@@ -124,6 +124,7 @@ class Mesh : public Object3D
     private:
         vector<vec3i> triangles;
         vector<vec3f> vertex;
+        vec3f color;
         Matrix4f * transformation;
         unsigned char type;
         GLuint vertexbuffer;

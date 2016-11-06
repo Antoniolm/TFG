@@ -299,9 +299,9 @@ Hero::Hero()
     aObjectTest->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObjectTest->init();
 
-    root->add(static_cast<Object3D*>(aObjectTest));
-    //root->add(mat);
-    //root->add(static_cast<Object3D*>(legRight));
+    root->add(static_cast<Object3D*>(legLeft));
+    root->add(mat);
+    root->add(static_cast<Object3D*>(legRight));
     currentTime=0;
 }
 
