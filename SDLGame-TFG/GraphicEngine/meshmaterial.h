@@ -51,6 +51,14 @@ struct Vertex {
     }
 };
 
+enum MeshBufferPositions
+{
+	POSITION_VB,
+	TEXCOORD_VB,
+	NORMAL_VB,
+	INDEX_VB
+};
+
 using namespace std;
 
 class MeshMaterial : public Object3D
@@ -109,6 +117,7 @@ class MeshMaterial : public Object3D
     protected:
 
     private:
+        static const unsigned int NUM_BUFFERS = 4;
         vector<GLushort> triangles;
         vector<float> vertex;
         vector<Vertex> vertexAndNormal;
@@ -120,6 +129,8 @@ class MeshMaterial : public Object3D
         Matrix4f * transformation;
         GLuint vertexbuffer;
         GLuint normalbuffer;
+        GLuint vertexArrayBuffers[NUM_BUFFERS];
+        GLuint vertexArrayObject;
         Shader shaders;
         GLuint trianglebuffer;
 };

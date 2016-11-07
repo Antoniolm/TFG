@@ -116,7 +116,7 @@ void Camera::createCamera(){
 	camera.setMatrix(matrix);
 
 	Matrix4f posMatrix;
-	posMatrix.translation(position.x,position.y,position.z);
+	posMatrix.translation(-position.x,-position.y,-position.z);
 	camera.product(posMatrix.getMatrix());
 }
 

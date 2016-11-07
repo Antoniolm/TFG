@@ -17,14 +17,19 @@ struct Light {
 };
   
 in vec3 Normal;
+in vec2 TextCoord;
+
 in vec3 FragPos; 
 float LightPower = 1.0f;
 
 uniform Light light;  
 uniform Material material;
+
 uniform vec3 objectColor;
 uniform vec3 lightColor;
 uniform vec3 viewPos;
+
+uniform sampler2D ourTexture;
 
 void main()
 {
@@ -45,5 +50,5 @@ void main()
        
  vec3 result = (ambient + diffuse + specular);
  color = vec4(result, 1.0f);
-
+ //color =texture(ourTexture,TextCoord);
 }

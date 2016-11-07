@@ -108,7 +108,7 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
         }
         else if (line.substr(0,3) == "vt "){
             istringstream s(line.substr(3));
-            float x,y,z;
+            float x,y;
             s >> x;
             s >> y;
             textureCord.push_back(x);textureCord.push_back(y);

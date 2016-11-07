@@ -37,7 +37,7 @@ void Game::loop(){
     bool quit = false;
     SDL_Event event;
     Context aContext;
-    vec3f position(0.0,0.0,0.1);
+    vec3f position(0.0,-1.0,-1.0);
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
     aContext.camera.setOrthographicProjection(-5,5,-5,5,-5,5);
@@ -102,12 +102,13 @@ void Game::loop(){
                 }
                 hero->moveBody(moveHero);
                 aContext.camera.moveCamera(movCamera);
-                vec4f pos;
+                /*vec4f pos;
                 pos=aContext.camera.getCamera().product(pos);
                 position.x=pos.x; position.y=pos.y; position.z=pos.z;
                 cout<< "Position: x-> "<< position.x<< " y-> "<< position.y<<" z-> "<< position.z<<endl;
                 aContext.camera.setCamera(position,direction,up);
-                aContext.camera.createCamera();
+                aContext.camera.createCamera();*/
+
             }
         }
         glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
