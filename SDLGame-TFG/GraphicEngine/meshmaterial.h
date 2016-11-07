@@ -37,6 +37,7 @@
 #include "shader.h"
 #include <file_ply_stl.hpp>
 #include <file_obj.h>
+#include "material.h"
 //#include <../lib/glm/glm.hpp>
 
 struct Vertex {

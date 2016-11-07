@@ -51,7 +51,7 @@ void MeshMaterial::init(){
 
     glGenBuffers(1,&vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER,sizeof(float)*vertexAndNormal.size()*8,&vertexAndNormal[0],GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(Vertex)*vertexAndNormal.size(),&vertexAndNormal[0],GL_STATIC_DRAW);
 
     glGenBuffers(1,&trianglebuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
@@ -96,10 +96,17 @@ void MeshMaterial::visualization(Context & vis){
     GLint matDiffuseLoc  = glGetUniformLocation(shaders.getProgram(), "material.diffuse");
     GLint matSpecularLoc = glGetUniformLocation(shaders.getProgram(), "material.specular");
     GLint matShineLoc    = glGetUniformLocation(shaders.getProgram(), "material.shininess");
-    glUniform3f(matAmbientLoc,  1.0f, 0.5f, 0.5f);
-    glUniform3f(matDiffuseLoc,  1.0f, 0.5f, 0.5f);
-    glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
-    glUniform1f(matShineLoc,    90.0f);
+
+    Material material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f);
+    vec3f ambient=material.getAmbient();
+    vec3f diffuse=material.getDiffuse();
+    vec3f specular=material.getAmbient();
+    float shini=material.getShininess();
+
+    glUniform3f(matAmbientLoc,  ambient.x,  ambient.y, ambient.z);
+    glUniform3f(matDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);
+    glUniform3f(matSpecularLoc, specular.x,  specular.y, specular.z);
+    glUniform1f(matShineLoc,    shini);
 
     //Set value to uniform about light
     GLint lightPosLoc      = glGetUniformLocation(shaders.getProgram(), "light.position");
@@ -118,7 +125,7 @@ void MeshMaterial::visualization(Context & vis){
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,8*sizeof(float), (GLvoid*)0);
+    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,sizeof(Vertex), (GLvoid*)0);
 
     // Vertex Normals
     glEnableVertexAttribArray(1);

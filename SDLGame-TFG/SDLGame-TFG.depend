@@ -965,7 +965,7 @@
 	"../GraphicEngine/matrixscript.h"
 	<vector>
 
-1478446064 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1478536154 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478003629 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -992,13 +992,13 @@
 	<math.h>
 	"structdata.h"
 
-1478514900 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
+1478535288 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
 	"file_obj.h"
 
-1478518854 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
+1478532865 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
 	"meshmaterial.h"
 
-1478470862 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
+1478532653 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
 	<vector>
 	<string>
 	"context.h"
@@ -1016,6 +1016,7 @@
 	"shader.h"
 	<file_ply_stl.hpp>
 	<file_obj.h>
+	"material.h"
 
 1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\glm.hpp
 	"detail/_fixes.hpp"
@@ -1527,5 +1528,11 @@
 	"material.h"
 
 1478525121 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.h
+	"structdata.h"
+
+1478534457 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
+	"light.h"
+
+1478534801 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.h
 	"structdata.h"
 
