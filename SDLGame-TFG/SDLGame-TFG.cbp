@@ -56,6 +56,8 @@
 		<Unit filename="GraphicEngine/file_ply_stl.hpp" />
 		<Unit filename="GraphicEngine/linearmovement.cpp" />
 		<Unit filename="GraphicEngine/linearmovement.h" />
+		<Unit filename="GraphicEngine/material.cpp" />
+		<Unit filename="GraphicEngine/material.h" />
 		<Unit filename="GraphicEngine/matrix4f.cpp" />
 		<Unit filename="GraphicEngine/matrix4f.h" />
 		<Unit filename="GraphicEngine/matrix4fdynamic.cpp" />

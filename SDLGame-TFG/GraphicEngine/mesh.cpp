@@ -104,7 +104,31 @@ void Mesh::visualization(Context & vis){
     GLint objectColorLoc = glGetUniformLocation(shaders.getProgram(), "objectColor");
     GLint lightColorLoc = glGetUniformLocation(shaders.getProgram(), "lightColor");
     glUniform3f(objectColorLoc, color.x, color.y, color.z);
-    glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
+    glUniform3f(lightColorLoc, 0.5f, 0.5f, 0.5f); //
+
+    //Set value to uniform about material
+    GLint matAmbientLoc  = glGetUniformLocation(shaders.getProgram(), "material.ambient");
+    GLint matDiffuseLoc  = glGetUniformLocation(shaders.getProgram(), "material.diffuse");
+    GLint matSpecularLoc = glGetUniformLocation(shaders.getProgram(), "material.specular");
+    GLint matShineLoc    = glGetUniformLocation(shaders.getProgram(), "material.shininess");
+    glUniform3f(matAmbientLoc,  1.0f, 0.5f, 0.31f);
+    glUniform3f(matDiffuseLoc,  1.0f, 0.5f, 0.31f);
+    glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
+    glUniform1f(matShineLoc,    90.0f);
+
+    //Set value to uniform about light
+    GLint lightPosLoc      = glGetUniformLocation(shaders.getProgram(), "light.position");
+    GLint lightAmbientLoc  = glGetUniformLocation(shaders.getProgram(), "light.ambient");
+    GLint lightDiffuseLoc  = glGetUniformLocation(shaders.getProgram(), "light.diffuse");
+    GLint lightSpecularLoc = glGetUniformLocation(shaders.getProgram(), "light.specular");
+    GLint viewPosLoc = glGetUniformLocation(shaders.getProgram(), "viewPos");
+
+    glUniform3f(lightPosLoc,  1.2f, 1.0f, 2.0f);
+    glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
+    glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f);
+    glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
+    vec3f camPos=vis.camera.getPosition();
+    glUniform3f(viewPosLoc, camPos.x, camPos.y, camPos.z);
 
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);

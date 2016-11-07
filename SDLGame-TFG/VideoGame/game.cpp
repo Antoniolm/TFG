@@ -110,7 +110,7 @@ void Game::loop(){
                 aContext.camera.createCamera();
             }
         }
-        //glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         rootMap->visualization(aContext);
         aContext.posObject.clear();

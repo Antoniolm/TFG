@@ -143,3 +143,21 @@ GLfloat * Camera::getProjection(){
 GLfloat * Camera::getView(){
     return camera.getMatrix();
 }
+
+//**********************************************************************//
+
+vec3f Camera::getPosition(){
+    return position;
+}
+
+//**********************************************************************//
+
+vec3f Camera::getTarget(){
+    return target;
+}
+
+//**********************************************************************//
+
+vec3f Camera::getUp(){
+    return up;
+}

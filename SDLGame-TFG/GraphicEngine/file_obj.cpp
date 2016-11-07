@@ -117,12 +117,26 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
     }
 
     //Calculate normals
-    for(int i=0;i<normalFaces.size();i++){
-        normals.push_back(normalsVertex[normalFaces[i]*3]);
-        normals.push_back(normalsVertex[(normalFaces[i]*3)+1]);
-        normals.push_back(normalsVertex[(normalFaces[i]*3)+2]);
-        cout<< normalsVertex[normalFaces[i]*3]<< " "<< normalsVertex[(normalFaces[i]*3)+1]<< " "<<normalsVertex[(normalFaces[i]*3)+2]<< endl;
+    GLfloat normal[vertex.size()];
+    for(int i=0;i<vertex.size();i++){
+        normals.push_back(0.0);
     }
+
+    for(int i=0;i<triangles.size();i++){
+        normals[(triangles[i]*3)]+=normalsVertex[normalFaces[i]*3];
+        normals[(triangles[i]*3)+1]+=normalsVertex[(normalFaces[i]*3)+1];
+        normals[(triangles[i]*3)+2]+=normalsVertex[(normalFaces[i]*3)+2];
+    }
+
+    float module;
+
+    for(int k=0;k<normals.size();k=k+3){
+		module=sqrt(normals[k]*normals[k]+normals[k+1]*normals[k+1]+normals[k+2]*normals[k+2]);
+
+		normals[k]=normals[k]/module;
+		normals[k+1]=normals[k+1]/module;
+		normals[k+2]=normals[k+2]/module;
+	}
 }
 
 

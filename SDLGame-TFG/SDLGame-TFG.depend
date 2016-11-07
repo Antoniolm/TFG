@@ -389,7 +389,7 @@
 	"window.h"
 	"file_obj.h"
 
-1478164015 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1478472034 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1477601763 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -469,7 +469,7 @@
 	<file_ply_stl.hpp>
 	<file_obj.h>
 
-1478452978 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
+1478466218 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
 
 1451805405 c:\sdl2_mixer-2.0.1\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
@@ -902,10 +902,10 @@
 1477389144 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1478092268 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1478465673 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 
-1477658557 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
+1478465687 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
 	"structdata.h"
 	"matrix4f.h"
 	<glew.h>
@@ -981,7 +981,7 @@
 	<vector>
 	"matrix4fdynamic.h"
 
-1478442949 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.h
+1478514820 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.h
 	<vector>
 	<fstream>
 	<sstream>
@@ -989,14 +989,16 @@
 	<istream>
 	"glew.h"
 	<cstdlib>
+	<math.h>
+	"structdata.h"
 
-1478456077 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
+1478514900 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
 	"file_obj.h"
 
-1478464246 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
+1478515058 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
 	"meshmaterial.h"
 
-1478456708 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
+1478470862 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
 	<vector>
 	<string>
 	"context.h"

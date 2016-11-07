@@ -27,6 +27,8 @@
 #include <istream>
 #include "glew.h"
 #include <cstdlib>
+#include <math.h>
+#include "structdata.h"
 
 namespace obj{
 

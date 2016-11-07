@@ -118,6 +118,7 @@ class MeshMaterial : public Object3D
         vec3f color;
         Matrix4f * transformation;
         GLuint vertexbuffer;
+        GLuint normalbuffer;
         Shader shaders;
         GLuint trianglebuffer;
 };

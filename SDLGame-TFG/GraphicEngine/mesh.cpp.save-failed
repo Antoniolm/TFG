@@ -35,23 +35,27 @@ Mesh::Mesh(const Mesh & aMesh){
 }
 
 //**********************************************************************//
+
 Mesh::Mesh(const string & aTextur,unsigned char aType){
     texture=aTextur;
-    type=aType;
+    color=vec3f(1.0,0.5,0.5);
+    std::vector<float> normal_obj; // vertex
+    std::vector<int> normalf_obj; // vertex
+    std::vector<float> textureCoord_obj; // vertex
+    std::vector<int>   texturef_obj ;    // face
+    //obj::readMesh("geometries/foot.obj",vertex,triangles);
+    obj::readEverything("geometries/foot.obj",vertex,triangles,normal_obj,normalf_obj,textureCoord_obj,texturef_obj);
+
 }
 
 //**********************************************************************//
-Mesh::Mesh(const string & aFile){
-    std::vector<float> vertex_ply ; // vertex
-    std::vector<int>   faces_ply ;    // face
+Mesh::Mesh(const string & aFile,vec3f aColor){
+    color=aColor;
 
-    ply::read( aFile.c_str(), vertex_ply,faces_ply);
-    for(int i=0;i<vertex_ply.size();i=i+3){
-        vertex.push_back(*(new vec3f(vertex_ply[i],vertex_ply[i+1],vertex_ply[i+2])));
-    }
-    for(int i=0;i<faces_ply.size();i=i+3){
-        triangles.push_back(*(new vec3i(faces_ply[i],faces_ply[i+1],faces_ply[i+2])));
-	}
+    std::vector<int>   faces_obj ;    // face
+    ply::read( aFile.c_str(), vertex,faces_obj);
+    for(int i=0;i<faces_obj.size();i++)
+        triangles.push_back((GLushort)faces_obj[i]);
 }
 
 //**********************************************************************//
@@ -64,31 +68,14 @@ Mesh::~Mesh()
 //**********************************************************************//
 
 void Mesh::init(){
-    int j=0;
-    GLfloat verts[vertex.size()*3];
-    for(int i=0;i<vertex.size();i++){
-        verts[j]=vertex[i].x;
-        verts[j+1]=vertex[i].y;
-        verts[j+2]=vertex[i].z;
-        j+=3;
-    }
 
     glGenBuffers(1,&vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER,sizeof(verts),verts,GL_STATIC_DRAW);
-
-    j=0;
-    GLushort index[triangles.size()*3];
-    for(int i=0;i<triangles.size();i++){
-        index[j]=triangles[i].x;
-        index[j+1]=triangles[i].y;
-        index[j+2]=triangles[i].z;
-        j+=3;
-    }
+    glBufferData(GL_ARRAY_BUFFER,sizeof(float)*vertex.size(),&vertex[0],GL_STATIC_DRAW);
 
     glGenBuffers(1,&trianglebuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(index),index,GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(GLushort)*triangles.size(),&triangles[0],GL_STATIC_DRAW);
 
 }
 
@@ -96,43 +83,52 @@ void Mesh::init(){
 
 void Mesh::visualization(Context & vis){
     position=(*new vec4f());
-    EntranceMap newEntrance;
-    GLfloat * matrix;
-    switch(vis.visualization_mode){
-    case 0: //Initial Mode
-        cout<< "Initial mode"<< endl;
-        newEntrance= EntranceMap(this,new Matrix4f(vis.matrixStack.getMatrix()));
-        vis.posObject.push_back(newEntrance);
-        transformation=&(vis.matrixStack.getMatrix());
-        break;
-    case 1: //Static mode
-        //transformation = vis.matrixStatic;
-        //matrix=transformation->getMatrix();
-        //transformation->identity();
-        cout<< "Hola"<< endl;
-        break;
-    case 2: //Dynamic mode
-        transformation = &(vis.matrixStack.getMatrix());
-        newEntrance=EntranceMap(this);
-        vis.posObject.push_back(newEntrance);
-        break;
-    }
 
-    cout<< "/////////////////Puta Mierda/////////////////////"<< endl;
+    transformation = &(vis.matrixStack.getMatrix());
     position=transformation->product(position);
-    cout<< "/////////////////Wep2/////////////////////"<< endl;
-	//Set value to uniform variable
+
+	//Set value to uniform variable in vertexshader
 	glUseProgram(shaders.getProgram());
     GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation->getMatrix());
-    cout<< "/////////////////Wep3/////////////////////"<< endl;
+
     GLint viewLocation= glGetUniformLocation(shaders.getProgram(),"view");
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
-    cout<< "/////////////////Wep4/////////////////////"<< endl;
+
+    //glm::mat4 ProjectionMatrix= glm::mat4(1.0f);
+    //ProjectionMatrix*= glm::perspective(45.0f, 1024.0f / 768.0f, 0.1f, 200.0f);
     GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
-    //cout<< "Position --> x:"<< position.x << " y : "<< position.y<< " z: "<< position.z<< endl;
+    //Set value to uniform variable in fragmentshader
+    GLint objectColorLoc = glGetUniformLocation(shaders.getProgram(), "objectColor");
+    GLint lightColorLoc = glGetUniformLocation(shaders.getProgram(), "lightColor");
+    glUniform3f(objectColorLoc, color.x, color.y, color.z);
+    glUniform3f(lightColorLoc, 0.1f, 0.1f, 0.1f); //
+
+    //Set value to uniform about material
+    GLint matAmbientLoc  = glGetUniformLocation(shaders.getProgram(), "material.ambient");
+    GLint matDiffuseLoc  = glGetUniformLocation(shaders.getProgram(), "material.diffuse");
+    GLint matSpecularLoc = glGetUniformLocation(shaders.getProgram(), "material.specular");
+    GLint matShineLoc    = glGetUniformLocation(shaders.getProgram(), "material.shininess");
+    glUniform3f(matAmbientLoc,  1.0f, 0.5f, 0.31f);
+    glUniform3f(matDiffuseLoc,  1.0f, 0.5f, 0.31f);
+    glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
+    glUniform1f(matShineLoc,    90.0f);
+
+    //Set value to uniform about light
+    GLint lightPosLoc      = glGetUniformLocation(shaders.getProgram(), "light.position");
+    GLint lightAmbientLoc  = glGetUniformLocation(shaders.getProgram(), "light.ambient");
+    GLint lightDiffuseLoc  = glGetUniformLocation(shaders.getProgram(), "light.diffuse");
+    GLint lightSpecularLoc = glGetUniformLocation(shaders.getProgram(), "light.specular");
+    GLint viewPosLoc = glGetUniformLocation(shaders.getProgram(), "viewPos");
+
+    glUniform3f(lightPosLoc,  1.2f, 1.0f, 2.0f);
+    glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
+    glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f);
+    glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
+    vec3f camPos=vis.camera.getPosition();
+    glUniform3f(viewPosLoc, camPos.x, camPos.y, camPos.z);
 
     //Bind our buffer
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
@@ -141,13 +137,14 @@ void Mesh::visualization(Context & vis){
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
 
     //Draw our object
-    glDrawElements(GL_LINES,triangles.size()*3,GL_UNSIGNED_SHORT,0);
+    glDrawElements(GL_TRIANGLES,triangles.size(),GL_UNSIGNED_SHORT,0);
 	glUseProgram(0);
 }
 
 //**********************************************************************//
 
-void Mesh::updateState(float time){}
+void Mesh::updateState(float time){
+}
 
 //**********************************************************************//
 
