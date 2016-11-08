@@ -992,7 +992,7 @@
 	<math.h>
 	"structdata.h"
 
-1478541062 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
+1478611933 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
 	"file_obj.h"
 
 1478561033 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
@@ -1535,4 +1535,17 @@
 
 1478536519 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.h
 	"structdata.h"
+
+1418876674 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\stb_image.c
+	"stb_image.h"
+	<math.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	<assert.h>
+	<stdarg.h>
+
+1418876674 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\stb_image.h
+	<stdio.h>
 
