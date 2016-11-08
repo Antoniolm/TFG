@@ -75,8 +75,7 @@ bool Window::createWindow(){
 			context = SDL_GL_CreateContext(window);
 		}
 	}
-    //SDL_GL_SetSwapInterval(1);
-    //glewExperimental=true;
+
     GLenum err=glewInit();
 
     glEnable(GL_DEPTH_TEST);

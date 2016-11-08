@@ -26,18 +26,22 @@ MeshMaterial::MeshMaterial()
 
 //**********************************************************************//
 
-MeshMaterial::MeshMaterial(const string & aFile,vec3f aColor){
-    color=aColor;
-    std::vector<int> normalf_obj; // vertex
-    //std::vector<float> textureCoord_obj; // vertex
-    std::vector<int>   texturef_obj ;    // face
-    cout<< "Mission complete"<< endl;
-    obj::readEverything("geometries/monkey.obj",vertex,triangles,normals,normalf_obj,textureCord,texturef_obj);
+MeshMaterial::MeshMaterial(const string & aFile){
+    objFile=aFile;
+    numIndex=0;
 }
 
 //**********************************************************************//
 
 void MeshMaterial::init(){
+    vector<GLushort> triangles;
+    vector<vec3f> vertex;
+    vector<vec3f> normals;
+    vector<vec2f> textureCord;
+
+    obj::readEverything(objFile.c_str(),vertex,triangles,normals,textureCord);
+    numIndex=triangles.size();
+
     glGenVertexArrays(1, &vertexArrayObject);
 	glBindVertexArray(vertexArrayObject);
 
@@ -48,11 +52,13 @@ void MeshMaterial::init(){
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0 , 0);
 
+    //Normal buffer
     glBindBuffer(GL_ARRAY_BUFFER, vertexArrayBuffers[NORMAL_VB]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vec3f)* normals.size(), &normals[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
+    //Texture Coord buffer
     glBindBuffer(GL_ARRAY_BUFFER, vertexArrayBuffers[TEXCOORD_VB]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vec2f) * textureCord.size(), &textureCord[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(2);
@@ -76,12 +82,12 @@ MeshMaterial::~MeshMaterial()
 //**********************************************************************//
 
 void MeshMaterial::visualization(Context & vis){
-    position=(*new vec4f());
+    position=vec4f();
 
     Texture texture("./textures/bricks.jpg");
     texture.Bind();
 
-    transformation = &(vis.matrixStack.getMatrix());
+    Matrix4f * transformation = &(vis.matrixStack.getMatrix());
     position=transformation->product(position);
 
 	//Set value to uniform variable in vertexshader
@@ -96,10 +102,8 @@ void MeshMaterial::visualization(Context & vis){
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
     //Set value to uniform variable in fragmentshader
-    GLint objectColorLoc = glGetUniformLocation(shaders.getProgram(), "objectColor");
     GLint lightColorLoc = glGetUniformLocation(shaders.getProgram(), "lightColor");
-    glUniform3f(objectColorLoc, color.x, color.y, color.z);
-    glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f); //
+    glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
 
     //Set value to uniform about material
     GLint matAmbientLoc  = glGetUniformLocation(shaders.getProgram(), "material.ambient");
@@ -134,7 +138,7 @@ void MeshMaterial::visualization(Context & vis){
 
     //Draw our object
     glBindVertexArray(vertexArrayObject);
-    glDrawElements(GL_TRIANGLES,triangles.size(),GL_UNSIGNED_SHORT,0);
+    glDrawElements(GL_TRIANGLES,numIndex,GL_UNSIGNED_SHORT,0);
     glBindVertexArray(0);
 
 	glUseProgram(0);

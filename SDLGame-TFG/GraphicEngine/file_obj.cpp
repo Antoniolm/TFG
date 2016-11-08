@@ -56,13 +56,15 @@ void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<GLus
 
 }
 
-void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<int> & normalFaces,std::vector<vec2f> & textureCord,std::vector<int> & textureFaces){
+void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord){
     int value;
     char charValue;
     std::vector<vec3f> vertexAux;
     std::vector<vec3f> normalsVertex;
     std::vector<vec2f> textureVertex;
     std::vector<GLushort> trianglesIndex;
+    std::vector<int> normalFaces;
+    std::vector<int> textureFaces;
     ifstream in(fileName, ios::in);
     if (!in)
     {

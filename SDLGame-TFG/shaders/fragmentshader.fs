@@ -20,7 +20,7 @@ in vec3 Normal;
 in vec2 TextCoord;
 
 in vec3 FragPos; 
-float LightPower = 1.0f;
+float LightPower = 2.0f;
 
 uniform Light light;  
 uniform Material material;
@@ -48,7 +48,7 @@ void main()
  float spec =  LightPower * pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
  vec3 specular = light.specular * LightPower * (spec * material.specular);  
        
- vec3 result = (ambient + diffuse + specular);
+ vec3 result = (ambient + diffuse);
  //color = vec4(result, 1.0f);
  //color =texture(ourTexture,TextCoord);
  color =texture(ourTexture,TextCoord) * vec4(result, 1.0f);

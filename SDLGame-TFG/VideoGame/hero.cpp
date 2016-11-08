@@ -294,7 +294,7 @@ Hero::Hero()
     mat->translation(-0.8,0.0,0.0);
     root->add(moveHero);
 
-    file=string("geometries/cylinder.ply");
+    file=string("geometries/monkey.obj");
     MeshMaterial * aObjectTest=new MeshMaterial(file);
     aObjectTest->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObjectTest->init();

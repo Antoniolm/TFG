@@ -41,17 +41,6 @@
 #include "texture.h"
 //#include <../lib/glm/glm.hpp>
 
-struct Vertex {
-    vec3f position;
-    vec3f normal;
-    vec2f textCoord;
-    Vertex(vec3f pos,vec3f norm,vec2f tCoord){
-        position=pos;
-        normal=norm;
-        textCoord=tCoord;
-    }
-};
-
 enum MeshBufferPositions
 {
 	POSITION_VB,
@@ -73,7 +62,7 @@ class MeshMaterial : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**  Constructor */
         /////////////////////////////////////////////////////////////////////////
-        MeshMaterial(const string & aFile,vec3f aColor=vec3f(1.0,0.5,0.5));
+        MeshMaterial(const string & aFile);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -119,21 +108,11 @@ class MeshMaterial : public Object3D
 
     private:
         static const unsigned int NUM_BUFFERS = 4;
-        vector<GLushort> triangles;
-        vector<vec3f> vertex;
-        vector<Vertex> vertexAndNormal;
-        vector<vec3f> normals;
-        vector<int> normalFaces;
-        vector<vec2f> textureCord;
-        vector<int> textureFaces;
-        vec3f color;
-        Matrix4f * transformation;
-        GLuint vertexbuffer;
-        GLuint normalbuffer;
         GLuint vertexArrayBuffers[NUM_BUFFERS];
         GLuint vertexArrayObject;
         Shader shaders;
-        GLuint trianglebuffer;
+        string objFile;
+        int numIndex;
 };
 
 #endif // MESHMATERIAL_H
