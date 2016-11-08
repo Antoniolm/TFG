@@ -33,16 +33,6 @@ MeshMaterial::MeshMaterial(const string & aFile,vec3f aColor){
     std::vector<int>   texturef_obj ;    // face
     cout<< "Mission complete"<< endl;
     obj::readEverything("geometries/monkey.obj",vertex,triangles,normals,normalf_obj,textureCord,texturef_obj);
-
-    /*int j=0;
-    for(int i=0;i<vertex.size();i=i+3){
-        vec3f vert=vec3f(vertex[i],vertex[i+1],vertex[i+2]);
-        vec3f norm=vec3f(normals[i],normals[i+1],normals[i+2]);
-        vec2f textC=vec2f(textureCord[j],textureCord[j+1]);
-        Vertex aux(vert,norm,textC);
-        vertexAndNormal.push_back(aux);
-        j=j+2;
-    }*/
 }
 
 //**********************************************************************//
@@ -54,17 +44,17 @@ void MeshMaterial::init(){
 	//Vertex buffer
     glGenBuffers(NUM_BUFFERS, vertexArrayBuffers);
     glBindBuffer(GL_ARRAY_BUFFER,vertexArrayBuffers[POSITION_VB]);
-    glBufferData(GL_ARRAY_BUFFER,sizeof(float)*vertex.size(),&vertex[0],GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(vec3f)*vertex.size(),&vertex[0],GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0 , 0);
 
     glBindBuffer(GL_ARRAY_BUFFER, vertexArrayBuffers[NORMAL_VB]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * normals.size(), &normals[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vec3f)* normals.size(), &normals[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
     glBindBuffer(GL_ARRAY_BUFFER, vertexArrayBuffers[TEXCOORD_VB]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * textureCord.size(), &textureCord[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vec2f) * textureCord.size(), &textureCord[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(2);
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
 
@@ -87,6 +77,9 @@ MeshMaterial::~MeshMaterial()
 
 void MeshMaterial::visualization(Context & vis){
     position=(*new vec4f());
+
+    Texture texture("./textures/bricks.jpg");
+    texture.Bind();
 
     transformation = &(vis.matrixStack.getMatrix());
     position=transformation->product(position);

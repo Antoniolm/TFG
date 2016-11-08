@@ -385,11 +385,11 @@
 	"../GraphicEngine/structdata.h"
 	"hero.h"
 
-1478215796 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1478632476 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
-1478540034 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1478631950 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1477601763 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -469,7 +469,7 @@
 	<file_ply_stl.hpp>
 	<file_obj.h>
 
-1478466218 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
+1478620653 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
 
 1451805405 c:\sdl2_mixer-2.0.1\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
@@ -981,7 +981,7 @@
 	<vector>
 	"matrix4fdynamic.h"
 
-1478514820 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.h
+1478620398 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.h
 	<vector>
 	<fstream>
 	<sstream>
@@ -992,13 +992,13 @@
 	<math.h>
 	"structdata.h"
 
-1478611933 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
+1478631347 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
 	"file_obj.h"
 
-1478561033 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
+1478631796 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
 	"meshmaterial.h"
 
-1478560263 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
+1478620294 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
 	<vector>
 	<string>
 	"context.h"
@@ -1017,6 +1017,7 @@
 	<file_ply_stl.hpp>
 	<file_obj.h>
 	"material.h"
+	"texture.h"
 
 1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\glm.hpp
 	"detail/_fixes.hpp"
@@ -1548,4 +1549,13 @@
 
 1418876674 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\stb_image.h
 	<stdio.h>
+
+1478615134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.h
+	<string>
+	<glew.h>
+	"stb_image.h"
+	<iostream>
+
+1478615121 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.cpp
+	"texture.h"
 

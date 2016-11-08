@@ -38,6 +38,7 @@
 #include <file_ply_stl.hpp>
 #include <file_obj.h>
 #include "material.h"
+#include "texture.h"
 //#include <../lib/glm/glm.hpp>
 
 struct Vertex {
@@ -119,11 +120,11 @@ class MeshMaterial : public Object3D
     private:
         static const unsigned int NUM_BUFFERS = 4;
         vector<GLushort> triangles;
-        vector<float> vertex;
+        vector<vec3f> vertex;
         vector<Vertex> vertexAndNormal;
-        vector<float> normals;
+        vector<vec3f> normals;
         vector<int> normalFaces;
-        vector<float> textureCord;
+        vector<vec2f> textureCord;
         vector<int> textureFaces;
         vec3f color;
         Matrix4f * transformation;

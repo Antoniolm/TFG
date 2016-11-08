@@ -53,8 +53,15 @@ bool Window::createWindow(){
 		salida=false;
 	}
 	else {
-        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-		window = SDL_CreateWindow(title.c_str() , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, height, width, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+        SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+        SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+        SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+        SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
+        SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE,32);
+        SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,16);
+        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
+
+		window = SDL_CreateWindow(title.c_str() , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, height, width, SDL_WINDOW_OPENGL);
 		if (window == NULL) {
 			printf("SDL_Error: %s\n", SDL_GetError());
 			salida=false;
@@ -68,9 +75,14 @@ bool Window::createWindow(){
 			context = SDL_GL_CreateContext(window);
 		}
 	}
-    SDL_GL_SetSwapInterval(1);
-    glewExperimental=true;
+    //SDL_GL_SetSwapInterval(1);
+    //glewExperimental=true;
     GLenum err=glewInit();
+
+    glEnable(GL_DEPTH_TEST);
+
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 
     return salida;
 }

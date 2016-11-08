@@ -90,7 +90,13 @@
 		<Unit filename="GraphicEngine/shader.h" />
 		<Unit filename="GraphicEngine/sound.cpp" />
 		<Unit filename="GraphicEngine/sound.h" />
+		<Unit filename="GraphicEngine/stb_image.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="GraphicEngine/stb_image.h" />
 		<Unit filename="GraphicEngine/structdata.h" />
+		<Unit filename="GraphicEngine/texture.cpp" />
+		<Unit filename="GraphicEngine/texture.h" />
 		<Unit filename="GraphicEngine/window.cpp" />
 		<Unit filename="GraphicEngine/window.h" />
 		<Unit filename="VideoGame/avatar.cpp" />

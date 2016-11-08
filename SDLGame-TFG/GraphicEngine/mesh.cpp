@@ -44,7 +44,7 @@ Mesh::Mesh(const string & aTextur,unsigned char aType){
     std::vector<float> textureCoord_obj; // vertex
     std::vector<int>   texturef_obj ;    // face
     //obj::readMesh("geometries/foot.obj",vertex,triangles);
-    obj::readEverything("geometries/foot.obj",vertex,triangles,normal_obj,normalf_obj,textureCoord_obj,texturef_obj);
+    obj::readMesh("geometries/foot.obj",vertex,triangles);
 
 }
 

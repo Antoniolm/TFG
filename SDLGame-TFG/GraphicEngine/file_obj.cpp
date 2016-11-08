@@ -56,11 +56,13 @@ void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<GLus
 
 }
 
-void readEverything(const char * fileName,std::vector<float> & vertex,std::vector<GLushort> & triangles,std::vector<float> & normals,std::vector<int> & normalFaces,std::vector<float> & textureCord,std::vector<int> & textureFaces){
+void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<int> & normalFaces,std::vector<vec2f> & textureCord,std::vector<int> & textureFaces){
     int value;
     char charValue;
-    std::vector<float> normalsVertex;
-    std::vector<float> textureVertex;
+    std::vector<vec3f> vertexAux;
+    std::vector<vec3f> normalsVertex;
+    std::vector<vec2f> textureVertex;
+    std::vector<GLushort> trianglesIndex;
     ifstream in(fileName, ios::in);
     if (!in)
     {
@@ -77,7 +79,7 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
             s >> x;
             s >> y;
             s >> z;
-            vertex.push_back(x);vertex.push_back(y);vertex.push_back(z);
+            vertexAux.push_back(vec3f(x,y,z));
         }
         else if (line.substr(0,2) == "f "){
             line=line.substr(2);
@@ -85,7 +87,7 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
             for(int i=0;i<3;i++){
                 //Extract the triangle face
                 s >> value;
-                triangles.push_back((GLushort)--value);
+                trianglesIndex.push_back(--value);
 
                 //Extract the texture face
                 s >> charValue; //Extract the char between element
@@ -104,7 +106,7 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
             s >> x;
             s >> y;
             s >> z;
-            normalsVertex.push_back(x);normalsVertex.push_back(y);normalsVertex.push_back(z);
+            normalsVertex.push_back(vec3f(x,y,z));
 
         }
         else if (line.substr(0,3) == "vt "){
@@ -112,25 +114,16 @@ void readEverything(const char * fileName,std::vector<float> & vertex,std::vecto
             float x,y;
             s >> x;
             s >> y;
-            textureVertex.push_back(x);textureVertex.push_back(y);
+            textureVertex.push_back(vec2f(x,y));
 
         }
     }
 
-    //Calculate normals
-    /*for(int i=0;i<vertex.size();i++){
-        normals.push_back(0.0);
-    }*/
-
-    for(int i=0;i<triangles.size();i++){
-        normals.push_back(normalsVertex[normalFaces[i]*3]);
-        normals.push_back(normalsVertex[(normalFaces[i]*3)+1]);
-        normals.push_back(normalsVertex[(normalFaces[i]*3)+2]);
-    }
-
-    for(int i=0;i<triangles.size();i++){
-        textureCord.push_back(textureVertex[textureFaces[i]*3]);
-        textureCord.push_back(textureVertex[(textureFaces[i]*3)+1]);
+    for(int i=0;i<trianglesIndex.size();i++){
+        vertex.push_back(vertexAux[trianglesIndex[i]]);
+        normals.push_back(normalsVertex[normalFaces[i]]);
+        textureCord.push_back(textureVertex[textureFaces[i]]);
+        triangles.push_back(i);
     }
 
     /*float module;
