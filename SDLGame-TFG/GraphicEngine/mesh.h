@@ -124,14 +124,13 @@ class Mesh : public Object3D
         vec4f getPosition();
 
     protected:
-        vector<GLushort> triangles;
-        vector<float> vertex;
         vec3f color;
-        Matrix4f * transformation;
+        GLuint vertexArrayObject;
         GLuint vertexbuffer;
         GLuint trianglebuffer;
         Shader shaders;
-        string texture;
+        int numIndex;
+        string file;
     private:
 
 };

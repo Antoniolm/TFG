@@ -70,7 +70,7 @@ void MeshMaterial::init(){
 
     glBindVertexArray(0);
 
-    Texture texture("./textures/wood.jpg");
+    Texture texture("./textures/wood2.jpg");
     texture.Bind();
 }
 

@@ -22,15 +22,10 @@
 RootMap::RootMap()
 {
     NodeSceneGraph * root3=new NodeSceneGraph();
-    string file("geometries/ant.ply");
+    string file("geometries/foot.obj");
     Mesh * aObject=new Mesh(file);
     aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject->init();
-
-    file=string("geometries/cylinder.ply");
-    Mesh * aObject2=new Mesh(file);
-    aObject2->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    aObject2->init();
 
     Matrix4f *matrix =new Matrix4f();
     matrix->scale(0.1,0.1,0.1);
@@ -44,10 +39,6 @@ RootMap::RootMap()
     Matrix4f * matrixt=new Matrix4f();
     matrixt->rotation(90,0.0,1.0,0.0);
 
-    //LinearMovement * movet=new LinearMovement(0,0.5,0.0);
-    //AxisRotation * axisRot=new AxisRotation(40,0,0,1);
-    //OscillateRotation * osci=new OscillateRotation(true,90,30,50,30,vec3f(0,0,1));
-
     NodeSceneGraph * root2=new NodeSceneGraph();
     NodeSceneGraph * root4=new NodeSceneGraph();
 
@@ -57,11 +48,9 @@ RootMap::RootMap()
 
         root2->add(matrix3);
         root2->add(static_cast<Object3D*>(root));
-        //root2->add(osci);
         root2->add(matrix3);
         root2->add(static_cast<Object3D*>(root));
 
-        //root4->add(osci);
         root4->add(matrix2);
         root4->add(static_cast<Object3D*>(root));
 

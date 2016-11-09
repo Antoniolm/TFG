@@ -26,9 +26,6 @@ Mesh::Mesh()
 //**********************************************************************//
 
 Mesh::Mesh(const Mesh & aMesh){
-    triangles=aMesh.triangles;
-    vertex=aMesh.vertex;
-    transformation=aMesh.transformation;
     vertexbuffer=aMesh.vertexbuffer;
     trianglebuffer=aMesh.trianglebuffer;
     shaders=aMesh.shaders;
@@ -37,20 +34,15 @@ Mesh::Mesh(const Mesh & aMesh){
 //**********************************************************************//
 
 Mesh::Mesh(const string & aTextur,unsigned char aType){
-    texture=aTextur;
     color=vec3f(1.0,0.5,0.5);
-    //obj::readMesh("geometries/foot.obj",vertex,triangles);
+    //
 
 }
 
 //**********************************************************************//
 Mesh::Mesh(const string & aFile,vec3f aColor){
     color=aColor;
-
-    std::vector<int>   faces_obj ;    // face
-    ply::read( aFile.c_str(), vertex,faces_obj);
-    for(int i=0;i<faces_obj.size();i++)
-        triangles.push_back((GLushort)faces_obj[i]);
+    file=aFile;
 }
 
 //**********************************************************************//
@@ -63,15 +55,25 @@ Mesh::~Mesh()
 //**********************************************************************//
 
 void Mesh::init(){
+    vector<GLushort> triangles;
+    vector<vec3f> vertex;
+
+    obj::readMesh(file.c_str(),vertex,triangles);
+
+    numIndex=triangles.size();
+
+    //glGenVertexArrays(1, &vertexArrayObject);
+	//glBindVertexArray(vertexArrayObject);
 
     glGenBuffers(1,&vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER,sizeof(float)*vertex.size(),&vertex[0],GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(vec3f)*vertex.size(),&vertex[0],GL_STATIC_DRAW);
 
     glGenBuffers(1,&trianglebuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(GLushort)*triangles.size(),&triangles[0],GL_STATIC_DRAW);
 
+    //glBindVertexArray(0);
 }
 
 //**********************************************************************//
@@ -79,7 +81,7 @@ void Mesh::init(){
 void Mesh::visualization(Context & vis){
     position=(*new vec4f());
 
-    transformation = &(vis.matrixStack.getMatrix());
+    Matrix4f * transformation = &(vis.matrixStack.getMatrix());
     position=transformation->product(position);
 
 	//Set value to uniform variable in vertexshader
@@ -132,7 +134,7 @@ void Mesh::visualization(Context & vis){
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
 
     //Draw our object
-    glDrawElements(GL_TRIANGLES,triangles.size(),GL_UNSIGNED_SHORT,0);
+    glDrawElements(GL_TRIANGLES,numIndex,GL_UNSIGNED_SHORT,0);
 	glUseProgram(0);
 }
 
