@@ -62,22 +62,18 @@ void Game::loop(){
                 switch (event.key.keysym.sym){
 
                     case SDLK_LEFT:
-                        //movCamera.translation(-0.1,0.0,0.0);
                         movCamera.identity();
                         moveHero->translation(-0.1,0.0,0.0);
                         break;
                     case SDLK_RIGHT:
-                        //movCamera.translation(0.1,0.0,0.0);
                         movCamera.identity();
                         moveHero->translation(0.1,0.0,0.0);
                         break;
                     case SDLK_UP:
-                        //movCamera.translation(0.0,0.1,0.0);
                         movCamera.identity();
                         moveHero->translation(0.0,0.0,0.1);
                         break;
                     case SDLK_DOWN:
-                        //movCamera.translation(0.0,-0.1,0.0);
                         movCamera.identity();
                         moveHero->translation(0.0,0.0,0.1);
                         break;
@@ -102,17 +98,10 @@ void Game::loop(){
                 }
                 hero->moveBody(moveHero);
                 aContext.camera.moveCamera(movCamera);
-                /*vec4f pos;
-                pos=aContext.camera.getCamera().product(pos);
-                position.x=pos.x; position.y=pos.y; position.z=pos.z;
-                cout<< "Position: x-> "<< position.x<< " y-> "<< position.y<<" z-> "<< position.z<<endl;
-                aContext.camera.setCamera(position,direction,up);
-                aContext.camera.createCamera();*/
 
             }
         }
-        glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        window->cleanScreen();
         rootMap->visualization(aContext);
         aContext.posObject.clear();
         window->updateScreen();

@@ -33,6 +33,17 @@ MeshMaterial::MeshMaterial(const string & aFile){
 
 //**********************************************************************//
 
+MeshMaterial::~MeshMaterial()
+{
+    glDeleteBuffers(1,&vertexArrayObject);
+    glDeleteBuffers(1,&vertexArrayBuffers[POSITION_VB]);
+    glDeleteBuffers(1,&vertexArrayBuffers[NORMAL_VB]);
+    glDeleteBuffers(1,&vertexArrayBuffers[TEXCOORD_VB]);
+    glDeleteBuffers(1,&vertexArrayBuffers[INDEX_VB]);
+}
+
+//**********************************************************************//
+
 void MeshMaterial::init(){
     vector<GLushort> triangles;
     vector<vec3f> vertex;
@@ -72,14 +83,6 @@ void MeshMaterial::init(){
 
     Texture texture("./textures/wood2.jpg");
     texture.Bind();
-}
-
-
-//**********************************************************************//
-
-MeshMaterial::~MeshMaterial()
-{
-    //dtor
 }
 
 //**********************************************************************//

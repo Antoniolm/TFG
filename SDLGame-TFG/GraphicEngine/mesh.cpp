@@ -26,9 +26,6 @@ Mesh::Mesh()
 //**********************************************************************//
 
 Mesh::Mesh(const Mesh & aMesh){
-    vertexbuffer=aMesh.vertexbuffer;
-    trianglebuffer=aMesh.trianglebuffer;
-    shaders=aMesh.shaders;
 }
 
 //**********************************************************************//
@@ -65,12 +62,13 @@ void Mesh::init(){
     glGenVertexArrays(1, &vertexArrayObject);
     glBindVertexArray(vertexArrayObject);
 
-    glGenBuffers(1,&vertexbuffer);
-    glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
+    glGenBuffers(NUM_BUFFERS, vertexArrayBuffers);
+    glBindBuffer(GL_ARRAY_BUFFER,vertexArrayBuffers[POSITION_VB]);
     glBufferData(GL_ARRAY_BUFFER,sizeof(vec3f)*vertex.size(),&vertex[0],GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0 , 0);
 
-    glGenBuffers(1,&trianglebuffer);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,vertexArrayBuffers[INDEX_VB]);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(GLushort)*triangles.size(),&triangles[0],GL_STATIC_DRAW);
 
     glBindVertexArray(0);
@@ -101,15 +99,10 @@ void Mesh::visualization(Context & vis){
     GLint objectColorLoc = glGetUniformLocation(shaders.getProgram(), "objectColor");
     glUniform3f(objectColorLoc, color.x, color.y, color.z);
 
-    //Bind our buffer
-    glBindVertexArray(vertexArrayObject);
-    glBindBuffer(GL_ARRAY_BUFFER,vertexbuffer);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,0,0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,trianglebuffer);
-
     //Draw our object
+    glBindVertexArray(vertexArrayObject);
     glDrawElements(GL_TRIANGLES,numIndex,GL_UNSIGNED_SHORT,0);
+    glBindVertexArray(0);
 	glUseProgram(0);
 }
 
@@ -121,8 +114,9 @@ void Mesh::updateState(float time){
 //**********************************************************************//
 
 void Mesh::clean(){
-    glDeleteBuffers(1,&vertexbuffer);
-    glDeleteBuffers(1,&trianglebuffer);
+    glDeleteBuffers(1,&vertexArrayObject);
+    glDeleteBuffers(1,&vertexArrayBuffers[POSITION_VB]);
+    glDeleteBuffers(1,&vertexArrayBuffers[INDEX_VB]);
 }
 
 //**********************************************************************//

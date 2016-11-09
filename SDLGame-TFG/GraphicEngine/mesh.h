@@ -125,9 +125,9 @@ class Mesh : public Object3D
 
     protected:
         vec3f color;
+        static const unsigned int NUM_BUFFERS = 2;
+        GLuint vertexArrayBuffers[NUM_BUFFERS];
         GLuint vertexArrayObject;
-        GLuint vertexbuffer;
-        GLuint trianglebuffer;
         Shader shaders;
         int numIndex;
         string file;

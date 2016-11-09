@@ -41,7 +41,7 @@
 #include "texture.h"
 //#include <../lib/glm/glm.hpp>
 
-enum MeshBufferPositions
+enum MeshMaterialBufferPositions
 {
 	POSITION_VB,
 	TEXCOORD_VB,

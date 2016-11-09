@@ -93,3 +93,10 @@ void Window::updateScreen(){
     SDL_Delay(1000 / 60); // 60 FPS
 }
 
+//**********************************************************************//
+
+void Window::cleanScreen(){
+    glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
