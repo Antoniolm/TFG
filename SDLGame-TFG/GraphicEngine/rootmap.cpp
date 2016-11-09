@@ -24,7 +24,7 @@ RootMap::RootMap()
     NodeSceneGraph * root3=new NodeSceneGraph();
     string file("geometries/foot.obj");
     Mesh * aObject=new Mesh(file);
-    aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    aObject->LoadShader("shaders/basicvertexsharder.vs","shaders/basicfragshader.fs");
     aObject->init();
 
     Matrix4f *matrix =new Matrix4f();
@@ -48,6 +48,7 @@ RootMap::RootMap()
 
         root2->add(matrix3);
         root2->add(static_cast<Object3D*>(root));
+
         root2->add(matrix3);
         root2->add(static_cast<Object3D*>(root));
 
