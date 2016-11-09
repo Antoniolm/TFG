@@ -32,7 +32,7 @@
 
 namespace obj{
 
-void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<GLushort> & triangles);
+void readMesh(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles);
 
 void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord);
 

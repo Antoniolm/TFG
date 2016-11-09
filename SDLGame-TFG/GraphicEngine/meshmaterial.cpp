@@ -69,6 +69,9 @@ void MeshMaterial::init(){
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(GLushort)*triangles.size(),&triangles[0],GL_STATIC_DRAW);
 
     glBindVertexArray(0);
+
+    Texture texture("./textures/wood.jpg");
+    texture.Bind();
 }
 
 
@@ -83,9 +86,6 @@ MeshMaterial::~MeshMaterial()
 
 void MeshMaterial::visualization(Context & vis){
     position=vec4f();
-
-    Texture texture("./textures/bricks.jpg");
-    texture.Bind();
 
     Matrix4f * transformation = &(vis.matrixStack.getMatrix());
     position=transformation->product(position);

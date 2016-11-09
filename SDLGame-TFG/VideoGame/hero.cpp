@@ -21,33 +21,41 @@
 
 Hero::Hero()
 {
-    //Create each primitive
-    string file("geometries/cube.ply");
-    Mesh * cube=new Mesh(file);
-    cube->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    cube->init();
+    //Create each object
+    string file=string("geometries/sphere.obj");
+    MeshMaterial * sphereObject=new MeshMaterial(file);
+    sphereObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    sphereObject->init();
 
-    file=string("geometries/sphere.ply");
-    Mesh * sphere=new Mesh(file);
-    sphere->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    sphere->init();
+    file=string("geometries/pill.obj");
+    MeshMaterial * pillObject=new MeshMaterial(file);
+    pillObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    pillObject->init();
 
-    file=string("geometries/cylinder.ply");
-    Mesh * cylinder=new Mesh(file);
-    cylinder->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    cylinder->init();
+    file=string("geometries/hand.obj");
+    MeshMaterial * handObject=new MeshMaterial(file);
+    handObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    handObject->init();
 
-    Matrix4f *scaleMatrix=new Matrix4f();
-    scaleMatrix->scale(0.3,0.3,0.6);
+    file=string("geometries/foot.obj");
+    MeshMaterial * footObject=new MeshMaterial(file);
+    footObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    footObject->init();
+
+    Matrix4f *scaleFoot=new Matrix4f();
+    scaleFoot->scale(0.2,0.2,0.2);
+
+    Matrix4f *rotateFoot=new Matrix4f();
+    rotateFoot->rotation(-90,0.0,1.0,0.0);
 
     Matrix4f *scaleSphere=new Matrix4f();
     scaleSphere->scale(0.15,0.15,0.15);
 
-    Matrix4f *scaleCylinder=new Matrix4f();
-    scaleCylinder->scale(0.1,0.1,0.7);
+    Matrix4f *scalePillKnee=new Matrix4f();
+    scalePillKnee->scale(0.3,0.6,0.3);
 
-    Matrix4f *scaleCylinder2=new Matrix4f();
-    scaleCylinder2->scale(0.1,0.1,0.6);
+    Matrix4f *scalePill=new Matrix4f();
+    scalePill->scale(0.3,0.5,0.3);
 
     Matrix4f *transCylinder=new Matrix4f();
     transCylinder->translation(0.0,-0.7,0.0);
@@ -62,7 +70,7 @@ Hero::Hero()
     transMatrix->translation(0.0,0.0,0.5);
 
     Matrix4f *AnkFootransMatrix=new Matrix4f();
-    AnkFootransMatrix->translation(0.0,-0.8,0.0);
+    AnkFootransMatrix->translation(0.0,-0.8,0.2);
 
     //////////////////////////////////////////////////////
     /////                  LEGS                      /////
@@ -119,16 +127,13 @@ Hero::Hero()
 
     //Ankle + foot
     NodeSceneGraph * ankle=new NodeSceneGraph();
-    NodeSceneGraph * foot=new NodeSceneGraph();
     NodeSceneGraph * ankle_foot=new NodeSceneGraph();
     ankle->add(scaleSphere);
-    ankle->add(static_cast<Object3D*>(sphere));
-    foot->add(transMatrix);
-    foot->add(scaleMatrix);
-    foot->add(static_cast<Object3D*>(cube));
+    ankle->add(static_cast<Object3D*>(sphereObject));
     ankle_foot->add(AnkFootransMatrix);
-    ankle_foot->add(static_cast<Object3D*>(ankle));
-    ankle_foot->add(static_cast<Object3D*>(foot));
+    ankle_foot->add(rotateFoot);
+    ankle_foot->add(scaleFoot);
+    ankle_foot->add(static_cast<Object3D*>(footObject));
 
     //knee + ankle
     NodeSceneGraph * knee_ankle=new NodeSceneGraph();
@@ -138,9 +143,8 @@ Hero::Hero()
     knee_ankle->add(static_cast<Object3D*>(ankle));
     knee_ankle->add(transCylinder);
     knee_ankle->add(static_cast<Object3D*>(ankle_foot));
-    knee_ankle->add(rotateCylinder);
-    knee_ankle->add(scaleCylinder);
-    knee_ankle->add(static_cast<Object3D*>(cylinder));
+    knee_ankle->add(scalePillKnee);
+    knee_ankle->add(static_cast<Object3D*>(pillObject));
 
     //Leg
     NodeSceneGraph * knee_ankleRight=new NodeSceneGraph();
@@ -159,9 +163,8 @@ Hero::Hero()
     legLeft->add(static_cast<Object3D*>(ankle));
     legLeft->add(transLeg);
     legLeft->add(static_cast<Object3D*>(knee_ankleLeft));
-    legLeft->add(rotateCylinder);
-    legLeft->add(scaleCylinder2);
-    legLeft->add(static_cast<Object3D*>(cylinder));
+    legLeft->add(scalePill);
+    legLeft->add(static_cast<Object3D*>(pillObject));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
@@ -169,9 +172,8 @@ Hero::Hero()
     legRight->add(static_cast<Object3D*>(ankle));
     legRight->add(transLeg);
     legRight->add(static_cast<Object3D*>(knee_ankleRight));
-    legRight->add(rotateCylinder);
-    legRight->add(scaleCylinder2);
-    legRight->add(static_cast<Object3D*>(cylinder));
+    legRight->add(scalePill);
+    legRight->add(static_cast<Object3D*>(pillObject));
 
     //////////////////////////////////////////////////////
     /////                  Arms                      /////
@@ -224,23 +226,27 @@ Hero::Hero()
 */
 
     Matrix4f * scaleHand=new Matrix4f();
-    scaleHand->scale(0.1,0.6,0.4);
+    scaleHand->scale(0.2,0.2,0.2);
 
     Matrix4f * transHand=new Matrix4f();
-    transHand->translation(0.0,-0.4,0.0);
+    transHand->translation(0.0,-0.6,-0.2);
 
     Matrix4f * wristHandTransMatrix=new Matrix4f();
     wristHandTransMatrix->translation(0.0,-0.6,0.0);
+
+    Matrix4f * rotateHand=new Matrix4f();
+    rotateHand->rotation(180,1,0,0);
 
     //wrist + hand
     NodeSceneGraph * wrist=new NodeSceneGraph();
     NodeSceneGraph * hand=new NodeSceneGraph();
     NodeSceneGraph * wrist_hand=new NodeSceneGraph();
     wrist->add(scaleSphere);
-    wrist->add(static_cast<Object3D*>(sphere));
+    wrist->add(static_cast<Object3D*>(sphereObject));
     hand->add(transHand);
+    hand->add(rotateHand);
     hand->add(scaleHand);
-    hand->add(static_cast<Object3D*>(cube));
+    hand->add(static_cast<Object3D*>(handObject));
     wrist_hand->add(wristHandTransMatrix);
     wrist_hand->add(static_cast<Object3D*>(wrist));
     wrist_hand->add(static_cast<Object3D*>(hand));
@@ -256,7 +262,7 @@ Hero::Hero()
     elbow_wrist->add(static_cast<Object3D*>(wrist_hand));
     elbow_wrist->add(rotateCylinder);
     elbow_wrist->add(scaleElbowCylin);
-    elbow_wrist->add(static_cast<Object3D*>(cylinder));
+    elbow_wrist->add(static_cast<Object3D*>(pillObject));
 
     //Leg
     /*NodeSceneGraph * elbow_wristRight=new NodeSceneGraph();
@@ -294,13 +300,7 @@ Hero::Hero()
     mat->translation(-0.8,0.0,0.0);
     root->add(moveHero);
 
-    file=string("geometries/monkey.obj");
-    MeshMaterial * aObjectTest=new MeshMaterial(file);
-    aObjectTest->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    aObjectTest->init();
-
-    root->add(static_cast<Object3D*>(aObjectTest));
-    root->add(static_cast<Object3D*>(legLeft));
+    root->add(static_cast<Object3D*>(elbow_wrist));
     root->add(mat);
     root->add(static_cast<Object3D*>(legRight));
     currentTime=0;

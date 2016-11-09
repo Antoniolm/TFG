@@ -39,12 +39,7 @@ Mesh::Mesh(const Mesh & aMesh){
 Mesh::Mesh(const string & aTextur,unsigned char aType){
     texture=aTextur;
     color=vec3f(1.0,0.5,0.5);
-    std::vector<float> normal_obj; // vertex
-    std::vector<int> normalf_obj; // vertex
-    std::vector<float> textureCoord_obj; // vertex
-    std::vector<int>   texturef_obj ;    // face
     //obj::readMesh("geometries/foot.obj",vertex,triangles);
-    obj::readMesh("geometries/foot.obj",vertex,triangles);
 
 }
 

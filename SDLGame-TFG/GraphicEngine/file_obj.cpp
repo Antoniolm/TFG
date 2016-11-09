@@ -22,8 +22,11 @@
 namespace obj{
 using namespace std;
 
-void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<GLushort> & triangles){
+void readMesh(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles){
     int value;
+    float x,y,z;
+    string aux;
+    istringstream * stream;
     ifstream in(fileName, ios::in);
     if (!in)
     {
@@ -35,21 +38,19 @@ void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<GLus
     {
         if (line.substr(0,2) == "v ")
         {
-            istringstream s(line.substr(2));
-            float x,y,z;
-            s >> x;
-            s >> y;
-            s >> z;
-            vertex.push_back(x);vertex.push_back(y);vertex.push_back(z);
+            stream=new istringstream(line.substr(2));
+            (*stream) >> x;
+            (*stream) >> y;
+            (*stream) >> z;
+            vertex.push_back(vec3f(x,y,z));
         }
         else if (line.substr(0,2) == "f ")
         {
-            istringstream s(line.substr(2));
-            string aux;
+            stream=new istringstream(line.substr(2));
             for(int i=0;i<3;i++){
-                s >> value;
+                (*stream) >> value;
                 triangles.push_back((GLushort)--value);
-                s >> aux;
+                (*stream) >> aux;
             }
         }
     }
@@ -59,6 +60,8 @@ void readMesh(const char * fileName,std::vector<float> & vertex,std::vector<GLus
 void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord){
     int value;
     char charValue;
+    float x,y,z;
+    istringstream * stream;
     std::vector<vec3f> vertexAux;
     std::vector<vec3f> normalsVertex;
     std::vector<vec2f> textureVertex;
@@ -76,49 +79,46 @@ void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vecto
     {
         if (line.substr(0,2) == "v ")
         {
-            istringstream s(line.substr(2));
-            float x,y,z;
-            s >> x;
-            s >> y;
-            s >> z;
+            stream=new istringstream(line.substr(2));
+            (*stream) >> x;
+            (*stream) >> y;
+            (*stream) >> z;
             vertexAux.push_back(vec3f(x,y,z));
         }
-        else if (line.substr(0,2) == "f "){
-            line=line.substr(2);
-            istringstream s(line);
-            for(int i=0;i<3;i++){
-                //Extract the triangle face
-                s >> value;
-                trianglesIndex.push_back(--value);
-
-                //Extract the texture face
-                s >> charValue; //Extract the char between element
-                s >> value;
-                textureFaces.push_back(--value);
-
-                //Extract the normals face
-                s >> charValue; //Extract the char between element
-                s >> value;
-                normalFaces.push_back(--value);
-            }
-        }
         else if (line.substr(0,3) == "vn "){
-            istringstream s(line.substr(3));
-            float x,y,z;
-            s >> x;
-            s >> y;
-            s >> z;
+            stream=new istringstream(line.substr(3));
+            (*stream) >> x;
+            (*stream) >> y;
+            (*stream) >> z;
             normalsVertex.push_back(vec3f(x,y,z));
 
         }
         else if (line.substr(0,3) == "vt "){
-            istringstream s(line.substr(3));
-            float x,y;
-            s >> x;
-            s >> y;
+            stream=new istringstream(line.substr(3));
+            (*stream) >> x;
+            (*stream) >> y;
             textureVertex.push_back(vec2f(x,y));
 
         }
+        else if (line.substr(0,2) == "f "){
+            stream=new istringstream(line.substr(2));
+            for(int i=0;i<3;i++){
+                //Extract the triangle face
+                (*stream) >> value;
+                trianglesIndex.push_back(--value);
+
+                //Extract the texture face
+                (*stream) >> charValue; //Extract the char between element
+                (*stream) >> value;
+                textureFaces.push_back(--value);
+
+                //Extract the normals face
+                (*stream) >> charValue; //Extract the char between element
+                (*stream) >> value;
+                normalFaces.push_back(--value);
+            }
+        }
+
     }
 
     for(int i=0;i<trianglesIndex.size();i++){
@@ -127,21 +127,6 @@ void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vecto
         textureCord.push_back(textureVertex[textureFaces[i]]);
         triangles.push_back(i);
     }
-
-    /*float module;
-
-    for(int k=0;k<normals.size();k=k+3){
-		module=sqrt(normals[k]*normals[k]+normals[k+1]*normals[k+1]+normals[k+2]*normals[k+2]);
-
-		normals[k]=normals[k]/module;
-		normals[k+1]=normals[k+1]/module;
-		normals[k+2]=normals[k+2]/module;
-	}*/
 }
-
-    void calc_Normals(std::vector<float> & normals){
-
-
-    }
 
 }
