@@ -41,7 +41,7 @@ void Game::loop(){
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
     //aContext.camera.setOrthographicProjection(-5,5,-5,5,-5,5);
-    aContext.camera.setPerspectiveProjection(45.0f,1.0f*( 800.0f / 600.0f), 0.1f, 200.0f);
+    aContext.camera.setPerspectiveProjection(45.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
 

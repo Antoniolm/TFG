@@ -55,18 +55,13 @@ void Camera::setCamera(vec3f eye,vec3f aTarget,vec3f aUp){
 //**********************************************************************//
 
 void Camera::setPerspectiveProjection(float fov, float aspect, float near, float far){
-    float top, right,left,bottom;
-    top =(float) (near * tanf(fov / 2));
-    //top =(float) (near * tan(fov * 3.1416 / 360.0));
-    right = top * aspect;
-    left= -right;
-    bottom=-top;
+    float f=(float) 1/tan((fov * 3.1416) / 360.0);
 
     GLfloat * matrix=new GLfloat[16];
-    matrix[0]=(2.0f*near)/(right-left); matrix[1]=0;                        matrix[2]=(right+left)/(right-left);  matrix[3]=0;
-	matrix[4]=0;                        matrix[5]=(2.0f*near)/(top-bottom); matrix[6]=(top+bottom)/(top-bottom);  matrix[7]=0;
-	matrix[8]=0;                        matrix[9]=0;                        matrix[10]=-((far+near)/(far-near));  matrix[11]=-((2.0f*far*near)/(far-near));
-	matrix[12]=0;                       matrix[13]=0;                       matrix[14]=-1.0f;                     matrix[15]=0;
+    matrix[0]=f/(aspect);  matrix[1]=0;        matrix[2]=0;                          matrix[3]=0;
+	matrix[4]=0;                matrix[5]=f;   matrix[6]=0;                          matrix[7]=0;
+	matrix[8]=0;                matrix[9]=0;   matrix[10]=(far+near)/(near-far);    matrix[11]=-1.0f;
+	matrix[12]=0;               matrix[13]=0;  matrix[14]=(2.0f*far*near)/(near-far); matrix[15]=0;
 
     projection.setMatrix(matrix);
 }
@@ -115,10 +110,6 @@ void Camera::createCamera(){
 	matrix[12]=-(yCamera.dot(position)); matrix[13]=-(yCamera.dot(position)); matrix[14]=-(zCamera.dot(position)); matrix[15]=1;
 
 	camera.setMatrix(matrix);
-
-	//Matrix4f posMatrix;
-	//posMatrix.translation(position.x,position.y,-position.z);
-	//camera.product(posMatrix.getMatrix());
 }
 
 //**********************************************************************//
