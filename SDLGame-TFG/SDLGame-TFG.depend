@@ -389,7 +389,7 @@
 	"window.h"
 	"file_obj.h"
 
-1478719752 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1478813292 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1477601763 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -450,7 +450,7 @@
 	<vector>
 	<SDL.h>
 
-1478718973 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
+1478808545 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
 	<vector>
 	<string>
 	"context.h"
@@ -468,8 +468,11 @@
 	"shader.h"
 	<file_ply_stl.hpp>
 	<file_obj.h>
+	<../lib/glm/glm.hpp>
+	<../lib/glm/gtc/matrix_transform.hpp>
+	<../lib/glm/gtc/type_ptr.hpp>
 
-1478719384 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
+1478812947 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
 
 1451805405 c:\sdl2_mixer-2.0.1\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
@@ -858,7 +861,7 @@
 1478003729 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixstatic.h
 	"matrix4fdynamic.h"
 
-1478456549 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\structdata.h
+1478812508 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\structdata.h
 	<math.h>
 
 1417088498 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.cpp
@@ -902,7 +905,7 @@
 1477389144 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1478539834 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1478812822 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 
 1478465687 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
@@ -995,10 +998,10 @@
 1478688958 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
 	"file_obj.h"
 
-1478719485 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
+1478813154 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
 	"meshmaterial.h"
 
-1478718838 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
+1478805472 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
 	<vector>
 	<string>
 	"context.h"
@@ -1018,8 +1021,11 @@
 	<file_obj.h>
 	"material.h"
 	"texture.h"
+	<../lib/glm/glm.hpp>
+	<../lib/glm/gtc/matrix_transform.hpp>
+	<../lib/glm/gtc/type_ptr.hpp>
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\glm.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\glm.hpp
 	"detail/_fixes.hpp"
 	<cmath>
 	<climits>
@@ -1048,26 +1054,26 @@
 	"vector_relational.hpp"
 	"integer.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\_fixes.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\_fixes.hpp
 	<cmath>
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\fwd.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\fwd.hpp
 	"detail/type_int.hpp"
 	"detail/type_float.hpp"
 	"detail/type_vec.hpp"
 	"detail/type_mat.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_int.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_int.hpp
 	"setup.hpp"
 	<type_traits>
 	<cstdint>
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\setup.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\setup.hpp
 	<cassert>
 	<cstddef>
 	"../simd/platform.h"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\platform.h
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\platform.h
 	<cuda.h>
 	<intrin.h>
 	<immintrin.h>
@@ -1078,66 +1084,66 @@
 	<pmmintrin.h>
 	<emmintrin.h>
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_float.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_float.hpp
 	"setup.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec.hpp
 	"precision.hpp"
 	"type_int.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\precision.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\precision.hpp
 	"setup.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat.hpp
 	"precision.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\vec2.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\vec2.hpp
 	"detail/type_vec2.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec2.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec2.hpp
 	"type_vec.hpp"
 	"_swizzle.hpp"
 	"_swizzle_func.hpp"
 	<cstddef>
 	"type_vec2.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\_swizzle.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\_swizzle.hpp
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\_swizzle_func.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\_swizzle_func.hpp
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec2.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec2.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\vec3.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\vec3.hpp
 	"detail/type_vec3.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec3.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec3.hpp
 	"type_vec.hpp"
 	"_swizzle.hpp"
 	"_swizzle_func.hpp"
 	<cstddef>
 	"type_vec3.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec3.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec3.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\vec4.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\vec4.hpp
 	"detail/type_vec4.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec4.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec4.hpp
 	"type_vec.hpp"
 	"_swizzle.hpp"
 	"_swizzle_func.hpp"
 	<cstddef>
 	"type_vec4.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec4.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec4.inl
 	"type_vec4_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec4_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec4_simd.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat2x2.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat2x2.hpp
 	"detail/type_mat2x2.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x2.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x2.hpp
 	"../fwd.hpp"
 	"type_vec2.hpp"
 	"type_mat.hpp"
@@ -1145,10 +1151,10 @@
 	<cstddef>
 	"type_mat2x2.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x2.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x2.inl
 	"func_matrix.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_matrix.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_matrix.hpp
 	"../detail/precision.hpp"
 	"../detail/setup.hpp"
 	"../detail/type_mat.hpp"
@@ -1166,10 +1172,10 @@
 	"../mat4x4.hpp"
 	"func_matrix.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat2x3.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat2x3.hpp
 	"detail/type_mat2x3.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x3.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x3.hpp
 	"../fwd.hpp"
 	"type_vec2.hpp"
 	"type_vec3.hpp"
@@ -1178,12 +1184,12 @@
 	<cstddef>
 	"type_mat2x3.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x3.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x3.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat2x4.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat2x4.hpp
 	"detail/type_mat2x4.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x4.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x4.hpp
 	"../fwd.hpp"
 	"type_vec2.hpp"
 	"type_vec4.hpp"
@@ -1192,12 +1198,12 @@
 	<cstddef>
 	"type_mat2x4.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x4.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat2x4.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat3x2.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat3x2.hpp
 	"detail/type_mat3x2.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x2.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x2.hpp
 	"../fwd.hpp"
 	"type_vec2.hpp"
 	"type_vec3.hpp"
@@ -1206,12 +1212,12 @@
 	<cstddef>
 	"type_mat3x2.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x2.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x2.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat3x3.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat3x3.hpp
 	"detail/type_mat3x3.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x3.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x3.hpp
 	"../fwd.hpp"
 	"type_vec3.hpp"
 	"type_mat.hpp"
@@ -1219,13 +1225,13 @@
 	<cstddef>
 	"type_mat3x3.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x3.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x3.inl
 	"func_matrix.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat3x4.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat3x4.hpp
 	"detail/type_mat3x4.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x4.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x4.hpp
 	"../fwd.hpp"
 	"type_vec3.hpp"
 	"type_vec4.hpp"
@@ -1234,12 +1240,12 @@
 	<cstddef>
 	"type_mat3x4.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x4.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat3x4.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat4x2.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat4x2.hpp
 	"detail/type_mat4x2.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x2.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x2.hpp
 	"../fwd.hpp"
 	"type_vec2.hpp"
 	"type_vec4.hpp"
@@ -1248,12 +1254,12 @@
 	<cstddef>
 	"type_mat4x2.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x2.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x2.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat4x3.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat4x3.hpp
 	"detail/type_mat4x3.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x3.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x3.hpp
 	"../fwd.hpp"
 	"type_vec3.hpp"
 	"type_vec4.hpp"
@@ -1262,12 +1268,12 @@
 	<cstddef>
 	"type_mat4x3.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x3.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x3.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat4x4.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\mat4x4.hpp
 	"detail/type_mat4x4.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x4.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x4.hpp
 	"../fwd.hpp"
 	"type_vec4.hpp"
 	"type_mat.hpp"
@@ -1275,25 +1281,25 @@
 	<cstddef>
 	"type_mat4x4.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x4.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x4.inl
 	"func_matrix.hpp"
 	"type_mat4x4_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x4_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_mat4x4_simd.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_matrix.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_matrix.inl
 	"../geometric.hpp"
 	<limits>
 	"func_matrix_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\geometric.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\geometric.hpp
 	"detail/func_geometric.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_geometric.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_geometric.hpp
 	"type_vec3.hpp"
 	"func_geometric.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_geometric.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_geometric.inl
 	"func_exponential.hpp"
 	"func_common.hpp"
 	"type_vec2.hpp"
@@ -1301,7 +1307,7 @@
 	"type_float.hpp"
 	"func_geometric_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_exponential.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_exponential.hpp
 	"type_vec1.hpp"
 	"type_vec2.hpp"
 	"type_vec3.hpp"
@@ -1309,7 +1315,7 @@
 	<cmath>
 	"func_exponential.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec1.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec1.hpp
 	"../fwd.hpp"
 	"type_vec.hpp"
 	"_swizzle.hpp"
@@ -1317,9 +1323,9 @@
 	<cstddef>
 	"type_vec1.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec1.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_vec1.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_exponential.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_exponential.inl
 	"func_vector_relational.hpp"
 	"_vectorize.hpp"
 	<limits>
@@ -1327,37 +1333,37 @@
 	<cassert>
 	"func_exponential_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_vector_relational.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_vector_relational.hpp
 	"precision.hpp"
 	"setup.hpp"
 	"func_vector_relational.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_vector_relational.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_vector_relational.inl
 	<limits>
 	"func_vector_relational_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_vector_relational_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_vector_relational_simd.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\_vectorize.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\_vectorize.hpp
 	"type_vec1.hpp"
 	"type_vec2.hpp"
 	"type_vec3.hpp"
 	"type_vec4.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_exponential_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_exponential_simd.inl
 	"../simd/exponential.h"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\exponential.h
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\exponential.h
 	"platform.h"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_common.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_common.hpp
 	"setup.hpp"
 	"precision.hpp"
 	"type_int.hpp"
 	"_fixes.hpp"
 	"func_common.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_common.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_common.inl
 	"func_vector_relational.hpp"
 	"type_vec2.hpp"
 	"type_vec3.hpp"
@@ -1366,88 +1372,88 @@
 	<limits>
 	"func_common_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_common_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_common_simd.inl
 	"../simd/common.h"
 	<immintrin.h>
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\common.h
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\common.h
 	"platform.h"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_geometric_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_geometric_simd.inl
 	"../simd/geometric.h"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\geometric.h
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\geometric.h
 	"common.h"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_matrix_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_matrix_simd.inl
 	"type_mat4x4.hpp"
 	"func_geometric.hpp"
 	"../simd/matrix.h"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\matrix.h
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\matrix.h
 	"geometric.h"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\trigonometric.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\trigonometric.hpp
 	"detail/func_trigonometric.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_trigonometric.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_trigonometric.hpp
 	"setup.hpp"
 	"precision.hpp"
 	"func_trigonometric.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_trigonometric.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_trigonometric.inl
 	"_vectorize.hpp"
 	<cmath>
 	<limits>
 	"func_trigonometric_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_trigonometric_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_trigonometric_simd.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\exponential.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\exponential.hpp
 	"detail/func_exponential.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\common.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\common.hpp
 	"detail/func_common.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\packing.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\packing.hpp
 	"detail/func_packing.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_packing.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_packing.hpp
 	"type_vec2.hpp"
 	"type_vec4.hpp"
 	"func_packing.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_packing.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_packing.inl
 	"func_common.hpp"
 	"type_half.hpp"
 	"../fwd.hpp"
 	"func_packing_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_half.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_half.hpp
 	"setup.hpp"
 	"type_half.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_half.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\type_half.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_packing_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_packing_simd.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\matrix.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\matrix.hpp
 	"detail/func_matrix.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\vector_relational.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\vector_relational.hpp
 	"detail/func_vector_relational.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\integer.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\integer.hpp
 	"detail/func_integer.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_integer.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_integer.hpp
 	"setup.hpp"
 	"precision.hpp"
 	"func_common.hpp"
 	"func_vector_relational.hpp"
 	"func_integer.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_integer.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_integer.inl
 	"type_vec2.hpp"
 	"type_vec3.hpp"
 	"type_vec4.hpp"
@@ -1457,10 +1463,10 @@
 	<limits>
 	"func_integer_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_integer_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\detail\func_integer_simd.inl
 	"../simd/integer.h"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\integer.h
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\simd\integer.h
 
 1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtx\projection.hpp
 	"../geometric.hpp"
@@ -1468,7 +1474,7 @@
 
 1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtx\projection.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\matrix_transform.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\matrix_transform.hpp
 	"../mat4x4.hpp"
 	"../vec2.hpp"
 	"../vec3.hpp"
@@ -1476,19 +1482,19 @@
 	"../gtc/constants.hpp"
 	"matrix_transform.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\constants.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\constants.hpp
 	"../detail/setup.hpp"
 	"constants.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\constants.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\constants.inl
 	<limits>
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\matrix_transform.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\matrix_transform.inl
 	"../geometric.hpp"
 	"../trigonometric.hpp"
 	"../matrix.hpp"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\type_ptr.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\type_ptr.hpp
 	"../gtc/quaternion.hpp"
 	"../vec2.hpp"
 	"../vec3.hpp"
@@ -1505,7 +1511,7 @@
 	<cstring>
 	"type_ptr.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\quaternion.hpp
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\quaternion.hpp
 	"../mat3x3.hpp"
 	"../mat4x4.hpp"
 	"../vec3.hpp"
@@ -1513,16 +1519,16 @@
 	"../gtc/constants.hpp"
 	"quaternion.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\quaternion.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\quaternion.inl
 	"../trigonometric.hpp"
 	"../geometric.hpp"
 	"../exponential.hpp"
 	<limits>
 	"quaternion_simd.inl"
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\quaternion_simd.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\quaternion_simd.inl
 
-1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\type_ptr.inl
+1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\type_ptr.inl
 	<cstring>
 
 1478525325 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.cpp
@@ -1556,6 +1562,6 @@
 	"stb_image.h"
 	<iostream>
 
-1478615121 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.cpp
+1478805411 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.cpp
 	"texture.h"
 

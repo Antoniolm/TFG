@@ -37,10 +37,10 @@
 #include "shader.h"
 #include <file_ply_stl.hpp>
 #include <file_obj.h>
-//#include <../lib/glm/glm.hpp>
-//#include <../lib/glm/gtc/matrix_transform.hpp>
-//#include <../lib/glm/gtc/type_ptr.hpp>
-//#include <../lib/glm/GLM_GTX_transform2.h> // for lookAt
+#include <../lib/glm/glm.hpp>
+#include <../lib/glm/gtc/matrix_transform.hpp>
+#include <../lib/glm/gtc/type_ptr.hpp>
+//#include <../lib/glm/gtc/matrix_transform2.h> // for lookAt
 
 using namespace std;
 

@@ -55,6 +55,23 @@ struct vec3f{
 
         return *this;
     }
+
+    vec3f operator*(vec3f aVec){
+        x*=aVec.x;
+        y*=aVec.y;
+        z*=aVec.z;
+
+        return *this;
+    }
+
+    float dot(vec3f aVec){
+        float result=0.0f;
+
+        result+=(x*aVec.x)+(y*aVec.y)+(z*aVec.z);
+
+        return result;
+    }
+
     vec3f operator-(vec3f aVec){
         x-=aVec.x;
         y-=aVec.y;

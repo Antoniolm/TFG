@@ -37,10 +37,11 @@ void Game::loop(){
     bool quit = false;
     SDL_Event event;
     Context aContext;
-    vec3f position(0.0,-1.0,-1.0);
+    vec3f position(-2.0,-2.0,3.0);
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
-    aContext.camera.setOrthographicProjection(-5,5,-5,5,-5,5);
+    //aContext.camera.setOrthographicProjection(-5,5,-5,5,-5,5);
+    aContext.camera.setPerspectiveProjection(45.0f,1.0f*( 800.0f / 600.0f), 0.1f, 200.0f);
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
 
@@ -75,7 +76,7 @@ void Game::loop(){
                         break;
                     case SDLK_DOWN:
                         movCamera.identity();
-                        moveHero->translation(0.0,0.0,0.1);
+                        moveHero->translation(0.0,0.0,-0.1);
                         break;
                     case SDLK_k:
                         movCamera.scale(1.1,1.1,1.1);
