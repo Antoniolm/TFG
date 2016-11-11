@@ -442,11 +442,12 @@
 1477942047 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
-1478113616 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
+1478868183 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
 	"object3d.h"
 	"context.h"
 	"matrix4fdynamic.h"
 	"matrix4f.h"
+	"material.h"
 	<vector>
 	<SDL.h>
 
@@ -1562,7 +1563,7 @@
 1478866153 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialstack.cpp
 	"materialstack.h"
 
-1478866996 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialstack.h
+1478867165 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialstack.h
 	"material.h"
 	<vector>
 

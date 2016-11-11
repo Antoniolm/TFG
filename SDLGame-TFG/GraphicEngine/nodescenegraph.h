@@ -25,6 +25,7 @@
 #include "context.h"
 #include "matrix4fdynamic.h"
 #include "matrix4f.h"
+#include "material.h"
 #include <vector>
 #include <SDL.h>
 
@@ -38,12 +39,13 @@ using namespace std;
 //////////////////////////////////////////////////////////////////////////
 struct EntranceNGE
 {
-	unsigned char type;   //0=subscene, 1=Transformation
+	unsigned char type;   //0=subscene, 1=Transformation, 2=Material
 
 	union
 	{
         Object3D * obj;   //ptr. to Object3D
         Matrix4f * matrix;   //ptr. to matrix4f
+        Material * material; //ptr. to Material
 	};
 
 	EntranceNGE(Object3D * aObject){
@@ -53,6 +55,10 @@ struct EntranceNGE
 	EntranceNGE(Matrix4f * pMatrix){
         matrix=pMatrix;
         type=1;
+	}
+    EntranceNGE(Material * aMaterial){
+        material=aMaterial;
+        type=2;
 	}
 };
 
