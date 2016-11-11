@@ -35,7 +35,7 @@ OscillateRotation::OscillateRotation(bool incre,float maxG,float minG,float init
     direction=dir;
 
     currentGrade=initialGrade;
-    currentTime=0;
+    currentTime=SDL_GetTicks()/1000;
 }
 
 //**********************************************************************//
@@ -56,7 +56,7 @@ void OscillateRotation::setParameters(bool incre,float maxG,float minG,float ini
     direction=dir;
 
     currentGrade=initialGrade;
-    currentTime=0;
+    currentTime=SDL_GetTicks()/1000;
 }
 
 //**********************************************************************//
@@ -65,12 +65,13 @@ Matrix4f & OscillateRotation::updateState(float time){
     time=time/1000;
 
     float grade;
-
-    if(currentGrade>= maxGrade){
+    if(currentGrade>= maxGrade && increment){
         increment=false;
+        //cout<< "Time incremento"<< SDL_GetTicks()<< endl;
     }
-    if(currentGrade<=minGrade){
+    if(currentGrade<=minGrade && !increment){
         increment=true;
+        //cout<< "Time decremento"<< SDL_GetTicks()<< endl;
     }
 
     if(!increment){

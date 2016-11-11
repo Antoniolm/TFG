@@ -32,15 +32,20 @@ Hero::Hero()
     pillObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     pillObject->init();
 
-    file=string("geometries/hand.obj");
+    /*file=string("geometries/hand.obj");
     MeshMaterial * handObject=new MeshMaterial(file);
     handObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    handObject->init();
+    handObject->init();*/
 
     file=string("geometries/foot.obj");
     MeshMaterial * footObject=new MeshMaterial(file);
     footObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     footObject->init();
+
+    file=string("geometries/hip.obj");
+    MeshMaterial * hipObject=new MeshMaterial(file);
+    hipObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    hipObject->init();
 
     Matrix4f *scaleFoot=new Matrix4f();
     scaleFoot->scale(0.2,0.2,0.2);
@@ -56,6 +61,9 @@ Hero::Hero()
 
     Matrix4f *scalePill=new Matrix4f();
     scalePill->scale(0.3,0.5,0.3);
+
+    Matrix4f *scaleHip=new Matrix4f();
+    scaleHip->scale(0.4,0.4,0.3);
 
     Matrix4f *transCylinder=new Matrix4f();
     transCylinder->translation(0.0,-0.7,0.0);
@@ -93,26 +101,26 @@ Hero::Hero()
     moveLegLeft->identity();
     moveMatrix.push_back(moveLegLeft);
 
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,0,50,vec3f(1,0,0));
-    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,0,50,vec3f(1,0,0));
+    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,0,100,vec3f(1,0,0));
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,0,100,vec3f(1,0,0));
     MatrixStatic * notMove=new MatrixStatic();
 
     //Movement to the first leg
     MatrixScript * KneeScriptLeft=new MatrixScript();
     MatrixScript * LegScriptLeft=new MatrixScript();
-    KneeScriptLeft->add(1.55,oscillateKnee);
-    KneeScriptLeft->add(1.55,notMove);
-    LegScriptLeft->add(1.55,oscillateLeg);
-    LegScriptLeft->add(1.55,notMove);
+    KneeScriptLeft->add(0.6,oscillateKnee);
+    KneeScriptLeft->add(0.6,notMove);
+    LegScriptLeft->add(0.6,oscillateLeg);
+    LegScriptLeft->add(0.6,notMove);
 
 
     //Movement to the second leg
     MatrixScript * KneeScriptRight=new MatrixScript();
     MatrixScript * LegScriptRight=new MatrixScript();
-    KneeScriptRight->add(1.55,notMove);
-    KneeScriptRight->add(1.55,oscillateKnee);
-    LegScriptRight->add(1.55,notMove);
-    LegScriptRight->add(1.55,oscillateLeg);
+    KneeScriptRight->add(0.6,notMove);
+    KneeScriptRight->add(0.6,oscillateKnee);
+    LegScriptRight->add(0.6,notMove);
+    LegScriptRight->add(0.6,oscillateLeg);
 
     //Add the script to our animation
     animation.add(KneeScriptRight);
@@ -246,7 +254,7 @@ Hero::Hero()
     hand->add(transHand);
     hand->add(rotateHand);
     hand->add(scaleHand);
-    hand->add(static_cast<Object3D*>(handObject));
+    //hand->add(static_cast<Object3D*>(handObject));
     wrist_hand->add(wristHandTransMatrix);
     wrist_hand->add(static_cast<Object3D*>(wrist));
     wrist_hand->add(static_cast<Object3D*>(hand));
@@ -300,10 +308,19 @@ Hero::Hero()
     mat->translation(-0.8,0.0,0.0);
     root->add(moveHero);
 
-    root->add(static_cast<Object3D*>(elbow_wrist));
+    Matrix4f *mat2=new Matrix4f();
+    mat2->translation(0.4,0.0,0.0);
+
+    NodeSceneGraph * hipNode=new NodeSceneGraph();
+    hipNode->add(scaleHip);
+    hipNode->add(static_cast<Object3D*>(hipObject));
+
+    root->add((static_cast<Object3D*>(hipNode)));
+    root->add(mat2);
+    root->add(static_cast<Object3D*>(legLeft));
     root->add(mat);
     root->add(static_cast<Object3D*>(legRight));
-    currentTime=0;
+    currentTime=SDL_GetTicks();
 }
 
 //**********************************************************************//

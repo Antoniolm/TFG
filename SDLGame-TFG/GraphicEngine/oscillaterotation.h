@@ -21,6 +21,7 @@
 #define OSCILLATEROTATION_H
 
 #include "matrix4fdynamic.h"
+#include <SDL.h>
 
 class OscillateRotation : public Matrix4fDynamic
 {
@@ -64,6 +65,15 @@ class OscillateRotation : public Matrix4fDynamic
         //////////////////////////////////////////////////////////////////////////
         virtual Matrix4f & updateState(float time);
 
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will reset to the initial state
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void resetState();
+
     protected:
 
     private:
@@ -75,6 +85,7 @@ class OscillateRotation : public Matrix4fDynamic
         float angularVelocity;
         float currentTime;
         bool increment;
+        int loop;
 
 };
 

@@ -60,6 +60,8 @@
 		<Unit filename="GraphicEngine/linearmovement.h" />
 		<Unit filename="GraphicEngine/material.cpp" />
 		<Unit filename="GraphicEngine/material.h" />
+		<Unit filename="GraphicEngine/materialstack.cpp" />
+		<Unit filename="GraphicEngine/materialstack.h" />
 		<Unit filename="GraphicEngine/matrix4f.cpp" />
 		<Unit filename="GraphicEngine/matrix4f.h" />
 		<Unit filename="GraphicEngine/matrix4fdynamic.cpp" />
