@@ -39,7 +39,7 @@ using namespace std;
 //////////////////////////////////////////////////////////////////////////
 struct EntranceNGE
 {
-	unsigned char type;   //0=subscene, 1=Transformation, 2=Material
+	unsigned type;   //0=subscene, 1=Transformation, 2=Material
 
 	union
 	{

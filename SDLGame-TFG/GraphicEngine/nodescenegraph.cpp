@@ -44,6 +44,7 @@ void NodeSceneGraph::visualization(Context & cv){
     float time=SDL_GetTicks();
 
     int contMatrix=1;
+    int contMaterial=0;
     cv.matrixStack.push();
     vector<EntranceNGE>::iterator it;
     for(it=entrance.begin();it!=entrance.end();it++){
@@ -52,13 +53,17 @@ void NodeSceneGraph::visualization(Context & cv){
                 (*it).obj->visualization(cv);
                 break;
             case 1:
-                if(cv.visualization_mode!=1){
-                    cv.matrixStack.cMatrix((*(*it).matrix));
-                    contMatrix++;
-                }
+                cv.matrixStack.cMatrix((*(*it).matrix));
+                contMatrix++;
+                break;
+            case 2:
+                cv.materialStack.push((*(*it).material));
+                contMaterial++;
                 break;
             }
+
     }
+    cv.materialStack.pop(contMaterial);
     cv.matrixStack.pop(contMatrix);
     currentTime=time;
 }

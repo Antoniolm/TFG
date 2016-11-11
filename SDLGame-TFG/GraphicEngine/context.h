@@ -25,6 +25,7 @@
 #include "structdata.h"
 #include "projection.h"
 #include "object3d.h"
+#include "materialstack.h"
 #include <list>
 
 
@@ -48,6 +49,7 @@ class Context
         unsigned int visualization_mode;
         unsigned camera_mode;
         MatrixStack matrixStack;
+        MaterialStack materialStack;
         Camera camera;
         list<Object3D *> posObject;
 

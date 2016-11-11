@@ -431,18 +431,19 @@
 1477840103 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.cpp
 	"context.h"
 
-1478090533 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
+1478869063 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
 	"matrixstack.h"
 	"camera.h"
 	"structdata.h"
 	"projection.h"
 	"object3d.h"
+	"materialstack.h"
 	<list>
 
-1477942047 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
+1478869309 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
-1478868183 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
+1478869256 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
 	"object3d.h"
 	"context.h"
 	"matrix4fdynamic.h"
@@ -1529,7 +1530,7 @@
 1478525325 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.cpp
 	"material.h"
 
-1478525121 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.h
+1478869427 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.h
 	"structdata.h"
 
 1478536559 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
