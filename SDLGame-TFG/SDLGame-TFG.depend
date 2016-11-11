@@ -389,7 +389,7 @@
 	"window.h"
 	"file_obj.h"
 
-1478815351 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1478820223 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1477601763 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -450,7 +450,7 @@
 	<vector>
 	<SDL.h>
 
-1478808545 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
+1478820272 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
 	<vector>
 	<string>
 	"context.h"
@@ -468,11 +468,8 @@
 	"shader.h"
 	<file_ply_stl.hpp>
 	<file_obj.h>
-	<../lib/glm/glm.hpp>
-	<../lib/glm/gtc/matrix_transform.hpp>
-	<../lib/glm/gtc/type_ptr.hpp>
 
-1478817901 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
+1478820212 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
 
 1451805405 c:\sdl2_mixer-2.0.1\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
@@ -998,10 +995,10 @@
 1478688958 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
 	"file_obj.h"
 
-1478817897 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
+1478820176 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
 	"meshmaterial.h"
 
-1478805472 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
+1478820243 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
 	<vector>
 	<string>
 	"context.h"
@@ -1021,9 +1018,6 @@
 	<file_obj.h>
 	"material.h"
 	"texture.h"
-	<../lib/glm/glm.hpp>
-	<../lib/glm/gtc/matrix_transform.hpp>
-	<../lib/glm/gtc/type_ptr.hpp>
 
 1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\glm.hpp
 	"detail/_fixes.hpp"
@@ -1564,4 +1558,11 @@
 
 1478805411 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.cpp
 	"texture.h"
+
+1478866153 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialstack.cpp
+	"materialstack.h"
+
+1478866996 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialstack.h
+	"material.h"
+	<vector>
 

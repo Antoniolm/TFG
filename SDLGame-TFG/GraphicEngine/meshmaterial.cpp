@@ -98,19 +98,10 @@ void MeshMaterial::visualization(Context & vis){
     GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation->getMatrix());
 
-    glm::mat4 view;
-    view = glm::lookAt(glm::vec3(-2.0f, -2.0f, 3.0f),
-  		   glm::vec3(0.0f, 0.0f, 0.0f),
-  		   glm::vec3(0.0f, 1.0f, 0.0f));
     GLint viewLocation= glGetUniformLocation(shaders.getProgram(),"view");
-    //glUniformMatrix4fv(viewLocation,1,GL_FALSE,glm::value_ptr(view));
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
 
-    glm::mat4 ProjectionMatrix= glm::mat4(1.0f);
-    ProjectionMatrix*= glm::perspective(45.0f, 800.0f / 600.0f, 0.1f, 200.0f);
-    //ProjectionMatrix*= glm::ortho(0.f, 600.f, 800.f, 0.f, -1.f, 200.f);
     GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
-    //glUniformMatrix4fv(projectionLocation,1,GL_FALSE,glm::value_ptr(ProjectionMatrix));
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
 

@@ -39,10 +39,6 @@
 #include <file_obj.h>
 #include "material.h"
 #include "texture.h"
-#include <../lib/glm/glm.hpp>
-#include <../lib/glm/gtc/matrix_transform.hpp>
-#include <../lib/glm/gtc/type_ptr.hpp>
-//#include <../lib/glm/glm.hpp>
 
 enum MeshMaterialBufferPositions
 {
