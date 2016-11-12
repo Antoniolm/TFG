@@ -48,6 +48,14 @@ class MatrixScript : public Matrix4fDynamic
         //////////////////////////////////////////////////////////////////////////
         virtual Matrix4f & updateState(float time);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will reset to the initial state
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        virtual void resetState();
+
         Matrix4f & getMatrix();
     protected:
 

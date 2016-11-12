@@ -19,22 +19,6 @@
 
 #include "matrix4fdynamic.h"
 
-Matrix4fDynamic::Matrix4fDynamic()
-{
-    //ctor
-}
-
-Matrix4fDynamic::Matrix4fDynamic(const Matrix4fDynamic & aMatrix){
-    currentMatrix=aMatrix.currentMatrix;
-}
-
-//**********************************************************************//
-
-Matrix4fDynamic::~Matrix4fDynamic()
-{
-    //dtor
-}
-
 //**********************************************************************//
 
 Matrix4f & Matrix4fDynamic::updateState(float time){

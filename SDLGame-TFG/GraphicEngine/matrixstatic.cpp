@@ -43,3 +43,9 @@ MatrixStatic::~MatrixStatic()
 Matrix4f &  MatrixStatic::updateState(float time){
     return currentMatrix;
 }
+
+//**********************************************************************//
+
+void MatrixStatic::resetState(){
+
+}

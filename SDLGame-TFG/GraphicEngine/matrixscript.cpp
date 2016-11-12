@@ -63,8 +63,7 @@ Matrix4f & MatrixScript::updateState(float time){
 
 //**********************************************************************//
 
-Matrix4f & MatrixScript::getMatrix(){
-    cout<< "Aqui esta el fucking problem"<< endl;
-    return currentMatrix;
-
+void MatrixScript::resetState(){
+    for(int i=0;i<script.size();i++)
+        (script[i].second)->resetState();
 }

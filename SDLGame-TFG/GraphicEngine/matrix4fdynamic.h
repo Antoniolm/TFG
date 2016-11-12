@@ -25,10 +25,6 @@
 class Matrix4fDynamic
 {
     public:
-        /** Default constructor */
-        Matrix4fDynamic();
-        Matrix4fDynamic(const Matrix4fDynamic & aMatrix);
-        virtual ~Matrix4fDynamic();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -37,9 +33,9 @@ class Matrix4fDynamic
         *    \return the new state of the matrix4f
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual Matrix4f & updateState(float time);
+        virtual Matrix4f & updateState(float time)=0;
 
-        virtual void resetState();
+        virtual void resetState()=0;
 
         Matrix4f & getMatrix();
 
