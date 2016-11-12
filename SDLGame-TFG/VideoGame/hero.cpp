@@ -215,61 +215,78 @@ Hero::Hero()
 
 
     //Create a new Movement
-    /*Matrix4f * moveKneeRight=new Matrix4f();
-    moveKneeRight->identity();
-    moveMatrix.push_back(moveKneeRight);
+    Matrix4f * moveElbowLeft=new Matrix4f();
+    moveElbowLeft->identity();
+    moveMatrix.push_back(moveElbowLeft);
 
-    Matrix4f * moveKneeLeft=new Matrix4f();
-    moveKneeLeft->identity();
-    moveMatrix.push_back(moveKneeLeft);
+    Matrix4f * moveElbowRight=new Matrix4f();
+    moveElbowRight->identity();
+    moveMatrix.push_back(moveElbowRight);
 
-    Matrix4f * moveLegRight=new Matrix4f();
-    moveLegRight->identity();
-    moveMatrix.push_back(moveLegRight);
+    Matrix4f * moveArmLeft=new Matrix4f();
+    moveArmLeft->identity();
+    moveMatrix.push_back(moveArmLeft);
 
-    Matrix4f * moveLegLeft=new Matrix4f();
-    moveLegLeft->identity();
-    moveMatrix.push_back(moveLegLeft);
+    Matrix4f * moveArmRight=new Matrix4f();
+    moveArmRight->identity();
+    moveMatrix.push_back(moveArmRight);
 
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,0,50,vec3f(1,0,0));
-    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,0,50,vec3f(1,0,0));
-    MatrixStatic * notMove=new MatrixStatic();
+    //Matrix4fDinamic
+    OscillateRotation * oscillateElbow=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),3);
+    OscillateRotation * oscillateShoulder=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),3);
 
-    //Movement to the first leg
-    MatrixScript * KneeScriptLeft=new MatrixScript();
-    MatrixScript * LegScriptLeft=new MatrixScript();
-    KneeScriptLeft->add(1.55,oscillateKnee);
-    KneeScriptLeft->add(1.55,notMove);
-    LegScriptLeft->add(1.55,oscillateLeg);
-    LegScriptLeft->add(1.55,notMove);
+    //Movement to the first arm
+    MatrixScript * ElbowScriptLeft=new MatrixScript();
+    MatrixScript * ArmScriptLeft=new MatrixScript();
+    ElbowScriptLeft->add(0.5,oscillateElbow);
+    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,oscillateShoulder);
+    ArmScriptLeft->add(0.5,notMove);
 
+    //Movement to the second arm
+    MatrixScript * ElbowScriptRight=new MatrixScript();
+    MatrixScript * ArmScriptRight=new MatrixScript();
+    ElbowScriptRight->add(0.5,notMove);
+    ElbowScriptRight->add(0.5,oscillateElbow);
+    ArmScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,oscillateShoulder);
 
-    //Movement to the second leg
-    MatrixScript * KneeScriptRight=new MatrixScript();
-    MatrixScript * LegScriptRight=new MatrixScript();
-    KneeScriptRight->add(1.55,notMove);
-    KneeScriptRight->add(1.55,oscillateKnee);
-    LegScriptRight->add(1.55,notMove);
-    LegScriptRight->add(1.55,oscillateLeg);
 
     //Add the script to our animation
-    animation.add(KneeScriptRight);
-    animation.add(KneeScriptLeft);
-    animation.add(LegScriptRight);
-    animation.add(LegScriptLeft);
-*/
+    animation.add(ElbowScriptLeft);
+    animation.add(ElbowScriptRight);
+    animation.add(ArmScriptLeft);
+    animation.add(ArmScriptRight);
 
     Matrix4f * scaleHand=new Matrix4f();
-    scaleHand->scale(0.2,0.2,0.2);
+    scaleHand->scale(0.2,0.15,0.2);
 
     Matrix4f * transHand=new Matrix4f();
-    transHand->translation(0.0,-0.6,-0.2);
+    transHand->translation(-0.2,-0.5,0.1);
 
     Matrix4f * wristHandTransMatrix=new Matrix4f();
-    wristHandTransMatrix->translation(0.0,-0.6,0.0);
+    wristHandTransMatrix->translation(0.0,-0.5,0.0);
 
-    Matrix4f * rotateHand=new Matrix4f();
-    rotateHand->rotation(180,1,0,0);
+    Matrix4f * elbowWristTransMatrix=new Matrix4f();
+    elbowWristTransMatrix->translation(0.0,-0.4,0.0);
+
+    Matrix4f * rotateXHand=new Matrix4f();
+    rotateXHand->rotation(180,1,0.0,0);
+
+    Matrix4f * rotateZHand=new Matrix4f();
+    rotateZHand->rotation(90,0,1,0);
+
+    Matrix4f * scaleElbowCylin=new Matrix4f();
+    scaleElbowCylin->scale(0.2,0.3,0.2);
+
+    Matrix4f * scaleArmTop=new Matrix4f();
+    scaleArmTop->scale(0.2,0.4,0.2);
+
+    Matrix4f * transElbow=new Matrix4f();
+    transElbow->translation(0.0,-0.4,0.0);
+
+    Matrix4f * transArms=new Matrix4f();
+    transArms->translation(0.0,-0.45,0.0);
 
     //wrist + hand
     NodeSceneGraph * wrist=new NodeSceneGraph();
@@ -278,60 +295,54 @@ Hero::Hero()
     wrist->add(scaleSphere);
     wrist->add(static_cast<Object3D*>(sphereObject));
     hand->add(transHand);
-    hand->add(rotateHand);
+    hand->add(rotateXHand);
+    hand->add(rotateZHand);
     hand->add(scaleHand);
-    //hand->add(static_cast<Object3D*>(handObject));
+    hand->add(static_cast<Object3D*>(handObject));
     wrist_hand->add(wristHandTransMatrix);
     wrist_hand->add(static_cast<Object3D*>(wrist));
     wrist_hand->add(static_cast<Object3D*>(hand));
 
     //elbow + wrist
     NodeSceneGraph * elbow_wrist=new NodeSceneGraph();
-
-    Matrix4f * scaleElbowCylin=new Matrix4f();
-    scaleElbowCylin->scale(0.1,0.1,0.5);
-
     elbow_wrist->add(static_cast<Object3D*>(wrist));
-    elbow_wrist->add(transCylinder);
+    elbow_wrist->add(elbowWristTransMatrix);
     elbow_wrist->add(static_cast<Object3D*>(wrist_hand));
-    elbow_wrist->add(rotateCylinder);
     elbow_wrist->add(scaleElbowCylin);
     elbow_wrist->add(static_cast<Object3D*>(pillObject));
 
-    //Leg
-    /*NodeSceneGraph * elbow_wristRight=new NodeSceneGraph();
-    elbow_wristRight->add(transCylinder);
-    elbow_wristRight->add(moveKneeRight);
+    //Arms
+    NodeSceneGraph * elbow_wristRight=new NodeSceneGraph();
+    elbow_wristRight->add(transElbow);
+    elbow_wristRight->add(moveElbowRight);
     elbow_wristRight->add(static_cast<Object3D*>(elbow_wrist));
 
-    NodeSceneGraph * knee_ankleLeft=new NodeSceneGraph();
-    knee_ankleLeft->add(transCylinder);
-    knee_ankleLeft->add(moveKneeLeft);
-    knee_ankleLeft->add(static_cast<Object3D*>(knee_ankle));
+    NodeSceneGraph * elbow_wristLeft=new NodeSceneGraph();
+    elbow_wristLeft->add(transElbow);
+    elbow_wristLeft->add(moveElbowLeft);
+    elbow_wristLeft->add(static_cast<Object3D*>(elbow_wrist));
 
-    //Leg Left
-    NodeSceneGraph * legLeft=new NodeSceneGraph();
-    legLeft->add(moveLegLeft);
-    legLeft->add(static_cast<Object3D*>(ankle));
-    legLeft->add(transLeg);
-    legLeft->add(static_cast<Object3D*>(knee_ankleLeft));
-    legLeft->add(rotateCylinder);
-    legLeft->add(scaleCylinder2);
-    legLeft->add(static_cast<Object3D*>(cylinder));
+    //Arm left
+    NodeSceneGraph * ArmLeft=new NodeSceneGraph();
+    ArmLeft->add(moveArmLeft);
+    ArmLeft->add(static_cast<Object3D*>(wrist));
+    ArmLeft->add(transArms);
+    ArmLeft->add(static_cast<Object3D*>(elbow_wristLeft));
+    ArmLeft->add(scaleArmTop);
+    ArmLeft->add(static_cast<Object3D*>(pillObject));
 
-    //Leg Right
-    NodeSceneGraph * legRight=new NodeSceneGraph();
-    legRight->add(moveLegRight);
-    legRight->add(static_cast<Object3D*>(ankle));
-    legRight->add(transLeg);
-    legRight->add(static_cast<Object3D*>(knee_ankleRight));
-    legRight->add(rotateCylinder);
-    legRight->add(scaleCylinder2);
-    legRight->add(static_cast<Object3D*>(cylinder));*/
 
+    //Arm Right
+    NodeSceneGraph * ArmRight=new NodeSceneGraph();
+    ArmRight->add(moveArmRight);
+    ArmRight->add(static_cast<Object3D*>(wrist));
+    ArmRight->add(transArms);
+    ArmRight->add(static_cast<Object3D*>(elbow_wristRight));
+    ArmRight->add(scaleArmTop);
+    ArmRight->add(static_cast<Object3D*>(pillObject));
 
     //////////////////////////////////////////////////////
-    /////                  Arms                      /////
+    /////         Construction of the hero           /////
     //////////////////////////////////////////////////////
 
     Matrix4f *mat=new Matrix4f();
@@ -341,20 +352,33 @@ Hero::Hero()
     Matrix4f *mat2=new Matrix4f();
     mat2->translation(0.4,0.0,0.0);
 
+    Matrix4f *trasn2Arms=new Matrix4f();
+    trasn2Arms->translation(-2.0,0.0,0.0);
+
+    Matrix4f *trasn2Arms2=new Matrix4f();
+    trasn2Arms2->translation(1.0,0.7,0.0);
+
     NodeSceneGraph * hipNode=new NodeSceneGraph();
     hipNode->add(scaleHip);
     hipNode->add(static_cast<Object3D*>(hipObject));
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
-    chestNode->add(transChest);
     chestNode->add(scaleChest);
     chestNode->add(static_cast<Object3D*>(chestObject));
+
+    NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
+    chest_ArmsNode->add(transChest);
+    chest_ArmsNode->add(static_cast<Object3D*>(chestNode));
+    chest_ArmsNode->add(trasn2Arms2);
+    chest_ArmsNode->add(static_cast<Object3D*>(ArmLeft));
+    chest_ArmsNode->add(trasn2Arms);
+    chest_ArmsNode->add(static_cast<Object3D*>(ArmRight));
 
     Material * material=new Material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f);
     root->add(material);
     //root->add((static_cast<Object3D*>(monkeyObject)));
     root->add((static_cast<Object3D*>(hipNode)));
-    root->add((static_cast<Object3D*>(chestNode)));
+    root->add((static_cast<Object3D*>(chest_ArmsNode)));
     root->add(mat2);
     Material * material2=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f);
     root->add(material2);
@@ -381,7 +405,7 @@ void Hero::visualization(Context & cv){
         animation.updateState(time-currentTime);
     GLfloat * matrix;
 
-    for(int i=0;i<4;i++)
+    for(int i=0;i<moveMatrix.size();i++)
         moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
 
     root->visualization(cv);
