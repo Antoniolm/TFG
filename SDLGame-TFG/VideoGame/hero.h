@@ -45,7 +45,7 @@ class Hero: public Avatar
 
         virtual void visualization(Context & cv);
 
-        void moveBody(Matrix4f * moveMatrix);
+        void moveBody(vec3f aMove,avatarDirection aDir);
 
     protected:
 

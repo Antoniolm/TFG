@@ -33,9 +33,17 @@ class OscillateRotation : public Matrix4fDynamic
         OscillateRotation();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor with parameters*/
+        /** Constructor with parameters
+        *   \param incre -> Initial increment or decrement grade
+        *   \param maxG -> max Grade in our movement
+        *   \param minG -> min Grade in our movement
+        *   \param initG -> Initial Grade in our movement
+        *   \param velocity -> Grade per second
+        *   \param dir -> axis of movement
+        *   \param loop -> number of loop that the move do( -1 = infinity loop)
+        */
         //////////////////////////////////////////////////////////////////////////
-        OscillateRotation(bool incre,float maxG,float minG,float initG,float velocity,vec3f dir);
+        OscillateRotation(bool incre,float maxG,float minG,float initG,float velocity,vec3f dir,int aLoop);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -51,10 +59,11 @@ class OscillateRotation : public Matrix4fDynamic
         *   \param initG -> Initial Grade in our movement
         *   \param velocity -> Grade per second
         *   \param dir -> axis of movement
+        *   \param loop -> number of loop that the move do( -1 = infinity loop)
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setParameters(bool incre,float maxG,float minG,float initG,float velocity,vec3f dir);
+        void setParameters(bool incre,float maxG,float minG,float initG,float velocity,vec3f dir,int aLoop);
 
         //////////////////////////////////////////////////////////////////////////
         /**

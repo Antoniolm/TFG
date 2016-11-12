@@ -108,26 +108,27 @@ Hero::Hero()
     moveLegLeft->identity();
     moveMatrix.push_back(moveLegLeft);
 
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,200,vec3f(1,0,0));
-    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,200,vec3f(1,0,0));
+    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),3);
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),3);
+    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),2);
     MatrixStatic * notMove=new MatrixStatic();
 
     //Movement to the first leg
     MatrixScript * KneeScriptLeft=new MatrixScript();
     MatrixScript * LegScriptLeft=new MatrixScript();
-    KneeScriptLeft->add(0.4,oscillateKnee);
-    KneeScriptLeft->add(0.4,notMove);
-    LegScriptLeft->add(0.4,oscillateLeg);
-    LegScriptLeft->add(0.4,notMove);
+    KneeScriptLeft->add(0.5,oscillateKnee);
+    KneeScriptLeft->add(0.5,notMove);
+    LegScriptLeft->add(0.5,oscillateLeg);
+    LegScriptLeft->add(0.5,oscillateLegSecond);
 
 
     //Movement to the second leg
     MatrixScript * KneeScriptRight=new MatrixScript();
     MatrixScript * LegScriptRight=new MatrixScript();
-    KneeScriptRight->add(0.4,notMove);
-    KneeScriptRight->add(0.4,oscillateKnee);
-    LegScriptRight->add(0.4,notMove);
-    LegScriptRight->add(0.4,oscillateLeg);
+    KneeScriptRight->add(0.5,notMove);
+    KneeScriptRight->add(0.5,oscillateKnee);
+    LegScriptRight->add(0.5,oscillateLegSecond);
+    LegScriptRight->add(0.5,oscillateLeg);
 
     //Add the script to our animation
     animation.add(KneeScriptRight);
@@ -361,6 +362,25 @@ void Hero::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Hero::moveBody(Matrix4f * moveMatrix){
-    moveHero->product(moveMatrix->getMatrix());
+void Hero::moveBody(vec3f aMove,avatarDirection aDir){
+    vec4f position;
+
+    if(direction!=aDir){
+        position=moveHero->product(position);
+        Matrix4f transHero;
+        transHero.translation(position.x+aMove.x,position.y+aMove.y,position.z+aMove.z);
+
+        int diferentDir=FORWARD-aDir;
+        cout<< "Direction -> "<< direction << " - "<< aDir<< " = " << diferentDir<< " ==> "<< 90*diferentDir<<endl;
+        moveHero->identity();
+        moveHero->rotation(90*diferentDir,0.0f,1.0f,0.0f);
+        moveHero->product(transHero.getMatrix());
+
+        direction=aDir;
+    }
+    else{
+        Matrix4f transHero;
+        transHero.translation(aMove.x,aMove.y,aMove.z);
+        moveHero->product(transHero.getMatrix());
+    }
 }

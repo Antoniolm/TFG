@@ -45,11 +45,12 @@ void Game::loop(){
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
 
+    avatarDirection heroDir;
     hero=new Hero();
     rootMap->setHero(hero);
     Matrix4f movCamera;
-    Matrix4f * moveHero=new Matrix4f();
-    moveHero->identity();
+    vec3f moveHero;
+
     while (!quit)
     {
         //while (SDL_PollEvent(&event)){
@@ -58,25 +59,30 @@ void Game::loop(){
                 quit = true;
             }
             //case: Player push a buttom
+            const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
             if (event.type == SDL_KEYDOWN){
 
                 switch (event.key.keysym.sym){
 
                     case SDLK_LEFT:
                         movCamera.identity();
-                        moveHero->translation(-0.1,0.0,0.0);
+                        moveHero.x=-0.1; moveHero.y=0.0; moveHero.z=0.0;
+                        heroDir=LEFTWARD;
                         break;
                     case SDLK_RIGHT:
                         movCamera.identity();
-                        moveHero->translation(0.1,0.0,0.0);
+                        moveHero.x=0.1; moveHero.y=0.0; moveHero.z=0.0;
+                        heroDir=RIGHTWARD;
                         break;
                     case SDLK_UP:
                         movCamera.identity();
-                        moveHero->translation(0.0,0.0,0.1);
+                        moveHero.x=0.0; moveHero.y=0.0; moveHero.z=-0.1;
+                        heroDir=BACKWARD;
                         break;
                     case SDLK_DOWN:
                         movCamera.identity();
-                        moveHero->translation(0.0,0.0,-0.1);
+                        moveHero.x=0.0; moveHero.y=0.0; moveHero.z=0.1;
+                        heroDir=FORWARD;
                         break;
                     case SDLK_k:
                         movCamera.scale(1.1,1.1,1.1);
@@ -97,7 +103,7 @@ void Game::loop(){
                         movCamera.rotation(-5,0.0,1.0,0.0);
                         break;
                 }
-                hero->moveBody(moveHero);
+                hero->moveBody(moveHero,heroDir);
                 aContext.camera.moveCamera(movCamera);
 
             }

@@ -77,7 +77,7 @@ void Mesh::init(){
 //**********************************************************************//
 
 void Mesh::visualization(Context & vis){
-    position=(*new vec4f());
+    position=vec4f();
 
     Matrix4f * transformation = &(vis.matrixStack.getMatrix());
     position=transformation->product(position);

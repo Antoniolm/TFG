@@ -26,10 +26,10 @@
 
 enum avatarDirection
 {
-	FORWARD,
-	BACKWARD,
-	LEFTWARD,
-	RIGHTWARD
+    LEFTWARD, //0
+	FORWARD,  //1
+	RIGHTWARD,//2
+	BACKWARD  //3
 };
 
 class Avatar: public Object3D
