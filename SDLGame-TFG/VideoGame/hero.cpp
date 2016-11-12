@@ -23,7 +23,9 @@ Hero::Hero()
 {
     direction=FORWARD;
 
-    //Create each object
+    //////////////////////////////////////////////////////
+    /////           All the meshMaterial             /////
+    //////////////////////////////////////////////////////
     string file=string("geometries/sphere.obj");
     MeshMaterial * sphereObject=new MeshMaterial(file);
     sphereObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
@@ -34,10 +36,15 @@ Hero::Hero()
     pillObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     pillObject->init();
 
-    /*file=string("geometries/hand.obj");
+    file=string("geometries/hand.obj");
     MeshMaterial * handObject=new MeshMaterial(file);
     handObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    handObject->init();*/
+    handObject->init();
+
+    file=string("geometries/chest.obj");
+    MeshMaterial * chestObject=new MeshMaterial(file);
+    chestObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    chestObject->init();
 
     file=string("geometries/foot.obj");
     MeshMaterial * footObject=new MeshMaterial(file);
@@ -54,6 +61,10 @@ Hero::Hero()
     monkeyObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     monkeyObject->init();
 
+    //////////////////////////////////////////////////////
+    /////               All The matrix               /////
+    //////////////////////////////////////////////////////
+
     Matrix4f *scaleFoot=new Matrix4f();
     scaleFoot->scale(0.2,0.2,0.2);
 
@@ -63,6 +74,7 @@ Hero::Hero()
     Matrix4f *scaleSphere=new Matrix4f();
     scaleSphere->scale(0.15,0.15,0.15);
 
+
     Matrix4f *scalePillKnee=new Matrix4f();
     scalePillKnee->scale(0.3,0.6,0.3);
 
@@ -71,6 +83,12 @@ Hero::Hero()
 
     Matrix4f *scaleHip=new Matrix4f();
     scaleHip->scale(0.4,0.4,0.3);
+
+    Matrix4f *transChest=new Matrix4f();
+    transChest->translation(0.0,1.3,0.0);
+
+    Matrix4f *scaleChest=new Matrix4f();
+    scaleChest->scale(0.9,0.9,0.6);
 
     Matrix4f *transCylinder=new Matrix4f();
     transCylinder->translation(0.0,-0.7,0.0);
@@ -312,6 +330,10 @@ Hero::Hero()
     legRight->add(static_cast<Object3D*>(cylinder));*/
 
 
+    //////////////////////////////////////////////////////
+    /////                  Arms                      /////
+    //////////////////////////////////////////////////////
+
     Matrix4f *mat=new Matrix4f();
     mat->translation(-0.8,0.0,0.0);
     root->add(moveHero);
@@ -323,10 +345,16 @@ Hero::Hero()
     hipNode->add(scaleHip);
     hipNode->add(static_cast<Object3D*>(hipObject));
 
+    NodeSceneGraph * chestNode=new NodeSceneGraph();
+    chestNode->add(transChest);
+    chestNode->add(scaleChest);
+    chestNode->add(static_cast<Object3D*>(chestObject));
+
     Material * material=new Material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f);
     root->add(material);
-    root->add((static_cast<Object3D*>(monkeyObject)));
+    //root->add((static_cast<Object3D*>(monkeyObject)));
     root->add((static_cast<Object3D*>(hipNode)));
+    root->add((static_cast<Object3D*>(chestNode)));
     root->add(mat2);
     Material * material2=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f);
     root->add(material2);
@@ -388,6 +416,7 @@ void Hero::moveBody(vec3f aMove,avatarDirection aDir){
 }
 
 //**********************************************************************//
+
 void Hero::noMove(){
     animation.resetState();
     if(isMoving){
