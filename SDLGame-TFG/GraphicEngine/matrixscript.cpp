@@ -48,14 +48,14 @@ Matrix4f & MatrixScript::updateState(float time){
     float auxTime=time/1000;
 
     currentTime+=auxTime;
-    //cout<< "CurrentTime ->"<< currentTime<< endl;
+
     if(currentTime>script[currentMove].first){
         currentTime=0;
         currentMove++;
         if(currentMove==script.size()){
-            //cout<< "Current matrix ->"<< currentMove<< endl;
             currentMove=0;
         }
+        (script[currentMove].second)->resetState();
     }
     currentMatrix=(script[currentMove].second)->updateState(time);
     return currentMatrix;

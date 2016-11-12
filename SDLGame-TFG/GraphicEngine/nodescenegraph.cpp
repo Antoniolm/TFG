@@ -92,3 +92,12 @@ void NodeSceneGraph::add(Matrix4f * aMatrix){
     entrance.push_back(newEntrance);
 
 }
+
+//**********************************************************************//
+
+void NodeSceneGraph::add(Material * aMaterial){
+    EntranceNGE newEntrance(aMaterial);
+    entrance.push_back(newEntrance);
+
+}
+

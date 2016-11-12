@@ -124,6 +124,14 @@ class NodeSceneGraph : public Object3D
         /////////////////////////////////////////////////////////////////////////
         void add(Matrix4f * aMatrix);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will add a new element in our NodeSceneGraph
+        *    \return void
+        */
+        /////////////////////////////////////////////////////////////////////////
+        void add(Material * aMaterial);
+
     protected:
 
     private:

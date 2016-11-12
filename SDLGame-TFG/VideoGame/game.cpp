@@ -52,8 +52,8 @@ void Game::loop(){
     moveHero->identity();
     while (!quit)
     {
-        while (SDL_PollEvent(&event)){
-
+        //while (SDL_PollEvent(&event)){
+            SDL_PollEvent(&event);
             if (event.type == SDL_QUIT){
                 quit = true;
             }
@@ -101,7 +101,7 @@ void Game::loop(){
                 aContext.camera.moveCamera(movCamera);
 
             }
-        }
+        //}
         window->cleanScreen();
         rootMap->visualization(aContext);
         aContext.posObject.clear();

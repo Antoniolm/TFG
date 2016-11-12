@@ -39,6 +39,8 @@ class Matrix4fDynamic
         //////////////////////////////////////////////////////////////////////////
         virtual Matrix4f & updateState(float time);
 
+        virtual void resetState();
+
         Matrix4f & getMatrix();
 
     protected:

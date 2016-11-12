@@ -54,6 +54,7 @@ class Hero: public Avatar
         float currentTime;
         ScriptLMD animation;
         Matrix4f * moveHero;
+        avatarDirection direction;
 };
 
 #endif // HERO_H

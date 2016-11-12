@@ -24,6 +24,14 @@
 #include "../GraphicEngine/context.h"
 #include "../GraphicEngine/nodescenegraph.h"
 
+enum avatarDirection
+{
+	FORWARD,
+	BACKWARD,
+	LEFTWARD,
+	RIGHTWARD
+};
+
 class Avatar: public Object3D
 {
     public:

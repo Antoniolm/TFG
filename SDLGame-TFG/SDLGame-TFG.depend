@@ -385,11 +385,11 @@
 	"../GraphicEngine/structdata.h"
 	"hero.h"
 
-1478719726 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1478952896 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
-1478820223 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1478952773 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1477601763 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -440,10 +440,10 @@
 	"materialstack.h"
 	<list>
 
-1478869450 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
+1478945488 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
-1478869256 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
+1478945518 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
 	"object3d.h"
 	"context.h"
 	"matrix4fdynamic.h"
@@ -920,11 +920,11 @@
 1477570594 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\projection.cpp
 	"projection.h"
 
-1478879278 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\oscillaterotation.h
+1478944798 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\oscillaterotation.h
 	"matrix4fdynamic.h"
 	<SDL.h>
 
-1478879521 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\oscillaterotation.cpp
+1478952440 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\oscillaterotation.cpp
 	"oscillaterotation.h"
 
 1477651430 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\scriptanimation.cpp
@@ -954,12 +954,12 @@
 1477947975 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.cpp
 	"avatar.h"
 
-1477944114 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.h
+1478900491 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.h
 	"../GraphicEngine/object3d.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 
-1478446019 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
+1478900953 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
 	"avatar.h"
 	"../GraphicEngine/mesh.h"
 	"../GraphicEngine/meshmaterial.h"
@@ -968,16 +968,16 @@
 	"../GraphicEngine/matrixscript.h"
 	<vector>
 
-1478878976 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1478952410 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
-1478003629 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
+1478944572 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
 	"matrix4f.h"
 
-1478003668 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.cpp
+1478944605 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.cpp
 	"matrix4fdynamic.h"
 
-1478118455 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixscript.cpp
+1478949065 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixscript.cpp
 	"matrixscript.h"
 
 1478118374 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixscript.h
@@ -998,7 +998,7 @@
 1478688958 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
 	"file_obj.h"
 
-1478820176 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
+1478945452 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
 	"meshmaterial.h"
 
 1478820243 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h

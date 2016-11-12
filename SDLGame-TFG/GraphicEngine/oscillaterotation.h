@@ -72,7 +72,7 @@ class OscillateRotation : public Matrix4fDynamic
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void resetState();
+        virtual void resetState();
 
     protected:
 
@@ -86,6 +86,7 @@ class OscillateRotation : public Matrix4fDynamic
         float currentTime;
         bool increment;
         int loop;
+        int currentLoop;
 
 };
 

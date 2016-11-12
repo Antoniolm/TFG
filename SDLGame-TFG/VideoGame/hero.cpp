@@ -21,6 +21,8 @@
 
 Hero::Hero()
 {
+    direction=FORWARD;
+
     //Create each object
     string file=string("geometries/sphere.obj");
     MeshMaterial * sphereObject=new MeshMaterial(file);
@@ -46,6 +48,11 @@ Hero::Hero()
     MeshMaterial * hipObject=new MeshMaterial(file);
     hipObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     hipObject->init();
+
+    file=string("geometries/monkey.obj");
+    MeshMaterial * monkeyObject=new MeshMaterial(file);
+    monkeyObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    monkeyObject->init();
 
     Matrix4f *scaleFoot=new Matrix4f();
     scaleFoot->scale(0.2,0.2,0.2);
@@ -101,26 +108,26 @@ Hero::Hero()
     moveLegLeft->identity();
     moveMatrix.push_back(moveLegLeft);
 
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,0,100,vec3f(1,0,0));
-    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,0,100,vec3f(1,0,0));
+    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,200,vec3f(1,0,0));
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,200,vec3f(1,0,0));
     MatrixStatic * notMove=new MatrixStatic();
 
     //Movement to the first leg
     MatrixScript * KneeScriptLeft=new MatrixScript();
     MatrixScript * LegScriptLeft=new MatrixScript();
-    KneeScriptLeft->add(0.6,oscillateKnee);
-    KneeScriptLeft->add(0.6,notMove);
-    LegScriptLeft->add(0.6,oscillateLeg);
-    LegScriptLeft->add(0.6,notMove);
+    KneeScriptLeft->add(0.4,oscillateKnee);
+    KneeScriptLeft->add(0.4,notMove);
+    LegScriptLeft->add(0.4,oscillateLeg);
+    LegScriptLeft->add(0.4,notMove);
 
 
     //Movement to the second leg
     MatrixScript * KneeScriptRight=new MatrixScript();
     MatrixScript * LegScriptRight=new MatrixScript();
-    KneeScriptRight->add(0.6,notMove);
-    KneeScriptRight->add(0.6,oscillateKnee);
-    LegScriptRight->add(0.6,notMove);
-    LegScriptRight->add(0.6,oscillateLeg);
+    KneeScriptRight->add(0.4,notMove);
+    KneeScriptRight->add(0.4,oscillateKnee);
+    LegScriptRight->add(0.4,notMove);
+    LegScriptRight->add(0.4,oscillateLeg);
 
     //Add the script to our animation
     animation.add(KneeScriptRight);
@@ -315,8 +322,13 @@ Hero::Hero()
     hipNode->add(scaleHip);
     hipNode->add(static_cast<Object3D*>(hipObject));
 
+    Material * material=new Material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f);
+    root->add(material);
+    root->add((static_cast<Object3D*>(monkeyObject)));
     root->add((static_cast<Object3D*>(hipNode)));
     root->add(mat2);
+    Material * material2=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f);
+    root->add(material2);
     root->add(static_cast<Object3D*>(legLeft));
     root->add(mat);
     root->add(static_cast<Object3D*>(legRight));

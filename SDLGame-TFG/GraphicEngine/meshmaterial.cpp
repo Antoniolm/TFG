@@ -115,7 +115,7 @@ void MeshMaterial::visualization(Context & vis){
     GLint matSpecularLoc = glGetUniformLocation(shaders.getProgram(), "material.specular");
     GLint matShineLoc    = glGetUniformLocation(shaders.getProgram(), "material.shininess");
 
-    Material material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f);
+    Material material(vis.materialStack.getMaterial());
     vec3f ambient=material.getAmbient();
     vec3f diffuse=material.getDiffuse();
     vec3f specular=material.getAmbient();

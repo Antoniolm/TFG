@@ -43,6 +43,12 @@ Matrix4f & Matrix4fDynamic::updateState(float time){
 
 //**********************************************************************//
 
+void Matrix4fDynamic::resetState(){
+
+}
+
+//**********************************************************************//
+
 Matrix4f & Matrix4fDynamic::getMatrix(){
     return currentMatrix;
 }
