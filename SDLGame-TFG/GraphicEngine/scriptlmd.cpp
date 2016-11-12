@@ -52,3 +52,13 @@ void ScriptLMD::updateState(float time){
 Matrix4f ScriptLMD::readMatrix(int index){
     return script[index]->getMatrix();
 }
+
+//**********************************************************************//
+
+void ScriptLMD::resetState(){
+    vector<Matrix4fDynamic*>::iterator it;
+
+    for(it=script.begin();it!=script.end();it++){
+            (*it)->resetState();
+    }
+}

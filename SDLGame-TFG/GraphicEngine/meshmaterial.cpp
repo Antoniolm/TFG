@@ -115,6 +115,7 @@ void MeshMaterial::visualization(Context & vis){
     GLint matSpecularLoc = glGetUniformLocation(shaders.getProgram(), "material.specular");
     GLint matShineLoc    = glGetUniformLocation(shaders.getProgram(), "material.shininess");
 
+    //Obtain our material by the context
     Material material(vis.materialStack.getMaterial());
     vec3f ambient=material.getAmbient();
     vec3f diffuse=material.getDiffuse();
@@ -133,10 +134,17 @@ void MeshMaterial::visualization(Context & vis){
     GLint lightSpecularLoc = glGetUniformLocation(shaders.getProgram(), "light.specular");
     GLint viewPosLoc = glGetUniformLocation(shaders.getProgram(), "viewPos");
 
-    glUniform3f(lightPosLoc,  1.0f, 2.0f, 2.0f);
-    glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
-    glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f);
-    glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
+    //Obtain our light by the context
+    Light light(vis.light);
+    ambient=light.getAmbient();
+    diffuse=light.getDiffuse();
+    specular=light.getAmbient();
+    vec3f posLight=light.getPosition();
+
+    glUniform3f(lightPosLoc,  posLight.x,  posLight.y, posLight.z);
+    glUniform3f(lightAmbientLoc,  ambient.x,  ambient.y, ambient.z);
+    glUniform3f(lightDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);
+    glUniform3f(lightSpecularLoc, specular.x,  specular.y, specular.z);
     vec3f camPos=vis.camera.getPosition();
     glUniform3f(viewPosLoc, camPos.x, camPos.y, camPos.z);
 

@@ -349,7 +349,8 @@ void Hero::visualization(Context & cv){
     cv.visualization_mode=2;
     float time=SDL_GetTicks();
 
-    animation.updateState(time-currentTime);
+    if(isMoving)
+        animation.updateState(time-currentTime);
     GLfloat * matrix;
 
     for(int i=0;i<4;i++)
@@ -383,4 +384,16 @@ void Hero::moveBody(vec3f aMove,avatarDirection aDir){
         transHero.translation(aMove.x,aMove.y,aMove.z);
         moveHero->product(transHero.getMatrix());
     }
+    isMoving=true;
+}
+
+//**********************************************************************//
+void Hero::noMove(){
+    animation.resetState();
+    if(isMoving){
+        float time=SDL_GetTicks();
+        animation.updateState(time-currentTime);
+        currentTime+=(time-currentTime);
+    }
+    isMoving=false;
 }

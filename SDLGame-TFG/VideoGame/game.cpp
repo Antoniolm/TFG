@@ -37,13 +37,20 @@ void Game::loop(){
     bool quit = false;
     SDL_Event event;
     Context aContext;
+
+    //Create our camera
     vec3f position(0.0,0.0,3.0);
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
-    //aContext.camera.setOrthographicProjection(-50.0f,50.0f,-50.0f,50.0f,-5.0f,5.0f);
     aContext.camera.setPerspectiveProjection(45.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
+
+    //Create our light
+    aContext.light.setPosition(vec3f(1.0f, 2.0f, 2.0f));
+    aContext.light.setAmbient(vec3f(0.2f, 0.2f, 0.2f));
+    aContext.light.setDiffuse(vec3f(0.5f, 0.5f, 0.5f));
+    aContext.light.setSpecular(vec3f(1.0f, 1.0f, 1.0f));
 
     avatarDirection heroDir;
     hero=new Hero();
@@ -59,7 +66,7 @@ void Game::loop(){
                 quit = true;
             }
             //case: Player push a buttom
-            const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
+            //const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
             if (event.type == SDL_KEYDOWN){
 
                 switch (event.key.keysym.sym){
@@ -106,6 +113,9 @@ void Game::loop(){
                 hero->moveBody(moveHero,heroDir);
                 aContext.camera.moveCamera(movCamera);
 
+            }
+            else{
+                hero->noMove();
             }
         //}
         window->cleanScreen();

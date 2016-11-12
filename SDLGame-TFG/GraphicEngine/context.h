@@ -26,6 +26,7 @@
 #include "projection.h"
 #include "object3d.h"
 #include "materialstack.h"
+#include "light.h"
 #include <list>
 
 
@@ -50,6 +51,7 @@ class Context
         unsigned camera_mode;
         MatrixStack matrixStack;
         MaterialStack materialStack;
+        Light light;
         Camera camera;
         list<Object3D *> posObject;
 

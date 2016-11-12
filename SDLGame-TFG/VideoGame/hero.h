@@ -46,6 +46,7 @@ class Hero: public Avatar
         virtual void visualization(Context & cv);
 
         void moveBody(vec3f aMove,avatarDirection aDir);
+        void noMove();
 
     protected:
 
@@ -55,6 +56,7 @@ class Hero: public Avatar
         ScriptLMD animation;
         Matrix4f * moveHero;
         avatarDirection direction;
+        bool isMoving;
 };
 
 #endif // HERO_H

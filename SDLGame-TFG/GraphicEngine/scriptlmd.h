@@ -64,6 +64,8 @@ class ScriptLMD : public ScriptAnimation
         */
         //////////////////////////////////////////////////////////////////////////
         virtual Matrix4f readMatrix(int index);
+
+        void resetState();
     protected:
 
     private:
