@@ -27,7 +27,7 @@
 #include "object3d.h"
 #include "materialstack.h"
 #include "light.h"
-#include <list>
+#include <vector>
 
 
 class Object3D;
@@ -52,7 +52,7 @@ class Context
         MaterialStack materialStack;
         Light light;
         Camera camera;
-        list<Object3D *> posObject;
+        vector<vec3f> posObject;
 
     protected:
 

@@ -71,7 +71,8 @@ class RootMap : public Object3D
     protected:
 
     private:
-        vector<vector<list<Object3D *> > > object;
+        vector<vector<list<float> > > object;
+
         list<Object3D *> objectStatic;
         list<Object3D *> objectDinamic;
         Hero * hero;

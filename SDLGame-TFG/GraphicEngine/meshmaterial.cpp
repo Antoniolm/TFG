@@ -90,6 +90,7 @@ void MeshMaterial::visualization(Context & vis){
 
     Matrix4f * transformation = &(vis.matrixStack.getMatrix());
     position=transformation->product(position);
+    vis.posObject.push_back(vec3f(position.x,position.y,position.z));
 
 	//Set value to uniform variable in vertexshader
 	glUseProgram(shaders.getProgram());

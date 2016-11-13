@@ -33,8 +33,11 @@ RootMap::RootMap()
     Matrix4f * matrix2=new Matrix4f();
     matrix2->translation(-5.0,1,0.0);
 
-    Matrix4f * matrix3=new Matrix4f();
-    matrix3->translation(1.1,1.1,0);
+    Matrix4f * transCube=new Matrix4f();
+    transCube->translation(2.0,0.0,0.0);
+
+    Matrix4f * transRow=new Matrix4f();
+    transRow->translation(0.0,0.0,-2.0);
 
     Matrix4f * matrixt=new Matrix4f();
     matrixt->rotation(90,0.0,1.0,0.0);
@@ -42,13 +45,27 @@ RootMap::RootMap()
     NodeSceneGraph * root2=new NodeSceneGraph();
     NodeSceneGraph * root4=new NodeSceneGraph();
 
-    NodeSceneGraph * root=new NodeSceneGraph();
+    NodeSceneGraph * cubeNode=new NodeSceneGraph();
     //root->add(matrix);
     Material * materialCube=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cube.png");
-    root->add(materialCube);
-    root->add(static_cast<Object3D*>(aObject));
+    cubeNode->add(materialCube);
+    cubeNode->add(static_cast<Object3D*>(aObject));
 
-    objectStatic.push_back(root);
+    NodeSceneGraph * rowCube=new NodeSceneGraph();
+    rowCube->add(static_cast<Object3D*>(cubeNode));
+    for(int i=0;i<5;i++){
+        rowCube->add(transCube);
+        rowCube->add(static_cast<Object3D*>(cubeNode));
+    }
+
+    NodeSceneGraph * ColumCube=new NodeSceneGraph();
+    ColumCube->add(static_cast<Object3D*>(rowCube));
+    for(int i=0;i<5;i++){
+        ColumCube->add(transRow);
+        ColumCube->add(static_cast<Object3D*>(rowCube));
+    }
+
+    objectStatic.push_back(ColumCube);
     //objectDinamic.push_back(root);
 }
 
@@ -78,6 +95,29 @@ void RootMap::visualization(Context & cv){
     //Draw the static object
     for(it=objectStatic.begin();it!=objectStatic.end();it++){
         (*it)->visualization(cv);
+    }
+
+    //Do the colission map
+    if(object.size()==0){
+        //Initialization
+        list<float> aux;
+        vector<list<float> > auxVec;
+        for(int j=0;j<11;j++){
+                auxVec.push_back(aux);
+        }
+
+        for(int i=0;i<11;i++){
+            object.push_back(auxVec);
+        }
+
+        vec3f pos;
+
+        //Push all the positions
+        for(int i=0;i<cv.posObject.size();i++){
+            pos=cv.posObject[i];
+            object[pos.x][(pos.z*(-1))].push_back(pos.y);
+        }
+
     }
 
     //Draw hero
