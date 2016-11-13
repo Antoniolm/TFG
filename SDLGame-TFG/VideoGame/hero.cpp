@@ -167,6 +167,8 @@ Hero::Hero()
     ankle_foot->add(AnkFootransMatrix);
     ankle_foot->add(rotateFoot);
     ankle_foot->add(scaleFoot);
+    Material * materialFoot=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureFoot.png");
+    ankle_foot->add(materialFoot);
     ankle_foot->add(static_cast<Object3D*>(footObject));
 
     //knee + ankle

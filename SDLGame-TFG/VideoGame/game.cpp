@@ -39,7 +39,7 @@ void Game::loop(){
     Context aContext;
 
     //Create our camera
-    vec3f position(0.0,0.0,3.0);
+    vec3f position(0.0,2.0,10.0);
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
     aContext.camera.setPerspectiveProjection(45.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);

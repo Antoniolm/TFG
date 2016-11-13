@@ -44,7 +44,7 @@ class Texture
         virtual ~Texture();
 
         void setFile(const std::string& aFileName);
-    	void Bind();
+    	void bindTexture();
 
     protected:
 

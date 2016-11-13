@@ -118,7 +118,7 @@ void MeshMaterial::visualization(Context & vis){
     float shini=material.getShininess();
 
     //Bind the texture
-    material.getTexture().Bind();
+    material.getTexture().bindTexture();
 
     glUniform3f(matAmbientLoc,  ambient.x,  ambient.y, ambient.z);
     glUniform3f(matDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);

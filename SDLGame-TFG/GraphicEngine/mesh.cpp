@@ -28,13 +28,7 @@ Mesh::Mesh()
 Mesh::Mesh(const Mesh & aMesh){
 }
 
-//**********************************************************************//
 
-Mesh::Mesh(const string & aTextur,unsigned char aType){
-    color=vec3f(1.0,0.5,0.5);
-    //
-
-}
 
 //**********************************************************************//
 Mesh::Mesh(const string & aFile,vec3f aColor){
@@ -46,7 +40,7 @@ Mesh::Mesh(const string & aFile,vec3f aColor){
 
 Mesh::~Mesh()
 {
-    //dtor
+    clean();
 }
 
 //**********************************************************************//

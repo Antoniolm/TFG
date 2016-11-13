@@ -46,7 +46,6 @@ class Context
         //////////////////////////////////////////////////////////////////////////
         virtual ~Context();
 
-        Matrix4f * matrixStatic;
         unsigned int visualization_mode;
         unsigned camera_mode;
         MatrixStack matrixStack;
