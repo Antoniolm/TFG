@@ -81,8 +81,6 @@ void MeshMaterial::init(){
 
     glBindVertexArray(0);
 
-    Texture texture("./textures/wood2.jpg");
-    texture.Bind();
 }
 
 //**********************************************************************//
@@ -104,10 +102,7 @@ void MeshMaterial::visualization(Context & vis){
     GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
-
     //Set value to uniform variable in fragmentshader
-    GLint lightColorLoc = glGetUniformLocation(shaders.getProgram(), "lightColor");
-    glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
 
     //Set value to uniform about material
     GLint matAmbientLoc  = glGetUniformLocation(shaders.getProgram(), "material.ambient");
@@ -121,6 +116,9 @@ void MeshMaterial::visualization(Context & vis){
     vec3f diffuse=material.getDiffuse();
     vec3f specular=material.getAmbient();
     float shini=material.getShininess();
+
+    //Bind the texture
+    material.getTexture().Bind();
 
     glUniform3f(matAmbientLoc,  ambient.x,  ambient.y, ambient.z);
     glUniform3f(matDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);

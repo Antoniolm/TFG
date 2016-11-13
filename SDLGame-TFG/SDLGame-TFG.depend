@@ -969,7 +969,7 @@
 	"../GraphicEngine/matrixscript.h"
 	<vector>
 
-1478983769 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1479030428 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -999,7 +999,7 @@
 1478688958 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_obj.cpp
 	"file_obj.h"
 
-1478971817 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
+1479031277 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.cpp
 	"meshmaterial.h"
 
 1478820243 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshmaterial.h
@@ -1529,11 +1529,13 @@
 1476609448 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\type_ptr.inl
 	<cstring>
 
-1478869424 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.cpp
+1479030898 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.cpp
 	"material.h"
 
-1478869427 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.h
+1479030313 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.h
 	"structdata.h"
+	<string>
+	"texture.h"
 
 1478536559 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
 	"light.h"
@@ -1554,13 +1556,13 @@
 1418876674 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\stb_image.h
 	<stdio.h>
 
-1478615134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.h
+1479031124 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.h
 	<string>
 	<glew.h>
 	"stb_image.h"
 	<iostream>
 
-1478805411 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.cpp
+1479031013 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.cpp
 	"texture.h"
 
 1478866153 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialstack.cpp

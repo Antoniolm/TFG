@@ -66,7 +66,7 @@ Hero::Hero()
     //////////////////////////////////////////////////////
 
     Matrix4f *scaleFoot=new Matrix4f();
-    scaleFoot->scale(0.2,0.2,0.2);
+    scaleFoot->scale(0.5,0.5,0.5);
 
     Matrix4f *rotateFoot=new Matrix4f();
     rotateFoot->rotation(-90,0.0,1.0,0.0);
@@ -374,13 +374,13 @@ Hero::Hero()
     chest_ArmsNode->add(trasn2Arms);
     chest_ArmsNode->add(static_cast<Object3D*>(ArmRight));
 
-    Material * material=new Material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f);
+    Material * material=new Material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/bricks.jpg");
     root->add(material);
     //root->add((static_cast<Object3D*>(monkeyObject)));
     root->add((static_cast<Object3D*>(hipNode)));
     root->add((static_cast<Object3D*>(chest_ArmsNode)));
     root->add(mat2);
-    Material * material2=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f);
+    Material * material2=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.jpg");
     root->add(material2);
     root->add(static_cast<Object3D*>(legLeft));
     root->add(mat);

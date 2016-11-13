@@ -19,8 +19,41 @@
 
 #include "texture.h"
 
-Texture::Texture(const std::string& fileName)
+Texture::Texture(){
+
+}
+
+//**********************************************************************//
+
+Texture::Texture(const std::string& aFileName)
 {
+    fileName=aFileName;
+    createTexture();
+}
+
+//**********************************************************************//
+
+Texture::~Texture()
+{
+   //glDeleteTextures(1, &texture);
+}
+
+//**********************************************************************//
+
+void Texture::setFile(const std::string& aFileName){
+    fileName=aFileName;
+    createTexture();
+}
+
+//**********************************************************************//
+
+void Texture::Bind(){
+    glBindTexture(GL_TEXTURE_2D, texture);
+}
+
+//**********************************************************************//
+
+void Texture::createTexture(){
     int width, height, numComponents;
     unsigned char* data = stbi_load((fileName).c_str(), &width, &height, &numComponents, 4);
 
@@ -37,16 +70,5 @@ Texture::Texture(const std::string& fileName)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
     stbi_image_free(data);
-}
 
-//**********************************************************************//
-Texture::~Texture()
-{
-   //glDeleteTextures(1, &texture);
-}
-
-//**********************************************************************//
-
-void Texture::Bind(){
-    glBindTexture(GL_TEXTURE_2D, texture);
 }

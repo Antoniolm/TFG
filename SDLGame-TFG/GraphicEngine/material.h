@@ -21,6 +21,10 @@
 #define MATERIAL_H
 
 #include "structdata.h"
+#include <string>
+#include "texture.h"
+
+using namespace std;
 
 class Material
 {
@@ -38,7 +42,7 @@ class Material
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini);
+        Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -48,13 +52,17 @@ class Material
         void setAmbient(const vec3f & anAmbient);
         void setDiffuse(const vec3f & aDiffuse);
         void setSpecular(const vec3f &aSpecular);
-        float setShininess(float aShini);
+        void setShininess(float aShini);
+        void setTexture(const string & aFileTextur);
+        void setTexture(const Texture & aTexture);
 
 
         vec3f getAmbient();
         vec3f getDiffuse();
         vec3f getSpecular();
         float getShininess();
+
+        Texture & getTexture();
 
     protected:
 
@@ -63,6 +71,7 @@ class Material
         vec3f diffuse;
         vec3f specular;
         float shininess;
+        Texture texture;
 };
 
 #endif // MATERIAL_H

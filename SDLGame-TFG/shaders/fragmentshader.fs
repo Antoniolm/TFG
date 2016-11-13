@@ -24,9 +24,6 @@ float LightPower = 2.0f;
 
 uniform Light light;  
 uniform Material material;
-
-uniform vec3 objectColor;
-uniform vec3 lightColor;
 uniform vec3 viewPos;
 
 uniform sampler2D ourTexture;

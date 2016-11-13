@@ -31,15 +31,17 @@ Material::Material(const Material & aMaterial){
     diffuse=aMaterial.diffuse;
     specular=aMaterial.specular;
     shininess=aMaterial.shininess;
+    texture=aMaterial.texture;
 }
 
 //**********************************************************************//
 
-Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini){
+Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur){
     ambient=anAmbient;
     diffuse=aDiffuse;
     specular=aSpecular;
     shininess=aShini;
+    texture.setFile(aFileTextur);
 }
 
 //**********************************************************************//
@@ -69,8 +71,20 @@ void Material::setSpecular(const vec3f &aSpecular){
 
 //**********************************************************************//
 
-float Material::setShininess(float aShini){
+void Material::setShininess(float aShini){
     shininess=aShini;
+}
+
+//**********************************************************************//
+
+void Material::setTexture(const string & aFileTextur){
+    texture=Texture(aFileTextur);
+}
+
+//**********************************************************************//
+
+void Material::setTexture(const Texture & aTexture){
+    texture=aTexture;
 }
 
 //**********************************************************************//
@@ -95,4 +109,10 @@ vec3f Material::getSpecular(){
 
 float Material::getShininess(){
     return shininess;
+}
+
+//**********************************************************************//
+
+Texture & Material::getTexture(){
+    return texture;
 }
