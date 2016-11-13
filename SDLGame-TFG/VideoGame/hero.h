@@ -48,6 +48,8 @@ class Hero: public Avatar
         void moveBody(vec3f aMove,avatarDirection aDir);
         void noMove();
 
+        vec3f getPosition();
+
     protected:
 
     private:

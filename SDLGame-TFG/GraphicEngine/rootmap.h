@@ -67,6 +67,16 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will update the state of the object. That change need the
+        *    current time in our application
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool collision(const vec3f & indexObj, const vec3f & dynamicObj);
+
+
         void setHero(Hero * theHero);
     protected:
 

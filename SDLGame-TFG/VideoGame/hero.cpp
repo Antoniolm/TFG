@@ -463,3 +463,13 @@ void Hero::noMove(){
     }
     isMoving=false;
 }
+
+//**********************************************************************//
+
+vec3f Hero::getPosition(){
+    vec4f position;
+    position=moveHero->product(position);
+
+    //cout<< "Position -> x:"<< position.x << " y: "<< position.y<< " z: "<< position.z << endl;
+    return vec3f(position.x,position.y,position.z);
+}

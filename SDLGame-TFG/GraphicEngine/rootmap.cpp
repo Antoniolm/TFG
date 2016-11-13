@@ -111,7 +111,6 @@ void RootMap::visualization(Context & cv){
         }
 
         vec3f pos;
-
         //Push all the positions
         for(int i=0;i<cv.posObject.size();i++){
             pos=cv.posObject[i];
@@ -122,10 +121,24 @@ void RootMap::visualization(Context & cv){
 
     //Draw hero
     hero->visualization(cv);
+
+    hero->getPosition();
 }
 
 //**********************************************************************//
 
 void RootMap::updateState(float time){
 
+}
+
+//**********************************************************************//
+
+bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
+    bool result=true;
+
+    if(indexObj.x+1 < dynamicObj.x-1 || indexObj.x-1 > dynamicObj.x+1) result=false;
+    if(indexObj.z+1 < dynamicObj.z-1 || indexObj.z-1 > dynamicObj.z+1) result=false;
+
+    if(result)
+        cout<< "Colisioni"<< endl;
 }
