@@ -36,6 +36,11 @@ Hero::Hero()
     pillObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     pillObject->init();
 
+    file=string("geometries/pillLeg.obj");
+    MeshMaterial * pillLegObject=new MeshMaterial(file);
+    pillLegObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    pillLegObject->init();
+
     file=string("geometries/hand.obj");
     MeshMaterial * handObject=new MeshMaterial(file);
     handObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
@@ -193,6 +198,8 @@ Hero::Hero()
     knee_ankleLeft->add(moveKneeLeft);
     knee_ankleLeft->add(static_cast<Object3D*>(knee_ankle));
 
+    Material * materialLeg=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureLeg.png");
+
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
@@ -200,7 +207,8 @@ Hero::Hero()
     legLeft->add(transLeg);
     legLeft->add(static_cast<Object3D*>(knee_ankleLeft));
     legLeft->add(scalePill);
-    legLeft->add(static_cast<Object3D*>(pillObject));
+    legLeft->add(materialLeg);
+    legLeft->add(static_cast<Object3D*>(pillLegObject));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
@@ -209,7 +217,8 @@ Hero::Hero()
     legRight->add(transLeg);
     legRight->add(static_cast<Object3D*>(knee_ankleRight));
     legRight->add(scalePill);
-    legRight->add(static_cast<Object3D*>(pillObject));
+    legRight->add(materialLeg);
+    legRight->add(static_cast<Object3D*>(pillLegObject));
 
     //////////////////////////////////////////////////////
     /////                  Arms                      /////
@@ -362,6 +371,8 @@ Hero::Hero()
 
     NodeSceneGraph * hipNode=new NodeSceneGraph();
     hipNode->add(scaleHip);
+    Material * material4=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/prueba.png");
+    hipNode->add(material4);
     hipNode->add(static_cast<Object3D*>(hipObject));
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
@@ -426,7 +437,7 @@ void Hero::moveBody(vec3f aMove,avatarDirection aDir){
         transHero.translation(position.x+aMove.x,position.y+aMove.y,position.z+aMove.z);
 
         int diferentDir=FORWARD-aDir;
-        cout<< "Direction -> "<< direction << " - "<< aDir<< " = " << diferentDir<< " ==> "<< 90*diferentDir<<endl;
+        //cout<< "Direction -> "<< direction << " - "<< aDir<< " = " << diferentDir<< " ==> "<< 90*diferentDir<<endl;
         moveHero->identity();
         moveHero->rotation(90*diferentDir,0.0f,1.0f,0.0f);
         moveHero->product(transHero.getMatrix());

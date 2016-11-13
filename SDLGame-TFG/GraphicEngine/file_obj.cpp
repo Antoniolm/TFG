@@ -36,16 +36,14 @@ void readMesh(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLus
     string line;
     while (getline(in, line))
     {
-        if (line.substr(0,2) == "v ")
-        {
+        if (line.substr(0,2) == "v ") { //Extract vertex
             stream=new istringstream(line.substr(2));
             (*stream) >> x;
             (*stream) >> y;
             (*stream) >> z;
             vertex.push_back(vec3f(x,y,z));
         }
-        else if (line.substr(0,2) == "f ")
-        {
+        else if (line.substr(0,2) == "f "){ //Extract face
             stream=new istringstream(line.substr(2));
             for(int i=0;i<3;i++){
                 (*stream) >> value;
@@ -77,15 +75,14 @@ void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vecto
     string line;
     while (getline(in, line))
     {
-        if (line.substr(0,2) == "v ")
-        {
+        if (line.substr(0,2) == "v "){ //Extract vertex
             stream=new istringstream(line.substr(2));
             (*stream) >> x;
             (*stream) >> y;
             (*stream) >> z;
             vertexAux.push_back(vec3f(x,y,z));
         }
-        else if (line.substr(0,3) == "vn "){
+        else if (line.substr(0,3) == "vn "){ //Extract normal face
             stream=new istringstream(line.substr(3));
             (*stream) >> x;
             (*stream) >> y;
@@ -93,7 +90,7 @@ void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vecto
             normalsVertex.push_back(vec3f(x,y,z));
 
         }
-        else if (line.substr(0,3) == "vt "){
+        else if (line.substr(0,3) == "vt "){ //Extract texture Coord
             stream=new istringstream(line.substr(3));
             (*stream) >> x;
             (*stream) >> y;

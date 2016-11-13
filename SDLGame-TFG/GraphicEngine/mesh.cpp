@@ -56,12 +56,14 @@ void Mesh::init(){
     glGenVertexArrays(1, &vertexArrayObject);
     glBindVertexArray(vertexArrayObject);
 
+    //Vertex buffer
     glGenBuffers(NUM_BUFFERS, vertexArrayBuffers);
     glBindBuffer(GL_ARRAY_BUFFER,vertexArrayBuffers[POSITION_VB]);
     glBufferData(GL_ARRAY_BUFFER,sizeof(vec3f)*vertex.size(),&vertex[0],GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0 , 0);
 
+    //Triangles buffer
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,vertexArrayBuffers[INDEX_VB]);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(GLushort)*triangles.size(),&triangles[0],GL_STATIC_DRAW);
 

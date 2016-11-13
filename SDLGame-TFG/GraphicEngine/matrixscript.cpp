@@ -52,10 +52,10 @@ Matrix4f & MatrixScript::updateState(float time){
     if(currentTime>script[currentMove].first){
         currentTime=0;
         currentMove++;
-        if(currentMove==script.size()){
+        if(currentMove==script.size()){ //initial Case
             currentMove=0;
         }
-        (script[currentMove].second)->resetState();
+        (script[currentMove].second)->resetState(); //Reset the state
     }
     currentMatrix=(script[currentMove].second)->updateState(time);
     return currentMatrix;

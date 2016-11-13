@@ -62,7 +62,7 @@ void Matrix4f::scale(const float x,const float y,const float z){
 //**********************************************************************//
 
 void Matrix4f::rotation(const float grade,const float x,const float y,const float z){
-    float rad=(grade*3.14159)/180.0;
+    float rad=(grade*3.14159)/180.0; //grade to radian
 
     matrix[0]= cos(rad)+((x*x)*(1-cos(rad)));     matrix[1]=((x*y)*(1-cos(rad)))-z*sin(rad);  matrix[2]=((x*z)*(1-cos(rad)))+y*sin(rad);   matrix[3]=0;
     matrix[4]=((y*x)*(1-cos(rad)))+z*sin(rad);    matrix[5]=cos(rad)+((y*y)*(1-cos(rad)));    matrix[6]=((y*z)*(1-cos(rad)))-x*sin(rad);   matrix[7]=0;

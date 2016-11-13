@@ -19,11 +19,8 @@
 
 #include "camera.h"
 
-Camera::Camera()
-{
-    position=vec3f(0.0,0.0,1.0);
-    target=vec3f(0.0,0.0,0.0);
-    up=vec3f(0.0,1.0,0.0);
+Camera::Camera(){
+
 }
 
 //**********************************************************************//
@@ -57,6 +54,7 @@ void Camera::setCamera(vec3f eye,vec3f aTarget,vec3f aUp){
 void Camera::setPerspectiveProjection(float fov, float aspect, float near, float far){
     float f=(float) 1/tan((fov * 3.1416) / 360.0);
 
+    //Create the projection
     GLfloat * matrix=new GLfloat[16];
     matrix[0]=f/(aspect);  matrix[1]=0;        matrix[2]=0;                          matrix[3]=0;
 	matrix[4]=0;                matrix[5]=f;   matrix[6]=0;                          matrix[7]=0;
@@ -69,6 +67,8 @@ void Camera::setPerspectiveProjection(float fov, float aspect, float near, float
 //**********************************************************************//
 
 void Camera::setOrthographicProjection(float left,float right,float bottom,float top,float near,float far){
+
+    //Create the projection
     GLfloat * projec=new GLfloat[16];
     projec[0]=2.0f/(right-left);        projec[1]=0;                        projec[2]=0;                 projec[3]=((right+left)/(right-left));
 	projec[4]=0;                        projec[5]=2.0f/(top-bottom);        projec[6]=0;                 projec[7]=((top+bottom)/(top-bottom));
@@ -85,24 +85,28 @@ void Camera::createCamera(){
     vec3f yCamera;
     vec3f xCamera;
 
+    //Calculate the z-Axis
     zCamera=position-target;
     float modulo=zCamera.normalize();
     zCamera.x=zCamera.x/modulo;
     zCamera.y=zCamera.y/modulo;
     zCamera.z=zCamera.z/modulo;
 
+    //Calculate the x-Axis
     xCamera=up.cross(zCamera);
     modulo=xCamera.normalize();
     xCamera.x=xCamera.x/modulo;
     xCamera.y=xCamera.y/modulo;
     xCamera.z=xCamera.z/modulo;
 
+    //Calculate the y-Axis
     yCamera=zCamera.cross(xCamera);
     modulo=yCamera.normalize();
     yCamera.x=yCamera.x/modulo;
     yCamera.y=yCamera.y/modulo;
     yCamera.z=yCamera.z/modulo;
 
+    //Create the camera
     GLfloat * matrix=new GLfloat[16];
     matrix[0]=xCamera.x;  matrix[1]=yCamera.x;  matrix[2]=zCamera.x;  matrix[3]=0;
 	matrix[4]=xCamera.y;  matrix[5]=yCamera.y;  matrix[6]=zCamera.y;  matrix[7]=0;

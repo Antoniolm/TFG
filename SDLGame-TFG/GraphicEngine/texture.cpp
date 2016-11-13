@@ -58,7 +58,7 @@ void Texture::createTexture(){
     unsigned char* data = stbi_load((fileName).c_str(), &width, &height, &numComponents, 4);
 
     if(data == NULL)
-		std::cerr << "Unable to load texture: " << fileName << std::endl;
+		std::cout << "Unable to load texture: " << fileName << std::endl;
 
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);

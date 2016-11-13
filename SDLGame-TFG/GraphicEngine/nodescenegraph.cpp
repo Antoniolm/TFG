@@ -49,14 +49,14 @@ void NodeSceneGraph::visualization(Context & cv){
     vector<EntranceNGE>::iterator it;
     for(it=entrance.begin();it!=entrance.end();it++){
             switch((*it).type){
-            case 0:
+            case 0: //Object3d
                 (*it).obj->visualization(cv);
                 break;
-            case 1:
+            case 1: //Matrix4f
                 cv.matrixStack.cMatrix((*(*it).matrix));
                 contMatrix++;
                 break;
-            case 2:
+            case 2: //Material
                 cv.materialStack.push((*(*it).material));
                 contMaterial++;
                 break;

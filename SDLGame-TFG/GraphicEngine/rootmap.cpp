@@ -22,9 +22,9 @@
 RootMap::RootMap()
 {
     NodeSceneGraph * root3=new NodeSceneGraph();
-    string file("geometries/foot.obj");
-    Mesh * aObject=new Mesh(file);
-    aObject->LoadShader("shaders/basicvertexsharder.vs","shaders/basicfragshader.fs");
+    string file("geometries/cube.obj");
+    MeshMaterial * aObject=new MeshMaterial(file);
+    aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject->init();
 
     Matrix4f *matrix =new Matrix4f();
@@ -43,25 +43,13 @@ RootMap::RootMap()
     NodeSceneGraph * root4=new NodeSceneGraph();
 
     NodeSceneGraph * root=new NodeSceneGraph();
-    root->add(matrix);
+    //root->add(matrix);
+    Material * materialCube=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cube.png");
+    root->add(materialCube);
     root->add(static_cast<Object3D*>(aObject));
 
-        root2->add(matrix3);
-        root2->add(static_cast<Object3D*>(root));
-
-        root2->add(matrix3);
-        root2->add(static_cast<Object3D*>(root));
-
-        root4->add(matrix2);
-        root4->add(static_cast<Object3D*>(root));
-
-    for(int i=0;i<3;i++){
-        root3->add(matrix3);
-        root3->add(matrix3);
-        root3->add(static_cast<Object3D*>(root2));
-    }
-    objectStatic.push_back(root3);
-    objectDinamic.push_back(root4);
+    objectStatic.push_back(root);
+    //objectDinamic.push_back(root);
 }
 
 //**********************************************************************//

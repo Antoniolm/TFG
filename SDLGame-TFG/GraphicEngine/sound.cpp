@@ -48,12 +48,12 @@ sound::sound(const string & aFile,unsigned int aType,int aChannel,int aloop){
     loop=aloop;
 
     switch(type){
-        case 0:
+        case 0: //Background music
             music= Mix_LoadMUS(&file[0u]);
             if( music == NULL ) cout<< "Unable to load the background music ->"<< file<<endl;
         break;
 
-        case 1:
+        case 1: //Effect
             effect= Mix_LoadWAV(&file[0u]);
             if( effect == NULL) cout<< "Unable to load the effect ->"<< file<<endl;
         break;
@@ -65,12 +65,12 @@ sound::sound(const string & aFile,unsigned int aType,int aChannel,int aloop){
 void sound::play(){
 
     switch(type){
-        case 0:
+        case 0: //Background music
             if(Mix_PlayingMusic()==0)
                 Mix_PlayMusic(music, loop);
         break;
 
-        case 1:
+        case 1: //Effect
             if(Mix_Playing(channel)==0)
                 Mix_PlayChannel(channel,effect,loop);
 
@@ -82,12 +82,12 @@ void sound::play(){
 
 void sound::stop(){
     switch(type){
-        case 0:
+        case 0: //Background music
             if(Mix_PlayingMusic()==1)
                 Mix_HaltMusic();
         break;
 
-        case 1:
+        case 1: //Effect
             if(Mix_Playing(channel)==1)
                 Mix_HaltChannel(channel);
 
@@ -99,12 +99,12 @@ void sound::stop(){
 
 void sound::pause(){
     switch(type){
-        case 0:
+        case 0: //Background music
             if(Mix_PausedMusic()==0)
                 Mix_PauseMusic();
         break;
 
-        case 1:
+        case 1: //Effect
             if(Mix_Paused(channel)==0)
                 Mix_Pause(channel);
 
@@ -116,12 +116,12 @@ void sound::pause(){
 
 void sound::resume(){
     switch(type){
-        case 0:
+        case 0: //Background music
             if(Mix_PausedMusic()==1)
                 Mix_ResumeMusic();
         break;
 
-        case 1:
+        case 1: //Effect
             if(Mix_Paused(channel)==1)
                 Mix_Resume(channel);
 
@@ -135,12 +135,12 @@ void sound::resume(){
 bool sound::isPlaying(){
     bool result=false;
     switch(type){
-        case 0:
+        case 0: //Background music
             if(Mix_PlayingMusic()==1)
                 result=true;
         break;
 
-        case 1:
+        case 1: //Effect
             if(Mix_Playing(channel)==1)
                 result=true;
         break;
@@ -155,12 +155,12 @@ bool sound::isPause(){
     bool result=false;
 
     switch(type){
-        case 0:
+        case 0: //Background music
             if(Mix_PausedMusic()==1)
                 result=true;
         break;
 
-        case 1:
+        case 1: //Effect
             if(Mix_Paused(channel)==1)
                 result=true;
 
@@ -180,7 +180,7 @@ bool sound::loadSound(const string & aFile,unsigned int aType,int aChannel,int a
     bool result = true;
 
     switch(type){
-        case 0:
+        case 0: //Background music
         music= Mix_LoadMUS(&file[0u]);
         if( music == NULL ){
           cout<< "Unable to load the background music ->"<< file<<endl;
@@ -188,7 +188,7 @@ bool sound::loadSound(const string & aFile,unsigned int aType,int aChannel,int a
         }
         break;
 
-        case 1:
+        case 1: //Effect
         effect= Mix_LoadWAV(&file[0u]);
         if( effect == NULL){
           cout<< "Unable to load the effect ->"<< file<<endl;
