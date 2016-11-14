@@ -39,7 +39,7 @@ void Game::loop(){
     Context aContext;
 
     //Create our camera
-    vec3f position(0.0,5.0,10.0);
+    vec3f position(0.0,3.0,10.0);
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
     aContext.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
@@ -55,7 +55,7 @@ void Game::loop(){
     avatarDirection heroDir;
     hero=new Hero();
     rootMap->setHero(hero);
-    Matrix4f movCamera;
+    Matrix4f movCamera,auxMatrix;
     vec3f moveHero;
 
     while (!quit)
@@ -72,7 +72,6 @@ void Game::loop(){
                 switch (event.key.keysym.sym){
 
                     case SDLK_LEFT:
-                        //movCamera.identity();
                         movCamera.translation(0.05,0.0,0.0);
                         moveHero.x=-0.05; moveHero.y=0.0; moveHero.z=0.0;
                         heroDir=LEFTWARD;
@@ -85,13 +84,17 @@ void Game::loop(){
                         break;
                     case SDLK_UP:
                         //movCamera.identity();
-                        movCamera.translation(0.0,0.0,0.05);
+                        auxMatrix.translation(0.0,0.0,0.05);
+                        movCamera.rotation(0.08,1.0,0.0,0.0);
+                        movCamera.product(auxMatrix.getMatrix());
                         moveHero.x=0.0; moveHero.y=0.0; moveHero.z=-0.05;
                         heroDir=BACKWARD;
                         break;
                     case SDLK_DOWN:
                         //movCamera.identity();
-                        movCamera.translation(0.0,0.0,-0.05);
+                        auxMatrix.translation(0.0,0.0,-0.05);
+                        movCamera.rotation(-0.08,1.0,0.0,0.0);
+                        movCamera.product(auxMatrix.getMatrix());
                         moveHero.x=0.0; moveHero.y=0.0; moveHero.z=0.05;
                         heroDir=FORWARD;
                         break;
