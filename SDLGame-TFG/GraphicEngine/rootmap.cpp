@@ -34,7 +34,8 @@ RootMap::RootMap()
     matrix2->translation(-5.0,1,0.0);
 
     Matrix4f * transOneCube=new Matrix4f();
-    transOneCube->translation(2.0,0.5,-2.0);
+    //transOneCube->translation(2.0,0.5,-2.0);
+    transOneCube->translation(0.5,0.5,-0.5);
 
     Matrix4f * transCube=new Matrix4f();
     transCube->translation(1.0,0.0,0.0);

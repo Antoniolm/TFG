@@ -68,7 +68,7 @@ Hero::Hero()
     monkeyObject->init();
 
     //////////////////////////////////////////////////////
-    /////               All The matrix               /////
+    /////              Some The matrix               /////
     //////////////////////////////////////////////////////
 
     Matrix4f *scaleFoot=new Matrix4f();
@@ -80,21 +80,11 @@ Hero::Hero()
     Matrix4f *scaleSphere=new Matrix4f();
     scaleSphere->scale(0.15,0.15,0.15);
 
-
     Matrix4f *scalePillKnee=new Matrix4f();
     scalePillKnee->scale(0.3,0.6,0.3);
 
     Matrix4f *scalePill=new Matrix4f();
     scalePill->scale(0.3,0.5,0.3);
-
-    Matrix4f *scaleHip=new Matrix4f();
-    scaleHip->scale(0.4,0.4,0.3);
-
-    Matrix4f *transChest=new Matrix4f();
-    transChest->translation(0.0,1.3,0.0);
-
-    Matrix4f *scaleChest=new Matrix4f();
-    scaleChest->scale(0.9,0.9,0.6);
 
     Matrix4f *transCylinder=new Matrix4f();
     transCylinder->translation(0.0,-0.7,0.0);
@@ -159,11 +149,6 @@ Hero::Hero()
     animation.add(KneeScriptLeft);
     animation.add(LegScriptRight);
     animation.add(LegScriptLeft);
-
-    //Movement for our hero
-    moveHero=new Matrix4f();
-    moveHero->identity();
-    moveHero->translation(0.5,0.1,-1);
 
     //Ankle + foot
     NodeSceneGraph * ankle=new NodeSceneGraph();
@@ -357,21 +342,35 @@ Hero::Hero()
     /////         Construction of the hero           /////
     //////////////////////////////////////////////////////
 
+    //Movement for our hero
+    moveHero=new Matrix4f();
+    moveHero->identity();
+    moveHero->translation(0.5,1.8,-1);
+    root->add(moveHero);
+
     Matrix4f *mat=new Matrix4f();
     mat->translation(-0.8,0.0,0.0);
-    root->add(moveHero);
 
     Matrix4f *mat2=new Matrix4f();
     mat2->translation(0.4,0.0,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
-    scaleHero->scale(0.5,0.5,0.5);
+    scaleHero->scale(0.25,0.25,0.25);
 
     Matrix4f *trasn2Arms=new Matrix4f();
     trasn2Arms->translation(-2.0,0.0,0.0);
 
     Matrix4f *trasn2Arms2=new Matrix4f();
     trasn2Arms2->translation(1.0,0.7,0.0);
+
+    Matrix4f *scaleHip=new Matrix4f();
+    scaleHip->scale(0.4,0.4,0.3);
+
+    Matrix4f *transChest=new Matrix4f();
+    transChest->translation(0.0,1.3,0.0);
+
+    Matrix4f *scaleChest=new Matrix4f();
+    scaleChest->scale(0.9,0.9,0.6);
 
     NodeSceneGraph * hipNode=new NodeSceneGraph();
     hipNode->add(scaleHip);
@@ -455,7 +454,7 @@ void Hero::moveBody(vec3f aMove,avatarDirection aDir){
         hasCollision=rootMap->collision(vec3f(posHero.x+1,posHero.y,posHero.z),posHero);
 
 
-    if(hasCollision){
+    //if(hasCollision){
         if(direction!=aDir){
             vec4f position;
             position=moveHero->product(position);
@@ -477,7 +476,7 @@ void Hero::moveBody(vec3f aMove,avatarDirection aDir){
         }
         isMoving=true;
 
-    }
+    //}
 }
 
 //**********************************************************************//

@@ -39,10 +39,10 @@ void Game::loop(){
     Context aContext;
 
     //Create our camera
-    vec3f position(0.0,2.0,10.0);
+    vec3f position(0.0,5.0,10.0);
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
-    aContext.camera.setPerspectiveProjection(45.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
+    aContext.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
 
@@ -72,23 +72,27 @@ void Game::loop(){
                 switch (event.key.keysym.sym){
 
                     case SDLK_LEFT:
-                        movCamera.identity();
-                        moveHero.x=-0.1; moveHero.y=0.0; moveHero.z=0.0;
+                        //movCamera.identity();
+                        movCamera.translation(0.05,0.0,0.0);
+                        moveHero.x=-0.05; moveHero.y=0.0; moveHero.z=0.0;
                         heroDir=LEFTWARD;
                         break;
                     case SDLK_RIGHT:
-                        movCamera.identity();
-                        moveHero.x=0.1; moveHero.y=0.0; moveHero.z=0.0;
+                        //movCamera.identity();
+                        movCamera.translation(-0.05,0.0,0.0);
+                        moveHero.x=0.05; moveHero.y=0.0; moveHero.z=0.0;
                         heroDir=RIGHTWARD;
                         break;
                     case SDLK_UP:
-                        movCamera.identity();
-                        moveHero.x=0.0; moveHero.y=0.0; moveHero.z=-0.1;
+                        //movCamera.identity();
+                        movCamera.translation(0.0,0.0,0.05);
+                        moveHero.x=0.0; moveHero.y=0.0; moveHero.z=-0.05;
                         heroDir=BACKWARD;
                         break;
                     case SDLK_DOWN:
-                        movCamera.identity();
-                        moveHero.x=0.0; moveHero.y=0.0; moveHero.z=0.1;
+                        //movCamera.identity();
+                        movCamera.translation(0.0,0.0,-0.05);
+                        moveHero.x=0.0; moveHero.y=0.0; moveHero.z=0.05;
                         heroDir=FORWARD;
                         break;
                     case SDLK_k:
