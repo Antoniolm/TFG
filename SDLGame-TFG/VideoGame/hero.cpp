@@ -22,6 +22,7 @@
 Hero::Hero()
 {
     direction=FORWARD;
+    isMoving=true;
 
     //////////////////////////////////////////////////////
     /////           All the meshMaterial             /////
@@ -432,28 +433,51 @@ void Hero::visualization(Context & cv){
 
 //**********************************************************************//
 
+void Hero::setMap(RootMap * aMap){
+    rootMap=aMap;
+}
+
+//**********************************************************************//
+
 void Hero::moveBody(vec3f aMove,avatarDirection aDir){
-    vec4f position;
+    bool hasCollision=false;
 
-    if(direction!=aDir){
-        position=moveHero->product(position);
-        Matrix4f transHero;
-        transHero.translation(position.x+aMove.x,position.y+aMove.y,position.z+aMove.z);
+    vec3f posHero=getPosition();
 
-        int diferentDir=FORWARD-aDir;
-        //cout<< "Direction -> "<< direction << " - "<< aDir<< " = " << diferentDir<< " ==> "<< 90*diferentDir<<endl;
-        moveHero->identity();
-        moveHero->rotation(90*diferentDir,0.0f,1.0f,0.0f);
-        moveHero->product(transHero.getMatrix());
+    //Check the collision first
+    if(aDir == FORWARD)
+        hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+1),posHero);
+    if(aDir == BACKWARD)
+        hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-1),posHero);
+    if(aDir == LEFTWARD)
+        hasCollision=rootMap->collision(vec3f(posHero.x-1,posHero.y,posHero.z),posHero);
+    if(aDir == RIGHTWARD)
+        hasCollision=rootMap->collision(vec3f(posHero.x+1,posHero.y,posHero.z),posHero);
 
-        direction=aDir;
+
+    if(hasCollision){
+        if(direction!=aDir){
+            vec4f position;
+            position=moveHero->product(position);
+            Matrix4f transHero;
+            transHero.translation(position.x+aMove.x,position.y+aMove.y,position.z+aMove.z);
+
+            int diferentDir=FORWARD-aDir;
+            //cout<< "Direction -> "<< direction << " - "<< aDir<< " = " << diferentDir<< " ==> "<< 90*diferentDir<<endl;
+            moveHero->identity();
+            moveHero->rotation(90*diferentDir,0.0f,1.0f,0.0f);
+            moveHero->product(transHero.getMatrix());
+
+            direction=aDir;
+        }
+        else{
+            Matrix4f transHero;
+            transHero.translation(aMove.x,aMove.y,aMove.z);
+            moveHero->product(transHero.getMatrix());
+        }
+        isMoving=true;
+
     }
-    else{
-        Matrix4f transHero;
-        transHero.translation(aMove.x,aMove.y,aMove.z);
-        moveHero->product(transHero.getMatrix());
-    }
-    isMoving=true;
 }
 
 //**********************************************************************//

@@ -33,6 +33,9 @@ RootMap::RootMap()
     Matrix4f * matrix2=new Matrix4f();
     matrix2->translation(-5.0,1,0.0);
 
+    Matrix4f * transOneCube=new Matrix4f();
+    transOneCube->translation(2.0,0.5,-2.0);
+
     Matrix4f * transCube=new Matrix4f();
     transCube->translation(1.0,0.0,0.0);
 
@@ -44,6 +47,7 @@ RootMap::RootMap()
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
     Material * materialCube=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cube.png");
+    cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialCube);
     cubeNode->add(static_cast<Object3D*>(aObject));
@@ -77,6 +81,7 @@ RootMap::~RootMap()
 
 void RootMap::setHero(Hero * theHero){
     hero=theHero;
+    hero->setMap(this);
 }
 
 //**********************************************************************//
@@ -112,6 +117,7 @@ void RootMap::visualization(Context & cv){
         for(int i=0;i<cv.posObject.size();i++){
             pos=cv.posObject[i];
             object[pos.x][(pos.z*(-1))].push_back(pos.y);
+            cout<< "Position -> x: "<< pos.x<< " y: "<< pos.y<< " z: "<< pos.z<< endl;
         }
 
     }
@@ -120,7 +126,7 @@ void RootMap::visualization(Context & cv){
     hero->visualization(cv);
 
     vec3f positionHero=hero->getPosition();
-    //collision(vec3f(positionHero.x+2.01,positionHero.y,positionHero.z),positionHero);
+    //collision(vec3f(positionHero.x+1,positionHero.y,positionHero.z),positionHero);
 }
 
 //**********************************************************************//
@@ -133,7 +139,7 @@ void RootMap::updateState(float time){
 
 bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
     bool result=true;
-    //cout<< (int)indexObj.x<< " : "<< (int)indexObj.z<< endl;
+    cout<< (int)indexObj.x<< " : "<< (int)indexObj.z<< endl;
     int tam=object[(int)indexObj.x][(int)indexObj.z*-1].size();
     //cout<< tam<< endl;
 
@@ -141,10 +147,10 @@ bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
     list<float>::iterator endIt=object[(int)indexObj.x][(int)indexObj.z*-1].end();
 
     for(;it!=endIt && result;it++){
-        //cout<< "Detect object"<< endl;
-        if(indexObj.x+0.5 < dynamicObj.x-0.5 || indexObj.x-0.5 > dynamicObj.x+0.5) result=false;
-        if(indexObj.z+0.5 < dynamicObj.z-0.5 || indexObj.z-0.5 > dynamicObj.z+0.5) result=false;
-        if((*it)+0.5 < dynamicObj.z-0.5 || (*it)-0.5 > dynamicObj.z+0.5) result=false;
+        cout<< "Detect object"<< endl;
+        if(indexObj.x+1 < dynamicObj.x-1 || indexObj.x-1 > dynamicObj.x+1) result=false;
+        if(indexObj.z+1 < dynamicObj.z-1 || indexObj.z-1 > dynamicObj.z+1) result=false;
+        if((*it)+1 < dynamicObj.z-1 || (*it)-1 > dynamicObj.z+1) result=false;
     }
     if(result)
         cout<< "Collision"<< endl;

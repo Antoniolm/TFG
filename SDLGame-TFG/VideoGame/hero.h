@@ -26,10 +26,11 @@
 #include "../GraphicEngine/scriptlmd.h"
 #include "../GraphicEngine/context.h"
 #include "../GraphicEngine/matrixscript.h"
+#include "../GraphicEngine/rootmap.h"
 #include <vector>
 
 using namespace std;
-
+class RootMap;
 class Hero: public Avatar
 {
     public:
@@ -43,11 +44,44 @@ class Hero: public Avatar
         //////////////////////////////////////////////////////////////////////////
         virtual ~Hero();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will show the object in our interface
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         virtual void visualization(Context & cv);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will set our map
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setMap(RootMap * aMap);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will move our hero
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void moveBody(vec3f aMove,avatarDirection aDir);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will reset animations because the hero isn't in movement
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void noMove();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the position of our hero
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         vec3f getPosition();
 
     protected:
@@ -59,6 +93,7 @@ class Hero: public Avatar
         Matrix4f * moveHero;
         avatarDirection direction;
         bool isMoving;
+        RootMap * rootMap;
 };
 
 #endif // HERO_H
