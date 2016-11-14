@@ -27,27 +27,24 @@ RootMap::RootMap()
     aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject->init();
 
-    Matrix4f *matrix =new Matrix4f();
-    matrix->scale(0.1,0.1,0.1);
+    Matrix4f *scaleCube =new Matrix4f();
+    scaleCube->scale(0.5,0.5,0.5);
 
     Matrix4f * matrix2=new Matrix4f();
     matrix2->translation(-5.0,1,0.0);
 
     Matrix4f * transCube=new Matrix4f();
-    transCube->translation(2.0,0.0,0.0);
+    transCube->translation(1.0,0.0,0.0);
 
     Matrix4f * transRow=new Matrix4f();
-    transRow->translation(0.0,0.0,-2.0);
+    transRow->translation(0.0,0.0,-1.0);
 
     Matrix4f * matrixt=new Matrix4f();
     matrixt->rotation(90,0.0,1.0,0.0);
 
-    NodeSceneGraph * root2=new NodeSceneGraph();
-    NodeSceneGraph * root4=new NodeSceneGraph();
-
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
-    //root->add(matrix);
     Material * materialCube=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cube.png");
+    cubeNode->add(scaleCube);
     cubeNode->add(materialCube);
     cubeNode->add(static_cast<Object3D*>(aObject));
 
@@ -122,7 +119,8 @@ void RootMap::visualization(Context & cv){
     //Draw hero
     hero->visualization(cv);
 
-    hero->getPosition();
+    vec3f positionHero=hero->getPosition();
+    //collision(vec3f(positionHero.x+2.01,positionHero.y,positionHero.z),positionHero);
 }
 
 //**********************************************************************//
@@ -135,10 +133,22 @@ void RootMap::updateState(float time){
 
 bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
     bool result=true;
+    //cout<< (int)indexObj.x<< " : "<< (int)indexObj.z<< endl;
+    int tam=object[(int)indexObj.x][(int)indexObj.z*-1].size();
+    //cout<< tam<< endl;
 
-    if(indexObj.x+1 < dynamicObj.x-1 || indexObj.x-1 > dynamicObj.x+1) result=false;
-    if(indexObj.z+1 < dynamicObj.z-1 || indexObj.z-1 > dynamicObj.z+1) result=false;
+    list<float>::iterator it=object[(int)indexObj.x][(int)indexObj.z*-1].begin();
+    list<float>::iterator endIt=object[(int)indexObj.x][(int)indexObj.z*-1].end();
 
+    for(;it!=endIt && result;it++){
+        //cout<< "Detect object"<< endl;
+        if(indexObj.x+0.5 < dynamicObj.x-0.5 || indexObj.x-0.5 > dynamicObj.x+0.5) result=false;
+        if(indexObj.z+0.5 < dynamicObj.z-0.5 || indexObj.z-0.5 > dynamicObj.z+0.5) result=false;
+        if((*it)+0.5 < dynamicObj.z-0.5 || (*it)-0.5 > dynamicObj.z+0.5) result=false;
+    }
     if(result)
-        cout<< "Colisioni"<< endl;
+        cout<< "Collision"<< endl;
+
+    return result;
 }
+

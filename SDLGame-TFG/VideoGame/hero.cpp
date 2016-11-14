@@ -363,6 +363,9 @@ Hero::Hero()
     Matrix4f *mat2=new Matrix4f();
     mat2->translation(0.4,0.0,0.0);
 
+    Matrix4f * scaleHero=new Matrix4f();
+    scaleHero->scale(0.5,0.5,0.5);
+
     Matrix4f *trasn2Arms=new Matrix4f();
     trasn2Arms->translation(-2.0,0.0,0.0);
 
@@ -388,6 +391,7 @@ Hero::Hero()
     chest_ArmsNode->add(static_cast<Object3D*>(ArmRight));
 
     Material * material=new Material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/bricks.jpg");
+    root->add(scaleHero);
     root->add(material);
     //root->add((static_cast<Object3D*>(monkeyObject)));
     root->add((static_cast<Object3D*>(hipNode)));

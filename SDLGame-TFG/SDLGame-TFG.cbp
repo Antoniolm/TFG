@@ -52,8 +52,6 @@
 		<Unit filename="GraphicEngine/context.h" />
 		<Unit filename="GraphicEngine/file_obj.cpp" />
 		<Unit filename="GraphicEngine/file_obj.h" />
-		<Unit filename="GraphicEngine/file_ply_stl.cpp" />
-		<Unit filename="GraphicEngine/file_ply_stl.hpp" />
 		<Unit filename="GraphicEngine/light.cpp" />
 		<Unit filename="GraphicEngine/light.h" />
 		<Unit filename="GraphicEngine/linearmovement.cpp" />
