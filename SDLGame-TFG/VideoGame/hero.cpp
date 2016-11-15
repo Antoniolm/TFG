@@ -445,16 +445,16 @@ void Hero::moveBody(vec3f aMove,avatarDirection aDir){
 
     //Check the collision first
     if(aDir == FORWARD)
-        hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+1),posHero);
+        hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.3),posHero);
     if(aDir == BACKWARD)
-        hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-1),posHero);
+        hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.3),posHero);
     if(aDir == LEFTWARD)
-        hasCollision=rootMap->collision(vec3f(posHero.x-1,posHero.y,posHero.z),posHero);
+        hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z),posHero);
     if(aDir == RIGHTWARD)
-        hasCollision=rootMap->collision(vec3f(posHero.x+1,posHero.y,posHero.z),posHero);
+        hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z),posHero);
 
 
-    //if(hasCollision){
+    if(!hasCollision){
         if(direction!=aDir){
             vec4f position;
             position=moveHero->product(position);
@@ -476,7 +476,7 @@ void Hero::moveBody(vec3f aMove,avatarDirection aDir){
         }
         isMoving=true;
 
-    //}
+    }
 }
 
 //**********************************************************************//

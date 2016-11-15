@@ -34,8 +34,10 @@ RootMap::RootMap()
     matrix2->translation(-5.0,1,0.0);
 
     Matrix4f * transOneCube=new Matrix4f();
-    //transOneCube->translation(2.0,0.5,-2.0);
     transOneCube->translation(0.5,0.5,-0.5);
+
+    Matrix4f * transObsCube=new Matrix4f();
+    transObsCube->translation(2.0,1.0,-2.0);
 
     Matrix4f * transCube=new Matrix4f();
     transCube->translation(1.0,0.0,0.0);
@@ -53,6 +55,12 @@ RootMap::RootMap()
     cubeNode->add(materialCube);
     cubeNode->add(static_cast<Object3D*>(aObject));
 
+    NodeSceneGraph * obsNode=new NodeSceneGraph();
+    obsNode->add(transObsCube);
+    obsNode->add(static_cast<Object3D*>(cubeNode));
+    obsNode->add(transObsCube);
+    obsNode->add(static_cast<Object3D*>(cubeNode));
+
     NodeSceneGraph * rowCube=new NodeSceneGraph();
     rowCube->add(static_cast<Object3D*>(cubeNode));
     for(int i=0;i<5;i++){
@@ -68,6 +76,7 @@ RootMap::RootMap()
     }
 
     objectStatic.push_back(ColumCube);
+    objectStatic.push_back(obsNode);
     //objectDinamic.push_back(root);
 }
 
@@ -139,19 +148,22 @@ void RootMap::updateState(float time){
 //**********************************************************************//
 
 bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
-    bool result=true;
-    cout<< (int)indexObj.x<< " : "<< (int)indexObj.z<< endl;
+    bool result=false;
+    //cout<< (int)indexObj.x<< " : "<< (int)indexObj.z<< endl;
     int tam=object[(int)indexObj.x][(int)indexObj.z*-1].size();
-    //cout<< tam<< endl;
+    cout<< tam<< endl;
 
     list<float>::iterator it=object[(int)indexObj.x][(int)indexObj.z*-1].begin();
     list<float>::iterator endIt=object[(int)indexObj.x][(int)indexObj.z*-1].end();
 
-    for(;it!=endIt && result;it++){
-        cout<< "Detect object"<< endl;
-        if(indexObj.x+1 < dynamicObj.x-1 || indexObj.x-1 > dynamicObj.x+1) result=false;
-        if(indexObj.z+1 < dynamicObj.z-1 || indexObj.z-1 > dynamicObj.z+1) result=false;
-        if((*it)+1 < dynamicObj.z-1 || (*it)-1 > dynamicObj.z+1) result=false;
+    if(tam!=0 && ((dynamicObj.x+0.5 >= indexObj.x-0.5 && dynamicObj.x+0.5 <= indexObj.x+0.5 )||(dynamicObj.x-0.5 >= indexObj.x-0.5 && dynamicObj.x-0.5 <= indexObj.x+0.5))
+       &&((-dynamicObj.z+0.5 >= -indexObj.z-0.5 && -dynamicObj.z+0.5 <= -indexObj.z+0.5 )||(-dynamicObj.z-0.5 >= -indexObj.z-0.5 && -dynamicObj.z-0.5 <= -indexObj.z+0.5))){
+        cout<< " Detect object "<< -dynamicObj.z+0.5<<endl;
+        for(;it!=endIt && !result;it++){
+            cout<< "Detect object"<< endl;
+            if((dynamicObj.y+0.5 > (*it)-0.5 && dynamicObj.y+0.5 < (*it)+0.5 )||(dynamicObj.y-0.5 > (*it)-0.5 && dynamicObj.y-0.5 < (*it)+0.5))
+                result=true;
+        }
     }
     if(result)
         cout<< "Collision"<< endl;
