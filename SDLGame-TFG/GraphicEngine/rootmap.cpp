@@ -149,24 +149,20 @@ void RootMap::updateState(float time){
 
 bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
     bool result=false;
-    //cout<< (int)indexObj.x<< " : "<< (int)indexObj.z<< endl;
     int tam=object[(int)indexObj.x][(int)indexObj.z*-1].size();
-    cout<< tam<< endl;
 
     list<float>::iterator it=object[(int)indexObj.x][(int)indexObj.z*-1].begin();
     list<float>::iterator endIt=object[(int)indexObj.x][(int)indexObj.z*-1].end();
 
     if(tam!=0 && ((dynamicObj.x+0.5 >= indexObj.x-0.5 && dynamicObj.x+0.5 <= indexObj.x+0.5 )||(dynamicObj.x-0.5 >= indexObj.x-0.5 && dynamicObj.x-0.5 <= indexObj.x+0.5))
        &&((-dynamicObj.z+0.5 >= -indexObj.z-0.5 && -dynamicObj.z+0.5 <= -indexObj.z+0.5 )||(-dynamicObj.z-0.5 >= -indexObj.z-0.5 && -dynamicObj.z-0.5 <= -indexObj.z+0.5))){
-        cout<< " Detect object "<< -dynamicObj.z+0.5<<endl;
+        //cout<< " Detect object "<< -dynamicObj.z+0.5<<endl;
         for(;it!=endIt && !result;it++){
-            cout<< "Detect object"<< endl;
+            //cout<< "Detect object"<< endl;
             if((dynamicObj.y+0.5 > (*it)-0.5 && dynamicObj.y+0.5 < (*it)+0.5 )||(dynamicObj.y-0.5 > (*it)-0.5 && dynamicObj.y-0.5 < (*it)+0.5))
                 result=true;
         }
     }
-    if(result)
-        cout<< "Collision"<< endl;
 
     return result;
 }

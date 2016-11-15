@@ -66,7 +66,7 @@ class Hero: public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void moveBody(vec3f aMove,avatarDirection aDir);
+        bool moveBody(vec3f aMove,avatarDirection aDir);
 
         //////////////////////////////////////////////////////////////////////////
         /**

@@ -117,8 +117,8 @@ void Game::loop(){
                         movCamera.rotation(-5,0.0,1.0,0.0);
                         break;
                 }
-                hero->moveBody(moveHero,heroDir);
-                aContext.camera.moveCamera(movCamera);
+                if(hero->moveBody(moveHero,heroDir))
+                    aContext.camera.moveCamera(movCamera);
 
             }
             else{
