@@ -492,7 +492,7 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
         break;
     }
 
-    if(!hasCollision){
+    if(!hasCollision){ //Case -> the hero can move = No collision
         if(direction!=aDir){
             vec4f position;
             position=moveHero->product(position);
@@ -500,7 +500,6 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             transHero.translation(position.x+aMove.x,position.y+aMove.y,position.z+aMove.z);
 
             int diferentDir=FORWARD-aDir;
-            //cout<< "Direction -> "<< direction << " - "<< aDir<< " = " << diferentDir<< " ==> "<< 90*diferentDir<<endl;
             moveHero->identity();
             moveHero->rotation(90*diferentDir,0.0f,1.0f,0.0f);
             moveHero->product(transHero.getMatrix());
@@ -512,9 +511,27 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             transHero.translation(aMove.x,aMove.y,aMove.z);
             moveHero->product(transHero.getMatrix());
         }
-        isMoving=true;
 
     }
+    else{   //Case -> not Move for colission but the hero change the rotation in the Y-axis
+        if(direction!=aDir){
+            vec4f position;
+            position=moveHero->product(position);
+            Matrix4f transHero;
+            transHero.translation(position.x,position.y,position.z);
+
+            int diferentDir=FORWARD-aDir;
+            moveHero->identity();
+            moveHero->rotation(90*diferentDir,0.0f,1.0f,0.0f);
+            moveHero->product(transHero.getMatrix());
+
+            direction=aDir;
+
+        }
+    }
+
+    isMoving=true;
+
     return !hasCollision;
 }
 

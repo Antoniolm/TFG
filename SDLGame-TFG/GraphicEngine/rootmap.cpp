@@ -60,6 +60,8 @@ RootMap::RootMap()
     obsNode->add(static_cast<Object3D*>(cubeNode));
     obsNode->add(transObsCube);
     obsNode->add(static_cast<Object3D*>(cubeNode));
+    obsNode->add(transObsCube);
+    obsNode->add(static_cast<Object3D*>(cubeNode));
 
     NodeSceneGraph * rowCube=new NodeSceneGraph();
     rowCube->add(static_cast<Object3D*>(cubeNode));
