@@ -447,25 +447,48 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
     switch(aDir){
         case FORWARD:
             tenthValue=posHero.x-(int)posHero.x;
-            cout<< "Prueba -> "<< tenthValue<< endl;
             hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.3),posHero);
+
             if(tenthValue<0.5 && !hasCollision){
-                cout<< "¿?"<<endl;
-                hasCollision=rootMap->collision(vec3f(posHero.x-0.4,posHero.y,posHero.z+0.3),posHero);
+                hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z+0.3),posHero);
             }
             else if(tenthValue>0.6 && !hasCollision){
-                cout<< "Prueba 2"<<endl;
-                hasCollision=rootMap->collision(vec3f(posHero.x+0.4,posHero.y,posHero.z+0.3),posHero);
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z+0.3),posHero);
             }
         break;
         case BACKWARD:
+            tenthValue=posHero.x-(int)posHero.x;
             hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.3),posHero);
+
+            if(tenthValue<0.5 && !hasCollision){
+                hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z-0.3),posHero);
+            }
+            else if(tenthValue>0.6 && !hasCollision){
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z-0.3),posHero);
+            }
         break;
         case LEFTWARD:
+            tenthValue=(int)posHero.z-posHero.z;
+
             hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z),posHero);
+
+            if(tenthValue<0.5 && !hasCollision){
+                hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z+0.2),posHero);
+            }
+            else if(tenthValue>0.6 && !hasCollision){
+                hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z-0.2),posHero);
+            }
         break;
         case RIGHTWARD:
+            tenthValue=(int)posHero.z-posHero.z;
             hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z),posHero);
+
+            if(tenthValue<0.5 && !hasCollision){
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z+0.2),posHero);
+            }
+            else if(tenthValue>0.6 && !hasCollision){
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z-0.2),posHero);
+            }
         break;
     }
 
