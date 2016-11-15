@@ -345,7 +345,7 @@ Hero::Hero()
     //Movement for our hero
     moveHero=new Matrix4f();
     moveHero->identity();
-    moveHero->translation(0.5,1.8,-1);
+    moveHero->translation(1,4.8,-1);
     root->add(moveHero);
 
     Matrix4f *mat=new Matrix4f();
@@ -492,7 +492,7 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
         break;
     }
 
-    if(!hasCollision){ //Case -> the hero can move = No collision
+    //if(!hasCollision){ //Case -> the hero can move = No collision
         if(direction!=aDir){
             vec4f position;
             position=moveHero->product(position);
@@ -512,8 +512,8 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             moveHero->product(transHero.getMatrix());
         }
 
-    }
-    else{   //Case -> not Move for colission but the hero change the rotation in the Y-axis
+    //}
+    /*else{   //Case -> not Move for colission but the hero change the rotation in the Y-axis
         if(direction!=aDir){
             vec4f position;
             position=moveHero->product(position);
@@ -528,11 +528,11 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             direction=aDir;
 
         }
-    }
+    }*/
 
     isMoving=true;
 
-    return !hasCollision;
+    return true;
 }
 
 //**********************************************************************//
@@ -545,6 +545,57 @@ void Hero::noMove(){
         currentTime+=(time-currentTime);
     }
     isMoving=false;
+}
+
+//**********************************************************************//
+
+void Hero::gravity(){
+    bool hasCollision=false;
+    float tenthValueX,tenthValueZ;
+    vec3f posHero=getPosition();
+    posHero.y-=0.5;
+    //Check the collision first
+    tenthValueX=posHero.x-(int)posHero.x;
+    tenthValueZ=(int)posHero.z-posHero.z;
+    cout<< "Position -> x: "<< posHero.x<< " y: "<< posHero.y<< " z: "<< posHero.z<<endl;
+    hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y-0.9,posHero.z),posHero);
+
+    if(tenthValueX>0.5 && !hasCollision){
+        if( tenthValueZ<0.5){
+            hasCollision=rootMap->collision(vec3f(posHero.x+0.4,posHero.y-0.9,posHero.z),posHero);
+            if(!hasCollision)
+                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y-0.9,posHero.z-0.4),posHero);
+            if(!hasCollision)
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.4,posHero.y-0.9,posHero.z-0.4),posHero);
+        }else{
+            hasCollision=rootMap->collision(vec3f(posHero.x+0.4,posHero.y-0.9,posHero.z),posHero);
+            if(!hasCollision)
+                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y-0.9,posHero.z+0.4),posHero);
+            if(!hasCollision)
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.4,posHero.y-0.9,posHero.z+0.4),posHero);
+        }
+    }
+    else if(tenthValueX<0.5 && !hasCollision){
+        if( tenthValueZ<0.5){
+            hasCollision=rootMap->collision(vec3f(posHero.x-0.4,posHero.y-0.9,posHero.z),posHero);
+            if(!hasCollision)
+                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y-0.9,posHero.z-0.4),posHero);
+            if(!hasCollision)
+                hasCollision=rootMap->collision(vec3f(posHero.x-0.4,posHero.y-0.9,posHero.z-0.4),posHero);
+        }else{
+            hasCollision=rootMap->collision(vec3f(posHero.x-0.4,posHero.y-0.9,posHero.z),posHero);
+            if(!hasCollision)
+                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y-0.9,posHero.z+0.4),posHero);
+            if(!hasCollision)
+            hasCollision=rootMap->collision(vec3f(posHero.x-0.4,posHero.y-0.9,posHero.z+0.4),posHero);
+        }
+    }
+
+    if(!hasCollision){
+        Matrix4f transHero;
+        transHero.translation(0.0,-0.1,0.0);
+        moveHero->product(transHero.getMatrix());
+    }
 }
 
 //**********************************************************************//

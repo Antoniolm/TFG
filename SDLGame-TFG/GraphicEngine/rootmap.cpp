@@ -78,7 +78,7 @@ RootMap::RootMap()
     }
 
     objectStatic.push_back(ColumCube);
-    objectStatic.push_back(obsNode);
+    //objectStatic.push_back(obsNode);
     //objectDinamic.push_back(root);
 }
 
