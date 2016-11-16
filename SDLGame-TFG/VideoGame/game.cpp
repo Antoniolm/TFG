@@ -41,6 +41,7 @@ void Game::loop(){
     //Create our shader
     aContext.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aContext.currentShader.createProgram();
+    glUseProgram(aContext.currentShader.getProgram()); //We use the program now
 
     //Create our camera
     vec3f position(4.0,3.0,10.0);
@@ -49,6 +50,9 @@ void Game::loop(){
     aContext.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
+
+    GLint projectionLocation= glGetUniformLocation(aContext.currentShader.getProgram(),"projection");
+    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,aContext.camera.getProjection());
 
     //Create our light
     aContext.light.setPosition(vec3f(1.0f, 2.0f, 2.0f));

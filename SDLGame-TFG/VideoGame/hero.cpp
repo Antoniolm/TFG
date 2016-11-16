@@ -29,42 +29,34 @@ Hero::Hero()
     //////////////////////////////////////////////////////
     string file=string("geometries/sphere.obj");
     MeshMaterial * sphereObject=new MeshMaterial(file);
-    sphereObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     sphereObject->init();
 
     file=string("geometries/pill.obj");
     MeshMaterial * pillObject=new MeshMaterial(file);
-    pillObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     pillObject->init();
 
     file=string("geometries/pillLeg.obj");
     MeshMaterial * pillLegObject=new MeshMaterial(file);
-    pillLegObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     pillLegObject->init();
 
     file=string("geometries/hand.obj");
     MeshMaterial * handObject=new MeshMaterial(file);
-    handObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     handObject->init();
 
     file=string("geometries/chest.obj");
     MeshMaterial * chestObject=new MeshMaterial(file);
-    chestObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     chestObject->init();
 
     file=string("geometries/foot.obj");
     MeshMaterial * footObject=new MeshMaterial(file);
-    footObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     footObject->init();
 
     file=string("geometries/hip.obj");
     MeshMaterial * hipObject=new MeshMaterial(file);
-    hipObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     hipObject->init();
 
     file=string("geometries/head.obj");
     MeshMaterial * headObject=new MeshMaterial(file);
-    headObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     headObject->init();
 
     //////////////////////////////////////////////////////

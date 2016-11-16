@@ -23,7 +23,6 @@ RootMap::RootMap()
 {
     string file("geometries/cube.obj");
     MeshMaterial * aObject=new MeshMaterial(file);
-    aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aObject->init();
 
     Matrix4f *scaleCube =new Matrix4f();

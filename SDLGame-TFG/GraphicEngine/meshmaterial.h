@@ -96,15 +96,6 @@ class MeshMaterial : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will load the files(vexterShader,FragmentShader) and it
-        *    links the shaders to a program too.
-        *    \return bool true -> Shaders load successfully
-        *                 false-> Shaders don't load successfully
-        */
-        //////////////////////////////////////////////////////////////////////////
-        bool LoadShader(const string & vertexShader,const string & FragmentShader);
 
     protected:
 

@@ -94,7 +94,6 @@ void MeshMaterial::visualization(Context & vis){
 
     Shader * shaders=&vis.currentShader;
 	//Set value to uniform variable in vertexshader
-	glUseProgram(vis.currentShader.getProgram());
     GLint transformaLocation= glGetUniformLocation(shaders->getProgram(),"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation->getMatrix());
 
@@ -105,9 +104,6 @@ void MeshMaterial::visualization(Context & vis){
     GLint viewLocation= glGetUniformLocation(shaders->getProgram(),"view");
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
     //glUniformMatrix4fv(viewLocation,1,GL_FALSE,glm::value_ptr(view));
-
-    GLint projectionLocation= glGetUniformLocation(shaders->getProgram(),"projection");
-    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
     //Set value to uniform variable in fragmentshader
     //Set value to uniform about light
@@ -140,12 +136,4 @@ void MeshMaterial::visualization(Context & vis){
 //**********************************************************************//
 
 void MeshMaterial::updateState(float time){
-}
-
-//**********************************************************************//
-
-bool MeshMaterial::LoadShader(const string & vertexShaderFile,const string & fragmentShaderFile){
-    /*shaders.setFiles(vertexShaderFile,fragmentShaderFile);
-    bool result=shaders.createProgram();
-    return result;*/
 }
