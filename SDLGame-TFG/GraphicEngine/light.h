@@ -21,6 +21,7 @@
 #define LIGHT_H
 
 #include "structdata.h"
+#include "shader.h"
 
 class Light
 {
@@ -46,7 +47,7 @@ class Light
         //////////////////////////////////////////////////////////////////////////
         virtual ~Light();
 
-
+        void activate(Shader * shader);
         void setPosition(const vec3f & aPos);
         void setAmbient(const vec3f & anAmbient);
         void setDiffuse(const vec3f & aDiffuse);

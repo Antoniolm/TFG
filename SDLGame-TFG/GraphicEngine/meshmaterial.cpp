@@ -107,23 +107,7 @@ void MeshMaterial::visualization(Context & vis){
 
     //Set value to uniform variable in fragmentshader
     //Set value to uniform about light
-    GLint lightPosLoc      = glGetUniformLocation(shaders->getProgram(), "light.position");
-    GLint lightAmbientLoc  = glGetUniformLocation(shaders->getProgram(), "light.ambient");
-    GLint lightDiffuseLoc  = glGetUniformLocation(shaders->getProgram(), "light.diffuse");
-    GLint lightSpecularLoc = glGetUniformLocation(shaders->getProgram(), "light.specular");
     GLint viewPosLoc = glGetUniformLocation(shaders->getProgram(), "viewPos");
-
-    //Obtain our light by the context
-    Light light(vis.light);
-    vec3f ambient=light.getAmbient();
-    vec3f diffuse=light.getDiffuse();
-    vec3f specular=light.getAmbient();
-    vec3f posLight=light.getPosition();
-
-    glUniform3f(lightPosLoc,  posLight.x,  posLight.y, posLight.z);
-    glUniform3f(lightAmbientLoc,  ambient.x,  ambient.y, ambient.z);
-    glUniform3f(lightDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);
-    glUniform3f(lightSpecularLoc, specular.x,  specular.y, specular.z);
     vec3f camPos=vis.camera.getPosition();
     glUniform3f(viewPosLoc, camPos.x, camPos.y, camPos.z);
 

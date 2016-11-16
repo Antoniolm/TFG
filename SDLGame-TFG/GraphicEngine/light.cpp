@@ -51,6 +51,21 @@ Light::~Light()
 
 //**********************************************************************//
 
+void Light::activate(Shader * shader){
+    //Set value to uniform about light
+    GLint lightPosLoc      = glGetUniformLocation(shader->getProgram(), "light.position");
+    GLint lightAmbientLoc  = glGetUniformLocation(shader->getProgram(), "light.ambient");
+    GLint lightDiffuseLoc  = glGetUniformLocation(shader->getProgram(), "light.diffuse");
+    GLint lightSpecularLoc = glGetUniformLocation(shader->getProgram(), "light.specular");
+
+    glUniform3f(lightPosLoc,  position.x,  position.y, position.z);
+    glUniform3f(lightAmbientLoc,  ambient.x,  ambient.y, ambient.z);
+    glUniform3f(lightDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);
+    glUniform3f(lightSpecularLoc, specular.x,  specular.y, specular.z);
+}
+
+//**********************************************************************//
+
 void Light::setPosition(const vec3f & aPos){
     position=aPos;
 }

@@ -50,15 +50,12 @@ void Game::loop(){
     aContext.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
+    aContext.camera.activateCamera((&aContext.currentShader);
 
-    GLint projectionLocation= glGetUniformLocation(aContext.currentShader.getProgram(),"projection");
-    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,aContext.camera.getProjection());
 
     //Create our light
-    aContext.light.setPosition(vec3f(1.0f, 2.0f, 2.0f));
-    aContext.light.setAmbient(vec3f(0.2f, 0.2f, 0.2f));
-    aContext.light.setDiffuse(vec3f(0.5f, 0.5f, 0.5f));
-    aContext.light.setSpecular(vec3f(1.0f, 1.0f, 1.0f));
+    Light light(vec3f(1.0f, 2.0f, 2.0f),vec3f(0.2f, 0.2f, 0.2f),vec3f(0.5f, 0.5f, 0.5f),vec3f(1.0f, 1.0f, 1.0f));
+    light.activate(&aContext.currentShader);
 
     avatarDirection heroDir;
     hero=new Hero();

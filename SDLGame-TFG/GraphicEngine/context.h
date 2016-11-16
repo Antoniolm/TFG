@@ -50,7 +50,6 @@ class Context
         unsigned camera_mode;
         MatrixStack matrixStack;
         MaterialStack materialStack;
-        Light light;
         Camera camera;
         Shader currentShader;
         vector<vec3f> posObject;

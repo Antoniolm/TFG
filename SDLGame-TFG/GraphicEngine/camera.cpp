@@ -118,6 +118,16 @@ void Camera::createCamera(){
 
 //**********************************************************************//
 
+void Camera::activateCamera(Shader * shader){
+    GLint viewLocation= glGetUniformLocation(shader->getProgram(),"view");
+    glUniformMatrix4fv(viewLocation,1,GL_FALSE,camera.getMatrix());
+
+    GLint projectionLocation= glGetUniformLocation(shader->getProgram(),"projection");
+    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,projection.getMatrix());
+}
+
+//**********************************************************************//
+
 void Camera::moveCamera(const Matrix4f & transformation){
     camera.product(transformation.getMatrixc());
 }
