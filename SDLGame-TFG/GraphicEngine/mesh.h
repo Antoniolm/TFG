@@ -37,8 +37,19 @@
 #include "shader.h"
 #include <file_ply_stl.hpp>
 #include <file_obj.h>
+/*#include <../lib/glm/glm.hpp>
+#include <../lib/glm/gtc/matrix_transform.hpp>
+#include <../lib/glm/gtc/type_ptr.hpp>*/
 
 using namespace std;
+
+enum MeshBufferPositions
+{
+	POSITION_VB,
+	TEXCOORD_VB,
+	NORMAL_VB,
+	INDEX_VB
+};
 
 class Mesh : public Object3D
 {
@@ -49,17 +60,12 @@ class Mesh : public Object3D
         Mesh();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  Copy constructor */
-        /////////////////////////////////////////////////////////////////////////
-        Mesh(const Mesh & aMesh);
-
-        //////////////////////////////////////////////////////////////////////////
         /**  Constructor */
         /////////////////////////////////////////////////////////////////////////
-        Mesh(const string & aFile,vec3f aColor=vec3f(1.0,0.5,0.5));
+        Mesh(const string & aFile);
 
         //////////////////////////////////////////////////////////////////////////
-        /** Default destructor */
+        /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Mesh();
 
@@ -88,42 +94,15 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will clean the object
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void clean();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will load the files(vexterShader,FragmentShader) and it
-        *    links the shaders to a program too.
-        *    \return bool true -> Shaders load successfully
-        *                 false-> Shaders don't load successfully
-        */
-        //////////////////////////////////////////////////////////////////////////
-        bool LoadShader(const string & vertexShader,const string & FragmentShader);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will return the position
-        *    \return vec3f with the position of our object
-        */
-        //////////////////////////////////////////////////////////////////////////
-        vec4f getPosition();
 
     protected:
-        vec3f color;
-        static const unsigned int NUM_BUFFERS = 2;
+
+    private:
+        static const unsigned int NUM_BUFFERS = 4;
         GLuint vertexArrayBuffers[NUM_BUFFERS];
         GLuint vertexArrayObject;
-        Shader shaders;
+        string objFile;
         int numIndex;
-        string file;
-    private:
-
 };
 
 #endif // MESH_H

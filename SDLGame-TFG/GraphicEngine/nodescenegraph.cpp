@@ -68,6 +68,7 @@ void NodeSceneGraph::visualization(Context & cv){
     cv.materialStack.getMaterial().activate(&cv.currentShader);
 
     cv.matrixStack.pop(contMatrix);
+
     currentTime=time;
 }
 

@@ -17,30 +17,29 @@
 // **
 // *********************************************************************
 
-#include "mesh.h"
+#include "meshmaterial.h"
 
 Mesh::Mesh()
 {
+    //ctor
 }
 
 //**********************************************************************//
 
-Mesh::Mesh(const Mesh & aMesh){
-}
-
-
-
-//**********************************************************************//
-Mesh::Mesh(const string & aFile,vec3f aColor){
-    color=aColor;
-    file=aFile;
+Mesh::Mesh(const string & aFile){
+    objFile=aFile;
+    numIndex=0;
 }
 
 //**********************************************************************//
 
 Mesh::~Mesh()
 {
-    clean();
+    glDeleteBuffers(1,&vertexArrayObject);
+    glDeleteBuffers(1,&vertexArrayBuffers[POSITION_VB]);
+    glDeleteBuffers(1,&vertexArrayBuffers[NORMAL_VB]);
+    glDeleteBuffers(1,&vertexArrayBuffers[TEXCOORD_VB]);
+    glDeleteBuffers(1,&vertexArrayBuffers[INDEX_VB]);
 }
 
 //**********************************************************************//
@@ -48,26 +47,40 @@ Mesh::~Mesh()
 void Mesh::init(){
     vector<GLushort> triangles;
     vector<vec3f> vertex;
+    vector<vec3f> normals;
+    vector<vec2f> textureCord;
 
-    obj::readMesh(file.c_str(),vertex,triangles);
-
+    obj::readEverything(objFile.c_str(),vertex,triangles,normals,textureCord);
     numIndex=triangles.size();
 
     glGenVertexArrays(1, &vertexArrayObject);
-    glBindVertexArray(vertexArrayObject);
+	glBindVertexArray(vertexArrayObject);
 
-    //Vertex buffer
+	//Vertex buffer
     glGenBuffers(NUM_BUFFERS, vertexArrayBuffers);
     glBindBuffer(GL_ARRAY_BUFFER,vertexArrayBuffers[POSITION_VB]);
     glBufferData(GL_ARRAY_BUFFER,sizeof(vec3f)*vertex.size(),&vertex[0],GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0 , 0);
 
+    //Normal buffer
+    glBindBuffer(GL_ARRAY_BUFFER, vertexArrayBuffers[NORMAL_VB]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vec3f)* normals.size(), &normals[0], GL_STATIC_DRAW);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+    //Texture Coord buffer
+    glBindBuffer(GL_ARRAY_BUFFER, vertexArrayBuffers[TEXCOORD_VB]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vec2f) * textureCord.size(), &textureCord[0], GL_STATIC_DRAW);
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
     //Triangles buffer
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,vertexArrayBuffers[INDEX_VB]);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(GLushort)*triangles.size(),&triangles[0],GL_STATIC_DRAW);
 
     glBindVertexArray(0);
+
 }
 
 //**********************************************************************//
@@ -77,55 +90,30 @@ void Mesh::visualization(Context & vis){
 
     Matrix4f * transformation = &(vis.matrixStack.getMatrix());
     position=transformation->product(position);
+    vis.posObject.push_back(vec3f(position.x,position.y,position.z));
 
+    Shader * shaders=&vis.currentShader;
 	//Set value to uniform variable in vertexshader
-	glUseProgram(shaders.getProgram());
-    GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
+    GLint transformaLocation= glGetUniformLocation(shaders->getProgram(),"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation->getMatrix());
 
-    GLint viewLocation= glGetUniformLocation(shaders.getProgram(),"view");
-    glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
-
-    GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
-    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
-
-    //Set value to uniform variable in fragmentshader
-    GLint objectColorLoc = glGetUniformLocation(shaders.getProgram(), "objectColor");
-    glUniform3f(objectColorLoc, color.x, color.y, color.z);
+    /*glm::mat4 view;
+    view = glm::lookAt(glm::vec3(4.0f, 3.0f, 10.0f),
+  		   glm::vec3(4.0f, 0.0f, 0.0f),
+  		   glm::vec3(0.0f, 1.0f, 0.0f));*/
+    //GLint viewLocation= glGetUniformLocation(shaders->getProgram(),"view");
+    //glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
+    //glUniformMatrix4fv(viewLocation,1,GL_FALSE,glm::value_ptr(view));
 
     //Draw our object
     glBindVertexArray(vertexArrayObject);
     glDrawElements(GL_TRIANGLES,numIndex,GL_UNSIGNED_SHORT,0);
     glBindVertexArray(0);
-	glUseProgram(0);
 }
 
 //**********************************************************************//
 
 void Mesh::updateState(float time){
 }
-
-//**********************************************************************//
-
-void Mesh::clean(){
-    glDeleteBuffers(1,&vertexArrayObject);
-    glDeleteBuffers(1,&vertexArrayBuffers[POSITION_VB]);
-    glDeleteBuffers(1,&vertexArrayBuffers[INDEX_VB]);
-}
-
-//**********************************************************************//
-
-vec4f Mesh::getPosition(){
-    return position;
-}
-
-//**********************************************************************//
-
-bool Mesh::LoadShader(const string & vertexShaderFile,const string & fragmentShaderFile){
-    shaders.setFiles(vertexShaderFile,fragmentShaderFile);
-    bool result=shaders.createProgram();
-    return result;
-}
-
 
 

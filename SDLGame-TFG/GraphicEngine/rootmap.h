@@ -31,7 +31,6 @@
 #include "matrixstatic.h"
 #include "oscillaterotation.h"
 #include "mesh.h"
-#include "meshmaterial.h"
 #include "../VideoGame/hero.h"
 
 using namespace std;

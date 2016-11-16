@@ -22,7 +22,6 @@
 
 #include "avatar.h"
 #include "../GraphicEngine/mesh.h"
-#include "../GraphicEngine/meshmaterial.h"
 #include "../GraphicEngine/scriptlmd.h"
 #include "../GraphicEngine/context.h"
 #include "../GraphicEngine/matrixscript.h"

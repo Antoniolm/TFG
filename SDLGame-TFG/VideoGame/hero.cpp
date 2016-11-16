@@ -28,35 +28,35 @@ Hero::Hero()
     /////           All the meshMaterial             /////
     //////////////////////////////////////////////////////
     string file=string("geometries/sphere.obj");
-    MeshMaterial * sphereObject=new MeshMaterial(file);
+    Mesh * sphereObject=new Mesh(file);
     sphereObject->init();
 
     file=string("geometries/pill.obj");
-    MeshMaterial * pillObject=new MeshMaterial(file);
+    Mesh * pillObject=new Mesh(file);
     pillObject->init();
 
     file=string("geometries/pillLeg.obj");
-    MeshMaterial * pillLegObject=new MeshMaterial(file);
+    Mesh * pillLegObject=new Mesh(file);
     pillLegObject->init();
 
     file=string("geometries/hand.obj");
-    MeshMaterial * handObject=new MeshMaterial(file);
+    Mesh * handObject=new Mesh(file);
     handObject->init();
 
     file=string("geometries/chest.obj");
-    MeshMaterial * chestObject=new MeshMaterial(file);
+    Mesh * chestObject=new Mesh(file);
     chestObject->init();
 
     file=string("geometries/foot.obj");
-    MeshMaterial * footObject=new MeshMaterial(file);
+    Mesh * footObject=new Mesh(file);
     footObject->init();
 
     file=string("geometries/hip.obj");
-    MeshMaterial * hipObject=new MeshMaterial(file);
+    Mesh * hipObject=new Mesh(file);
     hipObject->init();
 
     file=string("geometries/head.obj");
-    MeshMaterial * headObject=new MeshMaterial(file);
+    Mesh * headObject=new Mesh(file);
     headObject->init();
 
     //////////////////////////////////////////////////////

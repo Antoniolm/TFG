@@ -107,7 +107,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void moveCamera(const Matrix4f & transformation);
+        void moveCamera(const Matrix4f & transformation,Shader * shader);
 
         //////////////////////////////////////////////////////////////////////////
         /**

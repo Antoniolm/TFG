@@ -50,7 +50,7 @@ void Game::loop(){
     aContext.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
     aContext.camera.setCamera(position,direction,up);
     aContext.camera.createCamera();
-    aContext.camera.activateCamera((&aContext.currentShader);
+    aContext.camera.activateCamera(&aContext.currentShader);
 
 
     //Create our light
@@ -121,7 +121,7 @@ void Game::loop(){
                         break;
                 }
                 if(hero->moveBody(moveHero,heroDir))
-                    aContext.camera.moveCamera(movCamera);
+                    aContext.camera.moveCamera(movCamera,&aContext.currentShader);
 
             }
             else{

@@ -22,7 +22,7 @@
 RootMap::RootMap()
 {
     string file("geometries/cube.obj");
-    MeshMaterial * aObject=new MeshMaterial(file);
+    Mesh * aObject=new Mesh(file);
     aObject->init();
 
     Matrix4f *scaleCube =new Matrix4f();
