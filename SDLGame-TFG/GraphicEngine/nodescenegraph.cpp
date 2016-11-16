@@ -46,7 +46,7 @@ void NodeSceneGraph::visualization(Context & cv){
     int contMatrix=1;
     int contMaterial=0;
     cv.matrixStack.push();
-    vector<EntranceNGE>::iterator it;
+    vector<EntryNGE>::iterator it;
     for(it=entrance.begin();it!=entrance.end();it++){
             switch((*it).type){
             case 0: //Object3d
@@ -79,20 +79,20 @@ void NodeSceneGraph::updateState(float time){
 }
 
 //**********************************************************************//
-void NodeSceneGraph::add(EntranceNGE * anEntrance){
-    entrance.push_back(*anEntrance);
+void NodeSceneGraph::add(EntryNGE * anEntry){
+    entrance.push_back(*anEntry);
 }
 
 //**********************************************************************//
 
 void NodeSceneGraph::add(Object3D * anObject){
-    EntranceNGE newEntrance(anObject);
+    EntryNGE newEntrance(anObject);
     entrance.push_back(newEntrance);
 }
 
 //**********************************************************************//
 void NodeSceneGraph::add(Matrix4f * aMatrix){
-    EntranceNGE newEntrance(aMatrix);
+    EntryNGE newEntrance(aMatrix);
     entrance.push_back(newEntrance);
 
 }
@@ -100,7 +100,7 @@ void NodeSceneGraph::add(Matrix4f * aMatrix){
 //**********************************************************************//
 
 void NodeSceneGraph::add(Material * aMaterial){
-    EntranceNGE newEntrance(aMaterial);
+    EntryNGE newEntrance(aMaterial);
     entrance.push_back(newEntrance);
 
 }

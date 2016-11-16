@@ -37,7 +37,7 @@ using namespace std;
 *    That struct can contain a matrix4fDinamic or an Object3D
 */
 //////////////////////////////////////////////////////////////////////////
-struct EntranceNGE
+struct EntryNGE
 {
 	unsigned type;   //0=subscene, 1=Transformation, 2=Material
 
@@ -48,15 +48,15 @@ struct EntranceNGE
         Material * material; //ptr. to Material
 	};
 
-	EntranceNGE(Object3D * aObject){
+	EntryNGE(Object3D * aObject){
         obj=aObject;
         type=0;
 	}
-	EntranceNGE(Matrix4f * pMatrix){
+	EntryNGE(Matrix4f * pMatrix){
         matrix=pMatrix;
         type=1;
 	}
-    EntranceNGE(Material * aMaterial){
+    EntryNGE(Material * aMaterial){
         material=aMaterial;
         type=2;
 	}
@@ -106,7 +106,7 @@ class NodeSceneGraph : public Object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
-        void add(EntranceNGE * anEntrance);
+        void add(EntryNGE * anEntrance);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -135,7 +135,7 @@ class NodeSceneGraph : public Object3D
     protected:
 
     private:
-        vector<EntranceNGE> entrance;
+        vector<EntryNGE> entrance;
 };
 
 #endif // NODESCENEGRAPH_H
