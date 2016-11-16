@@ -38,9 +38,13 @@ void Game::loop(){
     SDL_Event event;
     Context aContext;
 
+    //Create our shader
+    aContext.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    aContext.currentShader.createProgram();
+
     //Create our camera
-    vec3f position(0.0,3.0,10.0);
-    vec3f direction(0.0,0.0,0.0);
+    vec3f position(4.0,3.0,10.0);
+    vec3f direction(4.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
     aContext.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
     aContext.camera.setCamera(position,direction,up);
@@ -66,6 +70,7 @@ void Game::loop(){
                 quit = true;
             }
             //case: Player push a buttom
+
             //const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
             if (event.type == SDL_KEYDOWN){
 
@@ -77,13 +82,11 @@ void Game::loop(){
                         heroDir=LEFTWARD;
                         break;
                     case SDLK_RIGHT:
-                        //movCamera.identity();
                         movCamera.translation(-0.05,0.0,0.0);
                         moveHero.x=0.05; moveHero.y=0.0; moveHero.z=0.0;
                         heroDir=RIGHTWARD;
                         break;
                     case SDLK_UP:
-                        //movCamera.identity();
                         auxMatrix.translation(0.0,0.0,0.05);
                         movCamera.rotation(0.08,1.0,0.0,0.0);
                         movCamera.product(auxMatrix.getMatrix());
@@ -91,7 +94,6 @@ void Game::loop(){
                         heroDir=BACKWARD;
                         break;
                     case SDLK_DOWN:
-                        //movCamera.identity();
                         auxMatrix.translation(0.0,0.0,-0.05);
                         movCamera.rotation(-0.08,1.0,0.0,0.0);
                         movCamera.product(auxMatrix.getMatrix());

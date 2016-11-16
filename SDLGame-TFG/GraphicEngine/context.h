@@ -27,10 +27,10 @@
 #include "object3d.h"
 #include "materialstack.h"
 #include "light.h"
+#include "shader.h"
 #include <vector>
 
-
-class Object3D;
+class MaterialStack;
 
 class Context
 {
@@ -52,7 +52,9 @@ class Context
         MaterialStack materialStack;
         Light light;
         Camera camera;
+        Shader currentShader;
         vector<vec3f> posObject;
+
 
     protected:
 

@@ -23,8 +23,10 @@
 #include "structdata.h"
 #include <string>
 #include "texture.h"
+#include "shader.h"
 
 using namespace std;
+
 
 class Material
 {
@@ -49,12 +51,13 @@ class Material
         //////////////////////////////////////////////////////////////////////////
         virtual ~Material();
 
+        void activate(Shader * aShader);
         void setAmbient(const vec3f & anAmbient);
         void setDiffuse(const vec3f & aDiffuse);
         void setSpecular(const vec3f &aSpecular);
         void setShininess(float aShini);
         void setTexture(const string & aFileTextur);
-        void setTexture(const Texture & aTexture);
+        void setTexture(Texture * aTexture);
 
 
         vec3f getAmbient();
@@ -62,7 +65,7 @@ class Material
         vec3f getSpecular();
         float getShininess();
 
-        Texture & getTexture();
+        Texture * getTexture();
 
     protected:
 
@@ -71,7 +74,8 @@ class Material
         vec3f diffuse;
         vec3f specular;
         float shininess;
-        Texture texture;
+        Texture * texture;
+        Shader * shaders;
 };
 
 #endif // MATERIAL_H

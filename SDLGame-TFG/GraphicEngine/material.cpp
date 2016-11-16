@@ -41,7 +41,7 @@ Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &a
     diffuse=aDiffuse;
     specular=aSpecular;
     shininess=aShini;
-    texture.setFile(aFileTextur);
+    texture=new Texture(aFileTextur);
 }
 
 //**********************************************************************//
@@ -49,6 +49,27 @@ Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &a
 Material::~Material()
 {
     //dtor
+}
+
+//**********************************************************************//
+
+void Material::activate(Shader * aShader){
+
+    shaders=aShader;
+
+    //Set value to uniform about material
+    GLint matAmbientLoc  = glGetUniformLocation(shaders->getProgram(), "material.ambient");
+    GLint matDiffuseLoc  = glGetUniformLocation(shaders->getProgram(), "material.diffuse");
+    GLint matSpecularLoc = glGetUniformLocation(shaders->getProgram(), "material.specular");
+    GLint matShineLoc    = glGetUniformLocation(shaders->getProgram(), "material.shininess");
+
+    //Bind the texture
+    texture->bindTexture();
+
+    glUniform3f(matAmbientLoc,  ambient.x,  ambient.y, ambient.z);
+    glUniform3f(matDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);
+    glUniform3f(matSpecularLoc, specular.x,  specular.y, specular.z);
+    glUniform1f(matShineLoc,    shininess);
 }
 
 //**********************************************************************//
@@ -78,12 +99,12 @@ void Material::setShininess(float aShini){
 //**********************************************************************//
 
 void Material::setTexture(const string & aFileTextur){
-    texture=Texture(aFileTextur);
+    texture=new Texture(aFileTextur);
 }
 
 //**********************************************************************//
 
-void Material::setTexture(const Texture & aTexture){
+void Material::setTexture(Texture * aTexture){
     texture=aTexture;
 }
 
@@ -113,6 +134,6 @@ float Material::getShininess(){
 
 //**********************************************************************//
 
-Texture & Material::getTexture(){
+Texture * Material::getTexture(){
     return texture;
 }

@@ -391,7 +391,6 @@ Hero::Hero()
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
     headNode->add(scaleHead);
-    headNode->add(material4);
     headNode->add(static_cast<Object3D*>(headObject));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
@@ -510,6 +509,10 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             position=moveHero->product(position);
             Matrix4f transHero;
             transHero.translation(position.x+aMove.x,position.y+aMove.y,position.z+aMove.z);
+            //transHero.translation(position.x,position.y,position.z);
+            //LinearMovement lineMove(aMove);
+            //transHero.product(lineMove.updateState(SDL_GetTicks()).getMatrix());
+
 
             int diferentDir=FORWARD-aDir;
             moveHero->identity();
@@ -521,6 +524,8 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
         else{
             Matrix4f transHero;
             transHero.translation(aMove.x,aMove.y,aMove.z);
+            //LinearMovement lineMove(aMove);
+            //moveHero->product(lineMove.updateState(SDL_GetTicks()).getMatrix());
             moveHero->product(transHero.getMatrix());
         }
 
@@ -567,20 +572,22 @@ void Hero::gravity(float velocity){
     vec3f posHero=getPosition();
     posHero.y-=0.31;
 
-    //Check the collision first
+    //Get the tenth of our position
     tenthValueX=posHero.x-(int)posHero.x;
     tenthValueZ=(int)posHero.z-posHero.z;
-    //cout<< "Position -> x: "<< posHero.x<< " y: "<< posHero.y<< " z: "<< posHero.z<<endl;
+
+    //Check the collision in the center
     hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y-0.5,posHero.z),posHero);
 
-    if(tenthValueX>0.5 && !hasCollision){
-        if( tenthValueZ<0.5){
+    //Check the collision in the area
+    if(tenthValueX>0.5 && !hasCollision){ //Case tenth in x >0.5
+        if( tenthValueZ<0.5){ //case Tenth in x >0.5 and tenth in z <0.5
             hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y-0.5,posHero.z),posHero);
             if(!hasCollision)
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y-0.5,posHero.z-0.2),posHero);
             if(!hasCollision)
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y-0.5,posHero.z-0.2),posHero);
-        }else{
+        }else{  //case Tenth in x >0.5 and tenth in z >= 0.5
             hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y-0.5,posHero.z),posHero);
             if(!hasCollision)
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y-0.5,posHero.z+0.2),posHero);
@@ -588,14 +595,14 @@ void Hero::gravity(float velocity){
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y-0.5,posHero.z+0.2),posHero);
         }
     }
-    else if(tenthValueX<0.5 && !hasCollision){
-        if( tenthValueZ<0.5){
+    else if(tenthValueX<0.5 && !hasCollision){ //Case tenth in x <0.5
+        if( tenthValueZ<0.5){ //case Tenth in x <0.5 and tenth in z <0.5
             hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y-0.5,posHero.z),posHero);
             if(!hasCollision)
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y-0.5,posHero.z-0.2),posHero);
             if(!hasCollision)
                 hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y-0.5,posHero.z-0.2),posHero);
-        }else{
+        }else{ //case Tenth in x <0.5 and tenth in z >= 0.5
             hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y-0.5,posHero.z),posHero);
             if(!hasCollision)
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y-0.5,posHero.z+0.2),posHero);
@@ -604,7 +611,7 @@ void Hero::gravity(float velocity){
         }
     }
 
-    if(!hasCollision){
+    if(!hasCollision){ //if not collision
         Matrix4f transHero;
         transHero.translation(0.0,velocity,0.0);
         moveHero->product(transHero.getMatrix());

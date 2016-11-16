@@ -16,12 +16,13 @@ struct Light {
     vec3 specular;
 };
   
+ // in vec3f 
 in vec3 Normal;
 in vec2 TextCoord;
-
 in vec3 FragPos; 
 float LightPower = 2.0f;
 
+// Uniform
 uniform Light light;  
 uniform Material material;
 uniform vec3 viewPos;

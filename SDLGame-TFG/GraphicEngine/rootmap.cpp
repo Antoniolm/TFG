@@ -21,7 +21,6 @@
 
 RootMap::RootMap()
 {
-    NodeSceneGraph * root3=new NodeSceneGraph();
     string file("geometries/cube.obj");
     MeshMaterial * aObject=new MeshMaterial(file);
     aObject->LoadShader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
@@ -167,9 +166,7 @@ bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
 
     if(tam!=0 && ((dynamicObj.x+0.5 >= indexObj.x-0.5 && dynamicObj.x+0.5 <= indexObj.x+0.5 )||(dynamicObj.x-0.5 >= indexObj.x-0.5 && dynamicObj.x-0.5 <= indexObj.x+0.5))
        &&((-dynamicObj.z+0.5 >= -indexObj.z-0.5 && -dynamicObj.z+0.5 <= -indexObj.z+0.5 )||(-dynamicObj.z-0.5 >= -indexObj.z-0.5 && -dynamicObj.z-0.5 <= -indexObj.z+0.5))){
-        //cout<< " Detect object "<< -dynamicObj.z+0.5<<endl;
         for(;it!=endIt && !result;it++){
-            //cout<< "Detect object"<< endl;
             if((dynamicObj.y+0.5 > (*it)-0.5 && dynamicObj.y+0.5 < (*it)+0.5 )||(dynamicObj.y-0.5 > (*it)-0.5 && dynamicObj.y-0.5 < (*it)+0.5))
                 result=true;
         }

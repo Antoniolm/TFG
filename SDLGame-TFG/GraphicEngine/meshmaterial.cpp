@@ -97,8 +97,13 @@ void MeshMaterial::visualization(Context & vis){
     GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation->getMatrix());
 
+    /*glm::mat4 view;
+    view = glm::lookAt(glm::vec3(4.0f, 3.0f, 10.0f),
+  		   glm::vec3(4.0f, 0.0f, 0.0f),
+  		   glm::vec3(0.0f, 1.0f, 0.0f));*/
     GLint viewLocation= glGetUniformLocation(shaders.getProgram(),"view");
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
+    //glUniformMatrix4fv(viewLocation,1,GL_FALSE,glm::value_ptr(view));
 
     GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
@@ -119,7 +124,7 @@ void MeshMaterial::visualization(Context & vis){
     float shini=material.getShininess();
 
     //Bind the texture
-    material.getTexture().bindTexture();
+    material.getTexture()->bindTexture();
 
     glUniform3f(matAmbientLoc,  ambient.x,  ambient.y, ambient.z);
     glUniform3f(matDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);

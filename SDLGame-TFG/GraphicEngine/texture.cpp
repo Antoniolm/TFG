@@ -35,7 +35,7 @@ Texture::Texture(const std::string& aFileName)
 
 Texture::~Texture()
 {
-   //glDeleteTextures(1, &texture);
+   glDeleteTextures(1, &texture);
 }
 
 //**********************************************************************//
