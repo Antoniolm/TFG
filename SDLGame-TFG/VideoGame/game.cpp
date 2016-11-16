@@ -127,7 +127,7 @@ void Game::loop(){
         //}
         window->cleanScreen();
         rootMap->visualization(aContext);
-        hero->gravity();
+        hero->gravity(-0.1);
         aContext.posObject.clear();
         window->updateScreen();
     }

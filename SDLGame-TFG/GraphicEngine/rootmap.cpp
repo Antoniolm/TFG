@@ -39,6 +39,9 @@ RootMap::RootMap()
     Matrix4f * transObsCube=new Matrix4f();
     transObsCube->translation(2.0,1.0,-2.0);
 
+    Matrix4f * transGravityCube=new Matrix4f();
+    transGravityCube->translation(1,1.0,-1.0);
+
     Matrix4f * transCube=new Matrix4f();
     transCube->translation(1.0,0.0,0.0);
 
@@ -49,7 +52,7 @@ RootMap::RootMap()
     matrixt->rotation(90,0.0,1.0,0.0);
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
-    Material * materialCube=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cube.png");
+    Material * materialCube=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/bricks.jpg");
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialCube);
@@ -65,20 +68,26 @@ RootMap::RootMap()
 
     NodeSceneGraph * rowCube=new NodeSceneGraph();
     rowCube->add(static_cast<Object3D*>(cubeNode));
-    for(int i=0;i<5;i++){
+    for(int i=0;i<7;i++){
         rowCube->add(transCube);
         rowCube->add(static_cast<Object3D*>(cubeNode));
     }
 
     NodeSceneGraph * ColumCube=new NodeSceneGraph();
     ColumCube->add(static_cast<Object3D*>(rowCube));
-    for(int i=0;i<5;i++){
+    for(int i=0;i<7;i++){
         ColumCube->add(transRow);
         ColumCube->add(static_cast<Object3D*>(rowCube));
     }
 
+
+    NodeSceneGraph * gravityNode=new NodeSceneGraph();
+    gravityNode->add(transGravityCube);
+    gravityNode->add(static_cast<Object3D*>(cubeNode));
+
     objectStatic.push_back(ColumCube);
-    //objectStatic.push_back(obsNode);
+    objectStatic.push_back(obsNode);
+    objectStatic.push_back(gravityNode);
     //objectDinamic.push_back(root);
 }
 
@@ -111,7 +120,7 @@ void RootMap::visualization(Context & cv){
         (*it)->visualization(cv);
     }
 
-    //Do the colission map
+    //Make the colission map
     if(object.size()==0){
         //Initialization
         list<float> aux;

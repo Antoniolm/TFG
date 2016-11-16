@@ -68,3 +68,9 @@ Matrix4f & LinearMovement::updateState(float time){
 
     return currentMatrix;
 }
+
+//**********************************************************************//
+
+void LinearMovement::resetState(){
+
+}
