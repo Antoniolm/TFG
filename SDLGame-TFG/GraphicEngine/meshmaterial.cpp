@@ -92,57 +92,36 @@ void MeshMaterial::visualization(Context & vis){
     position=transformation->product(position);
     vis.posObject.push_back(vec3f(position.x,position.y,position.z));
 
+    Shader * shaders=&vis.currentShader;
 	//Set value to uniform variable in vertexshader
-	glUseProgram(shaders.getProgram());
-    GLint transformaLocation= glGetUniformLocation(shaders.getProgram(),"transform");
+	glUseProgram(vis.currentShader.getProgram());
+    GLint transformaLocation= glGetUniformLocation(shaders->getProgram(),"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,transformation->getMatrix());
 
     /*glm::mat4 view;
     view = glm::lookAt(glm::vec3(4.0f, 3.0f, 10.0f),
   		   glm::vec3(4.0f, 0.0f, 0.0f),
   		   glm::vec3(0.0f, 1.0f, 0.0f));*/
-    GLint viewLocation= glGetUniformLocation(shaders.getProgram(),"view");
+    GLint viewLocation= glGetUniformLocation(shaders->getProgram(),"view");
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
     //glUniformMatrix4fv(viewLocation,1,GL_FALSE,glm::value_ptr(view));
 
-    GLint projectionLocation= glGetUniformLocation(shaders.getProgram(),"projection");
+    GLint projectionLocation= glGetUniformLocation(shaders->getProgram(),"projection");
     glUniformMatrix4fv(projectionLocation,1,GL_FALSE,vis.camera.getProjection());
 
     //Set value to uniform variable in fragmentshader
-
-    //Set value to uniform about material
-    GLint matAmbientLoc  = glGetUniformLocation(shaders.getProgram(), "material.ambient");
-    GLint matDiffuseLoc  = glGetUniformLocation(shaders.getProgram(), "material.diffuse");
-    GLint matSpecularLoc = glGetUniformLocation(shaders.getProgram(), "material.specular");
-    GLint matShineLoc    = glGetUniformLocation(shaders.getProgram(), "material.shininess");
-
-    //Obtain our material by the context
-    Material material(vis.materialStack.getMaterial());
-    vec3f ambient=material.getAmbient();
-    vec3f diffuse=material.getDiffuse();
-    vec3f specular=material.getAmbient();
-    float shini=material.getShininess();
-
-    //Bind the texture
-    material.getTexture()->bindTexture();
-
-    glUniform3f(matAmbientLoc,  ambient.x,  ambient.y, ambient.z);
-    glUniform3f(matDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);
-    glUniform3f(matSpecularLoc, specular.x,  specular.y, specular.z);
-    glUniform1f(matShineLoc,    shini);
-
     //Set value to uniform about light
-    GLint lightPosLoc      = glGetUniformLocation(shaders.getProgram(), "light.position");
-    GLint lightAmbientLoc  = glGetUniformLocation(shaders.getProgram(), "light.ambient");
-    GLint lightDiffuseLoc  = glGetUniformLocation(shaders.getProgram(), "light.diffuse");
-    GLint lightSpecularLoc = glGetUniformLocation(shaders.getProgram(), "light.specular");
-    GLint viewPosLoc = glGetUniformLocation(shaders.getProgram(), "viewPos");
+    GLint lightPosLoc      = glGetUniformLocation(shaders->getProgram(), "light.position");
+    GLint lightAmbientLoc  = glGetUniformLocation(shaders->getProgram(), "light.ambient");
+    GLint lightDiffuseLoc  = glGetUniformLocation(shaders->getProgram(), "light.diffuse");
+    GLint lightSpecularLoc = glGetUniformLocation(shaders->getProgram(), "light.specular");
+    GLint viewPosLoc = glGetUniformLocation(shaders->getProgram(), "viewPos");
 
     //Obtain our light by the context
     Light light(vis.light);
-    ambient=light.getAmbient();
-    diffuse=light.getDiffuse();
-    specular=light.getAmbient();
+    vec3f ambient=light.getAmbient();
+    vec3f diffuse=light.getDiffuse();
+    vec3f specular=light.getAmbient();
     vec3f posLight=light.getPosition();
 
     glUniform3f(lightPosLoc,  posLight.x,  posLight.y, posLight.z);
@@ -156,8 +135,6 @@ void MeshMaterial::visualization(Context & vis){
     glBindVertexArray(vertexArrayObject);
     glDrawElements(GL_TRIANGLES,numIndex,GL_UNSIGNED_SHORT,0);
     glBindVertexArray(0);
-
-	glUseProgram(0);
 }
 
 //**********************************************************************//
@@ -168,7 +145,7 @@ void MeshMaterial::updateState(float time){
 //**********************************************************************//
 
 bool MeshMaterial::LoadShader(const string & vertexShaderFile,const string & fragmentShaderFile){
-    shaders.setFiles(vertexShaderFile,fragmentShaderFile);
+    /*shaders.setFiles(vertexShaderFile,fragmentShaderFile);
     bool result=shaders.createProgram();
-    return result;
+    return result;*/
 }

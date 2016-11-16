@@ -58,12 +58,15 @@ void NodeSceneGraph::visualization(Context & cv){
                 break;
             case 2: //Material
                 cv.materialStack.push((*(*it).material));
+                (*it).material->activate(&cv.currentShader);
                 contMaterial++;
                 break;
             }
 
     }
     cv.materialStack.pop(contMaterial);
+    cv.materialStack.getMaterial().activate(&cv.currentShader);
+
     cv.matrixStack.pop(contMatrix);
     currentTime=time;
 }

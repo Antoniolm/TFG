@@ -39,9 +39,9 @@
 #include <file_obj.h>
 #include "material.h"
 #include "texture.h"
-#include <../lib/glm/glm.hpp>
+/*#include <../lib/glm/glm.hpp>
 #include <../lib/glm/gtc/matrix_transform.hpp>
-#include <../lib/glm/gtc/type_ptr.hpp>
+#include <../lib/glm/gtc/type_ptr.hpp>*/
 
 enum MeshMaterialBufferPositions
 {
@@ -112,7 +112,6 @@ class MeshMaterial : public Object3D
         static const unsigned int NUM_BUFFERS = 4;
         GLuint vertexArrayBuffers[NUM_BUFFERS];
         GLuint vertexArrayObject;
-        Shader shaders;
         string objFile;
         int numIndex;
 };
