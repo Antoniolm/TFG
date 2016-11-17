@@ -89,16 +89,12 @@ void Camera::createCamera(){
     //Calculate the z-Axis
     zCamera=position-target;
     modulo=zCamera.normalize();
-    zCamera.x=zCamera.x/modulo;
-    zCamera.y=zCamera.y/modulo;
-    zCamera.z=zCamera.z/modulo;
+    zCamera=zCamera/modulo;
 
     //Calculate the x-Axis
     xCamera=up.cross(zCamera);
     modulo=xCamera.normalize();
-    xCamera.x=xCamera.x/modulo;
-    xCamera.y=xCamera.y/modulo;
-    xCamera.z=xCamera.z/modulo;
+    xCamera=xCamera/modulo;
 
     //Calculate the y-Axis
     yCamera=zCamera.cross(xCamera);

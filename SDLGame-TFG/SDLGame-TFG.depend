@@ -389,7 +389,7 @@
 	"window.h"
 	"file_obj.h"
 
-1479388694 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1479391094 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1479052420 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -455,7 +455,7 @@
 	<vector>
 	<SDL.h>
 
-1479377044 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
+1479391735 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
 	<vector>
 	<string>
 	"context.h"
@@ -473,11 +473,8 @@
 	"shader.h"
 	<file_ply_stl.hpp>
 	<file_obj.h>
-	<../lib/glm/glm.hpp>
-	<../lib/glm/gtc/matrix_transform.hpp>
-	<../lib/glm/gtc/type_ptr.hpp>
 
-1479380539 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
+1479391119 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
 
 1451805405 c:\sdl2_mixer-2.0.1\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
@@ -867,7 +864,7 @@
 1478955729 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixstatic.h
 	"matrix4fdynamic.h"
 
-1479390995 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\structdata.h
+1479392128 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\structdata.h
 	<math.h>
 
 1417088498 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.cpp
@@ -911,17 +908,14 @@
 1477389144 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1479378149 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1479392174 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 
-1479377564 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
+1479391237 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
 	"structdata.h"
 	"matrix4f.h"
 	"shader.h"
 	<glew.h>
-	<../lib/glm/glm.hpp>
-	<../lib/glm/gtc/matrix_transform.hpp>
-	<../lib/glm/gtc/type_ptr.hpp>
 
 1477475915 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\projection.h
 	<math.h>

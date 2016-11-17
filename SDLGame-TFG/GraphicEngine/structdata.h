@@ -68,6 +68,26 @@ struct vec3f{
         return result;
     }
 
+    vec3f operator/(vec3f aVec){
+        vec3f result;
+
+        result.x=x/aVec.x;
+        result.y=y/aVec.y;
+        result.z=z/aVec.z;
+
+        return result;
+    }
+
+    vec3f operator/(float value){
+        vec3f result;
+
+        result.x=x/value;
+        result.y=y/value;
+        result.z=z/value;
+
+        return result;
+    }
+
     float dot(vec3f aVec){
         float result=0.0f;
 
