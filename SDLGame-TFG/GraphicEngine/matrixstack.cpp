@@ -53,9 +53,6 @@ void MatrixStack::pop(int cont){
 //**********************************************************************//
 
 void MatrixStack::activate(Shader * shader){
-	//Set value to uniform variable in vertexshader
-	GLfloat * matrix;
-
     GLint transformaLocation= glGetUniformLocation(shader->getProgram(),"transform");
     glUniformMatrix4fv(transformaLocation,1,GL_FALSE,getMatrix().getMatrix());
 }

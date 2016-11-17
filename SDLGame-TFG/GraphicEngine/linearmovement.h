@@ -23,6 +23,7 @@
 
 #include "matrix4fdynamic.h"
 #include "structdata.h"
+#include <SDL.h>
 
 class LinearMovement : public Matrix4fDynamic {
 
@@ -91,6 +92,7 @@ class LinearMovement : public Matrix4fDynamic {
 
     private:
         vec3f velocity;
+        float currentTime;
 };
 
 #endif // LINEARMOVEMENT_H

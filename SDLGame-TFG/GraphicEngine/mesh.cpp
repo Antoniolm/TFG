@@ -50,7 +50,7 @@ void Mesh::init(){
     vector<vec3f> normals;
     vector<vec2f> textureCord;
 
-    obj::readEverything(objFile.c_str(),vertex,triangles,normals,textureCord);
+    obj::readEverything(objFile.c_str(),vertex,triangles,normals,textureCord,true);
     numIndex=triangles.size();
 
     glGenVertexArrays(1, &vertexArrayObject);

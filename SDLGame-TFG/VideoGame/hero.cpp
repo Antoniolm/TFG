@@ -495,15 +495,15 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
         break;
     }
 
+    float time=SDL_GetTicks();
     if(!hasCollision){ //Case -> the hero can move = No collision
         if(direction!=aDir){
             vec4f position;
             position=moveHero->product(position);
             Matrix4f transHero;
-            transHero.translation(position.x+aMove.x,position.y+aMove.y,position.z+aMove.z);
-            //transHero.translation(position.x,position.y,position.z);
-            //LinearMovement lineMove(aMove);
-            //transHero.product(lineMove.updateState(SDL_GetTicks()).getMatrix());
+            transHero.translation(position.x,position.y,position.z);
+            LinearMovement lineMove(aMove);
+            transHero.product(lineMove.updateState(time-currentTime).getMatrix());
 
 
             int diferentDir=FORWARD-aDir;
@@ -514,11 +514,8 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             direction=aDir;
         }
         else{
-            Matrix4f transHero;
-            transHero.translation(aMove.x,aMove.y,aMove.z);
-            //LinearMovement lineMove(aMove);
-            //moveHero->product(lineMove.updateState(SDL_GetTicks()).getMatrix());
-            moveHero->product(transHero.getMatrix());
+            LinearMovement lineMove(aMove);
+            moveHero->product(lineMove.updateState(time-currentTime).getMatrix());
         }
 
     }
@@ -603,12 +600,10 @@ void Hero::gravity(float velocity){
         }
     }
 
+    float time=SDL_GetTicks();
     if(!hasCollision){ //if not collision
-        Matrix4f transHero;
-        transHero.translation(0.0,velocity,0.0);
-        moveHero->product(transHero.getMatrix());
-        //LinearMovement transHero(0.0,velocity,0.0);
-        //moveHero->product(transHero.updateState(SDL_GetTicks()).getMatrix());
+        LinearMovement transHero(0.0,velocity,0.0);
+        moveHero->product(transHero.updateState(time-currentTime).getMatrix());
     }
 }
 

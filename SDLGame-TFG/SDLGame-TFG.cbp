@@ -72,8 +72,6 @@
 		<Unit filename="GraphicEngine/matrixstatic.h" />
 		<Unit filename="GraphicEngine/mesh.cpp" />
 		<Unit filename="GraphicEngine/mesh.h" />
-		<Unit filename="GraphicEngine/meshmaterial.cpp" />
-		<Unit filename="GraphicEngine/meshmaterial.h" />
 		<Unit filename="GraphicEngine/nodescenegraph.cpp" />
 		<Unit filename="GraphicEngine/nodescenegraph.h" />
 		<Unit filename="GraphicEngine/object3d.cpp" />
