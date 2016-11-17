@@ -50,6 +50,7 @@ void NodeSceneGraph::visualization(Context & cv){
     for(it=entrance.begin();it!=entrance.end();it++){
             switch((*it).type){
             case 0: //Object3d
+                cv.matrixStack.activate(&cv.currentShader);
                 (*it).obj->visualization(cv);
                 break;
             case 1: //Matrix4f
@@ -68,6 +69,7 @@ void NodeSceneGraph::visualization(Context & cv){
     cv.materialStack.getMaterial().activate(&cv.currentShader);
 
     cv.matrixStack.pop(contMatrix);
+    cv.matrixStack.activate(&cv.currentShader);
 
     currentTime=time;
 }

@@ -48,8 +48,16 @@ void MatrixStack::pop(int cont){
         mainStack.pop_back();
         iter++;
     }
+}
 
+//**********************************************************************//
 
+void MatrixStack::activate(Shader * shader){
+	//Set value to uniform variable in vertexshader
+	GLfloat * matrix;
+
+    GLint transformaLocation= glGetUniformLocation(shader->getProgram(),"transform");
+    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,getMatrix().getMatrix());
 }
 
 //**********************************************************************//
@@ -91,16 +99,18 @@ void MatrixStack::cRotation ( const float ang_gra,const float ex, const float ey
     mainStack.push_back(auxMatrix);
 }
 
+//**********************************************************************//
+
 void MatrixStack::clean(){
     mainStack.clear();
 }
+
 //**********************************************************************//
 
 Matrix4f & MatrixStack::getMatrix(){
    currentMatrix.identity();
-
+   Matrix4f matrix;
    for(int i=mainStack.size()-1;i>=0;i--)
         currentMatrix.product(mainStack[i].getMatrix());
-
     return currentMatrix;
 }

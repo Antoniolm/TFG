@@ -84,10 +84,11 @@ void Camera::createCamera(){
     vec3f zCamera;
     vec3f yCamera;
     vec3f xCamera;
+    float modulo;
 
     //Calculate the z-Axis
     zCamera=position-target;
-    float modulo=zCamera.normalize();
+    modulo=zCamera.normalize();
     zCamera.x=zCamera.x/modulo;
     zCamera.y=zCamera.y/modulo;
     zCamera.z=zCamera.z/modulo;
@@ -101,17 +102,13 @@ void Camera::createCamera(){
 
     //Calculate the y-Axis
     yCamera=zCamera.cross(xCamera);
-    modulo=yCamera.normalize();
-    yCamera.x=yCamera.x/modulo;
-    yCamera.y=yCamera.y/modulo;
-    yCamera.z=yCamera.z/modulo;
 
     //Create the camera
     GLfloat * matrix=new GLfloat[16];
     matrix[0]=xCamera.x;  matrix[1]=yCamera.x;  matrix[2]=zCamera.x;  matrix[3]=0;
 	matrix[4]=xCamera.y;  matrix[5]=yCamera.y;  matrix[6]=zCamera.y;  matrix[7]=0;
 	matrix[8]=xCamera.z;  matrix[9]=yCamera.z;  matrix[10]=zCamera.z; matrix[11]=0;
-	matrix[12]=-(yCamera.dot(position)); matrix[13]=-(yCamera.dot(position)); matrix[14]=-(zCamera.dot(position)); matrix[15]=1;
+	matrix[12]=-(xCamera.dot(position)); matrix[13]=-(yCamera.dot(position)); matrix[14]=-(zCamera.dot(position)); matrix[15]=1;
 
 	camera.setMatrix(matrix);
 }

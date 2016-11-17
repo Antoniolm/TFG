@@ -22,6 +22,7 @@
 
 #include "matrix4f.h"
 #include <vector>
+#include "shader.h"
 
 class MatrixStack
 {
@@ -53,6 +54,15 @@ class MatrixStack
         */
         //////////////////////////////////////////////////////////////////////////
         void pop(int cont);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will activate the currentMatrix
+        *    \param Shader -> the program where our transform will be activated
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activate(Shader * shader);
 
         //////////////////////////////////////////////////////////////////////////
         /**

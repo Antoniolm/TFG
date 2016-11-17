@@ -24,6 +24,9 @@
 #include "matrix4f.h"
 #include "shader.h"
 #include <glew.h>
+#include <../lib/glm/glm.hpp>
+#include <../lib/glm/gtc/matrix_transform.hpp>
+#include <../lib/glm/gtc/type_ptr.hpp>
 
 class Camera
 {

@@ -23,7 +23,6 @@
 #include "material.h"
 #include <vector>
 
-
 class MaterialStack
 {
     public:
