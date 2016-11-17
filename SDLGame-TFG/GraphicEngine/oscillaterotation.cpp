@@ -74,9 +74,8 @@ Matrix4f & OscillateRotation::updateState(float time){
     if(currentGrade>= maxGrade && increment){
         increment=false;
         currentLoop++;
-        //cout<< "Time incremento"<< SDL_GetTicks()<< endl;
     }
-    if(currentGrade<=minGrade && !increment){
+    else if(currentGrade<=minGrade && !increment){
         increment=true;
         currentLoop++;
         //cout<< "Time decremento"<< SDL_GetTicks()<< endl;
@@ -91,7 +90,7 @@ Matrix4f & OscillateRotation::updateState(float time){
 
     //cout<< "CurrentLoop -> "<<currentLoop<<endl;
 
-    if(loop==-1 || currentLoop!=loop)
+    if(loop==-1 || currentLoop<=loop)
         currentMatrix.rotation(currentGrade,direction.x,direction.y,direction.z);
 
     currentTime+=time;

@@ -66,7 +66,6 @@ void LinearMovement::setParameters(const vec3f & aVelocity){
 Matrix4f & LinearMovement::updateState(float time){
     time=time/1000;
 
-    cout<< "Time "<< time<< "velocity.x ->"<< velocity.x*time<<endl;
     currentMatrix.translation(velocity.x*time,velocity.y*time,velocity.z*time);
 
     currentTime+=time;

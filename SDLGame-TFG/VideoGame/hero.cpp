@@ -43,6 +43,10 @@ Hero::Hero()
     Mesh * handObject=new Mesh(file);
     handObject->init();
 
+    file=string("geometries/shoulder.obj");
+    Mesh * shoulderObject=new Mesh(file);
+    shoulderObject->init();
+
     file=string("geometries/chest.obj");
     Mesh * chestObject=new Mesh(file);
     chestObject->init();
@@ -114,9 +118,9 @@ Hero::Hero()
     moveLegLeft->identity();
     moveMatrix.push_back(moveLegLeft);
 
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),3);
-    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),3);
-    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),2);
+    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
     MatrixStatic * notMove=new MatrixStatic();
 
     //Movement to the first leg
@@ -221,8 +225,8 @@ Hero::Hero()
     moveMatrix.push_back(moveArmRight);
 
     //Matrix4fDinamic
-    OscillateRotation * oscillateElbow=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),3);
-    OscillateRotation * oscillateShoulder=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),3);
+    OscillateRotation * oscillateElbow=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateShoulder=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
 
     //Movement to the first arm
     MatrixScript * ElbowScriptLeft=new MatrixScript();
@@ -248,10 +252,10 @@ Hero::Hero()
     animation.add(ArmScriptRight);
 
     Matrix4f * scaleHand=new Matrix4f();
-    scaleHand->scale(0.2,0.15,0.2);
+    scaleHand->scale(0.24,0.18,0.2);
 
     Matrix4f * transHand=new Matrix4f();
-    transHand->translation(-0.2,-0.5,0.1);
+    transHand->translation(0.0,-0.1,0.0);
 
     Matrix4f * wristHandTransMatrix=new Matrix4f();
     wristHandTransMatrix->translation(0.0,-0.5,0.0);
@@ -271,6 +275,12 @@ Hero::Hero()
     Matrix4f * scaleArmTop=new Matrix4f();
     scaleArmTop->scale(0.2,0.4,0.2);
 
+    Matrix4f * scaleShoulder=new Matrix4f();
+    scaleShoulder->scale(0.2,0.2,0.2);
+
+    Matrix4f * rotateShoulder=new Matrix4f();
+    rotateShoulder->rotation(180,0.0,1.0,0.0);
+
     Matrix4f * transElbow=new Matrix4f();
     transElbow->translation(0.0,-0.4,0.0);
 
@@ -284,12 +294,11 @@ Hero::Hero()
     wrist->add(scaleSphere);
     wrist->add(static_cast<Object3D*>(sphereObject));
     hand->add(transHand);
-    hand->add(rotateXHand);
-    hand->add(rotateZHand);
     hand->add(scaleHand);
     hand->add(static_cast<Object3D*>(handObject));
     wrist_hand->add(wristHandTransMatrix);
-    wrist_hand->add(static_cast<Object3D*>(wrist));
+    //wrist_hand->add(static_cast<Object3D*>(wrist));
+    wrist_hand->add(materialFoot);
     wrist_hand->add(static_cast<Object3D*>(hand));
 
     //elbow + wrist
@@ -311,10 +320,20 @@ Hero::Hero()
     elbow_wristLeft->add(moveElbowLeft);
     elbow_wristLeft->add(static_cast<Object3D*>(elbow_wrist));
 
+    //Shoulder
+    NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
+    shoulderLeft->add(rotateShoulder);
+    shoulderLeft->add(scaleShoulder);
+    shoulderLeft->add(static_cast<Object3D*>(shoulderObject));
+
+    NodeSceneGraph * shoulderRight=new NodeSceneGraph();
+    shoulderRight->add(scaleShoulder);
+    shoulderRight->add(static_cast<Object3D*>(shoulderObject));
+
     //Arm left
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
     ArmLeft->add(moveArmLeft);
-    ArmLeft->add(static_cast<Object3D*>(wrist));
+    ArmLeft->add(static_cast<Object3D*>(shoulderLeft));
     ArmLeft->add(transArms);
     ArmLeft->add(static_cast<Object3D*>(elbow_wristLeft));
     ArmLeft->add(scaleArmTop);
@@ -324,7 +343,7 @@ Hero::Hero()
     //Arm Right
     NodeSceneGraph * ArmRight=new NodeSceneGraph();
     ArmRight->add(moveArmRight);
-    ArmRight->add(static_cast<Object3D*>(wrist));
+    ArmRight->add(static_cast<Object3D*>(shoulderRight));
     ArmRight->add(transArms);
     ArmRight->add(static_cast<Object3D*>(elbow_wristRight));
     ArmRight->add(scaleArmTop);
@@ -365,7 +384,7 @@ Hero::Hero()
     transHead->translation(0.0,2.8,0.0);
 
     Matrix4f *transChest=new Matrix4f();
-    transChest->translation(0.0,1.3,0.0);
+    transChest->translation(0.0,1.15,0.0);
 
     Matrix4f *scaleChest=new Matrix4f();
     scaleChest->scale(0.9,0.9,0.6);

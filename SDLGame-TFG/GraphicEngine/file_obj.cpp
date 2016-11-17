@@ -119,11 +119,12 @@ void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vecto
     }
     std::vector<vec3f> normalAux;
     if(flagNormal)
-        //calculate_normals(vertexAux,trianglesIndex,normalAux);
+        calculate_normals(vertexAux,trianglesIndex,normalAux);
 
     for(int i=0;i<trianglesIndex.size();i++){
         vertex.push_back(vertexAux[trianglesIndex[i]]);
-        normals.push_back(normalsVertex[normalFaces[i]]);
+        normals.push_back(normalAux[trianglesIndex[i]]);
+        //normals.push_back(normalsVertex[normalFaces[i]]);
         textureCord.push_back(textureVertex[textureFaces[i]]);
         triangles.push_back(i);
     }
@@ -131,48 +132,34 @@ void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vecto
 
 void calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals){
     //Calculate face normals
-    std::vector<vec3f> normalFace;
-    vec3f p,k,n;
+    vec3f v1,v2,normalFace;
 	float modulo;
-	for(int i=0;i<triangles.size();i=i+3){
 
-		p.x=vertex[triangles[i+1]].x-vertex[triangles[i]].x;
-		p.y=vertex[triangles[i+1]].y-vertex[triangles[i]].y;
-		p.z=vertex[triangles[i+1]].z-vertex[triangles[i]].z;
-
-		k.x=vertex[triangles[i+2]].x-vertex[triangles[i+1]].x;
-		k.y=vertex[triangles[i+2]].y-vertex[triangles[i+1]].y;
-		k.z=vertex[triangles[i+2]].z-vertex[triangles[i+1]].z;
-
-		n.x=(p.y*k.z)-(p.z*k.y);
-		n.y=(p.z*k.x)-(p.x*k.z);
-		n.z=(p.x*k.y)-(p.y*k.x);
-
-		modulo = sqrt(n.x*n.x+n.y*n.y+n.z*n.z);
-		n.x=n.x/modulo;
-		n.y=n.y/modulo;
-		n.z=n.z/modulo;
-
-		normalFace.push_back(n);
-	}
-
-	//Calculate vertex normals
 	for(int i=0;i<vertex.size();i++){
 		normals.push_back(vec3f(0.0,0.0,0.0));
 	}
 
-    int cont=0;
-	for(int j=0;j<triangles.size();j=j+3){
-		normals[triangles[j]]=normals[triangles[j]] + normalFace[cont];
-		normals[triangles[j+1]]=normals[triangles[j+1]] + normalFace[cont];
-		normals[triangles[j+2]]=normals[triangles[j+2]] + normalFace[cont];
-        cont++;
+	for(int i=0;i<triangles.size();i=i+3){
+        int i0 = triangles[i];
+        int i1 = triangles[i + 1];
+        int i2 = triangles[i + 2];
+
+		v1=vertex[i1]-vertex[i0];
+		v2=vertex[i2]-vertex[i0];
+
+		normalFace=v1.cross(v2);
+
+		modulo = normalFace.normalize();
+		normalFace=normalFace/modulo;
+
+        normals[i0]=normals[i0] + normalFace;
+        normals[i1]=normals[i1] + normalFace;
+        normals[i2]=normals[i2] + normalFace;
 	}
+
     for(int k=0;k<normals.size();k++){
-        modulo=sqrt(normals[k].x*normals[k].x+normals[k].y*normals[k].y+normals[k].z*normals[k].z);
-        normals[k].x=normals[k].x/modulo;
-        normals[k].y=normals[k].y/modulo;
-        normals[k].z=normals[k].z/modulo;
+        modulo=normals[k].normalize();
+        normals[k]=normals[k]/modulo;
 	}
 
 }
