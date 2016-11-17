@@ -92,13 +92,6 @@ void Mesh::visualization(Context & vis){
     position=transformation->product(position);
     vis.posObject.push_back(vec3f(position.x,position.y,position.z));
 
-    /*view = glm::lookAt(glm::vec3(4.0f, 3.0f, 10.0f),
-  		   glm::vec3(4.0f, 0.0f, 0.0f),
-  		   glm::vec3(0.0f, 1.0f, 0.0f));*/
-    //GLint viewLocation= glGetUniformLocation(shaders->getProgram(),"view");
-    //glUniformMatrix4fv(viewLocation,1,GL_FALSE,vis.camera.getView());
-    //glUniformMatrix4fv(viewLocation,1,GL_FALSE,glm::value_ptr(view));
-
     //Draw our object
     glBindVertexArray(vertexArrayObject);
     glDrawElements(GL_TRIANGLES,numIndex,GL_UNSIGNED_SHORT,0);

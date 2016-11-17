@@ -49,19 +49,23 @@ struct vec3f{
         return *this;
     }
     vec3f operator+(vec3f aVec){
-        x+=aVec.x;
-        y+=aVec.y;
-        z+=aVec.z;
+        vec3f result;
 
-        return *this;
+        result.x=x+aVec.x;
+        result.y=y+aVec.y;
+        result.z=z+aVec.z;
+
+        return result;
     }
 
     vec3f operator*(vec3f aVec){
-        x*=aVec.x;
-        y*=aVec.y;
-        z*=aVec.z;
+        vec3f result;
 
-        return *this;
+        result.x=x*aVec.x;
+        result.y=y*aVec.y;
+        result.z=z*aVec.z;
+
+        return result;
     }
 
     float dot(vec3f aVec){
@@ -73,11 +77,12 @@ struct vec3f{
     }
 
     vec3f operator-(vec3f aVec){
-        x-=aVec.x;
-        y-=aVec.y;
-        z-=aVec.z;
+        vec3f result;
+        result.x=x-aVec.x;
+        result.y=y-aVec.y;
+        result.z=z-aVec.z;
 
-        return *this;
+        return result;
     }
     vec3f cross(vec3f aVec){
        vec3f result;
