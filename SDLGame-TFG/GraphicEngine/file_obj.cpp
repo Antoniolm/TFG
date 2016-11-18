@@ -55,7 +55,9 @@ void readMesh(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLus
 
 }
 
-void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,bool flagNormal){
+//**********************************************************************//
+
+void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,bool flagNormal,bool flagOrigin){
     int value;
     char charValue;
     float x,y,z;
@@ -117,18 +119,32 @@ void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vecto
         }
 
     }
+    if(flagOrigin){
+        vec3f origin=calculate_origin(vertexAux);
+        for(int i=0;i< vertexAux.size();i++){
+            vertexAux[i]=vertexAux[i]-origin;
+
+        }
+
+    }
     std::vector<vec3f> normalAux;
     if(flagNormal)
         calculate_normals(vertexAux,trianglesIndex,normalAux);
 
     for(int i=0;i<trianglesIndex.size();i++){
         vertex.push_back(vertexAux[trianglesIndex[i]]);
-        normals.push_back(normalAux[trianglesIndex[i]]);
-        //normals.push_back(normalsVertex[normalFaces[i]]);
+
+        if(flagNormal)
+            normals.push_back(normalAux[trianglesIndex[i]]);
+        else
+            normals.push_back(normalsVertex[normalFaces[i]]);
+
         textureCord.push_back(textureVertex[textureFaces[i]]);
         triangles.push_back(i);
     }
 }
+
+//**********************************************************************//
 
 void calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals){
     //Calculate face normals
@@ -163,6 +179,33 @@ void calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & trian
 	}
 
 }
+
+//**********************************************************************//
+
+vec3f calculate_origin(std::vector<vec3f> & vertex){
+    float maxX,maxY,maxZ,minX,minY,minZ;
+    maxX=vertex[0].x;  maxY=vertex[0].y;  maxZ=vertex[0].z;
+    minX=vertex[0].x;  minY=vertex[0].y;  minZ=vertex[0].z;
+
+    for(int i=1;i<vertex.size();i++){
+        if(vertex[i].x >maxX) maxX=vertex[i].x;
+        if(vertex[i].y >maxY) maxY=vertex[i].y;
+        if(vertex[i].z >maxZ) maxZ=vertex[i].z;
+
+        if(vertex[i].x < minX) minX=vertex[i].x;
+        if(vertex[i].y < minY) minY=vertex[i].y;
+        if(vertex[i].z < minZ) minZ=vertex[i].z;
+	}
+
+    vec3f result;
+    result.x = minX+((maxX-minX)/2.0);
+    result.y = minY+((maxY-minY)/2.0);
+    result.z = minZ+((maxZ-minZ)/2.0);
+
+    cout<< "Result -> x- "<< result.x<< " y- "<< result.y<< " z- "<< result.z<<endl;
+    return result;
+}
+
 
 }
 

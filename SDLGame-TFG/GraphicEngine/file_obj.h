@@ -34,9 +34,11 @@ namespace obj{
 
 void readMesh(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles);
 
-void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,bool flagNormal);
+void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,bool flagNormal,bool flagOrigin);
 
 void calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals);
+
+vec3f calculate_origin(std::vector<vec3f> & vertex);
 
 };
 
