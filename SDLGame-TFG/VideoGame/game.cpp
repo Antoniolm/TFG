@@ -60,8 +60,7 @@ void Game::loop(){
     avatarDirection heroDir;
     hero=new Hero();
     rootMap->setHero(hero);
-    Matrix4f movCamera,auxMatrix;
-    vec3f moveHero;
+    vec3f moveHero,movCamera;
 
     while (!quit)
     {
@@ -78,46 +77,24 @@ void Game::loop(){
                 switch (event.key.keysym.sym){
 
                     case SDLK_LEFT:
-                        movCamera.translation(0.05,0.0,0.0);
+                        movCamera.x=-0.05; movCamera.y=0.0; movCamera.z=0.0;
                         moveHero.x=-3.0; moveHero.y=0.0; moveHero.z=0.0;
                         heroDir=LEFTWARD;
                         break;
                     case SDLK_RIGHT:
-                        movCamera.translation(-0.05,0.0,0.0);
+                        movCamera.x=+0.05; movCamera.y=0.0; movCamera.z=0.0;
                         moveHero.x=3.0; moveHero.y=0.0; moveHero.z=0.0;
                         heroDir=RIGHTWARD;
                         break;
                     case SDLK_UP:
-                        auxMatrix.translation(0.0,0.0,0.05);
-                        movCamera.rotation(0.08,1.0,0.0,0.0);
-                        movCamera.product(auxMatrix.getMatrix());
+                        movCamera.x=0.0; movCamera.y=0.0; movCamera.z=-0.05;
                         moveHero.x=0.0; moveHero.y=0.0; moveHero.z=-3.0;
                         heroDir=BACKWARD;
                         break;
                     case SDLK_DOWN:
-                        auxMatrix.translation(0.0,0.0,-0.05);
-                        movCamera.rotation(-0.08,1.0,0.0,0.0);
-                        movCamera.product(auxMatrix.getMatrix());
+                        movCamera.x=0.0; movCamera.y=0.0; movCamera.z=0.05;
                         moveHero.x=0.0; moveHero.y=0.0; moveHero.z=3.0;
                         heroDir=FORWARD;
-                        break;
-                    case SDLK_k:
-                        movCamera.scale(1.1,1.1,1.1);
-                        break;
-                    case SDLK_l:
-                        movCamera.scale(0.9,0.9,0.9);
-                        break;
-                    case SDLK_w:
-                        movCamera.rotation(5,1.0,0.0,0.0);
-                        break;
-                    case SDLK_s:
-                        movCamera.rotation(-5,1.0,0.0,0.0);
-                        break;
-                    case SDLK_a:
-                        movCamera.rotation(5,0.0,1.0,0.0);
-                        break;
-                    case SDLK_d:
-                        movCamera.rotation(-5,0.0,1.0,0.0);
                         break;
                 }
                 if(hero->moveBody(moveHero,heroDir))

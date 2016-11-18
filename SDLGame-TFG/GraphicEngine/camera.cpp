@@ -124,11 +124,17 @@ void Camera::activateCamera(Shader * shader){
 
 //**********************************************************************//
 
-void Camera::moveCamera(const Matrix4f & transformation,Shader *shader){
-    camera.product(transformation.getMatrixc());
+void Camera::moveCamera(vec3f & pos,Shader *shader){
+
+    position.x+=pos.x;position.y+=pos.y;position.z+=pos.z;
+    target.x+=pos.x;target.y+=pos.y;target.z+=pos.z;
+    createCamera();
 
     GLint viewLocation= glGetUniformLocation(shader->getProgram(),"view");
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,camera.getMatrix());
+
+    GLint viewPosLoc = glGetUniformLocation(shader->getProgram(), "viewPos");
+    glUniform3f(viewPosLoc, position.x, position.y, position.z);
 }
 
 //**********************************************************************//
