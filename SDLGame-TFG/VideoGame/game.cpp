@@ -96,6 +96,12 @@ void Game::loop(){
                         moveHero.x=0.0; moveHero.y=0.0; moveHero.z=3.0;
                         heroDir=FORWARD;
                         break;
+
+                    default:
+                        movCamera.x=0.0; movCamera.y=0.0; movCamera.z=0.0;
+                        moveHero.x=0.0; moveHero.y=0.0; moveHero.z=0.0;
+                        break;
+
                 }
                 if(hero->moveBody(moveHero,heroDir))
                     aContext.camera.moveCamera(movCamera,&aContext.currentShader);

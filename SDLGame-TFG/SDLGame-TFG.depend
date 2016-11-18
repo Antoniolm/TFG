@@ -389,7 +389,7 @@
 	"window.h"
 	"file_obj.h"
 
-1479472274 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1479473928 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1479052420 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -973,7 +973,7 @@
 	"../GraphicEngine/rootmap.h"
 	<vector>
 
-1479470620 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1479482109 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1579,4 +1579,11 @@
 1479378594 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialstack.h
 	"material.h"
 	<vector>
+
+1479482863 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
+	"objectscene.h"
+
+1479482732 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
+	"object3d.h"
+	"structdata.h"
 

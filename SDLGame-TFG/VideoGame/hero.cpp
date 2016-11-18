@@ -225,24 +225,25 @@ Hero::Hero()
     moveMatrix.push_back(moveArmRight);
 
     //Matrix4fDinamic
-    OscillateRotation * oscillateElbow=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
-    OscillateRotation * oscillateShoulder=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateElbow=new OscillateRotation(true,120,0,1,350,vec3f(0.75,0.5,0),2);
+    OscillateRotation * oscillateElbow2=new OscillateRotation(true,120,0,1,350,vec3f(0.75,-0.5,0),2);
+    OscillateRotation * oscillateShoulder=new OscillateRotation(true,40,0,1,80,vec3f(1.0,0.0,0),2);
 
     //Movement to the first arm
     MatrixScript * ElbowScriptLeft=new MatrixScript();
     MatrixScript * ArmScriptLeft=new MatrixScript();
-    ElbowScriptLeft->add(0.5,oscillateElbow);
-    ElbowScriptLeft->add(0.5,notMove);
-    ArmScriptLeft->add(0.5,oscillateShoulder);
-    ArmScriptLeft->add(0.5,notMove);
+    ElbowScriptLeft->add(0.9,oscillateElbow);
+    ElbowScriptLeft->add(0.9,notMove);
+    ArmScriptLeft->add(0.9,oscillateShoulder);
+    ArmScriptLeft->add(0.9,notMove);
 
     //Movement to the second arm
     MatrixScript * ElbowScriptRight=new MatrixScript();
     MatrixScript * ArmScriptRight=new MatrixScript();
-    ElbowScriptRight->add(0.5,notMove);
-    ElbowScriptRight->add(0.5,oscillateElbow);
-    ArmScriptRight->add(0.5,notMove);
-    ArmScriptRight->add(0.5,oscillateShoulder);
+    ElbowScriptRight->add(0.9,notMove);
+    ElbowScriptRight->add(0.9,oscillateElbow2);
+    ArmScriptRight->add(0.9,notMove);
+    ArmScriptRight->add(0.9,oscillateShoulder);
 
 
     //Add the script to our animation

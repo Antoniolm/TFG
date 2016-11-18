@@ -17,38 +17,24 @@
 // **
 // *********************************************************************
 
-#ifndef ROOTMAP_H
-#define ROOTMAP_H
+#ifndef OBJECTSCENE_H
+#define OBJECTSCENE_H
 
 #include "object3d.h"
-#include "nodescenegraph.h"
-#include <list>
-#include <vector>
-#include "matrix4f.h"
-#include "matrix4fdynamic.h"
-#include "linearmovement.h"
-#include "axisrotation.h"
-#include "matrixstatic.h"
-#include "oscillaterotation.h"
-#include "mesh.h"
-#include "objectscene.h"
-#include "../VideoGame/hero.h"
+#include "structdata.h"
 
-using namespace std;
-
-class Hero;
-class RootMap : public Object3D
+class ObjectScene : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        RootMap();
+        ObjectScene();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~RootMap();
+        virtual ~ObjectScene();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -67,25 +53,11 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will update the state of the object. That change need the
-        *    current time in our application
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        bool collision(const vec3f & indexObj, const vec3f & dynamicObj);
-
-
-        void setHero(Hero * theHero);
     protected:
 
     private:
-        vector<vector<list<float> > > object;
-
-        list<Object3D *> objectStatic;
-        list<Object3D *> objectDinamic;
-        Hero * hero;
+        vec3f position;
+        Object3D * object;
 };
 
-#endif // ROOTMAP_H
+#endif // OBJECTSCENE_H
