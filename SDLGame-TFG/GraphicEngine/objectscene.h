@@ -21,6 +21,7 @@
 #define OBJECTSCENE_H
 
 #include "object3d.h"
+#include "matrix4f.h"
 #include "structdata.h"
 
 class ObjectScene : public Object3D
@@ -30,6 +31,11 @@ class ObjectScene : public Object3D
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         ObjectScene();
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
+        ObjectScene(Object3D * aObject);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -56,7 +62,7 @@ class ObjectScene : public Object3D
     protected:
 
     private:
-        vec3f position;
+        vec4f position;
         Object3D * object;
 };
 

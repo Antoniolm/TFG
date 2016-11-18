@@ -51,7 +51,6 @@ void Mesh::init(){
     vector<vec2f> textureCord;
 
     obj::readEverything(objFile.c_str(),vertex,triangles,normals,textureCord,true,true);
-    cout<< "File name "<< objFile<< endl;
 
     numIndex=triangles.size();
 
@@ -88,12 +87,6 @@ void Mesh::init(){
 //**********************************************************************//
 
 void Mesh::visualization(Context & vis){
-    position=vec4f();
-
-    Matrix4f * transformation = &(vis.matrixStack.getMatrix());
-    position=transformation->product(position);
-    vis.posObject.push_back(vec3f(position.x,position.y,position.z));
-
     //Draw our object
     glBindVertexArray(vertexArrayObject);
     glDrawElements(GL_TRIANGLES,numIndex,GL_UNSIGNED_SHORT,0);

@@ -84,7 +84,6 @@ class RootMap : public Object3D
         vector<vector<list<float> > > object;
 
         list<Object3D *> objectStatic;
-        list<Object3D *> objectDinamic;
         Hero * hero;
 };
 

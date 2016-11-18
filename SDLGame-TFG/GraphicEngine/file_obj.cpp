@@ -202,7 +202,6 @@ vec3f calculate_origin(std::vector<vec3f> & vertex){
     result.y = minY+((maxY-minY)/2.0);
     result.z = minZ+((maxZ-minZ)/2.0);
 
-    cout<< "Result -> x- "<< result.x<< " y- "<< result.y<< " z- "<< result.z<<endl;
     return result;
 }
 

@@ -26,6 +26,12 @@ ObjectScene::ObjectScene()
 
 //**********************************************************************//
 
+ObjectScene::ObjectScene(Object3D * aObject){
+    object=aObject;
+}
+
+//**********************************************************************//
+
 ObjectScene::~ObjectScene()
 {
     //dtor
@@ -34,6 +40,12 @@ ObjectScene::~ObjectScene()
 //**********************************************************************//
 
 void ObjectScene::visualization(Context & vis){
+    position=vec4f();
+
+    Matrix4f * transformation = &(vis.matrixStack.getMatrix());
+    position=transformation->product(position);
+    vis.posObject.push_back(vec3f(position.x,position.y,position.z));
+
     object->visualization(vis);
 }
 

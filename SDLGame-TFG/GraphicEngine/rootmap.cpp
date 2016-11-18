@@ -54,7 +54,7 @@ RootMap::RootMap()
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialCube);
-    cubeNode->add(static_cast<Object3D*>(aObject));
+    cubeNode->add(static_cast<Object3D*>(new ObjectScene(aObject)));
 
     NodeSceneGraph * obsNode=new NodeSceneGraph();
     obsNode->add(transObsCube);
@@ -109,10 +109,6 @@ void RootMap::visualization(Context & cv){
 
     list<Object3D *>::iterator it;
 
-    //Draw the dynamic object
-    for(it=objectDinamic.begin();it!=objectDinamic.end();it++)
-        (*it)->visualization(cv);
-
     //Draw the static object
     for(it=objectStatic.begin();it!=objectStatic.end();it++){
         (*it)->visualization(cv);
@@ -145,7 +141,6 @@ void RootMap::visualization(Context & cv){
     hero->visualization(cv);
 
     vec3f positionHero=hero->getPosition();
-    //collision(vec3f(positionHero.x+1,positionHero.y,positionHero.z),positionHero);
 }
 
 //**********************************************************************//
