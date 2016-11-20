@@ -44,8 +44,8 @@ void Game::loop(){
     glUseProgram(aContext.currentShader.getProgram()); //We use the program now
 
     //Create our camera
-    vec3f position(3.0,5.0,6.0);
-    vec3f direction(3.0,2.0,0.0);
+    vec3f position(2.0,4.0,2.0);
+    vec3f direction(2.0,3.0,0.0);
     vec3f up(0.0,1.0,0.0);
     aContext.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
     aContext.camera.setCamera(position,direction,up);
@@ -71,38 +71,50 @@ void Game::loop(){
             }
             //case: Player push a buttom
 
-            //const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
+            const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
             if (event.type == SDL_KEYDOWN){
-
-                switch (event.key.keysym.sym){
-
-                    case SDLK_LEFT:
-                        movCamera.x=-0.05; movCamera.y=0.0; movCamera.z=0.0;
-                        moveHero.x=-3.0; moveHero.y=0.0; moveHero.z=0.0;
-                        heroDir=LEFTWARD;
-                        break;
-                    case SDLK_RIGHT:
-                        movCamera.x=+0.05; movCamera.y=0.0; movCamera.z=0.0;
-                        moveHero.x=3.0; moveHero.y=0.0; moveHero.z=0.0;
-                        heroDir=RIGHTWARD;
-                        break;
-                    case SDLK_UP:
-                        movCamera.x=0.0; movCamera.y=0.0; movCamera.z=-0.05;
-                        moveHero.x=0.0; moveHero.y=0.0; moveHero.z=-3.0;
-                        heroDir=BACKWARD;
-                        break;
-                    case SDLK_DOWN:
-                        movCamera.x=0.0; movCamera.y=0.0; movCamera.z=0.05;
-                        moveHero.x=0.0; moveHero.y=0.0; moveHero.z=3.0;
-                        heroDir=FORWARD;
-                        break;
-
-                    default:
-                        movCamera.x=0.0; movCamera.y=0.0; movCamera.z=0.0;
-                        moveHero.x=0.0; moveHero.y=0.0; moveHero.z=0.0;
-                        break;
-
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)]){
+                    movCamera.x=-0.05; movCamera.y=0.0; movCamera.z=0.0;
+                    moveHero.x=-3.0; moveHero.y=0.0; moveHero.z=0.0;
+                    heroDir=LEFTWARD;
                 }
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
+                    movCamera.x=+0.05; movCamera.y=0.0; movCamera.z=0.0;
+                    moveHero.x=3.0; moveHero.y=0.0; moveHero.z=0.0;
+                    heroDir=RIGHTWARD;
+                }
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
+                    movCamera.x=0.0; movCamera.y=0.0; movCamera.z=-0.05;
+                    moveHero.x=0.0; moveHero.y=0.0; moveHero.z=-3.0;
+                    heroDir=BACKWARD;
+                }
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]){
+                    movCamera.x=0.0; movCamera.y=0.0; movCamera.z=0.05;
+                    moveHero.x=0.0; moveHero.y=0.0; moveHero.z=3.0;
+                    heroDir=FORWARD;
+                }
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
+                    movCamera.x=-0.05; movCamera.y=0.0; movCamera.z=0.05;
+                    moveHero.x=-3.0; moveHero.y=0.0; moveHero.z=3.0;
+                    heroDir=FOR_LEFTWARD;
+                }
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
+                    movCamera.x=0.05; movCamera.y=0.0; movCamera.z=0.05;
+                    moveHero.x=3.0; moveHero.y=0.0; moveHero.z=3.0;
+                    heroDir=FOR_RIGHTWARD;
+                }
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
+                    movCamera.x=-0.05; movCamera.y=0.0; movCamera.z=-0.05;
+                    moveHero.x=-3.0; moveHero.y=0.0; moveHero.z=-3.0;
+                    heroDir=BACK_LEFTWARD;
+                }
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
+                    movCamera.x=0.05; movCamera.y=0.0; movCamera.z=-0.05;
+                    moveHero.x=3.0; moveHero.y=0.0; moveHero.z=-3.0;
+                    heroDir=BACK_RIGHTWARD;
+                }
+
+
                 if(hero->moveBody(moveHero,heroDir))
                     aContext.camera.moveCamera(movCamera,&aContext.currentShader);
 

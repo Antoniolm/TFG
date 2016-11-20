@@ -24,6 +24,7 @@
 #include "nodescenegraph.h"
 #include <list>
 #include <vector>
+#include <map>
 #include "matrix4f.h"
 #include "matrix4fdynamic.h"
 #include "linearmovement.h"
@@ -82,7 +83,7 @@ class RootMap : public Object3D
 
     private:
         vector<vector<list<float> > > object;
-
+        //map<pair<int,int>,list<ObjectScene*> > object;
         list<Object3D *> objectStatic;
         Hero * hero;
 };

@@ -382,7 +382,7 @@ Hero::Hero()
     scaleHead->scale(0.5,0.5,0.5);
 
     Matrix4f *transHead=new Matrix4f();
-    transHead->translation(0.0,2.8,0.0);
+    transHead->translation(0.0,2.8,0.4);
 
     Matrix4f *transChest=new Matrix4f();
     transChest->translation(0.0,1.15,0.0);
@@ -402,7 +402,7 @@ Hero::Hero()
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
-    headNode->add(scaleHead);
+    //headNode->add(scaleHead);
     headNode->add(static_cast<Object3D*>(headObject));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
@@ -548,7 +548,7 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
 
             int diferentDir=FORWARD-aDir;
             moveHero->identity();
-            moveHero->rotation(90*diferentDir,0.0f,1.0f,0.0f);
+            moveHero->rotation(45*diferentDir,0.0f,1.0f,0.0f);
             moveHero->product(transHero.getMatrix());
 
             direction=aDir;
