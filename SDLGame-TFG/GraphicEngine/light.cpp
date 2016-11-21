@@ -53,10 +53,10 @@ Light::~Light()
 
 void Light::activate(Shader * shader){
     //Set value to uniform about light
-    GLint lightPosLoc      = glGetUniformLocation(shader->getProgram(), "light.position");
-    GLint lightAmbientLoc  = glGetUniformLocation(shader->getProgram(), "light.ambient");
-    GLint lightDiffuseLoc  = glGetUniformLocation(shader->getProgram(), "light.diffuse");
-    GLint lightSpecularLoc = glGetUniformLocation(shader->getProgram(), "light.specular");
+    GLint lightPosLoc      = glGetUniformLocation(shader->getProgram(), "dirLight.direction");
+    GLint lightAmbientLoc  = glGetUniformLocation(shader->getProgram(), "dirLight.ambient");
+    GLint lightDiffuseLoc  = glGetUniformLocation(shader->getProgram(), "dirLight.diffuse");
+    GLint lightSpecularLoc = glGetUniformLocation(shader->getProgram(), "dirLight.specular");
 
     glUniform3f(lightPosLoc,  position.x,  position.y, position.z);
     glUniform3f(lightAmbientLoc,  ambient.x,  ambient.y, ambient.z);

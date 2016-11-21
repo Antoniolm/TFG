@@ -52,6 +52,7 @@ RootMap::RootMap()
     //Materials
     Material * materialGrass=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass.png");
     Material * materialSand=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
+    Material * materialBox=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
@@ -62,6 +63,7 @@ RootMap::RootMap()
     obsNode->add(materialSand);
     obsNode->add(transObsCube);
     obsNode->add(static_cast<Object3D*>(cubeNode));
+    obsNode->add(materialBox);
     obsNode->add(transObsCube);
     obsNode->add(static_cast<Object3D*>(cubeNode));
     obsNode->add(transObsCube);
@@ -144,14 +146,11 @@ void RootMap::visualization(Context & cv){
     //Draw hero
     hero->updateState(SDL_GetTicks());
     hero->visualization(cv);
-
-    vec3f positionHero=hero->getPosition();
 }
 
 //**********************************************************************//
 
 void RootMap::updateState(float time){
-
 }
 
 //**********************************************************************//

@@ -69,7 +69,7 @@ bool Window::createWindow(){
 		else {
             //Initialize SDL_mixer
             if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 ){
-                    printf( "SDL_mxer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+                    printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
                     salida = false;
             }
 			context = SDL_GL_CreateContext(window);

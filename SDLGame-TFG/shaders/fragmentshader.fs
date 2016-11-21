@@ -8,8 +8,8 @@ struct Material {
     float shininess;
 }; 
 
-struct Light {
-    vec3 position;
+struct DirLight {
+    vec3 direction;
   
     vec3 ambient;
     vec3 diffuse;
@@ -23,31 +23,41 @@ in vec3 FragPos;
 float LightPower = 1.0f;
 
 // Uniform
-uniform Light light;  
+uniform DirLight dirLight;
 uniform Material material;
 uniform vec3 viewPos;
 
 uniform sampler2D ourTexture;
 
-void main()
-{
- // Ambient
- vec3 ambient = light.ambient * material.ambient;
+//Definition of functions
+vec3 calculateDirLight(DirLight light,vec3 normal,vec3 viewDir);
 
- // Diffuse 
+void main()
+{ 
  vec3 norm = normalize(Normal);
- vec3 lightDir = normalize(light.position - FragPos);
- float diff = max(dot(norm, lightDir), 0.0);
- vec3 diffuse = light.diffuse * (diff * material.diffuse);
-  
- // Specular
  vec3 viewDir = normalize(viewPos - FragPos);
- vec3 reflectDir = reflect(-lightDir, norm);  
- float spec =  LightPower * pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
- vec3 specular = light.specular * LightPower * (spec * material.specular);  
+ 
+ vec3 result = calculateDirLight(dirLight, norm, viewDir);
        
- vec3 result = (ambient + diffuse +specular);
- //color = vec4(result, 1.0f);
- //color =texture(ourTexture,TextCoord);
  color =texture(ourTexture,TextCoord) * vec4(result, 1.0f);
+}
+
+vec3 calculateDirLight(DirLight light,vec3 normal,vec3 viewDir){
+	vec3 lightDir = normalize(-light.direction);
+
+    // Diffuse shading
+    float diff = max(dot(normal, lightDir), 0.0);
+
+    // Specular shading
+    vec3 reflectDir = reflect(-lightDir, normal);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
+
+
+    // Combine results
+    vec3 ambient = light.ambient * material.ambient;
+    vec3 diffuse = light.diffuse * (diff * material.diffuse);
+    vec3 specular = light.specular * (spec * material.specular);
+    
+    return (ambient + diffuse + specular);
+
 }

@@ -22,6 +22,13 @@
 
 #include "structdata.h"
 #include "shader.h"
+#include <string>
+
+enum typeLight{
+    directional,
+    point
+
+};
 
 class Light
 {

@@ -21,7 +21,7 @@
 #include "game.h"
 
 Game::Game(){
-    window=new Window("Prueba",800,600);
+    window=new Window("SDL_Game",800,600);
     window->createWindow();
     rootMap=new RootMap();
 }
@@ -54,7 +54,7 @@ void Game::loop(){
 
 
     //Create our light
-    Light light(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(1.0f, 1.0f, 1.0f));
+    Light light(vec3f(0.0f, -1.0f, 0.0f),vec3f(0.4f, 0.4f, 0.4f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.2f, 0.2f, 0.2f));
     light.activate(&aContext.currentShader);
 
     avatarDirection heroDir;
