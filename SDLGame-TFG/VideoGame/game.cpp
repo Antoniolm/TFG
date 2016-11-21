@@ -24,7 +24,7 @@ Game::Game(){
     window=new Window("SDL_Game",800,600);
     window->createWindow();
     rootMap=new RootMap();
-    cout<<"Lo "<<endl;
+    window->showScreen();
 }
 
 //**********************************************************************//
