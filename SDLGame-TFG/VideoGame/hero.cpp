@@ -224,6 +224,8 @@ Hero::Hero()
     moveArmRight->identity();
     moveMatrix.push_back(moveArmRight);
 
+    Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
+
     //Matrix4fDinamic
     OscillateRotation * oscillateElbow=new OscillateRotation(true,120,0,1,350,vec3f(0.75,0.5,0),2);
     OscillateRotation * oscillateElbow2=new OscillateRotation(true,120,0,1,350,vec3f(0.75,-0.5,0),2);
@@ -277,7 +279,7 @@ Hero::Hero()
     scaleArmTop->scale(0.2,0.4,0.2);
 
     Matrix4f * scaleShoulder=new Matrix4f();
-    scaleShoulder->scale(0.2,0.2,0.2);
+    scaleShoulder->scale(0.8,0.8,0.8);
 
     Matrix4f * rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(180,0.0,1.0,0.0);
@@ -325,10 +327,12 @@ Hero::Hero()
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
     shoulderLeft->add(rotateShoulder);
     shoulderLeft->add(scaleShoulder);
+    shoulderLeft->add(materialWood);
     shoulderLeft->add(static_cast<Object3D*>(shoulderObject));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
     shoulderRight->add(scaleShoulder);
+    shoulderRight->add(materialWood);
     shoulderRight->add(static_cast<Object3D*>(shoulderObject));
 
     //Arm left
@@ -421,8 +425,7 @@ Hero::Hero()
     root->add((static_cast<Object3D*>(hipNode)));
     root->add((static_cast<Object3D*>(chest_ArmsNode)));
     root->add(mat2);
-    Material * material2=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
-    root->add(material2);
+    root->add(materialWood);
     root->add(static_cast<Object3D*>(legLeft));
     root->add(mat);
     root->add(static_cast<Object3D*>(legRight));
