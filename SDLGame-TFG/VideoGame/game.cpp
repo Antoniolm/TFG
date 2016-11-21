@@ -24,7 +24,6 @@ Game::Game(){
     window=new Window("SDL_Game",800,600);
     window->createWindow();
     rootMap=new RootMap();
-    window->showScreen();
 }
 
 //**********************************************************************//
@@ -66,6 +65,9 @@ void Game::loop(){
     hero=new Hero();
     rootMap->setHero(hero);
     vec3f moveHero,movCamera;
+
+    //Show our window.
+    window->showScreen();
 
     while (!quit)
     {

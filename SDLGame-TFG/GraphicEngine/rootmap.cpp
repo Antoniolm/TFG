@@ -21,6 +21,7 @@
 
 RootMap::RootMap()
 {
+    cout<< "< Game is loading our current map >"<< endl;
     string file("geometries/cube.obj");
     Mesh * aObject=new Mesh(file);
     aObject->init();
@@ -138,7 +139,7 @@ void RootMap::visualization(Context & cv){
         for(int i=0;i<cv.posObject.size();i++){
             pos=cv.posObject[i];
             object[pos.x][(pos.z*(-1))].push_back(pos.y);
-            cout<< "Position -> x: "<< pos.x<< " y: "<< pos.y<< " z: "<< pos.z<< endl;
+            //cout<< "Position -> x: "<< pos.x<< " y: "<< pos.y<< " z: "<< pos.z<< endl;
         }
 
     }

@@ -24,6 +24,9 @@ Hero::Hero()
     direction=FORWARD;
     isMoving=true;
 
+    //Print a message for check
+    cout<< "< Game is loading our hero >"<< endl;
+
     //////////////////////////////////////////////////////
     /////           All the meshMaterial             /////
     //////////////////////////////////////////////////////
