@@ -49,14 +49,17 @@ RootMap::RootMap()
     Matrix4f * matrixt=new Matrix4f();
     matrixt->rotation(90,0.0,1.0,0.0);
 
+    //Materials
+    Material * materialGrass=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass.png");
+    Material * materialSand=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
+
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
-    Material * materialCube=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/bricks.jpg");
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
-    cubeNode->add(materialCube);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(aObject)));
 
     NodeSceneGraph * obsNode=new NodeSceneGraph();
+    obsNode->add(materialSand);
     obsNode->add(transObsCube);
     obsNode->add(static_cast<Object3D*>(cubeNode));
     obsNode->add(transObsCube);
@@ -65,6 +68,7 @@ RootMap::RootMap()
     obsNode->add(static_cast<Object3D*>(cubeNode));
 
     NodeSceneGraph * rowCube=new NodeSceneGraph();
+    rowCube->add(materialGrass);
     rowCube->add(static_cast<Object3D*>(cubeNode));
     for(int i=0;i<7;i++){
         rowCube->add(transCube);

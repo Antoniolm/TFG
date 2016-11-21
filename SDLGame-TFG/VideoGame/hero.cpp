@@ -415,8 +415,8 @@ Hero::Hero()
 
     Material * material=new Material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/bricks.jpg");
     root->add(scaleHero);
-    root->add((static_cast<Object3D*>(headNode)));
     root->add(material);
+    root->add((static_cast<Object3D*>(headNode)));
     root->add((static_cast<Object3D*>(hipNode)));
     root->add((static_cast<Object3D*>(chest_ArmsNode)));
     root->add(mat2);

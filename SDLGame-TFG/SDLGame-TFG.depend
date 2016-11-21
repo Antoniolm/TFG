@@ -389,7 +389,7 @@
 	"window.h"
 	"file_obj.h"
 
-1479685327 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1479726710 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1479052420 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -882,7 +882,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1479484789 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1479731381 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 
 1479503861 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
@@ -975,7 +975,7 @@
 	"../GraphicEngine/rootmap.h"
 	<vector>
 
-1479719339 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1479728457 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1589,4 +1589,11 @@
 	"object3d.h"
 	"matrix4f.h"
 	"structdata.h"
+
+1479722895 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixscriptloop.cpp
+	"matrixscriptloop.h"
+
+1479722345 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixscriptloop.h
+	<vector>
+	"matrix4fdynamic.h"
 

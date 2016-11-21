@@ -44,7 +44,7 @@ void Game::loop(){
     glUseProgram(aContext.currentShader.getProgram()); //We use the program now
 
     //Create our camera
-    vec3f position(2.0,4.0,2.0);
+    vec3f position(2.0,6.0,10.0);
     vec3f direction(2.0,3.0,0.0);
     vec3f up(0.0,1.0,0.0);
     aContext.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
@@ -54,7 +54,7 @@ void Game::loop(){
 
 
     //Create our light
-    Light light(vec3f(1.0f, 2.0f, 2.0f),vec3f(0.2f, 0.2f, 0.2f),vec3f(0.5f, 0.5f, 0.5f),vec3f(1.0f, 1.0f, 1.0f));
+    Light light(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(1.0f, 1.0f, 1.0f));
     light.activate(&aContext.currentShader);
 
     avatarDirection heroDir;
@@ -69,8 +69,8 @@ void Game::loop(){
             if (event.type == SDL_QUIT){
                 quit = true;
             }
-            //case: Player push a buttom
 
+            //case: Player push a buttom
             const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
             if (event.type == SDL_KEYDOWN){
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)]){
