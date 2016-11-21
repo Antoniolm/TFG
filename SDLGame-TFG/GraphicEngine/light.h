@@ -50,6 +50,11 @@ class Light
         Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular);
 
         //////////////////////////////////////////////////////////////////////////
+        /** Constructor with parameters */
+        //////////////////////////////////////////////////////////////////////////
+        Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic);
+
+        //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Light();
@@ -86,7 +91,7 @@ class Light
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setPointLight(const vec3f & aDir,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic);
+        void setPointLight(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic);
 
         //////////////////////////////////////////////////////////////////////////
         /**

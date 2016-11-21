@@ -54,8 +54,12 @@ void Game::loop(){
 
 
     //Create our light
-    Light light(vec3f(0.0f, -1.0f, 0.0f),vec3f(0.4f, 0.4f, 0.4f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.2f, 0.2f, 0.2f));
-    light.activate(&aContext.currentShader);
+    Light dirLight(vec3f(0.0f, -1.0f, 0.0f),vec3f(0.4f, 0.4f, 0.4f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.2f, 0.2f, 0.2f));
+    Light pointLight(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.4f, 0.4f, 0.4f),vec3f(0.5f, 0.5f, 0.5f),vec3f(1.0f, 1.0f, 1.0f),1.0f,0.09,0.032);
+
+    //Activate our light
+    dirLight.activate(&aContext.currentShader);
+    pointLight.activate(&aContext.currentShader);
 
     avatarDirection heroDir;
     hero=new Hero();

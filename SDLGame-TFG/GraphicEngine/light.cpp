@@ -46,6 +46,21 @@ Light::Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,c
 
 //**********************************************************************//
 
+Light::Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic){
+    position=aPos;
+    ambient=anAmbient;
+    diffuse=aDiffuse;
+    specular=aSpecular;
+
+    constant=aConstant;
+    linear=aLinear;
+    quadratic=aQuadratic;
+
+    type=point;
+}
+
+//**********************************************************************//
+
 Light::~Light()
 {
     //dtor
@@ -89,7 +104,7 @@ void Light::setPosition(const vec3f & aPos){
 //**********************************************************************//
 
 void Light::setDirectionalLight(const vec3f & aDir,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular){
-    position=aPos;
+    position=aDir;
     ambient=anAmbient;
     diffuse=aDiffuse;
     specular=aSpecular;
@@ -99,7 +114,7 @@ void Light::setDirectionalLight(const vec3f & aDir,const vec3f & anAmbient,const
 
 //**********************************************************************//
 
-void Light::setPointLight(const vec3f & aDir,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic){
+void Light::setPointLight(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic){
     position=aPos;
     ambient=anAmbient;
     diffuse=aDiffuse;
