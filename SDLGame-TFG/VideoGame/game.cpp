@@ -44,7 +44,7 @@ void Game::loop(){
     glUseProgram(aContext.currentShader.getProgram()); //We use the program now
 
     //Create our camera
-    vec3f position(2.0,6.0,10.0);
+    vec3f position(2.0,4.0,6.0);
     vec3f direction(2.0,3.0,0.0);
     vec3f up(0.0,1.0,0.0);
     aContext.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
