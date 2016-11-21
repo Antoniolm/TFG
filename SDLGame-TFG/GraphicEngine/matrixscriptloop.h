@@ -17,34 +17,34 @@
 // **
 // *********************************************************************
 
-#ifndef MATRIXSCRIPT_H
-#define MATRIXSCRIPT_H
+#ifndef MATRIXSCRIPTLOOP_H
+#define MATRIXSCRIPTLOOP_H
 
 #include <vector>
 #include "matrix4fdynamic.h"
 
-class MatrixScript : public Matrix4fDynamic
+class MatrixScriptLoop : public Matrix4fDynamic
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        MatrixScript();
+        MatrixScriptLoop();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~MatrixScript();
+        virtual ~MatrixScriptLoop();
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will add a new element to our script
-        *    \param time -> Time of our new element
+        *    \param loop -> Loop of our new element
         *    \param matrix -> matrix of this new element
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void add(float time, Matrix4fDynamic * matrix);
+        void add(int loop, Matrix4fDynamic * matrix);
 
         int getNumElement();
 
@@ -66,12 +66,13 @@ class MatrixScript : public Matrix4fDynamic
         virtual void resetState();
 
         Matrix4f & getMatrix();
+
     protected:
 
     private:
-        float currentTime;
+        int currentLoop;
         int currentMove;
-        vector<pair<float,Matrix4fDynamic *> > script;
+        vector<pair<int,Matrix4fDynamic *> > script;
 };
 
-#endif // MATRIXSCRIPT_H
+#endif // MATRIXSCRIPTLOOP_H
