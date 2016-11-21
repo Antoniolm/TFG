@@ -165,8 +165,7 @@ void calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & trian
 
 		normalFace=v1.cross(v2);
 
-		modulo = normalFace.normalize();
-		normalFace=normalFace/modulo;
+		normalFace.normalize();
 
         normals[i0]=normals[i0] + normalFace;
         normals[i1]=normals[i1] + normalFace;
@@ -174,8 +173,7 @@ void calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & trian
 	}
 
     for(int k=0;k<normals.size();k++){
-        modulo=normals[k].normalize();
-        normals[k]=normals[k]/modulo;
+        normals[k].normalize();
 	}
 
 }

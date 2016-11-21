@@ -111,10 +111,12 @@ struct vec3f{
        result.z=(x*aVec.y)-(y*aVec.x);
        return result;
     }
-    float normalize(){
+    void normalize(){
         float result=0;
         result=sqrt((x*x)+(y*y)+(z*z));
-        return result;
+        x/=result;
+        y/=result;
+        z/=result;
     }
 };
 

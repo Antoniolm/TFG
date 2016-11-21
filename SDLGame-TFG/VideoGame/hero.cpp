@@ -518,10 +518,6 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             tenthValue2=(int)posHero.z-posHero.z;
 
             hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z+0.3),posHero);
-
-            //if(tenthValue<0.5 && tenthValue2<0.5 && !hasCollision){
-              //  hasCollision=rootMap->collision(vec3f(posHero.x+0.6,posHero.y,posHero.z+0.6),posHero);
-            //}
             if(tenthValue2<0.5 && !hasCollision){
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.3),posHero);
             }
@@ -547,10 +543,6 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             tenthValue2=(int)posHero.z-posHero.z;
 
             hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z-0.3),posHero);
-
-            //if(tenthValue<0.5 && tenthValue2<0.5 && !hasCollision){
-              //  hasCollision=rootMap->collision(vec3f(posHero.x+0.6,posHero.y,posHero.z+0.6),posHero);
-            //}
             if(tenthValue2<0.5 && !hasCollision){
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.3),posHero);
             }
