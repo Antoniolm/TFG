@@ -463,7 +463,7 @@ void Hero::setMap(RootMap * aMap){
 
 bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
     bool hasCollision=false;
-    float tenthValue;
+    float tenthValue,tenthValue2;
     vec3f posHero=getPosition();
 
     //Check the collision first
@@ -504,6 +504,35 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
         break;
         case RIGHTWARD:
             tenthValue=(int)posHero.z-posHero.z;
+            hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z+0.3),posHero);
+
+            if(tenthValue<0.5 && !hasCollision){
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z+0.2),posHero);
+            }
+            else if(tenthValue>0.6 && !hasCollision){
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z-0.2),posHero);
+            }
+        break;
+        case FOR_LEFTWARD:
+            tenthValue=(int)posHero.x-posHero.x;
+            tenthValue2=(int)posHero.z-posHero.z;
+
+            hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z-0.3),posHero);
+
+            //if(tenthValue<0.5 && tenthValue2<0.5 && !hasCollision){
+              //  hasCollision=rootMap->collision(vec3f(posHero.x+0.6,posHero.y,posHero.z+0.6),posHero);
+            //}
+            if(tenthValue>0.6 && tenthValue2<0.5 && !hasCollision){
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.6,posHero.y,posHero.z-0.6),posHero);
+            }
+            else if(tenthValue<0.5 && tenthValue2>0.5 && !hasCollision){
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.6,posHero.y,posHero.z-0.6),posHero);
+            }
+        break;
+        case FOR_RIGHTWARD:
+            tenthValue=(int)posHero.x-posHero.x;
+            tenthValue2=(int)posHero.z-posHero.z;
+
             hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z),posHero);
 
             if(tenthValue<0.5 && !hasCollision){
@@ -526,9 +555,9 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             transHero.product(lineMove.updateState(time-currentTime).getMatrix());
 
 
-            int diferentDir=FORWARD-aDir;
+            //int diferentDir=FORWARD-aDir;
             moveHero->identity();
-            moveHero->rotation(90*diferentDir,0.0f,1.0f,0.0f);
+            moveHero->rotation(45*aDir,0.0f,1.0f,0.0f);
             moveHero->product(transHero.getMatrix());
 
             direction=aDir;
@@ -546,9 +575,9 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             Matrix4f transHero;
             transHero.translation(position.x,position.y,position.z);
 
-            int diferentDir=FORWARD-aDir;
+            //int diferentDir=FORWARD-aDir;
             moveHero->identity();
-            moveHero->rotation(45*diferentDir,0.0f,1.0f,0.0f);
+            moveHero->rotation(45*aDir,0.0f,1.0f,0.0f);
             moveHero->product(transHero.getMatrix());
 
             direction=aDir;
