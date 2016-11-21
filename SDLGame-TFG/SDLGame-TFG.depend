@@ -389,7 +389,7 @@
 	"window.h"
 	"file_obj.h"
 
-1479745225 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1479749150 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1479052420 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1546,10 +1546,10 @@
 	"texture.h"
 	"shader.h"
 
-1479748831 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
+1479750381 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
 	"light.h"
 
-1479748161 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.h
+1479749765 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.h
 	"structdata.h"
 	"shader.h"
 	<string>

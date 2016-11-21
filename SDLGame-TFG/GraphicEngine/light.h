@@ -73,28 +73,20 @@ class Light
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *   This method will set the ambient in our light
+        *   This method will set a directional light
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setAmbient(const vec3f & anAmbient);
+        void setDirectionalLight(const vec3f & aDir,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular);
+
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *   This method will set the diffuse in our light
+        *   This method will set a point light
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setDiffuse(const vec3f & aDiffuse);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *   This method will set the specular in our light
-        *   \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void setSpecular(const vec3f &aSpecular);
-
+        void setPointLight(const vec3f & aDir,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -139,10 +131,15 @@ class Light
     protected:
 
     private:
+        typeLight type;
         vec3f position;
         vec3f ambient;
         vec3f diffuse;
         vec3f specular;
+
+        float constant;
+        float linear;
+        float quadratic;
 };
 
 #endif // LIGHT_H

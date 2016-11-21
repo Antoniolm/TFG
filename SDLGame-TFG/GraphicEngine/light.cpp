@@ -40,6 +40,8 @@ Light::Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,c
     ambient=anAmbient;
     diffuse=aDiffuse;
     specular=aSpecular;
+
+    type=directional;
 }
 
 //**********************************************************************//
@@ -52,16 +54,30 @@ Light::~Light()
 //**********************************************************************//
 
 void Light::activate(Shader * shader){
-    //Set value to uniform about light
-    GLint lightPosLoc      = glGetUniformLocation(shader->getProgram(), "dirLight.direction");
-    GLint lightAmbientLoc  = glGetUniformLocation(shader->getProgram(), "dirLight.ambient");
-    GLint lightDiffuseLoc  = glGetUniformLocation(shader->getProgram(), "dirLight.diffuse");
-    GLint lightSpecularLoc = glGetUniformLocation(shader->getProgram(), "dirLight.specular");
 
-    glUniform3f(lightPosLoc,  position.x,  position.y, position.z);
-    glUniform3f(lightAmbientLoc,  ambient.x,  ambient.y, ambient.z);
-    glUniform3f(lightDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);
-    glUniform3f(lightSpecularLoc, specular.x,  specular.y, specular.z);
+    GLuint program=shader->getProgram();
+
+    //Set value to uniform about light
+    switch(type){
+        case directional:
+            glUniform3f(glGetUniformLocation(program, "dirLight.direction"),  position.x,  position.y, position.z);
+            glUniform3f(glGetUniformLocation(program, "dirLight.ambient"),  ambient.x,  ambient.y, ambient.z);
+            glUniform3f(glGetUniformLocation(program, "dirLight.diffuse"),  diffuse.x,  diffuse.y, diffuse.z);
+            glUniform3f(glGetUniformLocation(program, "dirLight.specular"), specular.x,  specular.y, specular.z);
+        break;
+
+        case point:
+            glUniform3f(glGetUniformLocation(program, "pointLight.position"),  position.x,  position.y, position.z);
+            glUniform3f(glGetUniformLocation(program, "pointLight.ambient"),  ambient.x,  ambient.y, ambient.z);
+            glUniform3f(glGetUniformLocation(program, "pointLight.diffuse"),  diffuse.x,  diffuse.y, diffuse.z);
+            glUniform3f(glGetUniformLocation(program, "pointLight.specular"), specular.x,  specular.y, specular.z);
+            glUniform1f(glGetUniformLocation(program, "pointLight.constant"), constant);
+            glUniform1f(glGetUniformLocation(program, "pointLight.linear"), linear);
+            glUniform1f(glGetUniformLocation(program, "pointLight.quadratic"), quadratic);
+        break;
+    }
+
+
 }
 
 //**********************************************************************//
@@ -72,20 +88,28 @@ void Light::setPosition(const vec3f & aPos){
 
 //**********************************************************************//
 
-void Light::setAmbient(const vec3f & anAmbient){
+void Light::setDirectionalLight(const vec3f & aDir,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular){
+    position=aPos;
     ambient=anAmbient;
-}
-
-//**********************************************************************//
-
-void Light::setDiffuse(const vec3f & aDiffuse){
     diffuse=aDiffuse;
+    specular=aSpecular;
+
+    type=directional;
 }
 
 //**********************************************************************//
 
-void Light::setSpecular(const vec3f &aSpecular){
+void Light::setPointLight(const vec3f & aDir,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic){
+    position=aPos;
+    ambient=anAmbient;
+    diffuse=aDiffuse;
     specular=aSpecular;
+
+    constant=aConstant;
+    linear=aLinear;
+    quadratic=aQuadratic;
+
+    type=point;
 }
 
 //**********************************************************************//
