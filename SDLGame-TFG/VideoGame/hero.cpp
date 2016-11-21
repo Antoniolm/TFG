@@ -439,17 +439,17 @@ Hero::~Hero()
 //**********************************************************************//
 
 void Hero::visualization(Context & cv){
-    cv.visualization_mode=2;
-    float time=SDL_GetTicks();
+    root->visualization(cv);
+}
 
+//**********************************************************************//
+
+void Hero::updateState(float time){
     if(isMoving)
         animation.updateState(time-currentTime);
-    GLfloat * matrix;
 
     for(int i=0;i<moveMatrix.size();i++)
         moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
-
-    root->visualization(cv);
 
     currentTime+=(time-currentTime);
 }

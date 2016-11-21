@@ -53,6 +53,15 @@ class Hero: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will update the state of the object. That change need the
+        *    current time in our application
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        virtual void updateState(float time);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will set our map
         *    \return void
         */
