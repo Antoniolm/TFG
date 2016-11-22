@@ -414,7 +414,7 @@ Hero::Hero()
     chestNode->add(static_cast<Object3D*>(chestObject));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
-    Material * materialHead=new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.1f, 0.1f, 0.1f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodFace.png");
+    Material * materialHead=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodFace.png");
     headNode->add(transHead);
     headNode->add(materialHead);
     headNode->add(static_cast<Object3D*>(headObject));
@@ -427,10 +427,10 @@ Hero::Hero()
     chest_ArmsNode->add(trasn2Arms);
     chest_ArmsNode->add(static_cast<Object3D*>(ArmRight));
 
-    Material * material=new Material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/bricks.jpg");
+    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     root->add(scaleHero);
     root->add(material);
-    //root->add((static_cast<Object3D*>(headNode)));
+    root->add((static_cast<Object3D*>(headNode)));
     root->add((static_cast<Object3D*>(hipNode)));
     root->add((static_cast<Object3D*>(chest_ArmsNode)));
     root->add(mat2);
