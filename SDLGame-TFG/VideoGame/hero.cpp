@@ -259,10 +259,10 @@ Hero::Hero()
     animation.add(ArmScriptRight);
 
     Matrix4f * scaleHand=new Matrix4f();
-    scaleHand->scale(0.24,0.18,0.2);
+    scaleHand->scale(0.26,0.18,0.2);
 
     Matrix4f * transHand=new Matrix4f();
-    transHand->translation(0.0,-0.1,0.0);
+    transHand->translation(0.0,-0.3,0.1);
 
     Matrix4f * wristHandTransMatrix=new Matrix4f();
     wristHandTransMatrix->translation(0.0,-0.5,0.0);
@@ -390,7 +390,7 @@ Hero::Hero()
     scaleHead->scale(0.5,0.5,0.5);
 
     Matrix4f *transHead=new Matrix4f();
-    transHead->translation(0.0,2.8,0.4);
+    transHead->translation(0.0,2.8,0.2);
 
     Matrix4f *transChest=new Matrix4f();
     transChest->translation(0.0,1.1,0.0);

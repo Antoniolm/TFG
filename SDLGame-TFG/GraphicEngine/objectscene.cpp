@@ -40,10 +40,9 @@ ObjectScene::~ObjectScene()
 //**********************************************************************//
 
 void ObjectScene::visualization(Context & vis){
-    position=vec4f();
 
     Matrix4f * transformation = &(vis.matrixStack.getMatrix());
-    position=transformation->product(position);
+    position=transformation->product(vec4f());
     vis.posObject.push_back(vec3f(position.x,position.y,position.z));
 
     object->visualization(vis);
