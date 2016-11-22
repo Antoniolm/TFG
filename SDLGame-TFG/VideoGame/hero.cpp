@@ -228,6 +228,7 @@ Hero::Hero()
     moveMatrix.push_back(moveArmRight);
 
     Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
+    Material * materialChest=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodChest.png");
 
     //Matrix4fDinamic
     OscillateRotation * oscillateElbow=new OscillateRotation(true,120,0,1,350,vec3f(0.75,0.5,0),2);
@@ -383,7 +384,7 @@ Hero::Hero()
     trasn2Arms2->translation(1.0,0.7,0.0);
 
     Matrix4f *scaleHip=new Matrix4f();
-    scaleHip->scale(0.4,0.4,0.3);
+    scaleHip->scale(0.3,0.4,0.3);
 
     Matrix4f *scaleHead=new Matrix4f();
     scaleHead->scale(0.5,0.5,0.5);
@@ -392,12 +393,16 @@ Hero::Hero()
     transHead->translation(0.0,2.8,0.4);
 
     Matrix4f *transChest=new Matrix4f();
-    transChest->translation(0.0,1.15,0.0);
+    transChest->translation(0.0,1.1,0.0);
+
+    Matrix4f *transHip=new Matrix4f();
+    transHip->translation(0.0,-0.2,0.0);
 
     Matrix4f *scaleChest=new Matrix4f();
-    scaleChest->scale(0.9,0.9,0.6);
+    scaleChest->scale(0.8,0.9,0.6);
 
     NodeSceneGraph * hipNode=new NodeSceneGraph();
+    hipNode->add(transHip);
     hipNode->add(scaleHip);
     Material * material4=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/prueba.png");
     hipNode->add(material4);
@@ -405,6 +410,7 @@ Hero::Hero()
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);
+    chestNode->add(materialChest);
     chestNode->add(static_cast<Object3D*>(chestObject));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
@@ -424,7 +430,7 @@ Hero::Hero()
     Material * material=new Material(vec3f(1.0f, 0.5f, 0.5f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/bricks.jpg");
     root->add(scaleHero);
     root->add(material);
-    root->add((static_cast<Object3D*>(headNode)));
+    //root->add((static_cast<Object3D*>(headNode)));
     root->add((static_cast<Object3D*>(hipNode)));
     root->add((static_cast<Object3D*>(chest_ArmsNode)));
     root->add(mat2);
