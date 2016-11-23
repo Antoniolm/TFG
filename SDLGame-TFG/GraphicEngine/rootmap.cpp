@@ -97,11 +97,12 @@ RootMap::RootMap()
     gravityNode->add(transGravityCube);
     gravityNode->add(static_cast<Object3D*>(cubeNode));
 
-    objectStatic.push_back(new ObjectScene(ColumCube));
-    objectStatic.push_back(new ObjectScene(obsNode));
-    objectStatic.push_back(new ObjectScene(gravityNode));
-    objectStatic.push_back(new ObjectScene(ColumCubeDown));
+    objs.push_back(new ObjectScene(ColumCube));
+    objs.push_back(new ObjectScene(obsNode));
+    objs.push_back(new ObjectScene(gravityNode));
+    objs.push_back(new ObjectScene(ColumCubeDown));
 
+    //visualization;
 }
 
 //**********************************************************************//
@@ -122,11 +123,9 @@ void RootMap::setHero(Hero * theHero){
 
 void RootMap::visualization(Context & cv){
 
-    list<ObjectScene *>::iterator it;
-
     //Draw the static object
-    for(it=objectStatic.begin();it!=objectStatic.end();it++){
-        (*it)->visualization(cv);
+    for(int i=0;i<objs.size();i++){
+        objs[i]->visualization(cv);
     }
 
     //Make the colission map
@@ -153,13 +152,16 @@ void RootMap::visualization(Context & cv){
     }
 
     //Draw hero
-    hero->updateState(SDL_GetTicks());
+    updateState(SDL_GetTicks());
     hero->visualization(cv);
 }
 
 //**********************************************************************//
 
 void RootMap::updateState(float time){
+    for(int i=0;i<objs.size();i++)
+        objs[i]->updateState(time);
+    hero->updateState(time);
 }
 
 //**********************************************************************//
@@ -173,6 +175,7 @@ bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
 
     if(tam!=0 && ((dynamicObj.x+0.5 >= indexObj.x-0.5 && dynamicObj.x+0.5 <= indexObj.x+0.5 )||(dynamicObj.x-0.5 >= indexObj.x-0.5 && dynamicObj.x-0.5 <= indexObj.x+0.5))
        &&((-dynamicObj.z+0.5 >= -indexObj.z-0.5 && -dynamicObj.z+0.5 <= -indexObj.z+0.5 )||(-dynamicObj.z-0.5 >= -indexObj.z-0.5 && -dynamicObj.z-0.5 <= -indexObj.z+0.5))){
+
         for(;it!=endIt && !result;it++){
             if((dynamicObj.y+0.5 > (*it)-0.5 && dynamicObj.y+0.5 < (*it)+0.5 )||(dynamicObj.y-0.5 > (*it)-0.5 && dynamicObj.y-0.5 < (*it)+0.5))
                 result=true;

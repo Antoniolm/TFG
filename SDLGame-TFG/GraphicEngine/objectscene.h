@@ -64,6 +64,7 @@ class ObjectScene : public Object3D
     private:
         vec4f position;
         Object3D * object;
+        Matrix4f matrix;
 };
 
 #endif // OBJECTSCENE_H
