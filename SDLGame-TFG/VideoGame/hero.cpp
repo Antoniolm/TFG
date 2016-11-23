@@ -414,7 +414,7 @@ Hero::Hero()
     chestNode->add(static_cast<Object3D*>(chestObject));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
-    Material * materialHead=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodFace.png");
+    Material * materialHead=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodHead.png");
     headNode->add(transHead);
     headNode->add(materialHead);
     headNode->add(static_cast<Object3D*>(headObject));
@@ -638,7 +638,7 @@ void Hero::noMove(){
 
 //**********************************************************************//
 
-void Hero::gravity(float velocity){
+bool Hero::gravity(float velocity){
     bool hasCollision=false;
     float tenthValueX,tenthValueZ;
     vec3f posHero=getPosition();
@@ -688,6 +688,8 @@ void Hero::gravity(float velocity){
         LinearMovement transHero(0.0,velocity,0.0);
         moveHero->product(transHero.updateState(time-currentTime).getMatrix());
     }
+
+    return hasCollision;
 }
 
 //**********************************************************************//

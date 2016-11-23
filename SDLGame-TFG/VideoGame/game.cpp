@@ -132,7 +132,10 @@ void Game::loop(){
         //}
         window->cleanScreen();
         rootMap->visualization(aContext);
-        hero->gravity(-60.0);
+        if(!hero->gravity(-60.0)){
+            movCamera.x=0.0; movCamera.y=1.0; movCamera.z=0.0;
+            aContext.camera.moveCamera(movCamera,&aContext.currentShader);
+        }
         aContext.posObject.clear();
         window->updateScreen();
     }
