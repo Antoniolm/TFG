@@ -83,8 +83,8 @@ class RootMap : public Object3D
 
     private:
         vector<vector<list<float> > > object;
-        //map<pair<int,int>,list<ObjectScene*> > object;
-        list<Object3D *> objectStatic;
+        //vector<float> object[20][20];
+        list<ObjectScene *> objectStatic;
         Hero * hero;
 };
 

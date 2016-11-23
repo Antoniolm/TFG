@@ -97,10 +97,11 @@ RootMap::RootMap()
     gravityNode->add(transGravityCube);
     gravityNode->add(static_cast<Object3D*>(cubeNode));
 
-    objectStatic.push_back(ColumCube);
-    objectStatic.push_back(obsNode);
-    objectStatic.push_back(gravityNode);
-    objectStatic.push_back(ColumCubeDown);
+    objectStatic.push_back(new ObjectScene(ColumCube));
+    objectStatic.push_back(new ObjectScene(obsNode));
+    objectStatic.push_back(new ObjectScene(gravityNode));
+    objectStatic.push_back(new ObjectScene(ColumCubeDown));
+
 }
 
 //**********************************************************************//
@@ -121,7 +122,7 @@ void RootMap::setHero(Hero * theHero){
 
 void RootMap::visualization(Context & cv){
 
-    list<Object3D *>::iterator it;
+    list<ObjectScene *>::iterator it;
 
     //Draw the static object
     for(it=objectStatic.begin();it!=objectStatic.end();it++){
