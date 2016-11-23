@@ -122,10 +122,10 @@ void Camera::activateCamera(Shader * shader){
 
 //**********************************************************************//
 
-void Camera::moveCamera(vec3f & pos,Shader *shader){
+void Camera::moveCamera(vec3f pos,Shader *shader){
 
-    position.x+=pos.x;position.y+=pos.y;position.z+=pos.z;
-    target.x+=pos.x;target.y+=pos.y;target.z+=pos.z;
+    position.x=pos.x;position.y=pos.y+2.0f;position.z=pos.z+5.0f;
+    target.x=pos.x;target.y=pos.y;target.z=pos.z;
     createCamera();
 
     GLint viewLocation= glGetUniformLocation(shader->getProgram(),"view");

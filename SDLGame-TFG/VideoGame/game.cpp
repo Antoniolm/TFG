@@ -64,7 +64,7 @@ void Game::loop(){
     avatarDirection heroDir;
     hero=new Hero();
     rootMap->setHero(hero);
-    vec3f moveHero,movCamera;
+    vec3f moveHero;
 
     //Show our window.
     window->showScreen();
@@ -81,49 +81,41 @@ void Game::loop(){
             const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
             if (event.type == SDL_KEYDOWN){
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)]){
-                    movCamera.x=-0.05; movCamera.y=0.0; movCamera.z=0.0;
                     moveHero.x=-3.0; moveHero.y=0.0; moveHero.z=0.0;
                     heroDir=LEFTWARD;
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-                    movCamera.x=+0.05; movCamera.y=0.0; movCamera.z=0.0;
                     moveHero.x=3.0; moveHero.y=0.0; moveHero.z=0.0;
                     heroDir=RIGHTWARD;
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-                    movCamera.x=0.0; movCamera.y=0.0; movCamera.z=-0.05;
                     moveHero.x=0.0; moveHero.y=0.0; moveHero.z=-3.0;
                     heroDir=BACKWARD;
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]){
-                    movCamera.x=0.0; movCamera.y=0.0; movCamera.z=0.05;
                     moveHero.x=0.0; moveHero.y=0.0; moveHero.z=3.0;
                     heroDir=FORWARD;
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
-                    movCamera.x=-0.05; movCamera.y=0.0; movCamera.z=0.05;
                     moveHero.x=-3.0; moveHero.y=0.0; moveHero.z=3.0;
                     heroDir=FOR_LEFTWARD;
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-                    movCamera.x=0.05; movCamera.y=0.0; movCamera.z=0.05;
                     moveHero.x=3.0; moveHero.y=0.0; moveHero.z=3.0;
                     heroDir=FOR_RIGHTWARD;
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
-                    movCamera.x=-0.05; movCamera.y=0.0; movCamera.z=-0.05;
                     moveHero.x=-3.0; moveHero.y=0.0; moveHero.z=-3.0;
                     heroDir=BACK_LEFTWARD;
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-                    movCamera.x=0.05; movCamera.y=0.0; movCamera.z=-0.05;
                     moveHero.x=3.0; moveHero.y=0.0; moveHero.z=-3.0;
                     heroDir=BACK_RIGHTWARD;
                 }
 
 
                 if(hero->moveBody(moveHero,heroDir))
-                    aContext.camera.moveCamera(movCamera,&aContext.currentShader);
+                    aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
 
             }
             else{
@@ -133,11 +125,7 @@ void Game::loop(){
         window->cleanScreen();
         rootMap->visualization(aContext);
         if(hero->gravity(-60.0)){
-            movCamera.x=0.0; movCamera.y=-0.02; movCamera.z=0.0;
-            aContext.camera.moveCamera(movCamera,&aContext.currentShader);
-        }
-        else{
-            movCamera.x=0.0; movCamera.y=0.0; movCamera.z=0.0;
+            aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
         }
         aContext.posObject.clear();
         window->updateScreen();
