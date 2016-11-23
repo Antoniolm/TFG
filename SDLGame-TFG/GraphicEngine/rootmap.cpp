@@ -47,6 +47,9 @@ RootMap::RootMap()
     Matrix4f * transRow=new Matrix4f();
     transRow->translation(0.0,0.0,-1.0);
 
+    Matrix4f * transRowDown=new Matrix4f();
+    transRowDown->translation(8.0,-2.0,0.0);
+
     Matrix4f * matrixt=new Matrix4f();
     matrixt->rotation(90,0.0,1.0,0.0);
 
@@ -85,6 +88,10 @@ RootMap::RootMap()
         ColumCube->add(static_cast<Object3D*>(rowCube));
     }
 
+    NodeSceneGraph * ColumCubeDown=new NodeSceneGraph();
+    ColumCubeDown->add(transRowDown);
+    ColumCubeDown->add(static_cast<Object3D*>(ColumCube));
+
 
     NodeSceneGraph * gravityNode=new NodeSceneGraph();
     gravityNode->add(transGravityCube);
@@ -93,7 +100,7 @@ RootMap::RootMap()
     objectStatic.push_back(ColumCube);
     objectStatic.push_back(obsNode);
     objectStatic.push_back(gravityNode);
-    //objectDinamic.push_back(root);
+    objectStatic.push_back(ColumCubeDown);
 }
 
 //**********************************************************************//
@@ -126,11 +133,11 @@ void RootMap::visualization(Context & cv){
         //Initialization
         list<float> aux;
         vector<list<float> > auxVec;
-        for(int j=0;j<11;j++){
+        for(int j=0;j<20;j++){
                 auxVec.push_back(aux);
         }
 
-        for(int i=0;i<11;i++){
+        for(int i=0;i<20;i++){
             object.push_back(auxVec);
         }
 

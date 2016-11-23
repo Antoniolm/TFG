@@ -689,7 +689,7 @@ bool Hero::gravity(float velocity){
         moveHero->product(transHero.updateState(time-currentTime).getMatrix());
     }
 
-    return hasCollision;
+    return !hasCollision;
 }
 
 //**********************************************************************//
