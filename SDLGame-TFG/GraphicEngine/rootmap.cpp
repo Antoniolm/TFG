@@ -28,6 +28,10 @@ RootMap::RootMap(Hero * aHero)
     Mesh * aObject=new Mesh(file);
     aObject->init();
 
+    file="geometries/Cliff_low.obj";
+    Mesh * rockObject=new Mesh(file);
+    rockObject->init();
+
     Matrix4f *scaleCube =new Matrix4f();
     scaleCube->scale(0.5,0.5,0.5);
 
@@ -37,11 +41,20 @@ RootMap::RootMap(Hero * aHero)
     Matrix4f * transOneCube=new Matrix4f();
     transOneCube->translation(0.5,0.5,-0.5);
 
+    Matrix4f * transGrass=new Matrix4f();
+    transGrass->translation(0.0,1.0,0.0);
+
     Matrix4f * transObsCube=new Matrix4f();
     transObsCube->translation(2.0,1.0,-2.0);
 
     Matrix4f * transGravityCube=new Matrix4f();
     transGravityCube->translation(1,1.0,-1.0);
+
+    Matrix4f * scaleRock=new Matrix4f();
+    scaleRock->scale(0.02,0.02,0.02);
+
+    Matrix4f * transRock=new Matrix4f();
+    transRock->translation(4.5,1.5,-1.5);
 
     Matrix4f * transCube=new Matrix4f();
     transCube->translation(1.0,0.0,0.0);
@@ -59,6 +72,7 @@ RootMap::RootMap(Hero * aHero)
     Material * materialGrass=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass.png");
     Material * materialSand=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
     Material * materialBox=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
+    Material * materialRock=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/rock.png");
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
@@ -99,10 +113,19 @@ RootMap::RootMap(Hero * aHero)
     gravityNode->add(transGravityCube);
     gravityNode->add(static_cast<Object3D*>(cubeNode));
 
+
+
+    NodeSceneGraph * rockNode=new NodeSceneGraph();
+    rockNode->add(transRock);
+    rockNode->add(scaleRock);
+    rockNode->add(materialRock);
+    rockNode->add(static_cast<Object3D*>(new ObjectScene(rockObject)));
+
     objs.push_back(new ObjectScene(ColumCube));
     objs.push_back(new ObjectScene(obsNode));
     objs.push_back(new ObjectScene(gravityNode));
     objs.push_back(new ObjectScene(ColumCubeDown));
+    objs.push_back(new ObjectScene(rockNode));
 
     //visualization;
     Context cv;

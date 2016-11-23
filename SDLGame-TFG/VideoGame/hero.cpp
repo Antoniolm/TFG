@@ -517,7 +517,7 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
         break;
         case RIGHTWARD:
             tenthValue=(int)posHero.z-posHero.z;
-            hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z+0.3),posHero);
+            hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z),posHero);
 
             if(tenthValue<0.5 && !hasCollision){
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z+0.2),posHero);
