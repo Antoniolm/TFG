@@ -43,12 +43,14 @@ void ObjectScene::visualization(Context & vis){
     matrix = vis.matrixStack.getMatrix();
     position=matrix.product(vec4f());
     vis.posObject.push_back(vec3f(position.x,position.y,position.z));
+
     object->visualization(vis);
 }
 
 //**********************************************************************//
 
 void ObjectScene::updateState(float time){
+    object->updateState(time);
 }
 
 //**********************************************************************//
