@@ -44,7 +44,7 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        RootMap();
+        RootMap(Hero * aHero);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -83,7 +83,7 @@ class RootMap : public Object3D
 
     private:
         vector<vector<list<float> > > object;
-        //vector<float> indexMap[20][20];
+        vector<float> indexMap[30][30];
         vector<ObjectScene *> objs;
         Hero * hero;
 };

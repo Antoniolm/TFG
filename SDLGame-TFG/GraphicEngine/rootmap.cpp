@@ -19,9 +19,11 @@
 
 #include "rootmap.h"
 
-RootMap::RootMap()
+RootMap::RootMap(Hero * aHero)
 {
     cout<< "< Game is loading our current map >"<< endl;
+    setHero(aHero);
+
     string file("geometries/cube.obj");
     Mesh * aObject=new Mesh(file);
     aObject->init();
@@ -103,6 +105,17 @@ RootMap::RootMap()
     objs.push_back(new ObjectScene(ColumCubeDown));
 
     //visualization;
+    Context cv;
+    visualization(cv);
+
+    vec3f pos;
+
+    //Push all the positions
+    for(int i=0;i<cv.posObject.size();i++){
+        pos=cv.posObject[i];
+        indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(pos.y);
+    }
+
 }
 
 //**********************************************************************//
@@ -123,36 +136,13 @@ void RootMap::setHero(Hero * theHero){
 
 void RootMap::visualization(Context & cv){
 
-    //Draw the static object
+    //Draw object
     for(int i=0;i<objs.size();i++){
         objs[i]->visualization(cv);
     }
 
-    //Make the colission map
-    if(object.size()==0){
-        //Initialization
-        list<float> aux;
-        vector<list<float> > auxVec;
-        for(int j=0;j<20;j++){
-                auxVec.push_back(aux);
-        }
-
-        for(int i=0;i<20;i++){
-            object.push_back(auxVec);
-        }
-
-        vec3f pos;
-        //Push all the positions
-        for(int i=0;i<cv.posObject.size();i++){
-            pos=cv.posObject[i];
-            object[pos.x][(pos.z*(-1))].push_back(pos.y);
-            //cout<< "Position -> x: "<< pos.x<< " y: "<< pos.y<< " z: "<< pos.z<< endl;
-        }
-
-    }
-
     //Draw hero
-    updateState(SDL_GetTicks());
+    hero->updateState(SDL_GetTicks());
     hero->visualization(cv);
 }
 
@@ -168,10 +158,10 @@ void RootMap::updateState(float time){
 
 bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
     bool result=false;
-    int tam=object[(int)indexObj.x][(int)indexObj.z*-1].size();
+    int tam=indexMap[(int)indexObj.x][(int)indexObj.z*-1].size();
 
-    list<float>::iterator it=object[(int)indexObj.x][(int)indexObj.z*-1].begin();
-    list<float>::iterator endIt=object[(int)indexObj.x][(int)indexObj.z*-1].end();
+    vector<float>::iterator it=indexMap[(int)indexObj.x][(int)indexObj.z*-1].begin();
+    vector<float>::iterator endIt=indexMap[(int)indexObj.x][(int)indexObj.z*-1].end();
 
     if(tam!=0 && ((dynamicObj.x+0.5 >= indexObj.x-0.5 && dynamicObj.x+0.5 <= indexObj.x+0.5 )||(dynamicObj.x-0.5 >= indexObj.x-0.5 && dynamicObj.x-0.5 <= indexObj.x+0.5))
        &&((-dynamicObj.z+0.5 >= -indexObj.z-0.5 && -dynamicObj.z+0.5 <= -indexObj.z+0.5 )||(-dynamicObj.z-0.5 >= -indexObj.z-0.5 && -dynamicObj.z-0.5 <= -indexObj.z+0.5))){

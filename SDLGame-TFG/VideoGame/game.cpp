@@ -23,7 +23,10 @@
 Game::Game(){
     window=new Window("SDL_Game",800,600);
     window->createWindow();
-    rootMap=new RootMap();
+
+    //Create hero and our map
+    hero=new Hero();
+    rootMap=new RootMap(hero);
 }
 
 //**********************************************************************//
@@ -62,8 +65,6 @@ void Game::loop(){
     pointLight.activate(&aContext.currentShader);
 
     avatarDirection heroDir;
-    hero=new Hero();
-    rootMap->setHero(hero);
     vec3f moveHero;
 
     //Show our window.
@@ -123,6 +124,7 @@ void Game::loop(){
             }
         //}
         window->cleanScreen();
+        rootMap->updateState(SDL_GetTicks());
         rootMap->visualization(aContext);
         if(hero->gravity(-60.0)){
             aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);

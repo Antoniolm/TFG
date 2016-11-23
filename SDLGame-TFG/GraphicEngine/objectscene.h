@@ -59,6 +59,8 @@ class ObjectScene : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
+        vec3f getPosition();
+
     protected:
 
     private:
