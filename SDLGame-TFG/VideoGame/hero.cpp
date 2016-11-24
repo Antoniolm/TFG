@@ -230,6 +230,7 @@ Hero::Hero()
     Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     Material * materialChest=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodChest.png");
 
+
     //Matrix4fDinamic
     OscillateRotation * oscillateElbow=new OscillateRotation(true,120,0,1,350,vec3f(0.75,0.5,0),2);
     OscillateRotation * oscillateElbow2=new OscillateRotation(true,120,0,1,350,vec3f(0.75,-0.5,0),2);
@@ -259,22 +260,13 @@ Hero::Hero()
     animation.add(ArmScriptRight);
 
     Matrix4f * scaleHand=new Matrix4f();
-    scaleHand->scale(0.26,0.18,0.2);
+    scaleHand->scale(0.4,0.3,0.4);
 
     Matrix4f * transHand=new Matrix4f();
-    transHand->translation(0.0,-0.3,0.1);
+    transHand->translation(0.0,-0.8,0.1);
 
-    Matrix4f * wristHandTransMatrix=new Matrix4f();
-    wristHandTransMatrix->translation(0.0,-0.5,0.0);
-
-    Matrix4f * elbowWristTransMatrix=new Matrix4f();
-    elbowWristTransMatrix->translation(0.0,-0.4,0.0);
-
-    Matrix4f * rotateXHand=new Matrix4f();
-    rotateXHand->rotation(180,1,0.0,0);
-
-    Matrix4f * rotateZHand=new Matrix4f();
-    rotateZHand->rotation(90,0,1,0);
+    Matrix4f * rotateYHand=new Matrix4f();
+    rotateYHand->rotation(180,0,1,0);
 
     Matrix4f * scaleElbowCylin=new Matrix4f();
     scaleElbowCylin->scale(0.2,0.3,0.2);
@@ -302,30 +294,22 @@ Hero::Hero()
     wrist->add(static_cast<Object3D*>(sphereObject));
     hand->add(transHand);
     hand->add(scaleHand);
+    hand->add(materialLeg);
     hand->add(static_cast<Object3D*>(handObject));
-    wrist_hand->add(wristHandTransMatrix);
-    //wrist_hand->add(static_cast<Object3D*>(wrist));
-    wrist_hand->add(materialFoot);
-    wrist_hand->add(static_cast<Object3D*>(hand));
 
     //elbow + wrist
-    NodeSceneGraph * elbow_wrist=new NodeSceneGraph();
-    elbow_wrist->add(static_cast<Object3D*>(wrist));
-    elbow_wrist->add(elbowWristTransMatrix);
-    elbow_wrist->add(static_cast<Object3D*>(wrist_hand));
-    elbow_wrist->add(scaleElbowCylin);
-    elbow_wrist->add(static_cast<Object3D*>(pillObject));
 
     //Arms
     NodeSceneGraph * elbow_wristRight=new NodeSceneGraph();
     elbow_wristRight->add(transElbow);
     elbow_wristRight->add(moveElbowRight);
-    elbow_wristRight->add(static_cast<Object3D*>(elbow_wrist));
+    elbow_wristRight->add(static_cast<Object3D*>(hand));
 
     NodeSceneGraph * elbow_wristLeft=new NodeSceneGraph();
     elbow_wristLeft->add(transElbow);
     elbow_wristLeft->add(moveElbowLeft);
-    elbow_wristLeft->add(static_cast<Object3D*>(elbow_wrist));
+    elbow_wristLeft->add(rotateYHand);
+    elbow_wristLeft->add(static_cast<Object3D*>(hand));
 
     //Shoulder
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
