@@ -31,7 +31,7 @@
 #include <vector>
 
 class MaterialStack;
-
+class Object3D;
 class Context
 {
     public:
@@ -52,7 +52,7 @@ class Context
         MaterialStack materialStack;
         Camera camera;
         Shader currentShader;
-        vector<vec3f> posObject;
+        vector<Object3D *> posObject;
 
 
     protected:

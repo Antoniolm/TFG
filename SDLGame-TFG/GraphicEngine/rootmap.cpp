@@ -143,7 +143,7 @@ RootMap::RootMap(Hero * aHero)
 
     //Push all the positions
     for(int i=0;i<cv.posObject.size();i++){
-        pos=cv.posObject[i];
+        pos=static_cast<ObjectScene*>(cv.posObject[i])->getPosition();
         indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(pos.y);
     }
 }
