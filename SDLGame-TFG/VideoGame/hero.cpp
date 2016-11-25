@@ -367,7 +367,7 @@ Hero::Hero()
     trasn2Arms2->translation(0.9,0.7,0.0);
 
     Matrix4f *scaleHip=new Matrix4f();
-    scaleHip->scale(0.3,0.4,0.3);
+    scaleHip->scale(0.9,0.5,0.6);
 
     Matrix4f *scaleHead=new Matrix4f();
     scaleHead->scale(0.5,0.5,0.5);
@@ -379,7 +379,7 @@ Hero::Hero()
     transChest->translation(0.0,1.1,0.0);
 
     Matrix4f *transHip=new Matrix4f();
-    transHip->translation(0.0,-0.2,0.0);
+    transHip->translation(0.0,0.0,0.0);
 
     Matrix4f *scaleChest=new Matrix4f();
     scaleChest->scale(1.0,0.9,0.6);
@@ -418,9 +418,9 @@ Hero::Hero()
     root->add((static_cast<Object3D*>(chest_ArmsNode)));
     root->add(mat2);
     root->add(materialWood);
-    root->add(static_cast<Object3D*>(legLeft));
+    //root->add(static_cast<Object3D*>(legLeft));
     root->add(mat);
-    root->add(static_cast<Object3D*>(legRight));
+    //root->add(static_cast<Object3D*>(legRight));
     currentTime=SDL_GetTicks();
 }
 
