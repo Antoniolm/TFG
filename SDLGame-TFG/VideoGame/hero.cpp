@@ -38,6 +38,10 @@ Hero::Hero()
     Mesh * pillObject=new Mesh(file);
     pillObject->init();
 
+    file=string("geometries/knee.obj");
+    Mesh * kneeObject=new Mesh(file);
+    kneeObject->init();
+
     file=string("geometries/pillLeg.obj");
     Mesh * pillLegObject=new Mesh(file);
     pillLegObject->init();
@@ -71,7 +75,7 @@ Hero::Hero()
     //////////////////////////////////////////////////////
 
     Matrix4f *scaleFoot=new Matrix4f();
-    scaleFoot->scale(0.5,0.5,0.5);
+    scaleFoot->scale(0.7,0.7,0.6);
 
     Matrix4f *rotateFoot=new Matrix4f();
     rotateFoot->rotation(-90,0.0,1.0,0.0);
@@ -79,8 +83,8 @@ Hero::Hero()
     Matrix4f *scaleSphere=new Matrix4f();
     scaleSphere->scale(0.15,0.15,0.15);
 
-    Matrix4f *scalePillKnee=new Matrix4f();
-    scalePillKnee->scale(0.3,0.6,0.3);
+    Matrix4f *scaleKnee=new Matrix4f();
+    scaleKnee->scale(0.7,0.7,0.7);
 
     Matrix4f *scalePill=new Matrix4f();
     scalePill->scale(0.3,0.5,0.3);
@@ -98,7 +102,7 @@ Hero::Hero()
     transMatrix->translation(0.0,0.0,0.5);
 
     Matrix4f *transFoot=new Matrix4f();
-    transFoot->translation(0.0,-0.8,0.35);
+    transFoot->translation(0.0,-0.8,0.4);
 
     //////////////////////////////////////////////////////
     /////                  LEGS                      /////
@@ -165,11 +169,10 @@ Hero::Hero()
 
     //knee_ankle->add(transCylinder);
     //knee_ankle->add(moveKnee);
-    knee_ankle->add(static_cast<Object3D*>(ankle));
     knee_ankle->add(transCylinder);
     knee_ankle->add(static_cast<Object3D*>(foot));
-    knee_ankle->add(scalePillKnee);
-    knee_ankle->add(static_cast<Object3D*>(pillObject));
+    knee_ankle->add(scaleKnee);
+    knee_ankle->add(static_cast<Object3D*>(kneeObject));
 
     //Leg
     NodeSceneGraph * knee_ankleRight=new NodeSceneGraph();
@@ -311,34 +314,32 @@ Hero::Hero()
 
     //Shoulder
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
-    shoulderLeft->add(rotateShoulder);
     shoulderLeft->add(scaleShoulder);
-    shoulderLeft->add(materialWood);
+    shoulderLeft->add(materialLeg);
     shoulderLeft->add(static_cast<Object3D*>(shoulderObject));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
+    shoulderRight->add(rotateShoulder);
     shoulderRight->add(scaleShoulder);
-    shoulderRight->add(materialWood);
+    shoulderRight->add(materialLeg);
     shoulderRight->add(static_cast<Object3D*>(shoulderObject));
 
     //Arm left
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
     ArmLeft->add(moveArmLeft);
-    ArmLeft->add(static_cast<Object3D*>(wrist));
     ArmLeft->add(transArms);
     ArmLeft->add(static_cast<Object3D*>(elbow_wristLeft));
-    ArmLeft->add(scaleArmTop);
-    ArmLeft->add(static_cast<Object3D*>(pillObject));
+    //ArmLeft->add(scaleArmTop);
+    ArmLeft->add(static_cast<Object3D*>(shoulderLeft));
 
 
     //Arm Right
     NodeSceneGraph * ArmRight=new NodeSceneGraph();
     ArmRight->add(moveArmRight);
-    ArmRight->add(static_cast<Object3D*>(wrist));
     ArmRight->add(transArms);
     ArmRight->add(static_cast<Object3D*>(elbow_wristRight));
-    ArmRight->add(scaleArmTop);
-    ArmRight->add(static_cast<Object3D*>(pillObject));
+    //ArmRight->add(scaleArmTop);
+    ArmRight->add(static_cast<Object3D*>(shoulderRight));
 
     //////////////////////////////////////////////////////
     /////         Construction of the hero           /////
