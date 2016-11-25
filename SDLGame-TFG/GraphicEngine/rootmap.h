@@ -82,7 +82,6 @@ class RootMap : public Object3D
     protected:
 
     private:
-        vector<vector<list<float> > > object;
         vector<float> indexMap[30][30];
         vector<ObjectScene *> objs;
         Hero * hero;
