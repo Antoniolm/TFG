@@ -148,19 +148,17 @@ void RootMap::updateState(float time){
 
 //**********************************************************************//
 
-bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
+bool RootMap::collision(const vec3f & indexObj){
     bool result=false;
     int tam=indexMap[(int)indexObj.x][(int)indexObj.z*-1].size();
 
     vector<int>::iterator it=indexMap[(int)indexObj.x][(int)indexObj.z*-1].begin();
     vector<int>::iterator endIt=indexMap[(int)indexObj.x][(int)indexObj.z*-1].end();
 
-    if(tam!=0 && ((dynamicObj.x+0.5 >= indexObj.x-0.5 && dynamicObj.x+0.5 <= indexObj.x+0.5 )||(dynamicObj.x-0.5 >= indexObj.x-0.5 && dynamicObj.x-0.5 <= indexObj.x+0.5))
-       &&((-dynamicObj.z+0.5 >= -indexObj.z-0.5 && -dynamicObj.z+0.5 <= -indexObj.z+0.5 )||(-dynamicObj.z-0.5 >= -indexObj.z-0.5 && -dynamicObj.z-0.5 <= -indexObj.z+0.5))){
-
+    if(tam!=0 ){
         for(;it!=endIt && !result;it++){
             vec3f pos=objs[(*it)]->getPosition();
-            if((dynamicObj.y+0.5 > (pos.y)-0.5 && dynamicObj.y+0.5 < (pos.y)+0.5 )||(dynamicObj.y-0.5 > (pos.y)-0.5 && dynamicObj.y-0.5 < (pos.y)+0.5))
+            if((indexObj.y+0.5 > (pos.y)-0.5 && indexObj.y+0.5 < (pos.y)+0.5 )||(indexObj.y-0.5 > (pos.y)-0.5 && indexObj.y-0.5 < (pos.y)+0.5))
                 result=true;
         }
     }

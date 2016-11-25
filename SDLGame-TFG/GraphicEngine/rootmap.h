@@ -75,7 +75,7 @@ class RootMap : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        bool collision(const vec3f & indexObj, const vec3f & dynamicObj);
+        bool collision(const vec3f & indexObj);
 
 
         void setHero(Hero * theHero);
