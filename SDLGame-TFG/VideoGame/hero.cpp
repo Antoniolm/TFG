@@ -265,7 +265,7 @@ Hero::Hero()
     scaleHand->scale(0.4,0.3,0.4);
 
     Matrix4f * transHand=new Matrix4f();
-    transHand->translation(0.0,-0.8,0.1);
+    transHand->translation(0.0,-1.1,0.1);
 
     Matrix4f * rotateYHand=new Matrix4f();
     rotateYHand->rotation(180,0,1,0);
@@ -277,7 +277,7 @@ Hero::Hero()
     scaleArmTop->scale(0.2,0.4,0.2);
 
     Matrix4f * scaleShoulder=new Matrix4f();
-    scaleShoulder->scale(0.8,0.8,0.8);
+    scaleShoulder->scale(0.8,0.6,0.8);
 
     Matrix4f * rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(180,0.0,1.0,0.0);
@@ -286,7 +286,7 @@ Hero::Hero()
     transElbow->translation(0.0,-0.4,0.0);
 
     Matrix4f * transArms=new Matrix4f();
-    transArms->translation(0.0,-0.45,0.0);
+    transArms->translation(0.0,-0.6,0.0);
 
     //wrist + hand
     NodeSceneGraph * wrist=new NodeSceneGraph();
