@@ -382,7 +382,7 @@ Hero::Hero()
     transHip->translation(0.0,-0.2,0.0);
 
     Matrix4f *scaleChest=new Matrix4f();
-    scaleChest->scale(0.8,0.9,0.6);
+    scaleChest->scale(1.0,0.9,0.6);
 
     NodeSceneGraph * hipNode=new NodeSceneGraph();
     hipNode->add(transHip);
@@ -393,7 +393,7 @@ Hero::Hero()
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);
-    chestNode->add(materialChest);
+    chestNode->add(materialWood);
     chestNode->add(static_cast<Object3D*>(chestObject));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
