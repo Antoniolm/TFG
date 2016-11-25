@@ -97,8 +97,8 @@ Hero::Hero()
     Matrix4f *transMatrix=new Matrix4f();
     transMatrix->translation(0.0,0.0,0.5);
 
-    Matrix4f *AnkFootransMatrix=new Matrix4f();
-    AnkFootransMatrix->translation(0.0,-0.8,0.2);
+    Matrix4f *transFoot=new Matrix4f();
+    transFoot->translation(0.0,-0.8,0.35);
 
     //////////////////////////////////////////////////////
     /////                  LEGS                      /////
@@ -151,15 +151,14 @@ Hero::Hero()
 
     //Ankle + foot
     NodeSceneGraph * ankle=new NodeSceneGraph();
-    NodeSceneGraph * ankle_foot=new NodeSceneGraph();
+    NodeSceneGraph * foot=new NodeSceneGraph();
     ankle->add(scaleSphere);
     ankle->add(static_cast<Object3D*>(sphereObject));
-    ankle_foot->add(AnkFootransMatrix);
-    ankle_foot->add(rotateFoot);
-    ankle_foot->add(scaleFoot);
-    Material * materialFoot=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureFoot.png");
-    ankle_foot->add(materialFoot);
-    ankle_foot->add(static_cast<Object3D*>(footObject));
+    foot->add(transFoot);
+    foot->add(scaleFoot);
+    Material * materialFoot=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
+    foot->add(materialFoot);
+    foot->add(static_cast<Object3D*>(footObject));
 
     //knee + ankle
     NodeSceneGraph * knee_ankle=new NodeSceneGraph();
@@ -168,7 +167,7 @@ Hero::Hero()
     //knee_ankle->add(moveKnee);
     knee_ankle->add(static_cast<Object3D*>(ankle));
     knee_ankle->add(transCylinder);
-    knee_ankle->add(static_cast<Object3D*>(ankle_foot));
+    knee_ankle->add(static_cast<Object3D*>(foot));
     knee_ankle->add(scalePillKnee);
     knee_ankle->add(static_cast<Object3D*>(pillObject));
 
@@ -289,7 +288,6 @@ Hero::Hero()
     //wrist + hand
     NodeSceneGraph * wrist=new NodeSceneGraph();
     NodeSceneGraph * hand=new NodeSceneGraph();
-    NodeSceneGraph * wrist_hand=new NodeSceneGraph();
     wrist->add(scaleSphere);
     wrist->add(static_cast<Object3D*>(sphereObject));
     hand->add(transHand);
@@ -671,6 +669,10 @@ bool Hero::gravity(float velocity){
     if(!hasCollision){ //if not collision
         LinearMovement transHero(0.0,velocity,0.0);
         moveHero->product(transHero.updateState(time-currentTime).getMatrix());
+    }
+    else {
+
+
     }
 
     return !hasCollision;
