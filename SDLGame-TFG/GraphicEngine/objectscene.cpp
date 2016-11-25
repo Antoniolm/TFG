@@ -41,8 +41,9 @@ ObjectScene::~ObjectScene()
 
 void ObjectScene::visualization(Context & vis){
     matrix = vis.matrixStack.getMatrix();
-    position=matrix.product(vec4f());
-    vis.posObject.push_back(static_cast<Object3D *>(this));
+    if(vis.visualization_mode==1)
+        position=matrix.product(vec4f());
+    vis.posObject.push_back(vec3f(position.x,position.y,position.z));
 
     object->visualization(vis);
 }
@@ -57,4 +58,10 @@ void ObjectScene::updateState(float time){
 
 vec3f ObjectScene::getPosition(){
     return vec3f(position.x,position.y,position.z);
+}
+
+//**********************************************************************//
+
+void ObjectScene::setPosition(vec3f pos){
+    position=vec4f(pos.x,pos.y,pos.z,1.0);
 }

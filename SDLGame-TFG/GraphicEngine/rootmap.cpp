@@ -35,20 +35,8 @@ RootMap::RootMap(Hero * aHero)
     Matrix4f *scaleCube =new Matrix4f();
     scaleCube->scale(0.5,0.5,0.5);
 
-    Matrix4f * matrix2=new Matrix4f();
-    matrix2->translation(-5.0,1,0.0);
-
     Matrix4f * transOneCube=new Matrix4f();
     transOneCube->translation(0.5,0.5,-0.5);
-
-    Matrix4f * transGrass=new Matrix4f();
-    transGrass->translation(0.0,1.0,0.0);
-
-    Matrix4f * transObsCube=new Matrix4f();
-    transObsCube->translation(2.0,1.0,-2.0);
-
-    Matrix4f * transGravityCube=new Matrix4f();
-    transGravityCube->translation(1,1.0,-1.0);
 
     Matrix4f * scaleRock=new Matrix4f();
     scaleRock->scale(0.02,0.02,0.02);
@@ -58,15 +46,6 @@ RootMap::RootMap(Hero * aHero)
 
     Matrix4f * transCube=new Matrix4f();
     transCube->translation(1.0,0.0,0.0);
-
-    Matrix4f * transRow=new Matrix4f();
-    transRow->translation(0.0,0.0,-1.0);
-
-    Matrix4f * transRowDown=new Matrix4f();
-    transRowDown->translation(8.0,-2.0,0.0);
-
-    Matrix4f * matrixt=new Matrix4f();
-    matrixt->rotation(90,0.0,1.0,0.0);
 
     //Materials
     Material * materialGrass=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass.png");
@@ -89,17 +68,6 @@ RootMap::RootMap(Hero * aHero)
         }
     }
 
-    NodeSceneGraph * obsNode=new NodeSceneGraph();
-    obsNode->add(materialSand);
-    obsNode->add(transObsCube);
-    obsNode->add(static_cast<Object3D*>(cubeNode));
-    obsNode->add(materialBox);
-    obsNode->add(transObsCube);
-    obsNode->add(static_cast<Object3D*>(cubeNode));
-    obsNode->add(transObsCube);
-    obsNode->add(static_cast<Object3D*>(cubeNode));
-
-
     transOneCube=new Matrix4f();
     transOneCube->translation(2.5f,1.5f,-0.5f);
     cubeNode=new NodeSceneGraph();
@@ -118,33 +86,27 @@ RootMap::RootMap(Hero * aHero)
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
     objs.push_back(new ObjectScene(cubeNode));
 
-    /*NodeSceneGraph * gravityNode=new NodeSceneGraph();
-    gravityNode->add(transGravityCube);
-    gravityNode->add(static_cast<Object3D*>(cubeNode));
-    objs.push_back(new ObjectScene(cubeNode*/
-
     NodeSceneGraph * rockNode=new NodeSceneGraph();
     rockNode->add(transRock);
     rockNode->add(scaleRock);
     rockNode->add(materialRock);
     rockNode->add(static_cast<Object3D*>(new ObjectScene(rockObject)));
-
-    //objs.push_back(new ObjectScene(ColumCube));
-    //objs.push_back(new ObjectScene(obsNode));
-    //objs.push_back(new ObjectScene(gravityNode));
-    //objs.push_back(new ObjectScene(ColumCubeDown));
     objs.push_back(new ObjectScene(rockNode));
 
     //visualization;
     Context cv;
+    cv.visualization_mode=1;
     visualization(cv);
 
     vec3f pos;
 
     //Push all the positions
-    for(int i=0;i<cv.posObject.size();i++){
-        pos=static_cast<ObjectScene*>(cv.posObject[i])->getPosition();
-        indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(pos.y);
+    int cont=0;
+    for(int i=1;i<cv.posObject.size();i+=2){
+        pos=cv.posObject[i];
+        objs[cont]->setPosition(pos);
+        indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(cont);
+        cont++;
     }
 }
 
@@ -190,14 +152,15 @@ bool RootMap::collision(const vec3f & indexObj, const vec3f & dynamicObj){
     bool result=false;
     int tam=indexMap[(int)indexObj.x][(int)indexObj.z*-1].size();
 
-    vector<float>::iterator it=indexMap[(int)indexObj.x][(int)indexObj.z*-1].begin();
-    vector<float>::iterator endIt=indexMap[(int)indexObj.x][(int)indexObj.z*-1].end();
+    vector<int>::iterator it=indexMap[(int)indexObj.x][(int)indexObj.z*-1].begin();
+    vector<int>::iterator endIt=indexMap[(int)indexObj.x][(int)indexObj.z*-1].end();
 
     if(tam!=0 && ((dynamicObj.x+0.5 >= indexObj.x-0.5 && dynamicObj.x+0.5 <= indexObj.x+0.5 )||(dynamicObj.x-0.5 >= indexObj.x-0.5 && dynamicObj.x-0.5 <= indexObj.x+0.5))
        &&((-dynamicObj.z+0.5 >= -indexObj.z-0.5 && -dynamicObj.z+0.5 <= -indexObj.z+0.5 )||(-dynamicObj.z-0.5 >= -indexObj.z-0.5 && -dynamicObj.z-0.5 <= -indexObj.z+0.5))){
 
         for(;it!=endIt && !result;it++){
-            if((dynamicObj.y+0.5 > (*it)-0.5 && dynamicObj.y+0.5 < (*it)+0.5 )||(dynamicObj.y-0.5 > (*it)-0.5 && dynamicObj.y-0.5 < (*it)+0.5))
+            vec3f pos=objs[(*it)]->getPosition();
+            if((dynamicObj.y+0.5 > (pos.y)-0.5 && dynamicObj.y+0.5 < (pos.y)+0.5 )||(dynamicObj.y-0.5 > (pos.y)-0.5 && dynamicObj.y-0.5 < (pos.y)+0.5))
                 result=true;
         }
     }

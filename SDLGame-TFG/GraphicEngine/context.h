@@ -52,7 +52,7 @@ class Context
         MaterialStack materialStack;
         Camera camera;
         Shader currentShader;
-        vector<Object3D *> posObject;
+        vector<vec3f> posObject;
 
 
     protected:

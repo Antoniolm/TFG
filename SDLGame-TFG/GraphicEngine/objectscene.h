@@ -60,6 +60,7 @@ class ObjectScene : public Object3D
         virtual void updateState(float time);
 
         vec3f getPosition();
+        void setPosition(vec3f pos);
 
     protected:
 
