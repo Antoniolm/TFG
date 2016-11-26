@@ -190,22 +190,20 @@ Hero::Hero()
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
-    legLeft->add(static_cast<Object3D*>(ankle));
     legLeft->add(transLeg);
     legLeft->add(static_cast<Object3D*>(knee_ankleLeft));
-    legLeft->add(scalePill);
-    legLeft->add(materialLeg);
-    legLeft->add(static_cast<Object3D*>(pillLegObject));
+    legLeft->add(scaleKnee);
+    legLeft->add(materialFoot);
+    legLeft->add(static_cast<Object3D*>(kneeObject));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
-    legRight->add(static_cast<Object3D*>(ankle));
     legRight->add(transLeg);
     legRight->add(static_cast<Object3D*>(knee_ankleRight));
-    legRight->add(scalePill);
-    legRight->add(materialLeg);
-    legRight->add(static_cast<Object3D*>(pillLegObject));
+    legRight->add(scaleKnee);
+    legRight->add(materialFoot);
+    legRight->add(static_cast<Object3D*>(kneeObject));
 
     //////////////////////////////////////////////////////
     /////                  Arms                      /////
@@ -370,10 +368,10 @@ Hero::Hero()
     scaleHip->scale(0.9,0.5,0.6);
 
     Matrix4f *scaleHead=new Matrix4f();
-    scaleHead->scale(0.5,0.5,0.5);
+    scaleHead->scale(3.5,3.5,3.5);
 
     Matrix4f *transHead=new Matrix4f();
-    transHead->translation(0.0,2.8,0.2);
+    transHead->translation(0.0,2.5,0.2);
 
     Matrix4f *transChest=new Matrix4f();
     transChest->translation(0.0,1.1,0.0);
@@ -399,6 +397,7 @@ Hero::Hero()
     NodeSceneGraph * headNode=new NodeSceneGraph();
     Material * materialHead=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodHead.png");
     headNode->add(transHead);
+    headNode->add(scaleHead);
     headNode->add(materialHead);
     headNode->add(static_cast<Object3D*>(headObject));
 
@@ -418,9 +417,9 @@ Hero::Hero()
     root->add((static_cast<Object3D*>(chest_ArmsNode)));
     root->add(mat2);
     root->add(materialWood);
-    //root->add(static_cast<Object3D*>(legLeft));
+    root->add(static_cast<Object3D*>(legLeft));
     root->add(mat);
-    //root->add(static_cast<Object3D*>(legRight));
+    root->add(static_cast<Object3D*>(legRight));
     currentTime=SDL_GetTicks();
 }
 
@@ -624,8 +623,14 @@ void Hero::noMove(){
 bool Hero::gravity(float velocity){
     bool hasCollision=false;
     float tenthValueX,tenthValueZ;
+
+    float time=SDL_GetTicks();
+    LinearMovement transHero(0.0,velocity,0.0);
+    GLfloat * moveGravity=transHero.updateState(time-currentTime).getMatrix();
+    cout<< "moveGravity.y"<< moveGravity[13]<< endl;
+
     vec3f posHero=getPosition();
-    posHero.y-=0.31;
+    posHero.y-=(0.31-moveGravity[13]);
 
     //Get the tenth of our position
     tenthValueX=posHero.x-(int)posHero.x;
@@ -666,10 +671,8 @@ bool Hero::gravity(float velocity){
         }
     }
 
-    float time=SDL_GetTicks();
     if(!hasCollision){ //if not collision
-        LinearMovement transHero(0.0,velocity,0.0);
-        moveHero->product(transHero.updateState(time-currentTime).getMatrix());
+        moveHero->product(moveGravity);
     }
     else {
 
