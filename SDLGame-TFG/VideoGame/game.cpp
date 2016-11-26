@@ -45,6 +45,7 @@ void Game::loop(){
     aContext.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
     aContext.currentShader.createProgram();
     glUseProgram(aContext.currentShader.getProgram()); //We use the program now
+    glUniform1i(glGetUniformLocation(aContext.currentShader.getProgram(), "numActivateLight"), 2);
 
     //Create our camera
     vec3f position(2.0,4.0,5.0);

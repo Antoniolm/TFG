@@ -28,7 +28,7 @@ struct PointLight {
     vec3 specular;
 };
   
-#define numLight 2
+#define numLight 5
 
 // in vec3f 
 in vec3 Normal;
@@ -39,6 +39,7 @@ in vec3 FragPos;
 uniform DirLight dirLight;
 uniform Material material;
 uniform vec3 viewPos;
+uniform int numActivateLight;
 uniform PointLight pointLights[numLight];
 
 uniform sampler2D ourTexture;
@@ -54,7 +55,7 @@ void main()
  
  vec3 result = calculateDirLight(dirLight, norm, viewDir);
 
- for(int i = 0; i < numLight; i++)
+ for(int i = 0; i < numActivateLight; i++)
     result += calculatePointLight(pointLights[i], norm, FragPos, viewDir);  
        
  color =texture(ourTexture,TextCoord) * vec4(result, 1.0f);
