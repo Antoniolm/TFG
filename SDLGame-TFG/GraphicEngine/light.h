@@ -23,6 +23,7 @@
 #include "structdata.h"
 #include "shader.h"
 #include <string>
+#include <cstdlib>
 
 enum typeLight{
     directional,
@@ -65,7 +66,7 @@ class Light
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activate(Shader * shader);
+        void activate(Shader * shader,string nLight="0");
 
 
         //////////////////////////////////////////////////////////////////////////

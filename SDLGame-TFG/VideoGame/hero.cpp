@@ -669,7 +669,7 @@ bool Hero::gravity(float velocity){
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z+0.2));
         }
     }
-    else if(tenthValueX<0.5 && !hasCollision){ //Case tenth in x <0.5
+    else if(tenthValueX<0.5 && hasCollision==0){ //Case tenth in x <0.5
         if( tenthValueZ<0.5){ //case Tenth in x <0.5 and tenth in z <0.5
             hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
             if(hasCollision==0)

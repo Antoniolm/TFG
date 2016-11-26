@@ -68,7 +68,7 @@ Light::~Light()
 
 //**********************************************************************//
 
-void Light::activate(Shader * shader){
+void Light::activate(Shader * shader,string nLight){
 
     GLuint program=shader->getProgram();
 
@@ -82,13 +82,13 @@ void Light::activate(Shader * shader){
         break;
 
         case point:
-            glUniform3f(glGetUniformLocation(program, "pointLight.position"),  position.x,  position.y, position.z);
-            glUniform3f(glGetUniformLocation(program, "pointLight.ambient"),  ambient.x,  ambient.y, ambient.z);
-            glUniform3f(glGetUniformLocation(program, "pointLight.diffuse"),  diffuse.x,  diffuse.y, diffuse.z);
-            glUniform3f(glGetUniformLocation(program, "pointLight.specular"), specular.x,  specular.y, specular.z);
-            glUniform1f(glGetUniformLocation(program, "pointLight.constant"), constant);
-            glUniform1f(glGetUniformLocation(program, "pointLight.linear"), linear);
-            glUniform1f(glGetUniformLocation(program, "pointLight.quadratic"), quadratic);
+            glUniform3f(glGetUniformLocation(program,("pointLights[" + nLight + "].position").c_str()),  position.x,  position.y, position.z);
+            glUniform3f(glGetUniformLocation(program,("pointLights[" + nLight + "].ambient").c_str()),  ambient.x,  ambient.y, ambient.z);
+            glUniform3f(glGetUniformLocation(program,("pointLights[" + nLight + "].diffuse").c_str()),  diffuse.x,  diffuse.y, diffuse.z);
+            glUniform3f(glGetUniformLocation(program,("pointLights[" + nLight + "].specular").c_str()), specular.x,  specular.y, specular.z);
+            glUniform1f(glGetUniformLocation(program,("pointLights[" + nLight + "].constant").c_str()), constant);
+            glUniform1f(glGetUniformLocation(program,("pointLights[" + nLight + "].linear").c_str()), linear);
+            glUniform1f(glGetUniformLocation(program,("pointLights[" + nLight + "].quadratic").c_str()), quadratic);
         break;
     }
 
