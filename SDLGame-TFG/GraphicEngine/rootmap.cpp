@@ -148,18 +148,21 @@ void RootMap::updateState(float time){
 
 //**********************************************************************//
 
-bool RootMap::collision(const vec3f & indexObj){
-    bool result=false;
+ObjectScene * RootMap::collision(const vec3f & indexObj){
+    bool hasCollision=false;
+    ObjectScene * result=0;
     int tam=indexMap[(int)indexObj.x][(int)indexObj.z*-1].size();
 
     vector<int>::iterator it=indexMap[(int)indexObj.x][(int)indexObj.z*-1].begin();
     vector<int>::iterator endIt=indexMap[(int)indexObj.x][(int)indexObj.z*-1].end();
 
     if(tam!=0 ){
-        for(;it!=endIt && !result;it++){
+        for(;it!=endIt && !hasCollision;it++){
             vec3f pos=objs[(*it)]->getPosition();
-            if((indexObj.y+0.5 > (pos.y)-0.5 && indexObj.y+0.5 < (pos.y)+0.5 )||(indexObj.y-0.5 > (pos.y)-0.5 && indexObj.y-0.5 < (pos.y)+0.5))
-                result=true;
+            if((indexObj.y+0.5 > (pos.y)-0.5 && indexObj.y+0.5 < (pos.y)+0.5 )||(indexObj.y-0.5 > (pos.y)-0.5 && indexObj.y-0.5 < (pos.y)+0.5)){
+                hasCollision=true;
+                result=objs[(*it)];
+            }
         }
     }
 

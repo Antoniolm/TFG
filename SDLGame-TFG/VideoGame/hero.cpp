@@ -457,7 +457,8 @@ void Hero::setMap(RootMap * aMap){
 //**********************************************************************//
 
 bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
-    bool hasCollision=false;
+    ObjectScene * hasCollision;
+    bool result=false;
     float tenthValue,tenthValue2;
     vec3f posHero=getPosition();
 
@@ -467,10 +468,10 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             tenthValue=posHero.x-(int)posHero.x;
             hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.3));
 
-            if(tenthValue<0.5 && !hasCollision){
+            if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z+0.3));
             }
-            else if(tenthValue>0.6 && !hasCollision){
+            else if(tenthValue>0.6 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z+0.3));
             }
         break;
@@ -478,10 +479,10 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             tenthValue=posHero.x-(int)posHero.x;
             hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.3));
 
-            if(tenthValue<0.5 && !hasCollision){
+            if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z-0.3));
             }
-            else if(tenthValue>0.6 && !hasCollision){
+            else if(tenthValue>0.6 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z-0.3));
             }
         break;
@@ -490,10 +491,10 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
 
             hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z));
 
-            if(tenthValue<0.5 && !hasCollision){
+            if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z+0.2));
             }
-            else if(tenthValue>0.6 && !hasCollision){
+            else if(tenthValue>0.6 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z-0.2));
             }
         break;
@@ -501,10 +502,10 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             tenthValue=(int)posHero.z-posHero.z;
             hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z));
 
-            if(tenthValue<0.5 && !hasCollision){
+            if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z+0.2));
             }
-            else if(tenthValue>0.6 && !hasCollision){
+            else if(tenthValue>0.6 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z-0.2));
             }
         break;
@@ -513,10 +514,10 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             tenthValue2=(int)posHero.z-posHero.z;
 
             hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z+0.3));
-            if(tenthValue2<0.5 && !hasCollision){
+            if(tenthValue2<0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.3));
             }
-            else if(tenthValue<0.5 && !hasCollision){
+            else if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z));
             }
         break;
@@ -526,10 +527,10 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
 
             hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z+0.3));
 
-            if(tenthValue2<0.5 && !hasCollision){
+            if(tenthValue2<0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.3));
             }
-            else if(tenthValue<0.5 && !hasCollision){
+            else if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z));
             }
         break;
@@ -538,10 +539,10 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             tenthValue2=(int)posHero.z-posHero.z;
 
             hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z-0.3));
-            if(tenthValue2<0.5 && !hasCollision){
+            if(tenthValue2<0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.3));
             }
-            else if(tenthValue<0.5 && !hasCollision){
+            else if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z));
             }
         break;
@@ -551,17 +552,17 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
 
             hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z-0.3));
 
-            if(tenthValue2>0.5 && !hasCollision){
+            if(tenthValue2>0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.3));
             }
-            else if(tenthValue>0.5 && !hasCollision){
+            else if(tenthValue>0.5 && hasCollision==0){
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.3,posHero.y,posHero.z));
             }
         break;
     }
 
     float time=SDL_GetTicks();
-    if(!hasCollision){ //Case -> the hero can move = No collision
+    if(hasCollision==0){ //Case -> the hero can move = No collision
         if(direction!=aDir){
             vec4f position;
             position=moveHero->product(position);
@@ -570,8 +571,6 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             LinearMovement lineMove(aMove);
             transHero.product(lineMove.updateState(time-currentTime).getMatrix());
 
-
-            //int diferentDir=FORWARD-aDir;
             moveHero->identity();
             moveHero->rotation(45*aDir,0.0f,1.0f,0.0f);
             moveHero->product(transHero.getMatrix());
@@ -582,7 +581,6 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             LinearMovement lineMove(aMove);
             moveHero->product(lineMove.updateState(time-currentTime).getMatrix());
         }
-
     }
     else{   //Case -> not Move for colission but the hero change the rotation in the Y-axis
         if(direction!=aDir){
@@ -591,7 +589,6 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             Matrix4f transHero;
             transHero.translation(position.x,position.y,position.z);
 
-            //int diferentDir=FORWARD-aDir;
             moveHero->identity();
             moveHero->rotation(45*aDir,0.0f,1.0f,0.0f);
             moveHero->product(transHero.getMatrix());
@@ -599,11 +596,12 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             direction=aDir;
 
         }
+        result=true;
     }
 
     isMoving=true;
 
-    return !hasCollision;
+    return result;
 }
 
 //**********************************************************************//
@@ -621,13 +619,14 @@ void Hero::noMove(){
 //**********************************************************************//
 
 bool Hero::gravity(float velocity){
-    bool hasCollision=false;
+    ObjectScene * hasCollision;
+    bool result=false;
     float tenthValueX,tenthValueZ;
 
     float time=SDL_GetTicks();
     LinearMovement transHero(0.0,velocity,0.0);
     GLfloat * moveGravity=transHero.updateState(time-currentTime).getMatrix();
-    cout<< "moveGravity.y"<< moveGravity[13]<< endl;
+    //cout<< "moveGravity.y"<< moveGravity[13]<< endl;
 
     vec3f posHero=getPosition();
     posHero.y-=(0.31-moveGravity[13]);
@@ -640,46 +639,47 @@ bool Hero::gravity(float velocity){
     hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z));
 
     //Check the collision in the area
-    if(tenthValueX>0.5 && !hasCollision){ //Case tenth in x >0.5
+    if(tenthValueX>0.5 && hasCollision==0){ //Case tenth in x >0.5
         if( tenthValueZ<0.5){ //case Tenth in x >0.5 and tenth in z <0.5
             hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z));
-            if(!hasCollision)
+            if(hasCollision==0)
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.2));
-            if(!hasCollision)
+            if(hasCollision==0)
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z-0.2));
         }else{  //case Tenth in x >0.5 and tenth in z >= 0.5
             hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z));
-            if(!hasCollision)
+            if(hasCollision==0)
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.2));
-            if(!hasCollision)
+            if(hasCollision==0)
                 hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z+0.2));
         }
     }
     else if(tenthValueX<0.5 && !hasCollision){ //Case tenth in x <0.5
         if( tenthValueZ<0.5){ //case Tenth in x <0.5 and tenth in z <0.5
             hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
-            if(!hasCollision)
+            if(hasCollision==0)
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.2));
-            if(!hasCollision)
+            if(hasCollision==0)
                 hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z-0.2));
         }else{ //case Tenth in x <0.5 and tenth in z >= 0.5
             hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
-            if(!hasCollision)
+            if(hasCollision==0)
                 hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.2));
-            if(!hasCollision)
+            if(hasCollision==0)
             hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z+0.2));
         }
     }
 
-    if(!hasCollision){ //if not collision
+    if(hasCollision==0){ //if not collision
         moveHero->product(moveGravity);
+        result=true;
     }
     else {
 
 
     }
 
-    return !hasCollision;
+    return result;
 }
 
 //**********************************************************************//
