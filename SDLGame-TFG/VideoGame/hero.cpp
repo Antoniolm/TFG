@@ -264,6 +264,9 @@ Hero::Hero()
     Matrix4f * transHand=new Matrix4f();
     transHand->translation(0.0,-1.1,-0.1);
 
+    Matrix4f * transHandLeft=new Matrix4f();
+    transHandLeft->translation(0.0,-1.1,-0.2);
+
     Matrix4f * rotateXHand=new Matrix4f();
     rotateXHand->rotation(30,1,0,0);
 
@@ -293,7 +296,7 @@ Hero::Hero()
 
     //wrist + hand
     NodeSceneGraph * handLeft=new NodeSceneGraph();
-    handLeft->add(transHand);
+    handLeft->add(transHandLeft);
     handLeft->add(scaleHand);
     handLeft->add(rotateYHand);
     handLeft->add(materialLeg);
