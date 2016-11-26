@@ -581,6 +581,7 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             LinearMovement lineMove(aMove);
             moveHero->product(lineMove.updateState(time-currentTime).getMatrix());
         }
+        result=true;
     }
     else{   //Case -> not Move for colission but the hero change the rotation in the Y-axis
         if(direction!=aDir){
@@ -596,7 +597,6 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
             direction=aDir;
 
         }
-        result=true;
     }
 
     isMoving=true;
@@ -620,7 +620,7 @@ void Hero::noMove(){
 
 bool Hero::gravity(float velocity){
     ObjectScene * hasCollision;
-    bool result=false;
+    bool result=true;
     float tenthValueX,tenthValueZ;
 
     float time=SDL_GetTicks();
@@ -672,11 +672,9 @@ bool Hero::gravity(float velocity){
 
     if(hasCollision==0){ //if not collision
         moveHero->product(moveGravity);
-        result=true;
     }
     else {
-
-
+        result=false;
     }
 
     return result;
