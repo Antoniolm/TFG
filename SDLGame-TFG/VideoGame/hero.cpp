@@ -230,27 +230,26 @@ Hero::Hero()
     Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     Material * materialChest=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodChest.png");
 
-
     //Matrix4fDinamic
     OscillateRotation * oscillateElbow=new OscillateRotation(true,120,0,1,350,vec3f(0.75,0.5,0),2);
     OscillateRotation * oscillateElbow2=new OscillateRotation(true,120,0,1,350,vec3f(0.75,-0.5,0),2);
-    OscillateRotation * oscillateShoulder=new OscillateRotation(true,40,0,1,80,vec3f(1.0,0.0,0),2);
+    OscillateRotation * oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
 
     //Movement to the first arm
     MatrixScript * ElbowScriptLeft=new MatrixScript();
     MatrixScript * ArmScriptLeft=new MatrixScript();
-    ElbowScriptLeft->add(0.9,oscillateElbow);
-    ElbowScriptLeft->add(0.9,notMove);
-    ArmScriptLeft->add(0.9,oscillateShoulder);
-    ArmScriptLeft->add(0.9,notMove);
+    ElbowScriptLeft->add(0.5,notMove);
+    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,oscillateShoulder);
+    ArmScriptLeft->add(0.5,notMove);
 
     //Movement to the second arm
     MatrixScript * ElbowScriptRight=new MatrixScript();
     MatrixScript * ArmScriptRight=new MatrixScript();
-    ElbowScriptRight->add(0.9,notMove);
-    ElbowScriptRight->add(0.9,oscillateElbow2);
-    ArmScriptRight->add(0.9,notMove);
-    ArmScriptRight->add(0.9,oscillateShoulder);
+    ElbowScriptRight->add(0.5,notMove);
+    ElbowScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,oscillateShoulder);
 
 
     //Add the script to our animation
@@ -263,7 +262,10 @@ Hero::Hero()
     scaleHand->scale(0.4,0.3,0.4);
 
     Matrix4f * transHand=new Matrix4f();
-    transHand->translation(0.0,-1.1,0.1);
+    transHand->translation(0.0,-1.1,-0.1);
+
+    Matrix4f * rotateXHand=new Matrix4f();
+    rotateXHand->rotation(30,1,0,0);
 
     Matrix4f * rotateYHand=new Matrix4f();
     rotateYHand->rotation(180,0,1,0);
@@ -280,21 +282,28 @@ Hero::Hero()
     Matrix4f * rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(180,0.0,1.0,0.0);
 
+    Matrix4f * rotateXShoulder=new Matrix4f();
+    rotateXShoulder->rotation(-5,1,0,0);
+
     Matrix4f * transElbow=new Matrix4f();
     transElbow->translation(0.0,-0.4,0.0);
 
     Matrix4f * transArms=new Matrix4f();
-    transArms->translation(0.0,-0.6,0.0);
+    transArms->translation(0.0,-0.5,-0.2);
 
     //wrist + hand
-    NodeSceneGraph * wrist=new NodeSceneGraph();
-    NodeSceneGraph * hand=new NodeSceneGraph();
-    wrist->add(scaleSphere);
-    wrist->add(static_cast<Object3D*>(sphereObject));
-    hand->add(transHand);
-    hand->add(scaleHand);
-    hand->add(materialLeg);
-    hand->add(static_cast<Object3D*>(handObject));
+    NodeSceneGraph * handLeft=new NodeSceneGraph();
+    handLeft->add(transHand);
+    handLeft->add(scaleHand);
+    handLeft->add(rotateYHand);
+    handLeft->add(materialLeg);
+    handLeft->add(static_cast<Object3D*>(handObject));
+
+    NodeSceneGraph * handRight=new NodeSceneGraph();
+    handRight->add(transHand);
+    handRight->add(scaleHand);
+    handRight->add(materialLeg);
+    handRight->add(static_cast<Object3D*>(handObject));
 
     //elbow + wrist
 
@@ -302,21 +311,24 @@ Hero::Hero()
     NodeSceneGraph * elbow_wristRight=new NodeSceneGraph();
     elbow_wristRight->add(transElbow);
     elbow_wristRight->add(moveElbowRight);
-    elbow_wristRight->add(static_cast<Object3D*>(hand));
+    elbow_wristRight->add(rotateXHand);
+    elbow_wristRight->add(static_cast<Object3D*>(handRight));
 
     NodeSceneGraph * elbow_wristLeft=new NodeSceneGraph();
     elbow_wristLeft->add(transElbow);
     elbow_wristLeft->add(moveElbowLeft);
-    elbow_wristLeft->add(rotateYHand);
-    elbow_wristLeft->add(static_cast<Object3D*>(hand));
+    elbow_wristLeft->add(rotateXHand);
+    elbow_wristLeft->add(static_cast<Object3D*>(handLeft));
 
     //Shoulder
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
     shoulderLeft->add(scaleShoulder);
+    shoulderLeft->add(rotateXShoulder);
     shoulderLeft->add(materialLeg);
     shoulderLeft->add(static_cast<Object3D*>(shoulderObject));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
+    shoulderRight->add(rotateXShoulder);
     shoulderRight->add(rotateShoulder);
     shoulderRight->add(scaleShoulder);
     shoulderRight->add(materialLeg);
@@ -629,7 +641,7 @@ bool Hero::gravity(float velocity){
     //cout<< "moveGravity.y"<< moveGravity[13]<< endl;
 
     vec3f posHero=getPosition();
-    posHero.y-=(0.31-moveGravity[13]);
+    posHero.y-=(0.22-moveGravity[13]);
 
     //Get the tenth of our position
     tenthValueX=posHero.x-(int)posHero.x;
