@@ -26,7 +26,56 @@ AcceleratedMovement::AcceleratedMovement()
 
 //**********************************************************************//
 
+AcceleratedMovement::AcceleratedMovement(float x,float y,float z){
+    velocity.x=x;
+    velocity.y=y;
+    velocity.z=z;
+    currentTime=SDL_GetTicks()/1000;
+}
+
+//**********************************************************************//
+
+AcceleratedMovement::AcceleratedMovement(const vec3f & aVelocity)
+{
+    velocity=aVelocity;
+    currentTime=SDL_GetTicks()/1000;
+}
+
+//**********************************************************************//
+
 AcceleratedMovement::~AcceleratedMovement()
 {
     //dtor
 }
+
+//**********************************************************************//
+
+void AcceleratedMovement::setParameters(float x,float y,float z){
+    velocity.x=x;
+    velocity.y=y;
+    velocity.z=z;
+}
+
+//**********************************************************************//
+
+void AcceleratedMovement::setParameters(const vec3f & aVelocity){
+    velocity=aVelocity;
+}
+
+//**********************************************************************//
+
+Matrix4f & AcceleratedMovement::updateState(float time){
+    time=time/1000;
+    velocity=velocity+(velocity*time);
+    currentMatrix.translation(velocity.x*time,velocity.y*time,velocity.z*time);
+
+    currentTime+=time;
+    return currentMatrix;
+}
+
+//**********************************************************************//
+
+void AcceleratedMovement::resetState(){
+
+}
+
