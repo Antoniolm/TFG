@@ -44,6 +44,8 @@
 			<Add directory="lib/glew-1.10.0/lib" />
 			<Add directory="lib/SDL2_mixer-2.0.1/i686-w64-mingw32/lib" />
 		</Linker>
+		<Unit filename="GraphicEngine/acceleratedmovement.cpp" />
+		<Unit filename="GraphicEngine/acceleratedmovement.h" />
 		<Unit filename="GraphicEngine/axisrotation.cpp" />
 		<Unit filename="GraphicEngine/axisrotation.h" />
 		<Unit filename="GraphicEngine/camera.cpp" />

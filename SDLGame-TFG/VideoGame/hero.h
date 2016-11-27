@@ -26,6 +26,7 @@
 #include "../GraphicEngine/context.h"
 #include "../GraphicEngine/matrixscript.h"
 #include "../GraphicEngine/rootmap.h"
+#include "../GraphicEngine/acceleratedmovement.h"
 #include <vector>
 
 using namespace std;
@@ -87,10 +88,38 @@ class Hero: public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will create the gravity for our hero
+        *    \param velocity ->
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
         bool gravity(float velocity);
+
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will jump our hero
+        *    \param velocity ->
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activeJump(float velocity);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will jump our hero
+        *    \param velocity ->
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool jump(float velocity);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return if the hero is jumping or not
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isJump();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -107,8 +136,9 @@ class Hero: public Avatar
         float currentTime;
         ScriptLMD animation;
         Matrix4f * moveHero;
+        AcceleratedMovement * acceleratedMove;
         avatarDirection direction;
-        bool isMoving;
+        bool isMoving,isFalling,isJumping;
         RootMap * rootMap;
 };
 

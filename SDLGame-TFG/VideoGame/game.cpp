@@ -115,7 +115,10 @@ void Game::loop(){
                     moveHero.x=2.0; moveHero.y=0.0; moveHero.z=-2.0;
                     heroDir=BACK_RIGHTWARD;
                 }
-
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_SPACE)]){
+                    hero->activeJump(+80.0);
+                    aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
+                }
 
                 if(hero->moveBody(moveHero,heroDir))
                     aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
@@ -128,7 +131,12 @@ void Game::loop(){
         window->cleanScreen();
         rootMap->updateState(SDL_GetTicks());
         rootMap->visualization(aContext);
-        if(hero->gravity(-60.0)){
+        if(hero->isJump()){
+            if(hero->jump(+80.0)){
+                aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
+            }
+        }
+        else if(hero->gravity(-80.0)){
             aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
         }
         aContext.posObject.clear();

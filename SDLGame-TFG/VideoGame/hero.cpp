@@ -21,8 +21,11 @@
 
 Hero::Hero()
 {
+    acceleratedMove=new AcceleratedMovement();
     direction=FORWARD;
     isMoving=true;
+    isFalling=false;
+    isJumping=false;
 
     //Print a message for check
     cout<< "< Game is loading our hero >"<< endl;
@@ -30,13 +33,17 @@ Hero::Hero()
     //////////////////////////////////////////////////////
     /////           All the meshMaterial             /////
     //////////////////////////////////////////////////////
-    string file=string("geometries/sphere.obj");
-    Mesh * sphereObject=new Mesh(file);
-    sphereObject->init();
+    string file=string("geometries/armour.obj");
+    Mesh * armourObject=new Mesh(file);
+    armourObject->init();
 
-    file=string("geometries/pill.obj");
-    Mesh * pillObject=new Mesh(file);
-    pillObject->init();
+    file=string("geometries/armour2.obj");
+    Mesh * armour2Object=new Mesh(file);
+    armour2Object->init();
+
+    file=string("geometries/armourChest.obj");
+    Mesh * armourChestObject=new Mesh(file);
+    armourChestObject->init();
 
     file=string("geometries/knee.obj");
     Mesh * kneeObject=new Mesh(file);
@@ -50,7 +57,7 @@ Hero::Hero()
     Mesh * handObject=new Mesh(file);
     handObject->init();
 
-    file=string("geometries/shoulder.obj");
+    file=string("geometries/topArm.obj");
     Mesh * shoulderObject=new Mesh(file);
     shoulderObject->init();
 
@@ -154,10 +161,7 @@ Hero::Hero()
     animation.add(LegScriptLeft);
 
     //Ankle + foot
-    NodeSceneGraph * ankle=new NodeSceneGraph();
     NodeSceneGraph * foot=new NodeSceneGraph();
-    ankle->add(scaleSphere);
-    ankle->add(static_cast<Object3D*>(sphereObject));
     foot->add(transFoot);
     foot->add(scaleFoot);
     Material * materialFoot=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
@@ -229,6 +233,7 @@ Hero::Hero()
 
     Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     Material * materialChest=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodChest.png");
+    Material * materialTest=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/leaf.jpg");
 
     //Matrix4fDinamic
     OscillateRotation * oscillateElbow=new OscillateRotation(true,120,0,1,350,vec3f(0.75,0.5,0),2);
@@ -379,6 +384,21 @@ Hero::Hero()
     Matrix4f *trasn2Arms2=new Matrix4f();
     trasn2Arms2->translation(0.9,0.7,0.0);
 
+    Matrix4f *scaleArmour=new Matrix4f();
+    scaleArmour->scale(0.3,0.3,0.25);
+
+    Matrix4f *scaleArmour2=new Matrix4f();
+    scaleArmour2->scale(0.3,0.3,0.3);
+
+    Matrix4f *transArmourChest=new Matrix4f();
+    transArmourChest->translation(0.0,1.3,0.0);
+
+    Matrix4f *scaleArmourChest=new Matrix4f();
+    scaleArmourChest->scale(0.25,0.25,0.28);
+
+    Matrix4f *transArmour=new Matrix4f();
+    transArmour->translation(0.0,1.8,0.0);
+
     Matrix4f *scaleHip=new Matrix4f();
     scaleHip->scale(0.9,0.5,0.6);
 
@@ -397,12 +417,22 @@ Hero::Hero()
     Matrix4f *scaleChest=new Matrix4f();
     scaleChest->scale(1.0,0.9,0.6);
 
-    NodeSceneGraph * hipNode=new NodeSceneGraph();
-    hipNode->add(transHip);
-    hipNode->add(scaleHip);
-    Material * material4=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/prueba.png");
-    hipNode->add(material4);
-    hipNode->add(static_cast<Object3D*>(hipObject));
+    NodeSceneGraph * armourNode=new NodeSceneGraph();
+    armourNode->add(transArmour);
+    armourNode->add(scaleArmour);
+    armourNode->add(materialTest);
+    armourNode->add(static_cast<Object3D*>(armourObject));
+
+    NodeSceneGraph * armour2Node=new NodeSceneGraph();
+    armour2Node->add(scaleArmour2);
+    armour2Node->add(materialTest);
+    armour2Node->add(static_cast<Object3D*>(armour2Object));
+
+    NodeSceneGraph * armourChestNode=new NodeSceneGraph();
+    armourChestNode->add(transArmourChest);
+    armourChestNode->add(scaleArmourChest);
+    armourChestNode->add(materialTest);
+    armourChestNode->add(static_cast<Object3D*>(armourChestObject));
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);
@@ -427,8 +457,10 @@ Hero::Hero()
     Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     root->add(scaleHero);
     root->add(material);
+    root->add((static_cast<Object3D*>(armourChestNode)));
+    root->add((static_cast<Object3D*>(armour2Node)));
+    root->add((static_cast<Object3D*>(armourNode)));
     root->add((static_cast<Object3D*>(headNode)));
-    root->add((static_cast<Object3D*>(hipNode)));
     root->add((static_cast<Object3D*>(chest_ArmsNode)));
     root->add(mat2);
     root->add(materialWood);
@@ -638,6 +670,7 @@ bool Hero::gravity(float velocity){
     bool result=true;
     float tenthValueX,tenthValueZ;
 
+    if(!isJumping){
     float time=SDL_GetTicks();
     LinearMovement transHero(0.0,velocity,0.0);
     GLfloat * moveGravity=transHero.updateState(time-currentTime).getMatrix();
@@ -687,6 +720,23 @@ bool Hero::gravity(float velocity){
 
     if(hasCollision==0){ //if not collision
         moveHero->product(moveGravity);
+        isFalling=true;
+    }
+    else {
+        /*if(isFalling){
+            vec3f positionObs=hasCollision->getPosition();
+            cout<< "Position hero :"<< posHero.y-0.5<< " positionObs.y:"<< positionObs.y+0.5<< endl;
+            if(posHero.y-0.5<positionObs.y+0.5f){
+                cout<< " Se ha colado "<< endl;
+                Matrix4f trans;
+                trans.translation(0.0,(positionObs.y+0.5)-(posHero.y-0.5),0.0);
+                cout<< "Translation ->" << (positionObs.y+0.5)-(posHero.y-0.55)<< endl;
+                moveHero->product(trans.getMatrix());
+            }
+        }*/
+        isFalling=false;
+        result=false;
+    }
     }
     else {
         result=false;
@@ -694,6 +744,96 @@ bool Hero::gravity(float velocity){
 
     return result;
 }
+
+//**********************************************************************//
+
+void Hero::activeJump(float velocity){
+    acceleratedMove->setParameters(0.0f,velocity,0.0f,true);
+    isJumping=true;
+}
+
+//**********************************************************************//
+
+bool Hero::jump(float velocity){
+    ObjectScene * hasCollision;
+    bool result=true;
+    float tenthValueX,tenthValueZ;
+
+    float time=SDL_GetTicks();
+    LinearMovement transHero(0.0,velocity,0.0);
+    GLfloat * moveGravity=transHero.updateState(time-currentTime).getMatrix();
+    //cout<< "moveGravity.y"<< moveGravity[13]<< endl;
+
+    vec3f posHero=getPosition();
+    posHero.y+=(0.22+moveGravity[13]);
+
+    //Get the tenth of our position
+    tenthValueX=posHero.x-(int)posHero.x;
+    tenthValueZ=(int)posHero.z-posHero.z;
+
+    //Check the collision in the center
+    hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z));
+
+    //Check the collision in the area
+    if(tenthValueX>0.5 && hasCollision==0){ //Case tenth in x >0.5
+        if( tenthValueZ<0.5){ //case Tenth in x >0.5 and tenth in z <0.5
+            hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z));
+            if(hasCollision==0)
+                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.2));
+            if(hasCollision==0)
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z-0.2));
+        }else{  //case Tenth in x >0.5 and tenth in z >= 0.5
+            hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z));
+            if(hasCollision==0)
+                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.2));
+            if(hasCollision==0)
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z+0.2));
+        }
+    }
+    else if(tenthValueX<0.5 && hasCollision==0){ //Case tenth in x <0.5
+        if( tenthValueZ<0.5){ //case Tenth in x <0.5 and tenth in z <0.5
+            hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
+            if(hasCollision==0)
+                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.2));
+            if(hasCollision==0)
+                hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z-0.2));
+        }else{ //case Tenth in x <0.5 and tenth in z >= 0.5
+            hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
+            if(hasCollision==0)
+                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.2));
+            if(hasCollision==0)
+            hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z+0.2));
+        }
+    }
+
+    if(hasCollision==0){ //if not collision
+        moveHero->product(moveGravity);
+        isJumping=true;
+    }
+    else {
+        /*if(isFalling){
+            vec3f positionObs=hasCollision->getPosition();
+            cout<< "Position hero :"<< posHero.y-0.5<< " positionObs.y:"<< positionObs.y+0.5<< endl;
+            if(posHero.y-0.5<positionObs.y+0.5f){
+                cout<< " Se ha colado "<< endl;
+                Matrix4f trans;
+                trans.translation(0.0,(positionObs.y+0.5)-(posHero.y-0.5),0.0);
+                cout<< "Translation ->" << (positionObs.y+0.5)-(posHero.y-0.55)<< endl;
+                moveHero->product(trans.getMatrix());
+            }
+        }*/
+        isJumping=false;
+        result=false;
+    }
+
+    return result;
+}
+
+//**********************************************************************//
+
+ bool Hero::isJump(){
+    return isJumping;
+ }
 
 //**********************************************************************//
 
