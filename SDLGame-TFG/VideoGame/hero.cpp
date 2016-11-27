@@ -748,7 +748,7 @@ bool Hero::gravity(float velocity){
 //**********************************************************************//
 
 void Hero::activeJump(float velocity){
-    acceleratedMove->setParameters(0.0f,velocity,0.0f,true);
+    acceleratedMove->setParameters(0.0f,velocity,0.0f,false);
     isJumping=true;
 }
 
@@ -760,68 +760,72 @@ bool Hero::jump(float velocity){
     float tenthValueX,tenthValueZ;
 
     float time=SDL_GetTicks();
-    LinearMovement transHero(0.0,velocity,0.0);
-    GLfloat * moveGravity=transHero.updateState(time-currentTime).getMatrix();
+    GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
     //cout<< "moveGravity.y"<< moveGravity[13]<< endl;
 
     vec3f posHero=getPosition();
     posHero.y+=(0.22+moveGravity[13]);
 
-    //Get the tenth of our position
-    tenthValueX=posHero.x-(int)posHero.x;
-    tenthValueZ=(int)posHero.z-posHero.z;
+    if(moveGravity[13]>0){
+        //Get the tenth of our position
+        tenthValueX=posHero.x-(int)posHero.x;
+        tenthValueZ=(int)posHero.z-posHero.z;
 
-    //Check the collision in the center
-    hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z));
+        //Check the collision in the center
+        hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z));
 
-    //Check the collision in the area
-    if(tenthValueX>0.5 && hasCollision==0){ //Case tenth in x >0.5
-        if( tenthValueZ<0.5){ //case Tenth in x >0.5 and tenth in z <0.5
-            hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z));
-            if(hasCollision==0)
-                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.2));
-            if(hasCollision==0)
-                hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z-0.2));
-        }else{  //case Tenth in x >0.5 and tenth in z >= 0.5
-            hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z));
-            if(hasCollision==0)
-                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.2));
-            if(hasCollision==0)
-                hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z+0.2));
-        }
-    }
-    else if(tenthValueX<0.5 && hasCollision==0){ //Case tenth in x <0.5
-        if( tenthValueZ<0.5){ //case Tenth in x <0.5 and tenth in z <0.5
-            hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
-            if(hasCollision==0)
-                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.2));
-            if(hasCollision==0)
-                hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z-0.2));
-        }else{ //case Tenth in x <0.5 and tenth in z >= 0.5
-            hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
-            if(hasCollision==0)
-                hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.2));
-            if(hasCollision==0)
-            hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z+0.2));
-        }
-    }
-
-    if(hasCollision==0){ //if not collision
-        moveHero->product(moveGravity);
-        isJumping=true;
-    }
-    else {
-        /*if(isFalling){
-            vec3f positionObs=hasCollision->getPosition();
-            cout<< "Position hero :"<< posHero.y-0.5<< " positionObs.y:"<< positionObs.y+0.5<< endl;
-            if(posHero.y-0.5<positionObs.y+0.5f){
-                cout<< " Se ha colado "<< endl;
-                Matrix4f trans;
-                trans.translation(0.0,(positionObs.y+0.5)-(posHero.y-0.5),0.0);
-                cout<< "Translation ->" << (positionObs.y+0.5)-(posHero.y-0.55)<< endl;
-                moveHero->product(trans.getMatrix());
+        //Check the collision in the area
+        if(tenthValueX>0.5 && hasCollision==0){ //Case tenth in x >0.5
+            if( tenthValueZ<0.5){ //case Tenth in x >0.5 and tenth in z <0.5
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z));
+                if(hasCollision==0)
+                    hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.2));
+                if(hasCollision==0)
+                    hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z-0.2));
+            }else{  //case Tenth in x >0.5 and tenth in z >= 0.5
+                hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z));
+                if(hasCollision==0)
+                    hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.2));
+                if(hasCollision==0)
+                    hasCollision=rootMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z+0.2));
             }
-        }*/
+        }
+        else if(tenthValueX<0.5 && hasCollision==0){ //Case tenth in x <0.5
+            if( tenthValueZ<0.5){ //case Tenth in x <0.5 and tenth in z <0.5
+                hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
+                if(hasCollision==0)
+                    hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.2));
+                if(hasCollision==0)
+                    hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z-0.2));
+            }else{ //case Tenth in x <0.5 and tenth in z >= 0.5
+                hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
+                if(hasCollision==0)
+                    hasCollision=rootMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.2));
+                if(hasCollision==0)
+                hasCollision=rootMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z+0.2));
+            }
+        }
+
+        if(hasCollision==0){ //if not collision
+            moveHero->product(moveGravity);
+            isJumping=true;
+        }
+        else {
+            /*if(isFalling){
+                vec3f positionObs=hasCollision->getPosition();
+                cout<< "Position hero :"<< posHero.y-0.5<< " positionObs.y:"<< positionObs.y+0.5<< endl;
+                if(posHero.y-0.5<positionObs.y+0.5f){
+                    cout<< " Se ha colado "<< endl;
+                    Matrix4f trans;
+                    trans.translation(0.0,(positionObs.y+0.5)-(posHero.y-0.5),0.0);
+                    cout<< "Translation ->" << (positionObs.y+0.5)-(posHero.y-0.55)<< endl;
+                    moveHero->product(trans.getMatrix());
+                }
+            }*/
+            isJumping=false;
+            result=false;
+        }
+    }else{
         isJumping=false;
         result=false;
     }

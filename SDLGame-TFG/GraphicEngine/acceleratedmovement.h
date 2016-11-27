@@ -89,7 +89,7 @@ class AcceleratedMovement : public Matrix4fDynamic
     protected:
 
     private:
-        vec3f velocity;
+        vec3f velocity,currentVelocity;
         float currentTime;
         bool increment;
 };

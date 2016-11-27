@@ -30,6 +30,7 @@ AcceleratedMovement::AcceleratedMovement(float x,float y,float z,bool incre){
     velocity.x=x;
     velocity.y=y;
     velocity.z=z;
+    currentVelocity=velocity;
     currentTime=SDL_GetTicks()/1000;
     increment=incre;
 }
@@ -39,6 +40,7 @@ AcceleratedMovement::AcceleratedMovement(float x,float y,float z,bool incre){
 AcceleratedMovement::AcceleratedMovement(const vec3f & aVelocity,bool incre)
 {
     velocity=aVelocity;
+    currentVelocity=velocity;
     currentTime=SDL_GetTicks()/1000;
     increment=incre;
 }
@@ -56,6 +58,7 @@ void AcceleratedMovement::setParameters(float x,float y,float z,bool incre){
     velocity.x=0.0f;
     velocity.y=y;
     velocity.z=z;
+    currentVelocity=velocity;
     increment=incre;
 }
 
@@ -63,6 +66,7 @@ void AcceleratedMovement::setParameters(float x,float y,float z,bool incre){
 
 void AcceleratedMovement::setParameters(const vec3f & aVelocity,bool incre){
     velocity=aVelocity;
+    currentVelocity=velocity;
     increment=incre;
 }
 
@@ -73,12 +77,14 @@ Matrix4f & AcceleratedMovement::updateState(float time){
 
     //Check the velocity
     if(increment)
-        velocity=velocity+(velocity*time);
+        currentVelocity=currentVelocity+(velocity*time*10);
     else
-        velocity=velocity-(velocity*time);
+        currentVelocity=currentVelocity-(velocity*time*10);
+
+    cout<< "velocity -> "<< currentVelocity.y<< endl;
 
     //Update our matrix with that new velocity
-    currentMatrix.translation(velocity.x*time,velocity.y*time,velocity.z*time);
+    currentMatrix.translation(currentVelocity.x*time,currentVelocity.y*time,currentVelocity.z*time);
 
     currentTime+=time;
     return currentMatrix;

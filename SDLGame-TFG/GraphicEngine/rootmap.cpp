@@ -78,6 +78,15 @@ RootMap::RootMap(Hero * aHero)
     objs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
+    transOneCube->translation(3.5f,3.5f,-5.5f);
+    cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleCube);
+    cubeNode->add(materialSand);
+    cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
+    objs.push_back(new ObjectScene(cubeNode));
+
+    transOneCube=new Matrix4f();
     transOneCube->translation(1.5f,1.5f,-1.5f);
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
