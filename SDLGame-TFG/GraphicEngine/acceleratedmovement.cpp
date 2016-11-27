@@ -53,7 +53,7 @@ AcceleratedMovement::~AcceleratedMovement()
 //**********************************************************************//
 
 void AcceleratedMovement::setParameters(float x,float y,float z,bool incre){
-    velocity.x=x;
+    velocity.x=0.0f;
     velocity.y=y;
     velocity.z=z;
     increment=incre;
@@ -72,7 +72,7 @@ Matrix4f & AcceleratedMovement::updateState(float time){
     time=time/1000;
 
     //Check the velocity
-    if(incremenet)
+    if(increment)
         velocity=velocity+(velocity*time);
     else
         velocity=velocity-(velocity*time);
