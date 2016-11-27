@@ -32,6 +32,13 @@ RootMap::RootMap(Hero * aHero)
     Mesh * rockObject=new Mesh(file);
     rockObject->init();
 
+    file="geometries/fence.obj";
+    Mesh * fenceObject=new Mesh(file);
+    fenceObject->init();
+
+    Matrix4f *scaleFence =new Matrix4f();
+    scaleFence->scale(0.5,0.5,0.5);
+
     Matrix4f *scaleCube =new Matrix4f();
     scaleCube->scale(0.5,0.5,0.5);
 
@@ -52,6 +59,7 @@ RootMap::RootMap(Hero * aHero)
     Material * materialSand=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
     Material * materialBox=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
     Material * materialRock=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/rock.png");
+    Material * materialFence=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
 
@@ -66,6 +74,16 @@ RootMap::RootMap(Hero * aHero)
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
             objs.push_back(new ObjectScene(cubeNode));
         }
+    }
+    for(int i=0;i<7;i++){
+        transOneCube=new Matrix4f();
+        transOneCube->translation(i+0.5f,1.5f,-4.5f);
+        cubeNode=new NodeSceneGraph();
+        cubeNode->add(transOneCube);
+        cubeNode->add(scaleFence);
+        cubeNode->add(materialFence);
+        cubeNode->add(static_cast<Object3D*>(new ObjectScene(fenceObject)));
+        objs.push_back(new ObjectScene(cubeNode));
     }
 
     transOneCube=new Matrix4f();

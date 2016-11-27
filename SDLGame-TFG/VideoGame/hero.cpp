@@ -215,21 +215,21 @@ Hero::Hero()
 
 
     //Create a new Movement
-    Matrix4f * moveElbowLeft=new Matrix4f();
-    moveElbowLeft->identity();
-    moveMatrix.push_back(moveElbowLeft);
-
     Matrix4f * moveElbowRight=new Matrix4f();
     moveElbowRight->identity();
     moveMatrix.push_back(moveElbowRight);
 
-    Matrix4f * moveArmLeft=new Matrix4f();
-    moveArmLeft->identity();
-    moveMatrix.push_back(moveArmLeft);
+    Matrix4f * moveElbowLeft=new Matrix4f();
+    moveElbowLeft->identity();
+    moveMatrix.push_back(moveElbowLeft);
 
     Matrix4f * moveArmRight=new Matrix4f();
     moveArmRight->identity();
     moveMatrix.push_back(moveArmRight);
+
+    Matrix4f * moveArmLeft=new Matrix4f();
+    moveArmLeft->identity();
+    moveMatrix.push_back(moveArmLeft);
 
     Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     Material * materialChest=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodChest.png");
@@ -258,10 +258,10 @@ Hero::Hero()
 
 
     //Add the script to our animation
-    animation.add(ElbowScriptLeft);
     animation.add(ElbowScriptRight);
-    animation.add(ArmScriptLeft);
+    animation.add(ElbowScriptLeft);
     animation.add(ArmScriptRight);
+    animation.add(ArmScriptLeft);
 
     Matrix4f * scaleHand=new Matrix4f();
     scaleHand->scale(0.4,0.3,0.4);
