@@ -35,12 +35,12 @@ class AcceleratedMovement : public Matrix4fDynamic
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        AcceleratedMovement(float x,float y,float z,bool incre);
+        AcceleratedMovement(float x,float y,float z,float aAccel,bool incre);
 
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        AcceleratedMovement(const vec3f & aVelocity,bool incre);
+        AcceleratedMovement(const vec3f & aVelocity,float aAccel,bool incre);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -56,7 +56,7 @@ class AcceleratedMovement : public Matrix4fDynamic
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setParameters(float x,float y,float z,bool incre);
+        void setParameters(float x,float y,float z,float aAccel,bool incre);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -67,7 +67,7 @@ class AcceleratedMovement : public Matrix4fDynamic
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setParameters(const vec3f & aVelocity,bool incre);
+        void setParameters(const vec3f & aVelocity,float aAccel,bool incre);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -89,8 +89,8 @@ class AcceleratedMovement : public Matrix4fDynamic
     protected:
 
     private:
-        vec3f velocity,currentVelocity;
-        float currentTime;
+        vec3f velocity;
+        float currentTime,acceleration;
         bool increment;
 };
 

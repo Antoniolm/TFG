@@ -747,14 +747,14 @@ bool Hero::gravity(float velocity){
 
 //**********************************************************************//
 
-void Hero::activeJump(float velocity){
-    acceleratedMove->setParameters(0.0f,velocity,0.0f,false);
+void Hero::activeJump(float velocity,float acceleration){
+    acceleratedMove->setParameters(0.0f,velocity,0.0f,acceleration,false);
     isJumping=true;
 }
 
 //**********************************************************************//
 
-bool Hero::jump(float velocity){
+bool Hero::jump(){
     ObjectScene * hasCollision;
     bool result=true;
     float tenthValueX,tenthValueZ;

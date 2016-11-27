@@ -26,21 +26,21 @@ AcceleratedMovement::AcceleratedMovement()
 
 //**********************************************************************//
 
-AcceleratedMovement::AcceleratedMovement(float x,float y,float z,bool incre){
+AcceleratedMovement::AcceleratedMovement(float x,float y,float z,float aAccel,bool incre){
     velocity.x=x;
     velocity.y=y;
     velocity.z=z;
-    currentVelocity=velocity;
+    acceleration=aAccel;
     currentTime=SDL_GetTicks()/1000;
     increment=incre;
 }
 
 //**********************************************************************//
 
-AcceleratedMovement::AcceleratedMovement(const vec3f & aVelocity,bool incre)
+AcceleratedMovement::AcceleratedMovement(const vec3f & aVelocity,float aAccel,bool incre)
 {
     velocity=aVelocity;
-    currentVelocity=velocity;
+    acceleration=aAccel;
     currentTime=SDL_GetTicks()/1000;
     increment=incre;
 }
@@ -54,19 +54,19 @@ AcceleratedMovement::~AcceleratedMovement()
 
 //**********************************************************************//
 
-void AcceleratedMovement::setParameters(float x,float y,float z,bool incre){
+void AcceleratedMovement::setParameters(float x,float y,float z,float aAccel,bool incre){
     velocity.x=0.0f;
     velocity.y=y;
     velocity.z=z;
-    currentVelocity=velocity;
+    acceleration=aAccel;
     increment=incre;
 }
 
 //**********************************************************************//
 
-void AcceleratedMovement::setParameters(const vec3f & aVelocity,bool incre){
+void AcceleratedMovement::setParameters(const vec3f & aVelocity,float aAccel,bool incre){
     velocity=aVelocity;
-    currentVelocity=velocity;
+    acceleration=aAccel;
     increment=incre;
 }
 
@@ -76,15 +76,16 @@ Matrix4f & AcceleratedMovement::updateState(float time){
     time=time/1000;
 
     //Check the velocity
-    if(increment)
-        currentVelocity=currentVelocity+(velocity*time*10);
+    if(increment){
+        velocity.y=velocity.y+(acceleration*time*10);
+    }
     else
-        currentVelocity=currentVelocity-(velocity*time*10);
+        velocity.y=velocity.y-(acceleration*time*10);
 
-    cout<< "velocity -> "<< currentVelocity.y<< endl;
+    cout<< "velocity -> "<< velocity.y<< endl;
 
     //Update our matrix with that new velocity
-    currentMatrix.translation(currentVelocity.x*time,currentVelocity.y*time,currentVelocity.z*time);
+    currentMatrix.translation(velocity.x*time,velocity.y*time,velocity.z*time);
 
     currentTime+=time;
     return currentMatrix;

@@ -116,7 +116,7 @@ void Game::loop(){
                     heroDir=BACK_RIGHTWARD;
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_SPACE)]){
-                    hero->activeJump(+80.0);
+                    hero->activeJump(60.0,80.0);
                     aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
                 }
 
@@ -132,7 +132,7 @@ void Game::loop(){
         rootMap->updateState(SDL_GetTicks());
         rootMap->visualization(aContext);
         if(hero->isJump()){
-            if(hero->jump(+80.0)){
+            if(hero->jump()){
                 aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
             }
         }
