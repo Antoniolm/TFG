@@ -75,6 +75,30 @@ RootMap::RootMap(Hero * aHero)
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
+    for(int j=0;j<7;j++){
+        transOneCube=new Matrix4f();
+        transOneCube->translation(7.5f,-0.5f,-j-0.5f);
+        cubeNode=new NodeSceneGraph();
+        cubeNode->add(transOneCube);
+        cubeNode->add(scaleCube);
+        cubeNode->add(materialGrass);
+        cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
+        objs.push_back(new ObjectScene(cubeNode));
+    }
+
+    for(int i=0;i<7;i++){
+        for(int j=0;j<7;j++){
+            transOneCube=new Matrix4f();
+            transOneCube->translation(i+8.5f,-1.5f,-j-0.5f);
+            cubeNode=new NodeSceneGraph();
+            cubeNode->add(transOneCube);
+            cubeNode->add(scaleCube);
+            cubeNode->add(materialGrass);
+            cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
+            objs.push_back(new ObjectScene(cubeNode));
+        }
+    }
+
     for(int i=0;i<7;i++){
         transOneCube=new Matrix4f();
         transOneCube->translation(i+0.5f,1.5f,-4.5f);

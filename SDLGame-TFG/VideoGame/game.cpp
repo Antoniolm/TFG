@@ -82,7 +82,7 @@ void Game::loop(){
 
             //case: Player push a buttom
             const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
-            if (event.type == SDL_KEYDOWN){
+            if (event.type == SDL_KEYDOWN){ //Fix here
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)]){
                     moveHero.x=-3.0; moveHero.y=0.0; moveHero.z=0.0;
                     heroDir=LEFTWARD;
