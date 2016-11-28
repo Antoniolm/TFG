@@ -28,13 +28,13 @@ RootMap::RootMap(Hero * aHero)
     Mesh * cubeObject=new Mesh(file);
     cubeObject->init();
 
-    file="geometries/Cliff_low.obj";
-    Mesh * rockObject=new Mesh(file);
-    rockObject->init();
-
     file="geometries/fence.obj";
     Mesh * fenceObject=new Mesh(file);
     fenceObject->init();
+
+    file="geometries/tree.obj";
+    Mesh * treeObject=new Mesh(file);
+    treeObject->init();
 
     Matrix4f *scaleFence =new Matrix4f();
     scaleFence->scale(0.5,0.5,0.5);
@@ -55,8 +55,8 @@ RootMap::RootMap(Hero * aHero)
     transCube->translation(1.0,0.0,0.0);
 
     //Materials
-    Material * materialGrass=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass.png");
-    Material * materialSand=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
+    Material * materialGrass=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass.png");
+    Material * materialSand=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
     Material * materialBox=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
     Material * materialRock=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/rock.png");
     Material * materialFence=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
@@ -70,7 +70,11 @@ RootMap::RootMap(Hero * aHero)
             cubeNode=new NodeSceneGraph();
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
-            cubeNode->add(materialGrass);
+            if(j>0 && j<5)
+                cubeNode->add(materialSand);
+            else
+                cubeNode->add(materialGrass);
+
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
             objs.push_back(new ObjectScene(cubeNode));
         }
@@ -98,25 +102,28 @@ RootMap::RootMap(Hero * aHero)
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
-
-    for(int i=0;i<7;i++){
-        transOneCube=new Matrix4f();
-        transOneCube->translation(i+0.5f,1.5f,-4.5f);
-        cubeNode=new NodeSceneGraph();
-        cubeNode->add(transOneCube);
-        cubeNode->add(scaleFence);
-        cubeNode->add(materialFence);
-        cubeNode->add(static_cast<Object3D*>(new ObjectScene(fenceObject)));
-        objs.push_back(new ObjectScene(cubeNode));
+    float scale=-1.5;
+    for(int i=0;i<2;i++){
+        if(i==1) scale=-5.5;
+        for(int j=0;j<7;j++){
+            transOneCube=new Matrix4f();
+            transOneCube->translation(j+0.5f,1.5f,scale);
+            cubeNode=new NodeSceneGraph();
+            cubeNode->add(transOneCube);
+            cubeNode->add(scaleFence);
+            cubeNode->add(materialFence);
+            cubeNode->add(static_cast<Object3D*>(new ObjectScene(fenceObject)));
+            objs.push_back(new ObjectScene(cubeNode));
+        }
     }
 
     transOneCube=new Matrix4f();
-    transOneCube->translation(2.5f,1.5f,-0.5f);
+    transOneCube->translation(10.5f,-0.5f,-2.5f);
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
-    cubeNode->add(materialBox);
-    cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
+    cubeNode->add(materialFence);
+    cubeNode->add(static_cast<Object3D*>(new ObjectScene(treeObject)));
     objs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
@@ -127,22 +134,6 @@ RootMap::RootMap(Hero * aHero)
     cubeNode->add(materialSand);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
     objs.push_back(new ObjectScene(cubeNode));
-
-    transOneCube=new Matrix4f();
-    transOneCube->translation(1.5f,1.5f,-1.5f);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialBox);
-    cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-    objs.push_back(new ObjectScene(cubeNode));
-
-    NodeSceneGraph * rockNode=new NodeSceneGraph();
-    rockNode->add(transRock);
-    rockNode->add(scaleRock);
-    rockNode->add(materialRock);
-    rockNode->add(static_cast<Object3D*>(new ObjectScene(rockObject)));
-    objs.push_back(new ObjectScene(rockNode));
 
     //visualization;
     Context cv;
@@ -156,7 +147,6 @@ RootMap::RootMap(Hero * aHero)
     //Push all the positions
     for(int i=0;i<objs.size();i++){
         pos=objs[i]->getPosition();
-        cout<< " Position"<< pos.x<< " "<< pos.y<< " "<< pos.z<< endl;
         indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(i);
     }
 }
@@ -191,8 +181,11 @@ void RootMap::visualization(Context & cv){
 //**********************************************************************//
 
 void RootMap::updateState(float time){
+    //Update the Scene
     for(int i=0;i<objs.size();i++)
         objs[i]->updateState(time);
+
+    //Update the hero
     hero->updateState(time);
 }
 

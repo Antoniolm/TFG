@@ -124,7 +124,7 @@ void Camera::activateCamera(Shader * shader){
 
 void Camera::moveCamera(vec3f pos,Shader *shader){
 
-    position.x=pos.x;position.y=pos.y+2.0f;position.z=pos.z+3.0f;
+    position.x=pos.x;position.y=pos.y+4.0f;position.z=pos.z+10.0f;
     target.x=pos.x;target.y=pos.y;target.z=pos.z;
     createCamera();
 

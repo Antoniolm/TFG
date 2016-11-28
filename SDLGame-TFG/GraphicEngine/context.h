@@ -53,7 +53,6 @@ class Context
         Camera camera;
         Shader currentShader;
         Matrix4f currentTransf;
-        vector<vec3f> posObject;
 
 
     protected:

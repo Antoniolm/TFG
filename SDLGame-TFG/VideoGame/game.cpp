@@ -116,7 +116,7 @@ void Game::loop(){
                     heroDir=BACK_RIGHTWARD;
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_SPACE)] && !hero->isJump() && !hero->isFall()){
-                    hero->activeJump(30.0,60.0);
+                    hero->activeJump(50.0,60.0);
                     aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
                 }
 
@@ -136,10 +136,9 @@ void Game::loop(){
                 aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
             }
         }
-        else if(hero->gravity(-40.0)){
+        else if(hero->gravity(-20.0)){
             aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
         }
-        aContext.posObject.clear();
         window->updateScreen();
     }
 }
