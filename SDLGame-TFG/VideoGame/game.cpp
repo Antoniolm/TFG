@@ -115,7 +115,7 @@ void Game::loop(){
                     moveHero.x=2.0; moveHero.y=0.0; moveHero.z=-2.0;
                     heroDir=BACK_RIGHTWARD;
                 }
-                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_SPACE)]){
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_SPACE)] && !hero->isJump() && !hero->isFall()){
                     hero->activeJump(30.0,60.0);
                     aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
                 }

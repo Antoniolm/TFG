@@ -123,6 +123,14 @@ class Hero: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will return if the hero is falling or not
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isFall();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will get the position of our hero
         *    \return void
         */

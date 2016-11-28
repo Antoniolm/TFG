@@ -132,17 +132,16 @@ Hero::Hero()
     moveLegLeft->identity();
     moveMatrix.push_back(moveLegLeft);
 
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-60,1,150,vec3f(1,0,0),2);
-    OscillateRotation * oscillateLeg=new OscillateRotation(true,60,0,1,150,vec3f(1,0,0),2);
-    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-30,1,50,vec3f(1,0,0),1);
-    OscillateRotation * oscillateKneeSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
+    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
     MatrixStatic * notMove=new MatrixStatic();
 
     //Movement to the first leg
     MatrixScript * KneeScriptLeft=new MatrixScript();
     MatrixScript * LegScriptLeft=new MatrixScript();
     KneeScriptLeft->add(0.5,oscillateKnee);
-    KneeScriptLeft->add(0.5,oscillateKnee);
+    KneeScriptLeft->add(0.5,notMove);
     LegScriptLeft->add(0.5,oscillateLeg);
     LegScriptLeft->add(0.5,oscillateLegSecond);
 
@@ -150,7 +149,7 @@ Hero::Hero()
     //Movement to the second leg
     MatrixScript * KneeScriptRight=new MatrixScript();
     MatrixScript * LegScriptRight=new MatrixScript();
-    KneeScriptRight->add(0.5,oscillateKnee);
+    KneeScriptRight->add(0.5,notMove);
     KneeScriptRight->add(0.5,oscillateKnee);
     LegScriptRight->add(0.5,oscillateLegSecond);
     LegScriptRight->add(0.5,oscillateLeg);
@@ -657,11 +656,6 @@ void Hero::noMove(){
     animation.resetState();
     for(int i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
-    //if(isMoving){
-      //  float time=SDL_GetTicks();
-      //  animation.updateState(time-currentTime);
-      //  currentTime+=(time-currentTime);
-    //}
     isMoving=false;
 }
 
@@ -840,6 +834,12 @@ bool Hero::jump(){
  bool Hero::isJump(){
     return isJumping;
  }
+
+//**********************************************************************//
+
+bool Hero::isFall(){
+    return isFalling;
+  }
 
 //**********************************************************************//
 
