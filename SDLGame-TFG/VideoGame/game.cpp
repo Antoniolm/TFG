@@ -68,7 +68,7 @@ void Game::loop(){
 
     avatarDirection heroDir;
     vec3f moveHero;
-
+    vec3f posHero;
     //Show our window.
     window->showScreen();
 
@@ -117,11 +117,13 @@ void Game::loop(){
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_SPACE)] && !hero->isJump() && !hero->isFall()){
                     hero->activeJump(50.0,60.0);
-                    aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
                 }
 
-                if(hero->moveBody(moveHero,heroDir))
-                    aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
+                if(hero->moveBody(moveHero,heroDir)){
+                    posHero=hero->getPosition();
+                    posHero.y+=4.0f;posHero.z+=8.0f;
+                    aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
+                }
 
             }
             else{
@@ -133,11 +135,15 @@ void Game::loop(){
         rootMap->visualization(aContext);
         if(hero->isJump()){
             if(hero->jump()){
-                aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
+                posHero=hero->getPosition();
+                posHero.y+=4.0f;posHero.z+=8.0f;
+                aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
             }
         }
         else if(hero->gravity(-20.0)){
-            aContext.camera.moveCamera(hero->getPosition(),&aContext.currentShader);
+                posHero=hero->getPosition();
+                posHero.y+=4.0f;posHero.z+=8.0f;
+                aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
         }
         window->updateScreen();
     }

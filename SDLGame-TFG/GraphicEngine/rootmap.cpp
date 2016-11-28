@@ -36,6 +36,10 @@ RootMap::RootMap(Hero * aHero)
     Mesh * treeObject=new Mesh(file);
     treeObject->init();
 
+    file="geometries/mushroomWhite.obj";
+    Mesh * mushRoomObject=new Mesh(file);
+    mushRoomObject->init();
+
     Matrix4f *scaleFence =new Matrix4f();
     scaleFence->scale(0.5,0.5,0.5);
 
@@ -60,6 +64,7 @@ RootMap::RootMap(Hero * aHero)
     Material * materialBox=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
     Material * materialRock=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/rock.png");
     Material * materialFence=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
+    Material * materialMushroom=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
 
@@ -126,6 +131,16 @@ RootMap::RootMap(Hero * aHero)
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(treeObject)));
     objs.push_back(new ObjectScene(cubeNode));
 
+
+    transOneCube=new Matrix4f();
+    transOneCube->translation(0.5f,1.0f,-0.5f);
+    cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleCube);
+    cubeNode->add(materialMushroom);
+    cubeNode->add(static_cast<Object3D*>(new ObjectScene(mushRoomObject)));
+    decoractionObjs.push_back(new ObjectScene(cubeNode));
+
     transOneCube=new Matrix4f();
     transOneCube->translation(3.5f,3.5f,-5.5f);
     cubeNode=new NodeSceneGraph();
@@ -172,6 +187,11 @@ void RootMap::visualization(Context & cv){
     //Draw object
     for(int i=0;i<objs.size();i++){
         objs[i]->visualization(cv);
+    }
+
+    //Draw decoration object
+    for(int i=0;i<decoractionObjs.size();i++){
+        decoractionObjs[i]->visualization(cv);
     }
 
     //Draw hero
