@@ -748,7 +748,7 @@ bool Hero::gravity(float velocity){
 //**********************************************************************//
 
 void Hero::activeJump(float velocity,float acceleration){
-    acceleratedMove->setParameters(0.0f,velocity,0.0f,acceleration,false);
+    acceleratedMove=new AcceleratedMovement(0.0f,velocity,0.0f,acceleration,false);
     isJumping=true;
 }
 
@@ -761,7 +761,7 @@ bool Hero::jump(){
 
     float time=SDL_GetTicks();
     GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
-    //cout<< "moveGravity.y"<< moveGravity[13]<< endl;
+    //cout<< "moveGravity.y ->"<< moveGravity[13]<< endl;
 
     vec3f posHero=getPosition();
     posHero.y+=(0.22+moveGravity[13]);
