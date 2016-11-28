@@ -37,6 +37,7 @@ OscillateRotation::OscillateRotation(bool incre,float maxG,float minG,float init
 
     currentGrade=initialGrade;
     currentTime=SDL_GetTicks()/1000;
+    currentMatrix.identity();
 
     currentLoop=0;
 }
@@ -61,6 +62,7 @@ void OscillateRotation::setParameters(bool incre,float maxG,float minG,float ini
 
     currentGrade=initialGrade;
     currentTime=SDL_GetTicks()/1000;
+    currentMatrix.identity();
 
     currentLoop=0;
 }
@@ -105,6 +107,7 @@ void OscillateRotation::resetState(){
     if(loop!=-1){
         currentGrade=initialGrade;
         currentLoop=0;
+        currentMatrix.identity();
     }
 }
 

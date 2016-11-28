@@ -30,6 +30,7 @@ AxisRotation::AxisRotation(float anAVelocity,float x,float y,float z){
     axis.x=x;
     axis.y=y;
     axis.z=z;
+    currentMatrix.identity();
 }
 
 //**********************************************************************//
@@ -46,6 +47,7 @@ void AxisRotation::setParameters(float anAVelocity,float x,float y,float z){
     axis.x=x;
     axis.y=y;
     axis.z=z;
+    currentMatrix.identity();
 }
 
 //**********************************************************************//

@@ -23,7 +23,7 @@ Hero::Hero()
 {
     acceleratedMove=new AcceleratedMovement();
     direction=FORWARD;
-    isMoving=true;
+    isMoving=false;
     isFalling=false;
     isJumping=false;
 
@@ -132,16 +132,17 @@ Hero::Hero()
     moveLegLeft->identity();
     moveMatrix.push_back(moveLegLeft);
 
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
-    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
-    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
+    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-60,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,60,0,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-30,1,50,vec3f(1,0,0),1);
+    OscillateRotation * oscillateKneeSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
     MatrixStatic * notMove=new MatrixStatic();
 
     //Movement to the first leg
     MatrixScript * KneeScriptLeft=new MatrixScript();
     MatrixScript * LegScriptLeft=new MatrixScript();
     KneeScriptLeft->add(0.5,oscillateKnee);
-    KneeScriptLeft->add(0.5,notMove);
+    KneeScriptLeft->add(0.5,oscillateKnee);
     LegScriptLeft->add(0.5,oscillateLeg);
     LegScriptLeft->add(0.5,oscillateLegSecond);
 
@@ -149,7 +150,7 @@ Hero::Hero()
     //Movement to the second leg
     MatrixScript * KneeScriptRight=new MatrixScript();
     MatrixScript * LegScriptRight=new MatrixScript();
-    KneeScriptRight->add(0.5,notMove);
+    KneeScriptRight->add(0.5,oscillateKnee);
     KneeScriptRight->add(0.5,oscillateKnee);
     LegScriptRight->add(0.5,oscillateLegSecond);
     LegScriptRight->add(0.5,oscillateLeg);
@@ -231,9 +232,9 @@ Hero::Hero()
     moveArmLeft->identity();
     moveMatrix.push_back(moveArmLeft);
 
-    Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
+    Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),90.0f,"./textures/wood.png");
     Material * materialChest=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodChest.png");
-    Material * materialTest=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/leaf.jpg");
+    Material * materialTest=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),32.0f,"./textures/leaf.jpg");
 
     //Matrix4fDinamic
     OscillateRotation * oscillateElbow=new OscillateRotation(true,120,0,1,350,vec3f(0.75,0.5,0),2);
@@ -486,12 +487,11 @@ void Hero::visualization(Context & cv){
 //**********************************************************************//
 
 void Hero::updateState(float time){
-    if(isMoving)
+    if(isMoving){
         animation.updateState(time-currentTime);
-
-    for(int i=0;i<moveMatrix.size();i++)
-        moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
-
+        for(int i=0;i<moveMatrix.size();i++)
+            moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
+    }
     currentTime+=(time-currentTime);
 }
 
@@ -655,11 +655,13 @@ bool Hero::moveBody(vec3f aMove,avatarDirection aDir){
 
 void Hero::noMove(){
     animation.resetState();
-    if(isMoving){
-        float time=SDL_GetTicks();
-        animation.updateState(time-currentTime);
-        currentTime+=(time-currentTime);
-    }
+    for(int i=0;i<moveMatrix.size();i++)
+            moveMatrix[i]->identity();
+    //if(isMoving){
+      //  float time=SDL_GetTicks();
+      //  animation.updateState(time-currentTime);
+      //  currentTime+=(time-currentTime);
+    //}
     isMoving=false;
 }
 

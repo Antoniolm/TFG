@@ -30,6 +30,7 @@ LinearMovement::LinearMovement(float x,float y,float z){
     velocity.y=y;
     velocity.z=z;
     currentTime=SDL_GetTicks()/1000;
+    currentMatrix.identity();
 }
 
 //**********************************************************************//
@@ -38,6 +39,7 @@ LinearMovement::LinearMovement(const vec3f & aVelocity)
 {
     velocity=aVelocity;
     currentTime=SDL_GetTicks()/1000;
+    currentMatrix.identity();
 }
 
 //**********************************************************************//
@@ -53,12 +55,14 @@ void LinearMovement::setParameters(float x,float y,float z){
     velocity.x=x;
     velocity.y=y;
     velocity.z=z;
+    currentMatrix.identity();
 }
 
 //**********************************************************************//
 
 void LinearMovement::setParameters(const vec3f & aVelocity){
     velocity=aVelocity;
+    currentMatrix.identity();
 }
 
 //**********************************************************************//

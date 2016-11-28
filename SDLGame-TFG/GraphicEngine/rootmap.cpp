@@ -185,7 +185,7 @@ void RootMap::visualization(Context & cv){
     }
 
     //Draw hero
-    hero->updateState(SDL_GetTicks());
+    //hero->updateState(SDL_GetTicks());
     hero->visualization(cv);
 }
 
