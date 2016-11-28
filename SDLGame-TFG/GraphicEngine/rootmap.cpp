@@ -153,10 +153,10 @@ RootMap::RootMap(Hero * aHero)
 
     //Push all the positions
     int cont=0;
-    for(int i=1;i<cv.posObject.size();i+=2){
-        pos=cv.posObject[i];
-        objs[cont]->setPosition(pos);
-        indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(cont);
+    for(int i=0;i<objs.size();i++){
+        pos=objs[i]->getPosition();
+        cout<< " Position"<< pos.x<< " "<< pos.y<< " "<< pos.z<< endl;
+        indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(i);
         cont++;
     }
 }
@@ -185,7 +185,6 @@ void RootMap::visualization(Context & cv){
     }
 
     //Draw hero
-    //hero->updateState(SDL_GetTicks());
     hero->visualization(cv);
 }
 

@@ -40,12 +40,24 @@ ObjectScene::~ObjectScene()
 //**********************************************************************//
 
 void ObjectScene::visualization(Context & vis){
-    matrix = vis.matrixStack.getMatrix();
-    if(vis.visualization_mode==1)
-        position=matrix.product(vec4f());
-    vis.posObject.push_back(vec3f(position.x,position.y,position.z));
+    //matrix = vis.matrixStack.getMatrix();
+    //if(vis.visualization_mode==1)
+      //  position=matrix.product(vec4f());
+    //vis.posObject.push_back(vec3f(position.x,position.y,position.z));
 
     object->visualization(vis);
+
+    matrix=vis.currentTransf;
+    if(vis.visualization_mode==1)
+        position=matrix.product(vec4f());
+
+    //GLfloat * mat=matrix.getMatrix();
+    /*cout<< "//////////////////////////////////////////////////"<< endl;
+    cout<< mat[0]<< " "<<mat[1]<< " "<<mat[2]<< " "<< mat[3]<< endl;
+    cout<< mat[4]<< " "<<mat[5]<< " "<<mat[6]<< " "<< mat[7]<< endl;
+    cout<< mat[8]<< " "<<mat[9]<< " "<<mat[10]<< " "<< mat[11]<< endl;
+    cout<< mat[12]<< " "<<mat[13]<< " "<<mat[14]<< " "<< mat[15]<< endl;*/
+
 }
 
 //**********************************************************************//
