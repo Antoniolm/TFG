@@ -147,17 +147,17 @@ RootMap::RootMap(Hero * aHero)
     //visualization;
     Context cv;
     cv.visualization_mode=1;
-    visualization(cv);
+    for(int i=0;i<objs.size();i++){
+        objs[i]->visualization(cv);
+    }
 
     vec3f pos;
 
     //Push all the positions
-    int cont=0;
     for(int i=0;i<objs.size();i++){
         pos=objs[i]->getPosition();
         cout<< " Position"<< pos.x<< " "<< pos.y<< " "<< pos.z<< endl;
         indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(i);
-        cont++;
     }
 }
 

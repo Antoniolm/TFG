@@ -47,9 +47,10 @@ void ObjectScene::visualization(Context & vis){
 
     object->visualization(vis);
 
-    matrix=vis.currentTransf;
-    if(vis.visualization_mode==1)
+    if(vis.visualization_mode==1){
+        matrix=Matrix4f(vis.currentTransf);
         position=matrix.product(vec4f());
+    }
 
     //GLfloat * mat=matrix.getMatrix();
     /*cout<< "//////////////////////////////////////////////////"<< endl;
