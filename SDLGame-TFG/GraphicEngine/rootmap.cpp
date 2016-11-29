@@ -140,10 +140,9 @@ RootMap::RootMap(Hero * aHero)
     objs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
-    transOneCube->translation(2.5f,1.2f,-0.5f);
+    transOneCube->translation(2.1f,1.2f,-0.5f);
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
-    cubeNode->add(scaleGrass);
     cubeNode->add(materialTree);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(grassObject)));
     decoractionObjs.push_back(new ObjectScene(cubeNode));

@@ -58,7 +58,10 @@ void main()
  for(int i = 0; i < numActivateLight; i++)
     result += calculatePointLight(pointLights[i], norm, FragPos, viewDir);  
        
- color =texture(ourTexture,TextCoord) * vec4(result, 1.0f);
+ vec4 texColor = texture(ourTexture,TextCoord);
+ if(texColor.a < 0.1)
+        discard;
+ color =texColor * vec4(result, 1.0f);
 }
 
 vec3 calculateDirLight(DirLight light,vec3 normal,vec3 viewDir){

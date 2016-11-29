@@ -81,6 +81,7 @@ bool Window::createWindow(){
     glEnable(GL_DEPTH_TEST);
 
 	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
 	glCullFace(GL_BACK);
 
     return salida;
