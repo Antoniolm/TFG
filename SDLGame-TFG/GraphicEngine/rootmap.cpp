@@ -36,6 +36,10 @@ RootMap::RootMap(Hero * aHero)
     Mesh * treeObject=new Mesh(file);
     treeObject->init();
 
+    file="geometries/grass.obj";
+    Mesh * grassObject=new Mesh(file);
+    grassObject->init();
+
     file="geometries/mushroomWhite.obj";
     Mesh * mushRoomObject=new Mesh(file);
     mushRoomObject->init();
@@ -45,6 +49,9 @@ RootMap::RootMap(Hero * aHero)
 
     Matrix4f *scaleCube =new Matrix4f();
     scaleCube->scale(0.5,0.5,0.5);
+
+    Matrix4f *scaleGrass =new Matrix4f();
+    scaleGrass->scale(0.7,0.7,0.7);
 
     Matrix4f * transOneCube=new Matrix4f();
     transOneCube->translation(0.5,0.5,-0.5);
@@ -65,6 +72,7 @@ RootMap::RootMap(Hero * aHero)
     Material * materialRock=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/rock.png");
     Material * materialFence=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
     Material * materialMushroom=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
+    Material * materialTree=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grass.png");
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
 
@@ -123,14 +131,22 @@ RootMap::RootMap(Hero * aHero)
     }
 
     transOneCube=new Matrix4f();
-    transOneCube->translation(10.5f,-0.5f,-2.5f);
+    transOneCube->translation(0.5f,2.0f,-6.5f);
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
-    cubeNode->add(materialFence);
+    cubeNode->add(materialTree);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(treeObject)));
     objs.push_back(new ObjectScene(cubeNode));
 
+    transOneCube=new Matrix4f();
+    transOneCube->translation(2.5f,1.2f,-0.5f);
+    cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleGrass);
+    cubeNode->add(materialTree);
+    cubeNode->add(static_cast<Object3D*>(new ObjectScene(grassObject)));
+    decoractionObjs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
     transOneCube->translation(0.5f,1.0f,-0.5f);

@@ -45,6 +45,7 @@ void NodeSceneGraph::visualization(Context & cv){
 
     int contMatrix=1;
     int contMaterial=0;
+    vec4f pos;
     cv.matrixStack.push();
     vector<EntryNGE>::iterator it;
     for(it=entrance.begin();it!=entrance.end();it++){
@@ -68,6 +69,7 @@ void NodeSceneGraph::visualization(Context & cv){
     cv.materialStack.pop(contMaterial);
     cv.materialStack.getMaterial().activate(&cv.currentShader);
 
+    cv.currentTransf.setMatrix(cv.matrixStack.getMatrix().getMatrix());
     cv.matrixStack.pop(contMatrix);
     cv.matrixStack.activate(&cv.currentShader);
 
