@@ -21,17 +21,20 @@
 #define HERO_H
 
 #include "avatar.h"
+#include "avatarmove.h"
 #include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/scriptlmd.h"
 #include "../GraphicEngine/context.h"
 #include "../GraphicEngine/matrixscript.h"
 #include "../GraphicEngine/rootmap.h"
+#include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/acceleratedmovement.h"
+
 #include <vector>
 
 using namespace std;
 class RootMap;
-class Hero: public Avatar
+class Hero: public AvatarMove
 {
     public:
         //////////////////////////////////////////////////////////////////////////
@@ -75,7 +78,7 @@ class Hero: public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        bool moveBody(vec3f aMove,avatarDirection aDir);
+        bool moveHero(vec3f aMove,avatarDirection aDir);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -92,7 +95,7 @@ class Hero: public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        bool gravity(float velocity);
+        bool gravityHero(float velocity);
 
 
         //////////////////////////////////////////////////////////////////////////
@@ -135,19 +138,15 @@ class Hero: public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        vec3f getPosition();
+        vec3f getPositionHero();
 
     protected:
 
     private:
         vector<Matrix4f *> moveMatrix;
-        float currentTime;
         ScriptLMD animation;
-        Matrix4f * moveHero;
         AcceleratedMovement * acceleratedMove;
-        avatarDirection direction;
         bool isMoving,isFalling,isJumping;
-        RootMap * rootMap;
 };
 
 #endif // HERO_H
