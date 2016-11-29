@@ -486,10 +486,27 @@ void Hero::visualization(Context & cv){
 //**********************************************************************//
 
 void Hero::updateState(float time){
-    if(isMoving){
+    if(isMoving && !isFalling && !isJumping){
         animation.updateState(time-currentTime);
         for(int i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
+    }
+    else if(isFalling){
+        for(int i=0;i<moveMatrix.size();i++)
+            moveMatrix[i]->identity();
+        Matrix4f rot;
+        rot.rotation(30,0,0,1);
+        moveMatrix[6]->setMatrix(rot.getMatrix());
+        rot.rotation(-30,0,0,1);
+        moveMatrix[7]->setMatrix(rot.getMatrix());
+    }
+    else if(isJumping){
+        for(int i=0;i<moveMatrix.size();i++)
+            moveMatrix[i]->identity();
+        Matrix4f rot;
+        rot.rotation(30,1,0,0);
+        moveMatrix[6]->setMatrix(rot.getMatrix());
+        moveMatrix[7]->setMatrix(rot.getMatrix());
     }
     currentTime+=(time-currentTime);
 }
@@ -849,6 +866,5 @@ vec3f Hero::getPosition(){
     vec4f position;
     position=moveHero->product(position);
 
-    //cout<< "Position -> x:"<< position.x << " y: "<< position.y<< " z: "<< position.z << endl;
     return vec3f(position.x,position.y,position.z);
 }

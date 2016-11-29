@@ -73,6 +73,7 @@ RootMap::RootMap(Hero * aHero)
     Material * materialFence=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
     Material * materialMushroom=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
     Material * materialTree=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grass.png");
+    Material * materialWater=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/water.png");
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
 
@@ -115,6 +116,7 @@ RootMap::RootMap(Hero * aHero)
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
+
     float scale=-1.5;
     for(int i=0;i<2;i++){
         if(i==1) scale=-5.5;

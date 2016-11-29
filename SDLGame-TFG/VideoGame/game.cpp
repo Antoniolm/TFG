@@ -129,8 +129,10 @@ void Game::loop(){
             hasMove=true;
         }
         else{
-            hero->noMove();
             hasMove=false;
+            if(!hero->isJump() && !hero->isFall()){
+                hero->noMove();
+            }
         }
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_SPACE)] && !hero->isJump() && !hero->isFall())
         {
