@@ -819,10 +819,12 @@ bool Hero::jump(){
                 }
             }*/
             isJumping=false;
+            isFalling=true;
             result=false;
         }
     }else{
         isJumping=false;
+        isFalling=true;
         result=false;
     }
 

@@ -86,62 +86,45 @@ void Game::loop(){
         currentKeyStates = SDL_GetKeyboardState( NULL );
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] && !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
         !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-            cout<< "Izquierda "<<SDL_GetScancodeFromKey(SDLK_LEFT)<<endl;
-            moveHero.x=-3.0;
-            moveHero.y=0.0;
-            moveHero.z=0.0;
+            moveHero.x=-3.0;moveHero.y=0.0;moveHero.z=0.0;
             heroDir=LEFTWARD;
             hasMove=true;
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
         !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-            moveHero.x=3.0;
-            moveHero.y=0.0;
-            moveHero.z=0.0;
+            moveHero.x=3.0;moveHero.y=0.0;moveHero.z=0.0;
             heroDir=RIGHTWARD;
             hasMove=true;
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
         !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-            moveHero.x=0.0;
-            moveHero.y=0.0;
-            moveHero.z=-3.0;
+            moveHero.x=0.0;moveHero.y=0.0;moveHero.z=-3.0;
             heroDir=BACKWARD;
             hasMove=true;
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
         !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-            moveHero.x=0.0;
-            moveHero.y=0.0;
-            moveHero.z=3.0;
+            moveHero.x=0.0;moveHero.y=0.0;moveHero.z=3.0;
             heroDir=FORWARD;
             hasMove=true;
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
-            moveHero.x=-2.0;
-            moveHero.y=0.0;
-            moveHero.z=2.0;
+            moveHero.x=-2.0;moveHero.y=0.0;moveHero.z=2.0;
             heroDir=FOR_LEFTWARD;
             hasMove=true;
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-            moveHero.x=2.0;
-            moveHero.y=0.0;
-            moveHero.z=2.0;
+            moveHero.x=2.0;moveHero.y=0.0;moveHero.z=2.0;
             heroDir=FOR_RIGHTWARD;
             hasMove=true;
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
-            moveHero.x=-2.0;
-            moveHero.y=0.0;
-            moveHero.z=-2.0;
+            moveHero.x=-2.0;moveHero.y=0.0;moveHero.z=-2.0;
             heroDir=BACK_LEFTWARD;
             hasMove=true;
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-            moveHero.x=2.0;
-            moveHero.y=0.0;
-            moveHero.z=-2.0;
+            moveHero.x=2.0;moveHero.y=0.0;moveHero.z=-2.0;
             heroDir=BACK_RIGHTWARD;
             hasMove=true;
         }
@@ -151,9 +134,7 @@ void Game::loop(){
         }
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_SPACE)] && !hero->isJump() && !hero->isFall())
         {
-            moveHero.x=0.0;
-            moveHero.y=0.0;
-            moveHero.z=0.0;
+            moveHero.x=0.0;moveHero.y=0.0;moveHero.z=0.0;
             hero->activeJump(50.0,60.0);
         }
 
