@@ -85,7 +85,6 @@ class Hero: public AvatarMove
     private:
         vector<Matrix4f *> moveMatrix;
         ScriptLMD animation;
-        bool isMoving,isFalling,isJumping;
 };
 
 #endif // HERO_H
