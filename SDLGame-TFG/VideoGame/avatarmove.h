@@ -22,6 +22,7 @@
 
 #include "avatar.h"
 #include "../GraphicEngine/matrix4f.h"
+#include "../GraphicEngine/acceleratedmovement.h"
 
 class RootMap;
 class AvatarMove: public Avatar
@@ -54,6 +55,41 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         bool gravity(float velocity);
 
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will jump our hero
+        *    \param velocity ->
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activeJump(float velocity,float acceleration);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will jump our hero
+        *    \param velocity ->
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool jump();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return if the hero is jumping or not
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isJump();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return if the hero is falling or not
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isFall();
+
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will get the position of our hero
@@ -66,6 +102,7 @@ class AvatarMove: public Avatar
         RootMap * rootMap;
         Matrix4f * moveHero;
         avatarDirection direction;
+        AcceleratedMovement * acceleratedMove;
         bool isMoving,isFalling,isJumping;
         float currentTime;
     private:

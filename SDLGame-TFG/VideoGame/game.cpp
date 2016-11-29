@@ -140,11 +140,11 @@ void Game::loop(){
             hero->activeJump(50.0,60.0);
         }
 
-        if(hasMove &&hero->moveHero(moveHero,heroDir))
+        if(hasMove &&hero->moveBody(moveHero,heroDir))
         {
-            posHero=hero->getPositionHero();
+            posHero=hero->getPosition();
             posHero.y+=4.0f;posHero.z+=8.0f;
-            aContext.camera.moveCamera(posHero,hero->getPositionHero(),&aContext.currentShader);
+            aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
         }
 
         window->cleanScreen();
@@ -153,15 +153,15 @@ void Game::loop(){
 
         if(hero->isJump()){
             if(hero->jump()){
-                posHero=hero->getPositionHero();
+                posHero=hero->getPosition();
                 posHero.y+=4.0f;posHero.z+=8.0f;
-                aContext.camera.moveCamera(posHero,hero->getPositionHero(),&aContext.currentShader);
+                aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
             }
         }
-        else if(hero->gravityHero(-20.0)){
-                posHero=hero->getPositionHero();
+        else if(hero->gravity(-20.0)){
+                posHero=hero->getPosition();
                 posHero.y+=4.0f;posHero.z+=8.0f;
-                aContext.camera.moveCamera(posHero,hero->getPositionHero(),&aContext.currentShader);
+                aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
         }
         window->updateScreen();
     }
