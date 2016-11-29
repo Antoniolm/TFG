@@ -79,17 +79,22 @@ void AcceleratedMovement::setParameters(const vec3f & aVelocity,float aAccel,boo
 //**********************************************************************//
 
 Matrix4f & AcceleratedMovement::updateState(float time){
-    time=time/1000;
+    time=time/1000.0;
 
-    if(time==0.0) time=0.001;
+    float value;
     //Check the velocity
     if(increment){
-        velocity.y=velocity.y+(acceleration*time*10);
+        value=+(acceleration*time*10);
     }
     else
-        velocity.y=velocity.y-(acceleration*time*10);
+        value=-(acceleration*time*10);
 
-    cout<< "velocity -> "<< velocity.y<< endl;
+    if(velocity.x>0)
+        velocity.x=velocity.x+value;
+    if(velocity.y>0)
+        velocity.y=velocity.y+value;
+    if(velocity.z>0)
+        velocity.z=velocity.z+value;
 
     //Update our matrix with that new velocity
     currentMatrix.translation(velocity.x*time,velocity.y*time,velocity.z*time);
