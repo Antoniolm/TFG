@@ -116,6 +116,7 @@ void Game::loop(){
                     heroDir=BACK_RIGHTWARD;
                 }
                 if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_SPACE)] && !hero->isJump() && !hero->isFall()){
+                    moveHero.x=0.0; moveHero.y=0.0; moveHero.z=0.0;
                     hero->activeJump(50.0,60.0);
                 }
 
