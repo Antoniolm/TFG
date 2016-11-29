@@ -385,11 +385,11 @@
 	"../GraphicEngine/structdata.h"
 	"hero.h"
 
-1480286296 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1480416600 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
-1480413195 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1480417735 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1480332805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp

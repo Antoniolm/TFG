@@ -83,35 +83,39 @@ void Game::loop(){
             //case: Player push a buttom
             const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
             if (event.type == SDL_KEYDOWN){ //Fix here
-                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)]){
+                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] && !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
+                   !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
                     moveHero.x=-3.0; moveHero.y=0.0; moveHero.z=0.0;
                     heroDir=LEFTWARD;
                 }
-                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
+                else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
+                   !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
                     moveHero.x=3.0; moveHero.y=0.0; moveHero.z=0.0;
                     heroDir=RIGHTWARD;
                 }
-                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
+                else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
+                   !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
                     moveHero.x=0.0; moveHero.y=0.0; moveHero.z=-3.0;
                     heroDir=BACKWARD;
                 }
-                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]){
+                else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
+                   !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
                     moveHero.x=0.0; moveHero.y=0.0; moveHero.z=3.0;
                     heroDir=FORWARD;
                 }
-                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
+                else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
                     moveHero.x=-2.0; moveHero.y=0.0; moveHero.z=2.0;
                     heroDir=FOR_LEFTWARD;
                 }
-                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
+                else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
                     moveHero.x=2.0; moveHero.y=0.0; moveHero.z=2.0;
                     heroDir=FOR_RIGHTWARD;
                 }
-                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
+                else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
                     moveHero.x=-2.0; moveHero.y=0.0; moveHero.z=-2.0;
                     heroDir=BACK_LEFTWARD;
                 }
-                if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
+                else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
                     moveHero.x=2.0; moveHero.y=0.0; moveHero.z=-2.0;
                     heroDir=BACK_RIGHTWARD;
                 }
