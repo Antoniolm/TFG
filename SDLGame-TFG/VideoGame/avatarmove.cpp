@@ -136,34 +136,32 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
     if(hasCollision==0){ //Case -> the hero can move = No collision
         if(direction!=aDir){
             vec4f position;
-            position=moveHero->product(position);
+            position=moveAvatar->product(position);
             Matrix4f transHero;
             transHero.translation(position.x,position.y,position.z);
             LinearMovement lineMove(aMove);
             transHero.product(lineMove.updateState(time-currentTime).getMatrix());
 
-            moveHero->identity();
-            moveHero->rotation(45*aDir,0.0f,1.0f,0.0f);
-            moveHero->product(transHero.getMatrix());
+            moveAvatar->rotation(45*aDir,0.0f,1.0f,0.0f);
+            moveAvatar->product(transHero.getMatrix());
 
             direction=aDir;
         }
         else{
             LinearMovement lineMove(aMove);
-            moveHero->product(lineMove.updateState(time-currentTime).getMatrix());
+            moveAvatar->product(lineMove.updateState(time-currentTime).getMatrix());
         }
         result=true;
     }
     else{   //Case -> not Move for colission but the hero change the rotation in the Y-axis
         if(direction!=aDir){
             vec4f position;
-            position=moveHero->product(position);
+            position=moveAvatar->product(position);
             Matrix4f transHero;
             transHero.translation(position.x,position.y,position.z);
 
-            moveHero->identity();
-            moveHero->rotation(45*aDir,0.0f,1.0f,0.0f);
-            moveHero->product(transHero.getMatrix());
+            moveAvatar->rotation(45*aDir,0.0f,1.0f,0.0f);
+            moveAvatar->product(transHero.getMatrix());
 
             direction=aDir;
 
@@ -230,7 +228,7 @@ bool AvatarMove::gravity(float velocity){
     }
 
     if(hasCollision==0){ //if not collision
-        AvatarMove::moveHero->product(moveGravity);
+        AvatarMove::moveAvatar->product(moveGravity);
         isFalling=true;
     }
     else {
@@ -272,7 +270,6 @@ bool AvatarMove::jump(){
 
     float time=SDL_GetTicks();
     GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
-    //cout<< "moveGravity.y ->"<< moveGravity[13]<< endl;
 
     vec3f posHero=getPosition();
     posHero.y+=(0.22+moveGravity[13]);
@@ -318,7 +315,7 @@ bool AvatarMove::jump(){
         }
 
         if(hasCollision==0){ //if not collision
-            AvatarMove::moveHero->product(moveGravity);
+            moveAvatar->product(moveGravity);
             isJumping=true;
         }
         else {
@@ -330,7 +327,7 @@ bool AvatarMove::jump(){
                     Matrix4f trans;
                     trans.translation(0.0,(positionObs.y+0.5)-(posHero.y-0.5),0.0);
                     cout<< "Translation ->" << (positionObs.y+0.5)-(posHero.y-0.55)<< endl;
-                    moveHero->product(trans.getMatrix());
+                    moveAvatar->product(trans.getMatrix());
                 }
             }*/
             isJumping=false;
@@ -362,7 +359,7 @@ bool AvatarMove::isFall(){
 
 vec3f AvatarMove::getPosition(){
     vec4f position;
-    position=moveHero->product(position);
+    position=moveAvatar->product(position);
     return vec3f(position.x,position.y,position.z);
 }
 

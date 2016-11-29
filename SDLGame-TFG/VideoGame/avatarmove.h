@@ -40,7 +40,7 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will move our hero
+        *    The method will move our avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -48,7 +48,7 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will create the gravity for our hero
+        *    The method will create the gravity for our avatar
         *    \param velocity ->
         *    \return void
         */
@@ -58,7 +58,7 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will jump our hero
+        *    The method will jump our avatar
         *    \param velocity ->
         *    \return void
         */
@@ -67,7 +67,7 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will jump our hero
+        *    The method will jump our avatar
         *    \param velocity ->
         *    \return void
         */
@@ -76,7 +76,7 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will return if the hero is jumping or not
+        *    The method will return if the avatar is jumping or not
         *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
@@ -84,7 +84,7 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will return if the hero is falling or not
+        *    The method will return if the avatar is falling or not
         *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
@@ -92,7 +92,7 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will get the position of our hero
+        *    The method will get the position of our avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -100,7 +100,7 @@ class AvatarMove: public Avatar
 
     protected:
         RootMap * rootMap;
-        Matrix4f * moveHero;
+        Matrix4f * moveAvatar;
         avatarDirection direction;
         AcceleratedMovement * acceleratedMove;
         bool isMoving,isFalling,isJumping;
