@@ -105,6 +105,8 @@
 		<Unit filename="GraphicEngine/window.h" />
 		<Unit filename="VideoGame/avatar.cpp" />
 		<Unit filename="VideoGame/avatar.h" />
+		<Unit filename="VideoGame/avatarmove.cpp" />
+		<Unit filename="VideoGame/avatarmove.h" />
 		<Unit filename="VideoGame/game.cpp" />
 		<Unit filename="VideoGame/game.h" />
 		<Unit filename="VideoGame/hero.cpp" />

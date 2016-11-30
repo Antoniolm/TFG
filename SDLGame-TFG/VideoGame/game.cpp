@@ -143,9 +143,11 @@ void Game::loop(){
                 hero->noMove();
             }
         }
+
         //Case-> Push Scape bottom to jump
-        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_SPACE)] && !hero->isJump() && !hero->isFall())
+        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !hero->isJump() && !hero->isFall())
         {
+            cout<< "jump"<<endl;
             moveHero.x=0.0;moveHero.y=0.0;moveHero.z=0.0;
             hero->activeJump(50.0,60.0);
         }
