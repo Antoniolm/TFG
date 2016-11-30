@@ -50,6 +50,9 @@ RootMap::RootMap(Hero * aHero)
     Matrix4f *scaleCube =new Matrix4f();
     scaleCube->scale(0.5,0.5,0.5);
 
+    Matrix4f *scaleWater =new Matrix4f();
+    scaleWater->scale(3.5,0.5,3.5);
+
     Matrix4f *scaleGrass =new Matrix4f();
     scaleGrass->scale(0.7,0.7,0.7);
 
@@ -104,7 +107,7 @@ RootMap::RootMap(Hero * aHero)
         objs.push_back(new ObjectScene(cubeNode));
     }
 
-    for(int i=0;i<7;i++){
+    for(int i=0;i<2;i++){
         for(int j=0;j<7;j++){
             transOneCube=new Matrix4f();
             transOneCube->translation(i+8.5f,-1.5f,-j-0.5f);
@@ -117,6 +120,43 @@ RootMap::RootMap(Hero * aHero)
         }
     }
 
+    for(int i=0;i<4;i++){
+        for(int j=0;j<2;j++){
+            transOneCube=new Matrix4f();
+            transOneCube->translation(i+10.5f,-1.5f,-j-2.5f);
+            cubeNode=new NodeSceneGraph();
+            cubeNode->add(transOneCube);
+            cubeNode->add(scaleCube);
+            cubeNode->add(materialGrass);
+            cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
+            objs.push_back(new ObjectScene(cubeNode));
+        }
+    }
+
+
+    for(int i=0;i<7;i++){
+        for(int j=0;j<7;j++){
+            transOneCube=new Matrix4f();
+            transOneCube->translation(i+10.5f,-3.5f,-j-0.5f);
+            cubeNode=new NodeSceneGraph();
+            cubeNode->add(transOneCube);
+            cubeNode->add(scaleCube);
+            cubeNode->add(materialGrass);
+            cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
+            objs.push_back(new ObjectScene(cubeNode));
+        }
+    }
+
+    transOneCube=new Matrix4f();
+    transOneCube->translation(13.5f,-2.5f,-3.5f);
+    cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleWater);
+    cubeNode->add(materialWater);
+    cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
+    decorationObjs.push_back(new ObjectScene(cubeNode));
+
+
     float scale=-1.5;
     for(int i=0;i<2;i++){
         if(i==1) scale=-5.5;
@@ -126,7 +166,7 @@ RootMap::RootMap(Hero * aHero)
             cubeNode=new NodeSceneGraph();
             cubeNode->add(transOneCube);
             cubeNode->add(scaleFence);
-            cubeNode->add(materialWater);
+            cubeNode->add(materialFence);
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(fenceObject)));
             objs.push_back(new ObjectScene(cubeNode));
         }
@@ -147,7 +187,7 @@ RootMap::RootMap(Hero * aHero)
     cubeNode->add(transOneCube);
     cubeNode->add(materialTree);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(grassObject)));
-    decoractionObjs.push_back(new ObjectScene(cubeNode));
+    decorationObjs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
     transOneCube->translation(0.5f,1.0f,-0.5f);
@@ -156,7 +196,7 @@ RootMap::RootMap(Hero * aHero)
     cubeNode->add(scaleCube);
     cubeNode->add(materialMushroom);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(mushRoomObject)));
-    decoractionObjs.push_back(new ObjectScene(cubeNode));
+    decorationObjs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
     transOneCube->translation(3.5f,3.5f,-5.5f);
@@ -200,18 +240,17 @@ void RootMap::setHero(Hero * theHero){
 //**********************************************************************//
 
 void RootMap::visualization(Context & cv){
-
-
-    //Draw hero
-    hero->visualization(cv);
     //Draw object
     for(int i=0;i<objs.size();i++){
         objs[i]->visualization(cv);
     }
 
+    //Draw hero
+    hero->visualization(cv);
+
     //Draw decoration object
-    for(int i=0;i<decoractionObjs.size();i++){
-        decoractionObjs[i]->visualization(cv);
+    for(int i=0;i<decorationObjs.size();i++){
+        decorationObjs[i]->visualization(cv);
     }
 }
 

@@ -84,7 +84,7 @@ class RootMap : public Object3D
     private:
         vector<int> indexMap[30][30];
         vector<ObjectScene *> objs;
-        vector<ObjectScene *> decoractionObjs;
+        vector<ObjectScene *> decorationObjs;
         Hero * hero;
 };
 
