@@ -556,7 +556,7 @@ void Hero::updateState(float time){
         {
             cout<< "jump"<<endl;
             moveHero.x=0.0;moveHero.y=0.0;moveHero.z=0.0;
-            activeJump(50.0,60.0);
+            activeJump(10.0,5.0);
         }
 
         //Move the body
@@ -569,21 +569,10 @@ void Hero::updateState(float time){
 
     //If the jump is activate
     if(isJumping){
-        if(jump()){
-            posHero=getPosition();
-            posHero.y+=4.0f;
-            posHero.z+=8.0f;
-            //aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
-        }
+        jump();
     }
     //If the jump is not activate
-    else if(gravity(-20.0)){
-        posHero=getPosition();
-        cout<< "Position->"<< posHero.x<< " "<< posHero.y<< " "<< posHero.z<< endl;
-        posHero.y+=4.0f;
-        posHero.z+=8.0f;
-        //aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
-    }
+    else gravity(-5.0);
 
     if(isMoving && !isFalling && !isJumping){
         animation.updateState(time-currentTime);
