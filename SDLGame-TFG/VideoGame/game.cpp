@@ -39,6 +39,7 @@ void Game::loop(){
     SDL_Event event;
     const Uint8* currentKeyStates;
     Context aContext;
+    vec3f posHero;
 
     hero=new Hero();
     rootMap->setHero(hero);
@@ -70,7 +71,6 @@ void Game::loop(){
 
     //Show our window.
     window->showScreen();
-    hero->updateState(SDL_GetTicks());
     while (!quit)
     {
         while (SDL_PollEvent(&event)){
@@ -82,6 +82,11 @@ void Game::loop(){
         window->cleanScreen();
         rootMap->updateState(SDL_GetTicks());
         rootMap->visualization(aContext);
+
+        //Update the camera
+        posHero=hero->getPosition();
+        posHero.y+=4.0f;posHero.z+=8.0f;
+        aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
 
         window->updateScreen();
     }
