@@ -126,7 +126,7 @@ RootMap::RootMap(Hero * aHero)
             cubeNode=new NodeSceneGraph();
             cubeNode->add(transOneCube);
             cubeNode->add(scaleFence);
-            cubeNode->add(materialFence);
+            cubeNode->add(materialWater);
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(fenceObject)));
             objs.push_back(new ObjectScene(cubeNode));
         }
@@ -201,6 +201,9 @@ void RootMap::setHero(Hero * theHero){
 
 void RootMap::visualization(Context & cv){
 
+
+    //Draw hero
+    hero->visualization(cv);
     //Draw object
     for(int i=0;i<objs.size();i++){
         objs[i]->visualization(cv);
@@ -210,9 +213,6 @@ void RootMap::visualization(Context & cv){
     for(int i=0;i<decoractionObjs.size();i++){
         decoractionObjs[i]->visualization(cv);
     }
-
-    //Draw hero
-    hero->visualization(cv);
 }
 
 //**********************************************************************//
