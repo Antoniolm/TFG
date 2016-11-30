@@ -23,10 +23,7 @@
 Game::Game(){
     window=new Window("SDL_Game",800,600);
     window->createWindow();
-
-    //Create hero and our map
-    hero=new Hero();
-    rootMap=new RootMap(hero);
+    rootMap=new RootMap();
 }
 
 //**********************************************************************//
@@ -42,6 +39,9 @@ void Game::loop(){
     SDL_Event event;
     const Uint8* currentKeyStates;
     Context aContext;
+
+    hero=new Hero();
+    rootMap->setHero(hero);
 
     //Create our shader
     aContext.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
@@ -68,13 +68,9 @@ void Game::loop(){
     pointLight.activate(&aContext.currentShader,"0");
     pointLight2.activate(&aContext.currentShader,"1");
 
-    avatarDirection heroDir;
-    vec3f moveHero;
-    vec3f posHero;
-
     //Show our window.
     window->showScreen();
-
+    hero->updateState(SDL_GetTicks());
     while (!quit)
     {
         while (SDL_PollEvent(&event)){
@@ -82,102 +78,11 @@ void Game::loop(){
                 quit = true;
             }
         }
-        //case: Player push a bottom
-        currentKeyStates = SDL_GetKeyboardState( NULL );
-
-        //Case-> Push Left bottom
-        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] && !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
-        !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-            moveHero.x=-3.0;moveHero.y=0.0;moveHero.z=0.0;
-            heroDir=LEFTWARD;
-            hasMove=true;
-        }
-        //Case-> Push Right bottom
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
-        !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-            moveHero.x=3.0;moveHero.y=0.0;moveHero.z=0.0;
-            heroDir=RIGHTWARD;
-            hasMove=true;
-        }
-        //Case-> Push Up bottom
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
-        !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-            moveHero.x=0.0;moveHero.y=0.0;moveHero.z=-3.0;
-            heroDir=BACKWARD;
-            hasMove=true;
-        }
-        //Case-> Push Down bottom
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
-        !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-            moveHero.x=0.0;moveHero.y=0.0;moveHero.z=3.0;
-            heroDir=FORWARD;
-            hasMove=true;
-        }
-        //Case-> Push Dowm-Left bottoms
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
-            moveHero.x=-2.0;moveHero.y=0.0;moveHero.z=2.0;
-            heroDir=FOR_LEFTWARD;
-            hasMove=true;
-        }
-        //Case-> Push Dowm-Right bottoms
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-            moveHero.x=2.0;moveHero.y=0.0;moveHero.z=2.0;
-            heroDir=FOR_RIGHTWARD;
-            hasMove=true;
-        }
-        //Case-> Push Up-Left bottoms
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
-            moveHero.x=-2.0;moveHero.y=0.0;moveHero.z=-2.0;
-            heroDir=BACK_LEFTWARD;
-            hasMove=true;
-        }
-        //Case-> Push Up-Right bottoms
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-            moveHero.x=2.0;moveHero.y=0.0;moveHero.z=-2.0;
-            heroDir=BACK_RIGHTWARD;
-            hasMove=true;
-        }
-        else{ //Case-> If not move
-            hasMove=false;
-            if(!hero->isJump() && !hero->isFall()){
-                hero->noMove();
-            }
-        }
-
-        //Case-> Push Scape bottom to jump
-        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !hero->isJump() && !hero->isFall())
-        {
-            cout<< "jump"<<endl;
-            moveHero.x=0.0;moveHero.y=0.0;moveHero.z=0.0;
-            hero->activeJump(50.0,60.0);
-        }
-
-        //Move the body
-        if(hasMove &&hero->moveBody(moveHero,heroDir))
-        {
-            posHero=hero->getPosition();
-            posHero.y+=4.0f;posHero.z+=8.0f;
-            aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
-        }
 
         window->cleanScreen();
         rootMap->updateState(SDL_GetTicks());
         rootMap->visualization(aContext);
 
-        //If the jump is activate
-        if(hero->isJump()){
-            if(hero->jump()){
-                posHero=hero->getPosition();
-                posHero.y+=4.0f;posHero.z+=8.0f;
-                aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
-            }
-        }
-        //If the jump is not activate
-        else if(hero->gravity(-20.0)){
-                posHero=hero->getPosition();
-                posHero.y+=4.0f;posHero.z+=8.0f;
-                aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
-        }
         window->updateScreen();
     }
 }

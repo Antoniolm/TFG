@@ -181,6 +181,7 @@ bool AvatarMove::gravity(float velocity){
 
     if(!isJumping){
     float time=SDL_GetTicks();
+    cout<< "time-currentTime"<< time-currentTime<<endl;
     LinearMovement transHero(0.0,velocity,0.0);
     GLfloat * moveGravity=transHero.updateState(time-currentTime).getMatrix();
     //cout<< "moveGravity.y"<< moveGravity[13]<< endl;
@@ -228,7 +229,7 @@ bool AvatarMove::gravity(float velocity){
     }
 
     if(hasCollision==0){ //if not collision
-        AvatarMove::moveAvatar->product(moveGravity);
+        moveAvatar->product(moveGravity);
         isFalling=true;
     }
     else {

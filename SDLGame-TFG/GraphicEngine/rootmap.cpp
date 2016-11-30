@@ -19,10 +19,9 @@
 
 #include "rootmap.h"
 
-RootMap::RootMap(Hero * aHero)
+RootMap::RootMap()
 {
     cout<< "< Game is loading our current map >"<< endl;
-    setHero(aHero);
 
     string file("geometries/cube.obj");
     Mesh * cubeObject=new Mesh(file);
@@ -257,12 +256,13 @@ void RootMap::visualization(Context & cv){
 //**********************************************************************//
 
 void RootMap::updateState(float time){
-    //Update the Scene
-    for(int i=0;i<objs.size();i++)
-        objs[i]->updateState(time);
 
     //Update the hero
     hero->updateState(time);
+
+    //Update the Scene
+    for(int i=0;i<objs.size();i++)
+        objs[i]->updateState(time);
 }
 
 //**********************************************************************//
