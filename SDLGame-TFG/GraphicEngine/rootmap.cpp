@@ -167,7 +167,7 @@ RootMap::RootMap()
             cubeNode->add(scaleFence);
             cubeNode->add(materialFence);
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(fenceObject)));
-            objs.push_back(new ObjectScene(cubeNode));
+            objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
         }
     }
 
@@ -270,6 +270,8 @@ void RootMap::updateState(float time){
 ObjectScene * RootMap::collision(const vec3f & indexObj){
     bool hasCollision=false;
     ObjectScene * result=0;
+    vec3f pos;
+    vec3f bounding;
     int tam=indexMap[(int)indexObj.x][(int)indexObj.z*-1].size();
 
     vector<int>::iterator it=indexMap[(int)indexObj.x][(int)indexObj.z*-1].begin();
@@ -277,8 +279,9 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
 
     if(tam!=0 ){
         for(;it!=endIt && !hasCollision;it++){
-            vec3f pos=objs[(*it)]->getPosition();
-            if((indexObj.y+0.5 > (pos.y)-0.5 && indexObj.y+0.5 < (pos.y)+0.5 )||(indexObj.y-0.5 > (pos.y)-0.5 && indexObj.y-0.5 < (pos.y)+0.5)){
+            pos=objs[(*it)]->getPosition();
+            bounding=objs[(*it)]->getBoundingBox();
+            if((indexObj.y+0.5 > (pos.y)-bounding.y && indexObj.y+0.5 < (pos.y)+bounding.y)||(indexObj.y-0.5 > (pos.y)-bounding.y && indexObj.y-0.5 < (pos.y)+bounding.y)){
                 hasCollision=true;
                 result=objs[(*it)];
             }

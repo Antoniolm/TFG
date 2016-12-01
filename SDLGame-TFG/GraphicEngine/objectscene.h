@@ -61,11 +61,13 @@ class ObjectScene : public Object3D
 
         vec3f getPosition();
 
+        vec3f getBoundingBox();
+
     protected:
 
     private:
         vec4f position;
-        vec3f BoundingBox;
+        vec3f boundingBox;
         Object3D * object;
         Matrix4f matrix;
 };

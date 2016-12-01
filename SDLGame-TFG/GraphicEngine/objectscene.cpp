@@ -28,7 +28,7 @@ ObjectScene::ObjectScene()
 
 ObjectScene::ObjectScene(Object3D * aObject,vec3f aBounding){
     object=aObject;
-    BoundingBox=aBounding;
+    boundingBox=aBounding;
 }
 
 //**********************************************************************//
@@ -57,4 +57,8 @@ void ObjectScene::updateState(float time){
 
 vec3f ObjectScene::getPosition(){
     return vec3f(position.x,position.y,position.z);
+}
+
+vec3f ObjectScene::getBoundingBox(){
+    return boundingBox;
 }
