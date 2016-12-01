@@ -35,12 +35,12 @@ class AcceleratedMovement : public Matrix4fDynamic
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        AcceleratedMovement(float xVelo,float yVelo,float zVelo,float xAccel,float yAccel,float zAccel,bool incre);
+        AcceleratedMovement(float xVelo,float yVelo,float zVelo,float xAccel,float yAccel,float zAccel );
 
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        AcceleratedMovement(const vec3f & aVelocity,const vec3f & aAcceleration,bool incre);
+        AcceleratedMovement(const vec3f & aVelocity,const vec3f & aAcceleration);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -56,7 +56,7 @@ class AcceleratedMovement : public Matrix4fDynamic
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setParameters(float xVelo,float yVelo,float zVelo,float xAccel,float yAccel,float zAccel,bool incre);
+        void setParameters(float xVelo,float yVelo,float zVelo,float xAccel,float yAccel,float zAccel);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -67,7 +67,7 @@ class AcceleratedMovement : public Matrix4fDynamic
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setParameters(const vec3f & aVelocity,const vec3f & aAcceleration,bool incre);
+        void setParameters(const vec3f & aVelocity,const vec3f & aAcceleration);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -91,7 +91,6 @@ class AcceleratedMovement : public Matrix4fDynamic
     private:
         vec3f velocity, acceleration;
         float currentTime;
-        bool increment;
 };
 
 #endif // ACCELERATEDMOVEMENT_H
