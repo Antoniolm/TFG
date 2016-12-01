@@ -22,6 +22,7 @@
 Hero::Hero()
 {
     acceleratedMove=new AcceleratedMovement();
+    acceleratedMove->resetState();
     direction=FORWARD;
     isMoving=false;
     isFalling=false;
@@ -572,7 +573,7 @@ void Hero::updateState(float time){
         for(int i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
     }
-    else if(isFalling){
+    /*else if(isFalling){
         for(int i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
         Matrix4f rot;
@@ -588,7 +589,7 @@ void Hero::updateState(float time){
         rot.rotation(30,1,0,0);
         moveMatrix[6]->setMatrix(rot.getMatrix());
         moveMatrix[7]->setMatrix(rot.getMatrix());
-    }
+    }*/
     currentTime+=(time-currentTime);
 }
 

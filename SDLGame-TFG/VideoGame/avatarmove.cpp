@@ -181,9 +181,8 @@ bool AvatarMove::gravity(float velocity){
 
     if(!isJumping){
     float time=SDL_GetTicks();
-    LinearMovement transHero(0.0,velocity,0.0);
-    GLfloat * moveGravity=transHero.updateState(time-currentTime).getMatrix();
-    //cout<< "moveGravity.y"<< moveGravity[13]<< endl;
+    GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
+    cout<< "moveGravity.y->"<< moveGravity[13]<< endl;
 
     vec3f posHero=getPosition();
     posHero.y-=(0.22-moveGravity[13]);
@@ -244,6 +243,7 @@ bool AvatarMove::gravity(float velocity){
             }
         }*/
         isFalling=false;
+        acceleratedMove->resetState();
         result=false;
     }
     }
@@ -332,11 +332,13 @@ bool AvatarMove::jump(){
             }*/
             isJumping=false;
             isFalling=true;
+            acceleratedMove->resetState();
             result=false;
         }
     }else{
         isJumping=false;
         isFalling=true;
+        acceleratedMove->resetState();
         result=false;
     }
 
