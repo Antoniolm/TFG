@@ -552,7 +552,7 @@ void Hero::updateState(float time){
 
     //Case-> Push Scape bottom to jump
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !isJumping && !isFalling)
-        activeJump(10.0,5.0);
+        activeJump(10.0,15.0);
 
     //Move the body
     if(hasMove)
@@ -561,6 +561,7 @@ void Hero::updateState(float time){
     //If the jump is activate
     if(isJumping)
         jump();
+
     //If the jump is not activate
     else gravity(-5.0);
 

@@ -257,7 +257,7 @@ bool AvatarMove::gravity(float velocity){
 //**********************************************************************//
 
 void AvatarMove::activeJump(float velocity,float acceleration){
-    acceleratedMove=new AcceleratedMovement(0.0f,velocity,0.0f,0.0f,acceleration,0.0f,false);
+    acceleratedMove=new AcceleratedMovement(0.0f,velocity,0.0f,0.0f,acceleration-G,0.0f,false);
     isJumping=true;
 }
 
