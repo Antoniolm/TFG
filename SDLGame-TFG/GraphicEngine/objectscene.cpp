@@ -26,8 +26,9 @@ ObjectScene::ObjectScene()
 
 //**********************************************************************//
 
-ObjectScene::ObjectScene(Object3D * aObject){
+ObjectScene::ObjectScene(Object3D * aObject,vec3f aBounding){
     object=aObject;
+    BoundingBox=aBounding;
 }
 
 //**********************************************************************//
@@ -42,10 +43,8 @@ ObjectScene::~ObjectScene()
 void ObjectScene::visualization(Context & vis){
     object->visualization(vis);
 
-    if(vis.visualization_mode==1){
-        matrix=Matrix4f(vis.currentTransf);
-        position=matrix.product(vec4f());
-    }
+    matrix=Matrix4f(vis.currentTransf);
+    position=matrix.product(vec4f());
 }
 
 //**********************************************************************//
@@ -58,10 +57,4 @@ void ObjectScene::updateState(float time){
 
 vec3f ObjectScene::getPosition(){
     return vec3f(position.x,position.y,position.z);
-}
-
-//**********************************************************************//
-
-void ObjectScene::setPosition(vec3f pos){
-    position=vec4f(pos.x,pos.y,pos.z,1.0);
 }

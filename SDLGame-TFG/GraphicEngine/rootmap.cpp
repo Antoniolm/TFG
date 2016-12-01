@@ -92,7 +92,7 @@ RootMap::RootMap()
                 cubeNode->add(materialGrass);
 
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-            objs.push_back(new ObjectScene(cubeNode));
+            objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
         }
     }
     for(int j=0;j<7;j++){
@@ -103,7 +103,7 @@ RootMap::RootMap()
         cubeNode->add(scaleCube);
         cubeNode->add(materialGrass);
         cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-        objs.push_back(new ObjectScene(cubeNode));
+        objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
     }
 
     for(int i=0;i<2;i++){
@@ -115,7 +115,7 @@ RootMap::RootMap()
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-            objs.push_back(new ObjectScene(cubeNode));
+            objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
         }
     }
 
@@ -128,7 +128,7 @@ RootMap::RootMap()
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-            objs.push_back(new ObjectScene(cubeNode));
+            objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
         }
     }
 
@@ -142,7 +142,7 @@ RootMap::RootMap()
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-            objs.push_back(new ObjectScene(cubeNode));
+            objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
         }
     }
 
@@ -178,7 +178,7 @@ RootMap::RootMap()
     cubeNode->add(scaleCube);
     cubeNode->add(materialTree);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(treeObject)));
-    objs.push_back(new ObjectScene(cubeNode));
+    objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,1.0,0.5)));
 
     transOneCube=new Matrix4f();
     transOneCube->translation(2.1f,1.2f,-0.5f);
@@ -204,7 +204,7 @@ RootMap::RootMap()
     cubeNode->add(scaleCube);
     cubeNode->add(materialSand);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-    objs.push_back(new ObjectScene(cubeNode));
+    objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
 
     //visualization;
     Context cv;

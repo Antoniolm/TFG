@@ -181,7 +181,6 @@ bool AvatarMove::gravity(float time){
 
     if(!isJumping){
     GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
-    //cout<< "moveGravity.y->"<< moveGravity[13]<< endl;
 
     vec3f posHero=getPosition();
     posHero.y-=0.51;
@@ -232,14 +231,10 @@ bool AvatarMove::gravity(float time){
     else {
         if(isFalling){
             vec3f positionObs=hasCollision->getPosition();
-            //cout<< "Position hero :"<< posHero.y-0.5<< " positionObs.y:"<< positionObs.y+0.5<< endl;
-            //if(posHero.y-0.5<positionObs.y+0.5f){
-                //cout<< " Se ha colado "<< endl;
-                Matrix4f trans;
-                trans.translation(0.0,(positionObs.y+0.5)-(posHero.y),0.0);
-              //  cout<< "Translation ->" << (positionObs.y+0.5)-(posHero.y-0.55)<< endl;
-                moveAvatar->product(trans.getMatrix());
-           // }
+            Matrix4f trans;
+            trans.translation(0.0,(positionObs.y+0.5)-(posHero.y-0.23),0.0);
+
+            moveAvatar->product(trans.getMatrix());
         }
         isFalling=false;
         acceleratedMove->resetState();
@@ -317,17 +312,6 @@ bool AvatarMove::jump(float time){
             isJumping=true;
         }
         else {
-            /*if(isFalling){
-                vec3f positionObs=hasCollision->getPosition();
-                cout<< "Position hero :"<< posHero.y-0.5<< " positionObs.y:"<< positionObs.y+0.5<< endl;
-                if(posHero.y-0.5<positionObs.y+0.5f){
-                    cout<< " Se ha colado "<< endl;
-                    Matrix4f trans;
-                    trans.translation(0.0,(positionObs.y+0.5)-(posHero.y-0.5),0.0);
-                    cout<< "Translation ->" << (positionObs.y+0.5)-(posHero.y-0.55)<< endl;
-                    moveAvatar->product(trans.getMatrix());
-                }
-            }*/
             isJumping=false;
             isFalling=true;
             acceleratedMove->resetState();
