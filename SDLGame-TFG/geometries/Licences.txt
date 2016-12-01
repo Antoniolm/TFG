@@ -1,6 +1,5 @@
 swamp location by bocharova is licensed under CC Attribution-NonCommercial https://skfb.ly/FAZH -> used in the objs: tree.obj
 Skull Knight by madarazero is licensed under CC Attribution https://skfb.ly/GqNY -> used in the objs: armour.obj,armour2.obj,armourChest.obj
-Forest Scene by deryckeredries is licensed under CC Attribution https://skfb.ly/DEw6 -> used in the objs:
+Forest Scene by deryckeredries is licensed under CC Attribution https://skfb.ly/DEw6 -> used in the objs: mushroomWhite.obj
 Fantasy House by lucak is licensed under CC Attribution-NonCommercial https://skfb.ly/EvqM -> used in the objs:
-Low Poly Game Scene by Partho Borthakur is licensed under CC Attribution https://skfb.ly/HJEQ
-Armour by Piotr.Kolecki is licensed under CC Attribution-NonCommercial
+Low Poly Game Scene by Partho Borthakur is licensed under CC Attribution https://skfb.ly/HJEQ -> used in the objs:
