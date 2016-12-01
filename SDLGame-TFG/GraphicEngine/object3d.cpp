@@ -38,6 +38,12 @@ void Object3D::visualization(Context & cv){}
 
 void Object3D::updateState(float time){}
 
+//**********************************************************************//
+
+vec3f Object3D::getBoundingBox(){
+    return vec3f(0.5,0.5,0.5);
+}
+//**********************************************************************//
 vec4f Object3D::getPosition(){
     return position;
 }

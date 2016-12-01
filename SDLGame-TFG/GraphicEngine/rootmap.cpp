@@ -178,7 +178,7 @@ RootMap::RootMap()
     cubeNode->add(scaleCube);
     cubeNode->add(materialTree);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(treeObject)));
-    objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,1.0,0.5)));
+    objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,1.5,0.5)));
 
     transOneCube=new Matrix4f();
     transOneCube->translation(2.1f,1.2f,-0.5f);
@@ -213,11 +213,12 @@ RootMap::RootMap()
         objs[i]->visualization(cv);
     }
 
-    vec3f pos;
+    vec3f pos,bounding;
 
     //Push all the positions
     for(int i=0;i<objs.size();i++){
         pos=objs[i]->getPosition();
+        bounding=objs[i]->getBoundingBox();
         indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(i);
     }
 }
