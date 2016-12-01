@@ -345,18 +345,6 @@ bool AvatarMove::jump(){
 
 //**********************************************************************//
 
- bool AvatarMove::isJump(){
-    return isJumping;
- }
-
-//**********************************************************************//
-
-bool AvatarMove::isFall(){
-    return isFalling;
-}
-
-//**********************************************************************//
-
 vec3f AvatarMove::getPosition(){
     vec4f position;
     position=moveAvatar->product(position);

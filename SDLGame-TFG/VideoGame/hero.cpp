@@ -565,6 +565,8 @@ void Hero::updateState(float time){
     //If the jump is not activate
     else gravity(-5.0);
 
+
+    //Update Animation
     if(isMoving && !isFalling && !isJumping){
         animation.updateState(time-currentTime);
         for(int i=0;i<moveMatrix.size();i++)

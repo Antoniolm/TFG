@@ -80,12 +80,13 @@ void Game::loop(){
         }
         window->cleanScreen();
         rootMap->updateState(SDL_GetTicks());
-        rootMap->visualization(aContext);
 
         //Update the camera
         posHero=hero->getPosition();
         posHero.y+=4.0f;posHero.z+=8.0f;
         aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
+
+        rootMap->visualization(aContext);
 
         window->updateScreen();
     }
