@@ -488,7 +488,6 @@ void Hero::updateState(float time){
     bool hasMove=false;
     avatarDirection heroDir;
     vec3f moveHero;
-    vec3f posHero;
     //case: Player push a bottom
     const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
 

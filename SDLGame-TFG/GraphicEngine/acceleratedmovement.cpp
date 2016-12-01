@@ -26,11 +26,9 @@ AcceleratedMovement::AcceleratedMovement()
 
 //**********************************************************************//
 
-AcceleratedMovement::AcceleratedMovement(float x,float y,float z,float aAccel,bool incre){
-    velocity.x=x;
-    velocity.y=y;
-    velocity.z=z;
-    acceleration=aAccel;
+AcceleratedMovement::AcceleratedMovement(float xVelo,float yVelo,float zVelo,float xAccel,float yAccel,float zAccel,bool incre){
+    velocity=vec3f(xVelo,yVelo,zVelo);
+    acceleration=vec3f(xAccel,yAccel,zAccel);
     currentTime=SDL_GetTicks()/1000;
     increment=incre;
     currentMatrix.identity();
@@ -38,10 +36,9 @@ AcceleratedMovement::AcceleratedMovement(float x,float y,float z,float aAccel,bo
 
 //**********************************************************************//
 
-AcceleratedMovement::AcceleratedMovement(const vec3f & aVelocity,float aAccel,bool incre)
-{
+AcceleratedMovement::AcceleratedMovement(const vec3f & aVelocity,const vec3f & aAcceleration,bool incre){
     velocity=aVelocity;
-    acceleration=aAccel;
+    acceleration=aAcceleration;
     currentTime=SDL_GetTicks()/1000;
     increment=incre;
     currentMatrix.identity();;
@@ -56,11 +53,9 @@ AcceleratedMovement::~AcceleratedMovement()
 
 //**********************************************************************//
 
-void AcceleratedMovement::setParameters(float x,float y,float z,float aAccel,bool incre){
-    velocity.x=x;
-    velocity.y=y;
-    velocity.z=z;
-    acceleration=aAccel;
+void AcceleratedMovement::setParameters(float xVelo,float yVelo,float zVelo,float xAccel,float yAccel,float zAccel,bool incre){
+    velocity=vec3f(xVelo,yVelo,zVelo);
+    acceleration=vec3f(xAccel,yAccel,zAccel);
     increment=incre;
     currentTime=SDL_GetTicks()/1000;
     currentMatrix.identity();
@@ -68,9 +63,9 @@ void AcceleratedMovement::setParameters(float x,float y,float z,float aAccel,boo
 
 //**********************************************************************//
 
-void AcceleratedMovement::setParameters(const vec3f & aVelocity,float aAccel,bool incre){
+void AcceleratedMovement::setParameters(const vec3f & aVelocity,const vec3f & aAcceleration,bool incre){
     velocity=aVelocity;
-    acceleration=aAccel;
+    acceleration=aAcceleration;
     increment=incre;
     currentTime=SDL_GetTicks()/1000;
     currentMatrix.identity();
@@ -82,19 +77,13 @@ Matrix4f & AcceleratedMovement::updateState(float time){
     time=time/1000.0;
 
     float value;
+
     //Check the velocity
     if(increment){
-        value=+(acceleration*time*10);
+        velocity=velocity+(acceleration*time*10);
     }
     else
-        value=-(acceleration*time*10);
-
-    if(velocity.x>0)
-        velocity.x=velocity.x+value;
-    if(velocity.y>0)
-        velocity.y=velocity.y+value;
-    if(velocity.z>0)
-        velocity.z=velocity.z+value;
+        velocity=velocity-(acceleration*time*10);
 
     //Update our matrix with that new velocity
     currentMatrix.translation(velocity.x*time,velocity.y*time,velocity.z*time);

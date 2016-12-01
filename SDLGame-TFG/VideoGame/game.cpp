@@ -78,7 +78,6 @@ void Game::loop(){
                 quit = true;
             }
         }
-
         window->cleanScreen();
         rootMap->updateState(SDL_GetTicks());
         rootMap->visualization(aContext);
