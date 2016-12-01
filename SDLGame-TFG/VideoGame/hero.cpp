@@ -569,13 +569,11 @@ void Hero::updateState(float time){
 
     //Update Animation
     if(isMoving && !isFalling && !isJumping){
-        cout<<"Moove"<< endl;
         animation.updateState(time-currentTime);
         for(int i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
     }
-    /*else if(isFalling){
-        cout<<"Caidal"<< endl;
+    else if(isFalling){
         for(int i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
         Matrix4f rot;
@@ -583,7 +581,7 @@ void Hero::updateState(float time){
         moveMatrix[6]->setMatrix(rot.getMatrix());
         rot.rotation(-30,0,0,1);
         moveMatrix[7]->setMatrix(rot.getMatrix());
-    }*/
+    }
     else if(isJumping){
         for(int i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
