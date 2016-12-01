@@ -553,7 +553,7 @@ void Hero::updateState(float time){
 
     //Case-> Push Scape bottom to jump
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !isJumping && !isFalling)
-        activeJump(10.0,5.0);
+        activeJump(15.0,5.0);
 
     //Move the body
     if(hasMove)
@@ -561,19 +561,21 @@ void Hero::updateState(float time){
 
     //If the jump is activate
     if(isJumping)
-        jump();
+        jump(time);
 
     //If the jump is not activate
-    else gravity(-5.0);
+    else gravity(time);
 
 
     //Update Animation
     if(isMoving && !isFalling && !isJumping){
+        cout<<"Moove"<< endl;
         animation.updateState(time-currentTime);
         for(int i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
     }
     /*else if(isFalling){
+        cout<<"Caidal"<< endl;
         for(int i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
         Matrix4f rot;
@@ -581,7 +583,7 @@ void Hero::updateState(float time){
         moveMatrix[6]->setMatrix(rot.getMatrix());
         rot.rotation(-30,0,0,1);
         moveMatrix[7]->setMatrix(rot.getMatrix());
-    }
+    }*/
     else if(isJumping){
         for(int i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
@@ -589,7 +591,7 @@ void Hero::updateState(float time){
         rot.rotation(30,1,0,0);
         moveMatrix[6]->setMatrix(rot.getMatrix());
         moveMatrix[7]->setMatrix(rot.getMatrix());
-    }*/
+    }
     currentTime+=(time-currentTime);
 }
 

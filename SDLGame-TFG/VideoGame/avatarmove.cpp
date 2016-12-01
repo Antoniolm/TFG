@@ -174,13 +174,12 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
 }
 
 
-bool AvatarMove::gravity(float velocity){
+bool AvatarMove::gravity(float time){
     ObjectScene * hasCollision;
     bool result=true;
     float tenthValueX,tenthValueZ;
 
     if(!isJumping){
-    float time=SDL_GetTicks();
     GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
     cout<< "moveGravity.y->"<< moveGravity[13]<< endl;
 
@@ -263,12 +262,11 @@ void AvatarMove::activeJump(float velocity,float acceleration){
 
 //**********************************************************************//
 
-bool AvatarMove::jump(){
+bool AvatarMove::jump(float time){
     ObjectScene * hasCollision;
     bool result=true;
     float tenthValueX,tenthValueZ;
 
-    float time=SDL_GetTicks();
     GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
 
     vec3f posHero=getPosition();
