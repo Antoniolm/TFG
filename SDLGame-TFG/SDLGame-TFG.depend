@@ -385,11 +385,11 @@
 	"../GraphicEngine/structdata.h"
 	"hero.h"
 
-1480426687 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1480541766 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
-1480535686 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1480611383 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1480332805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -978,7 +978,7 @@
 	"../GraphicEngine/acceleratedmovement.h"
 	<vector>
 
-1480535482 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1480601334 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1602,19 +1602,19 @@
 	<vector>
 	"matrix4fdynamic.h"
 
-1480442059 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\acceleratedmovement.cpp
+1480594892 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\acceleratedmovement.cpp
 	"acceleratedmovement.h"
 
-1480265761 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\acceleratedmovement.h
+1480594828 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\acceleratedmovement.h
 	"matrix4fdynamic.h"
 	"structdata.h"
 	<SDL.h>
 
-1480535547 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1480605998 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
-1480451284 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
+1480599658 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
 	"avatar.h"
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/acceleratedmovement.h"
