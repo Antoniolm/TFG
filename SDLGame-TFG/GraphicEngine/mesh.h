@@ -103,7 +103,7 @@ class Mesh : public Object3D
     protected:
 
     private:
-        void generateBoundingBox();
+        void generateBoundingBox(vector<vec3f> & vertex);
         static const unsigned int NUM_BUFFERS = 4;
         GLuint vertexArrayBuffers[NUM_BUFFERS];
         GLuint vertexArrayObject;

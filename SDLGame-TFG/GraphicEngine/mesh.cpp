@@ -51,6 +51,7 @@ void Mesh::init(){
     vector<vec2f> textureCord;
 
     obj::readEverything(objFile.c_str(),vertex,triangles,normals,textureCord,true,true);
+    generateBoundingBox(vertex);
 
     numIndex=triangles.size();
 
@@ -102,5 +103,27 @@ void Mesh::updateState(float time){
 
 BoundingBox Mesh::getBoundingBox(){
     return boundingBox;
+}
+
+//**********************************************************************//
+
+void Mesh::generateBoundingBox(vector<vec3f> & vertex){
+    float maxX,maxY,maxZ,minX,minY,minZ;
+    maxX=vertex[0].x;  maxY=vertex[0].y;  maxZ=vertex[0].z;
+    minX=vertex[0].x;  minY=vertex[0].y;  minZ=vertex[0].z;
+    int tam=vertex.size();
+
+    for(int i=1;i<tam;i++){
+        if(vertex[i].x >maxX) maxX=vertex[i].x;
+        if(vertex[i].y >maxY) maxY=vertex[i].y;
+        if(vertex[i].z >maxZ) maxZ=vertex[i].z;
+
+        if(vertex[i].x < minX) minX=vertex[i].x;
+        if(vertex[i].y < minY) minY=vertex[i].y;
+        if(vertex[i].z < minZ) minZ=vertex[i].z;
+	}
+
+	boundingBox.maxValue=vec3f(maxX,maxY,maxZ);
+	boundingBox.minValue=vec3f(minX,minY,minZ);
 }
 
