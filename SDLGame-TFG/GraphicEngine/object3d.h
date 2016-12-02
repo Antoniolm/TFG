@@ -28,6 +28,14 @@ class Context;
 struct BoundingBox{
     vec3f maxValue;
     vec3f minValue;
+
+    bool operator<(BoundingBox aBounding){
+        bool result=false;
+
+
+
+        return result;
+    }
 };
 
 class Object3D

@@ -98,6 +98,22 @@ struct vec3f{
         return result;
     }
 
+    bool operator<(vec3f aVec){
+        bool result=false;
+        if(x<aVec.x && y<aVec.y && z<aVec.z)
+            result=true;
+
+        return result;
+    }
+
+    bool operator>(vec3f aVec){
+        bool result=false;
+        if(x>aVec.x && y>aVec.y && z>aVec.z)
+            result=true;
+
+        return result;
+    }
+
     float dot(vec3f aVec){
         float result=0.0f;
 
