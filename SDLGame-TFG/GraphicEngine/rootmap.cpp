@@ -272,7 +272,7 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
     bool hasCollision=false;
     ObjectScene * result=0;
     vec3f pos;
-    vec3f bounding;
+    BoundingBox box;
     int tam=indexMap[(int)indexObj.x][(int)indexObj.z*-1].size();
 
     vector<int>::iterator it=indexMap[(int)indexObj.x][(int)indexObj.z*-1].begin();
@@ -281,8 +281,8 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
     if(tam!=0 ){
         for(;it!=endIt && !hasCollision;it++){
             pos=objs[(*it)]->getPosition();
-            bounding=vec3f(0.5,0.5,0.5);//objs[(*it)]->getBoundingBox();
-            if((indexObj.y+0.5 > (pos.y)-bounding.y && indexObj.y+0.5 < (pos.y)+bounding.y)||(indexObj.y-0.5 > (pos.y)-bounding.y && indexObj.y-0.5 < (pos.y)+bounding.y)){
+            box=objs[(*it)]->getBoundingBox();
+            if((indexObj.y+0.5 > (pos.y)-0.5 && indexObj.y+0.5 < (pos.y)+0.5)||(indexObj.y-0.5 > (pos.y)-0.5 && indexObj.y-0.5 < (pos.y)+0.5)){
                 hasCollision=true;
                 result=objs[(*it)];
             }

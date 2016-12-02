@@ -32,7 +32,8 @@ struct BoundingBox{
     bool operator<(BoundingBox aBounding){
         bool result=false;
 
-
+        if(maxValue<aBounding.maxValue && minValue>aBounding.minValue)
+            result=true;
 
         return result;
     }

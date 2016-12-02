@@ -29,6 +29,8 @@ NodeSceneGraph::NodeSceneGraph()
 
 NodeSceneGraph::NodeSceneGraph(const NodeSceneGraph & aNode){
     entrance=aNode.entrance;
+    boundingBox.maxValue=vec3f(0.5,0.5,0.5);
+    boundingBox.minValue=vec3f(-0.5,-0.5,-0.5);
 }
 
 //**********************************************************************//
@@ -87,6 +89,7 @@ void NodeSceneGraph::updateState(float time){
 }
 
 //**********************************************************************//
+
 void NodeSceneGraph::add(EntryNGE * anEntry){
     entrance.push_back(*anEntry);
 }
@@ -99,6 +102,7 @@ void NodeSceneGraph::add(Object3D * anObject){
 }
 
 //**********************************************************************//
+
 void NodeSceneGraph::add(Matrix4f * aMatrix){
     EntryNGE newEntrance(aMatrix);
     entrance.push_back(newEntrance);
