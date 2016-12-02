@@ -63,7 +63,7 @@ class Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will obtaion the boundingBox of the object.
+        *    The method will obtain the boundingBox of the object.
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

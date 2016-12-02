@@ -80,7 +80,7 @@ class Mesh : public Object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & vis);
+        void visualization(Context & vis);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -89,15 +89,15 @@ class Mesh : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time);
+        void updateState(float time);
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will obtaion the boundingBox of the object.
+        *    The method will obtain the boundingBox of the object.
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual BoundingBox getBoundingBox();
+        BoundingBox getBoundingBox();
 
 
     protected:

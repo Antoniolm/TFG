@@ -110,6 +110,11 @@ void NodeSceneGraph::add(Matrix4f * aMatrix){
 void NodeSceneGraph::add(Material * aMaterial){
     EntryNGE newEntrance(aMaterial);
     entrance.push_back(newEntrance);
+}
 
+//**********************************************************************//
+
+BoundingBox NodeSceneGraph::getBoundingBox(){
+    return boundingBox;
 }
 

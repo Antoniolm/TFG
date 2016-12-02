@@ -46,7 +46,9 @@ BoundingBox Object3D::getBoundingBox(){
     result.minValue=vec3f(-0.5,-0.5,-0.5);
     return result;
 }
+
 //**********************************************************************//
+
 vec4f Object3D::getPosition(){
     return position;
 }

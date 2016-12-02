@@ -89,7 +89,7 @@ class NodeSceneGraph : public Object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & cv);
+        void visualization(Context & cv);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -98,7 +98,15 @@ class NodeSceneGraph : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time);
+        void updateState(float time);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will obtain the boundingBox of the object.
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        BoundingBox getBoundingBox();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -136,6 +144,7 @@ class NodeSceneGraph : public Object3D
 
     private:
         vector<EntryNGE> entrance;
+        BoundingBox boundingBox;
 };
 
 #endif // NODESCENEGRAPH_H

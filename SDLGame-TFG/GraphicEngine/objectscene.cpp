@@ -58,6 +58,8 @@ vec3f ObjectScene::getPosition(){
     return vec3f(position.x,position.y,position.z);
 }
 
+//**********************************************************************//
+
 BoundingBox ObjectScene::getBoundingBox(){
-    return boundingBox;
+    return object->getBoundingBox();
 }

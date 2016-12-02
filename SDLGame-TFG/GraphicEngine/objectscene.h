@@ -48,7 +48,7 @@ class ObjectScene : public Object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & vis);
+        void visualization(Context & vis);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -57,17 +57,28 @@ class ObjectScene : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time);
+        void updateState(float time);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will obtain the boundingBox of the object.
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         vec3f getPosition();
 
-        virtual BoundingBox getBoundingBox();
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will obtain the boundingBox of the object.
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        BoundingBox getBoundingBox();
 
     protected:
 
     private:
         vec4f position;
-        BoundingBox boundingBox;
         Object3D * object;
         Matrix4f matrix;
 };
