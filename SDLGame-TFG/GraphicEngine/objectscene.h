@@ -81,6 +81,7 @@ class ObjectScene : public Object3D
         vec4f position;
         Object3D * object;
         Matrix4f matrix;
+        BoundingBox box;
 };
 
 #endif // OBJECTSCENE_H
