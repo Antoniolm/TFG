@@ -98,4 +98,9 @@ void Mesh::visualization(Context & vis){
 void Mesh::updateState(float time){
 }
 
+//**********************************************************************//
+
+BoundingBox Mesh::getBoundingBox(){
+    return boundingBox;
+}
 

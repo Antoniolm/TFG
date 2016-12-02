@@ -92,7 +92,7 @@ RootMap::RootMap()
                 cubeNode->add(materialGrass);
 
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-            objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
+            objs.push_back(new ObjectScene(cubeNode));
         }
     }
     for(int j=0;j<7;j++){
@@ -103,7 +103,7 @@ RootMap::RootMap()
         cubeNode->add(scaleCube);
         cubeNode->add(materialGrass);
         cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-        objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
+        objs.push_back(new ObjectScene(cubeNode));
     }
 
     for(int i=0;i<2;i++){
@@ -115,7 +115,7 @@ RootMap::RootMap()
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-            objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
+            objs.push_back(new ObjectScene(cubeNode));
         }
     }
 
@@ -128,7 +128,7 @@ RootMap::RootMap()
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-            objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
+            objs.push_back(new ObjectScene(cubeNode));
         }
     }
 
@@ -142,7 +142,7 @@ RootMap::RootMap()
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-            objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
+            objs.push_back(new ObjectScene(cubeNode));
         }
     }
 
@@ -167,7 +167,7 @@ RootMap::RootMap()
             cubeNode->add(scaleFence);
             cubeNode->add(materialFence);
             cubeNode->add(static_cast<Object3D*>(new ObjectScene(fenceObject)));
-            objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
+            objs.push_back(new ObjectScene(cubeNode));
         }
     }
 
@@ -178,7 +178,7 @@ RootMap::RootMap()
     cubeNode->add(scaleCube);
     cubeNode->add(materialTree);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(treeObject)));
-    objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,1.5,0.5)));
+    objs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
     transOneCube->translation(2.1f,1.2f,-0.5f);
@@ -204,7 +204,7 @@ RootMap::RootMap()
     cubeNode->add(scaleCube);
     cubeNode->add(materialSand);
     cubeNode->add(static_cast<Object3D*>(new ObjectScene(cubeObject)));
-    objs.push_back(new ObjectScene(cubeNode,vec3f(0.5,0.5,0.5)));
+    objs.push_back(new ObjectScene(cubeNode));
 
     //visualization;
     Context cv;
@@ -218,7 +218,7 @@ RootMap::RootMap()
     //Push all the positions
     for(int i=0;i<objs.size();i++){
         pos=objs[i]->getPosition();
-        bounding=objs[i]->getBoundingBox();
+        //bounding=objs[i]->getBoundingBox();
         indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(i);
     }
 }
@@ -281,7 +281,7 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
     if(tam!=0 ){
         for(;it!=endIt && !hasCollision;it++){
             pos=objs[(*it)]->getPosition();
-            bounding=objs[(*it)]->getBoundingBox();
+            bounding=vec3f(0.5,0.5,0.5);//objs[(*it)]->getBoundingBox();
             if((indexObj.y+0.5 > (pos.y)-bounding.y && indexObj.y+0.5 < (pos.y)+bounding.y)||(indexObj.y-0.5 > (pos.y)-bounding.y && indexObj.y-0.5 < (pos.y)+bounding.y)){
                 hasCollision=true;
                 result=objs[(*it)];

@@ -40,8 +40,11 @@ void Object3D::updateState(float time){}
 
 //**********************************************************************//
 
-vec3f Object3D::getBoundingBox(){
-    return vec3f(0.5,0.5,0.5);
+BoundingBox Object3D::getBoundingBox(){
+    BoundingBox result;
+    result.maxValue=vec3f(0.5,0.5,0.5);
+    result.minValue=vec3f(-0.5,-0.5,-0.5);
+    return result;
 }
 //**********************************************************************//
 vec4f Object3D::getPosition(){

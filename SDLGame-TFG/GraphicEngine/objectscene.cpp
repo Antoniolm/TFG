@@ -26,9 +26,8 @@ ObjectScene::ObjectScene()
 
 //**********************************************************************//
 
-ObjectScene::ObjectScene(Object3D * aObject,vec3f aBounding){
+ObjectScene::ObjectScene(Object3D * aObject){
     object=aObject;
-    boundingBox=aBounding;
 }
 
 //**********************************************************************//
@@ -59,6 +58,6 @@ vec3f ObjectScene::getPosition(){
     return vec3f(position.x,position.y,position.z);
 }
 
-vec3f ObjectScene::getBoundingBox(){
+BoundingBox ObjectScene::getBoundingBox(){
     return boundingBox;
 }

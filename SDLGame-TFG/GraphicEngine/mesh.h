@@ -91,14 +91,24 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will obtaion the boundingBox of the object.
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        virtual BoundingBox getBoundingBox();
+
 
     protected:
 
     private:
+        void generateBoundingBox();
         static const unsigned int NUM_BUFFERS = 4;
         GLuint vertexArrayBuffers[NUM_BUFFERS];
         GLuint vertexArrayObject;
         string objFile;
+        BoundingBox boundingBox;
         int numIndex;
 };
 

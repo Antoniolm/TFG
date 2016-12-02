@@ -25,6 +25,11 @@
 
 class Context;
 
+struct BoundingBox{
+    vec3f maxValue;
+    vec3f minValue;
+};
+
 class Object3D
 {
     public:
@@ -62,7 +67,7 @@ class Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual vec3f getBoundingBox();
+        virtual BoundingBox getBoundingBox();
 
         //////////////////////////////////////////////////////////////////////////
         /**

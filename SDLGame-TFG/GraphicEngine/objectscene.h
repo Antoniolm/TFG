@@ -35,7 +35,7 @@ class ObjectScene : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        ObjectScene(Object3D * aObject,vec3f aBounding=vec3f());
+        ObjectScene(Object3D * aObject);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -61,13 +61,13 @@ class ObjectScene : public Object3D
 
         vec3f getPosition();
 
-        vec3f getBoundingBox();
+        virtual BoundingBox getBoundingBox();
 
     protected:
 
     private:
         vec4f position;
-        vec3f boundingBox;
+        BoundingBox boundingBox;
         Object3D * object;
         Matrix4f matrix;
 };
