@@ -282,7 +282,7 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
         for(;it!=endIt && !hasCollision;it++){
             pos=objs[(*it)]->getPosition();
             box=objs[(*it)]->getBoundingBox();
-            if((indexObj.y+0.5 > (pos.y)-0.5 && indexObj.y+0.5 < (pos.y)+0.5)||(indexObj.y-0.5 > (pos.y)-0.5 && indexObj.y-0.5 < (pos.y)+0.5)){
+            if((indexObj.y+0.5 > (pos.y)+box.minValue.y && indexObj.y+0.5 < (pos.y)+box.maxValue.y)||(indexObj.y-0.5 > (pos.y)+box.minValue.y && indexObj.y-0.5 < (pos.y)+box.maxValue.y)){
                 hasCollision=true;
                 result=objs[(*it)];
             }

@@ -61,5 +61,8 @@ vec3f ObjectScene::getPosition(){
 //**********************************************************************//
 
 BoundingBox ObjectScene::getBoundingBox(){
+    //BoundingBox box=object->getBoundingBox();
+    //cout<< "Max x- "<< box.maxValue.x<< " y- "<< box.maxValue.y<< " z- "<< box.maxValue.z<< endl;
+    //cout<< "Min x- "<< box.maxValue.x<< " y- "<< box.maxValue.y<< " z- "<< box.maxValue.z<< endl;
     return object->getBoundingBox();
 }

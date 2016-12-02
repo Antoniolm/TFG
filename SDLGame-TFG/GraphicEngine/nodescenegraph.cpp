@@ -23,6 +23,8 @@
 NodeSceneGraph::NodeSceneGraph()
 {
     currentTime=SDL_GetTicks();
+    boundingBox.maxValue=vec3f(2.5,2.5,2.5);
+    boundingBox.minValue=vec3f(-2.5,-2.5,-2.5);
 }
 
 //**********************************************************************//
@@ -31,6 +33,7 @@ NodeSceneGraph::NodeSceneGraph(const NodeSceneGraph & aNode){
     entrance=aNode.entrance;
     boundingBox.maxValue=vec3f(0.5,0.5,0.5);
     boundingBox.minValue=vec3f(-0.5,-0.5,-0.5);
+    currentTime=SDL_GetTicks();
 }
 
 //**********************************************************************//
@@ -119,6 +122,20 @@ void NodeSceneGraph::add(Material * aMaterial){
 //**********************************************************************//
 
 BoundingBox NodeSceneGraph::getBoundingBox(){
+    vector<EntryNGE>::iterator it;
+    BoundingBox auxBox;
+    for(it=entrance.begin();it!=entrance.end();it++){
+            switch((*it).type){
+            case 0: //Object3d
+                auxBox=(*it).obj->getBoundingBox();
+                if(auxBox<boundingBox)
+                    boundingBox=auxBox;
+                break;
+            }
+
+    }
+
+
     return boundingBox;
 }
 
