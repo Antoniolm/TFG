@@ -486,7 +486,7 @@ void Hero::visualization(Context & cv){
 //**********************************************************************//
 
 void Hero::updateState(float time){
-    bool hasMove=false;
+    bool hasMove=true;
     avatarDirection heroDir;
     vec3f moveHero;
 
@@ -496,54 +496,46 @@ void Hero::updateState(float time){
     //Case-> Push Left bottom
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] && !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-        moveHero.x=-3.0;moveHero.y=0.0;moveHero.z=0.0;
+        moveHero.x=-3.0;moveHero.z=0.0;
         heroDir=LEFTWARD;
-        hasMove=true;
     }
     //Case-> Push Right bottom
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-        moveHero.x=3.0;moveHero.y=0.0;moveHero.z=0.0;
+        moveHero.x=3.0;moveHero.z=0.0;
         heroDir=RIGHTWARD;
-        hasMove=true;
     }
     //Case-> Push Up bottom
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-        moveHero.x=0.0;moveHero.y=0.0;moveHero.z=-3.0;
+        moveHero.x=0.0;moveHero.z=-3.0;
         heroDir=BACKWARD;
-        hasMove=true;
     }
     //Case-> Push Down bottom
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-        moveHero.x=0.0;moveHero.y=0.0;moveHero.z=3.0;
+        moveHero.x=0.0;moveHero.z=3.0;
         heroDir=FORWARD;
-        hasMove=true;
     }
     //Case-> Push Dowm-Left bottoms
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
-        moveHero.x=-2.0;moveHero.y=0.0;moveHero.z=2.0;
+        moveHero.x=-2.0;moveHero.z=2.0;
         heroDir=FOR_LEFTWARD;
-        hasMove=true;
     }
     //Case-> Push Dowm-Right bottoms
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-        moveHero.x=2.0;moveHero.y=0.0;moveHero.z=2.0;
+        moveHero.x=2.0;moveHero.z=2.0;
         heroDir=FOR_RIGHTWARD;
-        hasMove=true;
     }
     //Case-> Push Up-Left bottoms
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)]){
-        moveHero.x=-2.0;moveHero.y=0.0;moveHero.z=-2.0;
+        moveHero.x=-2.0;moveHero.z=-2.0;
         heroDir=BACK_LEFTWARD;
-        hasMove=true;
     }
     //Case-> Push Up-Right bottoms
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-        moveHero.x=2.0;moveHero.y=0.0;moveHero.z=-2.0;
+        moveHero.x=2.0;moveHero.z=-2.0;
         heroDir=BACK_RIGHTWARD;
-        hasMove=true;
     }
     else{ //Case-> If not move
         hasMove=false;

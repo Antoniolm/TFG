@@ -43,8 +43,12 @@ RootMap::RootMap()
     Mesh * mushRoomObject=new Mesh(file);
     mushRoomObject->init();
 
-    Matrix4f *scaleFence =new Matrix4f();
-    scaleFence->scale(0.5,0.5,0.5);
+    file="geometries/treeDie.obj";
+    Mesh * treeDieObject=new Mesh(file);
+    treeDieObject->init();
+
+    Matrix4f *scaleTreeDie =new Matrix4f();
+    scaleTreeDie->scale(0.6,0.5,0.5);
 
     Matrix4f *scaleCube =new Matrix4f();
     scaleCube->scale(0.5,0.5,0.5);
@@ -167,7 +171,7 @@ RootMap::RootMap()
             transOneCube->translation(j+0.5f,1.5f,scale);
             cubeNode=new NodeSceneGraph();
             cubeNode->add(transOneCube);
-            cubeNode->add(scaleFence);
+            cubeNode->add(scaleCube);
             cubeNode->add(materialFence);
             cubeNode->add(static_cast<Object3D*>(fenceObject));
             objs.push_back(new ObjectScene(cubeNode));
@@ -181,6 +185,15 @@ RootMap::RootMap()
     cubeNode->add(scaleTree);
     cubeNode->add(materialTree);
     cubeNode->add(static_cast<Object3D*>(treeObject));
+    objs.push_back(new ObjectScene(cubeNode));
+
+    transOneCube=new Matrix4f();
+    transOneCube->translation(4.5f,1.3f,-6.5f);
+    cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleTreeDie);
+    cubeNode->add(materialMushroom);
+    cubeNode->add(static_cast<Object3D*>(treeDieObject));
     objs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
