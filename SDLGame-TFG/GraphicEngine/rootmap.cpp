@@ -213,13 +213,19 @@ RootMap::RootMap()
         objs[i]->visualization(cv);
     }
 
-    vec3f pos,bounding;
+    vec3f pos;
+    BoundingBox bounding;
 
     //Push all the positions
     for(int i=0;i<objs.size();i++){
         pos=objs[i]->getPosition();
-        //bounding=objs[i]->getBoundingBox();
-        indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(i);
+        bounding=objs[i]->getBoundingBox();
+
+        for(int x=-1;x<bounding.maxValue.x;x++){
+            for(int z=-1;z<bounding.maxValue.z;z++){
+                indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(i);
+            }
+        }
     }
 }
 
