@@ -233,12 +233,9 @@ Hero::Hero()
     moveMatrix.push_back(moveArmLeft);
 
     Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),90.0f,"./textures/wood.png");
-    Material * materialChest=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodChest.png");
     Material * materialTest=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),32.0f,"./textures/leaf.jpg");
 
     //Matrix4fDinamic
-    OscillateRotation * oscillateElbow=new OscillateRotation(true,120,0,1,350,vec3f(0.75,0.5,0),2);
-    OscillateRotation * oscillateElbow2=new OscillateRotation(true,120,0,1,350,vec3f(0.75,-0.5,0),2);
     OscillateRotation * oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
 
     //Movement to the first arm
@@ -563,11 +560,11 @@ void Hero::updateState(float time){
     //Update Animation
     if(isMoving && !isFalling && !isJumping){
         animation.updateState(time-currentTime);
-        for(int i=0;i<moveMatrix.size();i++)
+        for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
     }
     else if(isFalling){
-        for(int i=0;i<moveMatrix.size();i++)
+        for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
         Matrix4f rot;
         rot.rotation(30,0,0,1);
@@ -576,7 +573,7 @@ void Hero::updateState(float time){
         moveMatrix[7]->setMatrix(rot.getMatrix());
     }
     else if(isJumping){
-        for(int i=0;i<moveMatrix.size();i++)
+        for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
         Matrix4f rot;
         rot.rotation(30,1,0,0);
@@ -596,7 +593,7 @@ void Hero::setMap(RootMap * aMap){
 
 void Hero::noMove(){
     animation.resetState();
-    for(int i=0;i<moveMatrix.size();i++)
+    for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
     isMoving=false;
 }

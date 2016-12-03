@@ -29,6 +29,7 @@
 #include "../GraphicEngine/rootmap.h"
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/acceleratedmovement.h"
+#include "../GraphicEngine/sound.h"
 
 #include <vector>
 
@@ -84,6 +85,7 @@ class Hero: public AvatarMove
 
     private:
         vector<Matrix4f *> moveMatrix;
+        vector<Sound *> heroSound;
         ScriptLMD animation;
 };
 
