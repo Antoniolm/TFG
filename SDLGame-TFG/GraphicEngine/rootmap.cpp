@@ -49,6 +49,9 @@ RootMap::RootMap()
     Matrix4f *scaleCube =new Matrix4f();
     scaleCube->scale(0.5,0.5,0.5);
 
+    Matrix4f *scaleTree =new Matrix4f();
+    scaleTree->scale(0.3,0.5,0.3);
+
     Matrix4f *scaleWater =new Matrix4f();
     scaleWater->scale(3.5,0.5,3.5);
 
@@ -172,10 +175,10 @@ RootMap::RootMap()
     }
 
     transOneCube=new Matrix4f();
-    transOneCube->translation(0.5f,2.0f,-6.5f);
+    transOneCube->translation(1.5f,2.0f,-6.5f);
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
+    cubeNode->add(scaleTree);
     cubeNode->add(materialTree);
     cubeNode->add(static_cast<Object3D*>(treeObject));
     objs.push_back(new ObjectScene(cubeNode));
@@ -221,9 +224,9 @@ RootMap::RootMap()
         pos=objs[i]->getPosition();
         bounding=objs[i]->getBoundingBox();
 
-        for(int x=-1;x<bounding.maxValue.x;x++){
-            for(int z=-1;z<bounding.maxValue.z;z++){
-                indexMap[(int)pos.x][(int)(pos.z*(-1))].push_back(i);
+        for(int x=bounding.minValue.x;x<bounding.maxValue.x;x++){
+            for(int z=bounding.minValue.z;z<bounding.maxValue.z;z++){
+                indexMap[(int)(pos.x+x)][(int)((pos.z+z)*(-1))].push_back(i);
             }
         }
     }
