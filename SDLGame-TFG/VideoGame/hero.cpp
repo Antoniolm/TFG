@@ -32,7 +32,13 @@ Hero::Hero()
     cout<< "< Game is loading our hero >"<< endl;
 
     //////////////////////////////////////////////////////
-    /////           All the meshMaterial             /////
+    /////              All the sounds                /////
+    //////////////////////////////////////////////////////
+    Sound * walking=new Sound("sounds/walking.wav",1);
+    heroSound.push_back(walking);
+
+    //////////////////////////////////////////////////////
+    /////                All the mesh                /////
     //////////////////////////////////////////////////////
     string file=string("geometries/armour.obj");
     Mesh * armourObject=new Mesh(file);
@@ -539,6 +545,8 @@ void Hero::updateState(float time){
         if(!isJumping && !isFalling){
             noMove();
         }
+        if(heroSound[0]->isPlaying())
+            heroSound[0]->stop();
     }
 
     //Case-> Push Scape bottom to jump
@@ -546,9 +554,10 @@ void Hero::updateState(float time){
         activeJump(15.0,5.0);
 
     //Move the body
-    if(hasMove)
+    if(hasMove){
         moveBody(moveHero,heroDir);
-
+        heroSound[0]->play();
+    }
     //If the jump is activate
     if(isJumping)
         jump(time);

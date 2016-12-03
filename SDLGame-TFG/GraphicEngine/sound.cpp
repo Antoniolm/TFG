@@ -34,7 +34,7 @@ Sound::~Sound()
 
 //**********************************************************************//
 
-Sound::Sound(const sound & aSound){
+Sound::Sound(const Sound & aSound){
     file=aSound.file;
     type=aSound.type;
     channel=aSound.channel;
