@@ -231,8 +231,9 @@ bool AvatarMove::gravity(float time){
     else {
         if(isFalling){
             vec3f positionObs=hasCollision->getPosition();
+            BoundingBox box=hasCollision->getBoundingBox();
             Matrix4f trans;
-            trans.translation(0.0,(positionObs.y+0.5)-(posHero.y-0.23),0.0);
+            trans.translation(0.0,(positionObs.y+box.maxValue.y)-(posHero.y-0.23),0.0);
 
             moveAvatar->product(trans.getMatrix());
         }
