@@ -559,8 +559,11 @@ void Hero::updateState(float time){
         heroSound[0]->play();
     }
     //If the jump is activate
-    if(isJumping)
+    if(isJumping){
         jump(time);
+        if(heroSound[0]->isPlaying())
+            heroSound[0]->stop();
+    }
 
     //If the jump is not activate
     else gravity(time);
