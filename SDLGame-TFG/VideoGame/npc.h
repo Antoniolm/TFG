@@ -20,18 +20,31 @@
 #ifndef NPC_H
 #define NPC_H
 
+#include "../GraphicEngine/ianpc.h"
+#include "avatar.h"
+#include "../GraphicEngine/mesh.h"
 
-class Npc
+class Npc : public Avatar
 {
     public:
-        /** Default constructor */
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
         Npc();
-        /** Default destructor */
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
         virtual ~Npc();
+
+        void visualization(Context & cv);
+        void updateState(float time);
+
 
     protected:
 
     private:
+        IANpc stateMachine;
 };
 
 #endif // NPC_H

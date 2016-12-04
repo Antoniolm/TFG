@@ -162,7 +162,7 @@ Hero::Hero()
     foot->add(scaleFoot);
     Material * materialFoot=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     foot->add(materialFoot);
-    foot->add(static_cast<Object3D*>(footObject));
+    foot->add(footObject);
 
     //knee + ankle
     NodeSceneGraph * knee_ankle=new NodeSceneGraph();
@@ -170,20 +170,20 @@ Hero::Hero()
     //knee_ankle->add(transCylinder);
     //knee_ankle->add(moveKnee);
     knee_ankle->add(transCylinder);
-    knee_ankle->add(static_cast<Object3D*>(foot));
+    knee_ankle->add(foot);
     knee_ankle->add(scaleKnee);
-    knee_ankle->add(static_cast<Object3D*>(kneeObject));
+    knee_ankle->add(kneeObject);
 
     //Leg
     NodeSceneGraph * knee_ankleRight=new NodeSceneGraph();
     knee_ankleRight->add(transCylinder);
     knee_ankleRight->add(moveKneeRight);
-    knee_ankleRight->add(static_cast<Object3D*>(knee_ankle));
+    knee_ankleRight->add(knee_ankle);
 
     NodeSceneGraph * knee_ankleLeft=new NodeSceneGraph();
     knee_ankleLeft->add(transCylinder);
     knee_ankleLeft->add(moveKneeLeft);
-    knee_ankleLeft->add(static_cast<Object3D*>(knee_ankle));
+    knee_ankleLeft->add(knee_ankle);
 
     Material * materialLeg=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureLeg.png");
 
@@ -191,19 +191,19 @@ Hero::Hero()
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
     legLeft->add(transLeg);
-    legLeft->add(static_cast<Object3D*>(knee_ankleLeft));
+    legLeft->add(knee_ankleLeft);
     legLeft->add(scaleKnee);
     legLeft->add(materialFoot);
-    legLeft->add(static_cast<Object3D*>(kneeObject));
+    legLeft->add(kneeObject);
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
     legRight->add(transLeg);
-    legRight->add(static_cast<Object3D*>(knee_ankleRight));
+    legRight->add(knee_ankleRight);
     legRight->add(scaleKnee);
     legRight->add(materialFoot);
-    legRight->add(static_cast<Object3D*>(kneeObject));
+    legRight->add(kneeObject);
 
     //////////////////////////////////////////////////////
     /////                  Arms                      /////
@@ -298,13 +298,13 @@ Hero::Hero()
     handLeft->add(scaleHand);
     handLeft->add(rotateYHand);
     handLeft->add(materialLeg);
-    handLeft->add(static_cast<Object3D*>(handObject));
+    handLeft->add(handObject);
 
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transHand);
     handRight->add(scaleHand);
     handRight->add(materialLeg);
-    handRight->add(static_cast<Object3D*>(handObject));
+    handRight->add(handObject);
 
     //elbow + wrist
 
@@ -313,44 +313,44 @@ Hero::Hero()
     elbow_wristRight->add(transElbow);
     elbow_wristRight->add(moveElbowRight);
     elbow_wristRight->add(rotateXHand);
-    elbow_wristRight->add(static_cast<Object3D*>(handRight));
+    elbow_wristRight->add(handRight);
 
     NodeSceneGraph * elbow_wristLeft=new NodeSceneGraph();
     elbow_wristLeft->add(transElbow);
     elbow_wristLeft->add(moveElbowLeft);
     elbow_wristLeft->add(rotateXHand);
-    elbow_wristLeft->add(static_cast<Object3D*>(handLeft));
+    elbow_wristLeft->add(handLeft);
 
     //Shoulder
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
     shoulderLeft->add(scaleShoulder);
     shoulderLeft->add(rotateXShoulder);
     shoulderLeft->add(materialLeg);
-    shoulderLeft->add(static_cast<Object3D*>(shoulderObject));
+    shoulderLeft->add(shoulderObject);
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
     shoulderRight->add(rotateXShoulder);
     shoulderRight->add(rotateShoulder);
     shoulderRight->add(scaleShoulder);
     shoulderRight->add(materialLeg);
-    shoulderRight->add(static_cast<Object3D*>(shoulderObject));
+    shoulderRight->add(shoulderObject);
 
     //Arm left
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
     ArmLeft->add(moveArmLeft);
     ArmLeft->add(transArms);
-    ArmLeft->add(static_cast<Object3D*>(elbow_wristLeft));
+    ArmLeft->add(elbow_wristLeft);
     //ArmLeft->add(scaleArmTop);
-    ArmLeft->add(static_cast<Object3D*>(shoulderLeft));
+    ArmLeft->add(shoulderLeft);
 
 
     //Arm Right
     NodeSceneGraph * ArmRight=new NodeSceneGraph();
     ArmRight->add(moveArmRight);
     ArmRight->add(transArms);
-    ArmRight->add(static_cast<Object3D*>(elbow_wristRight));
+    ArmRight->add(elbow_wristRight);
     //ArmRight->add(scaleArmTop);
-    ArmRight->add(static_cast<Object3D*>(shoulderRight));
+    ArmRight->add(shoulderRight);
 
     //////////////////////////////////////////////////////
     /////         Construction of the hero           /////
@@ -413,52 +413,52 @@ Hero::Hero()
     armourNode->add(transArmour);
     armourNode->add(scaleArmour);
     armourNode->add(materialTest);
-    armourNode->add(static_cast<Object3D*>(armourObject));
+    armourNode->add(armourObject);
 
     NodeSceneGraph * armour2Node=new NodeSceneGraph();
     armour2Node->add(scaleArmour2);
     armour2Node->add(materialTest);
-    armour2Node->add(static_cast<Object3D*>(armour2Object));
+    armour2Node->add(armour2Object);
 
     NodeSceneGraph * armourChestNode=new NodeSceneGraph();
     armourChestNode->add(transArmourChest);
     armourChestNode->add(scaleArmourChest);
     armourChestNode->add(materialTest);
-    armourChestNode->add(static_cast<Object3D*>(armourChestObject));
+    armourChestNode->add(armourChestObject);
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);
     chestNode->add(materialWood);
-    chestNode->add(static_cast<Object3D*>(chestObject));
+    chestNode->add(chestObject);
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     Material * materialHead=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodHead.png");
     headNode->add(transHead);
     headNode->add(scaleHead);
     headNode->add(materialHead);
-    headNode->add(static_cast<Object3D*>(headObject));
+    headNode->add(headObject);
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
     chest_ArmsNode->add(transChest);
-    chest_ArmsNode->add(static_cast<Object3D*>(chestNode));
+    chest_ArmsNode->add(chestNode);
     chest_ArmsNode->add(trasn2Arms2);
-    chest_ArmsNode->add(static_cast<Object3D*>(ArmLeft));
+    chest_ArmsNode->add(ArmLeft);
     chest_ArmsNode->add(trasn2Arms);
-    chest_ArmsNode->add(static_cast<Object3D*>(ArmRight));
+    chest_ArmsNode->add(ArmRight);
 
     Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     root->add(scaleHero);
     root->add(material);
-    root->add((static_cast<Object3D*>(armourChestNode)));
-    root->add((static_cast<Object3D*>(armour2Node)));
-    root->add((static_cast<Object3D*>(armourNode)));
-    root->add((static_cast<Object3D*>(headNode)));
-    root->add((static_cast<Object3D*>(chest_ArmsNode)));
+    root->add(armourChestNode);
+    root->add(armour2Node);
+    root->add(armourNode);
+    root->add(headNode);
+    root->add(chest_ArmsNode);
     root->add(mat2);
     root->add(materialWood);
-    root->add(static_cast<Object3D*>(legLeft));
+    root->add(legLeft);
     root->add(mat);
-    root->add(static_cast<Object3D*>(legRight));
+    root->add(legRight);
     currentTime=SDL_GetTicks();
 }
 

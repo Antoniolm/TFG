@@ -884,7 +884,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1480860307 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1480877579 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 
 1480845813 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
@@ -961,10 +961,10 @@
 1477910501 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\entrancerootmap.cpp
 	"entrancerootmap.h"
 
-1477947975 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.cpp
+1480877349 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.cpp
 	"avatar.h"
 
-1479861056 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.h
+1480877046 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.h
 	"../GraphicEngine/object3d.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -1591,7 +1591,7 @@
 	"material.h"
 	<vector>
 
-1480865992 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
+1480876450 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
 	"objectscene.h"
 
 1480865951 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
@@ -1651,8 +1651,11 @@
 	<vector>
 	<string>
 
-1480876326 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
+1480877498 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
-1480876315 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
+1480877137 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
+	"../GraphicEngine/ianpc.h"
+	"avatar.h"
+	"../GraphicEngine/mesh.h"
 

@@ -21,7 +21,23 @@
 
 Npc::Npc()
 {
-    //ctor
+    Mesh * cubeObject=new Mesh("geometries/cube.obj");
+    cubeObject->init();
+
+    Matrix4f * transOneCube=new Matrix4f();
+    transOneCube->translation(3.5f,-1.5f,-3.5f);
+
+    Matrix4f * scaleCube=new Matrix4f();
+    scaleCube->scale(0.5,1,0.5);
+
+    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
+
+    NodeSceneGraph * cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleCube);
+    cubeNode->add(material);
+    cubeNode->add(cubeObject);
+    root->add(cubeNode);
 }
 
 //**********************************************************************//
@@ -29,4 +45,16 @@ Npc::Npc()
 Npc::~Npc()
 {
     //dtor
+}
+
+//**********************************************************************//
+
+void Npc::visualization(Context & cv){
+    root->visualization(cv);
+}
+
+//**********************************************************************//
+
+void Npc::updateState(float time){
+
 }
