@@ -1627,3 +1627,13 @@
 	"begin_code.h"
 	"close_code.h"
 
+1480851090 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
+	"text.h"
+
+1480852864 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
+	"object3d.h"
+	"structdata.h"
+	<SDL.h>
+	<SDL_mixer.h>
+	<SDL_TTF.h>
+

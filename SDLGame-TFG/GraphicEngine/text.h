@@ -22,6 +22,9 @@
 
 #include "object3d.h"
 #include "structdata.h"
+#include <SDL.h>
+#include <SDL_mixer.h>
+#include <SDL_TTF.h>
 
 class Text : public Object3D
 {
@@ -32,13 +35,30 @@ class Text : public Object3D
         Text();
 
         //////////////////////////////////////////////////////////////////////////
+        /** Constructor with parameters */
+        //////////////////////////////////////////////////////////////////////////
+        Text(const string & aFile,int aHeight,int aWidth);
+
+        //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Text();
 
+        void init();
+
+        void visualization();
+
+        void updateState(float time);
+
     protected:
 
     private:
+        vec3f position;
+        float height,width;
+        SDL_Surface * surface;
+        string fileTexture;
+        GLuint texture;
+        TTF_Font* font;
 };
 
 #endif // TEXT_H
