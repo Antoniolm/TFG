@@ -34,6 +34,7 @@
 #include "mesh.h"
 #include "objectscene.h"
 #include "../VideoGame/hero.h"
+#include "sound.h"
 
 using namespace std;
 
@@ -85,6 +86,7 @@ class RootMap : public Object3D
         vector<int> indexMap[30][30];
         vector<ObjectScene *> objs;
         vector<ObjectScene *> decorationObjs;
+        Sound * backSound;
         Hero * hero;
 };
 
