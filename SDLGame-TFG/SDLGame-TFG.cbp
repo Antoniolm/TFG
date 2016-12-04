@@ -37,12 +37,14 @@
 			<Add directory="lib/sdl2/include/SDL2" />
 			<Add directory="lib/SDL2_mixer-2.0.1/i686-w64-mingw32/include/SDL2" />
 			<Add directory="lib/glew-1.10.0/include/GL" />
+			<Add directory="lib/SDL2_ttf-2.0.14/i686-w64-mingw32/include/SDL2" />
 		</Compiler>
 		<Linker>
-			<Add option="-lmingw32 -lSDL2main -lSDL2 -lopengl32 -lglu32 -lglew32 -lglew32mx -lSDL2_mixer" />
+			<Add option="-lmingw32 -lSDL2main -lSDL2 -lopengl32 -lglu32 -lglew32 -lglew32mx -lSDL2_mixer -lSDL2_ttf" />
 			<Add directory="lib/sdl2/lib" />
 			<Add directory="lib/glew-1.10.0/lib" />
 			<Add directory="lib/SDL2_mixer-2.0.1/i686-w64-mingw32/lib" />
+			<Add directory="lib/SDL2_ttf-2.0.14/i686-w64-mingw32/lib" />
 		</Linker>
 		<Unit filename="GraphicEngine/acceleratedmovement.cpp" />
 		<Unit filename="GraphicEngine/acceleratedmovement.h" />
@@ -54,6 +56,8 @@
 		<Unit filename="GraphicEngine/context.h" />
 		<Unit filename="GraphicEngine/file_obj.cpp" />
 		<Unit filename="GraphicEngine/file_obj.h" />
+		<Unit filename="GraphicEngine/ianpc.cpp" />
+		<Unit filename="GraphicEngine/ianpc.h" />
 		<Unit filename="GraphicEngine/light.cpp" />
 		<Unit filename="GraphicEngine/light.h" />
 		<Unit filename="GraphicEngine/linearmovement.cpp" />
@@ -99,6 +103,8 @@
 		</Unit>
 		<Unit filename="GraphicEngine/stb_image.h" />
 		<Unit filename="GraphicEngine/structdata.h" />
+		<Unit filename="GraphicEngine/text.cpp" />
+		<Unit filename="GraphicEngine/text.h" />
 		<Unit filename="GraphicEngine/texture.cpp" />
 		<Unit filename="GraphicEngine/texture.h" />
 		<Unit filename="GraphicEngine/window.cpp" />

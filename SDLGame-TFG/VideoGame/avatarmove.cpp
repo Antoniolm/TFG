@@ -28,7 +28,7 @@ AvatarMove::~AvatarMove(){
 }
 
 bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
-    ObjectScene * hasCollision;
+    ObjectScene * hasCollision=0;
     bool result=false;
     float tenthValue,tenthValue2;
     vec3f posHero=getPosition();

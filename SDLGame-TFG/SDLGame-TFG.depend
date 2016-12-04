@@ -391,7 +391,7 @@
 	"window.h"
 	"file_obj.h"
 
-1480861255 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1480869538 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1480332805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -427,7 +427,7 @@
 1480671289 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\object3d.cpp
 	"object3d.h"
 
-1480673362 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\object3d.h
+1480865862 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\object3d.h
 	"context.h"
 	"structdata.h"
 
@@ -448,7 +448,7 @@
 1480686926 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
-1480671840 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
+1480865942 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
 	"object3d.h"
 	"context.h"
 	"matrix4fdynamic.h"
@@ -457,7 +457,7 @@
 	<vector>
 	<SDL.h>
 
-1480671535 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
+1480865865 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
 	<vector>
 	<string>
 	"context.h"
@@ -1591,10 +1591,10 @@
 	"material.h"
 	<vector>
 
-1480704074 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
+1480865992 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
 	"objectscene.h"
 
-1480703648 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
+1480865951 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
 	"object3d.h"
 	"matrix4f.h"
 	"structdata.h"
@@ -1614,7 +1614,7 @@
 	"structdata.h"
 	<SDL.h>
 
-1480774297 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1480866086 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
@@ -1643,4 +1643,9 @@
 	<vector>
 	"mesh.h"
 	"nodescenegraph.h"
+
+1480869179 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.cpp
+	"ianpc.h"
+
+1480869178 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.h
 
