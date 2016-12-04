@@ -24,7 +24,53 @@ Text::Text()
     //ctor
 }
 
+//**********************************************************************//
+
+Text::Text(const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont){
+    fileTexture=aFile;
+    height=aHeight;
+    width=aWidth;
+    position=aPosition;
+    font=aFont;
+}
+
+//**********************************************************************//
+
 Text::~Text()
 {
     //dtor
+}
+
+//**********************************************************************//
+
+void Text::setParameters(const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont){
+    fileTexture=aFile;
+    height=aHeight;
+    width=aWidth;
+    position=aPosition;
+    font=aFont;
+}
+
+//**********************************************************************//
+
+void Text::init(){
+
+}
+
+//**********************************************************************//
+
+void Text::visualization(Context & vis){
+
+}
+
+//**********************************************************************//
+
+void Text::updateState(float time){
+
+}
+
+//**********************************************************************//
+
+void Text::activeText(Shader * currentShader){
+
 }

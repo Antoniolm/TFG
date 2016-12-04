@@ -22,9 +22,16 @@
 
 #include "object3d.h"
 #include "structdata.h"
+#include "shader.h"
 #include <SDL.h>
+#include <SDL_opengl.h>
 #include <SDL_mixer.h>
 #include <SDL_TTF.h>
+#include "shader.h"
+#include <vector>
+#include "mesh.h"
+
+using namespace std;
 
 class Text : public Object3D
 {
@@ -37,18 +44,21 @@ class Text : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Text(const string & aFile,int aHeight,int aWidth);
+        Text(const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Text();
 
+        void setParameters(const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont);
         void init();
 
-        void visualization();
+        void visualization(Context & vis);
 
         void updateState(float time);
+
+        void activeText(Shader * currentShader);
 
     protected:
 
@@ -58,7 +68,9 @@ class Text : public Object3D
         SDL_Surface * surface;
         string fileTexture;
         GLuint texture;
+        GLuint vertexArrayObject;
         TTF_Font* font;
+        Mesh * aCube;
 };
 
 #endif // TEXT_H
