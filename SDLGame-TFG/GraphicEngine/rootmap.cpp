@@ -301,6 +301,8 @@ void RootMap::updateState(float time){
     //case: Player push a bottom
     const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)]){
+        cout<< "Funciona"<< endl;
+        npcs[0]->setActive(true);
         npcs[0]->nextDialog();
     }
 }
