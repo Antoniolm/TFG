@@ -1644,8 +1644,15 @@
 	"mesh.h"
 	"nodescenegraph.h"
 
-1480869179 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.cpp
+1480875423 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.cpp
 	"ianpc.h"
 
-1480869178 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.h
+1480869831 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.h
+	<vector>
+	<string>
+
+1480876326 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
+	"npc.h"
+
+1480876315 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
 
