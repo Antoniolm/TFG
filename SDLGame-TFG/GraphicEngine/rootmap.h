@@ -91,6 +91,7 @@ class RootMap : public Object3D
         Sound * backSound;
         Hero * hero;
         vector<Npc* > npcs;
+        float dialogTime;
 };
 
 #endif // ROOTMAP_H

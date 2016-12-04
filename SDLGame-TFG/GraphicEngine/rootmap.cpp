@@ -250,6 +250,8 @@ RootMap::RootMap()
     // Add sound of our map
     backSound=new Sound("sounds/background.wav",0,60);
     backSound->play();
+
+    currentTime=SDL_GetTicks();
 }
 
 //**********************************************************************//
@@ -300,11 +302,14 @@ void RootMap::updateState(float time){
 
     //case: Player push a bottom
     const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)]){
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-800.0)){
         cout<< "Funciona"<< endl;
         npcs[0]->setActive(true);
         npcs[0]->nextDialog();
+        dialogTime=currentTime;
     }
+
+    currentTime+=time-currentTime;
 }
 
 //**********************************************************************//
