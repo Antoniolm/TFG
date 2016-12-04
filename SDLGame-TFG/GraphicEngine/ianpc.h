@@ -45,6 +45,7 @@ class IANpc
         string & getCurrentState();
         int getNumState();
         void clean();
+        void firstState();
         void nextState();
         void beforeState();
         bool isLastState();

@@ -300,10 +300,9 @@ void RootMap::updateState(float time){
     for(unsigned i=0;i<objs.size();i++)
         objs[i]->updateState(time);
 
-    //case: Player push a bottom
+    //Check if the hero is speaking with a avatar
     const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-800.0)){
-        cout<< "Funciona"<< endl;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-250.0)){
         npcs[0]->setActive(true);
         npcs[0]->nextDialog();
         dialogTime=currentTime;

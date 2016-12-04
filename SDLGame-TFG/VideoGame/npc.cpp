@@ -63,6 +63,7 @@ void Npc::addDialog(const string state){
 void Npc::nextDialog(){
     if(stateMachine.isLastState()){
         npcActive=false;
+        stateMachine.firstState();
     }
     else {
         stateMachine.nextState();
