@@ -35,14 +35,13 @@ Game::~Game(){
 
 void Game::loop(){
     bool quit = false;
-    bool hasMove=false;
     SDL_Event event;
     const Uint8* currentKeyStates;
     Context aContext;
     vec3f posHero;
 
-    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 28 );
-    Text aText("Esto es una prueba para ver si hace falta tocar las dimensiones de nuestro mesh","now",100,100,vec3f(0.0,2.0,0.0),font);
+    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 40);
+    Text aText("Esto es una prueba","now",100,100,vec3f(0.0,2.0,0.0),font);
     aText.init();
 
     hero=new Hero();

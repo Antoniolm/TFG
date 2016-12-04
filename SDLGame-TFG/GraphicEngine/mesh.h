@@ -108,7 +108,6 @@ class Mesh : public Object3D
         GLuint vertexArrayBuffers[NUM_BUFFERS];
         GLuint vertexArrayObject;
         string objFile;
-        BoundingBox boundingBox;
         int numIndex;
 };
 

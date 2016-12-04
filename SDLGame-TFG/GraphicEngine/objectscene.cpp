@@ -46,11 +46,11 @@ void ObjectScene::visualization(Context & vis){
     position=matrix.product(vec4f());
 
     //FIX
-    box=object->getBoundingBox();
+    boundingBox=object->getBoundingBox();
     GLfloat * mat=matrix.getMatrix();
-    box.maxValue.x*=mat[0];box.minValue.x*=mat[0];
-    box.maxValue.y*=mat[5];box.minValue.y*=mat[5];
-    box.maxValue.z*=mat[10];box.minValue.z*=mat[10];
+    boundingBox.maxValue.x*=mat[0];boundingBox.minValue.x*=mat[0];
+    boundingBox.maxValue.y*=mat[5];boundingBox.minValue.y*=mat[5];
+    boundingBox.maxValue.z*=mat[10];boundingBox.minValue.z*=mat[10];
 }
 
 //**********************************************************************//
@@ -68,6 +68,6 @@ vec3f ObjectScene::getPosition(){
 //**********************************************************************//
 
 BoundingBox ObjectScene::getBoundingBox(){
-    return box;//object->getBoundingBox();
+    return boundingBox;//object->getBoundingBox();
 }
 

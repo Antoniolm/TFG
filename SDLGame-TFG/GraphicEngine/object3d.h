@@ -88,6 +88,7 @@ class Object3D
     protected:
         float currentTime;
         vec4f position;
+        BoundingBox boundingBox;
 
     private:
 

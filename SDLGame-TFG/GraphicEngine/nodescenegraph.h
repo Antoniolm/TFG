@@ -144,7 +144,6 @@ class NodeSceneGraph : public Object3D
 
     private:
         vector<EntryNGE> entrance;
-        BoundingBox boundingBox;
 };
 
 #endif // NODESCENEGRAPH_H
