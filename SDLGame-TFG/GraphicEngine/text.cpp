@@ -26,7 +26,8 @@ Text::Text()
 
 //**********************************************************************//
 
-Text::Text(const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont){
+Text::Text(const string &  aMessage,const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont){
+    message=aMessage;
     fileTexture=aFile;
     height=aHeight;
     width=aWidth;
@@ -38,12 +39,15 @@ Text::Text(const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font 
 
 Text::~Text()
 {
-    //dtor
+    //TTF_CloseFont(font);
+    //SDL_DestroyTexture(text);
+    //SDL_FreeSurface(surface);
 }
 
 //**********************************************************************//
 
-void Text::setParameters(const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont){
+void Text::setParameters(const string &  aMessage,const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont){
+    message=aMessage;
     fileTexture=aFile;
     height=aHeight;
     width=aWidth;
@@ -54,13 +58,24 @@ void Text::setParameters(const string & aFile,int aHeight,int aWidth,vec3f aPosi
 //**********************************************************************//
 
 void Text::init(){
+  glGenTextures(1, &texture);
+  glBindTexture(GL_TEXTURE_2D, texture);
+
+  SDL_Color color = {0, 0, 0};
+  surface = TTF_RenderText_Blended(font, message.c_str(),color);
+
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_BGRA,
+                GL_UNSIGNED_BYTE, surface->pixels);
 
 }
 
 //**********************************************************************//
 
 void Text::visualization(Context & vis){
-
+    //Draw our text
+    plane->visualization(vis);
 }
 
 //**********************************************************************//
@@ -71,6 +86,6 @@ void Text::updateState(float time){
 
 //**********************************************************************//
 
-void Text::activeText(Shader * currentShader){
-
+void Text::activeText(){
+    glBindTexture(GL_TEXTURE_2D, texture);
 }

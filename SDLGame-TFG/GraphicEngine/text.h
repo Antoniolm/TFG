@@ -44,21 +44,21 @@ class Text : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Text(const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont);
+        Text(const string &  aStringText,const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Text();
 
-        void setParameters(const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont);
+        void setParameters(const string &  aStringText,const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont);
         void init();
 
         void visualization(Context & vis);
 
         void updateState(float time);
 
-        void activeText(Shader * currentShader);
+        void activeText();
 
     protected:
 
@@ -67,10 +67,10 @@ class Text : public Object3D
         float height,width;
         SDL_Surface * surface;
         string fileTexture;
+        string message;
         GLuint texture;
-        GLuint vertexArrayObject;
         TTF_Font* font;
-        Mesh * aCube;
+        Mesh * plane;
 };
 
 #endif // TEXT_H
