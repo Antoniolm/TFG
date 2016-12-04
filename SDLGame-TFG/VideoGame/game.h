@@ -31,6 +31,7 @@
 #include "../GraphicEngine/rootmap.h"
 #include "../GraphicEngine/Camera.h"
 #include "../GraphicEngine/structdata.h"
+#include "../GraphicEngine/text.h"
 #include "hero.h"
 
 class Game
