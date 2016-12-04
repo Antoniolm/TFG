@@ -34,11 +34,13 @@
 #include "mesh.h"
 #include "objectscene.h"
 #include "../VideoGame/hero.h"
+#include "../VideoGame/npc.h"
 #include "sound.h"
 
 using namespace std;
 
 class Hero;
+class Npc;
 class RootMap : public Object3D
 {
     public:
@@ -88,6 +90,7 @@ class RootMap : public Object3D
         vector<ObjectScene *> decorationObjs;
         Sound * backSound;
         Hero * hero;
+        vector<Npc* > npcs;
 };
 
 #endif // ROOTMAP_H

@@ -237,6 +237,10 @@ RootMap::RootMap()
         }
     }
 
+    /////////////////////////////////////////
+    // Add npcs of our map
+    Npc * npc1=new Npc();
+    npcs.push_back(npc1);
 
     /////////////////////////////////////////
     // Add sound of our map
@@ -272,6 +276,11 @@ void RootMap::visualization(Context & cv){
     //Draw decoration object
     for(unsigned i=0;i<decorationObjs.size();i++){
         decorationObjs[i]->visualization(cv);
+    }
+
+    //Draw npc
+    for(unsigned i=0;i<npcs.size();i++){
+        npcs[i]->visualization(cv);
     }
 }
 

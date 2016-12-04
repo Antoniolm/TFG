@@ -25,7 +25,7 @@ Npc::Npc()
     cubeObject->init();
 
     Matrix4f * transOneCube=new Matrix4f();
-    transOneCube->translation(3.5f,-1.5f,-3.5f);
+    transOneCube->translation(3.5f,1.5f,-3.5f);
 
     Matrix4f * scaleCube=new Matrix4f();
     scaleCube->scale(0.5,1,0.5);
