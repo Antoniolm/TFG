@@ -239,7 +239,11 @@ RootMap::RootMap()
 
     /////////////////////////////////////////
     // Add npcs of our map
+
     Npc * npc1=new Npc();
+    npc1->addDialog("Esto es una prueba");
+    npc1->addDialog("Segundo mensaje de prueba");
+    npc1->addDialog("Tercer mensaje de prueba");
     npcs.push_back(npc1);
 
     /////////////////////////////////////////
@@ -287,13 +291,18 @@ void RootMap::visualization(Context & cv){
 //**********************************************************************//
 
 void RootMap::updateState(float time){
-
     //Update the hero
     hero->updateState(time);
 
     //Update the Scene
     for(unsigned i=0;i<objs.size();i++)
         objs[i]->updateState(time);
+
+    //case: Player push a bottom
+    const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)]){
+        npcs[0]->nextDialog();
+    }
 }
 
 //**********************************************************************//

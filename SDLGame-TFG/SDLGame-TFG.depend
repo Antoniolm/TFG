@@ -1655,7 +1655,7 @@
 1480882012 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
-1480882105 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
+1480884456 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
 	"../GraphicEngine/ianpc.h"
 	"avatar.h"
 	"../GraphicEngine/mesh.h"

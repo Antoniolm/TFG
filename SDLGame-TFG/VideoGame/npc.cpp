@@ -21,6 +21,7 @@
 
 Npc::Npc()
 {
+    npcActive=false;
     Mesh * cubeObject=new Mesh("geometries/cube.obj");
     cubeObject->init();
 
@@ -53,13 +54,33 @@ Npc::~Npc()
 
 //**********************************************************************//
 
+void Npc::addDialog(const string state){
+    stateMachine.addState(state);
+}
+
+//**********************************************************************//
+
+void Npc::nextDialog(){
+    stateMachine.nextState();
+}
+
+//**********************************************************************//
+
 void Npc::visualization(Context & cv){
     root->visualization(cv);
-    currentText->visualization(cv);
+
+    if(npcActive)
+        currentText->visualization(cv);
 }
 
 //**********************************************************************//
 
 void Npc::updateState(float time){
 
+}
+
+//**********************************************************************//
+
+void Npc::setActive(bool value){
+    npcActive=value;
 }
