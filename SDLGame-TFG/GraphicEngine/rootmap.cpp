@@ -77,8 +77,7 @@ RootMap::RootMap()
     //Materials
     Material * materialGrass=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass.png");
     Material * materialSand=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
-    Material * materialBox=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
-    Material * materialRock=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/rock.png");
+    //Material * materialBox=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
     Material * materialFence=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
     Material * materialMushroom=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
     Material * materialTree=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grass.png");
@@ -225,7 +224,7 @@ RootMap::RootMap()
     //visualization;
     Context cv;
     cv.visualization_mode=1;
-    for(int i=0;i<objs.size();i++){
+    for(unsigned i=0;i<objs.size();i++){
         objs[i]->visualization(cv);
     }
 
@@ -233,7 +232,7 @@ RootMap::RootMap()
     BoundingBox bounding;
 
     //Push all the positions
-    for(int i=0;i<objs.size();i++){
+    for(unsigned i=0;i<objs.size();i++){
         pos=objs[i]->getPosition();
         bounding=objs[i]->getBoundingBox();
 
@@ -269,7 +268,7 @@ void RootMap::setHero(Hero * theHero){
 
 void RootMap::visualization(Context & cv){
     //Draw object
-    for(int i=0;i<objs.size();i++){
+    for(unsigned i=0;i<objs.size();i++){
         objs[i]->visualization(cv);
     }
 
@@ -277,7 +276,7 @@ void RootMap::visualization(Context & cv){
     hero->visualization(cv);
 
     //Draw decoration object
-    for(int i=0;i<decorationObjs.size();i++){
+    for(unsigned i=0;i<decorationObjs.size();i++){
         decorationObjs[i]->visualization(cv);
     }
 }
@@ -290,7 +289,7 @@ void RootMap::updateState(float time){
     hero->updateState(time);
 
     //Update the Scene
-    for(int i=0;i<objs.size();i++)
+    for(unsigned i=0;i<objs.size();i++)
         objs[i]->updateState(time);
 }
 

@@ -70,7 +70,7 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will jump our avatar
-        *    \param velocity ->
+        *    \param time ->
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

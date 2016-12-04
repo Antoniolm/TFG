@@ -33,6 +33,7 @@ Window::~Window(){
 	SDL_DestroyWindow(window);
 	Mix_Quit();
 	SDL_Quit();
+	TTF_Quit();
 
 }
 
@@ -61,7 +62,7 @@ bool Window::createWindow(){
         SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,16);
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
 
-        window = SDL_CreateWindow(title.c_str() , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, height, width, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE);
+        window = SDL_CreateWindow(title.c_str() , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, height, width, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN /*| SDL_WINDOW_RESIZABLE*/);
 		if (window == NULL) {
 			printf("SDL_Error: %s\n", SDL_GetError());
 			salida=false;
@@ -69,13 +70,17 @@ bool Window::createWindow(){
 		else {
             //Initialize SDL_mixer
             if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 ){
-                    printf( "SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError() );
+                    cout<< "SDL_mixer could not initialize!"<<endl;
                     salida = false;
             }
 			context = SDL_GL_CreateContext(window);
 		}
 	}
 
+    if ( TTF_Init( )== -1 ){
+        cout << "SDL_ttf could not initialize! SDL_ttf Error:"<< endl;
+        salida=false;
+    }
     GLenum err=glewInit();
 
     glEnable(GL_DEPTH_TEST);

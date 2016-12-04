@@ -360,11 +360,12 @@
 1476032874 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\game.h
 	"GraphicEngine/window.h"
 
-1479769213 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
+1480850216 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
 	<glew.h>
 	<SDL.h>
 	<SDL_opengl.h>
 	<SDL_mixer.h>
+	<SDL_TTF.h>
 	<gl/glu.h>
 	<gl/gl.h>
 	<stdio.h>
@@ -385,7 +386,7 @@
 	"../GraphicEngine/structdata.h"
 	"hero.h"
 
-1480612472 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1480850230 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
@@ -882,7 +883,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1480845785 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1480846416 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 
 1480845813 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
@@ -1616,8 +1617,13 @@
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
-1480599658 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
+1480846637 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
 	"avatar.h"
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/acceleratedmovement.h"
+
+1454362933 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\sdl2_ttf-2.0.14\i686-w64-mingw32\include\sdl2\sdl_ttf.h
+	"SDL.h"
+	"begin_code.h"
+	"close_code.h"
 

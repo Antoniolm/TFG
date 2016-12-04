@@ -59,8 +59,8 @@ void main()
     result += calculatePointLight(pointLights[i], norm, FragPos, viewDir);  
        
  vec4 texColor = texture(ourTexture,TextCoord);
-//if(texColor.a < 0.1)
-  //      discard;
+ if(texColor.a < 0.1)
+        discard;
  color =texColor * vec4(result, 1.0f);
 }
 

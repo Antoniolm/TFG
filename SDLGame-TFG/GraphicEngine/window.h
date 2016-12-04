@@ -24,6 +24,7 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include <SDL_mixer.h>
+#include <SDL_TTF.h>
 #include <gl/glu.h>
 #include <gl/gl.h>
 #include <stdio.h>
