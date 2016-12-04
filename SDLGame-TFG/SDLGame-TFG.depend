@@ -360,7 +360,7 @@
 1476032874 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\game.h
 	"GraphicEngine/window.h"
 
-1480850216 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
+1480851117 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
 	<glew.h>
 	<SDL.h>
 	<SDL_opengl.h>
@@ -386,7 +386,7 @@
 	"../GraphicEngine/structdata.h"
 	"hero.h"
 
-1480850230 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1480850488 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
