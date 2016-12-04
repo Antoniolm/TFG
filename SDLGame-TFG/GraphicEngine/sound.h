@@ -46,7 +46,7 @@ class Sound
         *    \param aType -> int with the type of element(music or effect)
         */
         //////////////////////////////////////////////////////////////////////////
-        Sound(const string & aFile,unsigned int aType,int aChannel=-1, int aloop=-1);
+        Sound(const string & aFile,unsigned int aType,int aVolume=128,int aChannel=-1, int aloop=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -61,7 +61,7 @@ class Sound
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        bool loadSound(const string & aFile,unsigned int aType, int aChannel=-1, int aloop=-1);
+        bool loadSound(const string & aFile,unsigned int aType,int aVolume=128 ,int aChannel=-1, int aloop=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -135,6 +135,7 @@ class Sound
         unsigned int type;   //0=background music, 1=effect
         int channel; //Variable for effect
         int loop; //Variable for all type of sound. -> Number of loop in a reproduction
+        int volume;
         union{
             Mix_Music * music;
             Mix_Chunk * effect;

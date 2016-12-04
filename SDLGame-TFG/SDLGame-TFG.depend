@@ -495,13 +495,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1480804235 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.h
+1480844634 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.h
 	<SDL_mixer.h>
 	<string>
 	<iostream>
 	<unistd.h>
 
-1480804732 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.cpp
+1480844778 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.cpp
 	"sound.h"
 
 1382587623 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\sdl2\include\sdl2\sdl_opengl.h
@@ -979,7 +979,7 @@
 	"../GraphicEngine/sound.h"
 	<vector>
 
-1480704975 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1480845309 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h

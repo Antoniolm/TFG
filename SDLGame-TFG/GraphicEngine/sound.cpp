@@ -39,6 +39,7 @@ Sound::Sound(const Sound & aSound){
     type=aSound.type;
     channel=aSound.channel;
     loop=aSound.loop;
+    volume=aSound.volume;
 
     switch(type){
         case 0: //Background music
@@ -55,11 +56,12 @@ Sound::Sound(const Sound & aSound){
 
 //**********************************************************************//
 
-Sound::Sound(const string & aFile,unsigned int aType,int aChannel,int aloop){
+Sound::Sound(const string & aFile,unsigned int aType,int aVolume,int aChannel,int aloop){
     file=aFile;
     type=aType;
     channel=aChannel;
     loop=aloop;
+    volume=aVolume;
 
     switch(type){
         case 0: //Background music
@@ -80,13 +82,17 @@ void Sound::play(){
 
     switch(type){
         case 0: //Background music
-            if(Mix_PlayingMusic()==0)
+            if(Mix_PlayingMusic()==0){
                 Mix_PlayMusic(music, loop);
+                Mix_VolumeMusic(volume);
+            }
         break;
 
         case 1: //Effect
-            if(Mix_Playing(channel)==0)
+            if(Mix_Playing(channel)==0){
                 Mix_PlayChannel(channel,effect,loop);
+                Mix_Volume(channel,volume);
+            }
 
         break;
     }
@@ -185,11 +191,12 @@ bool Sound::isPause(){
 
 //**********************************************************************//
 
-bool Sound::loadSound(const string & aFile,unsigned int aType,int aChannel,int aloop){
+bool Sound::loadSound(const string & aFile,unsigned int aType,int aVolume,int aChannel,int aloop){
     file=aFile;
     type=aType;
     channel=aChannel;
     loop=aloop;
+    volume=aVolume;
 
     bool result = true;
 
