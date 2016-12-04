@@ -53,6 +53,9 @@ class Text : public Object3D
         virtual ~Text();
 
         void setParameters(const string &  aStringText,const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont);
+
+        void setMessage(const string & aMessage);
+
         void init();
 
         void visualization(Context & vis);

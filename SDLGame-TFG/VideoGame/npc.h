@@ -23,6 +23,8 @@
 #include "../GraphicEngine/ianpc.h"
 #include "avatar.h"
 #include "../GraphicEngine/mesh.h"
+#include "../GraphicEngine/text.h"
+#include <SDL_TTF.h>
 
 class Npc : public Avatar
 {
@@ -45,6 +47,7 @@ class Npc : public Avatar
 
     private:
         IANpc stateMachine;
+        Text *currentText;
 };
 
 #endif // NPC_H

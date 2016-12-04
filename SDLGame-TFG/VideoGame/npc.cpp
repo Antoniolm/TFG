@@ -38,6 +38,10 @@ Npc::Npc()
     cubeNode->add(material);
     cubeNode->add(cubeObject);
     root->add(cubeNode);
+
+    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 40);
+    currentText=new Text("Esto es una prueba","now",100,100,vec3f(0.0,2.0,0.0),font);
+    currentText->init();
 }
 
 //**********************************************************************//
@@ -51,6 +55,7 @@ Npc::~Npc()
 
 void Npc::visualization(Context & cv){
     root->visualization(cv);
+    currentText->visualization(cv);
 }
 
 //**********************************************************************//

@@ -391,7 +391,7 @@
 	"window.h"
 	"file_obj.h"
 
-1480869538 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1480881746 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1480332805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1629,10 +1629,10 @@
 	"begin_code.h"
 	"close_code.h"
 
-1480860827 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
+1480880641 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
 	"text.h"
 
-1480858980 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
+1480881040 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
 	"object3d.h"
 	"structdata.h"
 	"shader.h"
@@ -1652,11 +1652,13 @@
 	<vector>
 	<string>
 
-1480877498 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
+1480882012 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
-1480877137 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
+1480882105 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
 	"../GraphicEngine/ianpc.h"
 	"avatar.h"
 	"../GraphicEngine/mesh.h"
+	"../GraphicEngine/text.h"
+	<SDL_TTF.h>
 

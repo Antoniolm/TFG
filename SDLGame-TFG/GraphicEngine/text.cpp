@@ -77,6 +77,12 @@ void Text::setParameters(const string &  aMessage,const string & aFile,int aHeig
 
 //**********************************************************************//
 
+void Text::setMessage(const string & aMessage){
+    message=aMessage;
+}
+
+//**********************************************************************//
+
 void Text::init(){
   glGenTextures(1, &texture);
   glBindTexture(GL_TEXTURE_2D, texture);
