@@ -33,6 +33,16 @@ Text::Text(const string &  aMessage,const string & aFile,int aHeight,int aWidth,
     width=aWidth;
     position=aPosition;
     font=aFont;
+
+    Mesh * textObject=new Mesh(string("geometries/text.obj"));
+    textObject->init();
+
+    Matrix4f * matrix=new Matrix4f();
+    matrix->translation(position.x,position.y,position.z);
+
+    textNode=new NodeSceneGraph();
+    textNode->add(matrix);
+    textNode->add(static_cast<Object3D*>(textObject));
 }
 
 //**********************************************************************//
@@ -53,6 +63,16 @@ void Text::setParameters(const string &  aMessage,const string & aFile,int aHeig
     width=aWidth;
     position=aPosition;
     font=aFont;
+
+    Mesh * textObject=new Mesh("geometries/text.obj");
+    textObject->init();
+
+    Matrix4f * matrix=new Matrix4f();
+    matrix->translation(position.x,position.y,position.z);
+
+    textNode=new NodeSceneGraph();
+    textNode->add(matrix);
+    textNode->add(static_cast<Object3D*>(textObject));
 }
 
 //**********************************************************************//
@@ -75,17 +95,12 @@ void Text::init(){
 
 void Text::visualization(Context & vis){
     //Draw our text
-    plane->visualization(vis);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    textNode->visualization(vis);
 }
 
 //**********************************************************************//
 
 void Text::updateState(float time){
 
-}
-
-//**********************************************************************//
-
-void Text::activeText(){
-    glBindTexture(GL_TEXTURE_2D, texture);
 }

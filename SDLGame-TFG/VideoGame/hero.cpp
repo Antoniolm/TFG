@@ -40,48 +40,37 @@ Hero::Hero()
     //////////////////////////////////////////////////////
     /////                All the mesh                /////
     //////////////////////////////////////////////////////
-    string file=string("geometries/armour.obj");
-    Mesh * armourObject=new Mesh(file);
+    Mesh * armourObject=new Mesh("geometries/armour.obj");
     armourObject->init();
 
-    file=string("geometries/armour2.obj");
-    Mesh * armour2Object=new Mesh(file);
+    Mesh * armour2Object=new Mesh("geometries/armour2.obj");
     armour2Object->init();
 
-    file=string("geometries/armourChest.obj");
-    Mesh * armourChestObject=new Mesh(file);
+    Mesh * armourChestObject=new Mesh("geometries/armourChest.obj");
     armourChestObject->init();
 
-    file=string("geometries/knee.obj");
-    Mesh * kneeObject=new Mesh(file);
+    Mesh * kneeObject=new Mesh("geometries/knee.obj");
     kneeObject->init();
 
-    file=string("geometries/pillLeg.obj");
-    Mesh * pillLegObject=new Mesh(file);
+    Mesh * pillLegObject=new Mesh("geometries/pillLeg.obj");
     pillLegObject->init();
 
-    file=string("geometries/hand.obj");
-    Mesh * handObject=new Mesh(file);
+    Mesh * handObject=new Mesh("geometries/hand.obj");
     handObject->init();
 
-    file=string("geometries/topArm.obj");
-    Mesh * shoulderObject=new Mesh(file);
+    Mesh * shoulderObject=new Mesh("geometries/topArm.obj");
     shoulderObject->init();
 
-    file=string("geometries/chest.obj");
-    Mesh * chestObject=new Mesh(file);
+    Mesh * chestObject=new Mesh("geometries/chest.obj");
     chestObject->init();
 
-    file=string("geometries/foot.obj");
-    Mesh * footObject=new Mesh(file);
+    Mesh * footObject=new Mesh("geometries/foot.obj");
     footObject->init();
 
-    file=string("geometries/hip.obj");
-    Mesh * hipObject=new Mesh(file);
+    Mesh * hipObject=new Mesh("geometries/hip.obj");
     hipObject->init();
 
-    file=string("geometries/head.obj");
-    Mesh * headObject=new Mesh(file);
+    Mesh * headObject=new Mesh("geometries/head.obj");
     headObject->init();
 
     //////////////////////////////////////////////////////

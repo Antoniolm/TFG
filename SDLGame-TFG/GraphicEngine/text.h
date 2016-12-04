@@ -30,6 +30,7 @@
 #include "shader.h"
 #include <vector>
 #include "mesh.h"
+#include "nodescenegraph.h"
 
 using namespace std;
 
@@ -58,8 +59,6 @@ class Text : public Object3D
 
         void updateState(float time);
 
-        void activeText();
-
     protected:
 
     private:
@@ -70,7 +69,7 @@ class Text : public Object3D
         string message;
         GLuint texture;
         TTF_Font* font;
-        Mesh * plane;
+        NodeSceneGraph * textNode;
 };
 
 #endif // TEXT_H
