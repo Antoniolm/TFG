@@ -302,7 +302,7 @@ void RootMap::updateState(float time){
 
     //Check if the hero is speaking with a avatar
     const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
-    bool isActivate=false;
+    bool isActivate=false;vec3f distance;
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-250.0)){
         for(unsigned i=0;i<npcs.size();i++)
             isActivate=npcs[i]->getActivate();
@@ -311,8 +311,13 @@ void RootMap::updateState(float time){
             npcs[0]->nextDialog();
         }
         else {
-            npcs[0]->activateNpc(true);
-            npcs[0]->currentDialog();
+            for(unsigned j=0;j<npcs.size();j++){
+                distance=(npcs[j]->getPosition())-(hero->getPosition());
+                if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1)){
+                    npcs[j]->activateNpc(true);
+                    npcs[j]->currentDialog();
+                }
+            }
         }
         dialogTime=currentTime;
     }
