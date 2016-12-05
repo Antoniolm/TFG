@@ -87,6 +87,7 @@ class Hero: public AvatarMove
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> heroSound;
         ScriptLMD animation;
+        float jumpDelay;
 };
 
 #endif // HERO_H

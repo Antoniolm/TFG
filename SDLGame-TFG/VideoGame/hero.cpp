@@ -460,6 +460,7 @@ Hero::Hero()
     root->add(mat);
     root->add(legRight);
     currentTime=SDL_GetTicks();
+    jumpDelay=currentTime;
 }
 
 //**********************************************************************//
@@ -536,9 +537,10 @@ void Hero::updateState(float time,const Uint8* currentKeyStates ){
     }
 
     //Case-> Push Scape bottom to jump
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !isJumping && !isFalling)
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !isJumping && !isFalling && jumpDelay<(time-600)){
         activeJump(15.0,5.0);
-
+        jumpDelay=time;
+    }
     //Move the body
     if(hasMove){
         moveBody(moveHero,heroDir);

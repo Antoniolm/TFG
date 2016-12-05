@@ -266,7 +266,7 @@ bool AvatarMove::jump(float time){
     GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
 
     vec3f posHero=getPosition();
-    posHero.y+=(0.22+moveGravity[13]);
+    posHero.y+=0.2;
 
     if(moveGravity[13]>0){
         //Get the tenth of our position

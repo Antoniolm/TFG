@@ -208,7 +208,7 @@ RootMap::RootMap()
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
-    transOneCube->translation(3.5f,3.5f,-5.5f);
+    transOneCube->translation(5.5f,3.5f,-4.5f);
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
