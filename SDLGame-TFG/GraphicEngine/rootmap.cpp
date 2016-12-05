@@ -76,6 +76,7 @@ RootMap::RootMap()
     Material * materialMushroom=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
     Material * materialTree=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grass.png");
     Material * materialWater=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/water.png");
+    Material * materialVoid=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/void.png");
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
 
@@ -215,7 +216,45 @@ RootMap::RootMap()
     cubeNode->add(cubeObject);
     objs.push_back(new ObjectScene(cubeNode));
 
-    //visualization;
+    /////////////////////////////////////////
+    // Add npcs of our map
+
+    Npc * npc1=new Npc(vec3f(3.5,2.0,-3.5f));
+    npc1->addDialog("Esto es una prueba");
+    npc1->addDialog("Segundo mensaje de prueba");
+    npc1->addDialog("Tercer mensaje de prueba");
+    npcs.push_back(npc1);
+
+    transOneCube=new Matrix4f();
+    transOneCube->translation(3.5,2.0,-3.5f);
+    scaleCube =new Matrix4f();
+    scaleCube->scale(0.5,1,0.5);
+
+    //Added to our indexMap for collision with our hero
+    cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleCube);
+    cubeNode->add(materialVoid);
+    cubeNode->add(cubeObject);
+    objs.push_back(new ObjectScene(cubeNode));
+
+    Npc * npc2=new Npc(vec3f(0.5,2.0,-3.5f));
+    npc2->addDialog("Segundo Npc");
+    npc2->addDialog("Segundo mensaje de Npc2");
+    npcs.push_back(npc2);
+
+    //Added to our indexMap for collision with our hero
+    transOneCube=new Matrix4f();
+    transOneCube->translation(0.5,2.0,-3.5f);
+    cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleCube);
+    cubeNode->add(materialVoid);
+    cubeNode->add(cubeObject);
+    objs.push_back(new ObjectScene(cubeNode));
+
+    ////////////////////////////////////////
+    //Create the indexMap;
     Context cv;
     cv.visualization_mode=1;
     for(unsigned i=0;i<objs.size();i++){
@@ -236,20 +275,6 @@ RootMap::RootMap()
             }
         }
     }
-
-    /////////////////////////////////////////
-    // Add npcs of our map
-
-    Npc * npc1=new Npc(vec3f(3.5,2.0,-3.5f));
-    npc1->addDialog("Esto es una prueba");
-    npc1->addDialog("Segundo mensaje de prueba");
-    npc1->addDialog("Tercer mensaje de prueba");
-    npcs.push_back(npc1);
-
-    Npc * npc2=new Npc(vec3f(0.5,2.0,-3.5f));
-    npc2->addDialog("Segundo Npc");
-    npc2->addDialog("Segundo mensaje de Npc2");
-    npcs.push_back(npc2);
 
     /////////////////////////////////////////
     // Add sound of our map
