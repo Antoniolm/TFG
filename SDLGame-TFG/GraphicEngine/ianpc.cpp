@@ -39,11 +39,6 @@ void IANpc::addState(const string & state){
 
 //**********************************************************************//
 
-void IANpc::removeState(int id){
-}
-
-//**********************************************************************//
-
 string & IANpc::getCurrentState(){
     return states[currentState];
 }
