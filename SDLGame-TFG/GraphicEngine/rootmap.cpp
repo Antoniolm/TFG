@@ -302,9 +302,18 @@ void RootMap::updateState(float time){
 
     //Check if the hero is speaking with a avatar
     const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
+    bool isActivate=false;
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-250.0)){
-        npcs[0]->setActive(true);
-        npcs[0]->nextDialog();
+        for(unsigned i=0;i<npcs.size();i++)
+            isActivate=npcs[i]->getActivate();
+
+        if(isActivate){
+            npcs[0]->nextDialog();
+        }
+        else {
+            npcs[0]->activateNpc(true);
+            npcs[0]->currentDialog();
+        }
         dialogTime=currentTime;
     }
 

@@ -40,10 +40,12 @@ class Npc : public Avatar
         virtual ~Npc();
 
         void addDialog(const string state);
+        void currentDialog();
         void nextDialog();
         void visualization(Context & cv);
         void updateState(float time);
-        void setActive(bool value);
+        void activateNpc(bool value);
+        bool getActivate();
 
 
     protected:
@@ -51,7 +53,7 @@ class Npc : public Avatar
     private:
         IANpc stateMachine;
         Text *currentText;
-        bool npcActive;
+        bool npcActivate;
 };
 
 #endif // NPC_H

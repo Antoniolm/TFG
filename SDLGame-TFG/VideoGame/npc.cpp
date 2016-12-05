@@ -21,7 +21,7 @@
 
 Npc::Npc()
 {
-    npcActive=false;
+    npcActivate=false;
     Mesh * cubeObject=new Mesh("geometries/cube.obj");
     cubeObject->init();
 
@@ -41,7 +41,7 @@ Npc::Npc()
     root->add(cubeNode);
 
     TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 40);
-    currentText=new Text("Esto es una prueba","now",100,100,vec3f(0.0,2.0,0.0),font);
+    currentText=new Text("Oju","now",100,100,vec3f(0.0,2.0,0.0),font);
     currentText->init();
 }
 
@@ -62,7 +62,7 @@ void Npc::addDialog(const string state){
 
 void Npc::nextDialog(){
     if(stateMachine.isLastState()){
-        npcActive=false;
+        npcActivate=false;
         stateMachine.firstState();
     }
     else {
@@ -74,10 +74,17 @@ void Npc::nextDialog(){
 
 //**********************************************************************//
 
+void Npc::currentDialog(){
+    currentText->setMessage(stateMachine.getCurrentState());
+    currentText->init();
+}
+
+//**********************************************************************//
+
 void Npc::visualization(Context & cv){
     root->visualization(cv);
 
-    if(npcActive)
+    if(npcActivate)
         currentText->visualization(cv);
 }
 
@@ -89,6 +96,12 @@ void Npc::updateState(float time){
 
 //**********************************************************************//
 
-void Npc::setActive(bool value){
-    npcActive=value;
+void Npc::activateNpc(bool value){
+    npcActivate=value;
+}
+
+//**********************************************************************//
+
+bool Npc::getActivate(){
+    return npcActivate;
 }
