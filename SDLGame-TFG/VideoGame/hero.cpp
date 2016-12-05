@@ -358,7 +358,7 @@ Hero::Hero()
 
     //Movement for our hero
     AvatarMove::moveAvatar= new Matrix4f();
-    AvatarMove::moveAvatar->translation(1.5,2.0,-2.5);
+    AvatarMove::moveAvatar->translation(1.5,2.5,-2.5);
     root->add(AvatarMove::moveAvatar);
 
     Matrix4f *mat=new Matrix4f();

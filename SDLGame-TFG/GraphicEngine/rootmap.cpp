@@ -157,7 +157,7 @@ RootMap::RootMap()
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
 
-    float scale=-1.5;
+    /*float scale=-1.5;
     for(int i=0;i<2;i++){
         if(i==1) scale=-5.5;
         for(int j=0;j<7;j++){
@@ -170,7 +170,7 @@ RootMap::RootMap()
             cubeNode->add(fenceObject);
             objs.push_back(new ObjectScene(cubeNode));
         }
-    }
+    }*/
 
     transOneCube=new Matrix4f();
     transOneCube->translation(1.5f,2.0f,-6.5f);
@@ -208,7 +208,10 @@ RootMap::RootMap()
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
-    transOneCube->translation(5.5f,3.5f,-4.5f);
+    transOneCube->translation(6.0f,1.5f,-2.0f);
+    scaleCube =new Matrix4f();
+    scaleCube->scale(1.0,0.5,1.0);
+
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
@@ -283,6 +286,7 @@ RootMap::RootMap()
     for(unsigned i=0;i<objs.size();i++){
         pos=objs[i]->getPosition();
         bounding=objs[i]->getBoundingBox();
+        bounding.minValue.z+=0.1;
 
         for(int x=bounding.minValue.x;x<bounding.maxValue.x;x++){
             for(int z=bounding.minValue.z;z<bounding.maxValue.z;z++){
