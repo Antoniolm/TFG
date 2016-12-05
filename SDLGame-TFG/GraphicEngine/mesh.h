@@ -89,7 +89,7 @@ class Mesh : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time);
+        void updateState(float time,const Uint8* currentKeyStates );
 
         //////////////////////////////////////////////////////////////////////////
         /**

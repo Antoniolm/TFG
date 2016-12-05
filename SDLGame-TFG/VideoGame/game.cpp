@@ -77,8 +77,11 @@ void Game::loop(){
                 quit = true;
             }
         }
+
+        currentKeyStates=SDL_GetKeyboardState(NULL);
+
         window->cleanScreen();
-        rootMap->updateState(SDL_GetTicks());
+        rootMap->updateState(SDL_GetTicks(),currentKeyStates);
 
         //Update the camera
         posHero=hero->getPosition();

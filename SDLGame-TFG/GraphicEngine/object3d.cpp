@@ -36,7 +36,7 @@ void Object3D::visualization(Context & cv){}
 
 //**********************************************************************//
 
-void Object3D::updateState(float time){}
+void Object3D::updateState(float time,const Uint8* currentKeyStates ){}
 
 //**********************************************************************//
 

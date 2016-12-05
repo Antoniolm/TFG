@@ -22,6 +22,7 @@
 
 #include "context.h"
 #include "structdata.h"
+#include "SDL.h"
 
 class Context;
 
@@ -68,7 +69,7 @@ class Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time);
+        virtual void updateState(float times,const Uint8* currentKeyStates );
 
         //////////////////////////////////////////////////////////////////////////
         /**

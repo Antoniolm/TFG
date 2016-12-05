@@ -358,7 +358,7 @@ Hero::Hero()
 
     //Movement for our hero
     AvatarMove::moveAvatar= new Matrix4f();
-    AvatarMove::moveAvatar->translation(1.5,4.8,-1.5);
+    AvatarMove::moveAvatar->translation(1.5,2.0,-2.5);
     root->add(AvatarMove::moveAvatar);
 
     Matrix4f *mat=new Matrix4f();
@@ -477,13 +477,10 @@ void Hero::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Hero::updateState(float time){
+void Hero::updateState(float time,const Uint8* currentKeyStates ){
     bool hasMove=true;
     avatarDirection heroDir;
     vec3f moveHero;
-
-    //case: Player push a bottom
-    const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
 
     //Case-> Push Left bottom
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] && !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&

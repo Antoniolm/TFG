@@ -96,7 +96,7 @@ void Mesh::visualization(Context & vis){
 
 //**********************************************************************//
 
-void Mesh::updateState(float time){
+void Mesh::updateState(float time,const Uint8* currentKeyStates ){
 }
 
 //**********************************************************************//

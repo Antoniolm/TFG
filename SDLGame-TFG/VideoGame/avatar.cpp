@@ -38,4 +38,4 @@ void Avatar::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Avatar::updateState(float time){}
+void Avatar::updateState(float time,const Uint8* currentKeyStates ){}

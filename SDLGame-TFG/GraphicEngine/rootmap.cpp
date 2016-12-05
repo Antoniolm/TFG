@@ -253,6 +253,21 @@ RootMap::RootMap()
     cubeNode->add(cubeObject);
     objs.push_back(new ObjectScene(cubeNode));
 
+    Npc * npc3=new Npc(vec3f(10.5,0.0,-3.5f));
+    npc3->addDialog("Hola este es el rio");
+    npc3->addDialog("Y esto es otra prueba");
+    npcs.push_back(npc3);
+
+    //Added to our indexMap for collision with our hero
+    transOneCube=new Matrix4f();
+    transOneCube->translation(10.5,0.0,-3.5f);
+    cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleCube);
+    cubeNode->add(materialVoid);
+    cubeNode->add(cubeObject);
+    objs.push_back(new ObjectScene(cubeNode));
+
     ////////////////////////////////////////
     //Create the indexMap;
     Context cv;
@@ -322,16 +337,15 @@ void RootMap::visualization(Context & cv){
 
 //**********************************************************************//
 
-void RootMap::updateState(float time){
+void RootMap::updateState(float time,const Uint8* currentKeyStates ){
     //Update the hero
-    hero->updateState(time);
+    hero->updateState(time,currentKeyStates);
 
     //Update the Scene
     for(unsigned i=0;i<objs.size();i++)
-        objs[i]->updateState(time);
+        objs[i]->updateState(time,currentKeyStates);
 
     //Check if the hero is speaking with a avatar
-    const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
     bool isActivate=false;vec3f distance;unsigned currentNpc;
 
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-400.0)){
