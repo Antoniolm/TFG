@@ -246,6 +246,11 @@ RootMap::RootMap()
     npc1->addDialog("Tercer mensaje de prueba");
     npcs.push_back(npc1);
 
+    Npc * npc2=new Npc(vec3f(0.5,2.0,-3.5f));
+    npc2->addDialog("Segundo Npc");
+    npc2->addDialog("Segundo mensaje de Npc2");
+    npcs.push_back(npc2);
+
     /////////////////////////////////////////
     // Add sound of our map
     backSound=new Sound("sounds/background.wav",0,60);
@@ -302,15 +307,17 @@ void RootMap::updateState(float time){
 
     //Check if the hero is speaking with a avatar
     const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
-    bool isActivate=false;vec3f distance;
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-250.0)){
-        for(unsigned i=0;i<npcs.size();i++)
-            isActivate=npcs[i]->getActivate();
+    bool isActivate=false;vec3f distance;unsigned currentNpc;
 
-        if(isActivate){
-            npcs[0]->nextDialog();
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-400.0)){
+        for(unsigned i=0;i<npcs.size() && !isActivate;i++){ //Check if hero is talking now
+            isActivate=npcs[i]->getActivate();
+            currentNpc=i;
         }
-        else {
+        if(isActivate){ //If hero is talking -> nextDialog
+            npcs[currentNpc]->nextDialog();
+        }
+        else { //Else Check if hero will start a new conversation.
             for(unsigned j=0;j<npcs.size();j++){
                 distance=(npcs[j]->getPosition())-(hero->getPosition());
                 if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1)){
