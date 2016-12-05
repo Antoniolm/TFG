@@ -19,14 +19,19 @@
 
 #include "npc.h"
 
-Npc::Npc()
+Npc::Npc(){}
+
+//**********************************************************************//
+
+Npc::Npc(vec3f aPosition)
 {
+    position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     npcActivate=false;
     Mesh * cubeObject=new Mesh("geometries/cube.obj");
     cubeObject->init();
 
     Matrix4f * transOneCube=new Matrix4f();
-    transOneCube->translation(3.5f,1.5f,-3.5f);
+    transOneCube->translation(position.x,position.y,position.z);
 
     Matrix4f * scaleCube=new Matrix4f();
     scaleCube->scale(0.5,1,0.5);
@@ -41,8 +46,8 @@ Npc::Npc()
     root->add(cubeNode);
 
     TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 40);
-    currentText=new Text("Oju","now",100,100,vec3f(0.0,2.0,0.0),font);
-    currentText->init();
+    currentText=new Text("","",100,100,vec3f(position.x,position.y+1.5,position.z),font);
+
 }
 
 //**********************************************************************//
@@ -105,3 +110,11 @@ void Npc::activateNpc(bool value){
 bool Npc::getActivate(){
     return npcActivate;
 }
+
+//**********************************************************************//
+
+vec3f Npc::getPosition(){
+    return vec3f(position.x,position.y,position.z);
+}
+
+//**********************************************************************//

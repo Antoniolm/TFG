@@ -240,7 +240,7 @@ RootMap::RootMap()
     /////////////////////////////////////////
     // Add npcs of our map
 
-    Npc * npc1=new Npc();
+    Npc * npc1=new Npc(vec3f(3.5,2.0,-3.5f));
     npc1->addDialog("Esto es una prueba");
     npc1->addDialog("Segundo mensaje de prueba");
     npc1->addDialog("Tercer mensaje de prueba");
@@ -346,3 +346,11 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
     return result;
 }
 
+//**********************************************************************//
+
+vec3f RootMap::obtainDistance(vec3f npcPosition,vec3f heroPosition){
+    vec3f result;
+    result=npcPosition-heroPosition;
+
+    return result;
+}

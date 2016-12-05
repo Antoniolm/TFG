@@ -24,6 +24,7 @@
 #include "avatar.h"
 #include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/text.h"
+#include "../GraphicEngine/structdata.h"
 #include <SDL_TTF.h>
 
 class Npc : public Avatar
@@ -33,6 +34,11 @@ class Npc : public Avatar
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         Npc();
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with parameters*/
+        //////////////////////////////////////////////////////////////////////////
+        Npc(vec3f aPosition);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -46,6 +52,7 @@ class Npc : public Avatar
         void updateState(float time);
         void activateNpc(bool value);
         bool getActivate();
+        vec3f getPosition();
 
 
     protected:
