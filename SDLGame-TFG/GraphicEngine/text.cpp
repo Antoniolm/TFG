@@ -96,10 +96,15 @@ void Text::setParameters(const string & aTexture,TTF_Font * aFont){
 
 //**********************************************************************//
 
-void Text::setMessage(const string & aMessage,vec3f position){
+void Text::setMessage(const string & aMessage){
+    message=aMessage;
+}
+
+//**********************************************************************//
+
+void Text::setPosition(vec3f position){
     positionText->translation(position.x,position.y,position.z);
     positionBack->translation(position.x,position.y,position.z-0.1);
-    message=aMessage;
 }
 
 //**********************************************************************//

@@ -69,7 +69,9 @@ class Text : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setMessage(const string & aMessage,vec3f position);
+        void setMessage(const string & aMessage);
+
+        void setPosition(vec3f position);
 
         //////////////////////////////////////////////////////////////////////////
         /**

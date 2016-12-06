@@ -34,13 +34,15 @@ IANpc::~IANpc()
 //**********************************************************************//
 
 void IANpc::addState(const string & state,messageType type){
-    states.push_back(state);
+    pair<messageType,string> element;
+    element.first=type;element.second=state;
+    states.push_back(element);
 }
 
 //**********************************************************************//
 
 string & IANpc::getCurrentState(){
-    return states[currentState];
+    return states[currentState].second;
 }
 
 //**********************************************************************//

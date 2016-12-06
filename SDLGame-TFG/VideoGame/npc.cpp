@@ -47,6 +47,7 @@ Npc::Npc(vec3f aPosition)
 
     TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
     currentText=new Text("textures/dialog.png",font);
+    currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
 
 }
 
@@ -78,7 +79,7 @@ void Npc::nextDialog(){
 //**********************************************************************//
 
 void Npc::currentDialog(){
-    currentText->setMessage(stateMachine.getCurrentState(),vec3f(position.x,position.y+1.5f,position.z));
+    currentText->setMessage(stateMachine.getCurrentState());
     currentText->init();
 }
 

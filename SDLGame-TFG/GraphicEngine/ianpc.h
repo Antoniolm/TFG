@@ -111,8 +111,8 @@ class IANpc
     protected:
 
     private:
-        vector<string>  states;
-        //vector<pair<messageType,string> >  states;
+        //vector<string>  states;
+        vector<pair<messageType,string> >  states;
         int currentState;
 
 };

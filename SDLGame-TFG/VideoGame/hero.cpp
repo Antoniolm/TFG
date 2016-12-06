@@ -40,7 +40,9 @@ Hero::Hero()
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
-
+    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
+    currentText=new Text("textures/dialog.png",font);
+    activatedDialog=false;
 
     //////////////////////////////////////////////////////
     /////                All the mesh                /////
@@ -491,6 +493,9 @@ Hero::~Hero()
 
 void Hero::visualization(Context & cv){
     root->visualization(cv);
+
+    if(activatedDialog)
+        currentText->visualization(cv);
 }
 
 //**********************************************************************//
@@ -597,6 +602,11 @@ void Hero::updateState(float time,const Uint8* currentKeyStates ){
         moveMatrix[6]->setMatrix(rot.getMatrix());
         moveMatrix[7]->setMatrix(rot.getMatrix());
     }
+
+    if(activatedDialog){
+        vec3f pos=getPosition();
+        currentText->setPosition(vec3f(pos.x,pos.y+1.5f,pos.z));
+    }
     currentTime+=(time-currentTime);
 }
 
@@ -604,6 +614,19 @@ void Hero::updateState(float time,const Uint8* currentKeyStates ){
 
 void Hero::setMap(RootMap * aMap){
     rootMap=aMap;
+}
+
+//**********************************************************************//
+
+void Hero::setDialog(string message){
+    //currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z);
+    currentText->setMessage(message);
+}
+
+//**********************************************************************//
+
+void Hero::activateDialog(bool value){
+    activatedDialog=value;
 }
 
 //**********************************************************************//
