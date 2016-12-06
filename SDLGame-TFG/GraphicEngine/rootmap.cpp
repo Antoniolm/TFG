@@ -365,8 +365,10 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates ){
 
     //User push the button -> A
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-400.0)){
+
         if(isActivate){ //If hero is talking -> nextDialog
                 npcs[currentNpc]->nextDialog();
+                npcs[currentNpc]->currentDialog();
         }
         else { //Else Check if hero will start a new conversation.
             for(unsigned j=0;j<npcs.size();j++){

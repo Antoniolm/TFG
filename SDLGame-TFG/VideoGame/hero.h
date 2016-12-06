@@ -30,11 +30,13 @@
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/acceleratedmovement.h"
 #include "../GraphicEngine/sound.h"
+#include "../GraphicEngine/text.h"
 
 #include <vector>
 
 using namespace std;
 class RootMap;
+class Text;
 class Hero: public AvatarMove
 {
     public:
@@ -73,6 +75,9 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void setMap(RootMap * aMap);
 
+        void setDialog(string message);
+        void activateDialog(bool value);
+
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will reset animations because the hero isn't in movement
@@ -87,6 +92,8 @@ class Hero: public AvatarMove
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> heroSound;
         ScriptLMD animation;
+        Text * currentText;
+        bool activatedDialog;
         float jumpDelay;
 };
 

@@ -33,7 +33,7 @@ IANpc::~IANpc()
 
 //**********************************************************************//
 
-void IANpc::addState(const string & state){
+void IANpc::addState(const string & state,messageType type){
     states.push_back(state);
 }
 

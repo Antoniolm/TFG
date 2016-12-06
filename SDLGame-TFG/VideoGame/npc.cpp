@@ -46,7 +46,7 @@ Npc::Npc(vec3f aPosition)
     root->add(cubeNode);
 
     TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
-    currentText=new Text("","textures/dialog.png",vec3f(position.x,position.y+1.5,position.z),font);
+    currentText=new Text("textures/dialog.png",font);
 
 }
 
@@ -60,7 +60,7 @@ Npc::~Npc()
 //**********************************************************************//
 
 void Npc::addDialog(const string state){
-    stateMachine.addState(state);
+    stateMachine.addState(state,NPC_DIALOG);
 }
 
 //**********************************************************************//
@@ -73,14 +73,12 @@ void Npc::nextDialog(){
     else {
         stateMachine.nextState();
     }
-    currentText->setMessage(stateMachine.getCurrentState());
-    currentText->init();
 }
 
 //**********************************************************************//
 
 void Npc::currentDialog(){
-    currentText->setMessage(stateMachine.getCurrentState());
+    currentText->setMessage(stateMachine.getCurrentState(),vec3f(position.x,position.y+1.5f,position.z));
     currentText->init();
 }
 

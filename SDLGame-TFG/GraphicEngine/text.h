@@ -47,7 +47,7 @@ class Text : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Text(const string &  aStringText,const string & aTexture,vec3f aPosition,TTF_Font * aFont);
+        Text(const string & aTexture,TTF_Font * aFont);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -60,7 +60,7 @@ class Text : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setParameters(const string &  aStringText,const string & aTexture,vec3f aPosition,TTF_Font * aFont);
+        void setParameters(const string & aTexture,TTF_Font * aFont);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -69,7 +69,7 @@ class Text : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setMessage(const string & aMessage);
+        void setMessage(const string & aMessage,vec3f position);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -99,7 +99,8 @@ class Text : public Object3D
     protected:
 
     private:
-        vec3f position;
+        Matrix4f * positionText;
+        Matrix4f * positionBack;
         SDL_Surface * surface;
         string fileTexture;
         string message;

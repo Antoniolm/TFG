@@ -25,6 +25,11 @@
 
 using namespace std;
 
+enum messageType{
+    NPC_DIALOG,
+    HERO_DIALOG
+};
+
 class IANpc
 {
     public:
@@ -45,7 +50,7 @@ class IANpc
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void addState(const string & state);
+        void addState(const string & state,messageType type);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -107,6 +112,7 @@ class IANpc
 
     private:
         vector<string>  states;
+        //vector<pair<messageType,string> >  states;
         int currentState;
 
 };

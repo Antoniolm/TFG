@@ -26,10 +26,8 @@ Text::Text()
 
 //**********************************************************************//
 
-Text::Text(const string &  aMessage,const string & aTexture,vec3f aPosition,TTF_Font * aFont){
-    message=aMessage;
+Text::Text(const string & aTexture,TTF_Font * aFont){
     fileTexture=aTexture;
-    position=aPosition;
     font=aFont;
 
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
@@ -37,23 +35,23 @@ Text::Text(const string &  aMessage,const string & aTexture,vec3f aPosition,TTF_
 
     Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
 
-    Matrix4f * transText=new Matrix4f();
-    transText->translation(position.x,position.y,position.z);
+    positionText=new Matrix4f();
+    positionText->identity();
     Matrix4f * scaleText=new Matrix4f();
     scaleText->scale(1.0,0.3,1.0);
 
     textNode=new NodeSceneGraph();
-    textNode->add(transText);
+    textNode->add(positionText);
     textNode->add(scaleText);
     textNode->add(textObject);
 
-    transText=new Matrix4f();
-    transText->translation(position.x,position.y,position.z-0.1);
+    positionBack=new Matrix4f();
+    positionBack->identity();
     scaleText=new Matrix4f();
     scaleText->scale(1.2,1.1,1.0);
 
     backNode=new NodeSceneGraph();
-    backNode->add(transText);
+    backNode->add(positionBack);
     backNode->add(scaleText);
     backNode->add(material);
     backNode->add(textObject);
@@ -70,10 +68,8 @@ Text::~Text()
 
 //**********************************************************************//
 
-void Text::setParameters(const string &  aMessage,const string & aTexture,vec3f aPosition,TTF_Font * aFont){
-    message=aMessage;
+void Text::setParameters(const string & aTexture,TTF_Font * aFont){
     fileTexture=aTexture;
-    position=aPosition;
     font=aFont;
 
     Mesh * textObject=new Mesh("geometries/text.obj");
@@ -100,7 +96,9 @@ void Text::setParameters(const string &  aMessage,const string & aTexture,vec3f 
 
 //**********************************************************************//
 
-void Text::setMessage(const string & aMessage){
+void Text::setMessage(const string & aMessage,vec3f position){
+    positionText->translation(position.x,position.y,position.z);
+    positionBack->translation(position.x,position.y,position.z-0.1);
     message=aMessage;
 }
 
