@@ -31,6 +31,8 @@
 #include <vector>
 #include "mesh.h"
 #include "nodescenegraph.h"
+#include "texture.h"
+#include "material.h"
 
 using namespace std;
 
@@ -102,9 +104,9 @@ class Text : public Object3D
         string fileTexture;
         string message;
         GLuint textureText;
-        GLuint textureBack;
+        Texture textureBack;
         TTF_Font* font;
-        NodeSceneGraph * textNode,backNode;
+        NodeSceneGraph * textNode,* backNode;
 };
 
 #endif // TEXT_H

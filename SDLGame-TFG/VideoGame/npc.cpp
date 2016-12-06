@@ -46,7 +46,7 @@ Npc::Npc(vec3f aPosition)
     root->add(cubeNode);
 
     TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
-    currentText=new Text("","",vec3f(position.x,position.y+1.5,position.z),font);
+    currentText=new Text("","textures/dialog.png",vec3f(position.x,position.y+1.5,position.z),font);
 
 }
 

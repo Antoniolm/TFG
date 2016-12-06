@@ -28,29 +28,41 @@ Text::Text()
 
 Text::Text(const string &  aMessage,const string & aTexture,vec3f aPosition,TTF_Font * aFont){
     message=aMessage;
-    fileTexture=aFile;
+    fileTexture=aTexture;
     position=aPosition;
     font=aFont;
 
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
 
-    Matrix4f * matrix=new Matrix4f();
-    matrix->translation(position.x,position.y,position.z);
+    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/dialog.png");
+
+    Matrix4f * transText=new Matrix4f();
+    transText->translation(position.x,position.y,position.z);
     Matrix4f * scaleText=new Matrix4f();
     scaleText->scale(1.0,0.3,1.0);
 
     textNode=new NodeSceneGraph();
-    textNode->add(matrix);
+    textNode->add(transText);
     textNode->add(scaleText);
-    textNode->add(static_cast<Object3D*>(textObject));
+    textNode->add(textObject);
+
+    scaleText=new Matrix4f();
+    scaleText->scale(1.2,1.1,1.0);
+
+    backNode=new NodeSceneGraph();
+    backNode->add(transText);
+    backNode->add(scaleText);
+    backNode->add(material);
+    backNode->add(textObject);
+
 }
 
 //**********************************************************************//
 
 Text::~Text()
 {
-    glDeleteTextures(1, &texture);
+    glDeleteTextures(1, &textureText);
     SDL_FreeSurface(surface);
 }
 
@@ -58,19 +70,30 @@ Text::~Text()
 
 void Text::setParameters(const string &  aMessage,const string & aTexture,vec3f aPosition,TTF_Font * aFont){
     message=aMessage;
-    fileTexture=aFile;
+    fileTexture=aTexture;
     position=aPosition;
     font=aFont;
 
     Mesh * textObject=new Mesh("geometries/text.obj");
     textObject->init();
 
-    Matrix4f * matrix=new Matrix4f();
-    matrix->translation(position.x,position.y,position.z);
+    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),32.0f,"./textures/dialog.png");
+
+    Matrix4f * transText=new Matrix4f();
+    transText->translation(position.x,position.y,position.z);
+    Matrix4f * scaleText=new Matrix4f();
+    scaleText->scale(1.0,0.3,1.0);
 
     textNode=new NodeSceneGraph();
-    textNode->add(matrix);
-    textNode->add(textObject);
+    textNode->add(transText);
+    textNode->add(scaleText);
+    textNode->add(static_cast<Object3D*>(textObject));
+
+    backNode=new NodeSceneGraph();
+    backNode->add(transText);
+    backNode->add(scaleText);
+    backNode->add(material);
+    backNode->add(textObject);
 }
 
 //**********************************************************************//
@@ -82,16 +105,16 @@ void Text::setMessage(const string & aMessage){
 //**********************************************************************//
 
 void Text::init(){
-  glGenTextures(1, &texture);
-  glBindTexture(GL_TEXTURE_2D, texture);
+    glGenTextures(1, &textureText);
+    glBindTexture(GL_TEXTURE_2D, textureText);
 
-  SDL_Color color = {0, 0, 0};
-  surface = TTF_RenderText_Blended(font, message.c_str(),color);
+    SDL_Color color = {0, 0, 0};
+    surface = TTF_RenderText_Blended(font, message.c_str(),color);
 
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_BGRA,
-                GL_UNSIGNED_BYTE, surface->pixels);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_BGRA,
+                 GL_UNSIGNED_BYTE, surface->pixels);
 
 }
 
@@ -99,8 +122,11 @@ void Text::init(){
 
 void Text::visualization(Context & vis){
     //Draw our text
-    glBindTexture(GL_TEXTURE_2D, texture);
+    glBindTexture(GL_TEXTURE_2D, textureText);
     textNode->visualization(vis);
+
+    //Draw our texture of background
+    backNode->visualization(vis);
 }
 
 //**********************************************************************//
