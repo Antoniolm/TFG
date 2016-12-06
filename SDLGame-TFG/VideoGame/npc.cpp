@@ -88,7 +88,7 @@ void Npc::currentDialog(){
 void Npc::visualization(Context & cv){
     root->visualization(cv);
 
-    if(npcActivate)
+    if(npcActivate && stateMachine.getCurrentSpeaker()==NPC_DIALOG)
         currentText->visualization(cv);
 }
 
@@ -116,6 +116,12 @@ bool Npc::getActivate(){
 
 speakerMessage Npc::getSpeaker(){
     return stateMachine.getCurrentSpeaker();
+}
+
+//**********************************************************************//
+
+string & Npc::getMessage(){
+    return stateMachine.getCurrentState();
 }
 
 //**********************************************************************//

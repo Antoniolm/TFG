@@ -359,8 +359,10 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates ){
     }
     if(isActivate){ //If hero is talking and he is a good distance
         distance=(npcs[currentNpc]->getPosition())-(posHero);
-        if((distance.x<-2 || distance.x>2)||(distance.y<-1 || distance.y>1)||(distance.z<-2 || distance.z>2))
+        if((distance.x<-2 || distance.x>2)||(distance.y<-1 || distance.y>1)||(distance.z<-2 || distance.z>2)){
             npcs[currentNpc]->activateNpc(false);
+            hero->activateDialog(false);
+        }
     }
 
     //User push the button -> A
@@ -368,14 +370,28 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates ){
 
         if(isActivate){ //If hero is talking -> nextDialog
                 npcs[currentNpc]->nextDialog();
-                npcs[currentNpc]->currentDialog();
+                if(npcs[currentNpc]->getSpeaker()==NPC_DIALOG){ //Check the speaker
+                    npcs[currentNpc]->currentDialog();
+                    hero->activateDialog(false);
+                }
+                else {
+                    hero->activateDialog(true);
+                    hero->setDialog(npcs[currentNpc]->getMessage());
+                }
         }
         else { //Else Check if hero will start a new conversation.
             for(unsigned j=0;j<npcs.size();j++){
                 distance=(npcs[j]->getPosition())-(posHero);
                 if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1)){
                     npcs[j]->activateNpc(true);
-                    npcs[j]->currentDialog();
+                    if(npcs[j]->getSpeaker()==NPC_DIALOG){ //Check the speaker
+                        npcs[j]->currentDialog();
+                        hero->activateDialog(false);
+                    }
+                    else {
+                        hero->activateDialog(true);
+                        hero->setDialog(npcs[j]->getMessage());
+                    }
                 }
             }
         }

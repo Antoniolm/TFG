@@ -48,7 +48,7 @@ string & IANpc::getCurrentState(){
 //**********************************************************************//
 
 speakerMessage IANpc::getCurrentSpeaker(){
-    return state[currentState].first;
+    return states[currentState].first;
 }
 
 //**********************************************************************//

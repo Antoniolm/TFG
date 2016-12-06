@@ -619,8 +619,10 @@ void Hero::setMap(RootMap * aMap){
 //**********************************************************************//
 
 void Hero::setDialog(string message){
-    //currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z);
+    vec3f pos=getPosition();
+    currentText->setPosition(vec3f(pos.x,pos.y+1.5f,pos.z));
     currentText->setMessage(message);
+    currentText->init();
 }
 
 //**********************************************************************//
