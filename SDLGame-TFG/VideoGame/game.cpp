@@ -85,7 +85,7 @@ void Game::loop(){
 
         //Update the camera
         posHero=hero->getPosition();
-        posHero.y+=3.0f;posHero.z+=8.0f;
+        posHero.y+=4.0f;posHero.z+=10.0f;
         aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
 
         rootMap->visualization(aContext);

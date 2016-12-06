@@ -26,11 +26,9 @@ Text::Text()
 
 //**********************************************************************//
 
-Text::Text(const string &  aMessage,const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont){
+Text::Text(const string &  aMessage,const string & aTexture,vec3f aPosition,TTF_Font * aFont){
     message=aMessage;
     fileTexture=aFile;
-    height=aHeight;
-    width=aWidth;
     position=aPosition;
     font=aFont;
 
@@ -39,9 +37,12 @@ Text::Text(const string &  aMessage,const string & aFile,int aHeight,int aWidth,
 
     Matrix4f * matrix=new Matrix4f();
     matrix->translation(position.x,position.y,position.z);
+    Matrix4f * scaleText=new Matrix4f();
+    scaleText->scale(1.0,0.3,1.0);
 
     textNode=new NodeSceneGraph();
     textNode->add(matrix);
+    textNode->add(scaleText);
     textNode->add(static_cast<Object3D*>(textObject));
 }
 
@@ -49,18 +50,15 @@ Text::Text(const string &  aMessage,const string & aFile,int aHeight,int aWidth,
 
 Text::~Text()
 {
-    //TTF_CloseFont(font);
-    //SDL_DestroyTexture(text);
-    //SDL_FreeSurface(surface);
+    glDeleteTextures(1, &texture);
+    SDL_FreeSurface(surface);
 }
 
 //**********************************************************************//
 
-void Text::setParameters(const string &  aMessage,const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont){
+void Text::setParameters(const string &  aMessage,const string & aTexture,vec3f aPosition,TTF_Font * aFont){
     message=aMessage;
     fileTexture=aFile;
-    height=aHeight;
-    width=aWidth;
     position=aPosition;
     font=aFont;
 
@@ -72,7 +70,7 @@ void Text::setParameters(const string &  aMessage,const string & aFile,int aHeig
 
     textNode=new NodeSceneGraph();
     textNode->add(matrix);
-    textNode->add(static_cast<Object3D*>(textObject));
+    textNode->add(textObject);
 }
 
 //**********************************************************************//

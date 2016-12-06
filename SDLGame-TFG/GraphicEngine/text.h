@@ -45,7 +45,7 @@ class Text : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Text(const string &  aStringText,const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont);
+        Text(const string &  aStringText,const string & aTexture,vec3f aPosition,TTF_Font * aFont);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -58,7 +58,7 @@ class Text : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setParameters(const string &  aStringText,const string & aFile,int aHeight,int aWidth,vec3f aPosition,TTF_Font * aFont);
+        void setParameters(const string &  aStringText,const string & aTexture,vec3f aPosition,TTF_Font * aFont);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -98,13 +98,14 @@ class Text : public Object3D
 
     private:
         vec3f position;
-        float height,width;
         SDL_Surface * surface;
         string fileTexture;
         string message;
-        GLuint texture;
+        GLuint textureText;
+        GLuint textureBack;
         TTF_Font* font;
-        NodeSceneGraph * textNode;
+        NodeSceneGraph * textNode,backNode;
 };
 
 #endif // TEXT_H
+

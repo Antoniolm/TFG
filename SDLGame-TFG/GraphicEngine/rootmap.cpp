@@ -157,7 +157,7 @@ RootMap::RootMap()
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
 
-    /*float scale=-1.5;
+    float scale=-1.5;
     for(int i=0;i<2;i++){
         if(i==1) scale=-5.5;
         for(int j=0;j<7;j++){
@@ -170,7 +170,7 @@ RootMap::RootMap()
             cubeNode->add(fenceObject);
             objs.push_back(new ObjectScene(cubeNode));
         }
-    }*/
+    }
 
     transOneCube=new Matrix4f();
     transOneCube->translation(1.5f,2.0f,-6.5f);
@@ -298,7 +298,7 @@ RootMap::RootMap()
     /////////////////////////////////////////
     // Add sound of our map
     backSound=new Sound("sounds/background.wav",0,60);
-    backSound->play();
+    //backSound->play();
 
     currentTime=SDL_GetTicks();
 }
@@ -358,20 +358,16 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates ){
             currentNpc=i;
         }
         if(isActivate){ //If hero is talking -> nextDialog
-            cout<< "Rompe if activate"<<endl;
             npcs[currentNpc]->nextDialog();
         }
         else { //Else Check if hero will start a new conversation.
             posHero=hero->getPosition();
             for(unsigned j=0;j<npcs.size();j++){
                 distance=(npcs[j]->getPosition())-(posHero);
-                cout<< "Rompe antes del if distancia"<<endl;
+
                 if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1)){
-                    cout<< "Rompe dentro de la distancia al entrar"<<endl;
                     npcs[j]->activateNpc(true);
-                    cout<< "Rompe dentro de la distancia en medio"<<endl;
                     npcs[j]->currentDialog();
-                    cout<< "Rompe dentro de la distancia al salir"<<endl;
                 }
             }
         }

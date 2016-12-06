@@ -49,6 +49,9 @@ Hero::Hero()
     Mesh * armourChestObject=new Mesh("geometries/armourChest.obj");
     armourChestObject->init();
 
+    /*Mesh * armourTestObject=new Mesh("geometries/armourTest.obj");
+    armourTestObject->init();*/
+
     Mesh * kneeObject=new Mesh("geometries/knee.obj");
     kneeObject->init();
 
@@ -229,6 +232,7 @@ Hero::Hero()
 
     Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),90.0f,"./textures/wood.png");
     Material * materialTest=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),32.0f,"./textures/leaf.jpg");
+    //Material * materialArmour=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),32.0f,"./textures/plateArmor.png");
 
     //Matrix4fDinamic
     OscillateRotation * oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
@@ -387,6 +391,7 @@ Hero::Hero()
 
     Matrix4f *scaleArmourChest=new Matrix4f();
     scaleArmourChest->scale(0.25,0.28,0.28);
+    //scaleArmourChest->scale(1.2,1.2,1.4);
 
     Matrix4f *transArmour=new Matrix4f();
     transArmour->translation(0.0,1.8,0.0);
@@ -426,6 +431,12 @@ Hero::Hero()
     armourChestNode->add(materialTest);
     armourChestNode->add(armourChestObject);
 
+    /*NodeSceneGraph * armourChestTestNode=new NodeSceneGraph();
+    armourChestTestNode->add(transArmourChest);
+    armourChestTestNode->add(scaleArmourChest);
+    armourChestTestNode->add(materialArmour);
+    armourChestTestNode->add(armourTestObject);*/
+
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);
     chestNode->add(materialWood);
@@ -450,6 +461,7 @@ Hero::Hero()
     root->add(scaleHero);
     root->add(material);
     root->add(armourChestNode);
+    //root->add(armourChestTestNode);
     root->add(armour2Node);
     root->add(armourNode);
     root->add(headNode);
