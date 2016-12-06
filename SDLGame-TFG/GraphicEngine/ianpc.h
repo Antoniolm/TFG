@@ -25,7 +25,7 @@
 
 using namespace std;
 
-enum messageType{
+enum speakerMessage{
     NPC_DIALOG,
     HERO_DIALOG
 };
@@ -50,7 +50,7 @@ class IANpc
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void addState(const string & state,messageType type);
+        void addState(const string & state,speakerMessage speaker);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -59,6 +59,14 @@ class IANpc
         */
         //////////////////////////////////////////////////////////////////////////
         string & getCurrentState();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the current speaker
+        *    \return string
+        */
+        //////////////////////////////////////////////////////////////////////////
+        speakerMessage getCurrentSpeaker();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -112,7 +120,7 @@ class IANpc
 
     private:
         //vector<string>  states;
-        vector<pair<messageType,string> >  states;
+        vector<pair<speakerMessage,string> >  states;
         int currentState;
 
 };

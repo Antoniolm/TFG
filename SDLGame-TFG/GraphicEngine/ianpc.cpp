@@ -33,9 +33,9 @@ IANpc::~IANpc()
 
 //**********************************************************************//
 
-void IANpc::addState(const string & state,messageType type){
-    pair<messageType,string> element;
-    element.first=type;element.second=state;
+void IANpc::addState(const string & state,speakerMessage speaker){
+    pair<speakerMessage,string> element;
+    element.first=speaker;element.second=state;
     states.push_back(element);
 }
 
@@ -43,6 +43,12 @@ void IANpc::addState(const string & state,messageType type){
 
 string & IANpc::getCurrentState(){
     return states[currentState].second;
+}
+
+//**********************************************************************//
+
+speakerMessage IANpc::getCurrentSpeaker(){
+    return state[currentState].first;
 }
 
 //**********************************************************************//

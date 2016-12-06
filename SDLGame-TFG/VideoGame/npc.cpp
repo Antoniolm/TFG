@@ -60,8 +60,8 @@ Npc::~Npc()
 
 //**********************************************************************//
 
-void Npc::addDialog(const string state){
-    stateMachine.addState(state,NPC_DIALOG);
+void Npc::addDialog(const string state,speakerMessage speaker){
+    stateMachine.addState(state,speaker);
 }
 
 //**********************************************************************//
@@ -110,6 +110,12 @@ void Npc::activateNpc(bool value){
 
 bool Npc::getActivate(){
     return npcActivate;
+}
+
+//**********************************************************************//
+
+speakerMessage Npc::getSpeaker(){
+    return stateMachine.getCurrentSpeaker();
 }
 
 //**********************************************************************//

@@ -223,9 +223,9 @@ RootMap::RootMap()
     // Add npcs of our map
 
     Npc * npc1=new Npc(vec3f(3.5,2.0,-3.5f));
-    npc1->addDialog("Esto es una prueba");
-    npc1->addDialog("Segundo mensaje de prueba");
-    npc1->addDialog("Tercer mensaje de prueba");
+    npc1->addDialog("Esto es una prueba",NPC_DIALOG);
+    npc1->addDialog("Segundo mensaje de prueba",NPC_DIALOG);
+    npc1->addDialog("Tercer mensaje de prueba",HERO_DIALOG);
     npcs.push_back(npc1);
 
     transOneCube=new Matrix4f();
@@ -242,8 +242,8 @@ RootMap::RootMap()
     objs.push_back(new ObjectScene(cubeNode));
 
     Npc * npc2=new Npc(vec3f(0.5,2.0,-3.5f));
-    npc2->addDialog("Segundo Npc");
-    npc2->addDialog("Segundo mensaje de Npc2");
+    npc2->addDialog("Segundo Npc",HERO_DIALOG);
+    npc2->addDialog("Segundo mensaje de Npc2",HERO_DIALOG);
     npcs.push_back(npc2);
 
     //Added to our indexMap for collision with our hero
@@ -257,8 +257,8 @@ RootMap::RootMap()
     objs.push_back(new ObjectScene(cubeNode));
 
     Npc * npc3=new Npc(vec3f(10.5,0.0,-3.5f));
-    npc3->addDialog("Hola este es el rio");
-    npc3->addDialog("Y esto es otra prueba");
+    npc3->addDialog("Hola este es el rio",NPC_DIALOG);
+    npc3->addDialog("Y esto es otra prueba",NPC_DIALOG);
     npcs.push_back(npc3);
 
     //Added to our indexMap for collision with our hero
