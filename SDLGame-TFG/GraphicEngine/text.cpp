@@ -47,6 +47,8 @@ Text::Text(const string &  aMessage,const string & aTexture,vec3f aPosition,TTF_
     textNode->add(scaleText);
     textNode->add(textObject);
 
+    transText=new Matrix4f();
+    transText->translation(position.x,position.y,position.z-0.1);
     scaleText=new Matrix4f();
     scaleText->scale(1.2,1.1,1.0);
 
@@ -121,12 +123,13 @@ void Text::init(){
 //**********************************************************************//
 
 void Text::visualization(Context & vis){
+    backNode->visualization(vis);
     //Draw our text
     glBindTexture(GL_TEXTURE_2D, textureText);
     textNode->visualization(vis);
 
     //Draw our texture of background
-    backNode->visualization(vis);
+
 }
 
 //**********************************************************************//
