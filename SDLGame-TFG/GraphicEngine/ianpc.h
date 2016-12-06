@@ -110,6 +110,14 @@ class IANpc
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    IA will check if that currentState is the first state.
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isFirstState();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    IA will check if that currentState is the last state.
         *    \return bool
         */

@@ -131,3 +131,7 @@ vec3f Npc::getPosition(){
 }
 
 //**********************************************************************//
+
+bool Npc::isInitialState(){
+    return stateMachine.isFirstState();
+}

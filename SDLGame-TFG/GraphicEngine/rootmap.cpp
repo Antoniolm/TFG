@@ -224,7 +224,7 @@ RootMap::RootMap()
 
     Npc * npc1=new Npc(vec3f(3.5,2.0,-3.5f));
     npc1->addDialog("Esto es una prueba",NPC_DIALOG);
-    npc1->addDialog("Segundo mensaje de prueba",NPC_DIALOG);
+    npc1->addDialog("Segundo mensaje de prueba",HERO_DIALOG);
     npc1->addDialog("Tercer mensaje de prueba",HERO_DIALOG);
     npcs.push_back(npc1);
 
@@ -243,7 +243,7 @@ RootMap::RootMap()
 
     Npc * npc2=new Npc(vec3f(0.5,2.0,-3.5f));
     npc2->addDialog("Segundo Npc",HERO_DIALOG);
-    npc2->addDialog("Segundo mensaje de Npc2",HERO_DIALOG);
+    npc2->addDialog("Segundo mensaje de Npc2",NPC_DIALOG);
     npcs.push_back(npc2);
 
     //Added to our indexMap for collision with our hero
@@ -367,7 +367,6 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates ){
 
     //User push the button -> A
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-400.0)){
-
         if(isActivate){ //If hero is talking -> nextDialog
                 npcs[currentNpc]->nextDialog();
                 if(npcs[currentNpc]->getSpeaker()==NPC_DIALOG){ //Check the speaker
@@ -375,8 +374,13 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates ){
                     hero->activateDialog(false);
                 }
                 else {
-                    hero->activateDialog(true);
-                    hero->setDialog(npcs[currentNpc]->getMessage());
+                    if(!npcs[currentNpc]->isInitialState()){
+                        hero->activateDialog(true);
+                        hero->setDialog(npcs[currentNpc]->getMessage());
+                    }
+                    else{
+                        hero->activateDialog(false);
+                    }
                 }
         }
         else { //Else Check if hero will start a new conversation.

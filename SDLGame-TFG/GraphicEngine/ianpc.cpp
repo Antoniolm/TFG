@@ -85,6 +85,17 @@ void IANpc::beforeState(){
 
 //**********************************************************************//
 
+bool IANpc::isFirstState(){
+    bool result=false;
+
+    if(currentState==0)
+        result=true;
+
+    return result;
+}
+
+//**********************************************************************//
+
 bool IANpc::isLastState(){
     bool result=false;
 
