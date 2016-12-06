@@ -391,7 +391,7 @@
 	"window.h"
 	"file_obj.h"
 
-1480943885 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1481026148 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1480332805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -885,7 +885,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1480961527 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1481030457 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 
 1480943530 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
@@ -984,7 +984,7 @@
 	"../GraphicEngine/sound.h"
 	<vector>
 
-1480960159 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1480977110 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1583,7 +1583,7 @@
 	"stb_image.h"
 	<iostream>
 
-1479295000 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.cpp
+1481025555 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\texture.cpp
 	"texture.h"
 
 1479303898 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialstack.cpp
@@ -1630,10 +1630,10 @@
 	"begin_code.h"
 	"close_code.h"
 
-1480880641 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
+1481028063 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
 	"text.h"
 
-1480939426 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
+1481025626 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
 	"object3d.h"
 	"structdata.h"
 	"shader.h"
@@ -1645,6 +1645,8 @@
 	<vector>
 	"mesh.h"
 	"nodescenegraph.h"
+	"texture.h"
+	"material.h"
 
 1480956489 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.cpp
 	"ianpc.h"
@@ -1653,7 +1655,7 @@
 	<vector>
 	<string>
 
-1480933010 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
+1481029895 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
 1480939498 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h

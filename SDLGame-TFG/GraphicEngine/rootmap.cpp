@@ -352,19 +352,25 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates ){
     //Check if the hero is speaking with a avatar
     bool isActivate=false;vec3f distance,posHero;unsigned currentNpc;
 
+    posHero=hero->getPosition();
+    for(unsigned i=0;i<npcs.size() && !isActivate;i++){ //Check if hero is talking now
+        isActivate=npcs[i]->getActivate();
+        currentNpc=i;
+    }
+    if(isActivate){ //If hero is talking and he is a good distance
+        distance=(npcs[currentNpc]->getPosition())-(posHero);
+        if((distance.x<-2 || distance.x>2)||(distance.y<-1 || distance.y>1)||(distance.z<-2 || distance.z>2))
+            npcs[currentNpc]->activateNpc(false);
+    }
+
+    //User push the button -> A
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-400.0)){
-        for(unsigned i=0;i<npcs.size() && !isActivate;i++){ //Check if hero is talking now
-            isActivate=npcs[i]->getActivate();
-            currentNpc=i;
-        }
         if(isActivate){ //If hero is talking -> nextDialog
-            npcs[currentNpc]->nextDialog();
+                npcs[currentNpc]->nextDialog();
         }
         else { //Else Check if hero will start a new conversation.
-            posHero=hero->getPosition();
             for(unsigned j=0;j<npcs.size();j++){
                 distance=(npcs[j]->getPosition())-(posHero);
-
                 if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1)){
                     npcs[j]->activateNpc(true);
                     npcs[j]->currentDialog();

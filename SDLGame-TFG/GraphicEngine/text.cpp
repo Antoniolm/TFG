@@ -35,7 +35,7 @@ Text::Text(const string &  aMessage,const string & aTexture,vec3f aPosition,TTF_
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
 
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/dialog.png");
+    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
 
     Matrix4f * transText=new Matrix4f();
     transText->translation(position.x,position.y,position.z);
@@ -123,12 +123,12 @@ void Text::init(){
 //**********************************************************************//
 
 void Text::visualization(Context & vis){
+    //Draw our texture of background
     backNode->visualization(vis);
+
     //Draw our text
     glBindTexture(GL_TEXTURE_2D, textureText);
     textNode->visualization(vis);
-
-    //Draw our texture of background
 
 }
 

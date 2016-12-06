@@ -103,6 +103,8 @@ void Npc::updateState(float time){
 
 void Npc::activateNpc(bool value){
     npcActivate=value;
+    if(value==false)
+        stateMachine.firstState();
 }
 
 //**********************************************************************//
