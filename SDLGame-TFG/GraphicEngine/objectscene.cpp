@@ -55,8 +55,8 @@ void ObjectScene::visualization(Context & vis){
 
 //**********************************************************************//
 
-void ObjectScene::updateState(float time,const Uint8* currentKeyStates ){
-    object->updateState(time,currentKeyStates);
+void ObjectScene::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap ){
+    object->updateState(time,currentKeyStates,rootMap);
 }
 
 //**********************************************************************//

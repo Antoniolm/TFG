@@ -103,7 +103,7 @@ class Text : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time);
+        void updateState(float time,RootMap * rootMap );
 
     protected:
 

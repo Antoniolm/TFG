@@ -94,7 +94,7 @@ void Npc::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Npc::updateState(float time){
+void Npc::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
 
 }
 

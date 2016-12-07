@@ -81,7 +81,7 @@ void Game::loop(){
         currentKeyStates=SDL_GetKeyboardState(NULL);
 
         window->cleanScreen();
-        rootMap->updateState(SDL_GetTicks(),currentKeyStates);
+        rootMap->updateState(SDL_GetTicks(),currentKeyStates,rootMap);
 
         //Update the camera
         posHero=hero->getPosition();

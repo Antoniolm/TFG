@@ -350,13 +350,13 @@ void RootMap::visualization(Context & cv){
 
 //**********************************************************************//
 
-void RootMap::updateState(float time,const Uint8* currentKeyStates ){
+void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
     //Update the hero
-    hero->updateState(time,currentKeyStates);
+    hero->updateState(time,currentKeyStates,rootMap);
 
     //Update the Scene
     for(unsigned i=0;i<objs.size();i++)
-        objs[i]->updateState(time,currentKeyStates);
+        objs[i]->updateState(time,currentKeyStates,rootMap);
 
     //Check if the hero is speaking with a avatar
     bool isActivate=false;vec3f distance,posHero;unsigned currentNpc;

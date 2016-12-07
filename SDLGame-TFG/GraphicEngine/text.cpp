@@ -144,6 +144,6 @@ void Text::visualization(Context & vis){
 
 //**********************************************************************//
 
-void Text::updateState(float time){
+void Text::updateState(float time,RootMap * rootMap ){
 
 }

@@ -83,10 +83,10 @@ void NodeSceneGraph::visualization(Context & cv){
 
 //**********************************************************************//
 
-void NodeSceneGraph::updateState(float time,const Uint8* currentKeyStates ){
+void NodeSceneGraph::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
     for(int i=0;i<entrance.size();i++){
         if(entrance[i].type==0)
-            entrance[i].obj->updateState(time,currentKeyStates);
+            entrance[i].obj->updateState(time,currentKeyStates,rootMap);
     }
 
 }

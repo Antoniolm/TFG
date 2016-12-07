@@ -25,6 +25,7 @@
 #include "SDL.h"
 
 class Context;
+class RootMap;
 
 struct BoundingBox{
     vec3f maxValue;
@@ -69,7 +70,7 @@ class Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float times,const Uint8* currentKeyStates );
+        virtual void updateState(float times,const Uint8* currentKeyStates,RootMap * rootMap );
 
         //////////////////////////////////////////////////////////////////////////
         /**
