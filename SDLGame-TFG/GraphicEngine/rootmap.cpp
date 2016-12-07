@@ -18,6 +18,7 @@
 // *********************************************************************
 
 #include "rootmap.h"
+#include "../VideoGame/npclist.h"
 
 RootMap::RootMap()
 {
@@ -221,12 +222,13 @@ RootMap::RootMap()
 
     /////////////////////////////////////////
     // Add npcs of our map
+    npcList=new NpcList();
 
     Npc * npc1=new Npc(vec3f(3.5,2.0,-3.5f));
     npc1->addDialog("Esto es una prueba",NPC_DIALOG);
     npc1->addDialog("Segundo mensaje de prueba",HERO_DIALOG);
     npc1->addDialog("Tercer mensaje de prueba",HERO_DIALOG);
-    npcs.push_back(npc1);
+    npcList->add(npc1);
 
     transOneCube=new Matrix4f();
     transOneCube->translation(3.5,2.0,-3.5f);
@@ -244,7 +246,7 @@ RootMap::RootMap()
     Npc * npc2=new Npc(vec3f(0.5,2.0,-3.5f));
     npc2->addDialog("Segundo Npc",HERO_DIALOG);
     npc2->addDialog("Segundo mensaje de Npc2",NPC_DIALOG);
-    npcs.push_back(npc2);
+    npcList->add(npc2);
 
     //Added to our indexMap for collision with our hero
     transOneCube=new Matrix4f();
@@ -259,7 +261,7 @@ RootMap::RootMap()
     Npc * npc3=new Npc(vec3f(10.5,0.0,-3.5f));
     npc3->addDialog("Hola este es el rio",NPC_DIALOG);
     npc3->addDialog("Y esto es otra prueba",NPC_DIALOG);
-    npcs.push_back(npc3);
+    npcList->add(npc3);
 
     //Added to our indexMap for collision with our hero
     transOneCube=new Matrix4f();
@@ -273,6 +275,7 @@ RootMap::RootMap()
 
     ////////////////////////////////////////
     //Create the indexMap;
+
     Context cv;
     cv.visualization_mode=1;
     for(unsigned i=0;i<objs.size();i++){
@@ -309,8 +312,6 @@ RootMap::~RootMap()
 {
     delete(backSound);
     delete hero;
-    for(int i=0;i<npcs.size();i++)
-        delete npcs[i];
 
     for(int i=0;i<objs.size();i++)
         delete objs[i];
@@ -324,6 +325,12 @@ RootMap::~RootMap()
 void RootMap::setHero(Hero * theHero){
     hero=theHero;
     hero->setMap(this);
+}
+
+//**********************************************************************//
+
+Hero * RootMap::getHero(){
+    return hero;
 }
 
 //**********************************************************************//
@@ -342,10 +349,7 @@ void RootMap::visualization(Context & cv){
         decorationObjs[i]->visualization(cv);
     }
 
-    //Draw npc
-    for(unsigned i=0;i<npcs.size();i++){
-        npcs[i]->visualization(cv);
-    }
+    npcList->visualization(cv);
 }
 
 //**********************************************************************//
@@ -358,61 +362,7 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     for(unsigned i=0;i<objs.size();i++)
         objs[i]->updateState(time,currentKeyStates,rootMap);
 
-    //Check if the hero is speaking with a avatar
-    bool isActivate=false;vec3f distance,posHero;unsigned currentNpc;
-
-    posHero=hero->getPosition();
-    for(unsigned i=0;i<npcs.size() && !isActivate;i++){ //Check if hero is talking now
-        isActivate=npcs[i]->getActivate();
-        currentNpc=i;
-    }
-    if(isActivate){ //If hero is talking and he is a good distance
-        distance=(npcs[currentNpc]->getPosition())-(posHero);
-        if((distance.x<-2 || distance.x>2)||(distance.y<-1 || distance.y>1)||(distance.z<-2 || distance.z>2)){
-            npcs[currentNpc]->activateNpc(false);
-            hero->activateDialog(false);
-        }
-    }
-
-    //User push the button -> A
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-400.0)){
-        if(isActivate){ //If hero is talking -> nextDialog
-                npcs[currentNpc]->nextDialog();
-                //Check the speaker
-                if(npcs[currentNpc]->getSpeaker()==NPC_DIALOG){ //speaker -> Npc
-                    npcs[currentNpc]->currentDialog();
-                    hero->activateDialog(false);
-                }
-                else { //speaker -> Hero
-                    if(!npcs[currentNpc]->isInitialState()){
-                        hero->activateDialog(true);
-                        hero->setDialog(npcs[currentNpc]->getMessage());
-                    }
-                    else{
-                        hero->activateDialog(false);
-                    }
-                }
-        }
-        else { //Else Check if hero will start a new conversation.
-            for(unsigned j=0;j<npcs.size();j++){
-                distance=(npcs[j]->getPosition())-(posHero);
-                if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1)){
-                    npcs[j]->activateNpc(true);
-                    //Check the speaker
-                    if(npcs[j]->getSpeaker()==NPC_DIALOG){ //speaker -> Npc
-                        npcs[j]->currentDialog();
-                        hero->activateDialog(false);
-                    }
-                    else {//speaker -> Hero
-                        hero->activateDialog(true);
-                        hero->setDialog(npcs[j]->getMessage());
-                    }
-                }
-            }
-        }
-        dialogTime=currentTime;
-    }
-
+    npcList->updateState(time,currentKeyStates,rootMap);
     currentTime+=time-currentTime;
 }
 

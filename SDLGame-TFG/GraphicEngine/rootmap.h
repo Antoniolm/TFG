@@ -41,6 +41,7 @@ using namespace std;
 
 class Hero;
 class Npc;
+class NpcList;
 class RootMap : public Object3D
 {
     public:
@@ -81,15 +82,17 @@ class RootMap : public Object3D
         ObjectScene * collision(const vec3f & indexObj);
 
         void setHero(Hero * theHero);
+        Hero * getHero();
     protected:
 
     private:
         vector<int> indexMap[30][30];
         vector<ObjectScene *> objs;
         vector<ObjectScene *> decorationObjs;
+        NpcList * npcList;
         Sound * backSound;
         Hero * hero;
-        vector<Npc* > npcs;
+
         float dialogTime;
 };
 

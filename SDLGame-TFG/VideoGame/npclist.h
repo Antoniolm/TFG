@@ -20,8 +20,10 @@
 #ifndef NPCLIST_H
 #define NPCLIST_H
 
-#include <npc.h>
-#include "object3d.h"
+#include "npc.h"
+#include "hero.h"
+#include "../GraphicEngine/object3d.h"
+
 #include <vector>
 
 class NpcList : public Object3D
@@ -39,6 +41,15 @@ class NpcList : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will add a new npc on the list
+        *    \param npc -> The new element that will added on our list
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void add(Npc * npc);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will show the object in our interface
         *    \return void
         */
@@ -52,12 +63,13 @@ class NpcList : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  );
+        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
     protected:
 
     private:
         vector<Npc *> npcs;
+        float dialogTime;
 };
 
 #endif // NPCLIST_H
