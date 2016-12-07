@@ -19,15 +19,13 @@
 
 #include "matrix4f.h"
 
-Matrix4f::Matrix4f()
-{
+Matrix4f::Matrix4f(){
     matrix=new GLfloat[16];
 }
 
 //**********************************************************************//
 
-Matrix4f::~Matrix4f()
-{
+Matrix4f::~Matrix4f(){
     delete [] matrix;
 }
 

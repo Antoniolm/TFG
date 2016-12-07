@@ -308,6 +308,15 @@ RootMap::RootMap()
 RootMap::~RootMap()
 {
     delete(backSound);
+    delete hero;
+    for(int i=0;i<npcs.size();i++)
+        delete npcs[i];
+
+    for(int i=0;i<objs.size();i++)
+        delete objs[i];
+
+    for(int i=0;i<decorationObjs.size();i++)
+        delete decorationObjs[i];
 }
 
 //**********************************************************************//

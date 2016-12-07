@@ -34,7 +34,7 @@ ObjectScene::ObjectScene(Object3D * aObject){
 
 ObjectScene::~ObjectScene()
 {
-    //dtor
+    delete object;
 }
 
 //**********************************************************************//

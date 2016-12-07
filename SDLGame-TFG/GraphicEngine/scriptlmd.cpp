@@ -28,7 +28,8 @@ ScriptLMD::ScriptLMD()
 
 ScriptLMD::~ScriptLMD()
 {
-    //dtor
+    for(int i=0;i<script.size();i++)
+        delete script[i];
 }
 
 //**********************************************************************//

@@ -29,7 +29,7 @@ Sound::Sound()
 Sound::~Sound()
 {
     Mix_FreeMusic(music);
-    music=NULL;
+    Mix_FreeChunk(effect);
 }
 
 //**********************************************************************//

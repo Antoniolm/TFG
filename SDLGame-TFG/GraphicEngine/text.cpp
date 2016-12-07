@@ -64,6 +64,8 @@ Text::~Text()
 {
     glDeleteTextures(1, &textureText);
     SDL_FreeSurface(surface);
+    delete positionBack;
+    delete positionText;
 }
 
 //**********************************************************************//
