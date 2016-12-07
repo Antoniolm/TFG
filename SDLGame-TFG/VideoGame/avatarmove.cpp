@@ -331,8 +331,6 @@ bool AvatarMove::jump(float time){
 //**********************************************************************//
 
 vec3f AvatarMove::getPosition(){
-    vec4f position;
-    position=moveAvatar->product(position);
     return vec3f(position.x,position.y,position.z);
 }
 

@@ -578,6 +578,8 @@ void Hero::updateState(float time,const Uint8* currentKeyStates ){
     //If the jump is not activate
     else gravity(time);
 
+    //Update our vec4f position
+    position=moveAvatar->product(vec4f());
 
     //Update Animation
     if(isMoving && !isFalling && !isJumping){
@@ -604,8 +606,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates ){
     }
 
     if(activatedDialog){
-        vec3f pos=getPosition();
-        currentText->setPosition(vec3f(pos.x,pos.y+1.5f,pos.z));
+        currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
     }
     currentTime+=(time-currentTime);
 }
@@ -619,8 +620,7 @@ void Hero::setMap(RootMap * aMap){
 //**********************************************************************//
 
 void Hero::setDialog(string message){
-    vec3f pos=getPosition();
-    currentText->setPosition(vec3f(pos.x,pos.y+1.5f,pos.z));
+    currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
     currentText->setMessage(message);
     currentText->init();
 }
@@ -639,5 +639,3 @@ void Hero::noMove(){
             moveMatrix[i]->identity();
     isMoving=false;
 }
-
-//**********************************************************************//

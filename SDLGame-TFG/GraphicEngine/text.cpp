@@ -72,23 +72,28 @@ void Text::setParameters(const string & aTexture,TTF_Font * aFont){
     fileTexture=aTexture;
     font=aFont;
 
-    Mesh * textObject=new Mesh("geometries/text.obj");
+    Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
 
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),32.0f,"./textures/dialog.png");
+    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
 
-    Matrix4f * transText=new Matrix4f();
-    transText->translation(position.x,position.y,position.z);
+    positionText=new Matrix4f();
+    positionText->identity();
     Matrix4f * scaleText=new Matrix4f();
     scaleText->scale(1.0,0.3,1.0);
 
     textNode=new NodeSceneGraph();
-    textNode->add(transText);
+    textNode->add(positionText);
     textNode->add(scaleText);
-    textNode->add(static_cast<Object3D*>(textObject));
+    textNode->add(textObject);
+
+    positionBack=new Matrix4f();
+    positionBack->identity();
+    scaleText=new Matrix4f();
+    scaleText->scale(1.2,1.1,1.0);
 
     backNode=new NodeSceneGraph();
-    backNode->add(transText);
+    backNode->add(positionBack);
     backNode->add(scaleText);
     backNode->add(material);
     backNode->add(textObject);

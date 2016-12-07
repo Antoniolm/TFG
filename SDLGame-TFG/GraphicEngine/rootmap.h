@@ -80,9 +80,6 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         ObjectScene * collision(const vec3f & indexObj);
 
-
-        vec3f obtainDistance(vec3f npcPosition,vec3f heroPosition);
-
         void setHero(Hero * theHero);
     protected:
 

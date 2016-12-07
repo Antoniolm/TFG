@@ -369,11 +369,12 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates ){
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-400.0)){
         if(isActivate){ //If hero is talking -> nextDialog
                 npcs[currentNpc]->nextDialog();
-                if(npcs[currentNpc]->getSpeaker()==NPC_DIALOG){ //Check the speaker
+                //Check the speaker
+                if(npcs[currentNpc]->getSpeaker()==NPC_DIALOG){ //speaker -> Npc
                     npcs[currentNpc]->currentDialog();
                     hero->activateDialog(false);
                 }
-                else {
+                else { //speaker -> Hero
                     if(!npcs[currentNpc]->isInitialState()){
                         hero->activateDialog(true);
                         hero->setDialog(npcs[currentNpc]->getMessage());
@@ -388,11 +389,12 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates ){
                 distance=(npcs[j]->getPosition())-(posHero);
                 if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1)){
                     npcs[j]->activateNpc(true);
-                    if(npcs[j]->getSpeaker()==NPC_DIALOG){ //Check the speaker
+                    //Check the speaker
+                    if(npcs[j]->getSpeaker()==NPC_DIALOG){ //speaker -> Npc
                         npcs[j]->currentDialog();
                         hero->activateDialog(false);
                     }
-                    else {
+                    else {//speaker -> Hero
                         hero->activateDialog(true);
                         hero->setDialog(npcs[j]->getMessage());
                     }
@@ -427,15 +429,6 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
             }
         }
     }
-
-    return result;
-}
-
-//**********************************************************************//
-
-vec3f RootMap::obtainDistance(vec3f npcPosition,vec3f heroPosition){
-    vec3f result;
-    result=npcPosition-heroPosition;
 
     return result;
 }

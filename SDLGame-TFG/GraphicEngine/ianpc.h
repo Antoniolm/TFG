@@ -127,7 +127,6 @@ class IANpc
     protected:
 
     private:
-        //vector<string>  states;
         vector<pair<speakerMessage,string> >  states;
         int currentState;
 
