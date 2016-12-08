@@ -354,7 +354,10 @@ void RootMap::visualization(Context & cv){
 
 //**********************************************************************//
 
-void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
+void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+    if(time-currentTime>200)
+        currentTime=time-50;
+
     //Update the hero
     hero->updateState(time,currentKeyStates,rootMap);
 

@@ -81,6 +81,8 @@ void Game::loop(){
             if (event.type == SDL_QUIT){
                 quit = true;
             }
+            if( event.window.event==SDL_WINDOWEVENT_RESIZED )
+                window->resizeWindow(event.window.data2,event.window.data1);
         }
 
         currentKeyStates=SDL_GetKeyboardState(NULL);

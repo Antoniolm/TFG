@@ -309,7 +309,7 @@ Hero::Hero()
     //wrist + hand
     NodeSceneGraph * handLeft=new NodeSceneGraph(true);
     handLeft->add(transHandLeft);
-    handLeft->add(scaleHandInvert);
+    //handLeft->add(scaleHandInvert);
     handLeft->add(scaleHand);
     handLeft->add(rotateYHand);
     handLeft->add(materialLeg);
@@ -508,6 +508,9 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     bool hasMove=true;
     avatarDirection heroDir;
     vec3f moveHero;
+
+    if(time-currentTime>200)
+        currentTime=time-50;
 
     //Case-> Push Left bottom
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] && !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&

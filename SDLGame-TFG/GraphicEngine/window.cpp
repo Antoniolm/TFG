@@ -66,7 +66,7 @@ bool Window::createWindow(){
         SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,16);
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
 
-        window = SDL_CreateWindow(title.c_str() , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, height, width, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN /*| SDL_WINDOW_RESIZABLE*/);
+        window = SDL_CreateWindow(title.c_str() , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, height, width, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE);
 		if (window == NULL) {
 			printf("SDL_Error: %s\n", SDL_GetError());
 			salida=false;
@@ -92,7 +92,7 @@ bool Window::createWindow(){
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glCullFace(GL_BACK);
+    glCullFace(GL_BACK);
 
     return salida;
 }
@@ -125,3 +125,11 @@ void Window::cleanScreen(){
 
 //**********************************************************************//
 
+void Window::resizeWindow(int windowH,int windowW){
+    cout<< "Entrando"<<endl;
+    height =windowH;
+    width = windowW;
+    cout<<"Height ->"<< height<<endl;
+    cout<<"Width ->" <<width<<endl;
+    SDL_SetWindowSize(window,width,height);
+}

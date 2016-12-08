@@ -97,6 +97,8 @@ class Window
         //////////////////////////////////////////////////////////////////////////
         void cleanScreen();
 
+        void resizeWindow(int windowH,int windowW);
+
         static Window * getInstance(){
             if(instance == NULL)
                 instance = new Window();
