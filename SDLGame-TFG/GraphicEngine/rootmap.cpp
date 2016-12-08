@@ -324,7 +324,6 @@ RootMap::~RootMap()
 
 void RootMap::setHero(Hero * theHero){
     hero=theHero;
-    hero->setMap(this);
 }
 
 //**********************************************************************//

@@ -17,72 +17,39 @@
 // **
 // *********************************************************************
 
-#ifndef AVATARMOVE_H
-#define AVATARMOVE_H
+#ifndef ENEMY_H
+#define ENEMY_H
 
-#define G 9.8
 
 #include "avatar.h"
+#include "avatarmove.h"
+#include "../GraphicEngine/mesh.h"
+#include "../GraphicEngine/scriptlmd.h"
+#include "../GraphicEngine/context.h"
+#include "../GraphicEngine/matrixscript.h"
+#include "../GraphicEngine/rootmap.h"
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/acceleratedmovement.h"
+#include "../GraphicEngine/sound.h"
+#include "../GraphicEngine/text.h"
 
+#include <vector>
+
+using namespace std;
 class RootMap;
-class AvatarMove: public Avatar
+class Text;
+class Enemy: public AvatarMove
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        AvatarMove();
+        Enemy();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~AvatarMove();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will move our avatar
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        bool moveBody(vec3f aMove,avatarDirection aDir);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will create the gravity for our avatar
-        *    \param velocity ->
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        bool gravity(float time);
-
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will jump our avatar
-        *    \param velocity ->
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void activeJump(float velocity,float acceleration);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will jump our avatar
-        *    \param time ->
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        bool jump(float time);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will get the position of our avatar
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        vec3f getPosition();
+        virtual ~Enemy();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -90,7 +57,7 @@ class AvatarMove: public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & vis);
+        void visualization(Context & cv);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -99,16 +66,41 @@ class AvatarMove: public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
+        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set a new message for our text
+        *    \param message -> it is the new message that our text will show
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setDialog(string message);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will activate the text of our hero
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activateDialog(bool value);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will reset animations because the hero isn't in movement
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void noMove();
 
     protected:
-        RootMap * currentMap;
-        Matrix4f * moveAvatar;
-        avatarDirection direction;
-        AcceleratedMovement * acceleratedMove;
-        bool isMoving,isFalling,isJumping;
-        float currentTime;
     private:
+        vector<Matrix4f *> moveMatrix;
+        vector<Sound *> enemySound;
+        ScriptLMD animation;
+        Text * currentText;
+        bool activatedDialog;
+        float jumpDelay;
 };
 
-#endif // AVATARMOVE_H
+#endif // ENEMY_H

@@ -83,8 +83,6 @@ void Game::loop(){
             }
             if( event.window.event==SDL_WINDOWEVENT_RESIZED ){
                 window->resizeWindow(event.window.data2,event.window.data1);
-                //aContext.camera.setPerspectiveProjection(30.0f,(float)( event.window.data1 / event.window.data2), 0.1f, 200.0f);
-                //aContext.camera.activateCamera(&aContext.currentShader);
             }
         }
 

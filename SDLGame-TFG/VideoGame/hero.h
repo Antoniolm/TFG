@@ -69,14 +69,6 @@ class Hero: public AvatarMove
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will set our map
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void setMap(RootMap * aMap);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
         *    It will set a new message for our text
         *    \param message -> it is the new message that our text will show
         *    \return void

@@ -17,10 +17,9 @@
 // **
 // *********************************************************************
 
-#include "hero.h"
+#include "enemy.h"
 
-Hero::Hero()
-{
+Enemy::Enemy(){
     acceleratedMove=new AcceleratedMovement();
     acceleratedMove->resetState();
     direction=FORWARD;
@@ -35,7 +34,7 @@ Hero::Hero()
     /////              All the sounds                /////
     //////////////////////////////////////////////////////
     Sound * walking=new Sound("sounds/walking.wav",1,40);
-    heroSound.push_back(walking);
+    enemySound.push_back(walking);
 
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
@@ -488,27 +487,25 @@ Hero::Hero()
 
 //**********************************************************************//
 
-Hero::~Hero()
+Enemy::~Enemy()
 {
     //dtor
 }
 
 //**********************************************************************//
 
-void Hero::visualization(Context & cv){
+void Enemy::visualization(Context & cv){
     root->visualization(cv);
 
     if(activatedDialog)
         currentText->visualization(cv);
 }
-
 //**********************************************************************//
 
-void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     bool hasMove=true;
     avatarDirection heroDir;
     vec3f moveHero;
-    currentMap=rootMap;
 
     if(time-currentTime>200)
         currentTime=time-50;
@@ -562,8 +559,8 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         if(!isJumping && !isFalling){
             noMove();
         }
-        if(heroSound[0]->isPlaying())
-            heroSound[0]->stop();
+        if(enemySound[0]->isPlaying())
+            enemySound[0]->stop();
     }
 
     //Case-> Push Scape bottom to jump
@@ -574,13 +571,13 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     //Move the body
     if(hasMove){
         moveBody(moveHero,heroDir);
-        heroSound[0]->play();
+        enemySound[0]->play();
     }
     //If the jump is activate
     if(isJumping){
         jump(time);
-        if(heroSound[0]->isPlaying())
-            heroSound[0]->stop();
+        if(enemySound[0]->isPlaying())
+            enemySound[0]->stop();
     }
 
     //If the jump is not activate
@@ -621,7 +618,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
 
 //**********************************************************************//
 
-void Hero::setDialog(string message){
+void Enemy::setDialog(string message){
     currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
     currentText->setMessage(message);
     currentText->init();
@@ -629,13 +626,13 @@ void Hero::setDialog(string message){
 
 //**********************************************************************//
 
-void Hero::activateDialog(bool value){
+void Enemy::activateDialog(bool value){
     activatedDialog=value;
 }
 
 //**********************************************************************//
 
-void Hero::noMove(){
+void Enemy::noMove(){
     animation.resetState();
     for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
