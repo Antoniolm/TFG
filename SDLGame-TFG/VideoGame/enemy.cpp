@@ -22,6 +22,12 @@
 Enemy::Enemy(vec3f aPosition)
 {
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
+    acceleratedMove=new AcceleratedMovement();
+    acceleratedMove->resetState();
+    direction=FORWARD;
+    isMoving=false;
+    isFalling=false;
+    isJumping=false;
 
     Mesh * cubeObject=new Mesh("geometries/cube.obj");
     cubeObject->init();
@@ -63,6 +69,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     bool hasMove=true;
     avatarDirection heroDir;
     vec3f moveHero;
+    currentMap=rootMap;
 
     if(time-currentTime>200)
         currentTime=time-50;

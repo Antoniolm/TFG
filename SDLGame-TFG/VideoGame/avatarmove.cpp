@@ -31,7 +31,7 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
     ObjectScene * hasCollision=0;
     bool result=false;
     float tenthValue,tenthValue2;
-    vec3f posHero=getPosition();
+    vec3f posHero=vec3f(position.x,position.y,position.z);
 
     //Check the collision first
     switch(aDir){
@@ -59,7 +59,6 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
         break;
         case LEFTWARD:
             tenthValue=(int)posHero.z-posHero.z;
-
             hasCollision=currentMap->collision(vec3f(posHero.x-0.3,posHero.y,posHero.z));
 
             if(tenthValue<0.5 && hasCollision==0){

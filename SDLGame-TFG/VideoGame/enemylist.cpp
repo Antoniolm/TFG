@@ -47,4 +47,6 @@ void EnemyList::visualization(Context & cv){
 //**********************************************************************//
 
 void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
+    for(unsigned i=0;i<enemies.size();i++)
+        enemies[i]->updateState(time,currentKeyStates,rootMap);
 }
