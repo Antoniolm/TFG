@@ -93,7 +93,7 @@ class RootMap : public Object3D
         vector<ObjectScene *> objs;
         vector<ObjectScene *> decorationObjs;
         NpcList * npcList;
-        EnemyList * EnemyList;
+        EnemyList * enemyList;
         Sound * backSound;
         Hero * hero;
 };
