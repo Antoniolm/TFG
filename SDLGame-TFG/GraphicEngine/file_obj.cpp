@@ -19,10 +19,17 @@
 
 #include "file_obj.h"
 
-namespace obj{
-using namespace std;
+FileObj* FileObj::instance = NULL;
 
-void readMesh(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles){
+//**********************************************************************//
+
+FileObj::FileObj(){
+
+}
+
+//**********************************************************************//
+
+void FileObj::readMesh(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles){
     int value;
     float x,y,z;
     string aux;
@@ -57,7 +64,7 @@ void readMesh(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLus
 
 //**********************************************************************//
 
-void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,bool flagNormal,bool flagOrigin){
+void FileObj::readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,bool flagNormal,bool flagOrigin){
     int value;
     char charValue;
     float x,y,z;
@@ -148,7 +155,7 @@ void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vecto
 
 //**********************************************************************//
 
-void calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals){
+void FileObj::calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals){
     //Calculate face normals
     vec3f v1,v2,normalFace;
 	float modulo;
@@ -182,7 +189,7 @@ void calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & trian
 
 //**********************************************************************//
 
-vec3f calculate_origin(std::vector<vec3f> & vertex){
+vec3f FileObj::calculate_origin(std::vector<vec3f> & vertex){
     float maxX,maxY,maxZ,minX,minY,minZ;
     maxX=vertex[0].x;  maxY=vertex[0].y;  maxZ=vertex[0].z;
     minX=vertex[0].x;  minY=vertex[0].y;  minZ=vertex[0].z;
@@ -203,9 +210,6 @@ vec3f calculate_origin(std::vector<vec3f> & vertex){
     result.z = minZ+((maxZ-minZ)/2.0);
 
     return result;
-}
-
-
 }
 
 

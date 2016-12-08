@@ -20,6 +20,10 @@
 
 #include "game.h"
 
+Game* Game::instance = NULL;
+
+//**********************************************************************//
+
 Game::Game(){
     window=Window::getInstance();
     window->setParameters("SDL_Game",800,600);

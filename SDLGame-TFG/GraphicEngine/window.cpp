@@ -22,6 +22,8 @@
 
 Window* Window::instance = NULL;
 
+//**********************************************************************//
+
 Window::Window(){
     title="Test";
     height=800;
@@ -37,14 +39,6 @@ Window::~Window(){
 	SDL_Quit();
 	TTF_Quit();
 
-}
-
-//**********************************************************************//
-
-Window::Window(const string & aTitle,int aHeight,int aWidth){
-    title=aTitle;
-    height=aHeight;
-    width=aWidth;
 }
 
 //**********************************************************************//

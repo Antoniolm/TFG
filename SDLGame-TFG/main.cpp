@@ -24,7 +24,7 @@
 
 int main(int argc, char* args[])
 {
-    Game game;
-    game.loop();
+    Game * game=Game::getInstance();
+    game->loop();
 	return 0;
 }

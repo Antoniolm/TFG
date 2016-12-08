@@ -50,7 +50,8 @@ void Mesh::init(){
     vector<vec3f> normals;
     vector<vec2f> textureCord;
 
-    obj::readEverything(objFile.c_str(),vertex,triangles,normals,textureCord,true,true);
+    FileObj * obj=FileObj::getInstance();
+    obj->readEverything(objFile.c_str(),vertex,triangles,normals,textureCord,true,true);
     generateBoundingBox(vertex);
 
     numIndex=triangles.size();

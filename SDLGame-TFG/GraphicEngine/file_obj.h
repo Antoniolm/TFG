@@ -21,6 +21,7 @@
 #define FILE_OBJ_H
 
 #include <vector>
+#include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -30,41 +31,56 @@
 #include <math.h>
 #include "structdata.h"
 
-namespace obj{
+using namespace std;
 
-//////////////////////////////////////////////////////////////////////////
-/**
-*    The method will read a obj file and obtain all the vertex
-*    and triangle of them
-*    \return void
-*/
-//////////////////////////////////////////////////////////////////////////
-void readMesh(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles);
+class FileObj{
+    public :
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will read a obj file and obtain all the vertex
+        *    and triangle of them
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void readMesh(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles);
 
-//////////////////////////////////////////////////////////////////////////
-/**
-*    The method will read a obj file and obtain all the vertex,triangles
-*    normals,textureCoord of them
-*    \return void
-*/
-//////////////////////////////////////////////////////////////////////////
-void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,bool flagNormal,bool flagOrigin);
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will read a obj file and obtain all the vertex,triangles
+        *    normals,textureCoord of them
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,bool flagNormal,bool flagOrigin);
 
-//////////////////////////////////////////////////////////////////////////
-/**
-*    The method will calculate the normals of a object
-*    \return void
-*/
-//////////////////////////////////////////////////////////////////////////
-void calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals);
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will calculate the normals of a object
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals);
 
-//////////////////////////////////////////////////////////////////////////
-/**
-*    The method will calculate the origin of a object
-*    \return vec3f
-*/
-//////////////////////////////////////////////////////////////////////////
-vec3f calculate_origin(std::vector<vec3f> & vertex);
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will calculate the origin of a object
+        *    \return vec3f
+        */
+        //////////////////////////////////////////////////////////////////////////
+        vec3f calculate_origin(std::vector<vec3f> & vertex);
+
+        static FileObj * getInstance(){
+            if(instance == NULL)
+                instance = new FileObj();
+
+            return instance;
+        }
+    private:
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor  */
+        //////////////////////////////////////////////////////////////////////////
+        FileObj();
+        static FileObj* instance;
 
 };
 
