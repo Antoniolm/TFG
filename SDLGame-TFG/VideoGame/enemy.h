@@ -44,7 +44,7 @@ class Enemy: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Enemy();
+        Enemy(vec3f aPosition);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -68,38 +68,8 @@ class Enemy: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will set a new message for our text
-        *    \param message -> it is the new message that our text will show
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void setDialog(string message);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will activate the text of our hero
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void activateDialog(bool value);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will reset animations because the hero isn't in movement
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void noMove();
-
     protected:
     private:
-        vector<Matrix4f *> moveMatrix;
-        vector<Sound *> enemySound;
-        ScriptLMD animation;
-        Text * currentText;
-        bool activatedDialog;
         float jumpDelay;
 };
 

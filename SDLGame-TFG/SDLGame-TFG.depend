@@ -886,11 +886,12 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1481224356 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1481225762 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
+	"../VideoGame/enemylist.h"
 
-1481213652 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1481225753 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -906,6 +907,7 @@
 	"objectscene.h"
 	"../VideoGame/hero.h"
 	"../VideoGame/npc.h"
+	"../VideoGame/enemy.h"
 	"sound.h"
 
 1477389087 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.h
@@ -1679,10 +1681,10 @@
 1481134467 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
 	"npclist.h"
 
-1481224662 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
+1481224742 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
 	"enemy.h"
 
-1481224715 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
+1481226835 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -1695,4 +1697,13 @@
 	"../GraphicEngine/sound.h"
 	"../GraphicEngine/text.h"
 	<vector>
+
+1481225943 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemylist.h
+	"npc.h"
+	"hero.h"
+	"../GraphicEngine/object3d.h"
+	<vector>
+
+1481226006 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemylist.cpp
+	"enemylist.h"
 

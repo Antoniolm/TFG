@@ -19,6 +19,7 @@
 
 #include "rootmap.h"
 #include "../VideoGame/npclist.h"
+#include "../VideoGame/enemylist.h"
 
 RootMap::RootMap()
 {

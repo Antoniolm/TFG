@@ -17,54 +17,46 @@
 // **
 // *********************************************************************
 
-#ifndef ROOTMAP_H
-#define ROOTMAP_H
 
-#include "object3d.h"
-#include "nodescenegraph.h"
-#include <list>
+#ifndef ENEMYLIST_H
+#define ENEMYLIST_H
+
+
+#include "npc.h"
+#include "hero.h"
+#include "../GraphicEngine/object3d.h"
+
 #include <vector>
-#include <map>
-#include "matrix4f.h"
-#include "matrix4fdynamic.h"
-#include "linearmovement.h"
-#include "axisrotation.h"
-#include "matrixstatic.h"
-#include "oscillaterotation.h"
-#include "mesh.h"
-#include "objectscene.h"
-#include "../VideoGame/hero.h"
-#include "../VideoGame/npc.h"
-#include "../VideoGame/enemy.h"
-#include "sound.h"
 
-using namespace std;
-
-class Hero;
-class Npc;
-class Enemy;
-class NpcList;
-class EnemyList;
-class RootMap : public Object3D
+class EnemyList : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        RootMap();
+        EnemyList();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~RootMap();
+        virtual ~EnemyList();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will add a new enemy on the list
+        *    \param enemy -> The new element that will added on our list
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void add(Enemy * enemy);
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
         *    \return void
         */
-        /////////////////////////////////////////////////////////////////////////
-        void visualization(Context & vis);
+        //////////////////////////////////////////////////////////////////////////
+        void visualization(Context & cv);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -73,29 +65,11 @@ class RootMap : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  );
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will update the state of the object. That change need the
-        *    current time in our application
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        ObjectScene * collision(const vec3f & indexObj);
-
-        void setHero(Hero * theHero);
-        Hero * getHero();
+        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
     protected:
 
     private:
-        vector<int> indexMap[30][30];
-        vector<ObjectScene *> objs;
-        vector<ObjectScene *> decorationObjs;
-        NpcList * npcList;
-        EnemyList * EnemyList;
-        Sound * backSound;
-        Hero * hero;
+        vector<Enemy *> enemies;
 };
 
-#endif // ROOTMAP_H
+#endif // ENEMYLIST_H
