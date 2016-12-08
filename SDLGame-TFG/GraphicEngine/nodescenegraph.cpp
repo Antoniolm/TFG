@@ -47,7 +47,10 @@ NodeSceneGraph::~NodeSceneGraph()
 //**********************************************************************//
 
 void NodeSceneGraph::visualization(Context & cv){
-    float time=SDL_GetTicks();
+    if(invert)
+        glUniform1f(glGetUniformLocation(cv.currentShader.getProgram(),"invertNormal"), 1);
+    else
+        glUniform1f(glGetUniformLocation(cv.currentShader.getProgram(),"invertNormal"), 0);
 
     int contMatrix=1;
     int contMaterial=0;
@@ -78,8 +81,6 @@ void NodeSceneGraph::visualization(Context & cv){
     cv.currentTransf.setMatrix(cv.matrixStack.getMatrix().getMatrix());
     cv.matrixStack.pop(contMatrix);
     cv.matrixStack.activate(&cv.currentShader);
-
-    currentTime=time;
 }
 
 //**********************************************************************//

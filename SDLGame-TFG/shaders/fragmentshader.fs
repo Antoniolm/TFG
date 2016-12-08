@@ -39,6 +39,7 @@ in vec3 FragPos;
 uniform DirLight dirLight;
 uniform Material material;
 uniform vec3 viewPos;
+uniform int invertNormal;
 uniform int numActivateLight;
 uniform PointLight pointLights[numLight];
 
@@ -50,7 +51,12 @@ vec3 calculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewD
 
 void main()
 { 
- vec3 norm = normalize(Normal);
+ vec3 norm;
+ if(invertNormal==1)
+    norm = normalize(Normal);
+ else
+    norm = normalize(Normal);
+    
  vec3 viewDir = normalize(viewPos - FragPos);
  
  vec3 result = calculateDirLight(dirLight, norm, viewDir);

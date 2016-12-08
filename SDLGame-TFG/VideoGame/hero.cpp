@@ -270,6 +270,9 @@ Hero::Hero()
     Matrix4f * scaleHand=new Matrix4f();
     scaleHand->scale(0.4,0.3,0.4);
 
+    Matrix4f * scaleHandInvert=new Matrix4f();
+    scaleHandInvert->scale(1.0,1.0,-1.0);
+
     Matrix4f * transHand=new Matrix4f();
     transHand->translation(0.0,-1.1,-0.1);
 
@@ -304,8 +307,9 @@ Hero::Hero()
     transArms->translation(0.0,-0.5,-0.2);
 
     //wrist + hand
-    NodeSceneGraph * handLeft=new NodeSceneGraph();
+    NodeSceneGraph * handLeft=new NodeSceneGraph(true);
     handLeft->add(transHandLeft);
+    handLeft->add(scaleHandInvert);
     handLeft->add(scaleHand);
     handLeft->add(rotateYHand);
     handLeft->add(materialLeg);
