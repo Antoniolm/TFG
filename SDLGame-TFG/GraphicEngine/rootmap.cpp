@@ -281,20 +281,6 @@ RootMap::RootMap()
     Enemy * enemy=new Enemy(vec3f(4.5,2.0,-0.5f));
     enemyList->add(enemy);
 
-    /*transOneCube=new Matrix4f();
-    transOneCube->translation(4.5,2.0,-0.5f);
-    scaleCube =new Matrix4f();
-    scaleCube->scale(0.5,1,0.5);
-
-    //Added to our indexMap for collision with our hero
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialVoid);
-    cubeNode->add(cubeObject);
-    objs.push_back(new ObjectScene(cubeNode));*/
-
-
     ////////////////////////////////////////
     //Create the indexMap;
 
