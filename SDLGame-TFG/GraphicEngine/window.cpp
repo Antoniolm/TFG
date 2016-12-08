@@ -126,10 +126,9 @@ void Window::cleanScreen(){
 //**********************************************************************//
 
 void Window::resizeWindow(int windowH,int windowW){
-    cout<< "Entrando"<<endl;
     height =windowH;
     width = windowW;
-    cout<<"Height ->"<< height<<endl;
-    cout<<"Width ->" <<width<<endl;
+
     SDL_SetWindowSize(window,width,height);
+    glViewport(0,0,width,height);
 }
