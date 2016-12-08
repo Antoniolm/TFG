@@ -20,8 +20,9 @@
 
 #include "nodescenegraph.h"
 
-NodeSceneGraph::NodeSceneGraph()
+NodeSceneGraph::NodeSceneGraph(bool aInvert)
 {
+    invert=aInvert;
     currentTime=SDL_GetTicks();
     boundingBox.maxValue=vec3f(2.5,2.5,2.5);
     boundingBox.minValue=vec3f(-2.5,-2.5,-2.5);
@@ -84,7 +85,7 @@ void NodeSceneGraph::visualization(Context & cv){
 //**********************************************************************//
 
 void NodeSceneGraph::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
-    for(int i=0;i<entrance.size();i++){
+    for(unsigned i=0;i<entrance.size();i++){
         if(entrance[i].type==0)
             entrance[i].obj->updateState(time,currentKeyStates,rootMap);
     }

@@ -119,6 +119,8 @@
 		<Unit filename="VideoGame/hero.h" />
 		<Unit filename="VideoGame/npc.cpp" />
 		<Unit filename="VideoGame/npc.h" />
+		<Unit filename="VideoGame/npclist.cpp" />
+		<Unit filename="VideoGame/npclist.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

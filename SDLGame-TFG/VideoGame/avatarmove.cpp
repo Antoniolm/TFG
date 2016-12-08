@@ -334,3 +334,11 @@ vec3f AvatarMove::getPosition(){
     return vec3f(position.x,position.y,position.z);
 }
 
+//**********************************************************************//
+
+void AvatarMove::visualization(Context & cv){
+}
+
+//**********************************************************************//
+
+void AvatarMove::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap ){}

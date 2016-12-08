@@ -71,7 +71,7 @@ class NodeSceneGraph : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         /////////////////////////////////////////////////////////////////////////
-        NodeSceneGraph();
+        NodeSceneGraph(bool aInvert=false);
 
         //////////////////////////////////////////////////////////////////////////
         /** Copy constructor */
@@ -144,6 +144,7 @@ class NodeSceneGraph : public Object3D
 
     private:
         vector<EntryNGE> entrance;
+        bool invert;
 };
 
 #endif // NODESCENEGRAPH_H

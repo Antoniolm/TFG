@@ -64,7 +64,7 @@ class Avatar: public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time,const Uint8* currentKeyStates );
+        virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap );
 
     protected:
         NodeSceneGraph * root;

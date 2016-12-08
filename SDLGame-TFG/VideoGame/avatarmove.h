@@ -84,6 +84,23 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         vec3f getPosition();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will show the object in our interface
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        virtual void visualization(Context & vis);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will update the state of the object. That change need the
+        *    current time in our application
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap );
+
     protected:
         RootMap * rootMap;
         Matrix4f * moveAvatar;

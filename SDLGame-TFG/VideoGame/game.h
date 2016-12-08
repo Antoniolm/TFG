@@ -60,7 +60,7 @@ class Game
     protected:
 
     private:
-        Window *window;
+        Window * window;
         RootMap * rootMap;
         Hero * hero;
 };

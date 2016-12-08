@@ -20,6 +20,8 @@
 #include "window.h"
 #include "file_obj.h"
 
+Window* Window::instance = NULL;
+
 Window::Window(){
     title="Test";
     height=800;
@@ -40,6 +42,14 @@ Window::~Window(){
 //**********************************************************************//
 
 Window::Window(const string & aTitle,int aHeight,int aWidth){
+    title=aTitle;
+    height=aHeight;
+    width=aWidth;
+}
+
+//**********************************************************************//
+
+void Window::setParameters(const string & aTitle,int aHeight,int aWidth){
     title=aTitle;
     height=aHeight;
     width=aWidth;
@@ -118,4 +128,6 @@ void Window::cleanScreen(){
     glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
+
+//**********************************************************************//
 

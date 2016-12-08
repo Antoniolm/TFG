@@ -21,7 +21,8 @@
 #include "game.h"
 
 Game::Game(){
-    window=new Window("SDL_Game",800,600);
+    window=Window::getInstance();
+    window->setParameters("SDL_Game",800,600);
     window->createWindow();
     rootMap=new RootMap();
 }
