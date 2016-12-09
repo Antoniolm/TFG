@@ -30,3 +30,11 @@ IAEnemy::~IAEnemy()
 {
     //dtor
 }
+
+//**********************************************************************//
+
+vec3f IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
+    vec3f newMovement;
+    newMovement.x=0.3;
+    return newMovement;
+}

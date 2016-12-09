@@ -30,6 +30,7 @@ Enemy::Enemy(vec3f aPosition,vec3f aRadioActivity)
     isMoving=false;
     isFalling=false;
     isJumping=false;
+    enemyActivate=false;
 
     Mesh * cubeObject=new Mesh("geometries/cube.obj");
     cubeObject->init();
@@ -77,75 +78,27 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     if(time-currentTime>200)
         currentTime=time-50;
 
-    //Case-> Push Left bottom
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] && !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
-    !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-        moveHero.x=-3.0;moveHero.z=0.0;
-        heroDir=LEFTWARD;
+    if(enemyActivate){
+        moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),rootMap->getHero()->getPosition());
+        moveBody(moveHero,FORWARD);
     }
-    //Case-> Push Right bottom
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
-    !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-        moveHero.x=3.0;moveHero.z=0.0;
-        heroDir=RIGHTWARD;
-    }
-    //Case-> Push Up bottom
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
-    !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-        moveHero.x=0.0;moveHero.z=-3.0;
-        heroDir=BACKWARD;
-    }
-    //Case-> Push Down bottom
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
-    !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-        moveHero.x=0.0;moveHero.z=3.0;
-        heroDir=FORWARD;
-    }
-    //Case-> Push Dowm-Left bottoms
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
-        moveHero.x=-2.0;moveHero.z=2.0;
-        heroDir=FOR_LEFTWARD;
-    }
-    //Case-> Push Dowm-Right bottoms
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-        moveHero.x=2.0;moveHero.z=2.0;
-        heroDir=FOR_RIGHTWARD;
-    }
-    //Case-> Push Up-Left bottoms
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)]){
-        moveHero.x=-2.0;moveHero.z=-2.0;
-        heroDir=BACK_LEFTWARD;
-    }
-    //Case-> Push Up-Right bottoms
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-        moveHero.x=2.0;moveHero.z=-2.0;
-        heroDir=BACK_RIGHTWARD;
-    }
-    else{ //Case-> If not move
-        hasMove=false;
-    }
-
-    //Case-> Push Scape bottom to jump
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !isJumping && !isFalling && jumpDelay<(time-600)){
-        activeJump(15.0,5.0);
-        jumpDelay=time;
-    }
-    //Move the body
-    if(hasMove){
-        moveBody(moveHero,heroDir);
-    }
-    //If the jump is activate
-    if(isJumping){
-        jump(time);
-    }
-
-    //If the jump is not activate
-    else gravity(time);
 
     //Update our vec4f position
     position=moveAvatar->product(vec4f());
 
     currentTime+=(time-currentTime);
+}
+
+//**********************************************************************//
+
+void Enemy::activatedEnemy(bool value){
+    enemyActivate=value;
+}
+
+//**********************************************************************//
+
+bool Enemy::isActivate(){
+    return enemyActivate;
 }
 
 //**********************************************************************//

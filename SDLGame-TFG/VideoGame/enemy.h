@@ -31,6 +31,7 @@
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/acceleratedmovement.h"
 #include "../GraphicEngine/sound.h"
+#include "../GraphicEngine/iaenemy.h"
 #include "../GraphicEngine/text.h"
 
 #include <vector>
@@ -70,6 +71,22 @@ class Enemy: public AvatarMove
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will activated our enemy
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activatedEnemy(bool value);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return if the enemy is activate or not
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isActivate();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will get radioActivity of our enemy
         *    \return vec3f
         */
@@ -79,6 +96,8 @@ class Enemy: public AvatarMove
     protected:
     private:
         vec3f radioActivity;
+        IAEnemy IA;
+        bool enemyActivate;
         float jumpDelay;
 };
 

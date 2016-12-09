@@ -17,33 +17,26 @@
 // **
 // *********************************************************************
 
-#ifndef IAENEMY_H
-#define IAENEMY_H
+#include "iaenemy.h"
 
-#include "structdata.h"
-#include <iostream>
-
-using namespace std;
-
-class IAEnemy
+IAEnemy::IAEnemy()
 {
-    public:
+    //ctor
+}
 
-        //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
-        //////////////////////////////////////////////////////////////////////////
-        IAEnemy();
+//**********************************************************************//
 
-        //////////////////////////////////////////////////////////////////////////
-        /** Destructor */
-        //////////////////////////////////////////////////////////////////////////
-        virtual ~IAEnemy();
+IAEnemy::~IAEnemy()
+{
+    //dtor
+}
 
-        vec3f nextPosition(vec3f posEnemy,vec3f posHero);
+//**********************************************************************//
 
-    protected:
+vec3f IAEnemy::nextPosition(vector3f posEnemy,vector3f posHero){
+    vec3f newMovement;
+    cout<< "posEnemy-"<< posEnemy.x<< " "<< posEnemy.y<< " "<< posEnemy.z<< endl;
+    cout<< "posHero-"<< posHeroe.x<< " "<< posHeroe.y<< " "<< posHeroe.z<< endl;
 
-    private:
-};
-
-#endif // IAENEMY_H
+    return newMovement;
+}
