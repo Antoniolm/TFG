@@ -1708,11 +1708,12 @@
 1481280749 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemylist.cpp
 	"enemylist.h"
 
-1481285832 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.cpp
+1481288667 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.cpp
 	"iaenemy.h"
 
-1481283749 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.h
+1481287564 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.h
 	"structdata.h"
 	"avatar.h"
 	<iostream>
+	<math.h>
 
