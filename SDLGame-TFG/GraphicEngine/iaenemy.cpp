@@ -33,8 +33,81 @@ IAEnemy::~IAEnemy()
 
 //**********************************************************************//
 
-vec3f IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
-    vec3f newMovement;
-    newMovement.z=-3.0;
-    return newMovement;
+pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
+    vec3f newMovement,distance,beforeDistance;
+    avatarDirection enemyDir;
+    pair<avatarDirection,vec3f> result;
+
+    newMovement.x=posEnemy.x-3.0;newMovement.y=posEnemy.y;newMovement.z=posEnemy.z;
+    enemyDir=LEFTWARD;
+    distance=newMovement-posHero;
+    cout<< "Position"<< posEnemy.x<< " "<< posEnemy.y<< " "<< posEnemy.z<< endl;
+    cout<< "Distance"<< distance.x<< " "<< distance.y<< " "<< distance.z<< endl;
+    result.first=enemyDir;
+    result.second=vec3f(-3.0,0.0,0.0);
+
+    newMovement.x=posEnemy.x+3.0;newMovement.z=posEnemy.z;
+    enemyDir=RIGHTWARD;
+    beforeDistance=newMovement-posHero;
+    if(beforeDistance.x<distance.x && beforeDistance.z<distance.z){
+        distance=beforeDistance;
+        result.first=enemyDir;
+        result.second=vec3f(3.0,0.0,0.0);
+    }
+
+    newMovement.x=posEnemy.x;newMovement.z=posEnemy.z-3.0;
+    enemyDir=BACKWARD;
+    beforeDistance=newMovement-posHero;
+    if(beforeDistance.x<distance.x && beforeDistance.z<distance.z){
+        distance=beforeDistance;
+        result.first=enemyDir;
+        result.second=vec3f(0.0,0.0,-3.0);
+    }
+
+    newMovement.x=posEnemy.x;newMovement.z=posEnemy.z+3.0;
+    enemyDir=FORWARD;
+    beforeDistance=newMovement-posHero;
+    if(beforeDistance.x<distance.x && beforeDistance.z<distance.z){
+        distance=beforeDistance;
+        result.first=enemyDir;
+        result.second=vec3f(0.0,0.0,3.0);
+    }
+
+    newMovement.x=posEnemy.x-2.0;newMovement.z=posEnemy.z+2.0;
+    enemyDir=FOR_LEFTWARD;
+    beforeDistance=newMovement-posHero;
+    if(beforeDistance.x<distance.x && beforeDistance.z<distance.z){
+        distance=beforeDistance;
+        result.first=enemyDir;
+        result.second=vec3f(-2.0,0.0,2.0);
+    }
+
+    newMovement.x=posEnemy.x+2.0;newMovement.z=posEnemy.z+2.0;
+    enemyDir=FOR_RIGHTWARD;
+    beforeDistance=newMovement-posHero;
+    if(beforeDistance.x<distance.x && beforeDistance.z<distance.z){
+        distance=beforeDistance;
+        result.first=enemyDir;;
+        result.second=vec3f(+2.0,0.0,+2.0);
+    }
+
+    newMovement.x=posEnemy.x-2.0;newMovement.z=posEnemy.z-2.0;
+    enemyDir=BACK_LEFTWARD;
+    beforeDistance=newMovement-posHero;
+    if(beforeDistance.x<distance.x && beforeDistance.z<distance.z){
+        distance=beforeDistance;
+        result.first=enemyDir;
+        result.second=vec3f(-2.0,0.0,-2.0);
+    }
+
+    newMovement.x=posEnemy.x+2.0;newMovement.z=posEnemy.z-2.0;
+    enemyDir=BACK_RIGHTWARD;
+    beforeDistance=newMovement-posHero;
+    if(beforeDistance.x<distance.x && beforeDistance.z<distance.z){
+        distance=beforeDistance;
+        result.first=enemyDir;
+        result.second=vec3f(2.0,0.0,-2.0);
+    }
+
+    return result;
 }

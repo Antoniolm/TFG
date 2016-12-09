@@ -21,6 +21,7 @@
 #define IAENEMY_H
 
 #include "structdata.h"
+#include "avatar.h"
 #include <iostream>
 
 using namespace std;
@@ -39,7 +40,7 @@ class IAEnemy
         //////////////////////////////////////////////////////////////////////////
         virtual ~IAEnemy();
 
-        vec3f nextPosition(vec3f posEnemy,vec3f posHero);
+        pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero);
 
     protected:
 

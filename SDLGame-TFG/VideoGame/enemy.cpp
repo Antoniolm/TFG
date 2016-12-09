@@ -72,7 +72,7 @@ void Enemy::visualization(Context & cv){
 void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     bool hasMove=true;
     avatarDirection heroDir;
-    vec3f moveHero;
+    pair<avatarDirection,vec3f> moveHero;
     currentMap=rootMap;
 
     if(time-currentTime>200)
@@ -80,7 +80,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
 
     if(enemyActivate){ //If enemy is activated
         moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),rootMap->getHero()->getPosition());
-        if(!moveBody(moveHero,BACKWARD)){
+        if(!moveBody(moveHero.second,moveHero.first)){
             activeJump(15.0,5.0);
         }
         if(isJumping){
@@ -92,7 +92,6 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
 
     //Update our vec4f position
     position=moveAvatar->product(vec4f());
-
     currentTime+=(time-currentTime);
 }
 
