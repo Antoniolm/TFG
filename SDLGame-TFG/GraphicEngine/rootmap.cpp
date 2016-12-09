@@ -278,7 +278,7 @@ RootMap::RootMap()
     // Add enemy of our map
     enemyList=new EnemyList();
 
-    Enemy * enemy=new Enemy(vec3f(4.5,2.0,-0.5f));
+    Enemy * enemy=new Enemy(vec3f(4.5,2.0,-0.5f),vec3f(2.0,2.0,2.0));
     enemyList->add(enemy);
 
     ////////////////////////////////////////

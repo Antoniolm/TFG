@@ -19,9 +19,11 @@
 
 #include "enemy.h"
 
-Enemy::Enemy(vec3f aPosition)
+Enemy::Enemy(vec3f aPosition,vec3f aRadioActivity)
 {
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
+    radioActivity=aRadioActivity;
+
     acceleratedMove=new AcceleratedMovement();
     acceleratedMove->resetState();
     direction=FORWARD;
@@ -63,6 +65,7 @@ Enemy::~Enemy()
 void Enemy::visualization(Context & cv){
     root->visualization(cv);
 }
+
 //**********************************************************************//
 
 void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
@@ -143,4 +146,10 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     position=moveAvatar->product(vec4f());
 
     currentTime+=(time-currentTime);
+}
+
+//**********************************************************************//
+
+vec3f Enemy::getRadioActivity(){
+    return radioActivity;
 }

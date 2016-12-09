@@ -56,6 +56,8 @@
 		<Unit filename="GraphicEngine/context.h" />
 		<Unit filename="GraphicEngine/file_obj.cpp" />
 		<Unit filename="GraphicEngine/file_obj.h" />
+		<Unit filename="GraphicEngine/iaenemy.cpp" />
+		<Unit filename="GraphicEngine/iaenemy.h" />
 		<Unit filename="GraphicEngine/ianpc.cpp" />
 		<Unit filename="GraphicEngine/ianpc.h" />
 		<Unit filename="GraphicEngine/light.cpp" />
@@ -113,6 +115,10 @@
 		<Unit filename="VideoGame/avatar.h" />
 		<Unit filename="VideoGame/avatarmove.cpp" />
 		<Unit filename="VideoGame/avatarmove.h" />
+		<Unit filename="VideoGame/enemy.cpp" />
+		<Unit filename="VideoGame/enemy.h" />
+		<Unit filename="VideoGame/enemylist.cpp" />
+		<Unit filename="VideoGame/enemylist.h" />
 		<Unit filename="VideoGame/game.cpp" />
 		<Unit filename="VideoGame/game.h" />
 		<Unit filename="VideoGame/hero.cpp" />
