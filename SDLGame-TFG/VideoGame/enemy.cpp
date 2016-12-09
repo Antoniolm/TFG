@@ -78,10 +78,16 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(enemyActivate){
+    if(enemyActivate){ //If enemy is activated
         moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),rootMap->getHero()->getPosition());
-        moveBody(moveHero,FORWARD);
-        gravity(time);
+        if(!moveBody(moveHero,BACKWARD)){
+            activeJump(15.0,5.0);
+        }
+        if(isJumping){
+            jump(time);
+        }
+        else
+            gravity(time);
     }
 
     //Update our vec4f position
