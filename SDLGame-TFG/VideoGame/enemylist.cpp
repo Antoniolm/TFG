@@ -48,17 +48,17 @@ void EnemyList::visualization(Context & cv){
 
 void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
     //Check if the hero is speaking with a avatar
-    bool isActivate=false;vec3f distance,radio,posHero;unsigned currentNpc;
+    vec3f distance,radio,posHero;unsigned currentNpc;
 
     Hero * hero=rootMap->getHero();
     posHero=hero->getPosition();
-    for(unsigned i=0;i<enemies.size() && !isActivate;i++){ //Check if hero is talking now
+    for(unsigned i=0;i<enemies.size();i++){ //Check if hero is talking now
         distance=(enemies[i]->getPosition())-(posHero);
         radio=(enemies[i]->getRadioActivity());
         if((distance.x>-radio.x && distance.x<radio.x)&&(distance.y>-radio.y && distance.y<radio.y)&&(distance.z>-radio.z && distance.z<radio.z)){
-            enemies[i]->activatedEnemy(true);
+            enemies[0]->activatedEnemy(true);
         }
-        enemies[i]->updateState(time,currentKeyStates,rootMap);
+        enemies[0]->updateState(time,currentKeyStates,rootMap);
     }
 
 }

@@ -35,6 +35,6 @@ IAEnemy::~IAEnemy()
 
 vec3f IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     vec3f newMovement;
-    newMovement.x=0.3;
+    newMovement.x=1.0;
     return newMovement;
 }

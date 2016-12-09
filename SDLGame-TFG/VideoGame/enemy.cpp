@@ -81,6 +81,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     if(enemyActivate){
         moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),rootMap->getHero()->getPosition());
         moveBody(moveHero,FORWARD);
+        gravity(time);
     }
 
     //Update our vec4f position
