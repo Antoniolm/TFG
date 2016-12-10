@@ -496,8 +496,9 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
 
     if(enemyActivate){ //If enemy is activated
         moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),rootMap->getHero()->getPosition());
-        if(!moveBody(moveHero.second,moveHero.first)){
+        if(!moveBody(moveHero.second,moveHero.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
             activeJump(vec3f(0.0,15.0,0.0),vec3f(0.0,5.0,0.0));
+            jumpDelay=time;
         }
         if(isJumping){
             jump(time);

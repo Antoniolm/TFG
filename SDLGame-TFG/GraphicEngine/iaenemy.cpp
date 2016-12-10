@@ -42,7 +42,7 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     newMovement.x=posEnemy.x-3.0;newMovement.y=posEnemy.y;newMovement.z=posEnemy.z;
     enemyDir=LEFTWARD;
     result.first=enemyDir;
-    result.second=vec3f(-3.0,0.0,0.0);
+    result.second=vec3f(-2.0,0.0,0.0);
     minDistance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
 
     newMovement.x=posEnemy.x+3.0;newMovement.z=posEnemy.z;
@@ -50,7 +50,7 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){
         result.first=enemyDir;
-        result.second=vec3f(3.0,0.0,0.0);
+        result.second=vec3f(2.0,0.0,0.0);
         minDistance=distance;
     }
 
@@ -59,7 +59,7 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){
         result.first=enemyDir;
-        result.second=vec3f(0.0,0.0,-3.0);
+        result.second=vec3f(0.0,0.0,-2.0);
         minDistance=distance;
     }
 
@@ -68,7 +68,7 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){
         result.first=enemyDir;
-        result.second=vec3f(0.0,0.0,3.0);
+        result.second=vec3f(0.0,0.0,2.0);
         minDistance=distance;
     }
 
@@ -77,7 +77,7 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){
         result.first=enemyDir;
-        result.second=vec3f(-2.0,0.0,2.0);
+        result.second=vec3f(-1.0,0.0,1.0);
         minDistance=distance;
     }
 
@@ -86,7 +86,7 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){
         result.first=enemyDir;;
-        result.second=vec3f(+2.0,0.0,+2.0);
+        result.second=vec3f(+1.0,0.0,+1.0);
         minDistance=distance;
     }
 
@@ -95,7 +95,7 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){
         result.first=enemyDir;
-        result.second=vec3f(-2.0,0.0,-2.0);
+        result.second=vec3f(-1.0,0.0,-1.0);
         minDistance=distance;
     }
 
@@ -104,7 +104,7 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){
         result.first=enemyDir;
-        result.second=vec3f(2.0,0.0,-2.0);
+        result.second=vec3f(1.0,0.0,-1.0);
         minDistance=distance;
     }
 
