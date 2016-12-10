@@ -33,7 +33,7 @@ Enemy::Enemy(vec3f aPosition,vec3f aRadioActivity)
     enemyActivate=false;
 
 //Print a message for check
-    cout<< "< Game is loading our hero >"<< endl;
+    cout<< "< Game is loading our enemy >"<< endl;
 
     //////////////////////////////////////////////////////
     /////                All the mesh                /////
@@ -161,7 +161,7 @@ Enemy::Enemy(vec3f aPosition,vec3f aRadioActivity)
     NodeSceneGraph * foot=new NodeSceneGraph();
     foot->add(transFoot);
     foot->add(scaleFoot);
-    Material * materialFoot=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
+    Material * materialFoot=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     foot->add(materialFoot);
     foot->add(footObject);
 
@@ -186,7 +186,7 @@ Enemy::Enemy(vec3f aPosition,vec3f aRadioActivity)
     knee_ankleLeft->add(moveKneeLeft);
     knee_ankleLeft->add(knee_ankle);
 
-    Material * materialLeg=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureLeg.png");
+    Material * materialLeg=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureLeg.png");
 
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
@@ -228,7 +228,7 @@ Enemy::Enemy(vec3f aPosition,vec3f aRadioActivity)
     moveArmLeft->identity();
     moveMatrix.push_back(moveArmLeft);
 
-    Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),90.0f,"./textures/wood.png");
+    Material * materialWood=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),90.0f,"./textures/wood.png");
     Material * materialTest=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),32.0f,"./textures/leaf.jpg");
     //Material * materialArmour=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),32.0f,"./textures/plateArmor.png");
 
@@ -439,10 +439,9 @@ Enemy::Enemy(vec3f aPosition,vec3f aRadioActivity)
     chestNode->add(chestObject);
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
-    Material * materialHead=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodHead.png");
     headNode->add(transHead);
     headNode->add(scaleHead);
-    headNode->add(materialHead);
+    headNode->add(materialWood);
     headNode->add(headObject);
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
