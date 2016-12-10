@@ -507,7 +507,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         }
         else
             gravity(time);
-        }
+    }
 
     //Update our vec4f position
     position=moveAvatar->product(vec4f());
