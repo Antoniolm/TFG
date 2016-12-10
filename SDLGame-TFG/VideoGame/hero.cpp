@@ -618,7 +618,6 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
     //Move the body
     if(hasMove){
-        cout<< "MoveHero"<< moveHero.x<< " "<< moveHero.y<< " "<< moveHero.z<< endl;
         moveBody(moveHero,heroDir);
         heroSound[0]->play();
     }

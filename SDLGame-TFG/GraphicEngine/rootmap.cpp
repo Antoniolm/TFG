@@ -20,6 +20,7 @@
 #include "rootmap.h"
 #include "../VideoGame/npclist.h"
 #include "../VideoGame/enemylist.h"
+#include <stdlib.h>     /* srand, rand */
 
 RootMap::RootMap()
 {
@@ -75,6 +76,7 @@ RootMap::RootMap()
 
     //Materials
     Material * materialGrass=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass.png");
+    Material * materialGrass1=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass1.png");
     Material * materialSand=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
     //Material * materialBox=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
     Material * materialFence=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
@@ -125,7 +127,7 @@ RootMap::RootMap()
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
-
+    int p=0;
     for(int i=0;i<4;i++){
         for(int j=0;j<2;j++){
             transOneCube=new Matrix4f();
@@ -133,7 +135,11 @@ RootMap::RootMap()
             cubeNode=new NodeSceneGraph();
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
-            cubeNode->add(materialGrass);
+            p = rand() % 100;
+            if(p<50)
+                cubeNode->add(materialGrass);
+            else
+                cubeNode->add(materialGrass1);
             cubeNode->add(cubeObject);
             objs.push_back(new ObjectScene(cubeNode));
         }
