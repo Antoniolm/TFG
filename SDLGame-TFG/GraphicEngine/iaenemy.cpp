@@ -50,7 +50,7 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     result.first=enemyDir;
     result.second=vec3f(-2.0f,0.0f,0.0f);
     minDistance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    cout<< "MinDistance->"<< minDistance<<endl;
+
     newMovement.x=posEnemy.x+3.0;newMovement.z=posEnemy.z;
     enemyDir=RIGHTWARD;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));

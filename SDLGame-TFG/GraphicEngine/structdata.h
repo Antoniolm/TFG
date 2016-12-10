@@ -126,8 +126,6 @@ struct vec3f{
 
     bool operator!=(vec3f aVec){
         bool result=false;
-        cout<< "Position"<< x<< " "<< y<< " "<< z<<endl;
-        cout<< "Position"<< aVec.x<< " "<< aVec.y<< " "<< aVec.z<<endl;
         if(x!=aVec.x && y!=aVec.y && z!=aVec.z)
             result=true;
 

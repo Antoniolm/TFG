@@ -487,6 +487,7 @@ void Enemy::visualization(Context & cv){
 
 void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     pair<avatarDirection,vec3f> moveHero;
+    vec3f aux;
     currentMap=rootMap;
 
     if(time-currentTime>200)
@@ -494,22 +495,22 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
 
     if(enemyActivate){ //If enemy is activated
         moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),rootMap->getHero()->getPosition());
-        //cout<< "Position"<< (float)moveHero.second.x<< " "<< (float)moveHero.second.y<< " "<< (float)moveHero.second.z<< endl;
-        //cout<< "Bool"<< (moveHero.second!=vec3f(0.0,0.0,0.0)) <<endl;
-        if(!moveBody(moveHero.second,moveHero.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
-            activeJump(vec3f(0.0,15.0,0.0),vec3f(0.0,5.0,0.0));
-            jumpDelay=time;
+
+        if(moveHero.second.x!=0.0 || moveHero.second.y!=0.0 || moveHero.second.z!=0.0){
+            if(!moveBody(moveHero.second,moveHero.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
+                activeJump(vec3f(0.0,15.0,0.0),vec3f(0.0,5.0,0.0));
+                jumpDelay=time;
+            }
         }
         if(isJumping){
             jump(time);
         }
         else
             gravity(time);
-    }
+        }
 
     //Update our vec4f position
     position=moveAvatar->product(vec4f());
-
     //Update Animation
     if(isMoving && !isFalling && !isJumping){
         animation.updateState(time-currentTime);
