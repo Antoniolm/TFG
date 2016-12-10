@@ -868,8 +868,9 @@
 1478955729 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixstatic.h
 	"matrix4fdynamic.h"
 
-1480672261 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\structdata.h
+1481391350 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\structdata.h
 	<math.h>
+	<iostream>
 
 1417088498 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.cpp
 	<stdio.h>
@@ -886,7 +887,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1481374367 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1481397517 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -989,7 +990,7 @@
 	"../GraphicEngine/text.h"
 	<vector>
 
-1481376311 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1481403840 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1622,11 +1623,11 @@
 	"structdata.h"
 	<SDL.h>
 
-1481369979 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1481403855 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
-1481369936 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
+1481400271 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
 	"avatar.h"
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/acceleratedmovement.h"
@@ -1636,7 +1637,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1481378604 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
+1481380159 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
 	"text.h"
 
 1481379757 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
@@ -1678,13 +1679,13 @@
 	"../GraphicEngine/object3d.h"
 	<vector>
 
-1481134467 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
+1481381472 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
 	"npclist.h"
 
-1481370040 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
+1481394881 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
 	"enemy.h"
 
-1481279075 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
+1481383950 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -1708,10 +1709,10 @@
 1481294767 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemylist.cpp
 	"enemylist.h"
 
-1481299570 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.cpp
+1481391819 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.cpp
 	"iaenemy.h"
 
-1481287564 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.h
+1481385977 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.h
 	"structdata.h"
 	"avatar.h"
 	<iostream>
