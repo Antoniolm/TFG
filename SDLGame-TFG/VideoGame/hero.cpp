@@ -516,51 +516,73 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     //Case-> Push Left bottom
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] && !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-        moveHero.x=-3.0;moveHero.z=0.0;
-        velocityHero.x=3.0;velocityHero.z=0.0;
-        accelerationHero.x=-3.0;accelerationHero.z=0.0;
+        if(!isJumping && !isFalling)
+            moveHero.x=-3.0;moveHero.z=0.0;
+        if(isJumping || isFalling)
+            moveHero.x=-5.0;moveHero.z=0.0;
+        //velocityHero.x=3.0;velocityHero.z=0.0;
+        //accelerationHero.x=-3.0;accelerationHero.z=0.0;
         heroDir=LEFTWARD;
     }
     //Case-> Push Right bottom
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
-        moveHero.x=3.0;moveHero.z=0.0;
-        velocityHero.x=-3.0;velocityHero.z=0.0;
-        accelerationHero.x=3.0;accelerationHero.z=0.0;
+        if(!isJumping && !isFalling)
+            moveHero.x=3.0;moveHero.z=0.0;
+        if(isJumping || isFalling)
+            moveHero.x=5.0;moveHero.z=0.0;
+        //velocityHero.x=-3.0;velocityHero.z=0.0;
+        //accelerationHero.x=3.0;accelerationHero.z=0.0;
         heroDir=RIGHTWARD;
     }
     //Case-> Push Up bottom
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-        moveHero.x=0.0;moveHero.z=-3.0;
-        //velocityHero.x=0.0;velocityHero.z=-3.0;
-        //velocityHero.x=0.0;velocityHero.z=-3.0;
+        if(!isJumping && !isFalling)
+            moveHero.x=0.0;moveHero.z=-3.0;
+        if(isJumping || isFalling)
+            moveHero.x=0.0;moveHero.z=-5.0;
         heroDir=BACKWARD;
     }
     //Case-> Push Down bottom
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
-        moveHero.x=0.0;moveHero.z=3.0;
+        if(!isJumping && !isFalling)
+            moveHero.x=0.0;moveHero.z=3.0;
+        if(isJumping || isFalling)
+            moveHero.x=0.0;moveHero.z=5.0;
         heroDir=FORWARD;
     }
     //Case-> Push Dowm-Left bottoms
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] ){
-        moveHero.x=-2.0;moveHero.z=2.0;
+        if(!isJumping && !isFalling)
+            moveHero.x=-2.0;moveHero.z=2.0;
+        if(isJumping || isFalling)
+            moveHero.x=-4.0;moveHero.z=4.0;
         heroDir=FOR_LEFTWARD;
     }
     //Case-> Push Dowm-Right bottoms
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-        moveHero.x=2.0;moveHero.z=2.0;
+        if(!isJumping && !isFalling)
+            moveHero.x=2.0;moveHero.z=2.0;
+        if(isJumping || isFalling)
+            moveHero.x=4.0;moveHero.z=4.0;
         heroDir=FOR_RIGHTWARD;
     }
     //Case-> Push Up-Left bottoms
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)]){
-        moveHero.x=-2.0;moveHero.z=-2.0;
+        if(!isJumping && !isFalling)
+            moveHero.x=-2.0;moveHero.z=-2.0;
+        if(isJumping || isFalling)
+            moveHero.x=-4.0;moveHero.z=-4.0;
         heroDir=BACK_LEFTWARD;
     }
     //Case-> Push Up-Right bottoms
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)] ){
-        moveHero.x=2.0;moveHero.z=-2.0;
+        if(!isJumping && !isFalling)
+            moveHero.x=2.0;moveHero.z=-2.0;
+        if(isJumping || isFalling)
+            moveHero.x=4.0;moveHero.z=-4.0;
         heroDir=BACK_RIGHTWARD;
     }
     else{ //Case-> If not move

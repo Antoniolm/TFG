@@ -55,6 +55,14 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     for(unsigned i=0;i<npcs.size() && !isActivate;i++){ //Check if hero is talking now
         isActivate=npcs[i]->getActivate();
         currentNpc=i;
+        /*distance=(npcs[i]->getPosition())-(posHero);
+        if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1) && !isActivate){
+            hero->activateDialog(true);
+            hero->setDialog("A");
+        }
+        else{
+            hero->activateDialog(false);
+        }*/
     }
     if(isActivate){ //If hero is talking and he is a good distance
         distance=(npcs[currentNpc]->getPosition())-(posHero);

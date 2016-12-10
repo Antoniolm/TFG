@@ -95,6 +95,8 @@ class Enemy: public AvatarMove
 
     protected:
     private:
+        vector<Matrix4f *> moveMatrix;
+        ScriptLMD animation;
         vec3f radioActivity;
         IAEnemy IA;
         bool enemyActivate;
