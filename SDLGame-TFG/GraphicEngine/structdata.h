@@ -21,6 +21,8 @@
 #define STRUCTDATA_H
 
 #include <math.h>
+#include <iostream>
+using namespace std;
 
 /////////////////////////////////////////////////////////////////////////
 /**
@@ -32,9 +34,9 @@ struct vec3f{
     float y;
     float z;
     vec3f(){
-        x=0;
-        y=0;
-        z=0;
+        x=0.0f;
+        y=0.0f;
+        z=0.0f;
     }
     vec3f(float dx,float dy,float dz){
         x=dx;
@@ -114,6 +116,24 @@ struct vec3f{
         return result;
     }
 
+    bool operator==(vec3f aVec){
+        bool result=false;
+        if(x==aVec.x && y==aVec.y && z==aVec.z)
+            result=true;
+
+        return result;
+    }
+
+    bool operator!=(vec3f aVec){
+        bool result=false;
+        cout<< "Position"<< x<< " "<< y<< " "<< z<<endl;
+        cout<< "Position"<< aVec.x<< " "<< aVec.y<< " "<< aVec.z<<endl;
+        if(x!=aVec.x && y!=aVec.y && z!=aVec.z)
+            result=true;
+
+        return result;
+    }
+
     float dot(vec3f aVec){
         float result=0.0f;
 
@@ -156,7 +176,7 @@ struct vec4f{
     float y;
     float z;
     float w;
-    vec4f(){x=0;y=0;z=0;w=1;}
+    vec4f(){x=0.0f;y=0.0;z=0.0;w=1;}
     vec4f(float dx,float dy,float dz,float dw){
         x=dx;
         y=dy;
@@ -190,7 +210,7 @@ struct vec3i{
     int x;
     int y;
     int z;
-    vec3i(){}
+    vec3i(){x=0;y=0;z=0;}
     vec3i(int dx,int dy,int dz){
         x=dx;
         y=dy;
@@ -206,7 +226,7 @@ struct vec3i{
 struct vec2f{
     float x;
     float y;
-    vec2f(){x=0;y=0;}
+    vec2f(){x=0.0;y=0.0;}
     vec2f(float dx,float dy){
         x=dx;
         y=dy;
