@@ -56,9 +56,9 @@ void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * r
         distance=(enemies[i]->getPosition())-(posHero);
         radio=(enemies[i]->getRadioActivity());
         if((distance.x>-radio.x && distance.x<radio.x)&&(distance.y>-radio.y && distance.y<radio.y)&&(distance.z>-radio.z && distance.z<radio.z)){
-            enemies[0]->activatedEnemy(true);
+            enemies[i]->activatedEnemy(true);
         }
-        enemies[0]->updateState(time,currentKeyStates,rootMap);
+        enemies[i]->updateState(time,currentKeyStates,rootMap);
     }
 
 }

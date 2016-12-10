@@ -507,7 +507,7 @@ void Hero::visualization(Context & cv){
 void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     bool hasMove=true;
     avatarDirection heroDir;
-    vec3f moveHero;
+    vec3f moveHero,velocityHero,accelerationHero;
     currentMap=rootMap;
 
     if(time-currentTime>200)
@@ -517,18 +517,24 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] && !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
         moveHero.x=-3.0;moveHero.z=0.0;
+        velocityHero.x=3.0;velocityHero.z=0.0;
+        accelerationHero.x=-3.0;accelerationHero.z=0.0;
         heroDir=LEFTWARD;
     }
     //Case-> Push Right bottom
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){
         moveHero.x=3.0;moveHero.z=0.0;
+        velocityHero.x=-3.0;velocityHero.z=0.0;
+        accelerationHero.x=3.0;accelerationHero.z=0.0;
         heroDir=RIGHTWARD;
     }
     //Case-> Push Up bottom
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)] &&
     !currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]){
         moveHero.x=0.0;moveHero.z=-3.0;
+        //velocityHero.x=0.0;velocityHero.z=-3.0;
+        //velocityHero.x=0.0;velocityHero.z=-3.0;
         heroDir=BACKWARD;
     }
     //Case-> Push Down bottom
@@ -568,7 +574,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
 
     //Case-> Push Scape bottom to jump
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !isJumping && !isFalling && jumpDelay<(time-600)){
-        activeJump(15.0,5.0);
+        activeJump(vec3f(velocityHero.x,15.0,velocityHero.y),vec3f(accelerationHero.x,5.0,accelerationHero.z));
         jumpDelay=time;
     }
     //Move the body

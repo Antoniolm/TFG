@@ -65,7 +65,7 @@ class AvatarMove: public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activeJump(float velocity,float acceleration);
+        void activeJump(vec3f velocity,vec3f acceleration);
 
         //////////////////////////////////////////////////////////////////////////
         /**
