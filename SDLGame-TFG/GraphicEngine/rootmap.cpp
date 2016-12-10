@@ -341,7 +341,7 @@ RootMap::RootMap()
     /////////////////////////////////////////
     // Add sound of our map
     backSound=new Sound("sounds/background.wav",0,60);
-    backSound->play();
+    //backSound->play();
 
     currentTime=SDL_GetTicks();
 }

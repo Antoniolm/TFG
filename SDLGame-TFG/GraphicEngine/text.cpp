@@ -37,7 +37,7 @@ Text::Text(const string & aTexture,TTF_Font * aFont){
 
     positionText=new Matrix4f();
     positionText->identity();
-    Matrix4f * scaleText=new Matrix4f();
+    scaleText=new Matrix4f();
     scaleText->scale(1.0,0.3,1.0);
 
     textNode=new NodeSceneGraph();
@@ -47,12 +47,12 @@ Text::Text(const string & aTexture,TTF_Font * aFont){
 
     positionBack=new Matrix4f();
     positionBack->identity();
-    scaleText=new Matrix4f();
-    scaleText->scale(1.2,1.1,1.0);
+    scaleBack=new Matrix4f();
+    scaleBack->scale(1.2,1.1,1.0);
 
     backNode=new NodeSceneGraph();
     backNode->add(positionBack);
-    backNode->add(scaleText);
+    backNode->add(scaleBack);
     backNode->add(material);
     backNode->add(textObject);
 
@@ -127,6 +127,10 @@ void Text::init(){
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_BGRA,
                  GL_UNSIGNED_BYTE, surface->pixels);
+
+    float scaleX=surface->w/250.0;
+    scaleText->scale(scaleX,0.3,1.0);
+    scaleBack->scale(scaleX+0.2,1.1,1.0);
 
 }
 

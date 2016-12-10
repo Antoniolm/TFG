@@ -108,8 +108,8 @@ class Text : public Object3D
     protected:
 
     private:
-        Matrix4f * positionText;
-        Matrix4f * positionBack;
+        Matrix4f * positionText,* scaleText;
+        Matrix4f * positionBack,* scaleBack;
         SDL_Surface * surface;
         string fileTexture;
         string message;
