@@ -95,9 +95,11 @@ class Hero: public AvatarMove
     protected:
 
     private:
+        void initAnimation();
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> heroSound;
         ScriptLMD animation;
+        ScriptLMD animationHit;
         Text * currentText;
         bool activatedDialog;
         float jumpDelay;

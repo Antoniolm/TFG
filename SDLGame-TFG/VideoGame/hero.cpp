@@ -139,34 +139,6 @@ Hero::Hero()
     moveLegLeft->identity();
     moveMatrix.push_back(moveLegLeft);
 
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
-    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
-    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
-    MatrixStatic * notMove=new MatrixStatic();
-
-    //Movement to the first leg
-    MatrixScript * KneeScriptLeft=new MatrixScript();
-    MatrixScript * LegScriptLeft=new MatrixScript();
-    KneeScriptLeft->add(0.5,oscillateKnee);
-    KneeScriptLeft->add(0.5,notMove);
-    LegScriptLeft->add(0.5,oscillateLeg);
-    LegScriptLeft->add(0.5,oscillateLegSecond);
-
-
-    //Movement to the second leg
-    MatrixScript * KneeScriptRight=new MatrixScript();
-    MatrixScript * LegScriptRight=new MatrixScript();
-    KneeScriptRight->add(0.5,notMove);
-    KneeScriptRight->add(0.5,oscillateKnee);
-    LegScriptRight->add(0.5,oscillateLegSecond);
-    LegScriptRight->add(0.5,oscillateLeg);
-
-    //Add the script to our animation
-    animation.add(KneeScriptRight);
-    animation.add(KneeScriptLeft);
-    animation.add(LegScriptRight);
-    animation.add(LegScriptLeft);
-
     //Ankle + foot
     NodeSceneGraph * foot=new NodeSceneGraph();
     foot->add(transFoot);
@@ -241,32 +213,6 @@ Hero::Hero()
     Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),90.0f,"./textures/wood.png");
     Material * materialTest=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),32.0f,"./textures/leaf.jpg");
     //Material * materialArmour=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),32.0f,"./textures/plateArmor.png");
-
-    //Matrix4fDinamic
-    OscillateRotation * oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
-
-    //Movement to the first arm
-    MatrixScript * ElbowScriptLeft=new MatrixScript();
-    MatrixScript * ArmScriptLeft=new MatrixScript();
-    ElbowScriptLeft->add(0.5,notMove);
-    ElbowScriptLeft->add(0.5,notMove);
-    ArmScriptLeft->add(0.5,oscillateShoulder);
-    ArmScriptLeft->add(0.5,notMove);
-
-    //Movement to the second arm
-    MatrixScript * ElbowScriptRight=new MatrixScript();
-    MatrixScript * ArmScriptRight=new MatrixScript();
-    ElbowScriptRight->add(0.5,notMove);
-    ElbowScriptRight->add(0.5,notMove);
-    ArmScriptRight->add(0.5,notMove);
-    ArmScriptRight->add(0.5,oscillateShoulder);
-
-
-    //Add the script to our animation
-    animation.add(ElbowScriptRight);
-    animation.add(ElbowScriptLeft);
-    animation.add(ArmScriptRight);
-    animation.add(ArmScriptLeft);
 
     Matrix4f * scaleHand=new Matrix4f();
     scaleHand->scale(0.4,0.3,0.4);
@@ -485,6 +431,9 @@ Hero::Hero()
     root->add(legRight);
     currentTime=SDL_GetTicks();
     jumpDelay=currentTime;
+
+    //Init all animations of our hero
+    initAnimation();
 }
 
 //**********************************************************************//
@@ -686,3 +635,121 @@ void Hero::noMove(){
             moveMatrix[i]->identity();
     isMoving=false;
 }
+
+//**********************************************************************//
+//                              PRIVATE                                 //
+//**********************************************************************//
+
+ void Hero::initAnimation(){
+    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
+    MatrixStatic * notMove=new MatrixStatic();
+
+    //Movement to the first leg
+    MatrixScript * KneeScriptLeft=new MatrixScript();
+    MatrixScript * LegScriptLeft=new MatrixScript();
+    KneeScriptLeft->add(0.5,oscillateKnee);
+    KneeScriptLeft->add(0.5,notMove);
+    LegScriptLeft->add(0.5,oscillateLeg);
+    LegScriptLeft->add(0.5,oscillateLegSecond);
+
+
+    //Movement to the second leg
+    MatrixScript * KneeScriptRight=new MatrixScript();
+    MatrixScript * LegScriptRight=new MatrixScript();
+    KneeScriptRight->add(0.5,notMove);
+    KneeScriptRight->add(0.5,oscillateKnee);
+    LegScriptRight->add(0.5,oscillateLegSecond);
+    LegScriptRight->add(0.5,oscillateLeg);
+
+    //Add the script to our animation
+    animation.add(KneeScriptRight);
+    animation.add(KneeScriptLeft);
+    animation.add(LegScriptRight);
+    animation.add(LegScriptLeft);
+
+    //Matrix4fDinamic
+    OscillateRotation * oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
+
+    //Movement to the first arm
+    MatrixScript * ElbowScriptLeft=new MatrixScript();
+    MatrixScript * ArmScriptLeft=new MatrixScript();
+    ElbowScriptLeft->add(0.5,notMove);
+    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,oscillateShoulder);
+    ArmScriptLeft->add(0.5,notMove);
+
+    //Movement to the second arm
+    MatrixScript * ElbowScriptRight=new MatrixScript();
+    MatrixScript * ArmScriptRight=new MatrixScript();
+    ElbowScriptRight->add(0.5,notMove);
+    ElbowScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,oscillateShoulder);
+
+
+    //Add the script to our animation
+    animation.add(ElbowScriptRight);
+    animation.add(ElbowScriptLeft);
+    animation.add(ArmScriptRight);
+    animation.add(ArmScriptLeft);
+
+    /////////////////////////////////
+    // ANIMATION HIT
+    /////////////////////////////////
+    oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
+    oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
+    oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
+    notMove=new MatrixStatic();
+
+    //Movement to the first leg
+    KneeScriptLeft=new MatrixScript();
+    LegScriptLeft=new MatrixScript();
+    KneeScriptLeft->add(0.5,notMove);
+    KneeScriptLeft->add(0.5,notMove);
+    LegScriptLeft->add(0.5,notMove);
+    LegScriptLeft->add(0.5,notMove);
+
+
+    //Movement to the second leg
+    KneeScriptRight=new MatrixScript();
+    LegScriptRight=new MatrixScript();
+    KneeScriptRight->add(0.5,notMove);
+    KneeScriptRight->add(0.5,notMove);
+    LegScriptRight->add(0.5,notMove);
+    LegScriptRight->add(0.5,notMove);
+
+    //Add the script to our animation
+    animationHit.add(KneeScriptRight);
+    animationHit.add(KneeScriptLeft);
+    animationHit.add(LegScriptRight);
+    animationHit.add(LegScriptLeft);
+
+    //Matrix4fDinamic
+    oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
+    OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
+
+    //Movement to the first arm
+    ElbowScriptLeft=new MatrixScript();
+    ArmScriptLeft=new MatrixScript();
+    ElbowScriptLeft->add(0.5,notMove);
+    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,oscillateShoulder);
+    ArmScriptLeft->add(0.5,notMove);
+
+    //Movement to the second arm
+    ElbowScriptRight=new MatrixScript();
+    ArmScriptRight=new MatrixScript();
+    ElbowScriptRight->add(0.5,notMove);
+    ElbowScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,oscillateShoulder);
+
+
+    //Add the script to our animation
+    animationHit.add(ElbowScriptRight);
+    animationHit.add(ElbowScriptLeft);
+    animationHit.add(ArmScriptRight);
+    animationHit.add(ArmScriptLeft);
+ }
