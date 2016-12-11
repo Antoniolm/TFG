@@ -488,11 +488,12 @@ Enemy::~Enemy()
 //**********************************************************************//
 
 void Enemy::visualization(Context & cv){
-    if(life>0)
+    if(life>0){
         root->visualization(cv);
 
-    if(activatedDialog)
-        currentText->visualization(cv);
+        if(activatedDialog)
+            currentText->visualization(cv);
+    }
 }
 
 //**********************************************************************//
@@ -516,8 +517,9 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
             if(rootMap->getHero()->isHit()){ //If the hero is hitting
-                addLife(-0);
+                addLife(-10);
                 activatedDialog=true;
+                currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
                 currentText->setMessage("-10");
                 currentText->init();
             }
