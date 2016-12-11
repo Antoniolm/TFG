@@ -566,7 +566,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         jumpDelay=time;
     }
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]){
-        isHiting=true;
+        isHitting=true;
     }
 
     //Move the body
@@ -588,7 +588,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     position=moveAvatar->product(vec4f());
 
     //Update Animation
-    if(isMoving && !isFalling && !isJumping && !isHiting){
+    if(isMoving && !isFalling && !isJumping && !isHitting){
         animation.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
@@ -610,7 +610,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         moveMatrix[6]->setMatrix(rot.getMatrix());
         moveMatrix[7]->setMatrix(rot.getMatrix());
     }
-    else if(isHiting){
+    else if(isHitting){
         animationHit.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());

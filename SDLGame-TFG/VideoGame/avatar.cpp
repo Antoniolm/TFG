@@ -42,18 +42,18 @@ void Avatar::updateState(float time,const Uint8* currentKeyStates,RootMap * root
 
 //**********************************************************************//
 
-void setLife(float aLife){
+void Avatar::setLife(float aLife){
     life=aLife;
 }
 
 //**********************************************************************//
 
-float getLite(){
+float Avatar::getLite(){
     return life;
 }
 
 //**********************************************************************//
 
-void addLife(float value){
+void Avatar::addLife(float value){
     life+=value;
 }

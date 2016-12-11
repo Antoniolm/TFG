@@ -481,7 +481,8 @@ Enemy::~Enemy()
 //**********************************************************************//
 
 void Enemy::visualization(Context & cv){
-    root->visualization(cv);
+    if(life>0)
+        root->visualization(cv);
 }
 
 //**********************************************************************//
@@ -506,6 +507,8 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         else{
             if(rootMap->getHero()->isHit()){
                 addLife(-10);
+                cout<< "Ouch->"<< life <<endl;
+
             }
         }
         if(isJumping){
