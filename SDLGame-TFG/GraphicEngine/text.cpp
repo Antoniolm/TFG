@@ -26,14 +26,13 @@ Text::Text()
 
 //**********************************************************************//
 
-Text::Text(const string & aTexture,TTF_Font * aFont){
+Text::Text(const string & aTexture,TTF_Font * aFont,bool ahasDialog){
     fileTexture=aTexture;
     font=aFont;
+    hasDialog=ahasDialog;
 
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
-
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
 
     positionText=new Matrix4f();
     positionText->identity();
@@ -45,16 +44,19 @@ Text::Text(const string & aTexture,TTF_Font * aFont){
     textNode->add(scaleText);
     textNode->add(textObject);
 
-    positionBack=new Matrix4f();
-    positionBack->identity();
-    scaleBack=new Matrix4f();
-    scaleBack->scale(1.2,1.1,1.0);
+    if(hasDialog){
+        Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
+        positionBack=new Matrix4f();
+        positionBack->identity();
+        scaleBack=new Matrix4f();
+        scaleBack->scale(1.2,1.1,1.0);
 
-    backNode=new NodeSceneGraph();
-    backNode->add(positionBack);
-    backNode->add(scaleBack);
-    backNode->add(material);
-    backNode->add(textObject);
+        backNode=new NodeSceneGraph();
+        backNode->add(positionBack);
+        backNode->add(scaleBack);
+        backNode->add(material);
+        backNode->add(textObject);
+    }
 
 }
 
@@ -70,14 +72,13 @@ Text::~Text()
 
 //**********************************************************************//
 
-void Text::setParameters(const string & aTexture,TTF_Font * aFont){
+void Text::setParameters(const string & aTexture,TTF_Font * aFont,bool ahasDialog){
     fileTexture=aTexture;
     font=aFont;
+    hasDialog=ahasDialog;
 
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
-
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
 
     positionText=new Matrix4f();
     positionText->identity();
@@ -89,17 +90,21 @@ void Text::setParameters(const string & aTexture,TTF_Font * aFont){
     textNode->add(scaleText);
     textNode->add(textObject);
 
-    positionBack=new Matrix4f();
-    positionBack->identity();
-    scaleText=new Matrix4f();
-    scaleText->scale(1.2,1.1,1.0);
+    if(hasDialog){
+        Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
+        positionBack=new Matrix4f();
+        positionBack->identity();
+        scaleText=new Matrix4f();
+        scaleText->scale(1.2,1.1,1.0);
 
-    backNode=new NodeSceneGraph();
-    backNode->add(positionBack);
-    backNode->add(scaleText);
-    backNode->add(material);
-    backNode->add(textObject);
+        backNode=new NodeSceneGraph();
+        backNode->add(positionBack);
+        backNode->add(scaleText);
+        backNode->add(material);
+        backNode->add(textObject);
+    }
 }
+
 
 //**********************************************************************//
 
@@ -111,7 +116,8 @@ void Text::setMessage(const string & aMessage){
 
 void Text::setPosition(vec3f position){
     positionText->translation(position.x,position.y,position.z);
-    positionBack->translation(position.x,position.y-0.1,position.z-0.1);
+    if(hasDialog)
+        positionBack->translation(position.x,position.y-0.1,position.z-0.1);
 }
 
 //**********************************************************************//
@@ -130,7 +136,8 @@ void Text::init(){
 
     float scaleX=surface->w/250.0;
     scaleText->scale(scaleX,0.3,1.0);
-    scaleBack->scale(scaleX+0.2,1.1,1.0);
+    if(hasDialog)
+        scaleBack->scale(scaleX+0.2,1.1,1.0);
 
 }
 
@@ -138,7 +145,8 @@ void Text::init(){
 
 void Text::visualization(Context & vis){
     //Draw our texture of background
-    backNode->visualization(vis);
+    if(hasDialog)
+        backNode->visualization(vis);
 
     //Draw our text
     glBindTexture(GL_TEXTURE_2D, textureText);

@@ -47,7 +47,7 @@ class Text : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Text(const string & aTexture,TTF_Font * aFont);
+        Text(const string & aTexture,TTF_Font * aFont,bool ahasDialog=true);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -60,7 +60,7 @@ class Text : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setParameters(const string & aTexture,TTF_Font * aFont);
+        void setParameters(const string & aTexture,TTF_Font * aFont,bool ahasDialog=true);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -111,6 +111,7 @@ class Text : public Object3D
         Matrix4f * positionText,* scaleText;
         Matrix4f * positionBack,* scaleBack;
         SDL_Surface * surface;
+        bool hasDialog;
         string fileTexture;
         string message;
         GLuint textureText;
