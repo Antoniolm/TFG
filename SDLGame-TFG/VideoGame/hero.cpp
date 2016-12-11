@@ -455,7 +455,9 @@ void Hero::visualization(Context & cv){
 //**********************************************************************//
 
 void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
-    bool hasMove=true,isHitting=false;
+    bool hasMove=true;
+
+    isHitting=false;
     avatarDirection heroDir;
     vec3f moveHero,velocityHero,accelerationHero;
     currentMap=rootMap;

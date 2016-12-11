@@ -33,8 +33,15 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     isJumping=false;
     enemyActivate=false;
 
-//Print a message for check
+    //Print a message for check
     cout<< "< Game is loading our enemy >"<< endl;
+
+    //////////////////////////////////////////////////////
+    /////             Initialize text                /////
+    //////////////////////////////////////////////////////
+    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
+    currentText=new Text("",font,false);
+    activatedDialog=false;
 
     //////////////////////////////////////////////////////
     /////                All the mesh                /////
@@ -483,6 +490,9 @@ Enemy::~Enemy()
 void Enemy::visualization(Context & cv){
     if(life>0)
         root->visualization(cv);
+
+    if(activatedDialog)
+        currentText->visualization(cv);
 }
 
 //**********************************************************************//
@@ -498,17 +508,21 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     if(enemyActivate){ //If enemy is activated
         moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),rootMap->getHero()->getPosition());
 
-        if(moveHero.second.x!=0.0 || moveHero.second.y!=0.0 || moveHero.second.z!=0.0){
+        if(moveHero.second.x!=0.0 || moveHero.second.y!=0.0 || moveHero.second.z!=0.0){ //IA-> is not near of our hero
             if(!moveBody(moveHero.second,moveHero.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
                 activeJump(vec3f(0.0,15.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
             }
         }
-        else{
-            if(rootMap->getHero()->isHit()){
-                addLife(-10);
-                cout<< "Ouch->"<< life <<endl;
-
+        else{ //IA -> is near of our hero so the enemy doesn't move
+            if(rootMap->getHero()->isHit()){ //If the hero is hitting
+                addLife(-0);
+                activatedDialog=true;
+                currentText->setMessage("-10");
+                currentText->init();
+            }
+            else {
+                activatedDialog=false;
             }
         }
         if(isJumping){

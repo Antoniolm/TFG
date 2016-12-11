@@ -100,6 +100,8 @@ class Enemy: public AvatarMove
         vec3f radioActivity;
         IAEnemy IA;
         bool enemyActivate;
+        bool activatedDialog;
+        Text * currentText;
         float jumpDelay;
 };
 
