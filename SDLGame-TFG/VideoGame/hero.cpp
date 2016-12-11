@@ -455,7 +455,7 @@ void Hero::visualization(Context & cv){
 //**********************************************************************//
 
 void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
-    bool hasMove=true;
+    bool hasMove=true,isHiting=false;
     avatarDirection heroDir;
     vec3f moveHero,velocityHero,accelerationHero;
     currentMap=rootMap;
@@ -565,6 +565,10 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         activeJump(vec3f(velocityHero.x,15.0,velocityHero.y),vec3f(accelerationHero.x,5.0,accelerationHero.z));
         jumpDelay=time;
     }
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]){
+        isHiting=true;
+    }
+
     //Move the body
     if(hasMove){
         moveBody(moveHero,heroDir);
@@ -584,7 +588,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     position=moveAvatar->product(vec4f());
 
     //Update Animation
-    if(isMoving && !isFalling && !isJumping){
+    if(isMoving && !isFalling && !isJumping && !isHiting){
         animation.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
@@ -605,6 +609,11 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         rot.rotation(30,1,0,0);
         moveMatrix[6]->setMatrix(rot.getMatrix());
         moveMatrix[7]->setMatrix(rot.getMatrix());
+    }
+    else if(isHiting){
+        animationHit.updateState(time-currentTime);
+        for(unsigned i=0;i<moveMatrix.size();i++)
+            moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
     }
 
     if(activatedDialog){
@@ -727,24 +736,25 @@ void Hero::noMove(){
     animationHit.add(LegScriptLeft);
 
     //Matrix4fDinamic
-    oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
-    OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
+    oscillateShoulder=new OscillateRotation(true,90,0,1,500,vec3f(1.0,0.0,0),1);
+    OscillateRotation * shoulderCharge=new OscillateRotation(false,0,-40,1,250,vec3f(1.0,0.0,0),1);
+    OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
 
     //Movement to the first arm
     ElbowScriptLeft=new MatrixScript();
     ArmScriptLeft=new MatrixScript();
+    ElbowScriptLeft->add(0.5,oscillateElbow);
     ElbowScriptLeft->add(0.5,notMove);
-    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,shoulderCharge);
     ArmScriptLeft->add(0.5,oscillateShoulder);
-    ArmScriptLeft->add(0.5,notMove);
 
     //Movement to the second arm
     ElbowScriptRight=new MatrixScript();
     ArmScriptRight=new MatrixScript();
     ElbowScriptRight->add(0.5,notMove);
-    ElbowScriptRight->add(0.5,notMove);
-    ArmScriptRight->add(0.5,notMove);
+    ElbowScriptRight->add(0.5,oscillateElbow);
     ArmScriptRight->add(0.5,oscillateShoulder);
+    ArmScriptRight->add(0.5,shoulderCharge);
 
 
     //Add the script to our animation
