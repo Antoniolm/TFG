@@ -19,8 +19,9 @@
 
 #include "enemy.h"
 
-Enemy::Enemy(vec3f aPosition,vec3f aRadioActivity)
+Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 {
+    life=aLife;
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     radioActivity=aRadioActivity;
 
@@ -500,6 +501,11 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
             if(!moveBody(moveHero.second,moveHero.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
                 activeJump(vec3f(0.0,15.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
+            }
+        }
+        else{
+            if(rootMap->getHero()->isHit()){
+                addLife(-10);
             }
         }
         if(isJumping){

@@ -455,7 +455,7 @@ void Hero::visualization(Context & cv){
 //**********************************************************************//
 
 void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
-    bool hasMove=true,isHiting=false;
+    bool hasMove=true,isHitting=false;
     avatarDirection heroDir;
     vec3f moveHero,velocityHero,accelerationHero;
     currentMap=rootMap;
@@ -643,6 +643,12 @@ void Hero::noMove(){
     for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
     isMoving=false;
+}
+
+//**********************************************************************//
+
+bool Hero::isHit(){
+    return isHitting;
 }
 
 //**********************************************************************//

@@ -313,11 +313,11 @@ RootMap::RootMap()
     // Add enemy of our map
     enemyList=new EnemyList();
 
-    /*Enemy * enemy=new Enemy(vec3f(4.5,2.0,-0.5f),vec3f(2.0,2.0,2.0));
+    Enemy * enemy=new Enemy(100.0,vec3f(4.5,2.0,-0.5f),vec3f(2.0,2.0,2.0));
     enemyList->add(enemy);
 
-    enemy=new Enemy(vec3f(10.5,0.0,-2.5f),vec3f(4.0,4.0,4.0));
-    enemyList->add(enemy);*/
+    enemy=new Enemy(50.0,vec3f(10.5,0.0,-2.5f),vec3f(4.0,4.0,4.0));
+    enemyList->add(enemy);
 
     ////////////////////////////////////////
     //Create the indexMap;

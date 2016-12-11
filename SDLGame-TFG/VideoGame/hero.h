@@ -92,6 +92,14 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void noMove();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return if the hero is hitting or not
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isHit();
+
     protected:
 
     private:
@@ -101,7 +109,7 @@ class Hero: public AvatarMove
         ScriptLMD animation;
         ScriptLMD animationHit;
         Text * currentText;
-        bool activatedDialog;
+        bool activatedDialog,isHitting;
         float jumpDelay;
 };
 
