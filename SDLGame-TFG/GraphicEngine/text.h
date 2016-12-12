@@ -47,7 +47,7 @@ class Text : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Text(const string & aTexture,TTF_Font * aFont,bool ahasDialog=true);
+        Text(const string & aTexture,TTF_Font * aFont,SDL_Color aColor=SDL_Color{0,0,0},bool ahasDialog=true);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -60,7 +60,7 @@ class Text : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setParameters(const string & aTexture,TTF_Font * aFont,bool ahasDialog=true);
+        void setParameters(const string & aTexture,TTF_Font * aFont,SDL_Color aColor=SDL_Color{0,0,0},bool ahasDialog=true);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -117,6 +117,7 @@ class Text : public Object3D
         GLuint textureText;
         Texture textureBack;
         TTF_Font* font;
+        SDL_Color color;
         NodeSceneGraph * textNode,* backNode;
 };
 

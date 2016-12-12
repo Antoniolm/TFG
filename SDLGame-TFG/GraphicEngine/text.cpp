@@ -26,10 +26,11 @@ Text::Text()
 
 //**********************************************************************//
 
-Text::Text(const string & aTexture,TTF_Font * aFont,bool ahasDialog){
+Text::Text(const string & aTexture,TTF_Font * aFont,SDL_Color aColor,bool ahasDialog){
     fileTexture=aTexture;
     font=aFont;
     hasDialog=ahasDialog;
+    color=aColor;
 
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
@@ -70,24 +71,24 @@ Text::~Text()
     delete positionText;
     delete scaleText;
     delete scaleBack;
-    delete font;
     delete textNode;
     delete backNode;
 }
 
 //**********************************************************************//
 
-void Text::setParameters(const string & aTexture,TTF_Font * aFont,bool ahasDialog){
+void Text::setParameters(const string & aTexture,TTF_Font * aFont,SDL_Color aColor,bool ahasDialog){
     fileTexture=aTexture;
     font=aFont;
     hasDialog=ahasDialog;
+    color=aColor;
 
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
 
     positionText=new Matrix4f();
     positionText->identity();
-    Matrix4f * scaleText=new Matrix4f();
+    scaleText=new Matrix4f();
     scaleText->scale(1.0,0.3,1.0);
 
     textNode=new NodeSceneGraph();
@@ -99,15 +100,16 @@ void Text::setParameters(const string & aTexture,TTF_Font * aFont,bool ahasDialo
         Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
         positionBack=new Matrix4f();
         positionBack->identity();
-        scaleText=new Matrix4f();
-        scaleText->scale(1.2,1.1,1.0);
+        scaleBack=new Matrix4f();
+        scaleBack->scale(1.2,1.1,1.0);
 
         backNode=new NodeSceneGraph();
         backNode->add(positionBack);
-        backNode->add(scaleText);
+        backNode->add(scaleBack);
         backNode->add(material);
         backNode->add(textObject);
     }
+
 }
 
 
@@ -131,7 +133,6 @@ void Text::init(){
     glGenTextures(1, &textureText);
     glBindTexture(GL_TEXTURE_2D, textureText);
 
-    SDL_Color color = {0, 0, 0};
     surface = TTF_RenderText_Blended(font, message.c_str(),color);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);

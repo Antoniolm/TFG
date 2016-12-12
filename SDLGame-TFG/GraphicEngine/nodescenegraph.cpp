@@ -61,8 +61,9 @@ NodeSceneGraph::~NodeSceneGraph()
 //**********************************************************************//
 
 void NodeSceneGraph::visualization(Context & cv){
-    if(invert)
+    if(invert){
         glUniform1f(glGetUniformLocation(cv.currentShader.getProgram(),"invertNormal"), 1);
+    }
     else
         glUniform1f(glGetUniformLocation(cv.currentShader.getProgram(),"invertNormal"), 0);
 

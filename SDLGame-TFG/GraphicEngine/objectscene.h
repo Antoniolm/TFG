@@ -78,6 +78,12 @@ class ObjectScene : public Object3D
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will generate the next boundingBox of the object.
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void generateBoundingbox();
         vec4f position;
         Object3D * object;

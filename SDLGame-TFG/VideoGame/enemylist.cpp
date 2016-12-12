@@ -50,7 +50,7 @@ void EnemyList::visualization(Context & cv){
 
 void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
     //Check if the hero is speaking with a avatar
-    vec3f distance,radio,posHero;unsigned currentNpc;
+    vec3f distance,radio,posHero;
 
     Hero * hero=rootMap->getHero();
     posHero=hero->getPosition();

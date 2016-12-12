@@ -90,8 +90,6 @@ void ObjectScene::generateBoundingbox(){
     for(int i=0;i<vertex.size();i++)
         vertex[i]=matrixBounding.product(vertex[i]);
 
-
-
     //Generate the new boundingBox
     float maxX,maxY,maxZ,minX,minY,minZ;
     maxX=vertex[0].x;  maxY=vertex[0].y;  maxZ=vertex[0].z;
