@@ -24,7 +24,8 @@ AvatarMove::AvatarMove(){
 }
 
 AvatarMove::~AvatarMove(){
-    //dtor
+    delete acceleratedMove;
+    delete moveAvatar;
 }
 
 bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){

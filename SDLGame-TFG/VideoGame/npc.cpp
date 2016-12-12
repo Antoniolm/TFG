@@ -55,7 +55,7 @@ Npc::Npc(vec3f aPosition)
 
 Npc::~Npc()
 {
-    //dtor
+    delete currentText;
 }
 
 //**********************************************************************//

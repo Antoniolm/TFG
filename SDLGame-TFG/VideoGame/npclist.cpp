@@ -25,9 +25,10 @@ NpcList::NpcList()
 
 //**********************************************************************//
 
-NpcList::~NpcList()
-{
-    //dtor
+NpcList::~NpcList(){
+    for(vector<Npc *>::iterator it = npcs.begin() ; it != npcs.end(); ++it){
+        delete (*it);
+    }
 }
 
 //**********************************************************************//
