@@ -39,7 +39,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
-    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
+    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 40);
     SDL_Color color= {255,0,0};
     currentText=new Text("",font,color,false);
     activatedDialog=false;
@@ -477,6 +477,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     root->add(legRight);
     currentTime=SDL_GetTicks();
     jumpDelay=currentTime;
+    hitDelay=currentTime;
 }
 
 //**********************************************************************//
@@ -520,15 +521,17 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
             }
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
-            if(rootMap->getHero()->isHit()){ //If the hero is hitting
+            if(rootMap->getHero()->isHit() && hitDelay<(time-1000)){ //If the hero is hitting
                 addLife(-10);
                 activatedDialog=true;
                 currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
                 currentText->setMessage("-10");
                 currentText->init();
+                hitDelay=time;
             }
             else { //If the hero is not hitting
-                activatedDialog=false;
+                if(hitDelay<(time-100))
+                    activatedDialog=false;
             }
         }
         if(isJumping){
