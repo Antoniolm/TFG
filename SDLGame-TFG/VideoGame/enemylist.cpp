@@ -28,7 +28,9 @@ EnemyList::EnemyList()
 
 EnemyList::~EnemyList()
 {
-    //dtor
+    for(vector<Enemy *>::iterator it = enemies.begin() ; it != enemies.end(); ++it){
+        delete (*it);
+    }
 }
 
 //**********************************************************************//
