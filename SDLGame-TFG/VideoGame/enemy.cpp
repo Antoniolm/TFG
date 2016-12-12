@@ -482,7 +482,10 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 
 Enemy::~Enemy()
 {
-    //dtor
+    delete currentText;
+    for(vector<Matrix4f *>::iterator it = moveMatrix.begin() ; it != moveMatrix.end(); ++it){
+        delete (*it);
+    }
 }
 
 //**********************************************************************//

@@ -440,7 +440,14 @@ Hero::Hero()
 
 Hero::~Hero()
 {
-    //dtor
+    delete currentText;
+    for(vector<Matrix4f *>::iterator it = moveMatrix.begin() ; it != moveMatrix.end(); ++it){
+        delete (*it);
+    }
+
+    for(vector<Sound *>::iterator it = heroSound.begin() ; it != heroSound.end(); ++it){
+        delete (*it);
+    }
 }
 
 //**********************************************************************//
