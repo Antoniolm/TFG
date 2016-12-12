@@ -356,8 +356,9 @@ RootMap::RootMap()
 
 RootMap::~RootMap()
 {
-    delete(backSound);
-    delete hero;
+    delete backSound;
+    delete npcList;
+    delete enemyList;
 
     for(unsigned i=0;i<objs.size();i++)
         delete objs[i];

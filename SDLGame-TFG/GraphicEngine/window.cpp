@@ -38,6 +38,7 @@ Window::~Window(){
 	Mix_Quit();
 	SDL_Quit();
 	TTF_Quit();
+	delete instance;
 
 }
 

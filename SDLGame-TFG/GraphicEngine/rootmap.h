@@ -89,7 +89,7 @@ class RootMap : public Object3D
     protected:
 
     private:
-        vector<int> indexMap[30][30];
+        vector<int> indexMap[100][100];
         vector<ObjectScene *> objs;
         vector<ObjectScene *> decorationObjs;
         NpcList * npcList;

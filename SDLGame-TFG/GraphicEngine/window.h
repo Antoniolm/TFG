@@ -117,7 +117,6 @@ class Window
         static Window* instance;
         SDL_Window * window;
         SDL_GLContext context;
-        Mix_Music * music;
         string title;
         int height;
         int width;

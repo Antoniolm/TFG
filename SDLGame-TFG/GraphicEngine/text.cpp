@@ -68,6 +68,11 @@ Text::~Text()
     SDL_FreeSurface(surface);
     delete positionBack;
     delete positionText;
+    delete scaleText;
+    delete scaleBack;
+    delete font;
+    delete textNode;
+    delete backNode;
 }
 
 //**********************************************************************//
