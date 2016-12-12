@@ -567,8 +567,13 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         activeJump(vec3f(velocityHero.x,15.0,velocityHero.y),vec3f(accelerationHero.x,5.0,accelerationHero.z));
         jumpDelay=time;
     }
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]){
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]){ //If hero is hitting
         isHitting=true;
+    }
+    else { // If hero is not hitting -> resetAnimation
+        animationHit.resetState();
+        for(unsigned i=0;i<moveMatrix.size();i++)
+            moveMatrix[i]->identity();
     }
 
     //Move the body

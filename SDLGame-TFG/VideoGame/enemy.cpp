@@ -523,7 +523,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
                 currentText->setMessage("-10");
                 currentText->init();
             }
-            else {
+            else { //If the hero is not hitting
                 activatedDialog=false;
             }
         }
