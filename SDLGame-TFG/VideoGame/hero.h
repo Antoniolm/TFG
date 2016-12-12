@@ -110,7 +110,7 @@ class Hero: public AvatarMove
         ScriptLMD animationHit;
         Text * currentText;
         bool activatedDialog,isHitting;
-        float jumpDelay;
+        float jumpDelay,hitDelay;
 };
 
 #endif // HERO_H

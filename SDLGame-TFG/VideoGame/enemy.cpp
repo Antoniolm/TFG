@@ -530,7 +530,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
                 hitDelay=time;
             }
             else { //If the hero is not hitting
-                if(hitDelay<(time-100))
+                if(hitDelay<(time-300))
                     activatedDialog=false;
             }
         }

@@ -28,6 +28,7 @@ Hero::Hero()
     isMoveCollision=false;
     isFalling=false;
     isJumping=false;
+    isHitting=false;
 
     //Print a message for check
     cout<< "< Game is loading our hero >"<< endl;
@@ -431,6 +432,7 @@ Hero::Hero()
     root->add(legRight);
     currentTime=SDL_GetTicks();
     jumpDelay=currentTime;
+    hitDelay=currentTime;
 
     //Init all animations of our hero
     initAnimation();
@@ -464,7 +466,6 @@ void Hero::visualization(Context & cv){
 void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     bool hasMove=true;
 
-    isHitting=false;
     avatarDirection heroDir;
     vec3f moveHero,velocityHero,accelerationHero;
     currentMap=rootMap;
@@ -576,11 +577,16 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]){ //If hero is hitting
         isHitting=true;
+        hitDelay=time;
     }
     else { // If hero is not hitting -> resetAnimation
-        animationHit.resetState();
-        for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->identity();
+        if(hitDelay<(time-1000)){
+            animationHit.resetState();
+            for(unsigned i=0;i<moveMatrix.size();i++)
+                moveMatrix[i]->identity();
+            hitDelay=time;
+            isHitting=false;
+        }
     }
 
     //Move the body
