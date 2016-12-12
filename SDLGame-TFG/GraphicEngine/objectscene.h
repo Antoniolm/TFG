@@ -78,6 +78,7 @@ class ObjectScene : public Object3D
     protected:
 
     private:
+        void generateBoundingbox();
         vec4f position;
         Object3D * object;
         Matrix4f matrix;
