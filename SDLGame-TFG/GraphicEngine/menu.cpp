@@ -59,6 +59,7 @@ void Menu::visualization(Context & cv){
 //**********************************************************************//
 
 void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+    vec3f position;
 
     if(time-currentTime>200)
         currentTime=time-50;
@@ -66,6 +67,10 @@ void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)] && menuDelay<(time-600)){
         activateMenu=!activateMenu;
         menuDelay=time;
+        if(activateMenu){
+            position=rootMap->getHero()->getPosition();
+            positionMenu->translation(position.x,position.y+1.0,0.5);
+        }
     }
 
     currentTime+=time-currentTime;

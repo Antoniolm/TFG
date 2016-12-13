@@ -63,10 +63,11 @@ class Menu : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will get if the menu is activated or not
-        *    \return void
+        *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
         bool isActivate();
+
 
     protected:
 
