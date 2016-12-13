@@ -99,7 +99,8 @@ void Game::loop(){
         //Update the states
         time=SDL_GetTicks();
         menu->updateState(time,currentKeyStates,rootMap);
-        rootMap->updateState(time,currentKeyStates,rootMap);
+        if(!menu->isActivate())
+            rootMap->updateState(time,currentKeyStates,rootMap);
 
         //Update the camera
         posHero=hero->getPosition();

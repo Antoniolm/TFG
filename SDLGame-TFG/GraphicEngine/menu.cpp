@@ -60,7 +60,6 @@ void Menu::visualization(Context & cv){
 
 void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
 
-
     if(time-currentTime>200)
         currentTime=time-50;
 
@@ -68,4 +67,12 @@ void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         activateMenu=!activateMenu;
         menuDelay=time;
     }
+
+    currentTime+=time-currentTime;
+}
+
+//**********************************************************************//
+
+bool Menu::isActivate(){
+    return activateMenu;
 }

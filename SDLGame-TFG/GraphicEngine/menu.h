@@ -60,6 +60,14 @@ class Menu : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get if the menu is activated or not
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isActivate();
+
     protected:
 
     private:
