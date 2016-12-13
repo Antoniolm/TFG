@@ -44,8 +44,8 @@ RootMap::RootMap()
     Mesh * treeDieObject=new Mesh("geometries/treeDie.obj");
     treeDieObject->init();
 
-    Mesh * grassBigObject=new Mesh("geometries/grassBig.obj");
-    grassBigObject->init();
+    Mesh * backgroundObject=new Mesh("geometries/sphereBackground.obj");
+    backgroundObject->init();
 
     Matrix4f *scaleTreeDie =new Matrix4f();
     scaleTreeDie->scale(0.6,0.5,0.5);
@@ -84,6 +84,7 @@ RootMap::RootMap()
     Material * materialTree=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grass.png");
     Material * materialGrassBig=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grassBig.png");
     Material * materialWater=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/water.png");
+    Material * materialbackground=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/background.jpg");
     Material * materialVoid=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/void.png");
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
@@ -218,6 +219,19 @@ RootMap::RootMap()
     cubeNode->add(materialMushroom);
     cubeNode->add(mushRoomObject);
     decorationObjs.push_back(new ObjectScene(cubeNode));
+
+    transOneCube=new Matrix4f();
+    transOneCube->translation(0.0f,0.0f,0.0f);
+    scaleCube =new Matrix4f();
+    scaleCube->scale(10.0,10.0,10.0);
+    cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleCube);
+    cubeNode->add(materialbackground);
+    cubeNode->add(backgroundObject);
+    decorationObjs.push_back(new ObjectScene(cubeNode));
+
+
 
     transOneCube=new Matrix4f();
     transOneCube->translation(6.0f,1.5f,-3.0f);

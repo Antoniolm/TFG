@@ -80,7 +80,6 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
 
     //User push the button -> A
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-400.0)){
-        //hero->activateDialog(false);
         if(isActivate){ //If hero is talking -> nextDialog
                 npcs[currentNpc]->nextDialog();
                 //Check the speaker
