@@ -519,7 +519,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
 
         if(moveHero.second.x!=0.0 || moveHero.second.y!=0.0 || moveHero.second.z!=0.0){ //IA-> is not near of our hero
             if(!moveBody(moveHero.second,moveHero.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
-                activeJump(vec3f(0.0,15.0,0.0),vec3f(0.0,5.0,0.0));
+                activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
             }
         }
@@ -597,38 +597,38 @@ bool Enemy::detectHit(vec3f posHero,avatarDirection dirHero){
     bool result=false;
 
     switch(dirHero){
-    case FORWARD:
-        if(position.z>posHero.z && (position.x>=posHero.x-0.3 && position.x<=posHero.x+0.3))
-            result=true;
-        break;
-    case BACKWARD:
-        if(position.z<posHero.z && (position.x>=posHero.x-0.3 && position.x<=posHero.x+0.3))
-            result=true;
-        break;
-    case LEFTWARD:
-        if(position.x<posHero.x && (position.z>=posHero.z-0.3 && position.z<=posHero.z+0.3))
-            result=true;
-        break;
-    case RIGHTWARD:
-        if(position.x>posHero.x && (position.z>=posHero.z-0.3 && position.z<=posHero.z+0.3))
-            result=true;
-        break;
-    case FOR_LEFTWARD:
-        if(position.x<posHero.x && position.z>posHero.z)
-            result=true;
-        break;
-    case FOR_RIGHTWARD:
-        if(position.x>posHero.x && position.z>posHero.z)
-            result=true;
-        break;
-    case BACK_LEFTWARD:
-        if(position.x<posHero.x && position.z<posHero.z)
-            result=true;
-        break;
-    case BACK_RIGHTWARD:
-        if(position.x>posHero.x && position.z<posHero.z)
-            result=true;
-        break;
+        case FORWARD:
+            if(position.z>posHero.z && (position.x>=posHero.x-0.3 && position.x<=posHero.x+0.3))
+                result=true;
+            break;
+        case BACKWARD:
+            if(position.z<posHero.z && (position.x>=posHero.x-0.3 && position.x<=posHero.x+0.3))
+                result=true;
+            break;
+        case LEFTWARD:
+            if(position.x<posHero.x && (position.z>=posHero.z-0.3 && position.z<=posHero.z+0.3))
+                result=true;
+            break;
+        case RIGHTWARD:
+            if(position.x>posHero.x && (position.z>=posHero.z-0.3 && position.z<=posHero.z+0.3))
+                result=true;
+            break;
+        case FOR_LEFTWARD:
+            if(position.x<posHero.x && position.z>posHero.z)
+                result=true;
+            break;
+        case FOR_RIGHTWARD:
+            if(position.x>posHero.x && position.z>posHero.z)
+                result=true;
+            break;
+        case BACK_LEFTWARD:
+            if(position.x<posHero.x && position.z<posHero.z)
+                result=true;
+            break;
+        case BACK_RIGHTWARD:
+            if(position.x>posHero.x && position.z<posHero.z)
+                result=true;
+            break;
     }
 
     return result;

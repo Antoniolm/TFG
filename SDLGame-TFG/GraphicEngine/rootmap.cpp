@@ -220,18 +220,7 @@ RootMap::RootMap()
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
-    transOneCube->translation(2.5f,1.5f,-0.5f);
-    scaleCube =new Matrix4f();
-    scaleCube->scale(0.2,0.5,0.2);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialGrassBig);
-    cubeNode->add(grassBigObject);
-    decorationObjs.push_back(new ObjectScene(cubeNode));
-
-    transOneCube=new Matrix4f();
-    transOneCube->translation(6.0f,1.5f,-2.0f);
+    transOneCube->translation(6.0f,1.5f,-3.0f);
     scaleCube =new Matrix4f();
     scaleCube->scale(1.0,0.5,1.0);
 
@@ -294,20 +283,6 @@ RootMap::RootMap()
     cubeNode->add(materialVoid);
     cubeNode->add(cubeObject);
     objs.push_back(new ObjectScene(cubeNode));
-
-    transOneCube=new Matrix4f();
-    transOneCube->translation(4.5,2.5,-3.5f);
-    scaleCube =new Matrix4f();
-    scaleCube->scale(0.5,1.5,0.5);
-
-    //Added to our indexMap for collision with our hero
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialWater);
-    cubeNode->add(cubeObject);
-    objs.push_back(new ObjectScene(cubeNode));
-
 
     /////////////////////////////////////////
     // Add enemy of our map
