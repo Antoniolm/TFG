@@ -49,7 +49,7 @@ void NpcList::visualization(Context & cv){
 void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
 
     //Check if the hero is speaking with a avatar
-    bool isActivate=false;vec3f distance,posHero;unsigned currentNpc;
+    bool isActivate=false,isNearNpc=false;vec3f distance,posHero;unsigned currentNpc,nearNpc;
 
     Hero * hero=rootMap->getHero();
     posHero=hero->getPosition();
@@ -60,12 +60,20 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
         if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1) && !isActivate){
             hero->activateDialog(true);
             hero->setDialog("Pulsa A");
+            nearNpc=i;
+            isNearNpc=true;
         }
-        /*else{
-            if((distance.x<-2 || distance.x>2)||(distance.y<-1 || distance.y>1)||(distance.z<-2 || distance.z>2) && isActivate)
-                hero->activateDialog(false);
-        }*/
+        else{
+            isNearNpc=false;
+        }
     }
+
+    if(isNearNpc){
+        distance=(npcs[nearNpc]->getPosition())-(posHero);
+        if((distance.x<-2 || distance.x>2)||(distance.y<-1 || distance.y>1)||(distance.z<-2 || distance.z>2))
+            hero->activateDialog(false);
+    }
+
     if(isActivate){ //If hero is talking and he is a good distance
         distance=(npcs[currentNpc]->getPosition())-(posHero);
         if((distance.x<-2 || distance.x>2)||(distance.y<-1 || distance.y>1)||(distance.z<-2 || distance.z>2)){
@@ -76,6 +84,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
 
     //User push the button -> A
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-400.0)){
+        hero->activateDialog(false);
         if(isActivate){ //If hero is talking -> nextDialog
                 npcs[currentNpc]->nextDialog();
                 //Check the speaker
