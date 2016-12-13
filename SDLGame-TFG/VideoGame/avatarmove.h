@@ -86,6 +86,14 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will get the direction of our avatar
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        avatarDirection getDirection();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will show the object in our interface
         *    \return void
         */

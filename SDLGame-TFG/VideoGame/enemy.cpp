@@ -507,12 +507,15 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     pair<avatarDirection,vec3f> moveHero;
     vec3f aux;
     currentMap=rootMap;
+    Hero * hero=rootMap->getHero();
+    vec3f posHero=hero->getPosition();
+    avatarDirection dirHero=hero->getDirection();
 
     if(time-currentTime>200)
         currentTime=time-50;
 
     if(enemyActivate){ //If enemy is activated
-        moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),rootMap->getHero()->getPosition());
+        moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),posHero);
 
         if(moveHero.second.x!=0.0 || moveHero.second.y!=0.0 || moveHero.second.z!=0.0){ //IA-> is not near of our hero
             if(!moveBody(moveHero.second,moveHero.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
@@ -521,7 +524,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
             }
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
-            if(rootMap->getHero()->isHit() && hitDelay<(time-1000)){ //If the hero is hitting
+            if(hero->isHit() && hitDelay<(time-1000) && detectHit(posHero,dirHero)){ //If the hero is hitting
                 addLife(-10);
                 activatedDialog=true;
                 currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
@@ -587,3 +590,47 @@ bool Enemy::isActivate(){
 vec3f Enemy::getRadioActivity(){
     return radioActivity;
 }
+
+//**********************************************************************//
+
+bool Enemy::detectHit(vec3f posHero,avatarDirection dirHero){
+    bool result=false;
+
+    switch(dirHero){
+    case FORWARD:
+        if(position.z>posHero.z && (position.x>=posHero.x-0.5 && position.x<=posHero.x+0.5 ))
+            result=true;
+        break;
+    case BACKWARD:
+        if(position.z<posHero.z && (position.x>=posHero.x-0.5 && position.x<=posHero.x+0.5 ))
+            result=true;
+        break;
+    case LEFTWARD:
+        if(position.x<posHero.x && (position.x>=posHero.x-0.5 && position.x<=posHero.x+0.5 ))
+            result=true;
+        break;
+    case RIGHTWARD:
+        if()
+            result=true;
+        break;
+    case FOR_LEFTWARD:
+        if()
+            result=true;
+        break;
+    case FOR_RIGHTWARD:
+        if()
+            result=true;
+        break;
+    case BACK_LEFTWARD:
+        if()
+            result=true;
+        break;
+    case BACK_RIGHTWARD:
+        if()
+            result=true;
+        break;
+    }
+
+    return result;
+}
+

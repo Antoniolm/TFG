@@ -374,6 +374,12 @@ vec3f AvatarMove::getPosition(){
 
 //**********************************************************************//
 
+avatarDirection AvatarMove::getDirection(){
+    return direction;
+}
+
+//**********************************************************************//
+
 void AvatarMove::visualization(Context & cv){
 }
 
