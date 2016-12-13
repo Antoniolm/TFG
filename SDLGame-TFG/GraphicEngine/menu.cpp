@@ -21,17 +21,22 @@
 
 Menu::Menu()
 {
+    activateMenu=false;
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
 
+    Material * material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
+
     positionMenu=new Matrix4f();
     positionMenu->identity();
+    positionMenu->translation(1.0,2.5,0.5);
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(1.0,0.3,1.0);
+    scaleMenu->scale(4.0,10.0,4.0);
 
     root=new NodeSceneGraph();
     root->add(positionMenu);
     root->add(scaleMenu);
+    root->add(material);
     root->add(textObject);
 }
 
@@ -45,10 +50,14 @@ Menu::~Menu()
 //**********************************************************************//
 
 void Menu::visualization(Context & cv){
-    root->visualization(cv);
+    if(activateMenu)
+        root->visualization(cv);
 }
 
 //**********************************************************************//
 
-void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
+void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)]){
+        activateMenu=!activateMenu;
+    }
 }

@@ -29,6 +29,7 @@ Game::Game(){
     window->setParameters("SDL_Game",800,600);
     window->createWindow();
     rootMap=new RootMap();
+    menu = new Menu();
 }
 
 //**********************************************************************//
@@ -48,6 +49,7 @@ void Game::loop(){
     const Uint8* currentKeyStates;
     Context aContext;
     vec3f posHero;
+    float time;
 
     hero=new Hero();
     rootMap->setHero(hero);
@@ -93,7 +95,11 @@ void Game::loop(){
         currentKeyStates=SDL_GetKeyboardState(NULL);
 
         window->cleanScreen();
-        rootMap->updateState(SDL_GetTicks(),currentKeyStates,rootMap);
+
+        //Update the states
+        time=SDL_GetTicks();
+        menu->updateState(time,currentKeyStates,rootMap);
+        rootMap->updateState(time,currentKeyStates,rootMap);
 
         //Update the camera
         posHero=hero->getPosition();
@@ -101,6 +107,7 @@ void Game::loop(){
         aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
 
         rootMap->visualization(aContext);
+        menu->visualization(aContext);
 
         window->updateScreen();
     }
