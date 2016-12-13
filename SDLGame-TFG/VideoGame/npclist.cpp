@@ -56,22 +56,14 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     for(unsigned i=0;i<npcs.size() && !isActivate;i++){ //Check if hero is talking now
         isActivate=npcs[i]->getActivate();
         currentNpc=i;
+
+        //Check if the hero is near to a npc
         distance=(npcs[i]->getPosition())-(posHero);
         if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1) && !isActivate){
             hero->activateDialog(true);
             hero->setDialog("Pulsa A");
-            nearNpc=i;
             isNearNpc=true;
         }
-        else{
-            isNearNpc=false;
-        }
-    }
-
-    if(isNearNpc){
-        distance=(npcs[nearNpc]->getPosition())-(posHero);
-        if((distance.x<-2 || distance.x>2)||(distance.y<-1 || distance.y>1)||(distance.z<-2 || distance.z>2))
-            hero->activateDialog(false);
     }
 
     if(isActivate){ //If hero is talking and he is a good distance
@@ -81,10 +73,14 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
             hero->activateDialog(false);
         }
     }
+    else{
+        if(!isNearNpc) //If the hero is not near to a npc them the hero doesn't show the dialog "Pulsa A"
+            hero->activateDialog(false);
+    }
 
     //User push the button -> A
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && dialogTime<(time-400.0)){
-        hero->activateDialog(false);
+        //hero->activateDialog(false);
         if(isActivate){ //If hero is talking -> nextDialog
                 npcs[currentNpc]->nextDialog();
                 //Check the speaker

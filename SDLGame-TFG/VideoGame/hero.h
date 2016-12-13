@@ -86,6 +86,14 @@ class Hero: public AvatarMove
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    It will get it the text is activate or not of our hero
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool getActivateDialog();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will reset animations because the hero isn't in movement
         *    \return void
         */
