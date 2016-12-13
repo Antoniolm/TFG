@@ -38,6 +38,8 @@ Menu::Menu()
     root->add(scaleMenu);
     root->add(material);
     root->add(textObject);
+    currentTime=SDL_GetTicks();
+    menuDelay=currentTime;
 }
 
 //**********************************************************************//
@@ -57,7 +59,13 @@ void Menu::visualization(Context & cv){
 //**********************************************************************//
 
 void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)]){
+
+
+    if(time-currentTime>200)
+        currentTime=time-50;
+
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)] && menuDelay<(time-600)){
         activateMenu=!activateMenu;
+        menuDelay=time;
     }
 }

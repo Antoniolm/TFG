@@ -66,6 +66,7 @@ class Menu : public Object3D
         NodeSceneGraph * root;
         Matrix4f * positionMenu;
         bool activateMenu;
+        float menuDelay;
 };
 
 #endif // MENU_H
