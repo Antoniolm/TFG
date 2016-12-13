@@ -23,6 +23,11 @@
 #include <object3d.h>
 #include "rootmap.h"
 #include "context.h"
+#include "mesh.h"
+#include "nodescenegraph.h"
+#include "texture.h"
+#include "material.h"
+
 
 class Menu : public Object3D
 {
@@ -59,6 +64,7 @@ class Menu : public Object3D
 
     private:
         NodeSceneGraph * root;
+        Matrix4f * positionMenu;
         bool activateMenu;
 };
 

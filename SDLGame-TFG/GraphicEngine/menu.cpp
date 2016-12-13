@@ -21,7 +21,18 @@
 
 Menu::Menu()
 {
-    //ctor
+    Mesh * textObject=new Mesh(string("geometries/text.obj"));
+    textObject->init();
+
+    positionMenu=new Matrix4f();
+    positionMenu->identity();
+    Matrix4f * scaleMenu=new Matrix4f();
+    scaleMenu->scale(1.0,0.3,1.0);
+
+    root=new NodeSceneGraph();
+    root->add(positionMenu);
+    root->add(scaleMenu);
+    root->add(textObject);
 }
 
 //**********************************************************************//
@@ -34,7 +45,7 @@ Menu::~Menu()
 //**********************************************************************//
 
 void Menu::visualization(Context & cv){
-
+    root->visualization(cv);
 }
 
 //**********************************************************************//

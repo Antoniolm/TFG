@@ -32,6 +32,7 @@
 #include "../GraphicEngine/Camera.h"
 #include "../GraphicEngine/structdata.h"
 #include "../GraphicEngine/text.h"
+#include "../GraphicEngine/menu.h"
 #include "hero.h"
 
 class Game
@@ -72,6 +73,7 @@ class Game
         Window * window;
         RootMap * rootMap;
         Hero * hero;
+        Menu * menu;
 };
 
 #endif // GAME_H

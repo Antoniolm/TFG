@@ -27,7 +27,6 @@
 #include <SDL_opengl.h>
 #include <SDL_mixer.h>
 #include <SDL_TTF.h>
-#include "shader.h"
 #include <vector>
 #include "mesh.h"
 #include "nodescenegraph.h"

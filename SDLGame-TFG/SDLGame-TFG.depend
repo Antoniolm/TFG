@@ -372,7 +372,7 @@
 	<string>
 	"sound.h"
 
-1481206160 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1481643111 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/mesh.h"
 	"../GraphicEngine/context.h"
@@ -385,6 +385,7 @@
 	"../GraphicEngine/Camera.h"
 	"../GraphicEngine/structdata.h"
 	"../GraphicEngine/text.h"
+	"../GraphicEngine/menu.h"
 	"hero.h"
 
 1481542194 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
@@ -1641,7 +1642,7 @@
 1481570194 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
 	"text.h"
 
-1481570542 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
+1481642848 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
 	"object3d.h"
 	"structdata.h"
 	"shader.h"
@@ -1649,7 +1650,6 @@
 	<SDL_opengl.h>
 	<SDL_mixer.h>
 	<SDL_TTF.h>
-	"shader.h"
 	<vector>
 	"mesh.h"
 	"nodescenegraph.h"
@@ -1719,11 +1719,15 @@
 	<iostream>
 	<math.h>
 
-1481641726 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.cpp
+1481643017 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.cpp
 	"menu.h"
 
-1481641984 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.h
+1481642941 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.h
 	<object3d.h>
 	"rootmap.h"
 	"context.h"
+	"mesh.h"
+	"nodescenegraph.h"
+	"texture.h"
+	"material.h"
 
