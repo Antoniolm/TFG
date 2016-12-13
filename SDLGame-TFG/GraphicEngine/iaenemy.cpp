@@ -40,7 +40,7 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
     pair<avatarDirection,vec3f> result;
 
     //If the enemy is near of our hero. The enemy stop the movement
-    if(sqrt(pow(posEnemy.x-posHero.x,2.0)+pow(posEnemy.y-posHero.y,2.0)+pow(posEnemy.z-posHero.z,2.0))<0.5){
+    if(sqrt(pow(posEnemy.x-posHero.x,2.0)+pow(posEnemy.y-posHero.y,2.0)+pow(posEnemy.z-posHero.z,2.0))<0.7){
         result.first=FORWARD;
         result.second=vec3f(0.0f,0.0f,0.0f);
         return result;
