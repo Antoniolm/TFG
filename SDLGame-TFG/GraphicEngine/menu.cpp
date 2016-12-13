@@ -25,18 +25,23 @@ Menu::Menu()
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
 
-    Material * material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
+    Material * material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menu.png");
+    Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
 
     positionMenu=new Matrix4f();
     positionMenu->identity();
-    positionMenu->translation(1.0,2.5,0.5);
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(4.0,10.0,4.0);
+    scaleMenu->scale(1.0,5.0,1.0);
+    Matrix4f * scaleMenuBack=new Matrix4f();
+    scaleMenuBack->scale(4.0,2.0,4.0);
 
     root=new NodeSceneGraph();
     root->add(positionMenu);
     root->add(scaleMenu);
     root->add(material);
+    root->add(textObject);
+    root->add(scaleMenuBack);
+    root->add(materialBack);
     root->add(textObject);
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
