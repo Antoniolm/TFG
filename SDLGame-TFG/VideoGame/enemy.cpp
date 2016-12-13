@@ -598,19 +598,19 @@ bool Enemy::detectHit(vec3f posHero,avatarDirection dirHero){
 
     switch(dirHero){
     case FORWARD:
-        if(position.z>posHero.z)// && (position.x>=posHero.x-0.3 && position.x<=posHero.x+0.3))
+        if(position.z>posHero.z && (position.x>=posHero.x-0.3 && position.x<=posHero.x+0.3))
             result=true;
         break;
     case BACKWARD:
-        if(position.z<posHero.z)// && (position.x>=posHero.x-0.3 && position.x<=posHero.x+0.3))
+        if(position.z<posHero.z && (position.x>=posHero.x-0.3 && position.x<=posHero.x+0.3))
             result=true;
         break;
     case LEFTWARD:
-        if(position.x<posHero.x)// && (position.z>=posHero.z-0.3 && position.z<=posHero.z+0.3))
+        if(position.x<posHero.x && (position.z>=posHero.z-0.3 && position.z<=posHero.z+0.3))
             result=true;
         break;
     case RIGHTWARD:
-        if(position.x>posHero.x)// && (position.z>=posHero.z-0.3 && position.z<=posHero.z+0.3))
+        if(position.x>posHero.x && (position.z>=posHero.z-0.3 && position.z<=posHero.z+0.3))
             result=true;
         break;
     case FOR_LEFTWARD:
