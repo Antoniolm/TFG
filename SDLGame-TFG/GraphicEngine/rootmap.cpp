@@ -185,6 +185,18 @@ RootMap::RootMap()
         }
     }
 
+
+    transOneCube=new Matrix4f();
+    transOneCube->translation(0.0f,0.0f,0.0f);
+    Matrix4f *scaleBack =new Matrix4f();
+    scaleBack->scale(10.0,10.0,10.0);
+    cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleBack);
+    cubeNode->add(materialWater);
+    cubeNode->add(backgroundObject);
+    decorationObjs.push_back(new ObjectScene(cubeNode));
+
     transOneCube=new Matrix4f();
     transOneCube->translation(1.5f,2.0f,-6.5f);
     cubeNode=new NodeSceneGraph();
@@ -219,19 +231,6 @@ RootMap::RootMap()
     cubeNode->add(materialMushroom);
     cubeNode->add(mushRoomObject);
     decorationObjs.push_back(new ObjectScene(cubeNode));
-
-    transOneCube=new Matrix4f();
-    transOneCube->translation(0.0f,0.0f,0.0f);
-    scaleCube =new Matrix4f();
-    scaleCube->scale(10.0,10.0,10.0);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialbackground);
-    cubeNode->add(backgroundObject);
-    decorationObjs.push_back(new ObjectScene(cubeNode));
-
-
 
     transOneCube=new Matrix4f();
     transOneCube->translation(6.0f,1.5f,-3.0f);
