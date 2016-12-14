@@ -50,6 +50,7 @@ void Game::loop(){
     Context aContext;
     vec3f posHero;
     float time;
+    bool wasActivatedMenu=false;
 
     hero=new Hero();
     rootMap->setHero(hero);
@@ -99,8 +100,16 @@ void Game::loop(){
         //Update the states
         time=SDL_GetTicks();
         menu->updateState(time,currentKeyStates,rootMap);
-        if(!menu->isActivate())
+        if(!menu->isActivate()){
             rootMap->updateState(time,currentKeyStates,rootMap);
+            if(wasActivatedMenu)
+                rootMap->enableSound(true);
+            wasActivatedMenu=false;
+        }
+        else{
+            wasActivatedMenu=true;
+            rootMap->enableSound(false);
+        }
 
         //Update the camera
         posHero=hero->getPosition();

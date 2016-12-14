@@ -334,7 +334,7 @@ RootMap::RootMap()
     /////////////////////////////////////////
     // Add sound of our map
     backSound=new Sound("sounds/background.wav",0,60);
-    //backSound->play();
+    backSound->play();
 
     currentTime=SDL_GetTicks();
 }
@@ -405,6 +405,16 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     npcList->updateState(time,currentKeyStates,rootMap);
     enemyList->updateState(time,currentKeyStates,rootMap);
     currentTime+=time-currentTime;
+}
+
+//**********************************************************************//
+
+void RootMap::enableSound(bool value){
+    if(value)
+        backSound->resume();
+    else{
+        backSound->pause();
+    }
 }
 
 //**********************************************************************//

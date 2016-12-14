@@ -61,6 +61,8 @@ void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * r
             enemies[i]->activatedEnemy(true);
         }
         enemies[i]->updateState(time,currentKeyStates,rootMap);
+        //if(enemies[i]->getLife()<=0.0)
+
     }
 
 }

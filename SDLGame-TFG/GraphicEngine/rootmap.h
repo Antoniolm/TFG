@@ -73,7 +73,16 @@ class RootMap : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  );
+        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will enable the sound of our rootmap.That will use when the game
+        *    will be pause.
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void enableSound(bool value);
 
         //////////////////////////////////////////////////////////////////////////
         /**
