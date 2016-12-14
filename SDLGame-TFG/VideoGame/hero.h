@@ -67,6 +67,16 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will enable the sound of our hero.That will use when the game
+        *    will be pause.
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void enableSound(bool value);
+
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will set a new message for our text

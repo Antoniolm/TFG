@@ -415,6 +415,7 @@ void RootMap::enableSound(bool value){
     else{
         backSound->pause();
     }
+    hero->enableSound(value);
 }
 
 //**********************************************************************//

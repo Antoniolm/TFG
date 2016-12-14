@@ -644,6 +644,17 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
 
 //**********************************************************************//
 
+void Hero::enableSound(bool value){
+    for(int i=0;i<heroSound.size();i++)
+    if(value)
+        heroSound[i]->resume();
+    else{
+        heroSound[i]->pause();
+    }
+}
+
+//**********************************************************************//
+
 void Hero::setDialog(string message){
     currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
     currentText->setMessage(message);

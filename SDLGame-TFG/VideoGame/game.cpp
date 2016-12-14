@@ -107,8 +107,9 @@ void Game::loop(){
             wasActivatedMenu=false;
         }
         else{
+            if(!wasActivatedMenu)
+                rootMap->enableSound(false);
             wasActivatedMenu=true;
-            rootMap->enableSound(false);
         }
 
         //Update the camera
