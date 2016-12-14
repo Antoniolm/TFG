@@ -88,15 +88,16 @@ void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         }
     }
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){ //If the user push the action move on the menu
-            currentOption++;
-            if(currentOption==options.size())
-                currentOption=0;
-
-        }
+        currentOption++;
+        if(currentOption==options.size())
+            currentOption=0;
+        currentMaterial.setTexture(options[currentOption]);
+    }
     else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]){ //If the user push the action move on the menu
-            currentOption--;
-            if(currentOption==-1)
-                currentOption==options.size()-1;
+        currentOption--;
+        if(currentOption==-1)
+            currentOption==options.size()-1;
+        currentMaterial.setTexture(options[currentOption]);
     }
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_INSERT)]){ //If the user push the action intro
             //if(currentOption==0)
