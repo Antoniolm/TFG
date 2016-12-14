@@ -101,6 +101,7 @@ class RootMap : public Object3D
         vector<int> indexMap[100][100];
         vector<ObjectScene *> objs;
         vector<ObjectScene *> decorationObjs;
+        ObjectScene * background;
         NpcList * npcList;
         EnemyList * enemyList;
         Sound * backSound;

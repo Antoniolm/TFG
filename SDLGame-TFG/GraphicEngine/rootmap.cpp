@@ -184,7 +184,8 @@ RootMap::RootMap()
         }
     }
 
-
+    ////////////////////////////////////////////
+    // Background
     transOneCube=new Matrix4f();
     transOneCube->translation(0.0f,0.0f,0.0f);
     Matrix4f *scaleBack =new Matrix4f();
@@ -194,7 +195,7 @@ RootMap::RootMap()
     cubeNode->add(scaleBack);
     cubeNode->add(materialWater);
     cubeNode->add(backgroundObject);
-    decorationObjs.push_back(new ObjectScene(cubeNode));
+    background= new ObjectScene(cubeNode);
 
     transOneCube=new Matrix4f();
     transOneCube->translation(1.5f,2.0f,-6.5f);
@@ -369,6 +370,9 @@ Hero * RootMap::getHero(){
 //**********************************************************************//
 
 void RootMap::visualization(Context & cv){
+    //Draw background
+    background->visualization(cv);
+
     //Draw object
     for(unsigned i=0;i<objs.size();i++){
         objs[i]->visualization(cv);
