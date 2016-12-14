@@ -70,6 +70,12 @@ BoundingBox ObjectScene::getBoundingBox(){
 
 //**********************************************************************//
 
+float ObjectScene::getDamage(){
+    return 0.0;
+}
+
+//**********************************************************************//
+
 void ObjectScene::generateBoundingbox(){
     boundingBox=object->getBoundingBox();
     GLfloat * mat=matrix.getMatrix();

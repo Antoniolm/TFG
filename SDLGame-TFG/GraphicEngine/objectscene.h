@@ -75,6 +75,14 @@ class ObjectScene : public Object3D
         //////////////////////////////////////////////////////////////////////////
         BoundingBox getBoundingBox();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the damage that the object do to an avatar
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
+        virtual float getDamage();
+
     protected:
 
     private:
@@ -88,6 +96,7 @@ class ObjectScene : public Object3D
         vec4f position;
         Object3D * object;
         Matrix4f matrix;
+        float damage;
 };
 
 #endif // OBJECTSCENE_H
