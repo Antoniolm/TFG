@@ -45,6 +45,14 @@ class Menu : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will add a new texture for another option that our menu will have
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void addOption(Texture * aTexture);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will show the object in our interface
         *    \return void
         */
@@ -75,6 +83,9 @@ class Menu : public Object3D
         NodeSceneGraph * root;
         Matrix4f * positionMenu;
         bool activateMenu;
+        vector<Texture *> options;
+        int currentOption;
+        Material * currentMaterial;
         float menuDelay;
 };
 

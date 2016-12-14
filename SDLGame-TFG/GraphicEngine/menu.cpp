@@ -25,7 +25,7 @@ Menu::Menu()
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
 
-    Material * material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPause.png");
+    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPause.png");
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
 
     positionMenu=new Matrix4f();
@@ -42,7 +42,7 @@ Menu::Menu()
     root->add(positionMenu);
     root->add(rotationMenu);
     root->add(scaleMenu);
-    root->add(material);
+    root->add(currentMaterial);
     root->add(textObject);
     root->add(scaleMenuBack);
     root->add(materialBack);
@@ -56,6 +56,12 @@ Menu::Menu()
 Menu::~Menu()
 {
     //dtor
+}
+
+//**********************************************************************//
+
+void Menu::addOption(Texture * aTexture){
+    options.push_back(aTexture);
 }
 
 //**********************************************************************//
@@ -80,6 +86,20 @@ void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             position=rootMap->getHero()->getPosition();
             positionMenu->translation(position.x,position.y+3.25,position.z+8.0);
         }
+    }
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){ //If the user push the action move on the menu
+            currentOption++;
+            if(currentOption==options.size())
+                currentOption=0;
+
+        }
+    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]){ //If the user push the action move on the menu
+            currentOption--;
+            if(currentOption==-1)
+                currentOption==options.size()-1;
+    }
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_INSERT)]){ //If the user push the action intro
+            //if(currentOption==0)
     }
 
     currentTime+=time-currentTime;

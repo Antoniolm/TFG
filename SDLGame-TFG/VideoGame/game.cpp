@@ -100,14 +100,14 @@ void Game::loop(){
         //Update the states
         time=SDL_GetTicks();
         menu->updateState(time,currentKeyStates,rootMap);
-        if(!menu->isActivate()){
+        if(!menu->isActivate()){ //If  menu is not activate
             rootMap->updateState(time,currentKeyStates,rootMap);
-            if(wasActivatedMenu)
+            if(wasActivatedMenu) //If is the first time that it is not activated
                 rootMap->enableSound(true);
             wasActivatedMenu=false;
         }
-        else{
-            if(!wasActivatedMenu)
+        else{ //Else menu is activate
+            if(!wasActivatedMenu) //If is the first time that it is activated
                 rootMap->enableSound(false);
             wasActivatedMenu=true;
         }
