@@ -30,6 +30,12 @@ Game::Game(){
     window->createWindow();
     rootMap=new RootMap();
     menu = new Menu();
+
+    //Add the new options
+    Texture * option=new Texture("./textures/menuPauseResume.png");
+    menu->addOption(option);
+    option=new Texture("./textures/menuPauseQuit.png");
+    menu->addOption(option);
 }
 
 //**********************************************************************//

@@ -21,11 +21,12 @@
 
 Menu::Menu()
 {
+    currentOption=0;
     activateMenu=false;
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
 
-    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPause.png");
+    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
 
     positionMenu=new Matrix4f();
@@ -87,20 +88,33 @@ void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             positionMenu->translation(position.x,position.y+3.25,position.z+8.0);
         }
     }
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]){ //If the user push the action move on the menu
-        currentOption++;
-        if(currentOption==options.size())
-            currentOption=0;
-        currentMaterial.setTexture(options[currentOption]);
-    }
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]){ //If the user push the action move on the menu
-        currentOption--;
-        if(currentOption==-1)
-            currentOption==options.size()-1;
-        currentMaterial.setTexture(options[currentOption]);
-    }
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_INSERT)]){ //If the user push the action intro
-            //if(currentOption==0)
+    if(activateMenu){ //If the menu is activated
+        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && menuDelay<(time-300)){ //If the user push the action move on the menu
+            currentOption++;
+            if(currentOption==options.size())
+                currentOption=0;
+
+            currentMaterial->setTexture(options[currentOption]);
+            menuDelay=time;
+        }
+        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && menuDelay<(time-300)){ //If the user push the action move on the menu
+            currentOption-=1;
+            if(currentOption==-1){
+                currentOption=(options.size()-1);
+            }
+
+            currentMaterial->setTexture(options[currentOption]);
+            menuDelay=time;
+        }
+        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_p)] && menuDelay<(time-300)){ //If the user push the action intro
+            if(currentOption==0){ //If option -> Resume
+                activateMenu=false;
+            }
+            if(currentOption==1)//If option -> Quit
+                exit(0);
+
+            menuDelay=time;
+        }
     }
 
     currentTime+=time-currentTime;
