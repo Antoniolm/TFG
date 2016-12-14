@@ -25,18 +25,22 @@ Menu::Menu()
     Mesh * textObject=new Mesh(string("geometries/text.obj"));
     textObject->init();
 
-    Material * material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menu.png");
+    Material * material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPause.png");
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
 
     positionMenu=new Matrix4f();
     positionMenu->identity();
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(1.0,5.0,1.0);
+    scaleMenu->scale(0.4,1.0,0.4);
     Matrix4f * scaleMenuBack=new Matrix4f();
-    scaleMenuBack->scale(4.0,2.0,4.0);
+    scaleMenuBack->scale(4.0,4.0,4.0);
+
+    Matrix4f * rotationMenu=new Matrix4f();
+    rotationMenu->rotation(20,1.0,0.0,0.0);
 
     root=new NodeSceneGraph();
     root->add(positionMenu);
+    root->add(rotationMenu);
     root->add(scaleMenu);
     root->add(material);
     root->add(textObject);
@@ -74,7 +78,7 @@ void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         menuDelay=time;
         if(activateMenu){
             position=rootMap->getHero()->getPosition();
-            positionMenu->translation(position.x,position.y+1.0,0.5);
+            positionMenu->translation(position.x,position.y+3.25,position.z+8.0);
         }
     }
 
