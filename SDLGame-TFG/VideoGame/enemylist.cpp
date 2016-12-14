@@ -55,11 +55,6 @@ void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * r
     Hero * hero=rootMap->getHero();
     posHero=hero->getPosition();
     for(unsigned i=0;i<enemies.size();i++){ //Check if hero is talking now
-        distance=(enemies[i]->getPosition())-(posHero);
-        radio=(enemies[i]->getRadioActivity());
-        if((distance.x>-radio.x && distance.x<radio.x)&&(distance.y>-radio.y && distance.y<radio.y)&&(distance.z>-radio.z && distance.z<radio.z)){
-            enemies[i]->activatedEnemy(true);
-        }
         enemies[i]->updateState(time,currentKeyStates,rootMap);
         //if(enemies[i]->getLife()<=0.0)
 

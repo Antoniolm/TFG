@@ -510,9 +510,16 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     Hero * hero=rootMap->getHero();
     vec3f posHero=hero->getPosition();
     avatarDirection dirHero=hero->getDirection();
+    vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
+
 
     if(time-currentTime>200)
         currentTime=time-50;
+
+    //If the enemy will be activated in thsi frame
+    if((distance.x>-radioActivity.x && distance.x<radioActivity.x)&&(distance.y>-radioActivity.y && distance.y<radioActivity.y)&&(distance.z>-radioActivity.z && distance.z<radioActivity.z)){
+        enemyActivate=true;
+    }
 
     if(enemyActivate){ //If enemy is activated
         moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),posHero);

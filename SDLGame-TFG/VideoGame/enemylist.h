@@ -24,11 +24,11 @@
 
 #include "npc.h"
 #include "hero.h"
-#include "../GraphicEngine/object3d.h"
+#include "../GraphicEngine/nodescenegraph.h"
 
 #include <vector>
 
-class EnemyList : public Object3D
+class EnemyList : public NodeSceneGraph
 {
     public:
         //////////////////////////////////////////////////////////////////////////
