@@ -56,7 +56,7 @@ void ObjectScene::updateState(float time,const Uint8* currentKeyStates,RootMap *
     object->updateState(time,currentKeyStates,rootMap);
 }
 
-//**********************************************************************//
+//**********************************************************************//.0
 
 vec3f ObjectScene::getPosition(){
     return vec3f(position.x,position.y,position.z);

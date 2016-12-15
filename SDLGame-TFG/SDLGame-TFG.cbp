@@ -54,6 +54,8 @@
 		<Unit filename="GraphicEngine/camera.h" />
 		<Unit filename="GraphicEngine/context.cpp" />
 		<Unit filename="GraphicEngine/context.h" />
+		<Unit filename="GraphicEngine/damageobject.cpp" />
+		<Unit filename="GraphicEngine/damageobject.h" />
 		<Unit filename="GraphicEngine/file_obj.cpp" />
 		<Unit filename="GraphicEngine/file_obj.h" />
 		<Unit filename="GraphicEngine/iaenemy.cpp" />
@@ -84,6 +86,8 @@
 		<Unit filename="GraphicEngine/menu.h" />
 		<Unit filename="GraphicEngine/mesh.cpp" />
 		<Unit filename="GraphicEngine/mesh.h" />
+		<Unit filename="GraphicEngine/meshcollection.cpp" />
+		<Unit filename="GraphicEngine/meshcollection.h" />
 		<Unit filename="GraphicEngine/nodescenegraph.cpp" />
 		<Unit filename="GraphicEngine/nodescenegraph.h" />
 		<Unit filename="GraphicEngine/object3d.cpp" />
