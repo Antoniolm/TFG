@@ -887,7 +887,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1481709421 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1481815876 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -978,10 +978,11 @@
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 
-1481738208 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
+1481816841 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
+	"../GraphicEngine/meshcollection.h"
 	"../GraphicEngine/scriptlmd.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/matrixscript.h"
@@ -992,7 +993,7 @@
 	"../GraphicEngine/text.h"
 	<vector>
 
-1481708873 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1481817103 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1686,10 +1687,11 @@
 1481745349 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
 	"enemy.h"
 
-1481619867 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
+1481817224 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
+	"../GraphicEngine/meshcollection.h"
 	"../GraphicEngine/scriptlmd.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/matrixscript.h"
@@ -1733,4 +1735,7 @@
 
 1481815907 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.h
 	"mesh.h"
+
+1481817058 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.cpp
+	"meshcollection.h"
 

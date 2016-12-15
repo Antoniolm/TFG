@@ -24,33 +24,91 @@ MeshCollection* MeshCollection::instance = NULL;
 
 MeshCollection::MeshCollection()
 {
+    //Mesh 0
     Mesh * element=new Mesh("geometries/cube.obj");
     element->init();
     collection.push_back(element);
 
+    //Mesh 1
     element=new Mesh("geometries/fence.obj");
     element->init();
     collection.push_back(element);
 
+    //Mesh 2
     element=new Mesh("geometries/tree.obj");
     element->init();
     collection.push_back(element);
 
+    //Mesh 3
     element=new Mesh("geometries/grass.obj");
     element->init();
     collection.push_back(element);
 
+    //Mesh 4
     element=new Mesh("geometries/mushroomWhite.obj");
     element->init();
     collection.push_back(element);
 
+    //Mesh 5
     element=new Mesh("geometries/treeDie.obj");
     element->init();
     collection.push_back(element);
 
+    //Mesh 6
     element=new Mesh("geometries/sphereBackground.obj");
     element->init();
     collection.push_back(element);
+
+    //Mesh 7
+    element=new Mesh("geometries/knee.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Mesh 8
+    element=new Mesh("geometries/armour2.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Mesh 9
+    element=new Mesh("geometries/armourChest.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Mesh 10
+    element=new Mesh("geometries/hand.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Mesh 11
+    element=new Mesh("geometries/topArm.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Mesh 12
+    element=new Mesh("geometries/chest.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Mesh 13
+    element=new Mesh("geometries/foot.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Mesh 14
+    element=new Mesh("geometries/hip.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Mesh 15
+    element=new Mesh("geometries/head.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Mesh 16
+    element=new Mesh("geometries/armour.obj");
+    element->init();
+    collection.push_back(element);
+
 }
 
 

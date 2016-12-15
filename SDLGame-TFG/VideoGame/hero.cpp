@@ -29,6 +29,8 @@ Hero::Hero()
     isFalling=false;
     isJumping=false;
     isHitting=false;
+    MeshCollection * meshCollect =MeshCollection::getInstance();
+
 
     //Print a message for check
     cout<< "< Game is loading our hero >"<< endl;
@@ -45,45 +47,6 @@ Hero::Hero()
     TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
     currentText=new Text("textures/dialog.png",font);
     activatedDialog=false;
-
-    //////////////////////////////////////////////////////
-    /////                All the mesh                /////
-    //////////////////////////////////////////////////////
-    Mesh * armourObject=new Mesh("geometries/armour.obj");
-    armourObject->init();
-
-    Mesh * armour2Object=new Mesh("geometries/armour2.obj");
-    armour2Object->init();
-
-    Mesh * armourChestObject=new Mesh("geometries/armourChest.obj");
-    armourChestObject->init();
-
-    /*Mesh * armourTestObject=new Mesh("geometries/armourTest.obj");
-    armourTestObject->init();*/
-
-    Mesh * kneeObject=new Mesh("geometries/knee.obj");
-    kneeObject->init();
-
-    Mesh * pillLegObject=new Mesh("geometries/pillLeg.obj");
-    pillLegObject->init();
-
-    Mesh * handObject=new Mesh("geometries/hand.obj");
-    handObject->init();
-
-    Mesh * shoulderObject=new Mesh("geometries/topArm.obj");
-    shoulderObject->init();
-
-    Mesh * chestObject=new Mesh("geometries/chest.obj");
-    chestObject->init();
-
-    Mesh * footObject=new Mesh("geometries/foot.obj");
-    footObject->init();
-
-    Mesh * hipObject=new Mesh("geometries/hip.obj");
-    hipObject->init();
-
-    Mesh * headObject=new Mesh("geometries/head.obj");
-    headObject->init();
 
     //////////////////////////////////////////////////////
     /////              Some The matrix               /////
@@ -146,7 +109,7 @@ Hero::Hero()
     foot->add(scaleFoot);
     Material * materialFoot=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     foot->add(materialFoot);
-    foot->add(footObject);
+    foot->add(meshCollect->getMesh(13));
 
     //knee + ankle
     NodeSceneGraph * knee_ankle=new NodeSceneGraph();
@@ -156,7 +119,7 @@ Hero::Hero()
     knee_ankle->add(transCylinder);
     knee_ankle->add(foot);
     knee_ankle->add(scaleKnee);
-    knee_ankle->add(kneeObject);
+    knee_ankle->add(meshCollect->getMesh(7));
 
     //Leg
     NodeSceneGraph * knee_ankleRight=new NodeSceneGraph();
@@ -178,7 +141,7 @@ Hero::Hero()
     legLeft->add(knee_ankleLeft);
     legLeft->add(scaleKnee);
     legLeft->add(materialFoot);
-    legLeft->add(kneeObject);
+    legLeft->add(meshCollect->getMesh(7));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
@@ -187,7 +150,7 @@ Hero::Hero()
     legRight->add(knee_ankleRight);
     legRight->add(scaleKnee);
     legRight->add(materialFoot);
-    legRight->add(kneeObject);
+    legRight->add(meshCollect->getMesh(7));
 
     //////////////////////////////////////////////////////
     /////                  Arms                      /////
@@ -261,13 +224,13 @@ Hero::Hero()
     handLeft->add(scaleHand);
     handLeft->add(rotateYHand);
     handLeft->add(materialLeg);
-    handLeft->add(handObject);
+    handLeft->add(meshCollect->getMesh(10));
 
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transHand);
     handRight->add(scaleHand);
     handRight->add(materialLeg);
-    handRight->add(handObject);
+    handRight->add(meshCollect->getMesh(10));
 
     //elbow + wrist
 
@@ -289,14 +252,14 @@ Hero::Hero()
     shoulderLeft->add(scaleShoulder);
     shoulderLeft->add(rotateXShoulder);
     shoulderLeft->add(materialLeg);
-    shoulderLeft->add(shoulderObject);
+    shoulderLeft->add(meshCollect->getMesh(11));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
     shoulderRight->add(rotateXShoulder);
     shoulderRight->add(rotateShoulder);
     shoulderRight->add(scaleShoulder);
     shoulderRight->add(materialLeg);
-    shoulderRight->add(shoulderObject);
+    shoulderRight->add(meshCollect->getMesh(11));
 
     //Arm left
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
@@ -377,18 +340,18 @@ Hero::Hero()
     armourNode->add(transArmour);
     armourNode->add(scaleArmour);
     armourNode->add(materialTest);
-    armourNode->add(armourObject);
+    armourNode->add(meshCollect->getMesh(16));
 
     NodeSceneGraph * armour2Node=new NodeSceneGraph();
     armour2Node->add(scaleArmour2);
     armour2Node->add(materialTest);
-    armour2Node->add(armour2Object);
+    armour2Node->add(meshCollect->getMesh(8));
 
     NodeSceneGraph * armourChestNode=new NodeSceneGraph();
     armourChestNode->add(transArmourChest);
     armourChestNode->add(scaleArmourChest);
     armourChestNode->add(materialTest);
-    armourChestNode->add(armourChestObject);
+    armourChestNode->add(meshCollect->getMesh(9));
 
     /*NodeSceneGraph * armourChestTestNode=new NodeSceneGraph();
     armourChestTestNode->add(transArmourChest);
@@ -399,14 +362,14 @@ Hero::Hero()
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);
     chestNode->add(materialWood);
-    chestNode->add(chestObject);
+    chestNode->add(meshCollect->getMesh(12));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     Material * materialHead=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodHead.png");
     headNode->add(transHead);
     headNode->add(scaleHead);
     headNode->add(materialHead);
-    headNode->add(headObject);
+    headNode->add(meshCollect->getMesh(15));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
     chest_ArmsNode->add(transChest);
