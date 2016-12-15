@@ -21,6 +21,7 @@
 #define MESHCOLLECTION_H
 
 #include "mesh.h"
+class Mesh;
 
 using namespace std;
 
@@ -35,6 +36,8 @@ class MeshCollection
 
             return instance;
         }
+
+        Mesh * getMesh(int i);
 
     protected:
 

@@ -26,6 +26,8 @@ RootMap::RootMap()
 {
     cout<< "< Game is loading our current map >"<< endl;
 
+    MeshCollection * meshCollect= MeshCollection::getInstance();
+
     Matrix4f *scaleTreeDie =new Matrix4f();
     scaleTreeDie->scale(0.6,0.5,0.5);
 
@@ -79,7 +81,7 @@ RootMap::RootMap()
             else
                 cubeNode->add(materialGrass);
 
-            cubeNode->add(cubeObject);
+            cubeNode->add(meshCollect->getMesh(0));
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
@@ -90,7 +92,7 @@ RootMap::RootMap()
         cubeNode->add(transOneCube);
         cubeNode->add(scaleCube);
         cubeNode->add(materialGrass);
-        cubeNode->add(cubeObject);
+        cubeNode->add(meshCollect->getMesh(0));
         objs.push_back(new ObjectScene(cubeNode));
     }
 
@@ -102,7 +104,7 @@ RootMap::RootMap()
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
-            cubeNode->add(cubeObject);
+            cubeNode->add(meshCollect->getMesh(0));
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
@@ -119,7 +121,7 @@ RootMap::RootMap()
                 cubeNode->add(materialGrass);
             else
                 cubeNode->add(materialGrass1);
-            cubeNode->add(cubeObject);
+            cubeNode->add(meshCollect->getMesh(0));
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
@@ -133,7 +135,7 @@ RootMap::RootMap()
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
-            cubeNode->add(cubeObject);
+            cubeNode->add(meshCollect->getMesh(0));
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
@@ -144,7 +146,7 @@ RootMap::RootMap()
     cubeNode->add(transOneCube);
     cubeNode->add(scaleWater);
     cubeNode->add(materialWater);
-    cubeNode->add(cubeObject);
+    cubeNode->add(meshCollect->getMesh(0));
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
 
@@ -158,7 +160,7 @@ RootMap::RootMap()
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
             cubeNode->add(materialFence);
-            cubeNode->add(fenceObject);
+            cubeNode->add(meshCollect->getMesh(1));
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
@@ -173,7 +175,7 @@ RootMap::RootMap()
     cubeNode->add(transOneCube);
     cubeNode->add(scaleBack);
     cubeNode->add(materialWater);
-    cubeNode->add(backgroundObject);
+    cubeNode->add(meshCollect->getMesh(6));
     background= new ObjectScene(cubeNode);
 
     transOneCube=new Matrix4f();
@@ -182,7 +184,7 @@ RootMap::RootMap()
     cubeNode->add(transOneCube);
     cubeNode->add(scaleTree);
     cubeNode->add(materialTree);
-    cubeNode->add(treeObject);
+    cubeNode->add(meshCollect->getMesh(2));
     objs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
@@ -191,7 +193,7 @@ RootMap::RootMap()
     cubeNode->add(transOneCube);
     cubeNode->add(scaleTreeDie);
     cubeNode->add(materialMushroom);
-    cubeNode->add(treeDieObject);
+    cubeNode->add(meshCollect->getMesh(5));
     objs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
@@ -199,7 +201,7 @@ RootMap::RootMap()
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(materialTree);
-    cubeNode->add(grassObject);
+    cubeNode->add(meshCollect->getMesh(3));
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
@@ -208,7 +210,7 @@ RootMap::RootMap()
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialMushroom);
-    cubeNode->add(mushRoomObject);
+    cubeNode->add(meshCollect->getMesh(4));
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
@@ -220,7 +222,7 @@ RootMap::RootMap()
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialSand);
-    cubeNode->add(cubeObject);
+    cubeNode->add(meshCollect->getMesh(0));
     objs.push_back(new ObjectScene(cubeNode));
 
     /////////////////////////////////////////
@@ -243,7 +245,7 @@ RootMap::RootMap()
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialVoid);
-    cubeNode->add(cubeObject);
+    cubeNode->add(meshCollect->getMesh(0));
     objs.push_back(new ObjectScene(cubeNode));
 
     Npc * npc2=new Npc(vec3f(0.5,2.0,-3.5f));
@@ -258,7 +260,7 @@ RootMap::RootMap()
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialVoid);
-    cubeNode->add(cubeObject);
+    cubeNode->add(meshCollect->getMesh(0));
     objs.push_back(new ObjectScene(cubeNode));
 
     Npc * npc3=new Npc(vec3f(10.5,0.0,-3.5f));
@@ -273,7 +275,7 @@ RootMap::RootMap()
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialVoid);
-    cubeNode->add(cubeObject);
+    cubeNode->add(meshCollect->getMesh(0));
     objs.push_back(new ObjectScene(cubeNode));
 
     /////////////////////////////////////////

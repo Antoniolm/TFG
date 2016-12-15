@@ -36,6 +36,7 @@
 #include "../VideoGame/hero.h"
 #include "../VideoGame/npc.h"
 #include "../VideoGame/enemy.h"
+#include "meshcollection.h"
 #include "sound.h"
 
 using namespace std;

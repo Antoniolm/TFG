@@ -893,7 +893,7 @@
 	"../VideoGame/enemylist.h"
 	<stdlib.h>
 
-1481709292 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1481815693 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -910,6 +910,7 @@
 	"../VideoGame/hero.h"
 	"../VideoGame/npc.h"
 	"../VideoGame/enemy.h"
+	"meshcollection.h"
 	"sound.h"
 
 1477389087 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.h
@@ -1729,4 +1730,7 @@
 	"nodescenegraph.h"
 	"texture.h"
 	"material.h"
+
+1481815907 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.h
+	"mesh.h"
 
