@@ -278,6 +278,9 @@ bool AvatarMove::gravity(float time){
         isFalling=false;
         acceleratedMove->resetState();
         result=false;
+        if(hasCollision->getDamage()!=0.0)
+            addLife(hasCollision->getDamage());
+
     }
     }
     else {

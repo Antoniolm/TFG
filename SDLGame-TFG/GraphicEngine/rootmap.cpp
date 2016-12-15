@@ -136,6 +136,7 @@ RootMap::RootMap()
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
             cubeNode->add(meshCollect->getMesh(0));
+            //Cambios a realizar here
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
@@ -320,7 +321,7 @@ RootMap::RootMap()
     /////////////////////////////////////////
     // Add sound of our map
     backSound=new Sound("sounds/background.wav",0,60);
-    backSound->play();
+    //backSound->play();
 
     currentTime=SDL_GetTicks();
 }

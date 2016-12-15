@@ -33,6 +33,7 @@
 #include "oscillaterotation.h"
 #include "mesh.h"
 #include "objectscene.h"
+#include "damageobject.h"
 #include "../VideoGame/hero.h"
 #include "../VideoGame/npc.h"
 #include "../VideoGame/enemy.h"

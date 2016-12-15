@@ -27,7 +27,7 @@
 #include "nodescenegraph.h"
 #include "texture.h"
 #include "material.h"
-
+#include "sound.h"
 
 class Menu : public Object3D
 {
@@ -80,6 +80,7 @@ class Menu : public Object3D
     protected:
 
     private:
+        Sound * openSound,* moveSound;
         NodeSceneGraph * root;
         Matrix4f * positionMenu;
         bool activateMenu;

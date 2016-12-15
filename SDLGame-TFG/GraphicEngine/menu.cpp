@@ -49,6 +49,9 @@ Menu::Menu()
     root->add(meshCollect->getMesh(17));
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
+
+    openSound=new Sound("sounds/openSound2.wav",0,120,1,1);
+    //moveSound=new Sound("sounds/moveMenu.wav",1,40);
 }
 
 //**********************************************************************//
@@ -85,6 +88,7 @@ void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         if(activateMenu){
             position=rootMap->getHero()->getPosition();
             positionMenu->translation(position.x,position.y+3.25,position.z+8.0);
+            openSound->play();
         }
     }
     if(activateMenu){ //If the menu is activated
@@ -95,6 +99,7 @@ void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
+            //moveSound->play();
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption-=1;
@@ -104,10 +109,12 @@ void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
+            //moveSound->play();
         }
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_p)] && menuDelay<(time-300)){ //If the user push the action intro
             if(currentOption==0){ //If option -> Resume
                 activateMenu=false;
+                openSound->play();
             }
             if(currentOption==1)//If option -> Quit
                 exit(0);
