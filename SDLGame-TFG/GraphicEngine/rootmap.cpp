@@ -316,10 +316,14 @@ RootMap::RootMap()
         objs[i]->visualization(cv);
     }
 
+    for(unsigned i=0;i<decorationObjs.size();i++){
+        decorationObjs[i]->visualization(cv);
+    }
+
     vec3f pos;
     BoundingBox bounding;
 
-    //Push all the positions
+    //Create our indexMap for our collision system
     for(unsigned i=0;i<objs.size();i++){
         pos=objs[i]->getPosition();
         bounding=objs[i]->getBoundingBox();
@@ -370,12 +374,15 @@ Hero * RootMap::getHero(){
 //**********************************************************************//
 
 void RootMap::visualization(Context & cv){
+    vec3f position,posHero=hero->getPosition();
     //Draw background
     background->visualization(cv);
 
     //Draw object
     for(unsigned i=0;i<objs.size();i++){
-        objs[i]->visualization(cv);
+        position=objs[i]->getPosition();
+        if(position.x>posHero.x-8 && position.x<posHero.x+8)
+            objs[i]->visualization(cv);
     }
 
     //Draw hero

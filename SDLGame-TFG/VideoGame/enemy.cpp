@@ -516,7 +516,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     if(time-currentTime>200)
         currentTime=time-50;
 
-    //If the enemy will be activated in thsi frame
+    //check if the enemy will be activated in this frame
     if((distance.x>-radioActivity.x && distance.x<radioActivity.x)&&(distance.y>-radioActivity.y && distance.y<radioActivity.y)&&(distance.z>-radioActivity.z && distance.z<radioActivity.z)){
         enemyActivate=true;
     }

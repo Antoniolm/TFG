@@ -96,6 +96,7 @@ void Game::loop(){
             }
             if( event.window.event==SDL_WINDOWEVENT_RESIZED ){
                 window->resizeWindow(event.window.data2,event.window.data1);
+                //change projection
             }
         }
 
@@ -112,7 +113,7 @@ void Game::loop(){
                 rootMap->enableSound(true);
             wasActivatedMenu=false;
         }
-        else{ //Else menu is activate
+        else{ //Else menu is activated
             if(!wasActivatedMenu) //If is the first time that it is activated
                 rootMap->enableSound(false);
             wasActivatedMenu=true;
