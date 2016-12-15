@@ -23,8 +23,7 @@ Menu::Menu()
 {
     currentOption=0;
     activateMenu=false;
-    Mesh * textObject=new Mesh(string("geometries/text.obj"));
-    textObject->init();
+    MeshCollection * meshCollect =MeshCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
@@ -44,10 +43,10 @@ Menu::Menu()
     root->add(rotationMenu);
     root->add(scaleMenu);
     root->add(currentMaterial);
-    root->add(textObject);
+    root->add(meshCollect->getMesh(17));
     root->add(scaleMenuBack);
     root->add(materialBack);
-    root->add(textObject);
+    root->add(meshCollect->getMesh(17));
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
 }

@@ -59,6 +59,7 @@ MeshCollection::MeshCollection()
     element->init();
     collection.push_back(element);
 
+    //Hero-Enemy mesh
     //Mesh 7
     element=new Mesh("geometries/knee.obj");
     element->init();
@@ -106,6 +107,12 @@ MeshCollection::MeshCollection()
 
     //Mesh 16
     element=new Mesh("geometries/armour.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Text-menu mesh
+    //Mesh 17
+    element=new Mesh("geometries/text.obj");
     element->init();
     collection.push_back(element);
 
