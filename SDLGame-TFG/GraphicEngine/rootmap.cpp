@@ -26,27 +26,6 @@ RootMap::RootMap()
 {
     cout<< "< Game is loading our current map >"<< endl;
 
-    Mesh * cubeObject=new Mesh("geometries/cube.obj");
-    cubeObject->init();
-
-    Mesh * fenceObject=new Mesh("geometries/fence.obj");
-    fenceObject->init();
-
-    Mesh * treeObject=new Mesh("geometries/tree.obj");
-    treeObject->init();
-
-    Mesh * grassObject=new Mesh("geometries/grass.obj");
-    grassObject->init();
-
-    Mesh * mushRoomObject=new Mesh("geometries/mushroomWhite.obj");
-    mushRoomObject->init();
-
-    Mesh * treeDieObject=new Mesh("geometries/treeDie.obj");
-    treeDieObject->init();
-
-    Mesh * backgroundObject=new Mesh("geometries/sphereBackground.obj");
-    backgroundObject->init();
-
     Matrix4f *scaleTreeDie =new Matrix4f();
     scaleTreeDie->scale(0.6,0.5,0.5);
 

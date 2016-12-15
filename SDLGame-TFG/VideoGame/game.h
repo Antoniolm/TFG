@@ -21,7 +21,6 @@
 #define GAME_H
 
 #include "../GraphicEngine/window.h"
-#include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/context.h"
 #include "../GraphicEngine/nodescenegraph.h"
 #include "../GraphicEngine/sound.h"

@@ -372,9 +372,8 @@
 	<string>
 	"sound.h"
 
-1481643111 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1481815099 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
-	"../GraphicEngine/mesh.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 	"../GraphicEngine/sound.h"
