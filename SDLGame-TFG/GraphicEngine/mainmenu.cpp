@@ -21,7 +21,43 @@
 
 MainMenu::MainMenu()
 {
-    //ctor
+        currentOption=0;
+    activateMenu=false;
+    MeshCollection * meshCollect =MeshCollection::getInstance();
+
+    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
+    Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
+
+    positionMenu=new Matrix4f();
+    positionMenu->translation(0.0,0.0+3.25,0.0+8.0);
+    Matrix4f * scaleMenu=new Matrix4f();
+    scaleMenu->scale(0.4,1.0,0.4);
+    Matrix4f * scaleMenuBack=new Matrix4f();
+    scaleMenuBack->scale(4.0,4.0,4.0);
+
+    Matrix4f * rotationMenu=new Matrix4f();
+    rotationMenu->rotation(20,1.0,0.0,0.0);
+
+    root=new NodeSceneGraph();
+    root->add(positionMenu);
+    root->add(rotationMenu);
+    root->add(scaleMenu);
+    root->add(currentMaterial);
+    root->add(meshCollect->getMesh(17));
+    root->add(scaleMenuBack);
+    root->add(materialBack);
+    root->add(meshCollect->getMesh(17));
+    currentTime=SDL_GetTicks();
+    menuDelay=currentTime;
+
+    openSound=new Sound("sounds/openSound2.wav",0,120,1,1);
+    //moveSound=new Sound("sounds/moveMenu.wav",1,40);
+
+    //Add the options
+    Texture * option=new Texture("./textures/menuPauseResume.png");
+    addOption(option);
+    option=new Texture("./textures/menuPauseQuit.png");
+    addOption(option);
 }
 
 //**********************************************************************//

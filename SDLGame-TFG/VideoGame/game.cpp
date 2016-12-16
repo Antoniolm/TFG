@@ -29,7 +29,9 @@ Game::Game(){
     window->setParameters("SDL_Game",800,600);
     window->createWindow();
     rootMap=new RootMap();
-    menu = new PauseMenu();
+    pauseMenu = new PauseMenu();
+    mainMenu = new MainMenu();
+    mainMenu->activate();
 }
 
 //**********************************************************************//
@@ -55,6 +57,7 @@ void Game::loop(){
 
     hero=new Hero();
     rootMap->setHero(hero);
+
 
     //Create our shader
     aContext.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
@@ -112,8 +115,9 @@ void Game::loop(){
 
         //Update the states
         time=SDL_GetTicks();
-        menu->updateState(time,currentKeyStates,rootMap);
-        if(!menu->isActivate()){ //If  menu is not activate
+        pauseMenu->updateState(time,currentKeyStates,rootMap);
+        mainMenu->updateState(time,currentKeyStates,rootMap);
+        if(!pauseMenu->isActivate() && !mainMenu->isActivate()){ //If  menu is not activate
             rootMap->updateState(time,currentKeyStates,rootMap);
             if(wasActivatedMenu) //If is the first time that it is not activated
                 rootMap->enableSound(true);
@@ -131,7 +135,8 @@ void Game::loop(){
         aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
 
         rootMap->visualization(aContext);
-        menu->visualization(aContext);
+        pauseMenu->visualization(aContext);
+        mainMenu->visualization(aContext);
 
         window->updateScreen();
     }

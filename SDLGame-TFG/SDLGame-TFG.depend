@@ -372,7 +372,7 @@
 	<string>
 	"sound.h"
 
-1481886066 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1481925500 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -386,13 +386,14 @@
 	"../GraphicEngine/text.h"
 	"../GraphicEngine/menu.h"
 	"../GraphicEngine/pausemenu.h"
+	"../GraphicEngine/mainmenu.h"
 	"hero.h"
 
 1481914734 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
-1481914645 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1481925585 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1480332805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1762,7 +1763,7 @@
 1481886436 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
 	"pausemenu.h"
 
-1481887465 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
+1481925638 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
 	"mainmenu.h"
 
 1481887460 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.h
