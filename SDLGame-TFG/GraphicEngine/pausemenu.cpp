@@ -52,6 +52,12 @@ PauseMenu::PauseMenu()
 
     openSound=new Sound("sounds/openSound2.wav",0,120,1,1);
     //moveSound=new Sound("sounds/moveMenu.wav",1,40);
+
+    //Add the options
+    Texture * option=new Texture("./textures/menuPauseResume.png");
+    addOption(option);
+    option=new Texture("./textures/menuPauseQuit.png");
+    addOption(option);
 }
 
 //**********************************************************************//
