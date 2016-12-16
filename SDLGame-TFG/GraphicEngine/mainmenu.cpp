@@ -21,17 +21,17 @@
 
 MainMenu::MainMenu()
 {
-        currentOption=0;
+    currentOption=0;
     activateMenu=false;
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
-    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
+    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainMenuStart.png");
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
 
     positionMenu=new Matrix4f();
-    positionMenu->translation(0.0,0.0+3.25,0.0+8.0);
+    positionMenu->translation(0.0,3.25,8.0);
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(0.4,1.0,0.4);
+    scaleMenu->scale(0.4,1.3,0.4);
     Matrix4f * scaleMenuBack=new Matrix4f();
     scaleMenuBack->scale(4.0,4.0,4.0);
 
@@ -54,9 +54,13 @@ MainMenu::MainMenu()
     //moveSound=new Sound("sounds/moveMenu.wav",1,40);
 
     //Add the options
-    Texture * option=new Texture("./textures/menuPauseResume.png");
+    Texture * option=new Texture("./textures/mainMenuStart.png");
     addOption(option);
-    option=new Texture("./textures/menuPauseQuit.png");
+    option=new Texture("./textures/mainMenuCont.png");
+    addOption(option);
+    option=new Texture("./textures/mainMenuControl.png");
+    addOption(option);
+    option=new Texture("./textures/mainMenuQuit.png");
     addOption(option);
 }
 
@@ -84,31 +88,43 @@ void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
 
     if(activateMenu){ //If the menu is activated
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && menuDelay<(time-300)){ //If the user push the action move on the menu
-            currentOption++;
-            if(currentOption==options.size())
-                currentOption=0;
+            currentOption-=1;
+            if(currentOption==-1)
+                currentOption=(options.size()-1);
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
             //moveSound->play();
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && menuDelay<(time-300)){ //If the user push the action move on the menu
-            currentOption-=1;
-            if(currentOption==-1){
-                currentOption=(options.size()-1);
-            }
+            currentOption++;
+            if(currentOption==options.size())
+                currentOption=0;
+
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
             //moveSound->play();
         }
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_p)] && menuDelay<(time-300)){ //If the user push the action intro
-            if(currentOption==0){ //If option -> Resume
-                activateMenu=false;
-                openSound->play();
+            switch(currentOption){
+                case 0:
+                    activateMenu=false;
+                    openSound->play();
+                break;
+                case 1:
+                    activateMenu=false;
+                    openSound->play();
+                break;
+                case 2:
+                    activateMenu=false;
+                    openSound->play();
+                break;
+                case 3:
+                    exit(0);
+                break;
+
             }
-            if(currentOption==1)//If option -> Quit
-                exit(0);
 
             menuDelay=time;
         }

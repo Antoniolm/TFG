@@ -93,6 +93,15 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
     }
     if(activateMenu){ //If the menu is activated
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && menuDelay<(time-300)){ //If the user push the action move on the menu
+            currentOption-=1;
+            if(currentOption==-1)
+                currentOption=(options.size()-1);
+
+            currentMaterial->setTexture(options[currentOption]);
+            menuDelay=time;
+            //moveSound->play();
+        }
+        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption++;
             if(currentOption==options.size())
                 currentOption=0;
@@ -101,23 +110,17 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
             menuDelay=time;
             //moveSound->play();
         }
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && menuDelay<(time-300)){ //If the user push the action move on the menu
-            currentOption-=1;
-            if(currentOption==-1){
-                currentOption=(options.size()-1);
-            }
-
-            currentMaterial->setTexture(options[currentOption]);
-            menuDelay=time;
-            //moveSound->play();
-        }
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_p)] && menuDelay<(time-300)){ //If the user push the action intro
-            if(currentOption==0){ //If option -> Resume
-                activateMenu=false;
-                openSound->play();
+            switch(currentOption){
+                case 0:
+                    activateMenu=false;
+                    openSound->play();
+                break;
+                case 1:
+                    exit(0);
+                break;
+
             }
-            if(currentOption==1)//If option -> Quit
-                exit(0);
 
             menuDelay=time;
         }
