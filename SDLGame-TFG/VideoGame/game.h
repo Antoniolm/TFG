@@ -32,6 +32,7 @@
 #include "../GraphicEngine/structdata.h"
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/menu.h"
+#include "../GraphicEngine/pausemenu.h"
 #include "hero.h"
 
 class Game
@@ -72,7 +73,7 @@ class Game
         Window * window;
         RootMap * rootMap;
         Hero * hero;
-        Menu * menu;
+        PauseMenu * menu;
 };
 
 #endif // GAME_H

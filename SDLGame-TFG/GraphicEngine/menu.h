@@ -57,7 +57,7 @@ class Menu : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void visualization(Context & cv);
+        virtual void visualization(Context & cv);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -66,7 +66,7 @@ class Menu : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
+        virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -78,8 +78,6 @@ class Menu : public Object3D
 
 
     protected:
-
-    private:
         Sound * openSound,* moveSound;
         NodeSceneGraph * root;
         Matrix4f * positionMenu;
@@ -88,6 +86,9 @@ class Menu : public Object3D
         int currentOption;
         Material * currentMaterial;
         float menuDelay;
+
+    private:
+
 };
 
 #endif // MENU_H

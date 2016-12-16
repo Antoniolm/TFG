@@ -372,7 +372,7 @@
 	<string>
 	"sound.h"
 
-1481815099 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1481886066 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -385,13 +385,14 @@
 	"../GraphicEngine/structdata.h"
 	"../GraphicEngine/text.h"
 	"../GraphicEngine/menu.h"
+	"../GraphicEngine/pausemenu.h"
 	"hero.h"
 
 1481542194 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
-1481879577 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1481886080 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1480332805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -887,7 +888,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1481883734 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1481883846 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -1627,7 +1628,7 @@
 	"structdata.h"
 	<SDL.h>
 
-1481883772 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1481884832 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
@@ -1722,10 +1723,10 @@
 	<iostream>
 	<math.h>
 
-1481830579 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.cpp
+1481886040 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.cpp
 	"menu.h"
 
-1481828441 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.h
+1481885866 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.h
 	<object3d.h>
 	"rootmap.h"
 	"context.h"
@@ -1746,4 +1747,18 @@
 
 1481883330 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\damageobject.h
 	"objectscene.h"
+
+1481885946 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.h
+	<object3d.h>
+	"rootmap.h"
+	"context.h"
+	"mesh.h"
+	"nodescenegraph.h"
+	"texture.h"
+	"material.h"
+	"sound.h"
+	"menu.h"
+
+1481886043 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
+	"pausemenu.h"
 

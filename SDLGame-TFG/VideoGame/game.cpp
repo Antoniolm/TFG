@@ -29,7 +29,7 @@ Game::Game(){
     window->setParameters("SDL_Game",800,600);
     window->createWindow();
     rootMap=new RootMap();
-    menu = new Menu();
+    menu = new PauseMenu();
 
     //Add the new options
     Texture * option=new Texture("./textures/menuPauseResume.png");

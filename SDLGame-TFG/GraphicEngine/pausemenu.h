@@ -20,15 +20,45 @@
 #ifndef PAUSEMENU_H
 #define PAUSEMENU_H
 
+#include <object3d.h>
+#include "rootmap.h"
+#include "context.h"
+#include "mesh.h"
+#include "nodescenegraph.h"
+#include "texture.h"
+#include "material.h"
+#include "sound.h"
 #include "menu.h"
 
 class PauseMenu : public Menu
 {
     public:
-        /** Default constructor */
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
         PauseMenu();
-        /** Default destructor */
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
         virtual ~PauseMenu();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will show the object in our interface
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        virtual void visualization(Context & cv);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will update the state of the object. That change need the
+        *    current time in our application
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
     protected:
 
