@@ -51,6 +51,7 @@ void Game::loop(){
     vec3f posHero;
     float time;
     bool wasActivatedMenu=false;
+    int windowH,windowW;
 
     hero=new Hero();
     rootMap->setHero(hero);
@@ -89,12 +90,18 @@ void Game::loop(){
                 quit = true;
             }
             if( event.window.event==SDL_WINDOWEVENT_RESIZED ){
-                window->resizeWindow(event.window.data2,event.window.data1);
-                //change projection
-                if(event.window.data1 > event.window.data2)
-                    aContext.camera.setPerspectiveProjection(30.0f,(float)( event.window.data1 / event.window.data2), 0.1f, 200.0f);
-                else
-                    aContext.camera.setPerspectiveProjection(30.0f,(float)( event.window.data2 / event.window.data1), 0.1f, 200.0f);
+                if(event.window.data2<600)windowH=600;
+                else windowH=event.window.data2;
+
+                if(event.window.data1<400) windowW=400;
+                else windowW=event.window.data1;
+
+                window->resizeWindow(windowH,windowW);
+                //change projection         //Y             //X
+                if(windowW > windowH)
+                    aContext.camera.setPerspectiveProjection(30.0f,(float)( windowW / windowH), 0.1f, 200.0f);
+                else //fix
+                    aContext.camera.setPerspectiveProjection(30.0f,(float)( windowH / windowW), 0.1f, 200.0f);
                 aContext.camera.activateCamera(&aContext.currentShader);
             }
         }
