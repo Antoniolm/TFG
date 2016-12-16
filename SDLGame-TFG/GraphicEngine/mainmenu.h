@@ -60,6 +60,13 @@ class MainMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will activate our menu
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activate();
     protected:
 
     private:
