@@ -26,8 +26,9 @@ ObjectScene::ObjectScene()
 
 //**********************************************************************//
 
-ObjectScene::ObjectScene(Object3D * aObject){
+ObjectScene::ObjectScene(Object3D * aObject,float aDamage){
     object=aObject;
+    damage=aDamage;
 }
 
 //**********************************************************************//
@@ -71,7 +72,7 @@ BoundingBox ObjectScene::getBoundingBox(){
 //**********************************************************************//
 
 float ObjectScene::getDamage(){
-    return 0.0;
+    return damage;
 }
 
 //**********************************************************************//

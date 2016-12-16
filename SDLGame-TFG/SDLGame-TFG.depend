@@ -391,7 +391,7 @@
 	"window.h"
 	"file_obj.h"
 
-1481746026 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1481879577 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1480332805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -887,7 +887,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1481829759 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1481883734 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -994,7 +994,7 @@
 	"../GraphicEngine/text.h"
 	<vector>
 
-1481842308 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1481880311 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1604,10 +1604,10 @@
 	"material.h"
 	<vector>
 
-1481822202 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
+1481883604 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
 	"objectscene.h"
 
-1481738368 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
+1481883595 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
 	"object3d.h"
 	"matrix4f.h"
 	"structdata.h"
@@ -1627,7 +1627,7 @@
 	"structdata.h"
 	<SDL.h>
 
-1481824291 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1481883772 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
@@ -1744,6 +1744,6 @@
 1481823202 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\damageobject.cpp
 	"damageobject.h"
 
-1481823188 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\damageobject.h
+1481883330 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\damageobject.h
 	"objectscene.h"
 

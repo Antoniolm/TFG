@@ -136,8 +136,7 @@ RootMap::RootMap()
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
             cubeNode->add(meshCollect->getMesh(0));
-            //Cambios a realizar here
-            objs.push_back(new ObjectScene(cubeNode));
+            objs.push_back(new ObjectScene(cubeNode,-10.0));
         }
     }
 
@@ -378,6 +377,8 @@ void RootMap::visualization(Context & cv){
 
     //Draw decoration object
     for(unsigned i=0;i<decorationObjs.size();i++){
+        position=decorationObjs[i]->getPosition();
+        if(position.x>posHero.x-8 && position.x<posHero.x+8)
         decorationObjs[i]->visualization(cv);
     }
 }
