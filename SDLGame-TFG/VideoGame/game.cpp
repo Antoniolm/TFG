@@ -115,8 +115,10 @@ void Game::loop(){
 
         //Update the states
         time=SDL_GetTicks();
-        pauseMenu->updateState(time,currentKeyStates,rootMap);
         mainMenu->updateState(time,currentKeyStates,rootMap);
+        if(!mainMenu->isActivate())
+            pauseMenu->updateState(time,currentKeyStates,rootMap);
+
         if(!pauseMenu->isActivate() && !mainMenu->isActivate()){ //If  menu is not activate
             rootMap->updateState(time,currentKeyStates,rootMap);
             if(wasActivatedMenu) //If is the first time that it is not activated
