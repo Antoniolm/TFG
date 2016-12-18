@@ -396,10 +396,10 @@
 1481973648 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
-1480332805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
+1482064704 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
 	"axisrotation.h"
 
-1478003702 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.h
+1482064683 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.h
 	"matrix4fdynamic.h"
 	"structdata.h"
 
@@ -889,7 +889,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1482063646 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1482064580 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -1778,13 +1778,15 @@
 	"sound.h"
 	"menu.h"
 
-1482061996 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
+1482064946 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
 	"coin.h"
 
-1482062508 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h
+1482064608 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h
 	"../GraphicEngine/object3d.h"
 	"../GraphicEngine/nodescenegraph.h"
 	"../GraphicEngine/material.h"
 	"../GraphicEngine/matrix4f.h"
+	"../GraphicEngine/matrix4fdynamic.h"
 	"../GraphicEngine/meshcollection.h"
+	"../GraphicEngine/axisrotation.h"
 

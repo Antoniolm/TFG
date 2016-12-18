@@ -411,6 +411,10 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     for(unsigned i=0;i<objs.size();i++)
         objs[i]->updateState(time,currentKeyStates,rootMap);
 
+    //Update the Scene
+    for(unsigned i=0;i<coins.size();i++)
+        coins[i]->updateState(time,currentKeyStates,rootMap);
+
     npcList->updateState(time,currentKeyStates,rootMap);
     enemyList->updateState(time,currentKeyStates,rootMap);
     currentTime+=time-currentTime;

@@ -55,7 +55,15 @@ void AxisRotation::setParameters(float anAVelocity,float x,float y,float z){
 Matrix4f & AxisRotation::updateState(float time){
     time=time/1000;
 
-    currentMatrix.rotation(angularVelocity*time,axis.x,axis.y,axis.z);
+    currentGrade+=angularVelocity*time;
+    //cout<< "angle per frame"<< angularVelocity*time<< endl;
+    currentMatrix.rotation(currentGrade,axis.x,axis.y,axis.z);
 
     return currentMatrix;
+}
+
+//**********************************************************************//
+
+void AxisRotation::resetState(){
+
 }
