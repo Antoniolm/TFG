@@ -25,13 +25,20 @@ Coin::Coin(vec3f position,int aValue){
     MeshCollection * meshCollect= MeshCollection::getInstance();
     Material * materialCoin=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureCoin.png");
 
+    animationMatrix=new Matrix4f();
+    animationMatrix->identity();
+
+    rotation=new AxisRotation(100,0.0,1.0,0.0);
+
     Matrix4f * transMatrix=new Matrix4f();
     transMatrix->translation(position.x,position.y,position.z);
 
     root=new NodeSceneGraph();
     root->add(transMatrix);
+    root->add(animationMatrix);
     root->add(materialCoin);
     root->add(meshCollect->getMesh(18));
+    currentTime=SDL_GetTicks();
 }
 
 //**********************************************************************//
@@ -50,7 +57,8 @@ void Coin::visualization(Context & cv){
 //**********************************************************************//
 
 void Coin::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
-
+    animationMatrix->setMatrix(rotation->updateState(time-currentTime).getMatrix());
+    currentTime+=time-currentTime;
 }
 
 //**********************************************************************//

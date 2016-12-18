@@ -24,7 +24,9 @@
 #include "../GraphicEngine/nodescenegraph.h"
 #include "../GraphicEngine/material.h"
 #include "../GraphicEngine/matrix4f.h"
+#include "../GraphicEngine/matrix4fdynamic.h"
 #include "../GraphicEngine/meshcollection.h"
+#include "../GraphicEngine/axisrotation.h"
 
 class Coin : public Object3D
 {
@@ -70,7 +72,7 @@ class Coin : public Object3D
         int value;
         NodeSceneGraph * root;
         Matrix4f * animationMatrix;
-
+        AxisRotation * rotation;
 };
 
 #endif // COIN_H
