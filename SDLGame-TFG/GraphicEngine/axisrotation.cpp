@@ -56,7 +56,7 @@ Matrix4f & AxisRotation::updateState(float time){
     time=time/1000;
 
     currentGrade+=angularVelocity*time;
-    //cout<< "angle per frame"<< angularVelocity*time<< endl;
+
     currentMatrix.rotation(currentGrade,axis.x,axis.y,axis.z);
 
     return currentMatrix;

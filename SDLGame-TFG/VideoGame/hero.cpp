@@ -29,6 +29,7 @@ Hero::Hero()
     isFalling=false;
     isJumping=false;
     isHitting=false;
+    life=150;
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
 
@@ -603,6 +604,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
     }
     currentTime+=(time-currentTime);
+    cout<< "moveHero"<< moveHero.x<< " "<< moveHero.z<< endl;
 }
 
 //**********************************************************************//
@@ -644,6 +646,13 @@ void Hero::noMove(){
 bool Hero::isHit(){
     return isHitting;
 }
+
+//**********************************************************************//
+
+ float Hero::getLife(){
+    return life;
+ }
+
 
 //**********************************************************************//
 //                              PRIVATE                                 //

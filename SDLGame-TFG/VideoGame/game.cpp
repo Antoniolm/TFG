@@ -141,5 +141,8 @@ void Game::loop(){
         mainMenu->visualization(aContext);
 
         window->updateScreen();
+
+        if(hero->getLife()<=0.0)
+            exit(0);
     }
 }
