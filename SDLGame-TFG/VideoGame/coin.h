@@ -22,6 +22,7 @@
 
 #include "../GraphicEngine/object3d.h"
 #include "../GraphicEngine/nodescenegraph.h"
+#include "../GraphicEngine/materia.h"
 
 class Coin : public Object3D
 {
@@ -29,7 +30,7 @@ class Coin : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Coin();
+        Coin(vec3f position,int aValue);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */

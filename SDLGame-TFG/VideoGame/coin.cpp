@@ -19,8 +19,14 @@
 
 #include "coin.h"
 
-Coin::Coin()
-{
+Coin::Coin(vec3f position,int aValue){
+    value=aValue;
+
+    Matrix4f * position=new Matrix4f();
+    position->translation(position.x,position.y,position.z);
+
+    root=new NodeSceneGraph();
+    root->add(position);
 
 }
 
@@ -33,11 +39,12 @@ Coin::~Coin()
 
 //**********************************************************************//
 
-void EnemyList::visualization(Context & cv){
+void Coin::visualization(Context & cv){
+    root->visualization(cv);
 }
 
 //**********************************************************************//
 
-void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
+void Coin::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
 
 }
