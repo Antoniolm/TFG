@@ -69,6 +69,7 @@ class Coin : public Object3D
     private:
         int value;
         NodeSceneGraph * root;
+        Matrix4f * animationMatrix;
 
 };
 

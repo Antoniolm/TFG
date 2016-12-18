@@ -224,9 +224,19 @@ RootMap::RootMap()
     cubeNode->add(materialSand);
     cubeNode->add(meshCollect->getMesh(0));
     objs.push_back(new ObjectScene(cubeNode));
+    /////////////////////////////////////////
+    // Add coins to our map
+    /////////////////////////////////////////
+    Coin * coin;
+    for(int i=0;i<5;i++){
+        coin=new Coin(vec3f(1.5+i,1.5,-3.5),10);
+        coins.push_back(coin);
+    }
+
 
     /////////////////////////////////////////
     // Add npcs of our map
+    /////////////////////////////////////////
     npcList=new NpcList();
 
     Npc * npc1=new Npc(vec3f(3.5,2.0,-3.5f));
@@ -380,6 +390,11 @@ void RootMap::visualization(Context & cv){
         position=decorationObjs[i]->getPosition();
         if(position.x>posHero.x-8 && position.x<posHero.x+8)
         decorationObjs[i]->visualization(cv);
+    }
+
+    //Draw coins
+    for(unsigned i=0;i<coins.size();i++){
+        coins[i]->visualization(cv);
     }
 }
 
