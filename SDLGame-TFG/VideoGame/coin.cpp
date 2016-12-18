@@ -17,38 +17,27 @@
 // **
 // *********************************************************************
 
+#include "coin.h"
 
-#include "enemylist.h"
-
-EnemyList::EnemyList()
+Coin::Coin()
 {
+
 }
 
 //**********************************************************************//
 
-EnemyList::~EnemyList()
+Coin::~Coin()
 {
-    for(vector<Enemy *>::iterator it = enemies.begin() ; it != enemies.end(); ++it){
-        delete (*it);
-    }
-}
 
-//**********************************************************************//
-
-void EnemyList::add(Enemy * enemy){
-    enemies.push_back(enemy);
 }
 
 //**********************************************************************//
 
 void EnemyList::visualization(Context & cv){
-    for(unsigned i=0;i<enemies.size();i++)
-        enemies[i]->visualization(cv);
 }
 
 //**********************************************************************//
 
 void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
-    for(unsigned i=0;i<enemies.size();i++)//Check if hero is talking now
-        enemies[i]->updateState(time,currentKeyStates,rootMap);
+
 }
