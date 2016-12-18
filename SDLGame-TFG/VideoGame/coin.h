@@ -22,7 +22,9 @@
 
 #include "../GraphicEngine/object3d.h"
 #include "../GraphicEngine/nodescenegraph.h"
-#include "../GraphicEngine/materia.h"
+#include "../GraphicEngine/material.h"
+#include "../GraphicEngine/matrix4f.h"
+#include "../GraphicEngine/meshcollection.h"
 
 class Coin : public Object3D
 {
@@ -53,6 +55,14 @@ class Coin : public Object3D
         */
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return the value of our coin
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
+        int getValue();
 
     protected:
 

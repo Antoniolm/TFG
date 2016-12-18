@@ -22,12 +22,14 @@
 Coin::Coin(vec3f position,int aValue){
     value=aValue;
 
-    Matrix4f * position=new Matrix4f();
-    position->translation(position.x,position.y,position.z);
+    MeshCollection * meshCollect= MeshCollection::getInstance();
+
+    Matrix4f * transMatrix=new Matrix4f();
+    transMatrix->translation(position.x,position.y,position.z);
 
     root=new NodeSceneGraph();
-    root->add(position);
-
+    root->add(transMatrix);
+    root->add(meshCollect->getMesh(18));
 }
 
 //**********************************************************************//

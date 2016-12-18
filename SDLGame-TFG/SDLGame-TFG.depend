@@ -1740,7 +1740,7 @@
 1481815907 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.h
 	"mesh.h"
 
-1481819286 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.cpp
+1482061969 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.cpp
 	"meshcollection.h"
 
 1481823202 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\damageobject.cpp
@@ -1776,4 +1776,14 @@
 	"material.h"
 	"sound.h"
 	"menu.h"
+
+1482061996 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
+	"coin.h"
+
+1482062018 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h
+	"../GraphicEngine/object3d.h"
+	"../GraphicEngine/nodescenegraph.h"
+	"../GraphicEngine/material.h"
+	"../GraphicEngine/matrix4f.h"
+	"../GraphicEngine/meshcollection.h"
 

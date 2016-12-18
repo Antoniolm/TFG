@@ -116,6 +116,12 @@ MeshCollection::MeshCollection()
     element->init();
     collection.push_back(element);
 
+    //Coin mesh
+    //Mesh 18
+    element=new Mesh("geometries/coin.obj");
+    element->init();
+    collection.push_back(element);
+
 }
 
 
