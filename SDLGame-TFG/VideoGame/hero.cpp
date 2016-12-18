@@ -604,7 +604,6 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
     }
     currentTime+=(time-currentTime);
-    cout<< "moveHero"<< moveHero.x<< " "<< moveHero.z<< endl;
 }
 
 //**********************************************************************//
@@ -637,7 +636,7 @@ void Hero::activateDialog(bool value){
 void Hero::noMove(){
     animation.resetState();
     for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->identity();
+        moveMatrix[i]->identity();
     isMoving=false;
 }
 

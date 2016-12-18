@@ -35,6 +35,7 @@
 #include "../GraphicEngine/pausemenu.h"
 #include "../GraphicEngine/mainmenu.h"
 #include "hero.h"
+#include <sstream>
 
 class Game
 {
@@ -76,6 +77,7 @@ class Game
         Hero * hero;
         PauseMenu * pauseMenu;
         MainMenu * mainMenu;
+        Text * lifeText;
 };
 
 #endif // GAME_H

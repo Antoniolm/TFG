@@ -32,6 +32,13 @@ Game::Game(){
     pauseMenu = new PauseMenu();
     mainMenu = new MainMenu();
     mainMenu->activate();
+
+    //////////////////////////////////////////////////////
+    /////             Initialize text                /////
+    //////////////////////////////////////////////////////
+    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
+    SDL_Color color= {255,0,0};
+    lifeText=new Text("",font,color,false);
 }
 
 //**********************************************************************//
@@ -54,6 +61,7 @@ void Game::loop(){
     float time;
     bool wasActivatedMenu=false;
     int windowH,windowW;
+    int lastLife=160;
 
     hero=new Hero();
     rootMap->setHero(hero);
@@ -131,14 +139,24 @@ void Game::loop(){
             wasActivatedMenu=true;
         }
 
-        //Update the camera
+        //Update the camera and lifeText
         posHero=hero->getPosition();
         posHero.y+=4.0f;posHero.z+=10.0f;
         aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
+        posHero=hero->getPosition();
+        lifeText->setPosition(vec3f(posHero.x-0.45,posHero.y+3.7,posHero.z+8));
+        std::stringstream life;
+        life<< hero->getLife();
+        if(lastLife!=hero->getLife()){
+            lifeText->setMessage(life.str()+"/150");
+            lifeText->init();
+            lastLife=hero->getLife();
+        }
 
         rootMap->visualization(aContext);
         pauseMenu->visualization(aContext);
         mainMenu->visualization(aContext);
+        lifeText->visualization(aContext);
 
         window->updateScreen();
 
