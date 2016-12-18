@@ -34,7 +34,7 @@ class Coin : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Coin(vec3f position,int aValue);
+        Coin(vec3f aPosition,int aValue);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -73,6 +73,7 @@ class Coin : public Object3D
         NodeSceneGraph * root;
         Matrix4f * animationMatrix;
         AxisRotation * rotation;
+        bool notTake;
 };
 
 #endif // COIN_H

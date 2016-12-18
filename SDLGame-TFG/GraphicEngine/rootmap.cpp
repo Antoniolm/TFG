@@ -229,7 +229,7 @@ RootMap::RootMap()
     /////////////////////////////////////////
     Coin * coin;
     for(int i=0;i<5;i++){
-        coin=new Coin(vec3f(1.5+i,1.5,-3.5),10);
+        coin=new Coin(vec3f(7.5+i,1.5,-2.5),10);
         coins.push_back(coin);
     }
 
@@ -239,14 +239,14 @@ RootMap::RootMap()
     /////////////////////////////////////////
     npcList=new NpcList();
 
-    Npc * npc1=new Npc(vec3f(3.5,2.0,-3.5f));
+    Npc * npc1=new Npc(vec3f(3.5,2.0,-2.5f));
     npc1->addDialog("Esto es una prueba",NPC_DIALOG);
     npc1->addDialog("Segundo mensaje de prueba",HERO_DIALOG);
     npc1->addDialog("Tercer mensaje de prueba",HERO_DIALOG);
     npcList->add(npc1);
 
     transOneCube=new Matrix4f();
-    transOneCube->translation(3.5,2.0,-3.5f);
+    transOneCube->translation(3.5,2.0,-2.5f);
     scaleCube =new Matrix4f();
     scaleCube->scale(0.5,1,0.5);
 

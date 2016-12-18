@@ -19,8 +19,10 @@
 
 #include "coin.h"
 
-Coin::Coin(vec3f position,int aValue){
+Coin::Coin(vec3f aPosition,int aValue){
     value=aValue;
+    notTake=true;
+    position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     Material * materialCoin=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureCoin.png");
@@ -51,12 +53,20 @@ Coin::~Coin()
 //**********************************************************************//
 
 void Coin::visualization(Context & cv){
-    root->visualization(cv);
+    if(notTake)
+        root->visualization(cv);
 }
 
 //**********************************************************************//
 
 void Coin::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
+    vec3f posHero=rootMap->getHero()->getPosition();
+    float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.y-posHero.y,2.0)+pow(position.z-posHero.z,2.0));
+    if(distance<=0.8){
+        notTake=false;
+    }
+
+    //Animation
     animationMatrix->setMatrix(rotation->updateState(time-currentTime).getMatrix());
     currentTime+=time-currentTime;
 }
