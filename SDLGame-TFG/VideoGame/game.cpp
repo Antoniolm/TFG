@@ -36,7 +36,7 @@ Game::Game(){
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
-    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
+    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 15);
     SDL_Color color= {255,0,0};
     lifeText=new Text("",font,color,false);
 }
@@ -144,7 +144,7 @@ void Game::loop(){
         posHero.y+=4.0f;posHero.z+=10.0f;
         aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
         posHero=hero->getPosition();
-        lifeText->setPosition(vec3f(posHero.x-0.45,posHero.y+3.7,posHero.z+8));
+        lifeText->setPosition(vec3f(posHero.x-0.75,posHero.y+3.55,posHero.z+7));
         std::stringstream life;
         life<< hero->getLife();
         if(lastLife!=hero->getLife()){

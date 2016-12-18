@@ -139,10 +139,10 @@ void Text::init(){
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_BGRA,
                  GL_UNSIGNED_BYTE, surface->pixels);
 
-    float scaleX=surface->w/250.0;
-    scaleText->scale(scaleX,0.3,1.0);
+    float scaleX=surface->w/250.0,scaleY=surface->h/20.0;
+    scaleText->scale(scaleX,scaleY*0.3,1.0);
     if(hasDialog)
-        scaleBack->scale(scaleX+0.2,1.1,1.0);
+        scaleBack->scale(scaleX+0.2,scaleY*1.1,1.0);
 
 }
 
