@@ -412,8 +412,15 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
         objs[i]->updateState(time,currentKeyStates,rootMap);
 
     //Update the Scene
-    for(unsigned i=0;i<coins.size();i++)
-        coins[i]->updateState(time,currentKeyStates,rootMap);
+    vector<Coin*>::iterator it=coins.begin();
+    while(it!=coins.end()){
+        (*it)->updateState(time,currentKeyStates,rootMap);
+        if((*it)->isTake())
+            coins.erase(it);
+        else
+            it++;
+
+    }
 
     npcList->updateState(time,currentKeyStates,rootMap);
     enemyList->updateState(time,currentKeyStates,rootMap);

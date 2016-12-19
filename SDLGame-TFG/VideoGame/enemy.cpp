@@ -455,12 +455,10 @@ Enemy::~Enemy()
 //**********************************************************************//
 
 void Enemy::visualization(Context & cv){
-    if(life>0){
-        root->visualization(cv);
+    root->visualization(cv);
 
-        if(activatedDialog)
+    if(activatedDialog)
             currentText->visualization(cv);
-    }
 }
 
 //**********************************************************************//

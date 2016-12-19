@@ -53,8 +53,7 @@ Coin::~Coin()
 //**********************************************************************//
 
 void Coin::visualization(Context & cv){
-    if(notTake)
-        root->visualization(cv);
+    root->visualization(cv);
 }
 
 //**********************************************************************//
@@ -75,4 +74,10 @@ void Coin::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
 
 int Coin::getValue(){
     return value;
+}
+
+//**********************************************************************//
+
+bool Coin::isTake(){
+    return !notTake;
 }
