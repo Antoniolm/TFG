@@ -72,7 +72,7 @@ class Game
         Game();
 
         void updateLife(int &lastLife);
-        void updateCoin();
+        void updateCoin(int & currentCoin);
         static Game* instance;
         Window * window;
         RootMap * rootMap;

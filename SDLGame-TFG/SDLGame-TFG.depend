@@ -372,7 +372,7 @@
 	<string>
 	"sound.h"
 
-1482149011 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1482151412 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -998,7 +998,7 @@
 	"../GraphicEngine/text.h"
 	<vector>
 
-1482067912 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1482151553 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1779,7 +1779,7 @@
 	"sound.h"
 	"menu.h"
 
-1482150498 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
+1482151494 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
 	"coin.h"
 
 1482147284 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h
