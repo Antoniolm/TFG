@@ -49,6 +49,13 @@ void EnemyList::visualization(Context & cv){
 //**********************************************************************//
 
 void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
-    for(unsigned i=0;i<enemies.size();i++)//Check if hero is talking now
-        enemies[i]->updateState(time,currentKeyStates,rootMap);
+    vector<Enemy*>::iterator it=enemies.begin();
+    while(it!=enemies.end()){
+        (*it)->updateState(time,currentKeyStates,rootMap);
+        if((*it)->getLife()<=0.0){ //if the enemy is dead
+            enemies.erase(it);
+        }
+        else //if not dead it++;
+            it++;
+    }
 }

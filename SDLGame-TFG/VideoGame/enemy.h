@@ -94,6 +94,14 @@ class Enemy: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         vec3f getRadioActivity();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the life of our hero
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
+        float getLife();
+
     protected:
     private:
         bool detectHit(vec3f posHero,avatarDirection dirHeros);

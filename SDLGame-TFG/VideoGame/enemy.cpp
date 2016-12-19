@@ -603,3 +603,9 @@ bool Enemy::detectHit(vec3f posHero,avatarDirection dirHero){
     return result;
 }
 
+//**********************************************************************//
+
+ float Enemy::getLife(){
+    return life;
+ }
+
