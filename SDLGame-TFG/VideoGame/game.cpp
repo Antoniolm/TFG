@@ -32,6 +32,7 @@ Game::Game(){
     pauseMenu = new PauseMenu();
     mainMenu = new MainMenu();
     mainMenu->activate();
+    deadMenu = new DeadMenu();
 
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
@@ -127,10 +128,11 @@ void Game::loop(){
         //Update the states
         time=SDL_GetTicks();
         mainMenu->updateState(time,currentKeyStates,rootMap);
+        deadMenu->updateState(time,currentKeyStates,rootMap);
         if(!mainMenu->isActivate())
             pauseMenu->updateState(time,currentKeyStates,rootMap);
 
-        if(!pauseMenu->isActivate() && !mainMenu->isActivate()){ //If  menu is not activate
+        if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate()){ //If  menu is not activate
             rootMap->updateState(time,currentKeyStates,rootMap);
             if(wasActivatedMenu) //If is the first time that it is not activated
                 rootMap->enableSound(true);
@@ -152,13 +154,14 @@ void Game::loop(){
         rootMap->visualization(aContext);
         pauseMenu->visualization(aContext);
         mainMenu->visualization(aContext);
+        deadMenu->visualization(aContext);
         lifeText->visualization(aContext);
         coinText->visualization(aContext);
 
         window->updateScreen();
 
         if(hero->getLife()<=0.0)
-            exit(0);
+            deadMenu->activate();
     }
 }
 

@@ -372,7 +372,7 @@
 	<string>
 	"sound.h"
 
-1482151412 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1482187628 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -387,6 +387,7 @@
 	"../GraphicEngine/menu.h"
 	"../GraphicEngine/pausemenu.h"
 	"../GraphicEngine/mainmenu.h"
+	"../GraphicEngine/deadmenu.h"
 	"hero.h"
 	<sstream>
 
@@ -394,7 +395,7 @@
 	"window.h"
 	"file_obj.h"
 
-1482152402 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1482187695 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1669,7 +1670,7 @@
 	<vector>
 	<string>
 
-1481541769 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
+1482154573 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
 1481134769 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
@@ -1790,4 +1791,15 @@
 	"../GraphicEngine/matrix4fdynamic.h"
 	"../GraphicEngine/meshcollection.h"
 	"../GraphicEngine/axisrotation.h"
+
+1482187547 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\deadmenu.h
+	<object3d.h>
+	"rootmap.h"
+	"context.h"
+	"mesh.h"
+	"nodescenegraph.h"
+	"texture.h"
+	"material.h"
+	"sound.h"
+	"menu.h"
 

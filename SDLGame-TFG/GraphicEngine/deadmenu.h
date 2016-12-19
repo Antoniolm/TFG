@@ -20,8 +20,17 @@
 #ifndef DEADMENU_H
 #define DEADMENU_H
 
+#include <object3d.h>
+#include "rootmap.h"
+#include "context.h"
+#include "mesh.h"
+#include "nodescenegraph.h"
+#include "texture.h"
+#include "material.h"
+#include "sound.h"
+#include "menu.h"
 
-class DeadMenu
+class DeadMenu : public Menu
 {
     public:
         //////////////////////////////////////////////////////////////////////////
@@ -51,6 +60,13 @@ class DeadMenu
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will activate our menu
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activate();
     protected:
 
     private:
