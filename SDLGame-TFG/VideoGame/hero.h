@@ -127,6 +127,22 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         float getLife();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the coins of our hero
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
+        int getCoin();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will add a new coin to our current coins
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void addCoin(int value);
+
     protected:
 
     private:
@@ -138,6 +154,7 @@ class Hero: public AvatarMove
         Text * currentText;
         bool activatedDialog,isHitting;
         float jumpDelay,hitDelay;
+        int currentCoin;
 };
 
 #endif // HERO_H

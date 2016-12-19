@@ -39,6 +39,9 @@ Game::Game(){
     TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 15);
     SDL_Color color= {255,0,0};
     lifeText=new Text("",font,color,false);
+
+    SDL_Color color2= {0,255,0};
+    coinText=new Text("",font,color,false);
 }
 
 //**********************************************************************//
@@ -61,7 +64,7 @@ void Game::loop(){
     float time;
     bool wasActivatedMenu=false;
     int windowH,windowW;
-    int lastLife=160;
+    int lastLife=160,currentCoin=0;
 
     hero=new Hero();
     rootMap->setHero(hero);
@@ -143,15 +146,8 @@ void Game::loop(){
         posHero=hero->getPosition();
         posHero.y+=4.0f;posHero.z+=10.0f;
         aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
-        posHero=hero->getPosition();
-        lifeText->setPosition(vec3f(posHero.x-0.75,posHero.y+3.55,posHero.z+7));
-        std::stringstream life;
-        life<< hero->getLife();
-        if(lastLife!=hero->getLife()){
-            lifeText->setMessage(life.str()+"/150");
-            lifeText->init();
-            lastLife=hero->getLife();
-        }
+        updateLife(lastLife);
+        updateCoin();
 
         rootMap->visualization(aContext);
         pauseMenu->visualization(aContext);
@@ -163,4 +159,20 @@ void Game::loop(){
         if(hero->getLife()<=0.0)
             exit(0);
     }
+}
+
+void Game::updateLife(int & lastLife){
+        vec3f posHero=hero->getPosition();
+        lifeText->setPosition(vec3f(posHero.x-0.75,posHero.y+3.55,posHero.z+7));
+        std::stringstream life;
+        life<< hero->getLife();
+        if(lastLife!=hero->getLife()){
+            lifeText->setMessage(life.str()+"/150");
+            lifeText->init();
+            lastLife=hero->getLife();
+        }
+}
+
+void Game::updateCoin(){
+
 }

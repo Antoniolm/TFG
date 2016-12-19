@@ -71,13 +71,15 @@ class Game
         //////////////////////////////////////////////////////////////////////////
         Game();
 
+        void updateLife(int &lastLife);
+        void updateCoin();
         static Game* instance;
         Window * window;
         RootMap * rootMap;
         Hero * hero;
         PauseMenu * pauseMenu;
         MainMenu * mainMenu;
-        Text * lifeText;
+        Text * lifeText,* coinText;
 };
 
 #endif // GAME_H

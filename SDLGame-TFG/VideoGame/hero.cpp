@@ -30,6 +30,7 @@ Hero::Hero()
     isJumping=false;
     isHitting=false;
     life=150;
+    currentCoin=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
 
@@ -652,6 +653,17 @@ bool Hero::isHit(){
     return life;
  }
 
+ //**********************************************************************//
+
+ int Hero::getCoin(){
+    return currentCoin;
+ }
+
+ //**********************************************************************//
+
+ void Hero::addCoin(int value){
+    currentCoin+=value;
+ }
 
 //**********************************************************************//
 //                              PRIVATE                                 //
