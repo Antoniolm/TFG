@@ -56,6 +56,8 @@
 		<Unit filename="GraphicEngine/context.h" />
 		<Unit filename="GraphicEngine/damageobject.cpp" />
 		<Unit filename="GraphicEngine/damageobject.h" />
+		<Unit filename="GraphicEngine/deadmenu.cpp" />
+		<Unit filename="GraphicEngine/deadmenu.h" />
 		<Unit filename="GraphicEngine/file_obj.cpp" />
 		<Unit filename="GraphicEngine/file_obj.h" />
 		<Unit filename="GraphicEngine/iaenemy.cpp" />

@@ -105,14 +105,13 @@ void Game::loop(){
                 quit = true;
             }
             if( event.window.event==SDL_WINDOWEVENT_RESIZED ){
-                if(event.window.data2<600)windowH=600;
+                if(event.window.data2<600)windowH=600; //MinHeight
                 else windowH=event.window.data2;
 
-                if(event.window.data1<400) windowW=400;
+                if(event.window.data1<400) windowW=400; //MinWidth
                 else windowW=event.window.data1;
 
                 window->resizeWindow(windowH,windowW);
-                //change projection         //Y             //X
                 if(windowW > windowH)
                     aContext.camera.setPerspectiveProjection(30.0f,(float)( windowW / windowH), 0.1f, 200.0f);
                 else //fix
@@ -127,10 +126,16 @@ void Game::loop(){
 
         //Update the states
         time=SDL_GetTicks();
-        mainMenu->updateState(time,currentKeyStates,rootMap);
-        deadMenu->updateState(time,currentKeyStates,rootMap);
-        if(!mainMenu->isActivate())
+
+        if(!mainMenu->isActivate() && !deadMenu->isActivate()) //if  mainMenu and deadMenu is not activate
             pauseMenu->updateState(time,currentKeyStates,rootMap);
+        else{ //If some of that menu are activate
+            if(mainMenu->isActivate())
+                mainMenu->updateState(time,currentKeyStates,rootMap);
+            else
+                deadMenu->updateState(time,currentKeyStates,rootMap);
+        }
+
 
         if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate()){ //If  menu is not activate
             rootMap->updateState(time,currentKeyStates,rootMap);
@@ -144,7 +149,7 @@ void Game::loop(){
             wasActivatedMenu=true;
         }
 
-        //Update the camera and lifeText
+        //Update the camera, lifeText, coinText
         posHero=hero->getPosition();
         posHero.y+=4.0f;posHero.z+=10.0f;
         aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
