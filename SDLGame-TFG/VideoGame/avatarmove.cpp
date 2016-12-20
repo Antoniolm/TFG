@@ -62,22 +62,22 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
             tenthValue=(int)posHero.z-posHero.z;
             hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z));
 
-            if(tenthValue<0.5 && hasCollision==0){
-                hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z+0.2));
+            if(tenthValue<0.5 && hasCollision==0){                                        //+0.2
+                hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z+0.05));
             }
-            else if(tenthValue>0.6 && hasCollision==0){
-                hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z-0.2));
+            else if(tenthValue>0.5 && hasCollision==0){                                  //+0.2
+                hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z-0.05));
             }
         break;
         case RIGHTWARD:
             tenthValue=(int)posHero.z-posHero.z;
             hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z));
 
-            if(tenthValue<0.5 && hasCollision==0){
-                hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z+0.2));
+            if(tenthValue<0.5 && hasCollision==0){                                        //+0.2
+                hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z+0.05));
             }
-            else if(tenthValue>0.6 && hasCollision==0){
-                hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z-0.2));
+            else if(tenthValue>0.5 && hasCollision==0){                                   //+0.2
+                hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z-0.05));
             }
         break;
         case FOR_LEFTWARD:
@@ -152,7 +152,7 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
             moveAvatar->product(lineMove.updateState(time-currentTime).getMatrix());
         }
         result=true;
-        isMoveCollision=false;
+        //isMoveCollision=false;
     }
     else{   //Case -> not Move for colission but the hero change the rotation in the Y-axis
         if(direction!=aDir){
@@ -166,44 +166,7 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
 
             direction=aDir;
         }
-        /*if(!isMoveCollision){
-            vec3f positionObs=hasCollision->getPosition();
-            BoundingBox box=hasCollision->getBoundingBox();
-            Matrix4f trans;
-
-            switch(aDir){
-                case FORWARD:
-                    trans.translation(0.0,0.0,(posHero.z+0.3)-(positionObs.z+box.minValue.z));
-                break;
-                case BACKWARD:
-                    trans.translation(0.0,0.0,(positionObs.z+box.maxValue.z)-(posHero.z-0.3));
-                break;
-                case LEFTWARD:
-                    //trans.translation(0.0,(positionObs.y+box.maxValue.y)-(posHero.y-0.23),0.0);
-                break;
-                case RIGHTWARD:
-                    //trans.translation(0.0,(positionObs.y+box.maxValue.y)-(posHero.y-0.23),0.0);
-                break;
-                case FOR_LEFTWARD:
-                break;
-                case FOR_RIGHTWARD:
-                break;
-                case BACK_LEFTWARD:
-                break;
-                case BACK_RIGHTWARD:
-                break;
-            }
-
-            vec4f position;
-            position=moveAvatar->product(position);
-
-            moveAvatar->rotation(45*aDir,0.0f,1.0f,0.0f);
-            moveAvatar->product(trans.getMatrix());
-
-            direction=aDir;
-
-        }*/
-        isMoveCollision=true;
+        //isMoveCollision=true;
     }
 
     isMoving=true;
