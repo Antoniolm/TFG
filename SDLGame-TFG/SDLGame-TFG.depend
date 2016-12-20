@@ -891,7 +891,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1482237826 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1482245249 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -1633,7 +1633,7 @@
 	"structdata.h"
 	<SDL.h>
 
-1482237738 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1482238213 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
@@ -2013,4 +2013,23 @@
 
 1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\strfunc.h
 	"../stream.h"
+
+1482247223 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
+	"particlesystem.h"
+
+1482246791 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
+	<object3d.h>
+	<context.h>
+	<rootmap.h>
+	<vector>
+	<particle.h>
+
+1482247020 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particle.h
+	"object3d.h"
+	<context.h>
+	<rootmap.h>
+	<meshcollection.h>
+
+1482247012 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particle.cpp
+	"particle.h"
 

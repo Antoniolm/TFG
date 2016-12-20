@@ -24,6 +24,7 @@
 #include <context.h>
 #include <rootmap.h>
 #include <vector>
+#include <particle.h>
 
 class ParticleSystem : public Object3D
 {

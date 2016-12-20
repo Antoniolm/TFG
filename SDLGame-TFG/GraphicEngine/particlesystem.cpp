@@ -34,7 +34,8 @@ ParticleSystem::~ParticleSystem()
 //**********************************************************************//
 
 void ParticleSystem::visualization(Context & cv){
-
+    for(int i=0;i<particles.size();i++)
+        particles[i]->visualization(cv);
 }
 
 //**********************************************************************//
@@ -42,6 +43,10 @@ void ParticleSystem::visualization(Context & cv){
 void ParticleSystem::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     if(time-currentTime>200)
         currentTime=time-50;
+
+    for(int i=0;i<particles.size();i++){
+        particles[i]->updateState(time,currentKeyStates,rootMap);
+    }
 
     currentTime+=(time-currentTime);
 }

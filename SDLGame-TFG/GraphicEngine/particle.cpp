@@ -21,7 +21,24 @@
 
 Particle::Particle()
 {
-    //ctor
+    MeshCollection * meshCollect= MeshCollection::getInstance();
+
+    Matrix4f * transOneCube=new Matrix4f();
+    transOneCube->identity();
+
+    Matrix4f * scaleCube=new Matrix4f();
+    scaleCube->scale(0.3,1,1.0);
+
+    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
+
+    NodeSceneGraph * cubeNode=new NodeSceneGraph();
+    cubeNode->add(transOneCube);
+    cubeNode->add(scaleCube);
+    cubeNode->add(material);
+    cubeNode->add(meshCollect->getMesh(17));
+    root->add(cubeNode);
+
+    currentTime=SDL_GetTicks();
 }
 
 //**********************************************************************//
@@ -33,13 +50,23 @@ Particle::~Particle()
 
 //**********************************************************************//
 
-void ParticleSystem::visualization(Context & cv){
-
+void Particle::visualization(Context & cv){
+    root->visualization(cv);
 }
 
 //**********************************************************************//
 
-void ParticleSystem::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
-
+void Particle::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+    remainingTime-=(time-currentTime);
+    if(remainingTime<=0){
+        respawn();
+    }
     currentTime+=(time-currentTime);
+}
+
+//**********************************************************************//
+
+bool Particle::respawn(){
+
+
 }

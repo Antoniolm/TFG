@@ -23,6 +23,7 @@
 #include "object3d.h"
 #include <context.h>
 #include <rootmap.h>
+#include <meshcollection.h>
 
 class Particle : public Object3D
 {
@@ -57,7 +58,16 @@ class Particle : public Object3D
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will respawn a particle in a random position,color,life and velocity
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void respawn();
+        vec3f position,velocity,vec3f color;
         NodeSceneGraph *root;
+        float remainingTime;
 };
 
 #endif // PARTICLE_H
