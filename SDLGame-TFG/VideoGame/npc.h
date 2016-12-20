@@ -23,6 +23,7 @@
 #include "../GraphicEngine/ianpc.h"
 #include "avatar.h"
 #include "../GraphicEngine/mesh.h"
+#include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/structdata.h"
 #include <SDL_TTF.h>

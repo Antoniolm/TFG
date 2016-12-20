@@ -294,7 +294,7 @@ bool AvatarMove::gravity(float time){
 //**********************************************************************//
 
 void AvatarMove::activeJump(vec3f velocity,vec3f acceleration){
-    acceleratedMove=new AcceleratedMovement(velocity.x,velocity.y,velocity.z,acceleration.x,acceleration.y-G,acceleration.z);
+    acceleratedMove=new AcceleratedMovement(velocity.x,velocity.y,velocity.z,acceleration.x,acceleration.y-9.8,acceleration.z);
     isJumping=true;
 }
 

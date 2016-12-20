@@ -27,8 +27,8 @@ Npc::Npc(vec3f aPosition)
 {
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     npcActivate=false;
-    Mesh * cubeObject=new Mesh("geometries/cube.obj");
-    cubeObject->init();
+
+    MeshCollection * meshCollect= MeshCollection::getInstance();
 
     Matrix4f * transOneCube=new Matrix4f();
     transOneCube->translation(position.x,position.y,position.z);
@@ -42,7 +42,7 @@ Npc::Npc(vec3f aPosition)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(material);
-    cubeNode->add(cubeObject);
+    cubeNode->add(meshCollect->getMesh(0));
     root->add(cubeNode);
 
     TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);

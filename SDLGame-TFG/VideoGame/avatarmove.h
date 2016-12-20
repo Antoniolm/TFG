@@ -20,8 +20,6 @@
 #ifndef AVATARMOVE_H
 #define AVATARMOVE_H
 
-#define G 9.8
-
 #include "avatar.h"
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/acceleratedmovement.h"

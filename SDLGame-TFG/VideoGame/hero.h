@@ -32,6 +32,7 @@
 #include "../GraphicEngine/acceleratedmovement.h"
 #include "../GraphicEngine/sound.h"
 #include "../GraphicEngine/text.h"
+#include "../lib/rapidjson/document.h"
 
 #include <vector>
 

@@ -395,7 +395,7 @@
 	"window.h"
 	"file_obj.h"
 
-1482187695 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1482227828 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -984,7 +984,7 @@
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 
-1482150591 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
+1482230527 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -997,6 +997,7 @@
 	"../GraphicEngine/acceleratedmovement.h"
 	"../GraphicEngine/sound.h"
 	"../GraphicEngine/text.h"
+	"../lib/rapidjson/document.h"
 	<vector>
 
 1482151553 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
@@ -1632,11 +1633,11 @@
 	"structdata.h"
 	<SDL.h>
 
-1481888220 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1482230620 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
-1481618775 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
+1482230659 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
 	"avatar.h"
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/acceleratedmovement.h"
@@ -1673,10 +1674,11 @@
 1482154573 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
-1481134769 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
+1482231480 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
 	"../GraphicEngine/ianpc.h"
 	"avatar.h"
 	"../GraphicEngine/mesh.h"
+	"../GraphicEngine/meshcollection.h"
 	"../GraphicEngine/text.h"
 	"../GraphicEngine/structdata.h"
 	<SDL_TTF.h>
@@ -1802,4 +1804,213 @@
 	"material.h"
 	"sound.h"
 	"menu.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\document.h
+	"reader.h"
+	"internal/meta.h"
+	"internal/strfunc.h"
+	"memorystream.h"
+	"encodedstream.h"
+	<new>
+	<limits>
+	<iterator>
+	<utility>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\reader.h
+	"allocators.h"
+	"stream.h"
+	"encodedstream.h"
+	"internal/meta.h"
+	"internal/stack.h"
+	"internal/strtod.h"
+	<limits>
+	<intrin.h>
+	<nmmintrin.h>
+	<emmintrin.h>
+	<stdexcept>
+	"rapidjson/error/error.h"
+	"rapidjson/reader.h"
+	"error/error.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\allocators.h
+	"rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\rapidjson.h
+	<cstdlib>
+	<cstring>
+	"rapidjson/..."
+	<string>
+	"msinttypes/stdint.h"
+	"msinttypes/inttypes.h"
+	<stdint.h>
+	<inttypes.h>
+	<endian.h>
+	"rapidjson/..."
+	<cassert>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\msinttypes\stdint.h
+	<stdint.h>
+	<limits.h>
+	<wchar.h>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\msinttypes\inttypes.h
+	"stdint.h"
+	<inttypes.h>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\stream.h
+	"rapidjson.h"
+	"encodings.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\encodings.h
+	"rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\encodedstream.h
+	"stream.h"
+	"memorystream.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\memorystream.h
+	"stream.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\meta.h
+	"../rapidjson.h"
+	<type_traits>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\stack.h
+	"../allocators.h"
+	"swap.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\swap.h
+	"../rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\strtod.h
+	"ieee754.h"
+	"biginteger.h"
+	"diyfp.h"
+	"pow10.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\ieee754.h
+	"../rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\biginteger.h
+	"../rapidjson.h"
+	<intrin.h>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\diyfp.h
+	"../rapidjson.h"
+	<intrin.h>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\pow10.h
+	"../rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\error\error.h
+	"../rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\strfunc.h
+	"../stream.h"
+
+1482187923 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\deadmenu.cpp
+	"deadmenu.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\document.h
+	"reader.h"
+	"internal/meta.h"
+	"internal/strfunc.h"
+	"memorystream.h"
+	"encodedstream.h"
+	<new>
+	<limits>
+	<iterator>
+	<utility>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\reader.h
+	"allocators.h"
+	"stream.h"
+	"encodedstream.h"
+	"internal/meta.h"
+	"internal/stack.h"
+	"internal/strtod.h"
+	<limits>
+	<intrin.h>
+	<nmmintrin.h>
+	<emmintrin.h>
+	<stdexcept>
+	"rapidjson/error/error.h"
+	"rapidjson/reader.h"
+	"error/error.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\allocators.h
+	"rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\rapidjson.h
+	<cstdlib>
+	<cstring>
+	"rapidjson/..."
+	<string>
+	"msinttypes/stdint.h"
+	"msinttypes/inttypes.h"
+	<stdint.h>
+	<inttypes.h>
+	<endian.h>
+	"rapidjson/..."
+	<cassert>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\msinttypes\stdint.h
+	<stdint.h>
+	<limits.h>
+	<wchar.h>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\msinttypes\inttypes.h
+	"stdint.h"
+	<inttypes.h>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\stream.h
+	"rapidjson.h"
+	"encodings.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\encodings.h
+	"rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\encodedstream.h
+	"stream.h"
+	"memorystream.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\memorystream.h
+	"stream.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\meta.h
+	"../rapidjson.h"
+	<type_traits>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\stack.h
+	"../allocators.h"
+	"swap.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\swap.h
+	"../rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\strtod.h
+	"ieee754.h"
+	"biginteger.h"
+	"diyfp.h"
+	"pow10.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\ieee754.h
+	"../rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\biginteger.h
+	"../rapidjson.h"
+	<intrin.h>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\diyfp.h
+	"../rapidjson.h"
+	<intrin.h>
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\pow10.h
+	"../rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\error\error.h
+	"../rapidjson.h"
+
+1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\strfunc.h
+	"../stream.h"
 
