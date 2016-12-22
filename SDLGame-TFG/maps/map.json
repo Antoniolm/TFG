@@ -1,0 +1,45 @@
+{
+    "name": "First map",
+    "title": "Adventure",
+
+    "npcs":[
+            {   "position":[2.0,4.0,5.0],
+                "dialog":[{"speaker":0,
+                           "string":"Esto es una prueba"},
+                          {"speaker":1,
+                            "string":"Esto es una prueba"}
+                        ]
+            },
+
+            {   "position":[2.0,3.0,1.0],
+                "dialog":[{"speaker":0,
+                           "string":"Esto es una prueba"},
+                          {"speaker":1,
+                            "string":"Esto es una prueba"}
+                        ]
+            },
+            {   "position":[2.0,5.0,8.3],
+                "dialog":[{"speaker":0,
+                           "string":"Esto es una prueba"},
+                          {"speaker":1,
+                            "string":"Esto es una prueba"}
+                        ]
+            }
+    ],
+
+    "enemies":[
+            {   "position":[2.0,4.0,5.0],
+                "radioActivity":[2.0,4.0,5.0],
+                "velocity":[2.0,4.0,5.0]
+            },
+
+            {   "position":[2.0,3.0,1.0],
+                "radioActivity":[2.0,4.0,5.0],
+                "velocity":[2.0,4.0,5.0]
+            },
+            {   "position":[2.0,5.0,8.3],
+                "radioActivity":[2.0,4.0,5.0],
+                "velocity":[2.0,4.0,5.0]
+            }
+    ]
+}
