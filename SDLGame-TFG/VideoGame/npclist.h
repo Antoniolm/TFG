@@ -23,8 +23,10 @@
 #include "npc.h"
 #include "hero.h"
 #include "../GraphicEngine/object3d.h"
-
+#include "../lib/rapidjson/document.h"
 #include <vector>
+
+using namespace rapidjson;
 
 class NpcList : public Object3D
 {
@@ -33,6 +35,11 @@ class NpcList : public Object3D
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         NpcList();
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with parameters*/
+        //////////////////////////////////////////////////////////////////////////
+        NpcList(const Value & npcsFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */

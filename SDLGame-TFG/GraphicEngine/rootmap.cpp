@@ -241,31 +241,20 @@ RootMap::RootMap(const rapidjson::Document & document)
     /////////////////////////////////////////
     // Add npcs of our map
     /////////////////////////////////////////
-    npcList=new NpcList();
+    const rapidjson::Value & npcsValue=document["npcs"];
+    npcList=new NpcList(npcsValue);
 
-    Npc * npc1=new Npc(vec3f(3.5,2.0,-2.5f));
-    npc1->addDialog("Esto es una prueba",NPC_DIALOG);
-    npc1->addDialog("Segundo mensaje de prueba",HERO_DIALOG);
-    npc1->addDialog("Tercer mensaje de prueba",HERO_DIALOG);
-    npcList->add(npc1);
-
+    //Added to our indexMap for collision with our hero
     transOneCube=new Matrix4f();
     transOneCube->translation(3.5,2.0,-2.5f);
     scaleCube =new Matrix4f();
     scaleCube->scale(0.5,1,0.5);
-
-    //Added to our indexMap for collision with our hero
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialVoid);
     cubeNode->add(meshCollect->getMesh(0));
     objs.push_back(new ObjectScene(cubeNode));
-
-    Npc * npc2=new Npc(vec3f(0.5,2.0,-3.5f));
-    npc2->addDialog("Segundo Npc",HERO_DIALOG);
-    npc2->addDialog("Segundo mensaje de Npc2",NPC_DIALOG);
-    npcList->add(npc2);
 
     //Added to our indexMap for collision with our hero
     transOneCube=new Matrix4f();
@@ -276,11 +265,6 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(materialVoid);
     cubeNode->add(meshCollect->getMesh(0));
     objs.push_back(new ObjectScene(cubeNode));
-
-    Npc * npc3=new Npc(vec3f(10.5,0.0,-3.5f));
-    npc3->addDialog("Hola este es el rio",NPC_DIALOG);
-    npc3->addDialog("Y esto es otra prueba",NPC_DIALOG);
-    npcList->add(npc3);
 
     //Added to our indexMap for collision with our hero
     transOneCube=new Matrix4f();
@@ -294,9 +278,9 @@ RootMap::RootMap(const rapidjson::Document & document)
 
     /////////////////////////////////////////
     // Add enemy of our map
-    const rapidjson::Value & enemiesValue=document["enemies"];
+    const rapidjson::Value & enemies=document["enemies"];
 
-    enemyList=new EnemyList(enemiesValue);
+    enemyList=new EnemyList(enemies);
 
     ////////////////////////////////////////
     //Create the indexMap;

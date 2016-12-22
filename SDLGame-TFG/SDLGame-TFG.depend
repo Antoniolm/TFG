@@ -894,7 +894,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1482415835 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1482418619 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -1671,7 +1671,7 @@
 1481055328 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.cpp
 	"ianpc.h"
 
-1481101499 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.h
+1482416118 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.h
 	<vector>
 	<string>
 
@@ -1687,13 +1687,14 @@
 	"../GraphicEngine/structdata.h"
 	<SDL_TTF.h>
 
-1481134115 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.h
+1482417934 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.h
 	"npc.h"
 	"hero.h"
 	"../GraphicEngine/object3d.h"
+	"../lib/rapidjson/document.h"
 	<vector>
 
-1481633629 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
+1482418577 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
 	"npclist.h"
 
 1482146940 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp

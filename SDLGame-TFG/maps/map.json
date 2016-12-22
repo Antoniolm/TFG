@@ -3,26 +3,28 @@
     "title": "Adventure",
 
     "npcs":[
-            {   "position":[2.0,4.0,5.0],
+            {   "position":[3.5,2.0,-2.5],
                 "dialog":[{"speaker":0,
                            "string":"Esto es una prueba"},
                           {"speaker":1,
-                            "string":"Esto es una prueba"}
+                            "string":"Segundo mensaje de prueba"},
+                          {"speaker":1,
+                            "string":"Tercer mensaje de prueba"}
                         ]
             },
 
-            {   "position":[2.0,3.0,1.0],
-                "dialog":[{"speaker":0,
-                           "string":"Esto es una prueba"},
-                          {"speaker":1,
-                            "string":"Esto es una prueba"}
+            {   "position":[0.5,2.0,-3.5],
+                "dialog":[{"speaker":1,
+                           "string":"Segundo Npc"},
+                          {"speaker":0,
+                            "string":"Segundo mensaje de Npc2"}
                         ]
             },
-            {   "position":[2.0,5.0,8.3],
+            {   "position":[10.5,0.0,-3.5],
                 "dialog":[{"speaker":0,
-                           "string":"Esto es una prueba"},
-                          {"speaker":1,
-                            "string":"Esto es una prueba"}
+                           "string":"Hola este es el rio"},
+                          {"speaker":0,
+                            "string":"Y esto es otra prueba"}
                         ]
             }
     ],
