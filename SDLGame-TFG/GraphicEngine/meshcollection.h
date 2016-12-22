@@ -50,6 +50,9 @@ enum meshElement{
 class MeshCollection
 {
     public:
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
         virtual ~MeshCollection();
 
         static MeshCollection * getInstance(){
@@ -59,7 +62,7 @@ class MeshCollection
             return instance;
         }
 
-        Mesh * getMesh(meshElement aElement);
+        Mesh * getMesh(meshElement element);
 
     protected:
 

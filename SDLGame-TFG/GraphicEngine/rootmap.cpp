@@ -31,6 +31,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cout<< "< Game is loading our current map >"<< endl;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
+    MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
     Matrix4f *scaleTreeDie =new Matrix4f();
     scaleTreeDie->scale(0.6,0.5,0.5);
@@ -59,18 +60,6 @@ RootMap::RootMap(const rapidjson::Document & document)
     Matrix4f * transCube=new Matrix4f();
     transCube->translation(1.0,0.0,0.0);
 
-    //Materials
-    Material * materialGrass=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass.png");
-    Material * materialGrass1=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass1.png");
-    Material * materialSand=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
-    //Material * materialBox=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
-    Material * materialFence=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
-    Material * materialMushroom=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
-    Material * materialTree=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grass.png");
-    Material * materialGrassBig=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grassBig.png");
-    Material * materialWater=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/water.png");
-    Material * materialVoid=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/void.png");
-
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
 
     for(int i=0;i<7;i++){
@@ -81,9 +70,9 @@ RootMap::RootMap(const rapidjson::Document & document)
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
             if(j>0 && j<5)
-                cubeNode->add(materialSand);
+                cubeNode->add(materialCollect->getMaterial(mCUBE_SAND));
             else
-                cubeNode->add(materialGrass);
+                cubeNode->add(materialCollect->getMaterial(mCUBE_GRASS));
 
             cubeNode->add(meshCollect->getMesh(CUBE));
             objs.push_back(new ObjectScene(cubeNode));
@@ -95,7 +84,7 @@ RootMap::RootMap(const rapidjson::Document & document)
         cubeNode=new NodeSceneGraph();
         cubeNode->add(transOneCube);
         cubeNode->add(scaleCube);
-        cubeNode->add(materialGrass);
+        cubeNode->add(materialCollect->getMaterial(mCUBE_GRASS));
         cubeNode->add(meshCollect->getMesh(CUBE));
         objs.push_back(new ObjectScene(cubeNode));
     }
@@ -107,12 +96,11 @@ RootMap::RootMap(const rapidjson::Document & document)
             cubeNode=new NodeSceneGraph();
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
-            cubeNode->add(materialGrass);
+            cubeNode->add(materialCollect->getMaterial(mCUBE_GRASS));
             cubeNode->add(meshCollect->getMesh(CUBE));
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
-    int p=0;
     for(int i=0;i<4;i++){
         for(int j=0;j<2;j++){
             transOneCube=new Matrix4f();
@@ -120,11 +108,7 @@ RootMap::RootMap(const rapidjson::Document & document)
             cubeNode=new NodeSceneGraph();
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
-            p = rand() % 100;
-            if(p<50)
-                cubeNode->add(materialGrass);
-            else
-                cubeNode->add(materialGrass1);
+            cubeNode->add(materialCollect->getMaterial(mCUBE_GRASS));
             cubeNode->add(meshCollect->getMesh(CUBE));
             objs.push_back(new ObjectScene(cubeNode));
         }
@@ -138,7 +122,7 @@ RootMap::RootMap(const rapidjson::Document & document)
             cubeNode=new NodeSceneGraph();
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
-            cubeNode->add(materialGrass);
+            cubeNode->add(materialCollect->getMaterial(mCUBE_GRASS));
             cubeNode->add(meshCollect->getMesh(CUBE));
             objs.push_back(new ObjectScene(cubeNode,-10.0));
         }
@@ -149,7 +133,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleWater);
-    cubeNode->add(materialWater);
+    cubeNode->add(materialCollect->getMaterial(mWATER));
     cubeNode->add(meshCollect->getMesh(CUBE));
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
@@ -163,7 +147,7 @@ RootMap::RootMap(const rapidjson::Document & document)
             cubeNode=new NodeSceneGraph();
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
-            cubeNode->add(materialFence);
+            cubeNode->add(materialCollect->getMaterial(mWOOD));
             cubeNode->add(meshCollect->getMesh(FENCE));
             objs.push_back(new ObjectScene(cubeNode));
         }
@@ -178,7 +162,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleBack);
-    cubeNode->add(materialWater);
+    cubeNode->add(materialCollect->getMaterial(mWATER));
     cubeNode->add(meshCollect->getMesh(BACKGROUND));
     background= new ObjectScene(cubeNode);
 
@@ -187,7 +171,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleTree);
-    cubeNode->add(materialTree);
+    cubeNode->add(materialCollect->getMaterial(mGRASS));
     cubeNode->add(meshCollect->getMesh(TREE));
     objs.push_back(new ObjectScene(cubeNode));
 
@@ -196,7 +180,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleTreeDie);
-    cubeNode->add(materialMushroom);
+    cubeNode->add(materialCollect->getMaterial(MUSH));
     cubeNode->add(meshCollect->getMesh(TREEDIE));
     objs.push_back(new ObjectScene(cubeNode));
 
@@ -204,7 +188,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     transOneCube->translation(2.1f,1.2f,-0.5f);
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
-    cubeNode->add(materialTree);
+    cubeNode->add(materialCollect->getMaterial(mGRASS));
     cubeNode->add(meshCollect->getMesh(GRASS));
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
@@ -213,7 +197,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
-    cubeNode->add(materialMushroom);
+    cubeNode->add(materialCollect->getMaterial(MUSH));
     cubeNode->add(meshCollect->getMesh(MUSHWHITE));
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
@@ -225,7 +209,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
-    cubeNode->add(materialSand);
+    cubeNode->add(materialCollect->getMaterial(mCUBE_SAND));
     cubeNode->add(meshCollect->getMesh(CUBE));
     objs.push_back(new ObjectScene(cubeNode));
     /////////////////////////////////////////
@@ -252,7 +236,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
-    cubeNode->add(materialVoid);
+    cubeNode->add(materialCollect->getMaterial(mVOID));
     cubeNode->add(meshCollect->getMesh(CUBE));
     objs.push_back(new ObjectScene(cubeNode));
 
@@ -262,7 +246,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
-    cubeNode->add(materialVoid);
+    cubeNode->add(materialCollect->getMaterial(mVOID));
     cubeNode->add(meshCollect->getMesh(CUBE));
     objs.push_back(new ObjectScene(cubeNode));
 
@@ -272,7 +256,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
-    cubeNode->add(materialVoid);
+    cubeNode->add(materialCollect->getMaterial(mVOID));
     cubeNode->add(meshCollect->getMesh(CUBE));
     objs.push_back(new ObjectScene(cubeNode));
 

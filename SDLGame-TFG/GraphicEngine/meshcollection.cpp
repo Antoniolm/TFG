@@ -133,6 +133,6 @@ MeshCollection::~MeshCollection()
 
 //**********************************************************************//
 
-Mesh * MeshCollection::getMesh(meshElement aElement){
-    return collection[aElement];
+Mesh * MeshCollection::getMesh(meshElement element){
+    return collection[element];
 }

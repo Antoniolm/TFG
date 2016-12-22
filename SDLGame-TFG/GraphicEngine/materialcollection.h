@@ -25,6 +25,19 @@
 
 using namespace std;
 
+enum materialElement{
+    mCUBE_GRASS, //0
+    mCUBE_SAND,  //1
+    mCUBE_BOX,   //2
+    mWOOD,       //3
+    MUSH,       //4
+    mGRASS,      //5
+    mWATER,      //6
+    mVOID,       //7
+    mCOIN        //8
+};
+
+
 class MaterialCollection
 {
     public:
@@ -39,6 +52,8 @@ class MaterialCollection
 
             return instance;
         }
+
+        Material * getMaterial(materialElement element);
     protected:
 
     private:

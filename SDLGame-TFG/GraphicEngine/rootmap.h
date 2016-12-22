@@ -38,6 +38,7 @@
 #include "../VideoGame/enemy.h"
 #include "../VideoGame/coin.h"
 #include "meshcollection.h"
+#include "materialcollection.h"
 #include "../lib/rapidjson/document.h"
 #include "sound.h"
 
