@@ -28,18 +28,19 @@
     ],
 
     "enemies":[
-            {   "position":[2.0,4.0,5.0],
-                "radioActivity":[2.0,4.0,5.0],
-                "velocity":[2.0,4.0,5.0]
+            {   "life":100,
+                "position":[4.5,2.0,-0.5],
+                "radioActivity":[2.0,2.0,2.0]
             },
 
-            {   "position":[2.0,3.0,1.0],
-                "radioActivity":[2.0,4.0,5.0],
-                "velocity":[2.0,4.0,5.0]
+            {   "life":50,
+                "position":[10.5,0.0,-2.5],
+                "radioActivity":[4.0,4.0,4.0]
             },
-            {   "position":[2.0,5.0,8.3],
-                "radioActivity":[2.0,4.0,5.0],
-                "velocity":[2.0,4.0,5.0]
+            {   
+                "life":10,
+                "position":[7.5,1.0,-4.5],
+                "radioActivity":[1.0,1.0,1.0]
             }
     ]
 }

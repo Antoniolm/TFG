@@ -25,8 +25,10 @@
 #include "npc.h"
 #include "hero.h"
 #include "../GraphicEngine/nodescenegraph.h"
-
+#include "../lib/rapidjson/document.h"
 #include <vector>
+
+using namespace rapidjson;
 
 class EnemyList : public NodeSceneGraph
 {
@@ -35,6 +37,11 @@ class EnemyList : public NodeSceneGraph
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         EnemyList();
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
+        EnemyList(const Value & enemiesFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
