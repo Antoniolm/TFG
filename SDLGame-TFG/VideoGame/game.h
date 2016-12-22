@@ -35,6 +35,9 @@
 #include "../GraphicEngine/pausemenu.h"
 #include "../GraphicEngine/mainmenu.h"
 #include "../GraphicEngine/deadmenu.h"
+#include "../lib/rapidjson/document.h"
+#include "../lib/rapidjson/stringbuffer.h"
+#include "../lib/rapidjson/filereadstream.h"
 #include "hero.h"
 #include <sstream>
 

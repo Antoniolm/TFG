@@ -21,8 +21,12 @@
 #include "../VideoGame/npclist.h"
 #include "../VideoGame/enemylist.h"
 #include <stdlib.h>     /* srand, rand */
+RootMap::RootMap(){
+}
 
-RootMap::RootMap()
+//**********************************************************************//
+
+RootMap::RootMap(const rapidjson::Document & document)
 {
     cout<< "< Game is loading our current map >"<< endl;
 

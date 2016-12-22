@@ -28,7 +28,16 @@ Game::Game(){
     window=Window::getInstance();
     window->setParameters("SDL_Game",800,600);
     window->createWindow();
-    rootMap=new RootMap();
+
+    //Create the json document-> We changed that when the game has more maps.
+    FILE* fp = fopen("./maps/map.json", "rb"); // non-Windows use "r"
+    char readBuffer[65536];
+    rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+    rapidjson::Document document;
+    document.ParseStream(is);
+    rootMap=new RootMap(document);
+    fclose(fp);
+
     pauseMenu = new PauseMenu();
     mainMenu = new MainMenu();
     mainMenu->activate();

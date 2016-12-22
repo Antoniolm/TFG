@@ -39,6 +39,7 @@
 #include "../VideoGame/enemy.h"
 #include "../VideoGame/coin.h"
 #include "meshcollection.h"
+#include "../lib/rapidjson/document.h"
 #include "sound.h"
 
 using namespace std;
@@ -56,6 +57,11 @@ class RootMap : public Object3D
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         RootMap();
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with parameters*/
+        //////////////////////////////////////////////////////////////////////////
+        RootMap(const rapidjson::Document & document);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
