@@ -900,7 +900,7 @@
 	"../VideoGame/enemylist.h"
 	<stdlib.h>
 
-1482414572 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1482432331 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -914,7 +914,6 @@
 	"oscillaterotation.h"
 	"mesh.h"
 	"objectscene.h"
-	"damageobject.h"
 	"../VideoGame/hero.h"
 	"../VideoGame/npc.h"
 	"../VideoGame/enemy.h"
@@ -1651,7 +1650,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1482071421 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
+1482430067 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
 	"text.h"
 
 1481642848 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
@@ -1748,7 +1747,7 @@
 	"material.h"
 	"sound.h"
 
-1482429081 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.h
+1482432287 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.h
 	"mesh.h"
 
 1482429002 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.cpp
@@ -2048,4 +2047,7 @@
 1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\filereadstream.h
 	"stream.h"
 	<cstdio>
+
+1482431773 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection.h
+	<vector>
 
