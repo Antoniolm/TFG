@@ -231,10 +231,10 @@ RootMap::RootMap(const rapidjson::Document & document)
     /////////////////////////////////////////
     // Add coins to our map
     /////////////////////////////////////////
-    Coin * coin;
-    for(int i=0;i<5;i++){
-        coin=new Coin(vec3f(7.5+i,1.5,-2.5),10);
-        coins.push_back(coin);
+    const rapidjson::Value & coinValue=document["coins"];
+    for(int i=0;i<coinValue.Size();i++){
+        coins.push_back(new Coin(vec3f(coinValue[i]["position"][0].GetFloat(),coinValue[i]["position"][1].GetFloat(),coinValue[i]["position"][2].GetFloat()),
+                                 coinValue[i]["value"].GetInt()));
     }
 
 
