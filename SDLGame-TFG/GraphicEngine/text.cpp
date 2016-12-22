@@ -42,7 +42,7 @@ Text::Text(const string & aTexture,TTF_Font * aFont,SDL_Color aColor,bool ahasDi
     textNode=new NodeSceneGraph();
     textNode->add(positionText);
     textNode->add(scaleText);
-    textNode->add(meshCollect->getMesh(17));
+    textNode->add(meshCollect->getMesh(TEXT));
 
     if(hasDialog){
         Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
@@ -55,7 +55,7 @@ Text::Text(const string & aTexture,TTF_Font * aFont,SDL_Color aColor,bool ahasDi
         backNode->add(positionBack);
         backNode->add(scaleBack);
         backNode->add(material);
-        backNode->add(meshCollect->getMesh(17));
+        backNode->add(meshCollect->getMesh(TEXT));
     }
 
 }

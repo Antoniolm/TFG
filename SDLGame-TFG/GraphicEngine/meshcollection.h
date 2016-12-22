@@ -25,6 +25,28 @@ class Mesh;
 
 using namespace std;
 
+enum meshElement{
+    CUBE,       //0
+    FENCE,      //1
+    TREE,       //2
+    GRASS,      //3
+    MUSHWHITE,  //4
+    TREEDIE,    //5
+    BACKGROUND, //6
+    KNEE,       //7
+    ARMOUR2,    //8
+    ARMOURCHEST,//9
+    HAND,       //10
+    TOPARM,     //11
+    CHEST,      //12
+    FOOT,       //13
+    HIP,        //14
+    HEAD,       //15
+    ARMOUR,     //16
+    TEXT,       //17
+    COIN        //18
+};
+
 class MeshCollection
 {
     public:
@@ -37,7 +59,7 @@ class MeshCollection
             return instance;
         }
 
-        Mesh * getMesh(int i);
+        Mesh * getMesh(meshElement aElement);
 
     protected:
 

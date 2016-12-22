@@ -43,10 +43,10 @@ PauseMenu::PauseMenu()
     root->add(rotationMenu);
     root->add(scaleMenu);
     root->add(currentMaterial);
-    root->add(meshCollect->getMesh(17));
+    root->add(meshCollect->getMesh(TEXT));
     root->add(scaleMenuBack);
     root->add(materialBack);
-    root->add(meshCollect->getMesh(17));
+    root->add(meshCollect->getMesh(TEXT));
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
 

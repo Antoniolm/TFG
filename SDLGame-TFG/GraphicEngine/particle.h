@@ -65,8 +65,9 @@ class Particle : public Object3D
         */
         //////////////////////////////////////////////////////////////////////////
         void respawn();
-        vec3f position,velocity,vec3f color;
+        vec3f position,velocity, color;
         NodeSceneGraph *root;
+        Matrix4f * transMatrix;
         float remainingTime;
 };
 

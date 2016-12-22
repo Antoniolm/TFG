@@ -160,8 +160,7 @@ void Game::loop(){
 
         //Update the camera, lifeText, coinText
         posHero=hero->getPosition();
-        posHero.y+=4.0f;posHero.z+=10.0f;
-        aContext.camera.moveCamera(posHero,hero->getPosition(),&aContext.currentShader);
+        aContext.camera.moveCamera(vec3f(posHero.x,posHero.y+4.0f,posHero.z+10.0f),posHero,&aContext.currentShader);
         updateLife(lastLife);
         updateCoin(currentCoin);
 
@@ -169,6 +168,8 @@ void Game::loop(){
         pauseMenu->visualization(aContext);
         mainMenu->visualization(aContext);
         deadMenu->visualization(aContext);
+
+
         lifeText->visualization(aContext);
         coinText->visualization(aContext);
 

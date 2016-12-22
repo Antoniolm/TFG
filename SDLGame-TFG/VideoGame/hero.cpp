@@ -111,7 +111,7 @@ Hero::Hero()
     foot->add(scaleFoot);
     Material * materialFoot=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     foot->add(materialFoot);
-    foot->add(meshCollect->getMesh(13));
+    foot->add(meshCollect->getMesh(FOOT));
 
     //knee + ankle
     NodeSceneGraph * knee_ankle=new NodeSceneGraph();
@@ -121,7 +121,7 @@ Hero::Hero()
     knee_ankle->add(transCylinder);
     knee_ankle->add(foot);
     knee_ankle->add(scaleKnee);
-    knee_ankle->add(meshCollect->getMesh(7));
+    knee_ankle->add(meshCollect->getMesh(KNEE));
 
     //Leg
     NodeSceneGraph * knee_ankleRight=new NodeSceneGraph();
@@ -143,7 +143,7 @@ Hero::Hero()
     legLeft->add(knee_ankleLeft);
     legLeft->add(scaleKnee);
     legLeft->add(materialFoot);
-    legLeft->add(meshCollect->getMesh(7));
+    legLeft->add(meshCollect->getMesh(KNEE));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
@@ -152,7 +152,7 @@ Hero::Hero()
     legRight->add(knee_ankleRight);
     legRight->add(scaleKnee);
     legRight->add(materialFoot);
-    legRight->add(meshCollect->getMesh(7));
+    legRight->add(meshCollect->getMesh(KNEE));
 
     //////////////////////////////////////////////////////
     /////                  Arms                      /////
@@ -226,13 +226,13 @@ Hero::Hero()
     handLeft->add(scaleHand);
     handLeft->add(rotateYHand);
     handLeft->add(materialLeg);
-    handLeft->add(meshCollect->getMesh(10));
+    handLeft->add(meshCollect->getMesh(HAND));
 
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transHand);
     handRight->add(scaleHand);
     handRight->add(materialLeg);
-    handRight->add(meshCollect->getMesh(10));
+    handRight->add(meshCollect->getMesh(HAND));
 
     //elbow + wrist
 
@@ -254,14 +254,14 @@ Hero::Hero()
     shoulderLeft->add(scaleShoulder);
     shoulderLeft->add(rotateXShoulder);
     shoulderLeft->add(materialLeg);
-    shoulderLeft->add(meshCollect->getMesh(11));
+    shoulderLeft->add(meshCollect->getMesh(TOPARM));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
     shoulderRight->add(rotateXShoulder);
     shoulderRight->add(rotateShoulder);
     shoulderRight->add(scaleShoulder);
     shoulderRight->add(materialLeg);
-    shoulderRight->add(meshCollect->getMesh(11));
+    shoulderRight->add(meshCollect->getMesh(TOPARM));
 
     //Arm left
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
@@ -342,18 +342,18 @@ Hero::Hero()
     armourNode->add(transArmour);
     armourNode->add(scaleArmour);
     armourNode->add(materialTest);
-    armourNode->add(meshCollect->getMesh(16));
+    armourNode->add(meshCollect->getMesh(ARMOUR));
 
     NodeSceneGraph * armour2Node=new NodeSceneGraph();
     armour2Node->add(scaleArmour2);
     armour2Node->add(materialTest);
-    armour2Node->add(meshCollect->getMesh(8));
+    armour2Node->add(meshCollect->getMesh(ARMOUR2));
 
     NodeSceneGraph * armourChestNode=new NodeSceneGraph();
     armourChestNode->add(transArmourChest);
     armourChestNode->add(scaleArmourChest);
     armourChestNode->add(materialTest);
-    armourChestNode->add(meshCollect->getMesh(9));
+    armourChestNode->add(meshCollect->getMesh(ARMOURCHEST));
 
     /*NodeSceneGraph * armourChestTestNode=new NodeSceneGraph();
     armourChestTestNode->add(transArmourChest);
@@ -364,14 +364,14 @@ Hero::Hero()
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);
     chestNode->add(materialWood);
-    chestNode->add(meshCollect->getMesh(12));
+    chestNode->add(meshCollect->getMesh(CHEST));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     Material * materialHead=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodHead.png");
     headNode->add(transHead);
     headNode->add(scaleHead);
     headNode->add(materialHead);
-    headNode->add(meshCollect->getMesh(15));
+    headNode->add(meshCollect->getMesh(HEAD));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
     chest_ArmsNode->add(transChest);

@@ -42,7 +42,7 @@ Npc::Npc(vec3f aPosition)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(material);
-    cubeNode->add(meshCollect->getMesh(0));
+    cubeNode->add(meshCollect->getMesh(CUBE));
     root->add(cubeNode);
 
     TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);

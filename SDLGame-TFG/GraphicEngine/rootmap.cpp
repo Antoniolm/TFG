@@ -85,7 +85,7 @@ RootMap::RootMap(const rapidjson::Document & document)
             else
                 cubeNode->add(materialGrass);
 
-            cubeNode->add(meshCollect->getMesh(0));
+            cubeNode->add(meshCollect->getMesh(CUBE));
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
@@ -96,7 +96,7 @@ RootMap::RootMap(const rapidjson::Document & document)
         cubeNode->add(transOneCube);
         cubeNode->add(scaleCube);
         cubeNode->add(materialGrass);
-        cubeNode->add(meshCollect->getMesh(0));
+        cubeNode->add(meshCollect->getMesh(CUBE));
         objs.push_back(new ObjectScene(cubeNode));
     }
 
@@ -108,7 +108,7 @@ RootMap::RootMap(const rapidjson::Document & document)
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
-            cubeNode->add(meshCollect->getMesh(0));
+            cubeNode->add(meshCollect->getMesh(CUBE));
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
@@ -125,7 +125,7 @@ RootMap::RootMap(const rapidjson::Document & document)
                 cubeNode->add(materialGrass);
             else
                 cubeNode->add(materialGrass1);
-            cubeNode->add(meshCollect->getMesh(0));
+            cubeNode->add(meshCollect->getMesh(CUBE));
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
@@ -139,7 +139,7 @@ RootMap::RootMap(const rapidjson::Document & document)
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
             cubeNode->add(materialGrass);
-            cubeNode->add(meshCollect->getMesh(0));
+            cubeNode->add(meshCollect->getMesh(CUBE));
             objs.push_back(new ObjectScene(cubeNode,-10.0));
         }
     }
@@ -150,7 +150,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleWater);
     cubeNode->add(materialWater);
-    cubeNode->add(meshCollect->getMesh(0));
+    cubeNode->add(meshCollect->getMesh(CUBE));
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
 
@@ -164,7 +164,7 @@ RootMap::RootMap(const rapidjson::Document & document)
             cubeNode->add(transOneCube);
             cubeNode->add(scaleCube);
             cubeNode->add(materialFence);
-            cubeNode->add(meshCollect->getMesh(1));
+            cubeNode->add(meshCollect->getMesh(FENCE));
             objs.push_back(new ObjectScene(cubeNode));
         }
     }
@@ -179,7 +179,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleBack);
     cubeNode->add(materialWater);
-    cubeNode->add(meshCollect->getMesh(6));
+    cubeNode->add(meshCollect->getMesh(BACKGROUND));
     background= new ObjectScene(cubeNode);
 
     transOneCube=new Matrix4f();
@@ -188,7 +188,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleTree);
     cubeNode->add(materialTree);
-    cubeNode->add(meshCollect->getMesh(2));
+    cubeNode->add(meshCollect->getMesh(TREE));
     objs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
@@ -197,7 +197,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleTreeDie);
     cubeNode->add(materialMushroom);
-    cubeNode->add(meshCollect->getMesh(5));
+    cubeNode->add(meshCollect->getMesh(TREEDIE));
     objs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
@@ -205,7 +205,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(materialTree);
-    cubeNode->add(meshCollect->getMesh(3));
+    cubeNode->add(meshCollect->getMesh(GRASS));
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
@@ -214,7 +214,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialMushroom);
-    cubeNode->add(meshCollect->getMesh(4));
+    cubeNode->add(meshCollect->getMesh(MUSHWHITE));
     decorationObjs.push_back(new ObjectScene(cubeNode));
 
     transOneCube=new Matrix4f();
@@ -226,7 +226,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialSand);
-    cubeNode->add(meshCollect->getMesh(0));
+    cubeNode->add(meshCollect->getMesh(CUBE));
     objs.push_back(new ObjectScene(cubeNode));
     /////////////////////////////////////////
     // Add coins to our map
@@ -253,7 +253,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialVoid);
-    cubeNode->add(meshCollect->getMesh(0));
+    cubeNode->add(meshCollect->getMesh(CUBE));
     objs.push_back(new ObjectScene(cubeNode));
 
     //Added to our indexMap for collision with our hero
@@ -263,7 +263,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialVoid);
-    cubeNode->add(meshCollect->getMesh(0));
+    cubeNode->add(meshCollect->getMesh(CUBE));
     objs.push_back(new ObjectScene(cubeNode));
 
     //Added to our indexMap for collision with our hero
@@ -273,7 +273,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
     cubeNode->add(materialVoid);
-    cubeNode->add(meshCollect->getMesh(0));
+    cubeNode->add(meshCollect->getMesh(CUBE));
     objs.push_back(new ObjectScene(cubeNode));
 
     /////////////////////////////////////////

@@ -39,7 +39,7 @@ Coin::Coin(vec3f aPosition,int aValue){
     root->add(transMatrix);
     root->add(animationMatrix);
     root->add(materialCoin);
-    root->add(meshCollect->getMesh(18));
+    root->add(meshCollect->getMesh(COIN));
     currentTime=SDL_GetTicks();
 }
 

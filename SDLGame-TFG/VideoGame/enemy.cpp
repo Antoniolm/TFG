@@ -134,7 +134,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     foot->add(scaleFoot);
     Material * materialFoot=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     foot->add(materialFoot);
-    foot->add(meshCollect->getMesh(13));
+    foot->add(meshCollect->getMesh(FOOT));
 
     //knee + ankle
     NodeSceneGraph * knee_ankle=new NodeSceneGraph();
@@ -144,7 +144,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     knee_ankle->add(transCylinder);
     knee_ankle->add(foot);
     knee_ankle->add(scaleKnee);
-    knee_ankle->add(meshCollect->getMesh(7));
+    knee_ankle->add(meshCollect->getMesh(KNEE));
 
     //Leg
     NodeSceneGraph * knee_ankleRight=new NodeSceneGraph();
@@ -166,7 +166,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     legLeft->add(knee_ankleLeft);
     legLeft->add(scaleKnee);
     legLeft->add(materialFoot);
-    legLeft->add(meshCollect->getMesh(7));
+    legLeft->add(meshCollect->getMesh(KNEE));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
@@ -175,7 +175,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     legRight->add(knee_ankleRight);
     legRight->add(scaleKnee);
     legRight->add(materialFoot);
-    legRight->add(meshCollect->getMesh(7));
+    legRight->add(meshCollect->getMesh(KNEE));
 
     //////////////////////////////////////////////////////
     /////                  Arms                      /////
@@ -275,13 +275,13 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     handLeft->add(scaleHand);
     handLeft->add(rotateYHand);
     handLeft->add(materialLeg);
-    handLeft->add(meshCollect->getMesh(10));
+    handLeft->add(meshCollect->getMesh(HAND));
 
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transHand);
     handRight->add(scaleHand);
     handRight->add(materialLeg);
-    handRight->add(meshCollect->getMesh(10));
+    handRight->add(meshCollect->getMesh(HAND));
 
     //elbow + wrist
 
@@ -303,14 +303,14 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     shoulderLeft->add(scaleShoulder);
     shoulderLeft->add(rotateXShoulder);
     shoulderLeft->add(materialLeg);
-    shoulderLeft->add(meshCollect->getMesh(11));
+    shoulderLeft->add(meshCollect->getMesh(TOPARM));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
     shoulderRight->add(rotateXShoulder);
     shoulderRight->add(rotateShoulder);
     shoulderRight->add(scaleShoulder);
     shoulderRight->add(materialLeg);
-    shoulderRight->add(meshCollect->getMesh(11));
+    shoulderRight->add(meshCollect->getMesh(TOPARM));
 
     //Arm left
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
@@ -391,29 +391,29 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     armourNode->add(transArmour);
     armourNode->add(scaleArmour);
     armourNode->add(materialTest);
-    armourNode->add(meshCollect->getMesh(16));
+    armourNode->add(meshCollect->getMesh(ARMOUR));
 
     NodeSceneGraph * armour2Node=new NodeSceneGraph();
     armour2Node->add(scaleArmour2);
     armour2Node->add(materialTest);
-    armour2Node->add(meshCollect->getMesh(8));
+    armour2Node->add(meshCollect->getMesh(ARMOUR2));
 
     NodeSceneGraph * armourChestNode=new NodeSceneGraph();
     armourChestNode->add(transArmourChest);
     armourChestNode->add(scaleArmourChest);
     armourChestNode->add(materialTest);
-    armourChestNode->add(meshCollect->getMesh(9));
+    armourChestNode->add(meshCollect->getMesh(ARMOURCHEST));
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);
     chestNode->add(materialWood);
-    chestNode->add(meshCollect->getMesh(12));
+    chestNode->add(meshCollect->getMesh(CHEST));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
     headNode->add(scaleHead);
     headNode->add(materialWood);
-    headNode->add(meshCollect->getMesh(15));
+    headNode->add(meshCollect->getMesh(HEAD));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
     chest_ArmsNode->add(transChest);
@@ -458,7 +458,7 @@ void Enemy::visualization(Context & cv){
     root->visualization(cv);
 
     if(activatedDialog)
-            currentText->visualization(cv);
+        currentText->visualization(cv);
 }
 
 //**********************************************************************//
