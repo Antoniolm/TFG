@@ -122,6 +122,26 @@ MeshCollection::MeshCollection()
     element->init();
     collection.push_back(element);
 
+    //Create our map
+    enumMap.insert(pair<string,meshElement> ("CUBE",CUBE));
+    enumMap.insert(pair<string,meshElement> ("FENCE",FENCE));
+    enumMap.insert(pair<string,meshElement> ("TREE",TREE));
+    enumMap.insert(pair<string,meshElement> ("GRASS",GRASS));
+    enumMap.insert(pair<string,meshElement> ("MUSHWHITE",MUSHWHITE));
+    enumMap.insert(pair<string,meshElement> ("TREEDIE",TREEDIE));
+    enumMap.insert(pair<string,meshElement> ("BACKGROUND",BACKGROUND));
+    enumMap.insert(pair<string,meshElement> ("KNEE",KNEE));
+    enumMap.insert(pair<string,meshElement> ("ARMOUR2",ARMOUR2));
+    enumMap.insert(pair<string,meshElement> ("ARMOURCHEST",ARMOURCHEST));
+    enumMap.insert(pair<string,meshElement> ("HAND",HAND));
+    enumMap.insert(pair<string,meshElement> ("TOPARM",TOPARM));
+    enumMap.insert(pair<string,meshElement> ("CHEST",CHEST));
+    enumMap.insert(pair<string,meshElement> ("FOOT",FOOT));
+    enumMap.insert(pair<string,meshElement> ("HIP",HIP));
+    enumMap.insert(pair<string,meshElement> ("HEAD",HEAD));
+    enumMap.insert(pair<string,meshElement> ("ARMOUR",ARMOUR));
+    enumMap.insert(pair<string,meshElement> ("TEXT",TEXT));
+    enumMap.insert(pair<string,meshElement> ("COIN",COIN));
 }
 
 //**********************************************************************//
@@ -135,4 +155,10 @@ MeshCollection::~MeshCollection()
 
 Mesh * MeshCollection::getMesh(meshElement element){
     return collection[element];
+}
+
+//**********************************************************************//
+
+Mesh * MeshCollection::getMesh(string element){
+    return collection[(enumMap.find(element))->second];
 }

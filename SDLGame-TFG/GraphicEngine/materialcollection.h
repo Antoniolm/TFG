@@ -22,6 +22,8 @@
 
 #include "material.h"
 #include <vector>
+#include <map>
+#include <string>
 
 using namespace std;
 
@@ -58,6 +60,7 @@ class MaterialCollection
         }
 
         Material * getMaterial(materialElement element);
+        Material * getMaterial(string element);
     protected:
 
     private:
@@ -68,6 +71,7 @@ class MaterialCollection
 
         static MaterialCollection* instance;
         vector<Material *> collection;
+        map<string,materialElement> enumMap;
 };
 
 #endif // MATERIALCOLLECTION_H

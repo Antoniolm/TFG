@@ -110,7 +110,6 @@ Hero::Hero()
     NodeSceneGraph * foot=new NodeSceneGraph();
     foot->add(transFoot);
     foot->add(scaleFoot);
-    Material * materialFoot=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     foot->add(materialCollect->getMaterial(mWOOD));
     foot->add(meshCollect->getMesh(FOOT));
 

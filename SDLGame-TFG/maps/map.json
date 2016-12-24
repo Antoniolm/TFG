@@ -69,22 +69,22 @@
                 "YNumber":10,        
                 "XNumber":5,         
                 "ZNumber":3,         
-                "materialTop":0,
-                "materialMiddle":1  },
+                "materialTop":"mCUBE_GRASS",
+                "materialMiddle":"mCUBE_GRASS"  },
 
             {   "position":[0,0.5,0],
                 "YNumber":10,   
                 "XNumber":5,    
                 "ZNumber":3,
-                "materialTop":0,
-                "materialMiddle":1  },
+                "materialTop":"mCUBE_GRASS",
+                "materialMiddle":"mCUBE_GRASS"  },
 
             {   "position":[0,0.5,0],
                 "YNumber":10,
                 "XNumber":5,
                 "ZNumber":3,
-                "materialTop":0,
-                "materialMiddle":1  }
+                "materialTop":"mCUBE_GRASS",
+                "materialMiddle":"mCUBE_GRASS"  }
     ]
 
 

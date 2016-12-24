@@ -63,6 +63,7 @@ class MeshCollection
         }
 
         Mesh * getMesh(meshElement element);
+        Mesh * getMesh(string element);
 
     protected:
 
@@ -74,6 +75,7 @@ class MeshCollection
 
         static MeshCollection* instance;
         vector<Mesh *> collection;
+        map<string,meshElement> enumMap;
 };
 
 #endif // MESHCOLLECTION_H
