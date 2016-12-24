@@ -32,6 +32,7 @@ Hero::Hero()
     life=150;
     currentCoin=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();
+    MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
 
     //Print a message for check
@@ -110,7 +111,7 @@ Hero::Hero()
     foot->add(transFoot);
     foot->add(scaleFoot);
     Material * materialFoot=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
-    foot->add(materialFoot);
+    foot->add(materialCollect->getMaterial(mWOOD));
     foot->add(meshCollect->getMesh(FOOT));
 
     //knee + ankle
@@ -134,15 +135,13 @@ Hero::Hero()
     knee_ankleLeft->add(moveKneeLeft);
     knee_ankleLeft->add(knee_ankle);
 
-    Material * materialLeg=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureLeg.png");
-
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
     legLeft->add(transLeg);
     legLeft->add(knee_ankleLeft);
     legLeft->add(scaleKnee);
-    legLeft->add(materialFoot);
+    legLeft->add(materialCollect->getMaterial(mWOOD));
     legLeft->add(meshCollect->getMesh(KNEE));
 
     //Leg Right
@@ -151,7 +150,7 @@ Hero::Hero()
     legRight->add(transLeg);
     legRight->add(knee_ankleRight);
     legRight->add(scaleKnee);
-    legRight->add(materialFoot);
+    legRight->add(materialCollect->getMaterial(mWOOD));
     legRight->add(meshCollect->getMesh(KNEE));
 
     //////////////////////////////////////////////////////
@@ -176,8 +175,7 @@ Hero::Hero()
     moveArmLeft->identity();
     moveMatrix.push_back(moveArmLeft);
 
-    Material * materialWood=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),90.0f,"./textures/wood.png");
-    Material * materialTest=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),32.0f,"./textures/leaf.jpg");
+
     //Material * materialArmour=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),32.0f,"./textures/plateArmor.png");
 
     Matrix4f * scaleHand=new Matrix4f();
@@ -225,13 +223,13 @@ Hero::Hero()
     //handLeft->add(scaleHandInvert);
     handLeft->add(scaleHand);
     handLeft->add(rotateYHand);
-    handLeft->add(materialLeg);
+    handLeft->add(materialCollect->getMaterial(mHAND));
     handLeft->add(meshCollect->getMesh(HAND));
 
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transHand);
     handRight->add(scaleHand);
-    handRight->add(materialLeg);
+    handRight->add(materialCollect->getMaterial(mHAND));
     handRight->add(meshCollect->getMesh(HAND));
 
     //elbow + wrist
@@ -253,14 +251,14 @@ Hero::Hero()
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
     shoulderLeft->add(scaleShoulder);
     shoulderLeft->add(rotateXShoulder);
-    shoulderLeft->add(materialLeg);
+    shoulderLeft->add(materialCollect->getMaterial(mWOOD));
     shoulderLeft->add(meshCollect->getMesh(TOPARM));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
     shoulderRight->add(rotateXShoulder);
     shoulderRight->add(rotateShoulder);
     shoulderRight->add(scaleShoulder);
-    shoulderRight->add(materialLeg);
+    shoulderRight->add(materialCollect->getMaterial(mWOOD));
     shoulderRight->add(meshCollect->getMesh(TOPARM));
 
     //Arm left
@@ -341,18 +339,18 @@ Hero::Hero()
     NodeSceneGraph * armourNode=new NodeSceneGraph();
     armourNode->add(transArmour);
     armourNode->add(scaleArmour);
-    armourNode->add(materialTest);
+    armourNode->add(materialCollect->getMaterial(mARMOUR));
     armourNode->add(meshCollect->getMesh(ARMOUR));
 
     NodeSceneGraph * armour2Node=new NodeSceneGraph();
     armour2Node->add(scaleArmour2);
-    armour2Node->add(materialTest);
+    armour2Node->add(materialCollect->getMaterial(mARMOUR));
     armour2Node->add(meshCollect->getMesh(ARMOUR2));
 
     NodeSceneGraph * armourChestNode=new NodeSceneGraph();
     armourChestNode->add(transArmourChest);
     armourChestNode->add(scaleArmourChest);
-    armourChestNode->add(materialTest);
+    armourChestNode->add(materialCollect->getMaterial(mARMOUR));
     armourChestNode->add(meshCollect->getMesh(ARMOURCHEST));
 
     /*NodeSceneGraph * armourChestTestNode=new NodeSceneGraph();
@@ -363,14 +361,13 @@ Hero::Hero()
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);
-    chestNode->add(materialWood);
+    chestNode->add(materialCollect->getMaterial(mWOOD));
     chestNode->add(meshCollect->getMesh(CHEST));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
-    Material * materialHead=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/woodHead.png");
     headNode->add(transHead);
     headNode->add(scaleHead);
-    headNode->add(materialHead);
+    headNode->add(materialCollect->getMaterial(mWOOD));
     headNode->add(meshCollect->getMesh(HEAD));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
@@ -381,9 +378,8 @@ Hero::Hero()
     chest_ArmsNode->add(trasn2Arms);
     chest_ArmsNode->add(ArmRight);
 
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     root->add(scaleHero);
-    root->add(material);
+    root->add(materialCollect->getMaterial(mWOOD));
     root->add(armourChestNode);
     //root->add(armourChestTestNode);
     root->add(armour2Node);
@@ -391,7 +387,7 @@ Hero::Hero()
     root->add(headNode);
     root->add(chest_ArmsNode);
     root->add(mat2);
-    root->add(materialWood);
+    root->add(materialCollect->getMaterial(mWOOD));
     root->add(legLeft);
     root->add(mat);
     root->add(legRight);

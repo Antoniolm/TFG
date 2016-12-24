@@ -24,6 +24,7 @@
 #include "avatarmove.h"
 #include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/meshcollection.h"
+#include "../GraphicEngine/materialcollection.h"
 #include "../GraphicEngine/scriptlmd.h"
 #include "../GraphicEngine/context.h"
 #include "../GraphicEngine/matrixscript.h"

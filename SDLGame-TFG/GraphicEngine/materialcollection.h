@@ -30,11 +30,15 @@ enum materialElement{
     mCUBE_SAND,  //1
     mCUBE_BOX,   //2
     mWOOD,       //3
-    MUSH,       //4
+    MUSH,        //4
     mGRASS,      //5
     mWATER,      //6
     mVOID,       //7
-    mCOIN        //8
+    mCOIN,       //8
+    mARMOUR,     //9
+    mHAND,       //10
+    mDWOOD,      //11
+    mDHAND       //12
 };
 
 

@@ -54,8 +54,6 @@
 		<Unit filename="GraphicEngine/camera.h" />
 		<Unit filename="GraphicEngine/context.cpp" />
 		<Unit filename="GraphicEngine/context.h" />
-		<Unit filename="GraphicEngine/damageobject.cpp" />
-		<Unit filename="GraphicEngine/damageobject.h" />
 		<Unit filename="GraphicEngine/deadmenu.cpp" />
 		<Unit filename="GraphicEngine/deadmenu.h" />
 		<Unit filename="GraphicEngine/file_obj.cpp" />
@@ -72,6 +70,8 @@
 		<Unit filename="GraphicEngine/mainmenu.h" />
 		<Unit filename="GraphicEngine/material.cpp" />
 		<Unit filename="GraphicEngine/material.h" />
+		<Unit filename="GraphicEngine/materialcollection.cpp" />
+		<Unit filename="GraphicEngine/materialcollection.h" />
 		<Unit filename="GraphicEngine/materialstack.cpp" />
 		<Unit filename="GraphicEngine/materialstack.h" />
 		<Unit filename="GraphicEngine/matrix4f.cpp" />

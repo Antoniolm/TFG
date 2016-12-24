@@ -988,11 +988,12 @@
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 
-1482230527 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
+1482583045 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
 	"../GraphicEngine/meshcollection.h"
+	"../GraphicEngine/materialcollection.h"
 	"../GraphicEngine/scriptlmd.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/matrixscript.h"
@@ -1004,7 +1005,7 @@
 	"../lib/rapidjson/document.h"
 	<vector>
 
-1482429875 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1482583005 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1788,7 +1789,7 @@
 	"sound.h"
 	"menu.h"
 
-1482429707 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
+1482583234 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
 	"coin.h"
 
 1482147284 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h
@@ -2052,10 +2053,10 @@
 1482431773 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection.h
 	<vector>
 
-1482445339 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
+1482583570 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
 	"material.h"
 	<vector>
 
-1482446164 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
+1482582781 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
 	"materialcollection.h"
 
