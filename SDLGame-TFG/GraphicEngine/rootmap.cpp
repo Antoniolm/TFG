@@ -61,6 +61,31 @@ RootMap::RootMap(const rapidjson::Document & document)
     transCube->translation(1.0,0.0,0.0);
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
+    const rapidjson::Value & voxelGroup=document["voxelGroup"];
+    int tamX,tamZ,initialX,initialY,initialZ;
+
+    for(int currentGroup=0;currentGroup<voxelGroup.Size();currentGroup++){
+
+        tamX=voxelGroup[currentGroup]["XNumber"].GetInt();
+        tamZ=voxelGroup[currentGroup]["ZNumber"].GetInt();
+
+
+        for(int i=0;i<tamX;i++){
+            for(int j=0;j<tamZ;j++){
+                transOneCube=new Matrix4f();
+                transOneCube->translation(voxelGroup[currentGroup]["position"][0].GetFloat()+i+0.5f,
+                                          voxelGroup[currentGroup]["position"][1].GetFloat(),
+                                          -voxelGroup[currentGroup]["position"][2].GetFloat()-j-0.5f);
+                cubeNode=new NodeSceneGraph();
+                cubeNode->add(transOneCube);
+                cubeNode->add(scaleCube);
+                cubeNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialTop"].GetString()));
+                cubeNode->add(meshCollect->getMesh(voxelGroup[currentGroup]["mesh"].GetString()));
+                objs.push_back(new ObjectScene(cubeNode));
+            }
+        }
+    }
+
 
     for(int i=0;i<7;i++){
         for(int j=0;j<7;j++){
