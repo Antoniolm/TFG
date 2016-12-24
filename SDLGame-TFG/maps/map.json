@@ -68,9 +68,25 @@
             {   "position":[0,0.5,0],
                 "YNumber":1,        
                 "XNumber":7,         
-                "ZNumber":7,         
+                "ZNumber":2,         
                 "materialTop":"mCUBE_GRASS",
                 "materialMiddle":"mCUBE_GRASS", 
+                "mesh":"CUBE" },
+
+            {   "position":[0,0.5,5],
+                "YNumber":1,        
+                "XNumber":7,         
+                "ZNumber":2,         
+                "materialTop":"mCUBE_GRASS",
+                "materialMiddle":"mCUBE_GRASS", 
+                "mesh":"CUBE" },
+
+            {   "position":[0,0.5,2],
+                "YNumber":1,        
+                "XNumber":7,         
+                "ZNumber":3,         
+                "materialTop":"mCUBE_SAND",
+                "materialMiddle":"mCUBE_SAND", 
                 "mesh":"CUBE" },
 
             {   "position":[7,-0.5,0],
@@ -100,7 +116,21 @@
                 "ZNumber":7,
                 "materialTop":"mCUBE_GRASS",
                 "materialMiddle":"mCUBE_GRASS",
-                "mesh":"CUBE"  }
+                "mesh":"CUBE"  },
+            {   "position":[0,1.5,1],
+                "YNumber":1,   
+                "XNumber":7,    
+                "ZNumber":1,
+                "materialTop":"mWOOD",
+                "materialMiddle":"mWOOD",
+                "mesh":"FENCE"  },
+            {   "position":[0,1.5,5],
+                "YNumber":1,   
+                "XNumber":7,    
+                "ZNumber":1,
+                "materialTop":"mWOOD",
+                "materialMiddle":"mWOOD",
+                "mesh":"FENCE"  }
     ]
 
 

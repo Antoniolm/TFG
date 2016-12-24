@@ -64,18 +64,21 @@ RootMap::RootMap(const rapidjson::Document & document)
     const rapidjson::Value & voxelGroup=document["voxelGroup"];
     int tamX,tamZ,initialX,initialY,initialZ;
 
+    //Bucle -> voxelGroup
     for(int currentGroup=0;currentGroup<voxelGroup.Size();currentGroup++){
-
+        //For each group
         tamX=voxelGroup[currentGroup]["XNumber"].GetInt();
         tamZ=voxelGroup[currentGroup]["ZNumber"].GetInt();
-
+        initialX=voxelGroup[currentGroup]["position"][0].GetFloat();
+        initialY=voxelGroup[currentGroup]["position"][1].GetFloat();
+        initialZ=-voxelGroup[currentGroup]["position"][2].GetFloat();
 
         for(int i=0;i<tamX;i++){
             for(int j=0;j<tamZ;j++){
                 transOneCube=new Matrix4f();
-                transOneCube->translation(voxelGroup[currentGroup]["position"][0].GetFloat()+i+0.5f,
-                                          voxelGroup[currentGroup]["position"][1].GetFloat(),
-                                          -voxelGroup[currentGroup]["position"][2].GetFloat()-j-0.5f);
+                transOneCube->translation(initialX+i+0.5f,
+                                          initialY,
+                                          initialZ-j-0.5f);
                 cubeNode=new NodeSceneGraph();
                 cubeNode->add(transOneCube);
                 cubeNode->add(scaleCube);
@@ -94,22 +97,6 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(materialCollect->getMaterial(mWATER));
     cubeNode->add(meshCollect->getMesh(CUBE));
     decorationObjs.push_back(new ObjectScene(cubeNode));
-
-
-    float scale=-1.5;
-    for(int i=0;i<2;i++){
-        if(i==1) scale=-5.5;
-        for(int j=0;j<7;j++){
-            transOneCube=new Matrix4f();
-            transOneCube->translation(j+0.5f,1.5f,scale);
-            cubeNode=new NodeSceneGraph();
-            cubeNode->add(transOneCube);
-            cubeNode->add(scaleCube);
-            cubeNode->add(materialCollect->getMaterial(mWOOD));
-            cubeNode->add(meshCollect->getMesh(FENCE));
-            objs.push_back(new ObjectScene(cubeNode));
-        }
-    }
 
     ////////////////////////////////////////////
     // Background
