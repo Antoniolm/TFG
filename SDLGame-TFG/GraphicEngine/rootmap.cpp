@@ -88,7 +88,7 @@ RootMap::RootMap(const rapidjson::Document & document)
                     else
                     cubeNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialMiddle"].GetString()));
                     cubeNode->add(meshCollect->getMesh(voxelGroup[currentGroup]["mesh"].GetString()));
-                    objs.push_back(new ObjectScene(cubeNode));
+                    objs.push_back(new ObjectScene(cubeNode,voxelGroup[currentGroup]["damage"].GetFloat()));
                 }
             }
         }
