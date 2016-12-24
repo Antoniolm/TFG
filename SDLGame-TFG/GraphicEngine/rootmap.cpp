@@ -62,29 +62,34 @@ RootMap::RootMap(const rapidjson::Document & document)
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
     const rapidjson::Value & voxelGroup=document["voxelGroup"];
-    int tamX,tamZ,initialX,initialY,initialZ;
+    int tamX,tamY,tamZ,initialX,initialZ;
+    float initialY;
 
     //Bucle -> voxelGroup
     for(int currentGroup=0;currentGroup<voxelGroup.Size();currentGroup++){
         //For each group
         tamX=voxelGroup[currentGroup]["XNumber"].GetInt();
+        tamY=voxelGroup[currentGroup]["YNumber"].GetInt();
         tamZ=voxelGroup[currentGroup]["ZNumber"].GetInt();
         initialX=voxelGroup[currentGroup]["position"][0].GetFloat();
         initialY=voxelGroup[currentGroup]["position"][1].GetFloat();
         initialZ=-voxelGroup[currentGroup]["position"][2].GetFloat();
 
-        for(int i=0;i<tamX;i++){
-            for(int j=0;j<tamZ;j++){
-                transOneCube=new Matrix4f();
-                transOneCube->translation(initialX+i+0.5f,
-                                          initialY,
-                                          initialZ-j-0.5f);
-                cubeNode=new NodeSceneGraph();
-                cubeNode->add(transOneCube);
-                cubeNode->add(scaleCube);
-                cubeNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialTop"].GetString()));
-                cubeNode->add(meshCollect->getMesh(voxelGroup[currentGroup]["mesh"].GetString()));
-                objs.push_back(new ObjectScene(cubeNode));
+        for(int x=0;x<tamX;x++){
+            for(int z=0;z<tamZ;z++){
+                for(int y=0;y<tamY;y++){
+                    transOneCube=new Matrix4f();
+                    transOneCube->translation(initialX+x+0.5f,initialY-y,initialZ-z-0.5f);
+                    cubeNode=new NodeSceneGraph();
+                    cubeNode->add(transOneCube);
+                    cubeNode->add(scaleCube);
+                    if(y==0)
+                    cubeNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialTop"].GetString()));
+                    else
+                    cubeNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialMiddle"].GetString()));
+                    cubeNode->add(meshCollect->getMesh(voxelGroup[currentGroup]["mesh"].GetString()));
+                    objs.push_back(new ObjectScene(cubeNode));
+                }
             }
         }
     }
