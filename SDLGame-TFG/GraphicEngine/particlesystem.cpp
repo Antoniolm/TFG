@@ -26,9 +26,14 @@ ParticleSystem::ParticleSystem()
 
 //**********************************************************************//
 
-ParticleSystem::ParticleSystem(int numParticle)
+ParticleSystem::ParticleSystem(int numParticle,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime)
 {
     nParticles=numParticle;
+    minPos=aMinPos;
+    maxPos=aMaxPos;
+    velocity=aVelocity;
+    minTime=aMinTime;
+    maxTime=aMaxTime;
     currentParticles=0;
 }
 
@@ -67,8 +72,8 @@ void ParticleSystem::updateState(float time,const Uint8* currentKeyStates,RootMa
 
     //Create new particles if some of them is dead
     int diff=nParticles-currentParticles;
-    for(int i=0;i<diff;i++)
-        particles.push_back(new Particle());
+    for(unsigned i=0;i<diff;i++)
+        particles.push_back(new Particle(minPos,maxPos,velocity,minTime,maxTime));
 
     currentTime+=(time-currentTime);
 }

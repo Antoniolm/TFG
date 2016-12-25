@@ -37,7 +37,7 @@ class ParticleSystem : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        ParticleSystem(int numParticle);
+        ParticleSystem(int numParticle,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -67,6 +67,8 @@ class ParticleSystem : public Object3D
         list<Particle *> particles;
         int nParticles;         //total number of particles that our system has to have with life
         int currentParticles;   //number of live particles in our system
+        vec3f maxPos,minPos,velocity;
+        float minTime,maxTime;
 };
 
 #endif // PARTICLESYSTEM_H
