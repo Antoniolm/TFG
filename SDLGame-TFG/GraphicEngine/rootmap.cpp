@@ -42,9 +42,6 @@ RootMap::RootMap(const rapidjson::Document & document)
     Matrix4f *scaleTree =new Matrix4f();
     scaleTree->scale(0.3,0.5,0.3);
 
-    Matrix4f *scaleWater =new Matrix4f();
-    scaleWater->scale(3.5,0.5,3.5);
-
     Matrix4f *scaleGrass =new Matrix4f();
     scaleGrass->scale(0.7,0.7,0.7);
 
@@ -94,6 +91,45 @@ RootMap::RootMap(const rapidjson::Document & document)
         }
     }
 
+    Matrix4f * transformation;
+    const rapidjson::Value & decoObject=document["decorationObject"];
+    for(int currentDeco=0;currentDeco<decoObject.Size();currentDeco++){
+
+        cubeNode=new NodeSceneGraph();
+
+        for(int currentTrans=0;currentTrans<decoObject[currentDeco]["transforms"].Size();currentTrans++){
+            transformation=new Matrix4f();
+            if(decoObject[currentDeco]["transforms"][currentTrans]["translation"].GetBool()){
+                transformation->translation(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
+                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
+                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
+            }
+            else if(decoObject[currentDeco]["transforms"][currentTrans]["scale"].GetBool()){
+                transformation->scale(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
+                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
+                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
+            }
+            else if(decoObject[currentDeco]["transforms"][currentTrans]["rotation"].GetBool()){
+                transformation->rotation(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
+                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
+                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat(),
+                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][3].GetFloat());
+            }
+            cubeNode->add(transformation);
+
+        }
+
+        cubeNode->add(materialCollect->getMaterial(decoObject[currentDeco]["material"].GetString()));
+        cubeNode->add(meshCollect->getMesh(decoObject[currentDeco]["mesh"].GetString()));
+        if(decoObject[currentDeco]["collision"].GetBool())
+            objs.push_back(new ObjectScene(cubeNode));
+        else{
+            decorationObjs.push_back(new ObjectScene(cubeNode));
+        }
+    }
+    /*Matrix4f *scaleWater =new Matrix4f();
+    scaleWater->scale(3.5,0.5,3.5);
+
     transOneCube=new Matrix4f();
     transOneCube->translation(13.5f,-2.5f,-3.5f);
     cubeNode=new NodeSceneGraph();
@@ -101,7 +137,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(scaleWater);
     cubeNode->add(materialCollect->getMaterial(mWATER));
     cubeNode->add(meshCollect->getMesh(CUBE));
-    decorationObjs.push_back(new ObjectScene(cubeNode));
+    decorationObjs.push_back(new ObjectScene(cubeNode));*/
 
     ////////////////////////////////////////////
     // Background

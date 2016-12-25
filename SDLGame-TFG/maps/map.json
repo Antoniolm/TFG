@@ -145,7 +145,26 @@
                 "materialMiddle":"mWOOD",
                 "mesh":"FENCE", 
                 "damage":0.0  }
+    ],
+
+    "decorationObject":[
+            {   "transforms":[
+                    {   "translation":true,
+                        "scale":false,
+                        "rotation":false,
+                        "values":[13.5,-2.5,-3.5]
+                    },
+                    {   "translation":false,
+                        "scale":true,
+                        "rotation":false,
+                        "values":[3.5,0.5,3.5]
+                    }
+                ],       
+                "material":"mWATER",
+                "mesh":"CUBE",
+                "collision": false}
     ]
+
 
 
 }
