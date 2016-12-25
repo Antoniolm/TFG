@@ -43,6 +43,16 @@ Particle::Particle()
 
 //**********************************************************************//
 
+Particle::Particle(vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float maxTime){
+    position.x=minPos.x + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxPos.x-minPos.x)));
+    position.y=minPos.y + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxPos.y-minPos.y)));
+    position.z=minPos.z + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxPos.z-minPos.z)));
+    velocity=aVelocity;
+    remainingTime= minTime + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxTime-minTime)));
+}
+
+//**********************************************************************//
+
 Particle::~Particle()
 {
     //dtor

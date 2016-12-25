@@ -26,6 +26,14 @@ ParticleSystem::ParticleSystem()
 
 //**********************************************************************//
 
+ParticleSystem::ParticleSystem(int numParticle)
+{
+    nParticles=numParticle;
+    currentParticles=0;
+}
+
+//**********************************************************************//
+
 ParticleSystem::~ParticleSystem()
 {
     //dtor

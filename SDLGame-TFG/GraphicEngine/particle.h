@@ -24,6 +24,7 @@
 #include <context.h>
 #include <rootmap.h>
 #include <meshcollection.h>
+#include <stdlib.h>
 
 class Particle : public Object3D
 {
@@ -32,6 +33,11 @@ class Particle : public Object3D
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         Particle();
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with parameters */
+        //////////////////////////////////////////////////////////////////////////
+        Particle(vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float maxTime);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
