@@ -126,7 +126,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleBack);
-    cubeNode->add(materialCollect->getMaterial(mWATER));
+    cubeNode->add(materialCollect->getMaterial(document["bkgdMaterial"].GetString()));
     cubeNode->add(meshCollect->getMesh(BACKGROUND));
     background= new ObjectScene(cubeNode);
 

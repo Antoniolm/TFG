@@ -1,6 +1,7 @@
 {
     "name": "First map",
     "title": "Adventure",
+    "bkgdMaterial":"mWATER",
 
     "npcs":[
             {   "position":[3.5,2.0,-2.5],
