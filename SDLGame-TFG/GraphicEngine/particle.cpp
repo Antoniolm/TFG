@@ -57,15 +57,15 @@ void Particle::visualization(Context & cv){
 //**********************************************************************//
 
 void Particle::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+    //update the position
+
     remainingTime-=(time-currentTime);
-    if(remainingTime<=0){
-        respawn();
-    }
     currentTime+=(time-currentTime);
 }
 
 //**********************************************************************//
 
-void Particle::respawn(){
-
+float Particle::getRemainingTime(){
+    return remainingTime;
 }
+

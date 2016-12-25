@@ -44,7 +44,7 @@ void ScriptLMD::updateState(float time){
     vector<Matrix4fDynamic*>::iterator it;
 
     for(it=script.begin();it!=script.end();it++){
-            (*it)->updateState(time);
+        (*it)->updateState(time);
     }
 }
 
@@ -60,6 +60,6 @@ void ScriptLMD::resetState(){
     vector<Matrix4fDynamic*>::iterator it;
 
     for(it=script.begin();it!=script.end();it++){
-            (*it)->resetState();
+        (*it)->resetState();
     }
 }

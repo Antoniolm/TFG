@@ -55,16 +55,11 @@ class Particle : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
+
+        float getRemainingTime();
     protected:
 
     private:
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will respawn a particle in a random position,color,life and velocity
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void respawn();
         vec3f position,velocity, color;
         NodeSceneGraph *root;
         Matrix4f * transMatrix;

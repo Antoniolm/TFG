@@ -34,8 +34,10 @@ ParticleSystem::~ParticleSystem()
 //**********************************************************************//
 
 void ParticleSystem::visualization(Context & cv){
-    for(int i=0;i<particles.size();i++)
-        particles[i]->visualization(cv);
+    list<Particle *>::iterator it;
+    for(it=particles.begin();it!=particles.end();it++){
+        (*it)->visualization(cv);
+    }
 }
 
 //**********************************************************************//
@@ -44,9 +46,21 @@ void ParticleSystem::updateState(float time,const Uint8* currentKeyStates,RootMa
     if(time-currentTime>200)
         currentTime=time-50;
 
-    for(int i=0;i<particles.size();i++){
-        particles[i]->updateState(time,currentKeyStates,rootMap);
+    list<Particle *>::iterator it=particles.begin();
+    while(it!=particles.end()){
+        (*it)->updateState(time,currentKeyStates,rootMap);
+        if((*it)->getRemainingTime()<=0.0){
+            particles.erase(it);
+            currentParticles--;
+        }
+        else
+            it++;
     }
+
+    //Create new particles if some of them is dead
+    int diff=nParticles-currentParticles;
+    for(int i=0;i<diff;i++)
+        particles.push_back(new Particle());
 
     currentTime+=(time-currentTime);
 }

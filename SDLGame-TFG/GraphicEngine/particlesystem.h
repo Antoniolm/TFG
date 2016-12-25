@@ -23,7 +23,7 @@
 #include <object3d.h>
 #include <context.h>
 #include <rootmap.h>
-#include <vector>
+#include <list>
 #include <particle.h>
 
 class ParticleSystem : public Object3D
@@ -59,7 +59,9 @@ class ParticleSystem : public Object3D
     protected:
 
     private:
-        vector<Particle *> particles;
+        list<Particle *> particles;
+        int nParticles;         //total number of particles that our system has to have with life
+        int currentParticles;   //number of live particles in our system
 };
 
 #endif // PARTICLESYSTEM_H
