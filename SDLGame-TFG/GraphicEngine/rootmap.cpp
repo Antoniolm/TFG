@@ -33,29 +33,11 @@ RootMap::RootMap(const rapidjson::Document & document)
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
-    Matrix4f *scaleTreeDie =new Matrix4f();
-    scaleTreeDie->scale(0.6,0.5,0.5);
-
     Matrix4f *scaleCube =new Matrix4f();
     scaleCube->scale(0.5,0.5,0.5);
 
-    Matrix4f *scaleTree =new Matrix4f();
-    scaleTree->scale(0.3,0.5,0.3);
-
-    Matrix4f *scaleGrass =new Matrix4f();
-    scaleGrass->scale(0.7,0.7,0.7);
-
     Matrix4f * transOneCube=new Matrix4f();
     transOneCube->translation(0.5,0.5,-0.5);
-
-    Matrix4f * scaleRock=new Matrix4f();
-    scaleRock->scale(0.02,0.02,0.02);
-
-    Matrix4f * transRock=new Matrix4f();
-    transRock->translation(4.5,1.5,-1.5);
-
-    Matrix4f * transCube=new Matrix4f();
-    transCube->translation(1.0,0.0,0.0);
 
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
     const rapidjson::Value & voxelGroup=document["voxelGroup"];
@@ -99,21 +81,27 @@ RootMap::RootMap(const rapidjson::Document & document)
 
         for(int currentTrans=0;currentTrans<decoObject[currentDeco]["transforms"].Size();currentTrans++){
             transformation=new Matrix4f();
-            if(decoObject[currentDeco]["transforms"][currentTrans]["translation"].GetBool()){
+            if(decoObject[currentDeco]["transforms"][currentTrans]["translation"].GetBool()){ //If is a translation
+
                 transformation->translation(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
                                             decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
                                             decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
+
             }
-            else if(decoObject[currentDeco]["transforms"][currentTrans]["scale"].GetBool()){
+            else if(decoObject[currentDeco]["transforms"][currentTrans]["scale"].GetBool()){ //If is a scale
+
                 transformation->scale(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
-                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
-                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
+                                      decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
+                                      decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
+
             }
-            else if(decoObject[currentDeco]["transforms"][currentTrans]["rotation"].GetBool()){
+            else if(decoObject[currentDeco]["transforms"][currentTrans]["rotation"].GetBool()){ //If is a rotation
+
                 transformation->rotation(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
-                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
-                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat(),
-                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][3].GetFloat());
+                                         decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
+                                         decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat(),
+                                         decoObject[currentDeco]["transforms"][currentTrans]["values"][3].GetFloat());
+
             }
             cubeNode->add(transformation);
 
@@ -121,23 +109,13 @@ RootMap::RootMap(const rapidjson::Document & document)
 
         cubeNode->add(materialCollect->getMaterial(decoObject[currentDeco]["material"].GetString()));
         cubeNode->add(meshCollect->getMesh(decoObject[currentDeco]["mesh"].GetString()));
-        if(decoObject[currentDeco]["collision"].GetBool())
+
+        if(decoObject[currentDeco]["collision"].GetBool()) //If collision
             objs.push_back(new ObjectScene(cubeNode));
-        else{
+        else{ //If is a decoration obj
             decorationObjs.push_back(new ObjectScene(cubeNode));
         }
     }
-    /*Matrix4f *scaleWater =new Matrix4f();
-    scaleWater->scale(3.5,0.5,3.5);
-
-    transOneCube=new Matrix4f();
-    transOneCube->translation(13.5f,-2.5f,-3.5f);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleWater);
-    cubeNode->add(materialCollect->getMaterial(mWATER));
-    cubeNode->add(meshCollect->getMesh(CUBE));
-    decorationObjs.push_back(new ObjectScene(cubeNode));*/
 
     ////////////////////////////////////////////
     // Background
@@ -152,52 +130,6 @@ RootMap::RootMap(const rapidjson::Document & document)
     cubeNode->add(meshCollect->getMesh(BACKGROUND));
     background= new ObjectScene(cubeNode);
 
-    transOneCube=new Matrix4f();
-    transOneCube->translation(1.5f,2.0f,-6.5f);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleTree);
-    cubeNode->add(materialCollect->getMaterial(mGRASS));
-    cubeNode->add(meshCollect->getMesh(TREE));
-    objs.push_back(new ObjectScene(cubeNode));
-
-    transOneCube=new Matrix4f();
-    transOneCube->translation(4.5f,1.3f,-6.5f);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleTreeDie);
-    cubeNode->add(materialCollect->getMaterial(MUSH));
-    cubeNode->add(meshCollect->getMesh(TREEDIE));
-    objs.push_back(new ObjectScene(cubeNode));
-
-    transOneCube=new Matrix4f();
-    transOneCube->translation(2.1f,1.2f,-0.5f);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(materialCollect->getMaterial(mGRASS));
-    cubeNode->add(meshCollect->getMesh(GRASS));
-    decorationObjs.push_back(new ObjectScene(cubeNode));
-
-    transOneCube=new Matrix4f();
-    transOneCube->translation(0.5f,1.0f,-0.5f);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialCollect->getMaterial(MUSH));
-    cubeNode->add(meshCollect->getMesh(MUSHWHITE));
-    decorationObjs.push_back(new ObjectScene(cubeNode));
-
-    transOneCube=new Matrix4f();
-    transOneCube->translation(6.0f,1.5f,-3.0f);
-    scaleCube =new Matrix4f();
-    scaleCube->scale(1.0,0.5,1.0);
-
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialCollect->getMaterial(mCUBE_SAND));
-    cubeNode->add(meshCollect->getMesh(CUBE));
-    objs.push_back(new ObjectScene(cubeNode));
     /////////////////////////////////////////
     // Add coins to our map
     /////////////////////////////////////////
