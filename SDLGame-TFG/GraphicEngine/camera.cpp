@@ -122,6 +122,13 @@ void Camera::activateCamera(Shader * shader){
 
 //**********************************************************************//
 
+void Camera::activateProjection(Shader * shader){
+    GLint projectionLocation= glGetUniformLocation(shader->getProgram(),"projection");
+    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,projection.getMatrix());
+}
+
+//**********************************************************************//
+
 void Camera::moveCamera(vec3f pos,vec3f aTarget,Shader *shader){
 
     position.x=pos.x;position.y=pos.y;position.z=pos.z;

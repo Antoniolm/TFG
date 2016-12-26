@@ -19,25 +19,7 @@
 
 #include "particle.h"
 
-Particle::Particle()
-{
-    MeshCollection * meshCollect= MeshCollection::getInstance();
-    MaterialCollection * materialCollect= MaterialCollection::getInstance();
-
-    transMatrix=new Matrix4f();
-    transMatrix->identity();
-
-    Matrix4f * scaleCube=new Matrix4f();
-    scaleCube->scale(0.3,1,1.0);
-
-    root=new NodeSceneGraph();
-    NodeSceneGraph * cubeNode=new NodeSceneGraph();
-    cubeNode->add(transMatrix);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialCollect->getMaterial(mWOOD));
-    cubeNode->add(meshCollect->getMesh(TEXT));
-    root->add(cubeNode);
-    currentTime=SDL_GetTicks();
+Particle::Particle(){
 }
 
 //**********************************************************************//
@@ -62,7 +44,7 @@ Particle::Particle(vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
     cubeNode->add(transMatrix);
     cubeNode->add(scaleCube);
-    cubeNode->add(materialCollect->getMaterial(mWOOD));
+    cubeNode->add(materialCollect->getMaterial(mDWOOD));
     cubeNode->add(meshCollect->getMesh(TEXT));
     root->add(cubeNode);
     currentTime=SDL_GetTicks();

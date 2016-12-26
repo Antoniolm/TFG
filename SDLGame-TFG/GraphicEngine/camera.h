@@ -103,6 +103,14 @@ class Camera
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *   This method will activate our current projection
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activateProjection(Shader * shader);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *   It will move the position of our camera
         *   \return void
         */

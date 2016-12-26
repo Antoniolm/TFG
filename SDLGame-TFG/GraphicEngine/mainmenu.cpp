@@ -50,7 +50,7 @@ MainMenu::MainMenu()
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
 
-    openSound=new Sound("sounds/openSound2.wav",0,120,1,1);
+    openSound=new Sound("sounds/openSound.wav",0,120,1,1);
     //moveSound=new Sound("sounds/moveMenu.wav",1,40);
 
     //Add the options

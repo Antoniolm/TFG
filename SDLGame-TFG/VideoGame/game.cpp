@@ -73,14 +73,14 @@ void Game::loop(){
     vec3f posHero;
     float time;
     bool wasActivatedMenu=false;
-    int windowH,windowW;
+    int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;
 
     hero=new Hero();
     rootMap->setHero(hero);
 
     //Test
-    ParticleSystem * aSystem=new ParticleSystem(100,vec3f(1.0,2.0,1.0),vec3f(2.0,2.0,1.0),vec3f(0.0,1.0,0.0),2000,3000);
+    ParticleSystem * aSystem=new ParticleSystem(200,vec3f(1.0,1.0,-1.0),vec3f(2.0,1.0,-4.0),vec3f(0.0,1.0,0.0),500,1000);
 
     //Create our shader
     aContext.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
@@ -167,15 +167,18 @@ void Game::loop(){
         updateLife(lastLife);
         updateCoin(currentCoin);
 
+        //aContext.camera.setPerspectiveProjection(30.0f,(float)( 800 / 600), 0.1f, 200.0f);
+        //aContext.camera.activateCamera(&aContext.currentShader);
         aSystem->visualization(aContext);
         rootMap->visualization(aContext);
+
+        //aContext.camera.setOrthographicProjection(-1,1,-1,1,-3,3);
+        //aContext.camera.activateCamera(&aContext.currentShader);
+        lifeText->visualization(aContext);
+        coinText->visualization(aContext);
         pauseMenu->visualization(aContext);
         mainMenu->visualization(aContext);
         deadMenu->visualization(aContext);
-
-
-        lifeText->visualization(aContext);
-        coinText->visualization(aContext);
 
         window->updateScreen();
 
@@ -188,7 +191,7 @@ void Game::loop(){
 
 void Game::updateLife(int & lastLife){
     vec3f posHero=hero->getPosition();
-    lifeText->setPosition(vec3f(posHero.x-0.75,posHero.y+3.55,posHero.z+7));
+    lifeText->setPosition(vec3f(posHero.x-0.75,posHero.y+3.55,posHero.z+8.5));
     std::stringstream life;
     life<< hero->getLife();
     if(lastLife!=hero->getLife()){ //If the life has changed
@@ -202,7 +205,7 @@ void Game::updateLife(int & lastLife){
 
 void Game::updateCoin(int & currentCoin){
     vec3f posHero=hero->getPosition();
-    coinText->setPosition(vec3f(posHero.x+0.75,posHero.y+3.55,posHero.z+7));
+    coinText->setPosition(vec3f(posHero.x+0.75,posHero.y+3.55,posHero.z+8.5));
     std::stringstream coin;
     coin<< hero->getCoin();
     if(currentCoin!=hero->getCoin()){ //If the life has changed

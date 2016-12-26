@@ -35,6 +35,7 @@ ParticleSystem::ParticleSystem(int numParticle,vec3f aMinPos,vec3f aMaxPos,vec3f
     minTime=aMinTime;
     maxTime=aMaxTime;
     currentParticles=0;
+    currentTime=SDL_GetTicks();
 }
 
 //**********************************************************************//
@@ -63,7 +64,7 @@ void ParticleSystem::updateState(float time,const Uint8* currentKeyStates,RootMa
     while(it!=particles.end()){
         (*it)->updateState(time,currentKeyStates,rootMap);
         if((*it)->getRemainingTime()<=0.0){
-            particles.erase(it);
+            it=particles.erase(it);
             currentParticles--;
         }
         else
@@ -72,8 +73,10 @@ void ParticleSystem::updateState(float time,const Uint8* currentKeyStates,RootMa
 
     //Create new particles if some of them is dead
     int diff=nParticles-currentParticles;
-    for(unsigned i=0;i<diff;i++)
+    for(unsigned i=0;i<diff;i++){
         particles.push_back(new Particle(minPos,maxPos,velocity,minTime,maxTime));
+        currentParticles++;
+    }
 
     currentTime+=(time-currentTime);
 }
