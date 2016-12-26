@@ -80,7 +80,7 @@ void Game::loop(){
     rootMap->setHero(hero);
 
     //Test
-    ParticleSystem * aSystem=new ParticleSystem(5,vec3f(1.0,1.0,1.0),vec3f(2.0,2.0,2.0),vec3f(1.0,1.0,1.0),30,100);
+    ParticleSystem * aSystem=new ParticleSystem(100,vec3f(1.0,2.0,1.0),vec3f(2.0,3.0,2.0),vec3f(1.0,1.0,1.0),2000,3000);
 
     //Create our shader
     aContext.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
@@ -150,6 +150,7 @@ void Game::loop(){
 
         if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate()){ //If  menu is not activate
             rootMap->updateState(time,currentKeyStates,rootMap);
+            aSystem->updateState(time,currentKeyStates,rootMap);
             if(wasActivatedMenu) //If is the first time that it is not activated
                 rootMap->enableSound(true);
             wasActivatedMenu=false;
@@ -166,7 +167,6 @@ void Game::loop(){
         updateLife(lastLife);
         updateCoin(currentCoin);
 
-        aSystem->updateState(time,currentKeyStates,rootMap);
         aSystem->visualization(aContext);
         rootMap->visualization(aContext);
         pauseMenu->visualization(aContext);

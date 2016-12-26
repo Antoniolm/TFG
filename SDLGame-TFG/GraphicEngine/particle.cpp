@@ -37,7 +37,6 @@ Particle::Particle()
     cubeNode->add(materialCollect->getMaterial(mWOOD));
     cubeNode->add(meshCollect->getMesh(TEXT));
     root->add(cubeNode);
-
     currentTime=SDL_GetTicks();
 }
 
@@ -49,8 +48,24 @@ Particle::Particle(vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float
     position.z=minPos.z + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxPos.z-minPos.z)));
     velocity=aVelocity;
     remainingTime= minTime + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxTime-minTime)));
+
+    MeshCollection * meshCollect= MeshCollection::getInstance();
+    MaterialCollection * materialCollect= MaterialCollection::getInstance();
+
+    transMatrix=new Matrix4f();
+    transMatrix->translation(position.x,position.y,position.z);
+
+    Matrix4f * scaleCube=new Matrix4f();
+    scaleCube->scale(0.3,1,1.0);
+
+    root=new NodeSceneGraph();
+    NodeSceneGraph * cubeNode=new NodeSceneGraph();
+    cubeNode->add(transMatrix);
+    cubeNode->add(scaleCube);
+    cubeNode->add(materialCollect->getMaterial(mWOOD));
+    cubeNode->add(meshCollect->getMesh(TEXT));
+    root->add(cubeNode);
     currentTime=SDL_GetTicks();
-    Particle();
 }
 
 //**********************************************************************//
@@ -70,7 +85,6 @@ void Particle::visualization(Context & cv){
 
 void Particle::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     //update the position
-
     remainingTime-=(time-currentTime);
     currentTime+=(time-currentTime);
 }

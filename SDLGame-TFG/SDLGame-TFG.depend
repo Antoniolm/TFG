@@ -399,7 +399,7 @@
 	"window.h"
 	"file_obj.h"
 
-1482747518 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1482749582 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -2022,7 +2022,7 @@
 1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\strfunc.h
 	"../stream.h"
 
-1482705134 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
+1482749333 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
 	"particlesystem.h"
 
 1482704873 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
@@ -2032,14 +2032,15 @@
 	<list>
 	<particle.h>
 
-1482702240 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particle.h
+1482748526 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particle.h
 	"object3d.h"
 	<context.h>
 	<rootmap.h>
 	<meshcollection.h>
+	<materialcollection.h>
 	<stdlib.h>
 
-1482747613 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particle.cpp
+1482749482 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particle.cpp
 	"particle.h"
 
 1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\stringbuffer.h
