@@ -79,6 +79,8 @@ void Game::loop(){
     hero=new Hero();
     rootMap->setHero(hero);
 
+    //Test
+    ParticleSystem * aSystem=new ParticleSystem(5,vec3f(1.0,1.0,1.0),vec3f(2.0,2.0,2.0),vec3f(1.0,1.0,1.0),30,100);
 
     //Create our shader
     aContext.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
@@ -164,6 +166,8 @@ void Game::loop(){
         updateLife(lastLife);
         updateCoin(currentCoin);
 
+        aSystem->updateState(time,currentKeyStates,rootMap);
+        aSystem->visualization(aContext);
         rootMap->visualization(aContext);
         pauseMenu->visualization(aContext);
         mainMenu->visualization(aContext);

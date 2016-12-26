@@ -372,7 +372,7 @@
 	<string>
 	"sound.h"
 
-1482702452 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1482747301 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -388,6 +388,7 @@
 	"../GraphicEngine/pausemenu.h"
 	"../GraphicEngine/mainmenu.h"
 	"../GraphicEngine/deadmenu.h"
+	"../GraphicEngine/particlesystem.h"
 	"../lib/rapidjson/document.h"
 	"../lib/rapidjson/stringbuffer.h"
 	"../lib/rapidjson/filereadstream.h"
@@ -398,7 +399,7 @@
 	"window.h"
 	"file_obj.h"
 
-1482702449 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1482747518 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -2021,10 +2022,10 @@
 1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\strfunc.h
 	"../stream.h"
 
-1482701968 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
+1482705134 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
 	"particlesystem.h"
 
-1482701627 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
+1482704873 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
 	<object3d.h>
 	<context.h>
 	<rootmap.h>
@@ -2038,7 +2039,7 @@
 	<meshcollection.h>
 	<stdlib.h>
 
-1482702247 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particle.cpp
+1482747613 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particle.cpp
 	"particle.h"
 
 1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\stringbuffer.h

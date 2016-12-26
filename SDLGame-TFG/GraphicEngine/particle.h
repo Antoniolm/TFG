@@ -24,6 +24,7 @@
 #include <context.h>
 #include <rootmap.h>
 #include <meshcollection.h>
+#include <materialcollection.h>
 #include <stdlib.h>
 
 class Particle : public Object3D

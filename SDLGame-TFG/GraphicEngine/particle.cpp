@@ -22,6 +22,7 @@
 Particle::Particle()
 {
     MeshCollection * meshCollect= MeshCollection::getInstance();
+    MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
     transMatrix=new Matrix4f();
     transMatrix->identity();
@@ -29,12 +30,11 @@ Particle::Particle()
     Matrix4f * scaleCube=new Matrix4f();
     scaleCube->scale(0.3,1,1.0);
 
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
-
+    root=new NodeSceneGraph();
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
     cubeNode->add(transMatrix);
     cubeNode->add(scaleCube);
-    cubeNode->add(material);
+    cubeNode->add(materialCollect->getMaterial(mWOOD));
     cubeNode->add(meshCollect->getMesh(TEXT));
     root->add(cubeNode);
 
@@ -49,6 +49,8 @@ Particle::Particle(vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float
     position.z=minPos.z + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxPos.z-minPos.z)));
     velocity=aVelocity;
     remainingTime= minTime + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxTime-minTime)));
+    currentTime=SDL_GetTicks();
+    Particle();
 }
 
 //**********************************************************************//
