@@ -110,15 +110,15 @@ void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
             switch(currentOption){
                 case 0:
                     activateMenu=false;
-                    openSound->play();
+                    //openSound->play();
                 break;
                 case 1:
                     activateMenu=false;
-                    openSound->play();
+                    //openSound->play();
                 break;
                 case 2:
                     activateMenu=false;
-                    openSound->play();
+                    //openSound->play();
                 break;
                 case 3:
                     exit(0);

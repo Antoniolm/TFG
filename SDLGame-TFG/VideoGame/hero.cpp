@@ -41,7 +41,7 @@ Hero::Hero()
     //////////////////////////////////////////////////////
     /////              All the sounds                /////
     //////////////////////////////////////////////////////
-    Sound * walking=new Sound("sounds/walking.wav",1,40);
+    Sound * walking=new Sound("sounds/walking.wav",1,40,3,-1);
     heroSound.push_back(walking);
 
     //////////////////////////////////////////////////////
