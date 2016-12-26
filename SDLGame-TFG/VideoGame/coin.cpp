@@ -42,6 +42,8 @@ Coin::Coin(vec3f aPosition,int aValue){
     root->add(materialCollect->getMaterial(mCOIN));
     root->add(meshCollect->getMesh(COIN));
     currentTime=SDL_GetTicks();
+
+    soundTake=new Sound("sounds/coin.wav",1,30,4,0);
 }
 
 //**********************************************************************//
@@ -65,6 +67,9 @@ void Coin::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     if(distance<=0.8){
         notTake=false;
         rootMap->getHero()->addCoin(value);
+        if(soundTake->isPlaying())
+            soundTake->stop();
+        soundTake->play();
     }
 
     //Animation

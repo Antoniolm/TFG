@@ -51,11 +51,6 @@ PauseMenu::PauseMenu()
     menuDelay=currentTime;
 
     openSound=new Sound("sounds/openSound.wav",1,40,4,0);
-    openSound->play();
-    SDL_Delay(300);
-    openSound->play();
-    SDL_Delay(300);
-    openSound->play();
     moveSound=new Sound("sounds/coin.wav",1,40,4,0);
 
     //Add the options

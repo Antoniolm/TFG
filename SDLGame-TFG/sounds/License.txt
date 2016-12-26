@@ -1,2 +1,3 @@
 Pop sound effect made by Debsound. http://www.freesound.org/people/debsound/sounds/320549/ -> Used in the sound : openSound.wav
 Pop made by yottasounds . http://www.freesound.org/people/yottasounds/sounds/176727/ -> used in the sounds : moveMenu.wav
+8-bit Video Game Sounds » Coins 1 by ProjectsU012 http://www.freesound.org/people/ProjectsU012/sounds/341695/ -> used in the sound:coin.wav

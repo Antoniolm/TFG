@@ -1773,7 +1773,7 @@
 	"sound.h"
 	"menu.h"
 
-1482779868 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
+1482780634 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
 	"pausemenu.h"
 
 1482778663 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
@@ -1790,10 +1790,10 @@
 	"sound.h"
 	"menu.h"
 
-1482583234 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
+1482781086 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
 	"coin.h"
 
-1482147284 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h
+1482780796 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h
 	"../GraphicEngine/object3d.h"
 	"../GraphicEngine/nodescenegraph.h"
 	"../GraphicEngine/material.h"
@@ -1801,6 +1801,7 @@
 	"../GraphicEngine/matrix4fdynamic.h"
 	"../GraphicEngine/meshcollection.h"
 	"../GraphicEngine/axisrotation.h"
+	"../GraphicEngine/sound.h"
 
 1482187547 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\deadmenu.h
 	<object3d.h>

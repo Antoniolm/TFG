@@ -27,6 +27,7 @@
 #include "../GraphicEngine/matrix4fdynamic.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/axisrotation.h"
+#include "../GraphicEngine/sound.h"
 
 class Coin : public Object3D
 {
@@ -81,6 +82,7 @@ class Coin : public Object3D
         NodeSceneGraph * root;
         Matrix4f * animationMatrix;
         AxisRotation * rotation;
+        Sound * soundTake;
         bool notTake;
 };
 
