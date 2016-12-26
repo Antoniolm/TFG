@@ -56,7 +56,7 @@ Particle::Particle(vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float
     transMatrix->translation(position.x,position.y,position.z);
 
     Matrix4f * scaleCube=new Matrix4f();
-    scaleCube->scale(0.3,1,1.0);
+    scaleCube->scale(0.1,0.3,1.0);
 
     root=new NodeSceneGraph();
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
@@ -85,6 +85,9 @@ void Particle::visualization(Context & cv){
 
 void Particle::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     //update the position
+    LinearMovement lineMove(velocity);
+    transMatrix->product(lineMove.updateState(time-currentTime).getMatrix());
+
     remainingTime-=(time-currentTime);
     currentTime+=(time-currentTime);
 }

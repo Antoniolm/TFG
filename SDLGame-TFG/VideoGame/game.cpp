@@ -80,7 +80,7 @@ void Game::loop(){
     rootMap->setHero(hero);
 
     //Test
-    ParticleSystem * aSystem=new ParticleSystem(100,vec3f(1.0,2.0,1.0),vec3f(2.0,3.0,2.0),vec3f(1.0,1.0,1.0),2000,3000);
+    ParticleSystem * aSystem=new ParticleSystem(100,vec3f(1.0,2.0,1.0),vec3f(2.0,2.0,1.0),vec3f(0.0,1.0,0.0),2000,3000);
 
     //Create our shader
     aContext.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
