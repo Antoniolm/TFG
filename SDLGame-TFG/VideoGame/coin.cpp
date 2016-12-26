@@ -67,8 +67,7 @@ void Coin::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     if(distance<=0.8){
         notTake=false;
         rootMap->getHero()->addCoin(value);
-        if(soundTake->isPlaying())
-            soundTake->stop();
+        soundTake->stop();
         soundTake->play();
     }
 

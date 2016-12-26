@@ -51,7 +51,7 @@ MainMenu::MainMenu()
     menuDelay=currentTime;
 
     openSound=new Sound("sounds/openSound.wav",0,120,1,1);
-    //moveSound=new Sound("sounds/moveMenu.wav",1,40);
+    moveSound=new Sound("sounds/coin.wav",1,40,4,0);
 
     //Add the options
     Texture * option=new Texture("./textures/mainMenuStart.png");
@@ -94,7 +94,8 @@ void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
-            //moveSound->play();
+            moveSound->stop();
+            moveSound->play();
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption++;
@@ -104,21 +105,22 @@ void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
-            //moveSound->play();
+            moveSound->stop();
+            moveSound->play();
         }
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_p)] && menuDelay<(time-300)){ //If the user push the action intro
             switch(currentOption){
                 case 0:
                     activateMenu=false;
-                    //openSound->play();
+                    openSound->play();
                 break;
                 case 1:
                     activateMenu=false;
-                    //openSound->play();
+                    openSound->play();
                 break;
                 case 2:
                     activateMenu=false;
-                    //openSound->play();
+                    openSound->play();
                 break;
                 case 3:
                     exit(0);

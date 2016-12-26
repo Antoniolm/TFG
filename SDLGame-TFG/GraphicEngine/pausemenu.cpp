@@ -98,6 +98,7 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
+            moveSound->stop();
             moveSound->play();
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && menuDelay<(time-300)){ //If the user push the action move on the menu
@@ -107,6 +108,7 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
+            moveSound->stop();
             moveSound->play();
         }
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_p)] && menuDelay<(time-300)){ //If the user push the action intro
