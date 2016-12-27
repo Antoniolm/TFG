@@ -72,6 +72,14 @@ class Text : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    It will get our current message
+        *    \return string -> it is the new message that our text will show
+        */
+        //////////////////////////////////////////////////////////////////////////
+        string getMessage();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    It will set a new position for our text
         *    \param position -> it is the new position that our text
         *    \return void

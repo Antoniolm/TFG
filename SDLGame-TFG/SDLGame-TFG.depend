@@ -1007,7 +1007,7 @@
 	<stdlib.h>
 	<vector>
 
-1482836071 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1482848552 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1654,10 +1654,10 @@
 	"begin_code.h"
 	"close_code.h"
 
-1482829839 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
+1482841060 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
 	"text.h"
 
-1481642848 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
+1482841028 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
 	"object3d.h"
 	"structdata.h"
 	"shader.h"
@@ -1791,7 +1791,7 @@
 	"sound.h"
 	"menu.h"
 
-1482837274 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
+1482838133 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
 	"coin.h"
 
 1482780796 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h

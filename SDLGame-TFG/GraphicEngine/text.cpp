@@ -119,6 +119,11 @@ void Text::setMessage(const string & aMessage){
 }
 
 //**********************************************************************//
+string Text::getMessage(){
+    return message;
+}
+
+//**********************************************************************//
 
 void Text::setPosition(vec3f position){
     positionText->translation(position.x,position.y,position.z);
