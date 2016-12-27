@@ -36,11 +36,12 @@ enum materialElement{
     mGRASS,      //5
     mWATER,      //6
     mVOID,       //7
-    mCOIN,       //8
-    mARMOUR,     //9
-    mHAND,       //10
-    mDWOOD,      //11
-    mDHAND       //12
+    mCOIN10,     //8
+    mCOIN50,     //9
+    mARMOUR,     //10
+    mHAND,       //11
+    mDWOOD,      //12
+    mDHAND       //13
 };
 
 

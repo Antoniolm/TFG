@@ -39,7 +39,10 @@ Coin::Coin(vec3f aPosition,int aValue){
     root=new NodeSceneGraph();
     root->add(transMatrix);
     root->add(animationMatrix);
-    root->add(materialCollect->getMaterial(mCOIN));
+    if(value==10)
+        root->add(materialCollect->getMaterial(mCOIN10));
+    else
+        root->add(materialCollect->getMaterial(mCOIN50));
     root->add(meshCollect->getMesh(COIN));
     currentTime=SDL_GetTicks();
 

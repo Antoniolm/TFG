@@ -28,7 +28,10 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/void.png");
     collection.push_back(material);
 
-    material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureCoin.png");
+    material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureCoin10.png");
+    collection.push_back(material);
+
+    material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureCoin50.png");
     collection.push_back(material);
 
     //Hero material
@@ -54,7 +57,8 @@ MaterialCollection::MaterialCollection()
     enumMap.insert(pair<string,materialElement> ("mGRASS",mGRASS));
     enumMap.insert(pair<string,materialElement> ("mWATER",mWATER));
     enumMap.insert(pair<string,materialElement> ("mVOID",mVOID));
-    enumMap.insert(pair<string,materialElement> ("mCOIN",mCOIN));
+    enumMap.insert(pair<string,materialElement> ("mCOIN10",mCOIN10));
+    enumMap.insert(pair<string,materialElement> ("mCOIN50",mCOIN50));
     enumMap.insert(pair<string,materialElement> ("mARMOUR",mARMOUR));
     enumMap.insert(pair<string,materialElement> ("mHAND",mHAND));
     enumMap.insert(pair<string,materialElement> ("mDWOOD",mDWOOD));
