@@ -989,7 +989,7 @@
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 
-1482833971 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
+1482835761 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -1004,6 +1004,7 @@
 	"../GraphicEngine/sound.h"
 	"../GraphicEngine/text.h"
 	"../lib/rapidjson/document.h"
+	<stdlib.h>
 	<vector>
 
 1482834058 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
@@ -1696,7 +1697,7 @@
 	"../lib/rapidjson/document.h"
 	<vector>
 
-1482420070 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
+1482834112 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
 	"npclist.h"
 
 1482583815 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp

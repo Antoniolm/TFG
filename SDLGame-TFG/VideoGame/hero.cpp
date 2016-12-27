@@ -56,6 +56,11 @@ Hero::Hero()
     texts.push_back(currentText);
     activatedTexts.push_back(false);
 
+    font=TTF_OpenFont( "font/lazy.ttf", 40);
+    currentText=new Text("",font,SDL_Color{0,255,0},false);
+    texts.push_back(currentText);
+    activatedTexts.push_back(false);
+
     //////////////////////////////////////////////////////
     /////              Some The matrix               /////
     //////////////////////////////////////////////////////
@@ -609,6 +614,9 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         if(activatedTexts[i])
             texts[i]->setPosition(vec3f(position.x,position.y+1.5f,position.z));
 
+    //If hero does not take a coin in the last 300 ms
+    if(coinDelay<time-300)
+        activateDialog(false,2);
     currentTime+=(time-currentTime);
 }
 
@@ -668,6 +676,12 @@ bool Hero::isHit(){
 
  void Hero::addCoin(int value){
     currentCoin+=value;
+    coinDelay=currentTime;
+    stringstream convert;
+    convert << value;
+
+    setDialog(" +"+convert.str(),2);
+    activateDialog(true,2);
  }
 
 //**********************************************************************//

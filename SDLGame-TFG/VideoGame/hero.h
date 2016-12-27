@@ -34,6 +34,7 @@
 #include "../GraphicEngine/sound.h"
 #include "../GraphicEngine/text.h"
 #include "../lib/rapidjson/document.h"
+#include <stdlib.h>
 
 #include <vector>
 
@@ -148,7 +149,7 @@ class Hero: public AvatarMove
         vector<Text *> texts;
         vector<bool> activatedTexts;
         bool isHitting;
-        float jumpDelay,hitDelay;
+        float jumpDelay,hitDelay,coinDelay;
         int currentCoin;
 };
 
