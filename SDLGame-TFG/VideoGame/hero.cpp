@@ -51,7 +51,6 @@ Hero::Hero()
     Text * currentText=new Text("textures/dialog.png",font);
     texts.push_back(currentText);
     activatedTexts.push_back(false);
-    activatedDialog=false;
 
     currentText=new Text("textures/actionDialog.png",font);
     texts.push_back(currentText);

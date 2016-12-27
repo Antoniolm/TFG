@@ -77,8 +77,8 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
         //Check if the hero is near to a npc
         distance=(npcs[i]->getPosition())-(posHero);
         if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1) && !isActivate){
-            hero->activateDialog(true,0);
-            hero->setDialog("Pulsa A",0);
+            hero->activateDialog(true,1);
+            hero->setDialog("A",1);
             isNearNpc=true;
         }
     }
@@ -92,7 +92,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     }
     else{
         if(!isNearNpc) //If the hero is not near to a npc them the hero doesn't show the dialog "Pulsa A"
-            hero->activateDialog(false,0);
+            hero->activateDialog(false,1);
     }
 
     //User push the button -> A
@@ -119,6 +119,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
                 distance=(npcs[j]->getPosition())-(posHero);
                 if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1)){
                     npcs[j]->activateNpc(true);
+                    hero->activateDialog(false,1);
                     //Check the speaker
                     if(npcs[j]->getSpeaker()==NPC_DIALOG){ //speaker -> Npc
                         npcs[j]->currentDialog();
