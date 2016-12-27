@@ -87,7 +87,7 @@ class Hero: public AvatarMove
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setDialog(string message);
+        void setDialog(string message,int index);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -95,15 +95,7 @@ class Hero: public AvatarMove
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activateDialog(bool value);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will get it the text is activate or not of our hero
-        *    \return bool
-        */
-        //////////////////////////////////////////////////////////////////////////
-        bool getActivateDialog();
+        void activateDialog(bool value,int index);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -153,7 +145,8 @@ class Hero: public AvatarMove
         vector<Sound *> heroSound;
         ScriptLMD animation;
         ScriptLMD animationHit;
-        Text * currentText;
+        vector<Text *> texts;
+        vector<bool> activatedTexts;
         bool activatedDialog,isHitting;
         float jumpDelay,hitDelay;
         int currentCoin;

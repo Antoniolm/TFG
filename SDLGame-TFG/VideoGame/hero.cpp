@@ -48,8 +48,14 @@ Hero::Hero()
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
     TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
-    currentText=new Text("textures/dialog.png",font);
+    Text * currentText=new Text("textures/dialog.png",font);
+    texts.push_back(currentText);
+    activatedTexts.push_back(false);
     activatedDialog=false;
+
+    currentText=new Text("textures/actionDialog.png",font);
+    texts.push_back(currentText);
+    activatedTexts.push_back(false);
 
     //////////////////////////////////////////////////////
     /////              Some The matrix               /////
@@ -402,7 +408,10 @@ Hero::Hero()
 
 Hero::~Hero()
 {
-    delete currentText;
+    for(vector<Text *>::iterator it = texts.begin() ; it != texts.end(); ++it){
+        delete (*it);
+    }
+
     for(vector<Matrix4f *>::iterator it = moveMatrix.begin() ; it != moveMatrix.end(); ++it){
         delete (*it);
     }
@@ -417,8 +426,9 @@ Hero::~Hero()
 void Hero::visualization(Context & cv){
     root->visualization(cv);
 
-    if(activatedDialog)
-        currentText->visualization(cv);
+    for(unsigned i=0;i<texts.size();i++)
+        if(activatedTexts[i])
+            texts[i]->visualization(cv);
 }
 
 //**********************************************************************//
@@ -596,9 +606,10 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
     }
 
-    if(activatedDialog){
-        currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
-    }
+    for(unsigned i=0;i<texts.size();i++)
+        if(activatedTexts[i])
+            texts[i]->setPosition(vec3f(position.x,position.y+1.5f,position.z));
+
     currentTime+=(time-currentTime);
 }
 
@@ -615,16 +626,16 @@ void Hero::enableSound(bool value){
 
 //**********************************************************************//
 
-void Hero::setDialog(string message){
-    currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
-    currentText->setMessage(message);
-    currentText->init();
+void Hero::setDialog(string message,int index){
+    texts[index]->setPosition(vec3f(position.x,position.y+1.5f,position.z));
+    texts[index]->setMessage(message);
+    texts[index]->init();
 }
 
 //**********************************************************************//
 
-void Hero::activateDialog(bool value){
-    activatedDialog=value;
+void Hero::activateDialog(bool value,int index){
+    activatedTexts[index]=value;
 }
 
 //**********************************************************************//

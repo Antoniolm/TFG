@@ -77,8 +77,8 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
         //Check if the hero is near to a npc
         distance=(npcs[i]->getPosition())-(posHero);
         if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1) && !isActivate){
-            hero->activateDialog(true);
-            hero->setDialog("Pulsa A");
+            hero->activateDialog(true,0);
+            hero->setDialog("Pulsa A",0);
             isNearNpc=true;
         }
     }
@@ -87,12 +87,12 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
         distance=(npcs[currentNpc]->getPosition())-(posHero);
         if((distance.x<-2 || distance.x>2)||(distance.y<-1 || distance.y>1)||(distance.z<-2 || distance.z>2)){
             npcs[currentNpc]->activateNpc(false);
-            hero->activateDialog(false);
+            hero->activateDialog(false,0);
         }
     }
     else{
         if(!isNearNpc) //If the hero is not near to a npc them the hero doesn't show the dialog "Pulsa A"
-            hero->activateDialog(false);
+            hero->activateDialog(false,0);
     }
 
     //User push the button -> A
@@ -102,15 +102,15 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
                 //Check the speaker
                 if(npcs[currentNpc]->getSpeaker()==NPC_DIALOG){ //speaker -> Npc
                     npcs[currentNpc]->currentDialog();
-                    hero->activateDialog(false);
+                    hero->activateDialog(false,0);
                 }
                 else { //speaker -> Hero
                     if(!npcs[currentNpc]->isInitialState()){
-                        hero->activateDialog(true);
-                        hero->setDialog(npcs[currentNpc]->getMessage());
+                        hero->activateDialog(true,0);
+                        hero->setDialog(npcs[currentNpc]->getMessage(),0);
                     }
                     else{
-                        hero->activateDialog(false);
+                        hero->activateDialog(false,0);
                     }
                 }
         }
@@ -122,11 +122,11 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
                     //Check the speaker
                     if(npcs[j]->getSpeaker()==NPC_DIALOG){ //speaker -> Npc
                         npcs[j]->currentDialog();
-                        hero->activateDialog(false);
+                        hero->activateDialog(false,0);
                     }
                     else {//speaker -> Hero
-                        hero->activateDialog(true);
-                        hero->setDialog(npcs[j]->getMessage());
+                        hero->activateDialog(true,0);
+                        hero->setDialog(npcs[j]->getMessage(),0);
                     }
                 }
             }
