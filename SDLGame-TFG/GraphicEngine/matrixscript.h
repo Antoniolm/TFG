@@ -66,6 +66,8 @@ class MatrixScript : public Matrix4fDynamic
         virtual void resetState();
 
         Matrix4f & getMatrix();
+
+        int getState();
     protected:
 
     private:

@@ -71,3 +71,14 @@ void MatrixScript::resetState(){
         (script[i].second)->resetState();
 }
 
+//**********************************************************************//
+
+Matrix4f & MatrixScript::getMatrix(){
+    return currentMatrix;
+}
+
+//**********************************************************************//
+
+int MatrixScript::getState(){
+    return currentMove;
+}

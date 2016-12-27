@@ -680,7 +680,7 @@ bool Hero::isHit(){
     coinDelay=currentTime;
     stringstream convert;
 
-    if(activatedTexts[2]){
+    if(activatedTexts[2]){ //if is activate the text ->//Join values
         string currentValue=texts[2]->getMessage();
         lastValue=atoi(currentValue.c_str());
         value+=lastValue;

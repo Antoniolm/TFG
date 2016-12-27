@@ -28,20 +28,21 @@ ScriptLMD::ScriptLMD()
 
 ScriptLMD::~ScriptLMD()
 {
-    for(int i=0;i<script.size();i++)
-        delete script[i];
+    for(vector<MatrixScript *>::iterator it = script.begin() ; it != script.end(); ++it){
+        delete (*it);
+    }
 }
 
 //**********************************************************************//
 
- void ScriptLMD::add(Matrix4fDynamic * aMatrix){
+ void ScriptLMD::add(MatrixScript * aMatrix){
     script.push_back(aMatrix);
  }
 
 //**********************************************************************//
 
 void ScriptLMD::updateState(float time){
-    vector<Matrix4fDynamic*>::iterator it;
+    vector<MatrixScript*>::iterator it;
 
     for(it=script.begin();it!=script.end();it++){
         (*it)->updateState(time);
@@ -57,7 +58,7 @@ Matrix4f ScriptLMD::readMatrix(int index){
 //**********************************************************************//
 
 void ScriptLMD::resetState(){
-    vector<Matrix4fDynamic*>::iterator it;
+    vector<MatrixScript *>::iterator it;
 
     for(it=script.begin();it!=script.end();it++){
         (*it)->resetState();
