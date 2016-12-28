@@ -57,6 +57,12 @@ Matrix4f ScriptLMD::readMatrix(int index){
 
 //**********************************************************************//
 
+int ScriptLMD::getScriptState(int index){
+    return script[index]->getState();
+}
+
+//**********************************************************************//
+
 void ScriptLMD::resetState(){
     vector<MatrixScript *>::iterator it;
 

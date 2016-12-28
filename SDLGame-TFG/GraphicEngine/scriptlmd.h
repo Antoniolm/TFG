@@ -66,6 +66,15 @@ class ScriptLMD : public ScriptAnimation
         //////////////////////////////////////////////////////////////////////////
         virtual Matrix4f readMatrix(int index);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return the state of one of our script
+        *    \param index -> The position in the vector
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
+        int getScriptState(int index);
+
         void resetState();
     protected:
 

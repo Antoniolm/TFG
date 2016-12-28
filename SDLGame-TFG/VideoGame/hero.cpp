@@ -657,7 +657,11 @@ void Hero::noMove(){
 //**********************************************************************//
 
 bool Hero::isHit(){
-    return isHitting;
+    bool result=false;
+    if(animationHit.getScriptState(4)==3 || animationHit.getScriptState(5)==1)
+        result=true;
+
+    return result;
 }
 
 //**********************************************************************//
@@ -820,8 +824,8 @@ bool Hero::isHit(){
 
 
     //Add the script to our animation
-    animationHit.add(ElbowScriptRight);
-    animationHit.add(ElbowScriptLeft);
-    animationHit.add(ArmScriptRight);
-    animationHit.add(ArmScriptLeft);
+    animationHit.add(ElbowScriptRight); //4
+    animationHit.add(ElbowScriptLeft);  //5
+    animationHit.add(ArmScriptRight);   //6
+    animationHit.add(ArmScriptLeft);    //7
  }

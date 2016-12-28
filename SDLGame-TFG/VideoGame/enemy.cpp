@@ -484,7 +484,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
             }
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
-            if(hero->isHit() && hitDelay<(time-1000) && detectHit(posHero,dirHero)){ //If the hero is hitting
+            if(hero->isHit() && hitDelay<(time-700) && detectHit(posHero,dirHero)){ //If the hero is hitting
                 addLife(-10);
                 activatedDialog=true;
                 currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
