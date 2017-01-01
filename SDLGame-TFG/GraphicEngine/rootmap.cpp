@@ -148,7 +148,7 @@ RootMap::RootMap(const rapidjson::Document & document)
 
     //Added to our indexMap for collision with our hero
     transOneCube=new Matrix4f();
-    transOneCube->translation(3.5,2.0,-2.5f);
+    transOneCube->translation(4.5,2.0,-3.5f);
     scaleCube =new Matrix4f();
     scaleCube->scale(0.5,1,0.5);
     cubeNode=new NodeSceneGraph();
@@ -160,7 +160,7 @@ RootMap::RootMap(const rapidjson::Document & document)
 
     //Added to our indexMap for collision with our hero
     transOneCube=new Matrix4f();
-    transOneCube->translation(0.5,2.0,-3.5f);
+    transOneCube->translation(1.5,2.0,-4.5f);
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);
@@ -170,7 +170,7 @@ RootMap::RootMap(const rapidjson::Document & document)
 
     //Added to our indexMap for collision with our hero
     transOneCube=new Matrix4f();
-    transOneCube->translation(10.5,0.0,-3.5f);
+    transOneCube->translation(11.5,0.0,-4.5f);
     cubeNode=new NodeSceneGraph();
     cubeNode->add(transOneCube);
     cubeNode->add(scaleCube);

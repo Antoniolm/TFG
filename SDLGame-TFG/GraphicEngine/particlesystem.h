@@ -21,12 +21,13 @@
 #define PARTICLESYSTEM_H
 
 #include <object3d.h>
+#include <nodescenegraph.h>
 #include <context.h>
 #include <rootmap.h>
 #include <list>
 #include <particle.h>
 
-class ParticleSystem : public Object3D
+class ParticleSystem : public NodeSceneGraph
 {
     public:
         //////////////////////////////////////////////////////////////////////////
