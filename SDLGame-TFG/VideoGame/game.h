@@ -86,6 +86,7 @@ class Game
         MainMenu * mainMenu;
         DeadMenu * deadMenu;
         Text * lifeText,* coinText;
+        Context context;
 };
 
 #endif // GAME_H

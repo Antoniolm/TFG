@@ -103,7 +103,7 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption++;
-            if(currentOption==options.size())
+            if((unsigned)currentOption==options.size())
                 currentOption=0;
 
             currentMaterial->setTexture(options[currentOption]);

@@ -26,7 +26,7 @@ RootMap::RootMap(){
 
 //**********************************************************************//
 
-RootMap::RootMap(const rapidjson::Document & document)
+RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
 {
     cout<< "< Game is loading our current map >"<< endl;
 
@@ -43,7 +43,28 @@ RootMap::RootMap(const rapidjson::Document & document)
     // Add Light to our map
     /////////////////////////////////////////
     const rapidjson::Value & lights=document["light"];
-    for(int currentLight=0;currentLight<lights.Size();currentLight++){}
+    glUniform1i(glGetUniformLocation(shader.getProgram(), "numActivateLight"), lights.Size()-1);
+    Light * light;
+
+    for(int currentLight=0;currentLight<lights.Size();currentLight++){
+        //Create our light
+        if(lights[currentLight]["type"].GetFloat()==0){
+            light=new Light(vec3f(lights[currentLight]["position"][0].GetFloat(), lights[currentLight]["position"][1].GetFloat(), lights[currentLight]["position"][2].GetFloat()),
+                          vec3f(lights[currentLight]["ambient"][0].GetFloat(), lights[currentLight]["ambient"][1].GetFloat(), lights[currentLight]["ambient"][2].GetFloat()),
+                          vec3f(lights[currentLight]["diffuse"][0].GetFloat(), lights[currentLight]["diffuse"][1].GetFloat(), lights[currentLight]["diffuse"][2].GetFloat()),
+                          vec3f(lights[currentLight]["specular"][0].GetFloat(), lights[currentLight]["specular"][1].GetFloat(), lights[currentLight]["specular"][2].GetFloat()));
+        }
+        else{
+            light=new Light(vec3f(lights[currentLight]["position"][0].GetFloat(), lights[currentLight]["position"][1].GetFloat(), lights[currentLight]["position"][2].GetFloat()),
+                          vec3f(lights[currentLight]["ambient"][0].GetFloat(), lights[currentLight]["ambient"][1].GetFloat(), lights[currentLight]["ambient"][2].GetFloat()),
+                          vec3f(lights[currentLight]["diffuse"][0].GetFloat(), lights[currentLight]["diffuse"][1].GetFloat(), lights[currentLight]["diffuse"][2].GetFloat()),
+                          vec3f(lights[currentLight]["specular"][0].GetFloat(), lights[currentLight]["specular"][1].GetFloat(), lights[currentLight]["specular"][2].GetFloat()),
+                          lights[currentLight]["constant"].GetFloat(),lights[currentLight]["linear"].GetFloat(),lights[currentLight]["quadratic"].GetFloat());
+        }
+        //Activate our current Light
+        light->activate(&shader,std::string(lights[currentLight]["channel"].GetString()));
+
+    }
 
 
     /////////////////////////////////////////

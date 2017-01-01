@@ -29,13 +29,18 @@ Game::Game(){
     window->setParameters("SDL_Game",800,600);
     window->createWindow();
 
+    //Create our shader
+    context.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    context.currentShader.createProgram();
+    glUseProgram(context.currentShader.getProgram()); //We use the program now
+
     //Create the json document-> We changed that when the game has more maps.
     FILE* fp = fopen("./maps/map.json", "rb"); // non-Windows use "r"
     char readBuffer[65536];
     rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
     rapidjson::Document document;
     document.ParseStream(is);
-    rootMap=new RootMap(document);
+    rootMap=new RootMap(document,context.currentShader);
     fclose(fp);
 
     pauseMenu = new PauseMenu();
@@ -69,7 +74,6 @@ void Game::loop(){
     bool quit = false;
     SDL_Event event;
     const Uint8* currentKeyStates;
-    Context aContext;
     vec3f posHero;
     float time;
     bool wasActivatedMenu=false;
@@ -82,30 +86,14 @@ void Game::loop(){
     //Test
     ParticleSystem * aSystem=new ParticleSystem(200,vec3f(1.0,1.0,-1.0),vec3f(2.0,1.0,-4.0),vec3f(0.0,1.0,0.0),500,1000);
 
-    //Create our shader
-    aContext.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    aContext.currentShader.createProgram();
-    glUseProgram(aContext.currentShader.getProgram()); //We use the program now
-    glUniform1i(glGetUniformLocation(aContext.currentShader.getProgram(), "numActivateLight"), 2);
-
     //Create our camera
     vec3f position(2.0,4.0,5.0);
     vec3f direction(2.0,3.0,0.0);
     vec3f up(0.0,1.0,0.0);
-    aContext.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
-    aContext.camera.setCamera(position,direction,up);
-    aContext.camera.createCamera();
-    aContext.camera.activateCamera(&aContext.currentShader);
-
-    //Create our light
-    Light dirLight(vec3f(0.0f, -1.0f, 0.0f),vec3f(0.7f, 0.7f, 0.7f),vec3f(0.2f, 0.2f, 0.2f),vec3f(0.2f, 0.2f, 0.2f));
-    Light pointLight(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.4f, 0.4f, 0.4f),vec3f(0.5f, 0.5f, 0.5f),vec3f(1.0f, 1.0f, 1.0f),1.0f,0.09,0.032);
-    Light pointLight2(vec3f(10.0f, 1.0f, 1.0f),vec3f(0.4f, 0.4f, 0.4f),vec3f(0.5f, 0.5f, 0.5f),vec3f(1.0f, 1.0f, 1.0f),1.0f,0.09,0.032);
-
-    //Activate our light
-    //dirLight.activate(&aContext.currentShader);
-    pointLight.activate(&aContext.currentShader,"0");
-    pointLight2.activate(&aContext.currentShader,"1");
+    context.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
+    context.camera.setCamera(position,direction,up);
+    context.camera.createCamera();
+    context.camera.activateCamera(&context.currentShader);
 
     //Show our window.
     window->showScreen();
@@ -124,10 +112,10 @@ void Game::loop(){
 
                 window->resizeWindow(windowH,windowW);
                 if(windowW > windowH)
-                    aContext.camera.setPerspectiveProjection(30.0f,(float)( windowW / windowH), 0.1f, 200.0f);
+                    context.camera.setPerspectiveProjection(30.0f,(float)( windowW / windowH), 0.1f, 200.0f);
                 else //fix
-                    aContext.camera.setPerspectiveProjection(30.0f,(float)( windowH / windowW), 0.1f, 200.0f);
-                aContext.camera.activateCamera(&aContext.currentShader);
+                    context.camera.setPerspectiveProjection(30.0f,(float)( windowH / windowW), 0.1f, 200.0f);
+                context.camera.activateCamera(&context.currentShader);
             }
         }
 
@@ -163,22 +151,22 @@ void Game::loop(){
 
         //Update the camera, lifeText, coinText
         posHero=hero->getPosition();
-        aContext.camera.moveCamera(vec3f(posHero.x,posHero.y+4.0f,posHero.z+10.0f),posHero,&aContext.currentShader);
+        context.camera.moveCamera(vec3f(posHero.x,posHero.y+4.0f,posHero.z+10.0f),posHero,&context.currentShader);
         updateLife(lastLife);
         updateCoin(currentCoin);
 
-        //aContext.camera.setPerspectiveProjection(30.0f,(float)( 800 / 600), 0.1f, 200.0f);
-        //aContext.camera.activateCamera(&aContext.currentShader);
-        aSystem->visualization(aContext);
-        rootMap->visualization(aContext);
+        //context.camera.setPerspectiveProjection(30.0f,(float)( 800 / 600), 0.1f, 200.0f);
+        //context.camera.activateCamera(&context.currentShader);
+        aSystem->visualization(context);
+        rootMap->visualization(context);
 
-        //aContext.camera.setOrthographicProjection(-1,1,-1,1,-3,3);
-        //aContext.camera.activateCamera(&aContext.currentShader);
-        lifeText->visualization(aContext);
-        coinText->visualization(aContext);
-        pauseMenu->visualization(aContext);
-        mainMenu->visualization(aContext);
-        deadMenu->visualization(aContext);
+        //context.camera.setOrthographicProjection(-1,1,-1,1,-3,3);
+        //context.camera.activateCamera(&context.currentShader);
+        lifeText->visualization(context);
+        coinText->visualization(context);
+        pauseMenu->visualization(context);
+        mainMenu->visualization(context);
+        deadMenu->visualization(context);
 
         window->updateScreen();
 

@@ -6,13 +6,15 @@
     "volSound":60.0,
 
     "light":[
-            {   "type":"0",
+            {   "type":0,
+                "channel":"0",
                 "position":[0.0,-1.0,0.0],
                 "ambient":[0.7,0.7,0.7],
                 "diffuse":[0.2,0.2,0.2],
                 "specular":[0.2,0.2,0.2] },
 
-            {   "type":"1",
+            {   "type":1,
+                "channel":"0",
                 "position":[1.0,1.0,1.0],
                 "ambient":[0.4,0.4,0.4],
                 "diffuse":[0.5,0.5,0.5],
@@ -20,8 +22,9 @@
                 "constant":1.0,
                 "linear":0.09,
                 "quadratic":0.032 },
-                
-            {   "type":"1",
+
+            {   "type":1,
+                "channel":"1",
                 "position":[10.0,1.0,1.0],
                 "ambient":[0.4,0.4,0.4],
                 "diffuse":[0.5,0.5,0.5],

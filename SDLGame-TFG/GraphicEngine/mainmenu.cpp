@@ -99,7 +99,7 @@ void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
         }
         else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption++;
-            if(currentOption==options.size())
+            if((unsigned)currentOption==options.size())
                 currentOption=0;
 
 
