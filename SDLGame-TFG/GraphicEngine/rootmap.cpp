@@ -144,39 +144,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     // Add npcs of our map
     /////////////////////////////////////////
     const rapidjson::Value & npcsValue=document["npcs"];
-    npcList=new NpcList(npcsValue);
-
-    //Added to our indexMap for collision with our hero
-    transOneCube=new Matrix4f();
-    transOneCube->translation(4.5,2.0,-3.5f);
-    scaleCube =new Matrix4f();
-    scaleCube->scale(0.5,1,0.5);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialCollect->getMaterial(mVOID));
-    cubeNode->add(meshCollect->getMesh(CUBE));
-    objs.push_back(new ObjectScene(cubeNode));
-
-    //Added to our indexMap for collision with our hero
-    transOneCube=new Matrix4f();
-    transOneCube->translation(1.5,2.0,-4.5f);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialCollect->getMaterial(mVOID));
-    cubeNode->add(meshCollect->getMesh(CUBE));
-    objs.push_back(new ObjectScene(cubeNode));
-
-    //Added to our indexMap for collision with our hero
-    transOneCube=new Matrix4f();
-    transOneCube->translation(11.5,0.0,-4.5f);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(materialCollect->getMaterial(mVOID));
-    cubeNode->add(meshCollect->getMesh(CUBE));
-    objs.push_back(new ObjectScene(cubeNode));
+    npcList=new NpcList(npcsValue,objs);
 
     /////////////////////////////////////////
     // Add enemy of our map
