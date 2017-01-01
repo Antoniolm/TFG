@@ -33,18 +33,27 @@ RootMap::RootMap(const rapidjson::Document & document)
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
-    Matrix4f *scaleCube =new Matrix4f();
-    scaleCube->scale(0.5,0.5,0.5);
+    Matrix4f * scaleObj=new Matrix4f();
+    scaleObj->scale(0.5,0.5,0.5);
 
-    Matrix4f * transOneCube=new Matrix4f();
-    transOneCube->translation(0.5,0.5,-0.5);
+    Matrix4f * transObj=new Matrix4f();
+    transObj->translation(0.5,0.5,-0.5);
 
-    NodeSceneGraph * cubeNode=new NodeSceneGraph();
+    /////////////////////////////////////////
+    // Add Light to our map
+    /////////////////////////////////////////
+    const rapidjson::Value & lights=document["light"];
+    for(int currentLight=0;currentLight<lights.Size();currentLight++){}
+
+
+    /////////////////////////////////////////
+    // Add voxelGroup to our map
+    /////////////////////////////////////////
+    NodeSceneGraph * objNode=new NodeSceneGraph();
     const rapidjson::Value & voxelGroup=document["voxelGroup"];
     int tamX,tamY,tamZ,initialX,initialZ;
     float initialY;
 
-    //Bucle -> voxelGroup
     for(int currentGroup=0;currentGroup<voxelGroup.Size();currentGroup++){
         //For each group
         tamX=voxelGroup[currentGroup]["XNumber"].GetInt();
@@ -57,27 +66,30 @@ RootMap::RootMap(const rapidjson::Document & document)
         for(int x=0;x<tamX;x++){
             for(int z=0;z<tamZ;z++){
                 for(int y=0;y<tamY;y++){
-                    transOneCube=new Matrix4f();
-                    transOneCube->translation(initialX+x+0.5f,initialY-y,initialZ-z-0.5f);
-                    cubeNode=new NodeSceneGraph();
-                    cubeNode->add(transOneCube);
-                    cubeNode->add(scaleCube);
+                    transObj=new Matrix4f();
+                    transObj->translation(initialX+x+0.5f,initialY-y,initialZ-z-0.5f);
+                    objNode=new NodeSceneGraph();
+                    objNode->add(transObj);
+                    objNode->add(scaleObj);
                     if(y==0)
-                    cubeNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialTop"].GetString()));
+                    objNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialTop"].GetString()));
                     else
-                    cubeNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialMiddle"].GetString()));
-                    cubeNode->add(meshCollect->getMesh(voxelGroup[currentGroup]["mesh"].GetString()));
-                    objs.push_back(new ObjectScene(cubeNode,voxelGroup[currentGroup]["damage"].GetFloat()));
+                    objNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialMiddle"].GetString()));
+                    objNode->add(meshCollect->getMesh(voxelGroup[currentGroup]["mesh"].GetString()));
+                    objs.push_back(new ObjectScene(objNode,voxelGroup[currentGroup]["damage"].GetFloat()));
                 }
             }
         }
     }
 
+    /////////////////////////////////////////
+    // Add decorationObject to our map
+    /////////////////////////////////////////
     Matrix4f * transformation;
     const rapidjson::Value & decoObject=document["decorationObject"];
     for(int currentDeco=0;currentDeco<decoObject.Size();currentDeco++){
 
-        cubeNode=new NodeSceneGraph();
+        objNode=new NodeSceneGraph();
 
         for(int currentTrans=0;currentTrans<decoObject[currentDeco]["transforms"].Size();currentTrans++){
             transformation=new Matrix4f();
@@ -103,32 +115,32 @@ RootMap::RootMap(const rapidjson::Document & document)
                                          decoObject[currentDeco]["transforms"][currentTrans]["values"][3].GetFloat());
 
             }
-            cubeNode->add(transformation);
+            objNode->add(transformation);
 
         }
 
-        cubeNode->add(materialCollect->getMaterial(decoObject[currentDeco]["material"].GetString()));
-        cubeNode->add(meshCollect->getMesh(decoObject[currentDeco]["mesh"].GetString()));
+        objNode->add(materialCollect->getMaterial(decoObject[currentDeco]["material"].GetString()));
+        objNode->add(meshCollect->getMesh(decoObject[currentDeco]["mesh"].GetString()));
 
         if(decoObject[currentDeco]["collision"].GetBool()) //If collision
-            objs.push_back(new ObjectScene(cubeNode));
+            objs.push_back(new ObjectScene(objNode));
         else{ //If is a decoration obj
-            decorationObjs.push_back(new ObjectScene(cubeNode));
+            decorationObjs.push_back(new ObjectScene(objNode));
         }
     }
 
     ////////////////////////////////////////////
     // Background
-    transOneCube=new Matrix4f();
-    transOneCube->translation(0.0f,0.0f,0.0f);
+    transObj=new Matrix4f();
+    transObj->translation(0.0f,0.0f,0.0f);
     Matrix4f *scaleBack =new Matrix4f();
     scaleBack->scale(10.0,10.0,10.0);
-    cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleBack);
-    cubeNode->add(materialCollect->getMaterial(document["bkgdMaterial"].GetString()));
-    cubeNode->add(meshCollect->getMesh(BACKGROUND));
-    background= new ObjectScene(cubeNode);
+    objNode=new NodeSceneGraph();
+    objNode->add(transObj);
+    objNode->add(scaleBack);
+    objNode->add(materialCollect->getMaterial(document["bkgdMaterial"].GetString()));
+    objNode->add(meshCollect->getMesh(BACKGROUND));
+    background= new ObjectScene(objNode);
 
     /////////////////////////////////////////
     // Add coins to our map
@@ -184,7 +196,7 @@ RootMap::RootMap(const rapidjson::Document & document)
     /////////////////////////////////////////
     // Add sound of our map
     backSound=new Sound(document["sound"].GetString(),0,document["volSound"].GetFloat());
-    backSound->play();
+    //backSound->play();
 
     currentTime=SDL_GetTicks();
 }
@@ -308,6 +320,7 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
         for(;it!=endIt && !hasCollision;it++){
             pos=objs[(*it)]->getPosition();
             box=objs[(*it)]->getBoundingBox();
+            //if((indexObj.y >= (pos.y)+box.minValue.y && indexObj.y <= (pos.y)+box.maxValue.y)){
             if((indexObj.y+0.5 > (pos.y)+box.minValue.y && indexObj.y+0.5 < (pos.y)+box.maxValue.y)||(indexObj.y-0.5 > (pos.y)+box.minValue.y && indexObj.y-0.5 < (pos.y)+box.maxValue.y)){
                 hasCollision=true;
                 result=objs[(*it)];

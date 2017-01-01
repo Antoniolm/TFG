@@ -184,6 +184,7 @@ bool AvatarMove::gravity(float time){
     GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
 
     vec3f posHero=getPosition();
+    //posHero.y-=0.75;
     posHero.y-=0.51;
 
     //Get the tenth of our position
@@ -235,7 +236,8 @@ bool AvatarMove::gravity(float time){
             BoundingBox box=hasCollision->getBoundingBox();
             Matrix4f trans;
             trans.translation(0.0,(positionObs.y+box.maxValue.y)-(posHero.y-0.23),0.0);
-
+            //trans.translation(0.0,(positionObs.y+box.maxValue.y)-(posHero.y),0.0);
+            //cout<< "Trans->"<<(positionObs.y+box.maxValue.y)-(posHero.y) <<endl;
             moveAvatar->product(trans.getMatrix());
         }
         isFalling=false;

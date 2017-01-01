@@ -103,7 +103,7 @@ void Game::loop(){
     Light pointLight2(vec3f(10.0f, 1.0f, 1.0f),vec3f(0.4f, 0.4f, 0.4f),vec3f(0.5f, 0.5f, 0.5f),vec3f(1.0f, 1.0f, 1.0f),1.0f,0.09,0.032);
 
     //Activate our light
-    dirLight.activate(&aContext.currentShader);
+    //dirLight.activate(&aContext.currentShader);
     pointLight.activate(&aContext.currentShader,"0");
     pointLight2.activate(&aContext.currentShader,"1");
 

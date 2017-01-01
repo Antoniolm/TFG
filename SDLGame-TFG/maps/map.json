@@ -2,9 +2,37 @@
     "name": "First map",
     "title": "Adventure",
     "bkgdMaterial":"mWATER",
+    "sound":"sounds/background.wav",
+    "volSound":60.0,
+
+    "light":[
+            {   "type":"0",
+                "position":[0.0,-1.0,0.0],
+                "ambient":[0.7,0.7,0.7],
+                "diffuse":[0.2,0.2,0.2],
+                "specular":[0.2,0.2,0.2] },
+
+            {   "type":"1",
+                "position":[1.0,1.0,1.0],
+                "ambient":[0.4,0.4,0.4],
+                "diffuse":[0.5,0.5,0.5],
+                "specular":[1.0,1.0,1.0],
+                "constant":1.0,
+                "linear":0.09,
+                "quadratic":0.032 },
+                
+            {   "type":"1",
+                "position":[10.0,1.0,1.0],
+                "ambient":[0.4,0.4,0.4],
+                "diffuse":[0.5,0.5,0.5],
+                "specular":[1.0,1.0,1.0],
+                "constant":1.0,
+                "linear":0.09,
+                "quadratic":0.032 }
+    ],
 
     "npcs":[
-            {   "position":[3.5,2.0,-2.5],
+            {   "position":[4.5,2.0,-3.5],
                 "dialog":[{"speaker":0,
                            "string":"Esto es una prueba"},
                           {"speaker":1,
@@ -14,14 +42,14 @@
                         ]
             },
 
-            {   "position":[0.5,2.0,-3.5],
+            {   "position":[1.5,2.0,-4.5],
                 "dialog":[{"speaker":1,
                            "string":"Segundo Npc"},
                           {"speaker":0,
                             "string":"Segundo mensaje de Npc2"}
                         ]
             },
-            {   "position":[10.5,0.0,-3.5],
+            {   "position":[11.5,0.0,-4.5],
                 "dialog":[{"speaker":0,
                            "string":"Hola este es el rio"},
                           {"speaker":0,
@@ -32,41 +60,41 @@
 
     "enemies":[
             {   "life":100,
-                "position":[4.5,2.0,-0.5],
+                "position":[5.5,2.0,-1.5],
                 "radioActivity":[2.0,2.0,2.0]
             },
 
             {   "life":50,
-                "position":[10.5,0.0,-2.5],
+                "position":[11.5,0.0,-3.5],
                 "radioActivity":[4.0,4.0,4.0]
             },
             {   
                 "life":10,
-                "position":[7.5,1.0,-4.5],
+                "position":[8.5,1.0,-5.5],
                 "radioActivity":[1.0,1.0,1.0]
             }
     ],
 
     "coins":[
-            {   "position":[7.5,1.5,-2.5],
+            {   "position":[8.5,1.5,-3.5],
                 "value":10  },
 
-            {   "position":[8.5,1.5,-2.5],
+            {   "position":[9.5,1.5,-3.15],
                 "value":10  },
 
-            {   "position":[9.5,1.5,-2.5],
+            {   "position":[10.5,1.5,-3.5],
                 "value":50  },
 
-            {   "position":[10.5,1.5,-2.5],
+            {   "position":[11.5,1.5,-3.5],
                 "value":10  },
 
-            {   "position":[11.5,1.5,-2.5],
+            {   "position":[12.5,1.5,-3.5],
                 "value":10}
     ],
 
 
     "voxelGroup":[
-            {   "position":[0,0.5,0],
+            {   "position":[1,0.5,1],
                 "YNumber":3,        
                 "XNumber":7,         
                 "ZNumber":2,         
@@ -75,8 +103,8 @@
                 "mesh":"CUBE", 
                 "damage":0.0},
 
-            {   "position":[0,0.5,5],
-                "YNumber":1,        
+            {   "position":[1,0.5,6],
+                "YNumber":1,       
                 "XNumber":7,         
                 "ZNumber":2,         
                 "materialTop":"mCUBE_GRASS",
@@ -84,7 +112,7 @@
                 "mesh":"CUBE", 
                 "damage":0.0 },
 
-            {   "position":[0,0.5,2],
+            {   "position":[1,0.5,3],
                 "YNumber":1,        
                 "XNumber":7,         
                 "ZNumber":3,         
@@ -93,7 +121,7 @@
                 "mesh":"CUBE", 
                 "damage":0.0 },
 
-            {   "position":[7,-0.5,0],
+            {   "position":[8,-0.5,1],
                 "YNumber":1,   
                 "XNumber":1,    
                 "ZNumber":7,
@@ -102,7 +130,7 @@
                 "mesh":"CUBE", 
                 "damage":0.0 },
 
-            {   "position":[8,-1.5,0],
+            {   "position":[9,-1.5,1],
                 "YNumber":1,   
                 "XNumber":2,    
                 "ZNumber":7,
@@ -111,7 +139,7 @@
                 "mesh":"CUBE", 
                 "damage":0.0  },
 
-            {   "position":[10,-1.5,2],
+            {   "position":[11,-1.5,3],
                 "YNumber":1,   
                 "XNumber":4,    
                 "ZNumber":2,
@@ -120,7 +148,7 @@
                 "mesh":"CUBE", 
                 "damage":0.0  },
 
-            {   "position":[10,-3.5,0],
+            {   "position":[11,-3.5,1],
                 "YNumber":1,   
                 "XNumber":7,    
                 "ZNumber":7,
@@ -129,7 +157,7 @@
                 "mesh":"CUBE", 
                 "damage":-10.0},
 
-            {   "position":[0,1.5,1],
+            {   "position":[1,1.5,2],
                 "YNumber":1,   
                 "XNumber":7,    
                 "ZNumber":1,
@@ -138,7 +166,7 @@
                 "mesh":"FENCE", 
                 "damage":0.0  },
 
-            {   "position":[0,1.5,5],
+            {   "position":[1,1.5,6],
                 "YNumber":1,   
                 "XNumber":7,    
                 "ZNumber":1,
@@ -153,7 +181,7 @@
                     {   "translation":true,
                         "scale":false,
                         "rotation":false,
-                        "values":[13.5,-2.5,-3.5]
+                        "values":[14.5,-2.5,-4.5]
                     },
                     {   "translation":false,
                         "scale":true,
@@ -170,7 +198,7 @@
                     {   "translation":true,
                         "scale":false,
                         "rotation":false,
-                        "values":[1.5,2.0,-6.5]
+                        "values":[2.5,2.0,-7.5]
                     },
                     {   "translation":false,
                         "scale":true,
@@ -187,7 +215,7 @@
                     {   "translation":true,
                         "scale":false,
                         "rotation":false,
-                        "values":[2.1,1.2,-0.5]
+                        "values":[3.1,1.2,-1.5]
                     }
                 ],       
                 "material":"mGRASS",
@@ -198,7 +226,7 @@
                     {   "translation":true,
                         "scale":false,
                         "rotation":false,
-                        "values":[4.5,1.3,-6.5]
+                        "values":[5.5,1.3,-7.5]
                     },
                     {   "translation":false,
                         "scale":true,
@@ -214,7 +242,7 @@
                     {   "translation":true,
                         "scale":false,
                         "rotation":false,
-                        "values":[6.0,1.5,-3.0]
+                        "values":[7.0,1.5,-4.0]
                     },
                     {   "translation":false,
                         "scale":true,
@@ -230,7 +258,7 @@
                     {   "translation":true,
                         "scale":false,
                         "rotation":false,
-                        "values":[0.5,1.0,-0.5]
+                        "values":[1.5,1.0,-1.5]
                     },
                     {   "translation":false,
                         "scale":true,
