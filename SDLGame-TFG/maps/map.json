@@ -6,12 +6,6 @@
     "volSound":60.0,
 
     "light":[
-            {   "type":0,
-                "channel":"0",
-                "position":[0.0,-1.0,0.0],
-                "ambient":[0.7,0.7,0.7],
-                "diffuse":[0.2,0.2,0.2],
-                "specular":[0.2,0.2,0.2] },
 
             {   "type":1,
                 "channel":"0",

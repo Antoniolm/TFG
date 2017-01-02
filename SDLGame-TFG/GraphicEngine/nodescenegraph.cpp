@@ -20,9 +20,10 @@
 
 #include "nodescenegraph.h"
 
-NodeSceneGraph::NodeSceneGraph(bool aInvert)
+NodeSceneGraph::NodeSceneGraph(bool aInvert,bool nolight)
 {
     invert=aInvert;
+    noLight=nolight;
     currentTime=SDL_GetTicks();
     boundingBox.maxValue=vec3f(2.5,2.5,2.5);
     boundingBox.minValue=vec3f(-2.5,-2.5,-2.5);
@@ -61,11 +62,13 @@ NodeSceneGraph::~NodeSceneGraph()
 //**********************************************************************//
 
 void NodeSceneGraph::visualization(Context & cv){
-    if(invert){
-        glUniform1f(glGetUniformLocation(cv.currentShader.getProgram(),"invertNormal"), 1);
-    }
-    else
-        glUniform1f(glGetUniformLocation(cv.currentShader.getProgram(),"invertNormal"), 0);
+    //if invert
+    if(invert) glUniform1i(glGetUniformLocation(cv.currentShader.getProgram(),"invertNormal"), 1);
+    else glUniform1i(glGetUniformLocation(cv.currentShader.getProgram(),"invertNormal"), 0);
+
+    //if noLight -> is a menu
+    if(noLight) glUniform1i(glGetUniformLocation(cv.currentShader.getProgram(),"noLight"), 1);
+    else glUniform1i(glGetUniformLocation(cv.currentShader.getProgram(),"noLight"), 0);
 
     int contMatrix=1;
     int contMaterial=0;

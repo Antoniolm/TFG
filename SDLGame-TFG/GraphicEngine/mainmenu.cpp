@@ -38,7 +38,7 @@ MainMenu::MainMenu()
     Matrix4f * rotationMenu=new Matrix4f();
     rotationMenu->rotation(20,1.0,0.0,0.0);
 
-    root=new NodeSceneGraph();
+    root=new NodeSceneGraph(false,true);
     root->add(positionMenu);
     root->add(rotationMenu);
     root->add(scaleMenu);
