@@ -26,6 +26,7 @@
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/matrix4fdynamic.h"
 #include "../GraphicEngine/meshcollection.h"
+#include "../GraphicEngine/soundcollection.h"
 #include "../GraphicEngine/axisrotation.h"
 #include "../GraphicEngine/sound.h"
 

@@ -1797,13 +1797,14 @@
 1482838133 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
 	"coin.h"
 
-1482780796 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h
+1483360429 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h
 	"../GraphicEngine/object3d.h"
 	"../GraphicEngine/nodescenegraph.h"
 	"../GraphicEngine/material.h"
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/matrix4fdynamic.h"
 	"../GraphicEngine/meshcollection.h"
+	"../GraphicEngine/soundcollection.h"
 	"../GraphicEngine/axisrotation.h"
 	"../GraphicEngine/sound.h"
 
@@ -2075,6 +2076,15 @@
 	"enumparser.h"
 
 1482586630 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\enumparser.h
+	<map>
+	<string>
+
+1483360208 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
+	"soundcollection.h"
+
+1483359960 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.h
+	"sound.h"
+	<vector>
 	<map>
 	<string>
 
