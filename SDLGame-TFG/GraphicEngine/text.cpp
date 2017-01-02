@@ -39,7 +39,7 @@ Text::Text(const string & aTexture,TTF_Font * aFont,SDL_Color aColor,bool ahasDi
     scaleText=new Matrix4f();
     scaleText->scale(1.0,0.3,1.0);
 
-    textNode=new NodeSceneGraph();
+    textNode=new NodeSceneGraph(false,true);
     textNode->add(positionText);
     textNode->add(scaleText);
     textNode->add(meshCollect->getMesh(TEXT));
@@ -51,7 +51,7 @@ Text::Text(const string & aTexture,TTF_Font * aFont,SDL_Color aColor,bool ahasDi
         scaleBack=new Matrix4f();
         scaleBack->scale(1.2,1.1,1.0);
 
-        backNode=new NodeSceneGraph();
+        backNode=new NodeSceneGraph(false,true);
         backNode->add(positionBack);
         backNode->add(scaleBack);
         backNode->add(material);
