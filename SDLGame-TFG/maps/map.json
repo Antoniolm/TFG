@@ -41,6 +41,13 @@
                 "velocity":[0.0,1.0,0.0],
                 "minLife":500,
                 "maxLife":1000
+            },
+            {   "number":50,
+                "minPosition":[3.0,1.0,-1.0],
+                "maxPosition":[4.0,1.0,-4.0],
+                "velocity":[0.0,2.0,0.0],
+                "minLife":500,
+                "maxLife":1000
             }
     ],
 
@@ -188,6 +195,15 @@
                 "materialTop":"mWOOD",
                 "materialMiddle":"mWOOD",
                 "mesh":"FENCE", 
+                "damage":0.0  },
+
+            {   "position":[17,-1.5,3],
+                "YNumber":1,   
+                "XNumber":4,    
+                "ZNumber":2,
+                "materialTop":"mCUBE_GRASS",
+                "materialMiddle":"mCUBE_SAND",
+                "mesh":"CUBE", 
                 "damage":0.0  }
     ],
 
