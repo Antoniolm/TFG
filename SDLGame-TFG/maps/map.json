@@ -115,7 +115,7 @@
                 "XNumber":7,         
                 "ZNumber":2,         
                 "materialTop":"mCUBE_GRASS",
-                "materialMiddle":"mCUBE_SAND", 
+                "materialMiddle":"mCUBE_LAND", 
                 "mesh":"CUBE", 
                 "damage":0.0},
 
@@ -124,7 +124,7 @@
                 "XNumber":7,         
                 "ZNumber":2,         
                 "materialTop":"mCUBE_GRASS",
-                "materialMiddle":"mCUBE_SAND", 
+                "materialMiddle":"mCUBE_LAND", 
                 "mesh":"CUBE", 
                 "damage":0.0 },
 
@@ -133,7 +133,7 @@
                 "XNumber":7,         
                 "ZNumber":3,         
                 "materialTop":"mCUBE_SAND",
-                "materialMiddle":"mCUBE_SAND", 
+                "materialMiddle":"mCUBE_LAND", 
                 "mesh":"CUBE", 
                 "damage":0.0 },
 
@@ -142,7 +142,7 @@
                 "XNumber":1,    
                 "ZNumber":7,
                 "materialTop":"mCUBE_GRASS",
-                "materialMiddle":"mCUBE_SAND",
+                "materialMiddle":"mCUBE_LAND",
                 "mesh":"CUBE", 
                 "damage":0.0 },
 
@@ -151,7 +151,7 @@
                 "XNumber":2,    
                 "ZNumber":7,
                 "materialTop":"mCUBE_GRASS",
-                "materialMiddle":"mCUBE_SAND",
+                "materialMiddle":"mCUBE_LAND",
                 "mesh":"CUBE", 
                 "damage":0.0  },
 
@@ -160,7 +160,7 @@
                 "XNumber":4,    
                 "ZNumber":2,
                 "materialTop":"mCUBE_GRASS",
-                "materialMiddle":"mCUBE_SAND",
+                "materialMiddle":"mCUBE_LAND",
                 "mesh":"CUBE", 
                 "damage":0.0  },
 
@@ -169,7 +169,7 @@
                 "XNumber":7,    
                 "ZNumber":7,
                 "materialTop":"mCUBE_GRASS",
-                "materialMiddle":"mCUBE_SAND",
+                "materialMiddle":"mCUBE_LAND",
                 "mesh":"CUBE", 
                 "damage":-10.0},
 
@@ -196,7 +196,7 @@
                 "XNumber":4,    
                 "ZNumber":2,
                 "materialTop":"mCUBE_GRASS",
-                "materialMiddle":"mCUBE_SAND",
+                "materialMiddle":"mCUBE_LAND",
                 "mesh":"CUBE", 
                 "damage":0.0  }
     ],
@@ -275,7 +275,7 @@
                         "values":[1.0,0.5,1.0]
                     }
                 ],       
-                "material":"mCUBE_SAND",
+                "material":"mCUBE_LAND",
                 "mesh":"CUBE",
                 "collision": true
             },

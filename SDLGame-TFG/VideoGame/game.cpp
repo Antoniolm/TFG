@@ -51,7 +51,7 @@ Game::Game(){
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
-    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 15);
+    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 10);
     SDL_Color color= {255,0,0};
     lifeText=new Text("",font,color,false);
 
@@ -147,16 +147,16 @@ void Game::loop(){
 
         //Update the camera, lifeText, coinText
         posHero=hero->getPosition();
-        context.camera.moveCamera(vec3f(posHero.x,posHero.y+4.0f,posHero.z+10.0f),posHero,&context.currentShader);
+        context.camera.moveCamera(vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f),posHero,&context.currentShader);
         updateLife(lastLife);
         updateCoin(currentCoin);
 
-        //context.camera.setPerspectiveProjection(30.0f,(float)( 800 / 600), 0.1f, 200.0f);
-        //context.camera.activateCamera(&context.currentShader);
+        context.camera.setPerspectiveProjection(30.0f,(float)( 800 / 600), 0.1f, 200.0f);
+        context.camera.activateProjection(&context.currentShader);
         rootMap->visualization(context);
 
-        //context.camera.setOrthographicProjection(-1,1,-1,1,-3,3);
-        //context.camera.activateCamera(&context.currentShader);
+        context.camera.setOrthographicProjection(-1,1,-1,1,-3,3);
+        context.camera.activateProjection(&context.currentShader);
         lifeText->visualization(context);
         coinText->visualization(context);
         pauseMenu->visualization(context);
@@ -174,7 +174,7 @@ void Game::loop(){
 
 void Game::updateLife(int & lastLife){
     vec3f posHero=hero->getPosition();
-    lifeText->setPosition(vec3f(posHero.x-0.75,posHero.y+3.55,posHero.z+7.0));
+    lifeText->setPosition(vec3f(posHero.x-0.2,posHero.y+5.55,posHero.z+13.5));
     std::stringstream life;
     life<< hero->getLife();
     if(lastLife!=hero->getLife()){ //If the life has changed
@@ -188,7 +188,7 @@ void Game::updateLife(int & lastLife){
 
 void Game::updateCoin(int & currentCoin){
     vec3f posHero=hero->getPosition();
-    coinText->setPosition(vec3f(posHero.x+0.75,posHero.y+3.55,posHero.z+7.0));
+    coinText->setPosition(vec3f(posHero.x+0.2,posHero.y+5.55,posHero.z+13.5));
     std::stringstream coin;
     coin<< hero->getCoin();
     if(currentCoin!=hero->getCoin()){ //If the life has changed

@@ -30,18 +30,19 @@ using namespace std;
 enum materialElement{
     mCUBE_GRASS, //0
     mCUBE_SAND,  //1
-    mCUBE_BOX,   //2
-    mWOOD,       //3
-    MUSH,        //4
-    mGRASS,      //5
-    mWATER,      //6
-    mVOID,       //7
-    mCOIN10,     //8
-    mCOIN50,     //9
-    mARMOUR,     //10
-    mHAND,       //11
-    mDWOOD,      //12
-    mDHAND       //13
+    mCUBE_LAND,  //2
+    mCUBE_BOX,   //3
+    mWOOD,       //4
+    MUSH,        //5
+    mGRASS,      //6
+    mWATER,      //7
+    mVOID,       //8
+    mCOIN10,     //9
+    mCOIN50,     //10
+    mARMOUR,     //11
+    mHAND,       //12
+    mDWOOD,      //13
+    mDHAND       //14
 };
 
 

@@ -23,10 +23,13 @@ MaterialCollection* MaterialCollection::instance = NULL;
 
 MaterialCollection::MaterialCollection()
 {
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeGrass.png");
+    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeGrass.png");
     collection.push_back(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
+    collection.push_back(material);
+
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeLand.png");
     collection.push_back(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
@@ -70,6 +73,7 @@ MaterialCollection::MaterialCollection()
     //Create our map
     enumMap.insert(pair<string,materialElement> ("mCUBE_GRASS",mCUBE_GRASS));
     enumMap.insert(pair<string,materialElement> ("mCUBE_SAND",mCUBE_SAND));
+    enumMap.insert(pair<string,materialElement> ("mCUBE_LAND",mCUBE_LAND));
     enumMap.insert(pair<string,materialElement> ("mCUBE_BOX",mCUBE_BOX));
     enumMap.insert(pair<string,materialElement> ("mWOOD",mWOOD));
     enumMap.insert(pair<string,materialElement> ("MUSH",MUSH));
