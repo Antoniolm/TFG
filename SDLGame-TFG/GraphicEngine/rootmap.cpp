@@ -248,6 +248,10 @@ RootMap::~RootMap()
 
     for(unsigned i=0;i<decorationObjs.size();i++)
         delete decorationObjs[i];
+
+    MeshCollection * meshCollect= MeshCollection::getInstance();
+    delete meshCollect;
+
 }
 
 //**********************************************************************//

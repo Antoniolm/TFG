@@ -148,7 +148,13 @@ MeshCollection::MeshCollection()
 
 MeshCollection::~MeshCollection()
 {
-    //dtor
+    if(instance!=NULL){
+        vector<Mesh *>::iterator it;
+        for(it=collection.begin();it!=collection.end();it++){
+            delete (*it);
+        }
+        instance=NULL;
+    }
 }
 
 //**********************************************************************//

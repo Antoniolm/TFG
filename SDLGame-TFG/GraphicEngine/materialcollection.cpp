@@ -88,7 +88,13 @@ MaterialCollection::MaterialCollection()
 
 MaterialCollection::~MaterialCollection()
 {
-    //dtor
+    if(instance!=NULL){
+        vector<Material *>::iterator it;
+        for(it=collection.begin();it!=collection.end();it++){
+            delete (*it);
+        }
+        instance=NULL;
+    }
 }
 
 //**********************************************************************//

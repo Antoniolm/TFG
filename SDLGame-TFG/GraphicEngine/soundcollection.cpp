@@ -36,7 +36,13 @@ SoundCollection::SoundCollection()
 
 SoundCollection::~SoundCollection()
 {
-    //dtor
+    if(instance!=NULL){
+        vector<Sound *>::iterator it;
+        for(it=collection.begin();it!=collection.end();it++){
+            delete (*it);
+        }
+        instance=NULL;
+    }
 }
 
 //**********************************************************************//
