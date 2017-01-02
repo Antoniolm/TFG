@@ -83,9 +83,6 @@ void Game::loop(){
     hero=new Hero();
     rootMap->setHero(hero);
 
-    //Test
-    ParticleSystem * aSystem=new ParticleSystem(200,vec3f(1.0,1.0,-1.0),vec3f(2.0,1.0,-4.0),vec3f(0.0,1.0,0.0),500,1000);
-
     //Create our camera
     vec3f position(2.0,4.0,5.0);
     vec3f direction(2.0,3.0,0.0);
@@ -138,7 +135,6 @@ void Game::loop(){
 
         if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate()){ //If  menu is not activate
             rootMap->updateState(time,currentKeyStates,rootMap);
-            aSystem->updateState(time,currentKeyStates,rootMap);
             if(wasActivatedMenu) //If is the first time that it is not activated
                 rootMap->enableSound(true);
             wasActivatedMenu=false;
@@ -157,7 +153,6 @@ void Game::loop(){
 
         //context.camera.setPerspectiveProjection(30.0f,(float)( 800 / 600), 0.1f, 200.0f);
         //context.camera.activateCamera(&context.currentShader);
-        aSystem->visualization(context);
         rootMap->visualization(context);
 
         //context.camera.setOrthographicProjection(-1,1,-1,1,-3,3);

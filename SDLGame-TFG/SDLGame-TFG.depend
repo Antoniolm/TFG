@@ -901,7 +901,7 @@
 	"../VideoGame/enemylist.h"
 	<stdlib.h>
 
-1483312322 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1483315936 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -913,6 +913,8 @@
 	"axisrotation.h"
 	"matrixstatic.h"
 	"oscillaterotation.h"
+	"particlesystem.h"
+	"particle.h"
 	"mesh.h"
 	"objectscene.h"
 	"../VideoGame/hero.h"
@@ -2028,7 +2030,7 @@
 1482749333 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
 	"particlesystem.h"
 
-1482928758 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
+1483315838 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
 	<object3d.h>
 	<nodescenegraph.h>
 	<context.h>

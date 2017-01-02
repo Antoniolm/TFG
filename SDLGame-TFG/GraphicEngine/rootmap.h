@@ -31,6 +31,8 @@
 #include "axisrotation.h"
 #include "matrixstatic.h"
 #include "oscillaterotation.h"
+#include "particlesystem.h"
+#include "particle.h"
 #include "mesh.h"
 #include "objectscene.h"
 #include "../VideoGame/hero.h"
@@ -50,6 +52,7 @@ class Enemy;
 class Coin;
 class NpcList;
 class EnemyList;
+class ParticleSystem;
 class RootMap : public Object3D
 {
     public:
@@ -125,6 +128,7 @@ class RootMap : public Object3D
         vector<ObjectScene *> objs;
         vector<ObjectScene *> decorationObjs;
         vector<Coin *> coins;
+        vector<ParticleSystem *> particleSystem;
         ObjectScene * background;
         NpcList * npcList;
         EnemyList * enemyList;

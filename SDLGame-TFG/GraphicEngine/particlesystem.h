@@ -27,6 +27,7 @@
 #include <list>
 #include <particle.h>
 
+class Particle;
 class ParticleSystem : public NodeSceneGraph
 {
     public:

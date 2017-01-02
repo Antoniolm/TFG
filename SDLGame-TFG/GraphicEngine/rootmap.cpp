@@ -66,6 +66,19 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
 
     }
 
+    /////////////////////////////////////////
+    // Add particleSystems to our map
+    /////////////////////////////////////////
+    ParticleSystem * pSystem;
+    const rapidjson::Value & particleSys=document["particleSystem"];
+    for(int currentPSys=0;currentPSys<particleSys.Size();currentPSys++){
+        pSystem=new ParticleSystem(particleSys[currentPSys]["number"].GetFloat(),
+                                   vec3f(particleSys[currentPSys]["minPosition"][0].GetFloat(), particleSys[currentPSys]["minPosition"][1].GetFloat(), particleSys[currentPSys]["minPosition"][2].GetFloat()),
+                                   vec3f(particleSys[currentPSys]["maxPosition"][0].GetFloat(), particleSys[currentPSys]["maxPosition"][1].GetFloat(), particleSys[currentPSys]["maxPosition"][2].GetFloat()),
+                                   vec3f(particleSys[currentPSys]["velocity"][0].GetFloat(), particleSys[currentPSys]["velocity"][1].GetFloat(), particleSys[currentPSys]["velocity"][2].GetFloat()),
+                                   particleSys[currentPSys]["minLife"].GetFloat(),particleSys[currentPSys]["maxLife"].GetFloat());
+        particleSystem.push_back(pSystem);
+    }
 
     /////////////////////////////////////////
     // Add voxelGroup to our map
@@ -283,6 +296,11 @@ void RootMap::visualization(Context & cv){
     for(unsigned i=0;i<coins.size();i++){
         coins[i]->visualization(cv);
     }
+
+    //Draw particles system
+    for(unsigned i=0;i<particleSystem.size();i++){
+        particleSystem[i]->visualization(cv);
+    }
 }
 
 //**********************************************************************//
@@ -306,7 +324,11 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
             coins.erase(it);
         else
             it++;
+    }
 
+    //Update particles system
+    for(unsigned i=0;i<particleSystem.size();i++){
+        particleSystem[i]->updateState(time,currentKeyStates,rootMap);
     }
 
     npcList->updateState(time,currentKeyStates,rootMap);
