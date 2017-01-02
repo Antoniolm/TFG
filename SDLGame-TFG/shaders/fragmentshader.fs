@@ -76,7 +76,7 @@ void main()
  }
  //If is a menu or text in the scene
  if(noLight==1)
-    color=texColor* vec4(0.5f,0.5f,0.5f, 1.0f);
+    color=texColor* vec4(material.ambient,1.0f);
  
 }
 
