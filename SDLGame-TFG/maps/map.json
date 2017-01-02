@@ -34,6 +34,18 @@
                 "quadratic":0.032 }
     ],
 
+    "particleSystem":[
+            {   "number":200,
+                "minPosition":[1.0,1.0,-1.0],
+                "maxPosition":[2.0,1.0,-4.0],
+                "velocity":[0.0,1.0,0.0],
+                "minLife":500,
+                "maxLife":1000
+            }
+    ],
+
+
+
     "npcs":[
             {   "position":[4.5,2.0,-3.5],
                 "dialog":[{"speaker":0,
