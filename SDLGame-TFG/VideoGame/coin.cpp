@@ -67,7 +67,7 @@ void Coin::visualization(Context & cv){
 void Coin::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap ){
     vec3f posHero=rootMap->getHero()->getPosition();
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.y-posHero.y,2.0)+pow(position.z-posHero.z,2.0));
-    if(distance<=0.8){
+    if(distance<=0.5){
         notTake=false;
         rootMap->getHero()->addCoin(value);
         soundTake->stop();
