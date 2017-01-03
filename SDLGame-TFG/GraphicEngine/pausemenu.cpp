@@ -86,7 +86,7 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
         menuDelay=time;
         if(activateMenu){
             position=rootMap->getHero()->getPosition();
-            positionMenu->translation(position.x,position.y+3.25,position.z+8.0);
+            positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
         }
         openSound->play();
     }

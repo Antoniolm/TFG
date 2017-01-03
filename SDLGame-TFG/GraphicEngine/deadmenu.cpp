@@ -83,7 +83,7 @@ void DeadMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
 
     if(activateMenu){ //If the menu is activated
         position=rootMap->getHero()->getPosition();
-        positionMenu->translation(position.x,position.y+3.25,position.z+8.0);
+        positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_p)] && menuDelay<(time-300)){ //If the user push the action intro
             exit(0);
             menuDelay=time;
