@@ -26,6 +26,41 @@ using namespace std;
 
 /////////////////////////////////////////////////////////////////////////
 /**
+*    Struct --> This struct will let us make a vector with 4 float value
+*/
+//////////////////////////////////////////////////////////////////////////
+struct vec4f{
+    float x;
+    float y;
+    float z;
+    float w;
+    vec4f(){x=0.0f;y=0.0;z=0.0;w=1;}
+    vec4f(float dx,float dy,float dz,float dw){
+        x=dx;
+        y=dy;
+        z=dz;
+        w=dw;
+    }
+    void setValue(int in,float value){
+        switch(in){
+            case 0:
+                x=value;
+            break;
+            case 1:
+                y=value;
+            break;
+            case 2:
+                z=value;
+            break;
+            case 3:
+                w=value;
+            break;
+        }
+    }
+};
+
+/////////////////////////////////////////////////////////////////////////
+/**
 *    Struct --> This struct will let us make a vector with 3 float value
 */
 //////////////////////////////////////////////////////////////////////////
@@ -42,6 +77,11 @@ struct vec3f{
         x=dx;
         y=dy;
         z=dz;
+    }
+    vec3f(vec4f aVec){
+        x=aVec.x;
+        y=aVec.y;
+        z=aVec.z;
     }
     vec3f operator=(vec3f aVec){
         x=aVec.x;
@@ -161,41 +201,6 @@ struct vec3f{
         x/=result;
         y/=result;
         z/=result;
-    }
-};
-
-/////////////////////////////////////////////////////////////////////////
-/**
-*    Struct --> This struct will let us make a vector with 4 float value
-*/
-//////////////////////////////////////////////////////////////////////////
-struct vec4f{
-    float x;
-    float y;
-    float z;
-    float w;
-    vec4f(){x=0.0f;y=0.0;z=0.0;w=1;}
-    vec4f(float dx,float dy,float dz,float dw){
-        x=dx;
-        y=dy;
-        z=dz;
-        w=dw;
-    }
-    void setValue(int in,float value){
-        switch(in){
-            case 0:
-                x=value;
-            break;
-            case 1:
-                y=value;
-            break;
-            case 2:
-                z=value;
-            break;
-            case 3:
-                w=value;
-            break;
-        }
     }
 };
 

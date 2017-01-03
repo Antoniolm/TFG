@@ -276,7 +276,7 @@ void RootMap::visualization(Context & cv){
     //Draw object
     for(unsigned i=0;i<objs.size();i++){
         position=objs[i]->getPosition();
-        if(position.x>posHero.x-8 && position.x<posHero.x+8)
+        if(position.x>posHero.x-7 && position.x<posHero.x+7)
             objs[i]->visualization(cv);
     }
 
@@ -292,18 +292,22 @@ void RootMap::visualization(Context & cv){
     //Draw decoration object
     for(unsigned i=0;i<decorationObjs.size();i++){
         position=decorationObjs[i]->getPosition();
-        if(position.x>posHero.x-8 && position.x<posHero.x+8)
-        decorationObjs[i]->visualization(cv);
+        if(position.x>posHero.x-7 && position.x<posHero.x+7)
+            decorationObjs[i]->visualization(cv);
     }
 
     //Draw coins
     for(unsigned i=0;i<coins.size();i++){
-        coins[i]->visualization(cv);
+        //position=coins[i]->getPosition();
+        //if(position.x>posHero.x-7 && position.x<posHero.x+7)
+            coins[i]->visualization(cv);
     }
 
     //Draw particles system
     for(unsigned i=0;i<particleSystem.size();i++){
-        particleSystem[i]->visualization(cv);
+        position=vec3f(particleSystem[i]->getPosition());
+        if(position.x>posHero.x-2 && position.x<posHero.x+2)
+            particleSystem[i]->visualization(cv);
     }
 }
 

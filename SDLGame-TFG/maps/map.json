@@ -29,9 +29,9 @@
     ],
 
     "particleSystem":[
-            {   "number":200,
+            {   "number":100,
                 "minPosition":[1.0,1.0,-1.0],
-                "maxPosition":[2.0,1.0,-4.0],
+                "maxPosition":[2.0,1.0,-2.0],
                 "velocity":[0.0,1.0,0.0],
                 "minLife":500,
                 "maxLife":1000
@@ -111,7 +111,7 @@
 
     "voxelGroup":[
             {   "position":[1,0.5,1],
-                "YNumber":3,        
+                "YNumber":1,        
                 "XNumber":7,         
                 "ZNumber":2,         
                 "materialTop":"mCUBE_GRASS",

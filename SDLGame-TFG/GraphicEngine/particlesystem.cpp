@@ -28,6 +28,9 @@ ParticleSystem::ParticleSystem()
 
 ParticleSystem::ParticleSystem(int numParticle,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime)
 {
+    vec3f pos=(aMaxPos-aMinPos)/2;
+    position=vec4f(pos.x,pos.y,pos.z,1.0),
+
     nParticles=numParticle;
     minPos=aMinPos;
     maxPos=aMaxPos;
