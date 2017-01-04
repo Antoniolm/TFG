@@ -6,6 +6,12 @@
     "volSound":60.0,
 
     "light":[
+            {   "type":0,
+                "channel":"0",
+                "position":[1.0,1.0,1.0],
+                "ambient":[0.05,0.05,0.05],
+                "diffuse":[0.1,0.1,0.1],
+                "specular":[1.0,1.0,1.0] },
 
             {   "type":1,
                 "channel":"0",
@@ -67,9 +73,9 @@
             },
             {   "position":[11.5,0.0,-4.5],
                 "dialog":[{"speaker":0,
-                           "string":"Hola este es el rio"},
+                           "string":"You have to take care with this water"},
                           {"speaker":0,
-                            "string":"Y esto es otra prueba"}
+                            "string":"Would consume your soul if you touch it"}
                         ]
             }
     ],
@@ -111,7 +117,7 @@
 
     "voxelGroup":[
             {   "position":[1,0.5,1],
-                "YNumber":1,        
+                "YNumber":5,        
                 "XNumber":7,         
                 "ZNumber":2,         
                 "materialTop":"mCUBE_GRASS",
@@ -138,7 +144,7 @@
                 "damage":0.0 },
 
             {   "position":[8,-0.5,1],
-                "YNumber":1,   
+                "YNumber":4,   
                 "XNumber":1,    
                 "ZNumber":7,
                 "materialTop":"mCUBE_GRASS",
@@ -147,7 +153,7 @@
                 "damage":0.0 },
 
             {   "position":[9,-1.5,1],
-                "YNumber":1,   
+                "YNumber":2,   
                 "XNumber":2,    
                 "ZNumber":7,
                 "materialTop":"mCUBE_GRASS",
@@ -157,7 +163,7 @@
 
             {   "position":[11,-1.5,3],
                 "YNumber":1,   
-                "XNumber":4,    
+                "XNumber":2,    
                 "ZNumber":2,
                 "materialTop":"mCUBE_GRASS",
                 "materialMiddle":"mCUBE_LAND",
@@ -165,7 +171,7 @@
                 "damage":0.0  },
 
             {   "position":[11,-3.5,1],
-                "YNumber":1,   
+                "YNumber":2,   
                 "XNumber":7,    
                 "ZNumber":7,
                 "materialTop":"mCUBE_GRASS",
@@ -191,10 +197,28 @@
                 "mesh":"FENCE", 
                 "damage":0.0  },
 
-            {   "position":[17,-1.5,3],
+            {   "position":[15,-1.5,3],
                 "YNumber":1,   
-                "XNumber":4,    
+                "XNumber":3,    
                 "ZNumber":2,
+                "materialTop":"mCUBE_GRASS",
+                "materialMiddle":"mCUBE_LAND",
+                "mesh":"CUBE", 
+                "damage":0.0  },
+
+            {   "position":[18,-1.5,1],
+                "YNumber":1,   
+                "XNumber":3,    
+                "ZNumber":11,
+                "materialTop":"mCUBE_GRASS",
+                "materialMiddle":"mCUBE_LAND",
+                "mesh":"CUBE", 
+                "damage":0.0  },
+
+            {   "position":[21,-0.5,1],
+                "YNumber":1,   
+                "XNumber":2,    
+                "ZNumber":8,
                 "materialTop":"mCUBE_GRASS",
                 "materialMiddle":"mCUBE_LAND",
                 "mesh":"CUBE", 
