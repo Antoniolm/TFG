@@ -114,7 +114,6 @@ void Window::hideScreen(){
 
 void Window::updateScreen(){
     SDL_GL_SwapWindow(window);
-    SDL_Delay(1000 / 60); // 60 FPS
 }
 
 //**********************************************************************//

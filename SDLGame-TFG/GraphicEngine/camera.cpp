@@ -61,7 +61,7 @@ void Camera::setPerspectiveProjection(float fov, float aspect, float near, float
 	matrix[8]=0;                matrix[9]=0;   matrix[10]=(far+near)/(near-far);    matrix[11]=-1.0f;
 	matrix[12]=0;               matrix[13]=0;  matrix[14]=(2.0f*far*near)/(near-far); matrix[15]=0;
 
-    projection.setMatrix(matrix);
+    perspecProjection.setMatrix(matrix);
 }
 
 //**********************************************************************//
@@ -75,7 +75,7 @@ void Camera::setOrthographicProjection(float left,float right,float bottom,float
 	projec[8]=0;                        projec[9]=0;                        projec[10]=(-2.0f/(far-near));  projec[11]=((far+near)/(far-near));
 	projec[12]=0;                       projec[13]=0;                       projec[14]=0;                projec[15]=1;
 
-	projection.setMatrix(projec);
+	orthoProjection.setMatrix(projec);
 }
 
 //**********************************************************************//
@@ -113,18 +113,22 @@ void Camera::activateCamera(Shader * shader){
     GLint viewLocation= glGetUniformLocation(shader->getProgram(),"view");
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,camera.getMatrix());
 
-    GLint projectionLocation= glGetUniformLocation(shader->getProgram(),"projection");
-    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,projection.getMatrix());
-
     GLint viewPosLoc = glGetUniformLocation(shader->getProgram(), "viewPos");
     glUniform3f(viewPosLoc, position.x, position.y, position.z);
 }
 
 //**********************************************************************//
 
-void Camera::activateProjection(Shader * shader){
+void Camera::activateOrthoProjection(Shader * shader){
     GLint projectionLocation= glGetUniformLocation(shader->getProgram(),"projection");
-    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,projection.getMatrix());
+    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,orthoProjection.getMatrix());
+}
+
+//**********************************************************************//
+
+void Camera::activatePerspecProjection(Shader * shader){
+    GLint projectionLocation= glGetUniformLocation(shader->getProgram(),"projection");
+    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,perspecProjection.getMatrix());
 }
 
 //**********************************************************************//
@@ -146,12 +150,6 @@ void Camera::moveCamera(vec3f pos,vec3f aTarget,Shader *shader){
 
 Matrix4f & Camera::getCamera(){
     return camera;
-}
-
-//**********************************************************************//
-
-GLfloat * Camera::getProjection(){
-    return projection.getMatrix();
 }
 
 //**********************************************************************//

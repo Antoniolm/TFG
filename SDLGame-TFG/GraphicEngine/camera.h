@@ -103,11 +103,19 @@ class Camera
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *   This method will activate our current projection
+        *   This method will activate our current orthographic projection
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activateProjection(Shader * shader);
+        void activateOrthoProjection(Shader * shader);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   This method will activate our current perspective projection
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activatePerspecProjection(Shader * shader);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -124,14 +132,6 @@ class Camera
         */
         //////////////////////////////////////////////////////////////////////////
         Matrix4f & getCamera();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *   This method will return our projection
-        *   \return GLfloat
-        */
-        //////////////////////////////////////////////////////////////////////////
-        GLfloat * getProjection();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -169,7 +169,7 @@ class Camera
 
     private:
         Matrix4f camera;
-        Matrix4f projection;
+        Matrix4f orthoProjection,perspecProjection;
         vec3f position;
         vec3f target;
         vec3f up;

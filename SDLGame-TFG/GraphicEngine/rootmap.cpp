@@ -43,7 +43,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     // Add Light to our map
     /////////////////////////////////////////
     const rapidjson::Value & lights=document["light"];
-    glUniform1i(glGetUniformLocation(shader.getProgram(), "numActivateLight"), lights.Size());
+    glUniform1i(glGetUniformLocation(shader.getProgram(), "numActivateLight"), lights.Size()-1);
     Light * light;
 
     for(int currentLight=0;currentLight<lights.Size();currentLight++){

@@ -47,11 +47,12 @@ Hero::Hero()
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
-    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 20);
+    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 30);
     Text * currentText=new Text("textures/dialog.png",font);
     texts.push_back(currentText);
     activatedTexts.push_back(false);
 
+    font=TTF_OpenFont( "font/lazy.ttf", 20);
     currentText=new Text("textures/actionDialog.png",font);
     texts.push_back(currentText);
     activatedTexts.push_back(false);
