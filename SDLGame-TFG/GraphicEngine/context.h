@@ -50,7 +50,6 @@ class Context
         unsigned camera_mode;
         MatrixStack matrixStack;
         MaterialStack materialStack;
-        Camera camera;
         Shader currentShader;
         Matrix4f currentTransf;
 

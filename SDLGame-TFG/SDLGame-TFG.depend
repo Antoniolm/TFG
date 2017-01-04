@@ -399,7 +399,7 @@
 	"window.h"
 	"file_obj.h"
 
-1483558492 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1483567680 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -444,7 +444,7 @@
 1477840103 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.cpp
 	"context.h"
 
-1480345174 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
+1483567794 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
 	"matrixstack.h"
 	"camera.h"
 	"structdata.h"
@@ -935,10 +935,10 @@
 1477389144 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1483444092 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1483567374 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 
-1483444097 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
+1483567365 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
 	"structdata.h"
 	"matrix4f.h"
 	"shader.h"
@@ -1794,7 +1794,7 @@
 	"sound.h"
 	"menu.h"
 
-1483445964 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
+1483558869 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.cpp
 	"coin.h"
 
 1483360429 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coin.h

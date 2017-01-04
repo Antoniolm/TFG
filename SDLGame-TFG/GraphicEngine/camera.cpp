@@ -133,7 +133,7 @@ void Camera::activatePerspecProjection(Shader * shader){
 
 //**********************************************************************//
 
-void Camera::moveCamera(vec3f pos,vec3f aTarget,Shader *shader){
+void Camera::update(vec3f pos,vec3f aTarget,Shader *shader){
 
     position.x=pos.x;position.y=pos.y;position.z=pos.z;
     target.x=aTarget.x;target.y=aTarget.y;target.z=aTarget.z;

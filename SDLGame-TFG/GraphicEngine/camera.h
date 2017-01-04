@@ -123,7 +123,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void moveCamera(vec3f aPos,vec3f aTarget,Shader * shader);
+        void update(vec3f aPos,vec3f aTarget,Shader * shader);
 
         //////////////////////////////////////////////////////////////////////////
         /**

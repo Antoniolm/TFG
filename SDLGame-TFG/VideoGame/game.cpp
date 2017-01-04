@@ -87,12 +87,13 @@ void Game::loop(){
     vec3f position(2.0,4.0,5.0);
     vec3f direction(2.0,3.0,0.0);
     vec3f up(0.0,1.0,0.0);
-    context.camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
-    context.camera.setOrthographicProjection(-1,1,-1,1,-3,3);
-    context.camera.setCamera(position,direction,up);
-    context.camera.createCamera();
-    context.camera.activateCamera(&context.currentShader);
-    context.camera.activateOrthoProjection(&context.currentShader);
+    Camera camera;
+    camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
+    camera.setOrthographicProjection(-1,1,-1,1,-3,3);
+    camera.setCamera(position,direction,up);
+    camera.createCamera();
+    camera.activateCamera(&context.currentShader);
+    camera.activateOrthoProjection(&context.currentShader);
 
     //Show our window.
     window->showScreen();
@@ -111,10 +112,10 @@ void Game::loop(){
 
                 window->resizeWindow(windowH,windowW);
                 if(windowW > windowH)
-                    context.camera.setPerspectiveProjection(30.0f,(float)( windowW / windowH), 0.1f, 200.0f);
+                    camera.setPerspectiveProjection(30.0f,(float)( windowW / windowH), 0.1f, 200.0f);
                 else //fix
-                    context.camera.setPerspectiveProjection(30.0f,(float)( windowH / windowW), 0.1f, 200.0f);
-                context.camera.activateCamera(&context.currentShader);
+                    camera.setPerspectiveProjection(30.0f,(float)( windowH / windowW), 0.1f, 200.0f);
+                camera.activateCamera(&context.currentShader);
             }
         }
 
@@ -149,14 +150,14 @@ void Game::loop(){
 
         //Update the camera, lifeText, coinText
         posHero=hero->getPosition();
-        context.camera.moveCamera(vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f),posHero,&context.currentShader);
+        camera.update(vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f),posHero,&context.currentShader);
         updateLife(lastLife);
         updateCoin(currentCoin);
 
-        context.camera.activatePerspecProjection(&context.currentShader);
+        camera.activatePerspecProjection(&context.currentShader);
         rootMap->visualization(context);
 
-        context.camera.activateOrthoProjection(&context.currentShader);
+        camera.activateOrthoProjection(&context.currentShader);
         lifeText->visualization(context);
         coinText->visualization(context);
         pauseMenu->visualization(context);
