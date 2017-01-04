@@ -51,7 +51,7 @@ Game::Game(){
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
-    TTF_Font *font=TTF_OpenFont( "font/lazy.ttf", 10);
+    TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 10);
     SDL_Color color= {255,0,0};
     lifeText=new Text("",font,color,false);
 
