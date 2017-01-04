@@ -55,13 +55,13 @@ void Camera::setPerspectiveProjection(float fov, float aspect, float near, float
     float f=(float) 1/tan((fov * 3.1416) / 360.0);
 
     //Create the projection
-    GLfloat * matrix=new GLfloat[16];
-    matrix[0]=f/(aspect);  matrix[1]=0;        matrix[2]=0;                          matrix[3]=0;
-	matrix[4]=0;                matrix[5]=f;   matrix[6]=0;                          matrix[7]=0;
-	matrix[8]=0;                matrix[9]=0;   matrix[10]=(far+near)/(near-far);    matrix[11]=-1.0f;
-	matrix[12]=0;               matrix[13]=0;  matrix[14]=(2.0f*far*near)/(near-far); matrix[15]=0;
+    GLfloat * projec=new GLfloat[16];
+    projec[0]=f/(aspect);  projec[1]=0;        projec[2]=0;                          projec[3]=0;
+	projec[4]=0;                projec[5]=f;   projec[6]=0;                          projec[7]=0;
+	projec[8]=0;                projec[9]=0;   projec[10]=(far+near)/(near-far);    projec[11]=-1.0f;
+	projec[12]=0;               projec[13]=0;  projec[14]=(2.0f*far*near)/(near-far); projec[15]=0;
 
-    perspecProjection.setMatrix(matrix);
+    perspecProjection.setMatrix(projec);
 }
 
 //**********************************************************************//
@@ -72,7 +72,7 @@ void Camera::setOrthographicProjection(float left,float right,float bottom,float
     GLfloat * projec=new GLfloat[16];
     projec[0]=2.0f/(right-left);        projec[1]=0;                        projec[2]=0;                 projec[3]=((right+left)/(right-left));
 	projec[4]=0;                        projec[5]=2.0f/(top-bottom);        projec[6]=0;                 projec[7]=((top+bottom)/(top-bottom));
-	projec[8]=0;                        projec[9]=0;                        projec[10]=(-2.0f/(far-near));  projec[11]=((far+near)/(far-near));
+	projec[8]=0;                        projec[9]=0;                        projec[10]=-2.0f/(far-near); projec[11]=(far+near)/(far-near);
 	projec[12]=0;                       projec[13]=0;                       projec[14]=0;                projec[15]=1;
 
 	orthoProjection.setMatrix(projec);
@@ -133,10 +133,10 @@ void Camera::activatePerspecProjection(Shader * shader){
 
 //**********************************************************************//
 
-void Camera::update(vec3f pos,vec3f aTarget,Shader *shader){
+void Camera::update(vec3f pos,vec3f aTarget,const Uint8* currentKeyStates,Shader *shader){
 
-    position.x=pos.x;position.y=pos.y;position.z=pos.z;
-    target.x=aTarget.x;target.y=aTarget.y;target.z=aTarget.z;
+    position=pos;
+    target=aTarget;
     createCamera();
 
     GLint viewLocation= glGetUniformLocation(shader->getProgram(),"view");

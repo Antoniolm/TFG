@@ -21,7 +21,6 @@
 #define CONTEXT_H
 
 #include "matrixstack.h"
-#include "camera.h"
 #include "structdata.h"
 #include "projection.h"
 #include "object3d.h"

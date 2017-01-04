@@ -399,7 +399,7 @@
 	"window.h"
 	"file_obj.h"
 
-1483567680 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1483571273 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -444,9 +444,8 @@
 1477840103 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.cpp
 	"context.h"
 
-1483567794 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
+1483568053 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context.h
 	"matrixstack.h"
-	"camera.h"
 	"structdata.h"
 	"projection.h"
 	"object3d.h"
@@ -935,14 +934,15 @@
 1477389144 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1483567374 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1483571619 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 
-1483567365 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
+1483571642 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
 	"structdata.h"
 	"matrix4f.h"
 	"shader.h"
 	<glew.h>
+	<SDL.h>
 
 1477475915 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\projection.h
 	<math.h>
@@ -1647,7 +1647,7 @@
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
-1482230659 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
+1483572508 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
 	"avatar.h"
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/acceleratedmovement.h"

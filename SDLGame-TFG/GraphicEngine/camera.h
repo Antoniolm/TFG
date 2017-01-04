@@ -24,6 +24,7 @@
 #include "matrix4f.h"
 #include "shader.h"
 #include <glew.h>
+#include <SDL.h>
 
 class Camera
 {
@@ -123,7 +124,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void update(vec3f aPos,vec3f aTarget,Shader * shader);
+        void update(vec3f aPos,vec3f aTarget,const Uint8* currentKeyStates,Shader * shader);
 
         //////////////////////////////////////////////////////////////////////////
         /**
