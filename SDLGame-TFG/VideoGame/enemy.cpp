@@ -43,7 +43,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     //////////////////////////////////////////////////////
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 40);
     SDL_Color color= {255,0,0};
-    currentText=new Text("",font,color,false);
+    currentText=new Text(mVOID,font,color,false);
     activatedDialog=false;
 
     //////////////////////////////////////////////////////

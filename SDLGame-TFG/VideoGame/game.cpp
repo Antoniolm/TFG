@@ -53,10 +53,10 @@ Game::Game(){
     //////////////////////////////////////////////////////
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 10);
     SDL_Color color= {255,0,0};
-    lifeText=new Text("",font,color,false);
+    lifeText=new Text(mVOID,font,color,false);
 
     SDL_Color color2= {0,255,0};
-    coinText=new Text("",font,color2,false);
+    coinText=new Text(mVOID,font,color2,false);
 }
 
 //**********************************************************************//

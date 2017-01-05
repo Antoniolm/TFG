@@ -42,7 +42,9 @@ enum materialElement{
     mARMOUR,     //11
     mHAND,       //12
     mDWOOD,      //13
-    mDHAND       //14
+    mDHAND,      //14
+    mDIALOG,     //15
+    mADIALOG     //16
 };
 
 

@@ -46,7 +46,7 @@ Npc::Npc(vec3f aPosition)
     root->add(cubeNode);
 
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);
-    currentText=new Text("textures/dialog.png",font);
+    currentText=new Text(mDIALOG,font);
     currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
 
 }

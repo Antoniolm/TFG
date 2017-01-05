@@ -26,13 +26,13 @@ Text::Text()
 
 //**********************************************************************//
 
-Text::Text(const string & aTexture,TTF_Font * aFont,SDL_Color aColor,bool ahasDialog){
-    fileTexture=aTexture;
+Text::Text(materialElement material,TTF_Font * aFont,SDL_Color aColor,bool ahasDialog){
     font=aFont;
     hasDialog=ahasDialog;
     color=aColor;
 
     MeshCollection * meshCollect =MeshCollection::getInstance();
+    MaterialCollection *materialCollect=MaterialCollection::getInstance();
 
     positionText=new Matrix4f();
     positionText->identity();
@@ -45,7 +45,6 @@ Text::Text(const string & aTexture,TTF_Font * aFont,SDL_Color aColor,bool ahasDi
     textNode->add(meshCollect->getMesh(TEXT));
 
     if(hasDialog){
-        Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
         positionBack=new Matrix4f();
         positionBack->identity();
         scaleBack=new Matrix4f();
@@ -54,7 +53,7 @@ Text::Text(const string & aTexture,TTF_Font * aFont,SDL_Color aColor,bool ahasDi
         backNode=new NodeSceneGraph(false,true);
         backNode->add(positionBack);
         backNode->add(scaleBack);
-        backNode->add(material);
+        backNode->add(materialCollect->getMaterial(material));
         backNode->add(meshCollect->getMesh(TEXT));
     }
 
@@ -76,39 +75,8 @@ Text::~Text()
 
 //**********************************************************************//
 
-void Text::setParameters(const string & aTexture,TTF_Font * aFont,SDL_Color aColor,bool ahasDialog){
-    fileTexture=aTexture;
-    font=aFont;
-    hasDialog=ahasDialog;
-    color=aColor;
-
-    Mesh * textObject=new Mesh(string("geometries/text.obj"));
-    textObject->init();
-
-    positionText=new Matrix4f();
-    positionText->identity();
-    scaleText=new Matrix4f();
-    scaleText->scale(1.0,0.3,1.0);
-
-    textNode=new NodeSceneGraph(false,true);
-    textNode->add(positionText);
-    textNode->add(scaleText);
-    textNode->add(textObject);
-
-    if(hasDialog){
-        Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileTexture);
-        positionBack=new Matrix4f();
-        positionBack->identity();
-        scaleBack=new Matrix4f();
-        scaleBack->scale(1.2,1.1,1.0);
-
-        backNode=new NodeSceneGraph(false,true);
-        backNode->add(positionBack);
-        backNode->add(scaleBack);
-        backNode->add(material);
-        backNode->add(textObject);
-    }
-
+void Text::setParameters(materialElement material,TTF_Font * aFont,SDL_Color aColor,bool ahasDialog){
+    Text(material,aFont,aColor,ahasDialog);
 }
 
 

@@ -48,16 +48,16 @@ Hero::Hero()
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);
-    Text * currentText=new Text("textures/dialog.png",font);
+    Text * currentText=new Text(mDIALOG,font);
     texts.push_back(currentText);
     activatedTexts.push_back(false);
 
-    currentText=new Text("textures/actionDialog.png",font);
+    currentText=new Text(mADIALOG,font);
     texts.push_back(currentText);
     activatedTexts.push_back(false);
 
     font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 40);
-    currentText=new Text("",font,SDL_Color{0,255,0},false);
+    currentText=new Text(mVOID,font,SDL_Color{0,255,0},false);
     texts.push_back(currentText);
     activatedTexts.push_back(false);
 
