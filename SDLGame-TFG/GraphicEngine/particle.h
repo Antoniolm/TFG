@@ -39,7 +39,7 @@ class Particle : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Particle(vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float maxTime);
+        Particle(Material * material,vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float maxTime);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */

@@ -73,6 +73,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     const rapidjson::Value & particleSys=document["particleSystem"];
     for(int currentPSys=0;currentPSys<particleSys.Size();currentPSys++){
         pSystem=new ParticleSystem(particleSys[currentPSys]["number"].GetFloat(),
+                                   particleSys[currentPSys]["material"].GetString(),
                                    vec3f(particleSys[currentPSys]["minPosition"][0].GetFloat(), particleSys[currentPSys]["minPosition"][1].GetFloat(), particleSys[currentPSys]["minPosition"][2].GetFloat()),
                                    vec3f(particleSys[currentPSys]["maxPosition"][0].GetFloat(), particleSys[currentPSys]["maxPosition"][1].GetFloat(), particleSys[currentPSys]["maxPosition"][2].GetFloat()),
                                    vec3f(particleSys[currentPSys]["velocity"][0].GetFloat(), particleSys[currentPSys]["velocity"][1].GetFloat(), particleSys[currentPSys]["velocity"][2].GetFloat()),

@@ -23,9 +23,11 @@
 #include <object3d.h>
 #include <nodescenegraph.h>
 #include <context.h>
+#include "materialcollection.h"
 #include <rootmap.h>
 #include <list>
 #include <particle.h>
+#include <string>
 
 class Particle;
 class ParticleSystem : public NodeSceneGraph
@@ -39,7 +41,7 @@ class ParticleSystem : public NodeSceneGraph
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        ParticleSystem(int numParticle,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime);
+        ParticleSystem(int numParticle,string aMaterial,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -71,6 +73,7 @@ class ParticleSystem : public NodeSceneGraph
         int currentParticles;   //number of live particles in our system
         vec3f maxPos,minPos,velocity;
         float minTime,maxTime;
+        Material * material;
 };
 
 #endif // PARTICLESYSTEM_H
