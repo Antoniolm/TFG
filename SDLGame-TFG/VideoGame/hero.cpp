@@ -47,17 +47,25 @@ Hero::Hero()
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
+    //Dialog for speak
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);
     Text * currentText=new Text(mDIALOG,font);
     texts.push_back(currentText);
     activatedTexts.push_back(false);
 
+    //Dialog for actions
     currentText=new Text(mADIALOG,font);
     texts.push_back(currentText);
     activatedTexts.push_back(false);
 
+    //Coin Text
     font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 40);
     currentText=new Text(mVOID,font,SDL_Color{0,255,0},false);
+    texts.push_back(currentText);
+    activatedTexts.push_back(false);
+
+    //Damage text
+    currentText=new Text(mVOID,font,SDL_Color{255,0,0},false);
     texts.push_back(currentText);
     activatedTexts.push_back(false);
 
