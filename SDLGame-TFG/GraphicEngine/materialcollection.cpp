@@ -57,7 +57,7 @@ MaterialCollection::MaterialCollection()
     collection.push_back(material);
 
     //Hero material
-    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),32.0f,"./textures/leaf.jpg");
+    material=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),32.0f,"./textures/heroTexture.jpg");
     collection.push_back(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureLeg.png");

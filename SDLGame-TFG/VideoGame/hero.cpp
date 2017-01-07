@@ -268,14 +268,14 @@ Hero::Hero()
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
     shoulderLeft->add(scaleShoulder);
     shoulderLeft->add(rotateXShoulder);
-    shoulderLeft->add(materialCollect->getMaterial(mWOOD));
+    shoulderLeft->add(materialCollect->getMaterial(mARMOUR));
     shoulderLeft->add(meshCollect->getMesh(TOPARM));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
     shoulderRight->add(rotateXShoulder);
     shoulderRight->add(rotateShoulder);
     shoulderRight->add(scaleShoulder);
-    shoulderRight->add(materialCollect->getMaterial(mWOOD));
+    shoulderRight->add(materialCollect->getMaterial(mARMOUR));
     shoulderRight->add(meshCollect->getMesh(TOPARM));
 
     //Arm left
@@ -283,7 +283,6 @@ Hero::Hero()
     ArmLeft->add(moveArmLeft);
     ArmLeft->add(transArms);
     ArmLeft->add(elbow_wristLeft);
-    //ArmLeft->add(scaleArmTop);
     ArmLeft->add(shoulderLeft);
 
 
@@ -292,7 +291,6 @@ Hero::Hero()
     ArmRight->add(moveArmRight);
     ArmRight->add(transArms);
     ArmRight->add(elbow_wristRight);
-    //ArmRight->add(scaleArmTop);
     ArmRight->add(shoulderRight);
 
     //////////////////////////////////////////////////////
@@ -308,83 +306,33 @@ Hero::Hero()
     mat->translation(-0.8,0.0,0.0);
 
     Matrix4f *mat2=new Matrix4f();
-    mat2->translation(0.4,0.0,0.0);
+    mat2->translation(0.4,1.0,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
-    scaleHero->scale(0.25,0.25,0.25);
+    scaleHero->scale(0.5,0.5,0.5);
 
     Matrix4f *trasn2Arms=new Matrix4f();
-    trasn2Arms->translation(-1.8,0.0,0.0);
+    trasn2Arms->translation(-1.2,0.0,0.0);
 
     Matrix4f *trasn2Arms2=new Matrix4f();
-    trasn2Arms2->translation(0.9,0.7,0.0);
-
-    Matrix4f *scaleArmour=new Matrix4f();
-    scaleArmour->scale(0.3,0.3,0.25);
-
-    Matrix4f *scaleArmour2=new Matrix4f();
-    scaleArmour2->scale(0.3,0.3,0.3);
-
-    Matrix4f *transArmourChest=new Matrix4f();
-    transArmourChest->translation(0.0,1.3,0.0);
-
-    Matrix4f *scaleArmourChest=new Matrix4f();
-    scaleArmourChest->scale(0.25,0.28,0.28);
-    //scaleArmourChest->scale(1.2,1.2,1.4);
-
-    Matrix4f *transArmour=new Matrix4f();
-    transArmour->translation(0.0,1.8,0.0);
-
-    Matrix4f *scaleHip=new Matrix4f();
-    scaleHip->scale(0.9,0.5,0.6);
+    trasn2Arms2->translation(0.6,0.6,0.0);
 
     Matrix4f *scaleHead=new Matrix4f();
-    scaleHead->scale(3.5,3.5,3.5);
+    scaleHead->scale(1.0,1.0,1.0);
 
     Matrix4f *transHead=new Matrix4f();
-    transHead->translation(0.0,2.5,0.2);
+    transHead->translation(0.0,2.5,0.0);
 
     Matrix4f *transChest=new Matrix4f();
     transChest->translation(0.0,1.1,0.0);
 
-    Matrix4f *transHip=new Matrix4f();
-    transHip->translation(0.0,0.0,0.0);
-
-    Matrix4f *scaleChest=new Matrix4f();
-    scaleChest->scale(1.0,0.9,0.6);
-
-    NodeSceneGraph * armourNode=new NodeSceneGraph();
-    armourNode->add(transArmour);
-    armourNode->add(scaleArmour);
-    armourNode->add(materialCollect->getMaterial(mARMOUR));
-    armourNode->add(meshCollect->getMesh(ARMOUR));
-
-    NodeSceneGraph * armour2Node=new NodeSceneGraph();
-    armour2Node->add(scaleArmour2);
-    armour2Node->add(materialCollect->getMaterial(mARMOUR));
-    armour2Node->add(meshCollect->getMesh(ARMOUR2));
-
-    NodeSceneGraph * armourChestNode=new NodeSceneGraph();
-    armourChestNode->add(transArmourChest);
-    armourChestNode->add(scaleArmourChest);
-    armourChestNode->add(materialCollect->getMaterial(mARMOUR));
-    armourChestNode->add(meshCollect->getMesh(ARMOURCHEST));
-
-    /*NodeSceneGraph * armourChestTestNode=new NodeSceneGraph();
-    armourChestTestNode->add(transArmourChest);
-    armourChestTestNode->add(scaleArmourChest);
-    armourChestTestNode->add(materialArmour);
-    armourChestTestNode->add(armourTestObject);*/
-
     NodeSceneGraph * chestNode=new NodeSceneGraph();
-    chestNode->add(scaleChest);
-    chestNode->add(materialCollect->getMaterial(mWOOD));
+    chestNode->add(materialCollect->getMaterial(mARMOUR));
     chestNode->add(meshCollect->getMesh(CHEST));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
-    headNode->add(scaleHead);
-    headNode->add(materialCollect->getMaterial(mWOOD));
+    headNode->add(materialCollect->getMaterial(mARMOUR));
     headNode->add(meshCollect->getMesh(HEAD));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
@@ -397,10 +345,7 @@ Hero::Hero()
 
     root->add(scaleHero);
     root->add(materialCollect->getMaterial(mWOOD));
-    root->add(armourChestNode);
     //root->add(armourChestTestNode);
-    root->add(armour2Node);
-    root->add(armourNode);
     root->add(headNode);
     root->add(chest_ArmsNode);
     root->add(mat2);

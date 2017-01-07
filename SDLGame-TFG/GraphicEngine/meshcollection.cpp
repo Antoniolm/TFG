@@ -61,7 +61,7 @@ MeshCollection::MeshCollection()
 
     //Hero-Enemy mesh
     //Mesh 7
-    element=new Mesh("geometries/knee.obj");
+    element=new Mesh("geometries/knightFoot.obj");
     element->init();
     collection.push_back(element);
 
@@ -81,12 +81,12 @@ MeshCollection::MeshCollection()
     collection.push_back(element);
 
     //Mesh 11
-    element=new Mesh("geometries/topArm.obj");
+    element=new Mesh("geometries/KnightArm.obj");
     element->init();
     collection.push_back(element);
 
     //Mesh 12
-    element=new Mesh("geometries/chest.obj");
+    element=new Mesh("geometries/KnightBody.obj");
     element->init();
     collection.push_back(element);
 
@@ -101,7 +101,7 @@ MeshCollection::MeshCollection()
     collection.push_back(element);
 
     //Mesh 15
-    element=new Mesh("geometries/head.obj");
+    element=new Mesh("geometries/KnightHead.obj");
     element->init();
     collection.push_back(element);
 
