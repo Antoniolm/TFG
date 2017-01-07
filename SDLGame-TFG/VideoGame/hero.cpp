@@ -152,7 +152,7 @@ Hero::Hero()
     tranSword->translation(0.05,-0.1,0.68);
 
     Matrix4f * tranShield=new Matrix4f();
-    tranShield->translation(-0.24,0.0,0.0);
+    tranShield->translation(-0.275,0.0,0.0);
 
     //Arms
     NodeSceneGraph * handRight=new NodeSceneGraph();

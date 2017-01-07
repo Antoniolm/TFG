@@ -35,6 +35,9 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
     collection.push_back(material);
 
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeDungeon.png");
+    collection.push_back(material);
+
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
     collection.push_back(material);
 
@@ -86,6 +89,7 @@ MaterialCollection::MaterialCollection()
     enumMap.insert(pair<string,materialElement> ("mCUBE_SAND",mCUBE_SAND));
     enumMap.insert(pair<string,materialElement> ("mCUBE_LAND",mCUBE_LAND));
     enumMap.insert(pair<string,materialElement> ("mCUBE_BOX",mCUBE_BOX));
+    enumMap.insert(pair<string,materialElement> ("mCUBE_DUNG",mCUBE_DUNG));
     enumMap.insert(pair<string,materialElement> ("mWOOD",mWOOD));
     enumMap.insert(pair<string,materialElement> ("MUSH",MUSH));
     enumMap.insert(pair<string,materialElement> ("mGRASS",mGRASS));

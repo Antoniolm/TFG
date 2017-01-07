@@ -109,11 +109,6 @@ MeshCollection::MeshCollection()
     element->init();
     collection.push_back(element);
 
-    //Mesh 17
-    element=new Mesh("geometries/armour.obj");
-    element->init();
-    collection.push_back(element);
-
     //Text-menu mesh
     //Mesh 18
     element=new Mesh("geometries/text.obj");
@@ -144,7 +139,6 @@ MeshCollection::MeshCollection()
     enumMap.insert(pair<string,meshElement> ("CHEST",CHEST));
     enumMap.insert(pair<string,meshElement> ("FOOT",FOOT));
     enumMap.insert(pair<string,meshElement> ("HEAD",HEAD));
-    enumMap.insert(pair<string,meshElement> ("ARMOUR",ARMOUR));
     enumMap.insert(pair<string,meshElement> ("TEXT",TEXT));
     enumMap.insert(pair<string,meshElement> ("COIN",COIN));
 }
