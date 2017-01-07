@@ -148,13 +148,19 @@ Hero::Hero()
     Matrix4f * transArms=new Matrix4f();
     transArms->translation(0.0,-0.5,-0.2);
 
+    Matrix4f * tranSword=new Matrix4f();
+    tranSword->translation(0.05,-0.1,0.68);
+
     //Arms
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transElbow);
     handRight->add(moveElbowRight);
     handRight->add(transHand);
     handRight->add(materialCollect->getMaterial(mARMOUR));
-    handRight->add(meshCollect->getMesh(HAND));;
+    handRight->add(meshCollect->getMesh(HAND));
+    handRight->add(tranSword);
+    handRight->add(materialCollect->getMaterial(mSWORD));
+    handRight->add(meshCollect->getMesh(SWORD));
 
     NodeSceneGraph * handLeft=new NodeSceneGraph();
     handLeft->add(transElbow);

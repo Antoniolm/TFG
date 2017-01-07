@@ -4,3 +4,4 @@ Skull Knight by madarazero is licensed under CC Attribution https://skfb.ly/GqNY
 Forest Scene by deryckeredries is licensed under CC Attribution https://skfb.ly/DEw6 -> used in the objs: mushroomWhite.obj,treeDie.obj
 Fantasy House by lucak is licensed under CC Attribution-NonCommercial https://skfb.ly/EvqM -> used in the objs:
 Low Poly Game Scene by Partho Borthakur is licensed under CC Attribution https://skfb.ly/HJEQ -> used in the objs:
+Great Sword of Frozen Night by ZugZug is licensed under CC Attribution https://skfb.ly/GoHQ -> used in the objs : sword.obj
