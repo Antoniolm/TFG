@@ -66,58 +66,58 @@ MeshCollection::MeshCollection()
     collection.push_back(element);
 
     //Mesh 8
-    element=new Mesh("geometries/armour2.obj");
+    element=new Mesh("geometries/knightFootInv.obj");
     element->init();
     collection.push_back(element);
 
     //Mesh 9
-    element=new Mesh("geometries/armourChest.obj");
+    element=new Mesh("geometries/armour2.obj");
     element->init();
     collection.push_back(element);
 
     //Mesh 10
-    element=new Mesh("geometries/hand.obj");
+    element=new Mesh("geometries/armourChest.obj");
     element->init();
     collection.push_back(element);
 
     //Mesh 11
-    element=new Mesh("geometries/KnightArm.obj");
+    element=new Mesh("geometries/hand.obj");
     element->init();
     collection.push_back(element);
 
     //Mesh 12
-    element=new Mesh("geometries/KnightBody.obj");
+    element=new Mesh("geometries/KnightArm.obj");
     element->init();
     collection.push_back(element);
 
     //Mesh 13
-    element=new Mesh("geometries/foot.obj");
+    element=new Mesh("geometries/KnightBody.obj");
     element->init();
     collection.push_back(element);
 
     //Mesh 14
-    element=new Mesh("geometries/hip.obj");
-    element->init();
-    collection.push_back(element);
-
-    //Mesh 15
-    element=new Mesh("geometries/KnightHead.obj");
+    element=new Mesh("geometries/foot.obj");
     element->init();
     collection.push_back(element);
 
     //Mesh 16
+    element=new Mesh("geometries/KnightHead.obj");
+    element->init();
+    collection.push_back(element);
+
+    //Mesh 17
     element=new Mesh("geometries/armour.obj");
     element->init();
     collection.push_back(element);
 
     //Text-menu mesh
-    //Mesh 17
+    //Mesh 18
     element=new Mesh("geometries/text.obj");
     element->init();
     collection.push_back(element);
 
     //Coin mesh
-    //Mesh 18
+    //Mesh 19
     element=new Mesh("geometries/coin.obj");
     element->init();
     collection.push_back(element);
@@ -131,13 +131,13 @@ MeshCollection::MeshCollection()
     enumMap.insert(pair<string,meshElement> ("TREEDIE",TREEDIE));
     enumMap.insert(pair<string,meshElement> ("BACKGROUND",BACKGROUND));
     enumMap.insert(pair<string,meshElement> ("KNEE",KNEE));
+    enumMap.insert(pair<string,meshElement> ("KNEE2",KNEE2));
     enumMap.insert(pair<string,meshElement> ("ARMOUR2",ARMOUR2));
     enumMap.insert(pair<string,meshElement> ("ARMOURCHEST",ARMOURCHEST));
     enumMap.insert(pair<string,meshElement> ("HAND",HAND));
     enumMap.insert(pair<string,meshElement> ("TOPARM",TOPARM));
     enumMap.insert(pair<string,meshElement> ("CHEST",CHEST));
     enumMap.insert(pair<string,meshElement> ("FOOT",FOOT));
-    enumMap.insert(pair<string,meshElement> ("HIP",HIP));
     enumMap.insert(pair<string,meshElement> ("HEAD",HEAD));
     enumMap.insert(pair<string,meshElement> ("ARMOUR",ARMOUR));
     enumMap.insert(pair<string,meshElement> ("TEXT",TEXT));

@@ -385,18 +385,18 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     armourNode->add(transArmour);
     armourNode->add(scaleArmour);
     armourNode->add(materialCollect->getMaterial(mARMOUR));
-    armourNode->add(meshCollect->getMesh(ARMOUR));
+    //armourNode->add(meshCollect->getMesh(ARMOUR));
 
     NodeSceneGraph * armour2Node=new NodeSceneGraph();
     armour2Node->add(scaleArmour2);
     armour2Node->add(materialCollect->getMaterial(mARMOUR));
-    armour2Node->add(meshCollect->getMesh(ARMOUR2));
+    //armour2Node->add(meshCollect->getMesh(ARMOUR2));
 
     NodeSceneGraph * armourChestNode=new NodeSceneGraph();
     armourChestNode->add(transArmourChest);
     armourChestNode->add(scaleArmourChest);
     armourChestNode->add(materialCollect->getMaterial(mARMOUR));
-    armourChestNode->add(meshCollect->getMesh(ARMOURCHEST));
+    //armourChestNode->add(meshCollect->getMesh(ARMOURCHEST));
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);

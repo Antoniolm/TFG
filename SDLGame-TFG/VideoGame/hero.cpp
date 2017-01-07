@@ -108,14 +108,6 @@ Hero::Hero()
     //////////////////////////////////////////////////////
 
     //Create a new Movement
-    Matrix4f * moveKneeRight=new Matrix4f();
-    moveKneeRight->identity();
-    moveMatrix.push_back(moveKneeRight);
-
-    Matrix4f * moveKneeLeft=new Matrix4f();
-    moveKneeLeft->identity();
-    moveMatrix.push_back(moveKneeLeft);
-
     Matrix4f * moveLegRight=new Matrix4f();
     moveLegRight->identity();
     moveMatrix.push_back(moveLegRight);
@@ -144,30 +136,30 @@ Hero::Hero()
     //Leg
     NodeSceneGraph * knee_ankleRight=new NodeSceneGraph();
     knee_ankleRight->add(transCylinder);
-    knee_ankleRight->add(moveKneeRight);
+    //knee_ankleRight->add(moveKneeRight);
     knee_ankleRight->add(knee_ankle);
 
     NodeSceneGraph * knee_ankleLeft=new NodeSceneGraph();
     knee_ankleLeft->add(transCylinder);
-    knee_ankleLeft->add(moveKneeLeft);
+    //knee_ankleLeft->add(moveKneeLeft);
     knee_ankleLeft->add(knee_ankle);
 
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
     legLeft->add(transLeg);
-    legLeft->add(knee_ankleLeft);
+    //legLeft->add(knee_ankleLeft);
     legLeft->add(scaleKnee);
-    legLeft->add(materialCollect->getMaterial(mWOOD));
-    legLeft->add(meshCollect->getMesh(KNEE));
+    legLeft->add(materialCollect->getMaterial(mARMOUR));
+    legLeft->add(meshCollect->getMesh(KNEE2));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
     legRight->add(transLeg);
-    legRight->add(knee_ankleRight);
+    //legRight->add(knee_ankleRight);
     legRight->add(scaleKnee);
-    legRight->add(materialCollect->getMaterial(mWOOD));
+    legRight->add(materialCollect->getMaterial(mARMOUR));
     legRight->add(meshCollect->getMesh(KNEE));
 
     //////////////////////////////////////////////////////
@@ -282,7 +274,7 @@ Hero::Hero()
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
     ArmLeft->add(moveArmLeft);
     ArmLeft->add(transArms);
-    ArmLeft->add(elbow_wristLeft);
+    //ArmLeft->add(elbow_wristLeft);
     ArmLeft->add(shoulderLeft);
 
 
@@ -290,7 +282,7 @@ Hero::Hero()
     NodeSceneGraph * ArmRight=new NodeSceneGraph();
     ArmRight->add(moveArmRight);
     ArmRight->add(transArms);
-    ArmRight->add(elbow_wristRight);
+    //ArmRight->add(elbow_wristRight);
     ArmRight->add(shoulderRight);
 
     //////////////////////////////////////////////////////
@@ -303,10 +295,10 @@ Hero::Hero()
     root->add(AvatarMove::moveAvatar);
 
     Matrix4f *mat=new Matrix4f();
-    mat->translation(-0.8,0.0,0.0);
+    mat->translation(-0.4,0.0,0.0);
 
     Matrix4f *mat2=new Matrix4f();
-    mat2->translation(0.4,1.0,0.0);
+    mat2->translation(0.2,1.0,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
     scaleHero->scale(0.5,0.5,0.5);
@@ -315,7 +307,7 @@ Hero::Hero()
     trasn2Arms->translation(-1.2,0.0,0.0);
 
     Matrix4f *trasn2Arms2=new Matrix4f();
-    trasn2Arms2->translation(0.6,0.6,0.0);
+    trasn2Arms2->translation(0.6,0.55,0.0);
 
     Matrix4f *scaleHead=new Matrix4f();
     scaleHead->scale(1.0,1.0,1.0);
@@ -345,7 +337,6 @@ Hero::Hero()
 
     root->add(scaleHero);
     root->add(materialCollect->getMaterial(mWOOD));
-    //root->add(armourChestTestNode);
     root->add(headNode);
     root->add(chest_ArmsNode);
     root->add(mat2);
@@ -409,8 +400,6 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         else{
             moveHero.x=-5.0;moveHero.z=0.0;
         }
-        //velocityHero.x=3.0;velocityHero.z=0.0;
-        //accelerationHero.x=-3.0;accelerationHero.z=0.0;
         heroDir=LEFTWARD;
     }
     //Case-> Push Right bottom
@@ -422,8 +411,6 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         else{
             moveHero.x=5.0;moveHero.z=0.0;
         }
-        //velocityHero.x=-3.0;velocityHero.z=0.0;
-        //accelerationHero.x=3.0;accelerationHero.z=0.0;
         heroDir=RIGHTWARD;
     }
     //Case-> Push Up bottom
@@ -545,17 +532,17 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             moveMatrix[i]->identity();
         Matrix4f rot;
         rot.rotation(30,0,0,1);
-        moveMatrix[6]->setMatrix(rot.getMatrix());
+        moveMatrix[4]->setMatrix(rot.getMatrix());
         rot.rotation(-30,0,0,1);
-        moveMatrix[7]->setMatrix(rot.getMatrix());
+        moveMatrix[5]->setMatrix(rot.getMatrix());
     }
     else if(isJumping){
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
         Matrix4f rot;
         rot.rotation(30,1,0,0);
-        moveMatrix[6]->setMatrix(rot.getMatrix());
-        moveMatrix[7]->setMatrix(rot.getMatrix());
+        moveMatrix[4]->setMatrix(rot.getMatrix());
+        moveMatrix[5]->setMatrix(rot.getMatrix());
     }
     else if(isHitting){
         animationHit.updateState(time-currentTime);
@@ -654,31 +641,22 @@ bool Hero::isHit(){
 //**********************************************************************//
 
  void Hero::initAnimation(){
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
     OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
     OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
     MatrixStatic * notMove=new MatrixStatic();
 
     //Movement to the first leg
-    MatrixScript * KneeScriptLeft=new MatrixScript();
     MatrixScript * LegScriptLeft=new MatrixScript();
-    KneeScriptLeft->add(0.5,oscillateKnee);
-    KneeScriptLeft->add(0.5,notMove);
     LegScriptLeft->add(0.5,oscillateLeg);
     LegScriptLeft->add(0.5,oscillateLegSecond);
 
 
     //Movement to the second leg
-    MatrixScript * KneeScriptRight=new MatrixScript();
     MatrixScript * LegScriptRight=new MatrixScript();
-    KneeScriptRight->add(0.5,notMove);
-    KneeScriptRight->add(0.5,oscillateKnee);
     LegScriptRight->add(0.5,oscillateLegSecond);
     LegScriptRight->add(0.5,oscillateLeg);
 
     //Add the script to our animation
-    animation.add(KneeScriptRight);
-    animation.add(KneeScriptLeft);
     animation.add(LegScriptRight);
     animation.add(LegScriptLeft);
 
@@ -711,31 +689,23 @@ bool Hero::isHit(){
     /////////////////////////////////
     // ANIMATION HIT
     /////////////////////////////////
-    oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
     oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
     oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
     notMove=new MatrixStatic();
 
     //Movement to the first leg
-    KneeScriptLeft=new MatrixScript();
     LegScriptLeft=new MatrixScript();
-    KneeScriptLeft->add(0.5,notMove);
-    KneeScriptLeft->add(0.5,notMove);
     LegScriptLeft->add(0.5,notMove);
     LegScriptLeft->add(0.5,notMove);
 
 
     //Movement to the second leg
-    KneeScriptRight=new MatrixScript();
     LegScriptRight=new MatrixScript();
-    KneeScriptRight->add(0.5,notMove);
-    KneeScriptRight->add(0.5,notMove);
     LegScriptRight->add(0.5,notMove);
     LegScriptRight->add(0.5,notMove);
 
     //Add the script to our animation
-    animationHit.add(KneeScriptRight);
-    animationHit.add(KneeScriptLeft);
     animationHit.add(LegScriptRight);
     animationHit.add(LegScriptLeft);
 

@@ -34,13 +34,13 @@ enum meshElement{
     TREEDIE,    //5
     BACKGROUND, //6
     KNEE,       //7
+    KNEE2,       //7
     ARMOUR2,    //8
     ARMOURCHEST,//9
     HAND,       //10
     TOPARM,     //11
     CHEST,      //12
     FOOT,       //13
-    HIP,        //14
     HEAD,       //15
     ARMOUR,     //16
     TEXT,       //17
