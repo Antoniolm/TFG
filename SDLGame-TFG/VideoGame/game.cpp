@@ -150,8 +150,8 @@ void Game::loop(){
 
         //Update the camera, lifeText, coinText
         posHero=hero->getPosition();
-        camera.update(vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f),posHero,currentKeyStates,&context.currentShader);
-        //camera.update(vec3f(posHero.x,posHero.y+1.0f,posHero.z+5.0f),posHero,currentKeyStates,&context.currentShader);
+        //camera.update(vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f),posHero,currentKeyStates,&context.currentShader);
+        camera.update(vec3f(posHero.x,posHero.y+1.0f,posHero.z+4.0f),posHero,currentKeyStates,&context.currentShader);
         updateLife(lastLife);
         updateCoin(currentCoin);
 

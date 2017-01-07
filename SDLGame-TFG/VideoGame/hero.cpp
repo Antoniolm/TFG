@@ -187,17 +187,14 @@ Hero::Hero()
 
     //Material * materialArmour=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),32.0f,"./textures/plateArmor.png");
 
-    Matrix4f * scaleHand=new Matrix4f();
-    scaleHand->scale(0.4,0.3,0.4);
-
     Matrix4f * scaleHandInvert=new Matrix4f();
     scaleHandInvert->scale(1.0,1.0,-1.0);
 
     Matrix4f * transHand=new Matrix4f();
-    transHand->translation(0.0,-1.1,-0.1);
+    transHand->translation(-0.15,-0.2,0.0);
 
     Matrix4f * transHandLeft=new Matrix4f();
-    transHandLeft->translation(0.0,-1.1,-0.2);
+    transHandLeft->translation(0.15,-0.2,0.0);
 
     Matrix4f * rotateXHand=new Matrix4f();
     rotateXHand->rotation(30,1,0,0);
@@ -230,15 +227,13 @@ Hero::Hero()
     NodeSceneGraph * handLeft=new NodeSceneGraph(true);
     handLeft->add(transHandLeft);
     //handLeft->add(scaleHandInvert);
-    handLeft->add(scaleHand);
     handLeft->add(rotateYHand);
-    handLeft->add(materialCollect->getMaterial(mHAND));
+    handLeft->add(materialCollect->getMaterial(mARMOUR));
     handLeft->add(meshCollect->getMesh(HAND));
 
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transHand);
-    handRight->add(scaleHand);
-    handRight->add(materialCollect->getMaterial(mHAND));
+    handRight->add(materialCollect->getMaterial(mARMOUR));
     handRight->add(meshCollect->getMesh(HAND));
 
     //elbow + wrist
@@ -247,13 +242,13 @@ Hero::Hero()
     NodeSceneGraph * elbow_wristRight=new NodeSceneGraph();
     elbow_wristRight->add(transElbow);
     elbow_wristRight->add(moveElbowRight);
-    elbow_wristRight->add(rotateXHand);
+    //elbow_wristRight->add(rotateXHand);
     elbow_wristRight->add(handRight);
 
     NodeSceneGraph * elbow_wristLeft=new NodeSceneGraph();
     elbow_wristLeft->add(transElbow);
     elbow_wristLeft->add(moveElbowLeft);
-    elbow_wristLeft->add(rotateXHand);
+    //elbow_wristLeft->add(rotateXHand);
     elbow_wristLeft->add(handLeft);
 
     //Shoulder
@@ -274,7 +269,7 @@ Hero::Hero()
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
     ArmLeft->add(moveArmLeft);
     ArmLeft->add(transArms);
-    //ArmLeft->add(elbow_wristLeft);
+    ArmLeft->add(elbow_wristLeft);
     ArmLeft->add(shoulderLeft);
 
 
@@ -282,7 +277,7 @@ Hero::Hero()
     NodeSceneGraph * ArmRight=new NodeSceneGraph();
     ArmRight->add(moveArmRight);
     ArmRight->add(transArms);
-    //ArmRight->add(elbow_wristRight);
+    ArmRight->add(elbow_wristRight);
     ArmRight->add(shoulderRight);
 
     //////////////////////////////////////////////////////
@@ -295,19 +290,19 @@ Hero::Hero()
     root->add(AvatarMove::moveAvatar);
 
     Matrix4f *mat=new Matrix4f();
-    mat->translation(-0.4,0.0,0.0);
+    mat->translation(-0.6,0.0,0.0);
 
     Matrix4f *mat2=new Matrix4f();
-    mat2->translation(0.2,1.0,0.0);
+    mat2->translation(0.3,0.97,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
     scaleHero->scale(0.5,0.5,0.5);
 
     Matrix4f *trasn2Arms=new Matrix4f();
-    trasn2Arms->translation(-1.2,0.0,0.0);
+    trasn2Arms->translation(-1.0,0.0,0.0);
 
     Matrix4f *trasn2Arms2=new Matrix4f();
-    trasn2Arms2->translation(0.6,0.55,0.18);
+    trasn2Arms2->translation(0.5,0.8,0.18);
 
     Matrix4f *scaleHead=new Matrix4f();
     scaleHead->scale(1.0,1.0,1.0);

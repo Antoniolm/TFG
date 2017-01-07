@@ -81,7 +81,7 @@ MeshCollection::MeshCollection()
     collection.push_back(element);
 
     //Mesh 11
-    element=new Mesh("geometries/hand.obj");
+    element=new Mesh("geometries/KnightHand.obj");
     element->init();
     collection.push_back(element);
 
