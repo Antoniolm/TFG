@@ -70,40 +70,6 @@ Hero::Hero()
     activatedTexts.push_back(false);
 
     //////////////////////////////////////////////////////
-    /////              Some The matrix               /////
-    //////////////////////////////////////////////////////
-
-    Matrix4f *scaleFoot=new Matrix4f();
-    scaleFoot->scale(0.7,0.7,0.6);
-
-    Matrix4f *rotateFoot=new Matrix4f();
-    rotateFoot->rotation(-90,0.0,1.0,0.0);
-
-    Matrix4f *scaleSphere=new Matrix4f();
-    scaleSphere->scale(0.15,0.15,0.15);
-
-    Matrix4f *scaleKnee=new Matrix4f();
-    scaleKnee->scale(0.7,0.7,0.7);
-
-    Matrix4f *scalePill=new Matrix4f();
-    scalePill->scale(0.3,0.5,0.3);
-
-    Matrix4f *transCylinder=new Matrix4f();
-    transCylinder->translation(0.0,-0.7,0.0);
-
-    Matrix4f *transLeg=new Matrix4f();
-    transLeg->translation(0.0,-0.6,0.0);
-
-    Matrix4f *rotateCylinder=new Matrix4f();
-    rotateCylinder->rotation(90,1.0,0.0,0.0);
-
-    Matrix4f *transMatrix=new Matrix4f();
-    transMatrix->translation(0.0,0.0,0.5);
-
-    Matrix4f *transFoot=new Matrix4f();
-    transFoot->translation(0.0,-0.8,0.4);
-
-    //////////////////////////////////////////////////////
     /////                  LEGS                      /////
     //////////////////////////////////////////////////////
 
@@ -116,40 +82,13 @@ Hero::Hero()
     moveLegLeft->identity();
     moveMatrix.push_back(moveLegLeft);
 
-    //Ankle + foot
-    NodeSceneGraph * foot=new NodeSceneGraph();
-    foot->add(transFoot);
-    foot->add(scaleFoot);
-    foot->add(materialCollect->getMaterial(mWOOD));
-    foot->add(meshCollect->getMesh(FOOT));
-
-    //knee + ankle
-    NodeSceneGraph * knee_ankle=new NodeSceneGraph();
-
-    //knee_ankle->add(transCylinder);
-    //knee_ankle->add(moveKnee);
-    knee_ankle->add(transCylinder);
-    knee_ankle->add(foot);
-    knee_ankle->add(scaleKnee);
-    knee_ankle->add(meshCollect->getMesh(KNEE));
-
-    //Leg
-    NodeSceneGraph * knee_ankleRight=new NodeSceneGraph();
-    knee_ankleRight->add(transCylinder);
-    //knee_ankleRight->add(moveKneeRight);
-    knee_ankleRight->add(knee_ankle);
-
-    NodeSceneGraph * knee_ankleLeft=new NodeSceneGraph();
-    knee_ankleLeft->add(transCylinder);
-    //knee_ankleLeft->add(moveKneeLeft);
-    knee_ankleLeft->add(knee_ankle);
+    Matrix4f *transLeg=new Matrix4f();
+    transLeg->translation(0.0,-0.6,0.0);
 
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
     legLeft->add(transLeg);
-    //legLeft->add(knee_ankleLeft);
-    legLeft->add(scaleKnee);
     legLeft->add(materialCollect->getMaterial(mARMOUR));
     legLeft->add(meshCollect->getMesh(KNEE2));
 
@@ -157,8 +96,6 @@ Hero::Hero()
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
     legRight->add(transLeg);
-    //legRight->add(knee_ankleRight);
-    legRight->add(scaleKnee);
     legRight->add(materialCollect->getMaterial(mARMOUR));
     legRight->add(meshCollect->getMesh(KNEE));
 
@@ -202,20 +139,8 @@ Hero::Hero()
     Matrix4f * rotateYHand=new Matrix4f();
     rotateYHand->rotation(180,0,1,0);
 
-    Matrix4f * scaleElbowCylin=new Matrix4f();
-    scaleElbowCylin->scale(0.2,0.3,0.2);
-
-    Matrix4f * scaleArmTop=new Matrix4f();
-    scaleArmTop->scale(0.2,0.4,0.2);
-
-    Matrix4f * scaleShoulder=new Matrix4f();
-    scaleShoulder->scale(0.8,0.6,0.8);
-
     Matrix4f * rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(180,0.0,1.0,0.0);
-
-    Matrix4f * rotateXShoulder=new Matrix4f();
-    rotateXShoulder->rotation(-5,1,0,0);
 
     Matrix4f * transElbow=new Matrix4f();
     transElbow->translation(0.0,-0.4,0.0);
@@ -223,45 +148,30 @@ Hero::Hero()
     Matrix4f * transArms=new Matrix4f();
     transArms->translation(0.0,-0.5,-0.2);
 
-    //wrist + hand
-    NodeSceneGraph * handLeft=new NodeSceneGraph(true);
+    //Arms
+    NodeSceneGraph * handRight=new NodeSceneGraph();
+    handRight->add(transElbow);
+    handRight->add(moveElbowRight);
+    handRight->add(transHand);
+    handRight->add(materialCollect->getMaterial(mARMOUR));
+    handRight->add(meshCollect->getMesh(HAND));;
+
+    NodeSceneGraph * handLeft=new NodeSceneGraph();
+    handLeft->add(transElbow);
+    handLeft->add(moveElbowLeft);
     handLeft->add(transHandLeft);
     //handLeft->add(scaleHandInvert);
     handLeft->add(rotateYHand);
     handLeft->add(materialCollect->getMaterial(mARMOUR));
     handLeft->add(meshCollect->getMesh(HAND));
 
-    NodeSceneGraph * handRight=new NodeSceneGraph();
-    handRight->add(transHand);
-    handRight->add(materialCollect->getMaterial(mARMOUR));
-    handRight->add(meshCollect->getMesh(HAND));
-
-    //elbow + wrist
-
-    //Arms
-    NodeSceneGraph * elbow_wristRight=new NodeSceneGraph();
-    elbow_wristRight->add(transElbow);
-    elbow_wristRight->add(moveElbowRight);
-    //elbow_wristRight->add(rotateXHand);
-    elbow_wristRight->add(handRight);
-
-    NodeSceneGraph * elbow_wristLeft=new NodeSceneGraph();
-    elbow_wristLeft->add(transElbow);
-    elbow_wristLeft->add(moveElbowLeft);
-    //elbow_wristLeft->add(rotateXHand);
-    elbow_wristLeft->add(handLeft);
-
     //Shoulder
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
-    shoulderLeft->add(scaleShoulder);
-    shoulderLeft->add(rotateXShoulder);
     shoulderLeft->add(materialCollect->getMaterial(mARMOUR));
     shoulderLeft->add(meshCollect->getMesh(TOPARM));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
-    shoulderRight->add(rotateXShoulder);
     shoulderRight->add(rotateShoulder);
-    shoulderRight->add(scaleShoulder);
     shoulderRight->add(materialCollect->getMaterial(mARMOUR));
     shoulderRight->add(meshCollect->getMesh(TOPARM));
 
@@ -269,7 +179,7 @@ Hero::Hero()
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
     ArmLeft->add(transArms);
     ArmLeft->add(moveArmLeft);
-    ArmLeft->add(elbow_wristLeft);
+    ArmLeft->add(handLeft);
     ArmLeft->add(shoulderLeft);
 
 
@@ -277,7 +187,7 @@ Hero::Hero()
     NodeSceneGraph * ArmRight=new NodeSceneGraph();
     ArmRight->add(transArms);
     ArmRight->add(moveArmRight);
-    ArmRight->add(elbow_wristRight);
+    ArmRight->add(handRight);
     ArmRight->add(shoulderRight);
 
     //////////////////////////////////////////////////////
@@ -289,23 +199,20 @@ Hero::Hero()
     AvatarMove::moveAvatar->translation(1.5,2.5,-2.5);
     root->add(AvatarMove::moveAvatar);
 
-    Matrix4f *mat=new Matrix4f();
-    mat->translation(-0.6,0.0,0.0);
+    Matrix4f *transLegScene=new Matrix4f();
+    transLegScene->translation(-0.6,0.0,0.0);
 
-    Matrix4f *mat2=new Matrix4f();
-    mat2->translation(0.3,0.97,0.0);
+    Matrix4f *transLegSceneI=new Matrix4f();
+    transLegSceneI->translation(0.3,0.97,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
     scaleHero->scale(0.5,0.5,0.5);
 
-    Matrix4f *trasn2Arms=new Matrix4f();
-    trasn2Arms->translation(-1.0,0.0,0.0);
+    Matrix4f * trasnArms=new Matrix4f();
+    trasnArms->translation(-1.0,0.0,0.0);
 
-    Matrix4f *trasn2Arms2=new Matrix4f();
-    trasn2Arms2->translation(0.5,0.83,0.2);
-
-    Matrix4f *scaleHead=new Matrix4f();
-    scaleHead->scale(1.0,1.0,1.0);
+    Matrix4f *trasnArmsI=new Matrix4f();
+    trasnArmsI->translation(0.5,0.83,0.2);
 
     Matrix4f *transHead=new Matrix4f();
     transHead->translation(0.0,2.5,0.0);
@@ -325,19 +232,19 @@ Hero::Hero()
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
     chest_ArmsNode->add(transChest);
     chest_ArmsNode->add(chestNode);
-    chest_ArmsNode->add(trasn2Arms2);
+    chest_ArmsNode->add(trasnArmsI);
     chest_ArmsNode->add(ArmLeft);
-    chest_ArmsNode->add(trasn2Arms);
+    chest_ArmsNode->add(trasnArms);
     chest_ArmsNode->add(ArmRight);
 
     root->add(scaleHero);
     root->add(materialCollect->getMaterial(mWOOD));
     root->add(headNode);
     root->add(chest_ArmsNode);
-    root->add(mat2);
+    root->add(transLegSceneI);
     root->add(materialCollect->getMaterial(mWOOD));
     root->add(legLeft);
-    root->add(mat);
+    root->add(transLegScene);
     root->add(legRight);
     currentTime=SDL_GetTicks();
     jumpDelay=currentTime;
