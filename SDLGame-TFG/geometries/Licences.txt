@@ -1,4 +1,5 @@
 swamp location by bocharova is licensed under CC Attribution-NonCommercial https://skfb.ly/FAZH -> used in the objs: tree.obj,grass.obj
+Knight by rougher is licensed under CC Attribution-NonCommercial https://sketchfab.com/models/aa451ea41ecd4e439f199aea4955bad0# -> used in the objs: knightHead, knightArm,knightBody,knightFoot,knightFootInv,knightHand
 Skull Knight by madarazero is licensed under CC Attribution https://skfb.ly/GqNY -> used in the objs: armour.obj,armour2.obj,armourChest.obj
 Forest Scene by deryckeredries is licensed under CC Attribution https://skfb.ly/DEw6 -> used in the objs: mushroomWhite.obj,treeDie.obj
 Fantasy House by lucak is licensed under CC Attribution-NonCommercial https://skfb.ly/EvqM -> used in the objs:
