@@ -33,7 +33,7 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
     bool result=false;
     float tenthValue,tenthValue2;
     vec3f posHero=vec3f(position.x,position.y,position.z);
-    posHero.y+=0.6;
+    posHero.y+=1.0;
     //Check the collision first
     switch(aDir){
         case FORWARD:

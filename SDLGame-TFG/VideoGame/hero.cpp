@@ -307,7 +307,7 @@ Hero::Hero()
     trasn2Arms->translation(-1.2,0.0,0.0);
 
     Matrix4f *trasn2Arms2=new Matrix4f();
-    trasn2Arms2->translation(0.6,0.55,0.0);
+    trasn2Arms2->translation(0.6,0.55,0.18);
 
     Matrix4f *scaleHead=new Matrix4f();
     scaleHead->scale(1.0,1.0,1.0);
