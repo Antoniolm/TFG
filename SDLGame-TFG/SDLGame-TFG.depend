@@ -399,7 +399,7 @@
 	"window.h"
 	"file_obj.h"
 
-1483807724 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1483808103 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1643,7 +1643,7 @@
 	"structdata.h"
 	<SDL.h>
 
-1483572630 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1483807984 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 

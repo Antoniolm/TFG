@@ -272,7 +272,24 @@
                 "materialTop":"mCUBE_GRASS",
                 "materialMiddle":"mCUBE_LAND",
                 "mesh":"CUBE", 
+                "damage":0.0  },
+            {   "position":[2,2.5,4],
+                "YNumber":1,  
+                "XNumber":1,    
+                "ZNumber":1,
+                "materialTop":"mCUBE_GRASS",
+                "materialMiddle":"mCUBE_LAND",
+                "mesh":"CUBE", 
+                "damage":0.0  },
+            {   "position":[3,3.5,4],
+                "YNumber":1,  
+                "XNumber":1,    
+                "ZNumber":1,
+                "materialTop":"mCUBE_GRASS",
+                "materialMiddle":"mCUBE_LAND",
+                "mesh":"CUBE", 
                 "damage":0.0  }
+
 
     ],
 
