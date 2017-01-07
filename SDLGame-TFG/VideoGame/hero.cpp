@@ -267,16 +267,16 @@ Hero::Hero()
 
     //Arm left
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
-    ArmLeft->add(moveArmLeft);
     ArmLeft->add(transArms);
+    ArmLeft->add(moveArmLeft);
     ArmLeft->add(elbow_wristLeft);
     ArmLeft->add(shoulderLeft);
 
 
     //Arm Right
     NodeSceneGraph * ArmRight=new NodeSceneGraph();
-    ArmRight->add(moveArmRight);
     ArmRight->add(transArms);
+    ArmRight->add(moveArmRight);
     ArmRight->add(elbow_wristRight);
     ArmRight->add(shoulderRight);
 
@@ -302,7 +302,7 @@ Hero::Hero()
     trasn2Arms->translation(-1.0,0.0,0.0);
 
     Matrix4f *trasn2Arms2=new Matrix4f();
-    trasn2Arms2->translation(0.5,0.8,0.18);
+    trasn2Arms2->translation(0.5,0.83,0.2);
 
     Matrix4f *scaleHead=new Matrix4f();
     scaleHead->scale(1.0,1.0,1.0);
