@@ -3,3 +3,4 @@ swamp location by bocharova is licensed under CC Attribution-NonCommercial https
 Low Poly Game Scene by Partho Borthakur is licensed under CC Attribution https://skfb.ly/HJEQ -> used in the Texture: menu.png,menuPause.png,menuPauseQuit.png,menuPauseResume.png
 Knight by rougher is licensed under CC Attribution-NonCommercial https://sketchfab.com/models/aa451ea41ecd4e439f199aea4955bad0# -> used in the Texture: heroTexture.jpg														    : mainMenuCont.png,mainMenuControl.png,mainMenuQuit.png,mainMenuStart.png
 Great Sword of Frozen Night by ZugZug is licensed under CC Attribution https://skfb.ly/GoHQ -> used in the texture : swordTexture.png
+Flaming Forge shield by pipclank is licensed under CC Attribution https://skfb.ly/JUrX -> used in the texture : shieldTexture.png

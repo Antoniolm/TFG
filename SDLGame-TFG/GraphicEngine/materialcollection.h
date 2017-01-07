@@ -41,6 +41,7 @@ enum materialElement{
     mCOIN50,     //10
     mARMOUR,     //11
     mSWORD,       //12
+    mSHIELD,       //12
     mDWOOD,      //13
     mDHAND,      //14
     mDIALOG,     //15

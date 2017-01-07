@@ -63,6 +63,9 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/swordTexture.png");
     collection.push_back(material);
 
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/shieldTexture.png");
+    collection.push_back(material);
+
     //Enemy material
     material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
     collection.push_back(material);
@@ -92,6 +95,7 @@ MaterialCollection::MaterialCollection()
     enumMap.insert(pair<string,materialElement> ("mCOIN50",mCOIN50));
     enumMap.insert(pair<string,materialElement> ("mARMOUR",mARMOUR));
     enumMap.insert(pair<string,materialElement> ("mSWORD",mSWORD));
+    enumMap.insert(pair<string,materialElement> ("mSHIELD",mSHIELD));
     enumMap.insert(pair<string,materialElement> ("mDWOOD",mDWOOD));
     enumMap.insert(pair<string,materialElement> ("mDHAND",mDHAND));
     enumMap.insert(pair<string,materialElement> ("mDIALOG",mDIALOG));

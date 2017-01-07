@@ -36,8 +36,9 @@ enum meshElement{
     KNEE,       //7
     KNEE2,       //7
     SWORD,    //8
-    ARMOURCHEST,//9
+    SHIELD,//9
     HAND,       //10
+    HANDS,
     TOPARM,     //11
     CHEST,      //12
     FOOT,       //13

@@ -76,12 +76,16 @@ MeshCollection::MeshCollection()
     collection.push_back(element);
 
     //Mesh 10
-    element=new Mesh("geometries/armourChest.obj");
+    element=new Mesh("geometries/shield.obj");
     element->init();
     collection.push_back(element);
 
     //Mesh 11
     element=new Mesh("geometries/KnightHand.obj");
+    element->init();
+    collection.push_back(element);
+
+    element=new Mesh("geometries/KnightHandShield.obj");
     element->init();
     collection.push_back(element);
 
@@ -133,8 +137,9 @@ MeshCollection::MeshCollection()
     enumMap.insert(pair<string,meshElement> ("KNEE",KNEE));
     enumMap.insert(pair<string,meshElement> ("KNEE2",KNEE2));
     enumMap.insert(pair<string,meshElement> ("SWORD",SWORD));
-    enumMap.insert(pair<string,meshElement> ("ARMOURCHEST",ARMOURCHEST));
+    enumMap.insert(pair<string,meshElement> ("SHIELD",SHIELD));
     enumMap.insert(pair<string,meshElement> ("HAND",HAND));
+    enumMap.insert(pair<string,meshElement> ("HANDS",HANDS));
     enumMap.insert(pair<string,meshElement> ("TOPARM",TOPARM));
     enumMap.insert(pair<string,meshElement> ("CHEST",CHEST));
     enumMap.insert(pair<string,meshElement> ("FOOT",FOOT));
