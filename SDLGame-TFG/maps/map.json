@@ -56,23 +56,6 @@
 
 
     "npcs":[
-            {   "position":[4.5,2.0,-3.5],
-                "dialog":[{"speaker":0,
-                           "string":"Esto es una prueba"},
-                          {"speaker":1,
-                            "string":"Segundo mensaje de prueba"},
-                          {"speaker":1,
-                            "string":"Tercer mensaje de prueba"}
-                        ]
-            },
-
-            {   "position":[1.5,2.0,-4.5],
-                "dialog":[{"speaker":1,
-                           "string":"Segundo Npc"},
-                          {"speaker":0,
-                            "string":"Segundo mensaje de Npc2"}
-                        ]
-            },
             {   "position":[11.5,0.0,-4.5],
                 "dialog":[{"speaker":0,
                            "string":"You have to take care with this water"},
@@ -121,7 +104,7 @@
             {   "position":[1,0.5,1],
                 "YNumber":5,        
                 "XNumber":7,         
-                "ZNumber":2,         
+                "ZNumber":1,         
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_LAND", 
                 "mesh":"CUBE", 
@@ -136,14 +119,24 @@
                 "mesh":"CUBE", 
                 "damage":0.0 },
 
-            {   "position":[1,0.5,3],
+            {   "position":[0,4.5,1],
+                "YNumber":4,        
+                "XNumber":1,         
+                "ZNumber":7,         
+                "materialTop":"mCUBE_WALL",
+                "materialMiddle":"mCUBE_WALL", 
+                "mesh":"CUBE", 
+                "damage":0.0 },
+
+            {   "position":[1,0.5,2],
                 "YNumber":1,        
                 "XNumber":7,         
-                "ZNumber":3,         
-                "materialTop":"mCUBE_SAND",
+                "ZNumber":6,         
+                "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_LAND", 
                 "mesh":"CUBE", 
                 "damage":0.0 },
+
 
             {   "position":[8,-0.5,1],
                 "YNumber":4,   
@@ -189,24 +182,6 @@
                 "materialMiddle":"mCUBE_LAND",
                 "mesh":"CUBE", 
                 "damage":-10.0},
-
-            {   "position":[1,1.5,2],
-                "YNumber":1,   
-                "XNumber":7,    
-                "ZNumber":1,
-                "materialTop":"mWOOD",
-                "materialMiddle":"mWOOD",
-                "mesh":"FENCE", 
-                "damage":0.0  },
-
-            {   "position":[1,1.5,6],
-                "YNumber":1,   
-                "XNumber":7,    
-                "ZNumber":1,
-                "materialTop":"mWOOD",
-                "materialMiddle":"mWOOD",
-                "mesh":"FENCE", 
-                "damage":0.0  },
 
             {   "position":[15,-1.5,3],
                 "YNumber":1,   
@@ -280,14 +255,6 @@
                 "materialTop":"mCUBE_WALL",
                 "materialMiddle":"mCUBE_WALL",
                 "mesh":"CUBE", 
-                "damage":0.0  },
-            {   "position":[3,4.5,4],
-                "YNumber":4,  
-                "XNumber":1,    
-                "ZNumber":1,
-                "materialTop":"mCUBE_GRASS",
-                "materialMiddle":"mCUBE_LAND",
-                "mesh":"CUBE", 
                 "damage":0.0  }
 
 
@@ -310,82 +277,42 @@
                 "mesh":"CUBE",
                 "collision": false 
             },
-
             {   "transforms":[
                     {   "translation":true,
                         "scale":false,
                         "rotation":false,
-                        "values":[2.5,2.0,-7.5]
+                        "values":[7.0,1.8,-5.9]
                     },
                     {   "translation":false,
                         "scale":true,
                         "rotation":false,
-                        "values":[0.3,0.5,0.3]
+                        "values":[1.0,1.0,1.1]
                     }
                 ],       
-                "material":"mGRASS",
-                "mesh":"TREE",
-                "collision": true
-            },
-
-            {   "transforms":[
-                    {   "translation":true,
-                        "scale":false,
-                        "rotation":false,
-                        "values":[3.1,1.2,-1.5]
-                    }
-                ],       
-                "material":"mGRASS",
-                "mesh":"GRASS",
-                "collision": false
-            },
-            {   "transforms":[
-                    {   "translation":true,
-                        "scale":false,
-                        "rotation":false,
-                        "values":[5.5,1.3,-7.5]
-                    },
-                    {   "translation":false,
-                        "scale":true,
-                        "rotation":false,
-                        "values":[0.6,0.5,0.5]
-                    }
-                ],       
-                "material":"MUSH",
-                "mesh":"TREEDIE",
-                "collision": true
-            } ,
-            {   "transforms":[
-                    {   "translation":true,
-                        "scale":false,
-                        "rotation":false,
-                        "values":[7.0,1.5,-4.0]
-                    },
-                    {   "translation":false,
-                        "scale":true,
-                        "rotation":false,
-                        "values":[1.0,0.5,1.0]
-                    }
-                ],       
-                "material":"mCUBE_LAND",
-                "mesh":"CUBE",
+                "material":"mFURNITURE",
+                "mesh":"BED",
                 "collision": true
             },
             {   "transforms":[
                     {   "translation":true,
                         "scale":false,
                         "rotation":false,
-                        "values":[1.5,1.0,-1.5]
+                        "values":[2.0,2.3,-7.5]
                     },
                     {   "translation":false,
                         "scale":true,
                         "rotation":false,
-                        "values":[0.5,0.5,0.5]
+                        "values":[0.9,0.9,1.0]
+                    },
+                    {   "translation":false,
+                        "scale":false,
+                        "rotation":true,
+                        "values":[90,0.0,1.0,0.0]
                     }
                 ],       
-                "material":"MUSH",
-                "mesh":"MUSHWHITE",
-                "collision": false
+                "material":"mFURNITURE",
+                "mesh":"CUPBOARD",
+                "collision": true
             }      
     ]
 
