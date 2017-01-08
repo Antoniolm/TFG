@@ -73,7 +73,7 @@ MaterialCollection::MaterialCollection()
     collection.push_back(material);
 
     //Enemy material
-    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/enemyTexture.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/enemyTexture.png");
     collection.push_back(material);
 
     material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureLeg.png");

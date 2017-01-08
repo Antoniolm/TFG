@@ -125,12 +125,6 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     Matrix4f * transArms=new Matrix4f();
     transArms->translation(0.0,-0.5,-0.2);
 
-    Matrix4f * tranSword=new Matrix4f();
-    tranSword->translation(0.05,-0.1,0.68);
-
-    Matrix4f * tranShield=new Matrix4f();
-    tranShield->translation(-0.275,0.0,0.0);
-
     //Arms
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transElbow);
@@ -138,9 +132,6 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     handRight->add(transHand);
     handRight->add(materialCollect->getMaterial(mARMOUR));
     handRight->add(meshCollect->getMesh(HAND));
-    handRight->add(tranSword);
-    handRight->add(materialCollect->getMaterial(mSWORD));
-    handRight->add(meshCollect->getMesh(SWORD));
 
     NodeSceneGraph * handLeft=new NodeSceneGraph();
     handLeft->add(transElbow);
@@ -150,9 +141,6 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     handLeft->add(rotateYHand);
     handLeft->add(materialCollect->getMaterial(mARMOUR));
     handLeft->add(meshCollect->getMesh(HANDS));
-    handLeft->add(tranShield);
-    handLeft->add(materialCollect->getMaterial(mSHIELD));
-    handLeft->add(meshCollect->getMesh(SHIELD));
 
     //Shoulder
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
@@ -207,16 +195,16 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     transHead->translation(0.0,2.5,0.0);
 
     Matrix4f *transChest=new Matrix4f();
-    transChest->translation(0.0,1.1,0.0);
+    transChest->translation(0.0,1.8,0.0);
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
-    chestNode->add(materialCollect->getMaterial(mARMOUR));
-    chestNode->add(meshCollect->getMesh(CHEST));
+    chestNode->add(materialCollect->getMaterial(mENEMY));
+    chestNode->add(meshCollect->getMesh(ECHEST));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
-    headNode->add(materialCollect->getMaterial(mARMOUR));
-    headNode->add(meshCollect->getMesh(HEAD));
+    headNode->add(materialCollect->getMaterial(mENEMY));
+    headNode->add(meshCollect->getMesh(EHEAD));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
     chest_ArmsNode->add(transChest);

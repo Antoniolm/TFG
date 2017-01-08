@@ -45,7 +45,8 @@ enum meshElement{
     HEAD,       //15
     TEXT,       //17
     COIN,        //18
-    EHEAD
+    EHEAD,
+    ECHEST
 };
 
 class MeshCollection
