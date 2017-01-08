@@ -133,7 +133,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     NodeSceneGraph * foot=new NodeSceneGraph();
     foot->add(transFoot);
     foot->add(scaleFoot);
-    foot->add(materialCollect->getMaterial(mDWOOD));
+    foot->add(materialCollect->getMaterial(mENEMY));
     foot->add(meshCollect->getMesh(FOOT));
 
     //knee + ankle
@@ -163,7 +163,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     legLeft->add(transLeg);
     legLeft->add(knee_ankleLeft);
     legLeft->add(scaleKnee);
-    legLeft->add(materialCollect->getMaterial(mDWOOD));
+    legLeft->add(materialCollect->getMaterial(mENEMY));
     legLeft->add(meshCollect->getMesh(KNEE));
 
     //Leg Right
@@ -172,7 +172,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     legRight->add(transLeg);
     legRight->add(knee_ankleRight);
     legRight->add(scaleKnee);
-    legRight->add(materialCollect->getMaterial(mDWOOD));
+    legRight->add(materialCollect->getMaterial(mENEMY));
     legRight->add(meshCollect->getMesh(KNEE));
 
     //////////////////////////////////////////////////////
@@ -296,14 +296,14 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
     shoulderLeft->add(scaleShoulder);
     shoulderLeft->add(rotateXShoulder);
-    shoulderLeft->add(materialCollect->getMaterial(mDWOOD));
+    shoulderLeft->add(materialCollect->getMaterial(mENEMY));
     shoulderLeft->add(meshCollect->getMesh(TOPARM));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
     shoulderRight->add(rotateXShoulder);
     shoulderRight->add(rotateShoulder);
     shoulderRight->add(scaleShoulder);
-    shoulderRight->add(materialCollect->getMaterial(mDWOOD));
+    shoulderRight->add(materialCollect->getMaterial(mENEMY));
     shoulderRight->add(meshCollect->getMesh(TOPARM));
 
     //Arm left
@@ -339,7 +339,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     mat2->translation(0.4,0.0,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
-    scaleHero->scale(0.25,0.25,0.25);
+    scaleHero->scale(0.5,0.5,0.5);
 
     Matrix4f *trasn2Arms=new Matrix4f();
     trasn2Arms->translation(-1.8,0.0,0.0);
@@ -400,14 +400,14 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(scaleChest);
-    chestNode->add(materialCollect->getMaterial(mDWOOD));
+    chestNode->add(materialCollect->getMaterial(mENEMY));
     chestNode->add(meshCollect->getMesh(CHEST));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
-    headNode->add(scaleHead);
-    headNode->add(materialCollect->getMaterial(mDWOOD));
-    headNode->add(meshCollect->getMesh(HEAD));
+    //headNode->add(scaleHead);
+    headNode->add(materialCollect->getMaterial(mENEMY));
+    headNode->add(meshCollect->getMesh(EHEAD));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
     chest_ArmsNode->add(transChest);
@@ -418,7 +418,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     chest_ArmsNode->add(ArmRight);
 
     root->add(scaleHero);
-    root->add(materialCollect->getMaterial(mDWOOD));
+    root->add(materialCollect->getMaterial(mENEMY));
     root->add(armourChestNode);
     //root->add(armourChestTestNode);
     root->add(armour2Node);
@@ -426,7 +426,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     root->add(headNode);
     root->add(chest_ArmsNode);
     root->add(mat2);
-    root->add(materialCollect->getMaterial(mDWOOD));
+    root->add(materialCollect->getMaterial(mENEMY));
     root->add(legLeft);
     root->add(mat);
     root->add(legRight);

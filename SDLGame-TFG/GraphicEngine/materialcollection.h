@@ -33,6 +33,7 @@ enum materialElement{
     mCUBE_LAND,  //2
     mCUBE_BOX,   //3
     mCUBE_DUNG,   //3
+    mCUBE_WALL,
     mWOOD,       //4
     MUSH,        //5
     mGRASS,      //6
@@ -43,7 +44,7 @@ enum materialElement{
     mARMOUR,     //11
     mSWORD,       //12
     mSHIELD,       //12
-    mDWOOD,      //13
+    mENEMY,      //13
     mDHAND,      //14
     mDIALOG,     //15
     mADIALOG     //16

@@ -32,19 +32,22 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeLand.png");
     collection.push_back(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
     collection.push_back(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeDungeon.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeDungeon.png");
     collection.push_back(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeWall.png");
     collection.push_back(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
     collection.push_back(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grass.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
+    collection.push_back(material);
+
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grass.png");
     collection.push_back(material);
 
     material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/water.png");
@@ -63,24 +66,24 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),32.0f,"./textures/heroTexture.jpg");
     collection.push_back(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/swordTexture.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/swordTexture.png");
     collection.push_back(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/shieldTexture.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/shieldTexture.png");
     collection.push_back(material);
 
     //Enemy material
-    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
+    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/enemyTexture.png");
     collection.push_back(material);
 
     material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureLeg.png");
     collection.push_back(material);
 
     //Text Material
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/dialog.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/dialog.png");
     collection.push_back(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/actionDialog.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/actionDialog.png");
     collection.push_back(material);
 
 
@@ -90,6 +93,7 @@ MaterialCollection::MaterialCollection()
     enumMap.insert(pair<string,materialElement> ("mCUBE_LAND",mCUBE_LAND));
     enumMap.insert(pair<string,materialElement> ("mCUBE_BOX",mCUBE_BOX));
     enumMap.insert(pair<string,materialElement> ("mCUBE_DUNG",mCUBE_DUNG));
+    enumMap.insert(pair<string,materialElement> ("mCUBE_WALL",mCUBE_WALL));
     enumMap.insert(pair<string,materialElement> ("mWOOD",mWOOD));
     enumMap.insert(pair<string,materialElement> ("MUSH",MUSH));
     enumMap.insert(pair<string,materialElement> ("mGRASS",mGRASS));
@@ -100,7 +104,7 @@ MaterialCollection::MaterialCollection()
     enumMap.insert(pair<string,materialElement> ("mARMOUR",mARMOUR));
     enumMap.insert(pair<string,materialElement> ("mSWORD",mSWORD));
     enumMap.insert(pair<string,materialElement> ("mSHIELD",mSHIELD));
-    enumMap.insert(pair<string,materialElement> ("mDWOOD",mDWOOD));
+    enumMap.insert(pair<string,materialElement> ("mENEMY",mENEMY));
     enumMap.insert(pair<string,materialElement> ("mDHAND",mDHAND));
     enumMap.insert(pair<string,materialElement> ("mDIALOG",mDIALOG));
     enumMap.insert(pair<string,materialElement> ("mADIALOG",mADIALOG));
