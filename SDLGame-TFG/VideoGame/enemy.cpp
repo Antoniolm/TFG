@@ -47,52 +47,10 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     activatedDialog=false;
 
     //////////////////////////////////////////////////////
-    /////              Some The matrix               /////
-    //////////////////////////////////////////////////////
-
-    Matrix4f *scaleFoot=new Matrix4f();
-    scaleFoot->scale(0.7,0.7,0.6);
-
-    Matrix4f *rotateFoot=new Matrix4f();
-    rotateFoot->rotation(-90,0.0,1.0,0.0);
-
-    Matrix4f *scaleSphere=new Matrix4f();
-    scaleSphere->scale(0.15,0.15,0.15);
-
-    Matrix4f *scaleKnee=new Matrix4f();
-    scaleKnee->scale(0.7,0.7,0.7);
-
-    Matrix4f *scalePill=new Matrix4f();
-    scalePill->scale(0.3,0.5,0.3);
-
-    Matrix4f *transCylinder=new Matrix4f();
-    transCylinder->translation(0.0,-0.7,0.0);
-
-    Matrix4f *transLeg=new Matrix4f();
-    transLeg->translation(0.0,-0.6,0.0);
-
-    Matrix4f *rotateCylinder=new Matrix4f();
-    rotateCylinder->rotation(90,1.0,0.0,0.0);
-
-    Matrix4f *transMatrix=new Matrix4f();
-    transMatrix->translation(0.0,0.0,0.5);
-
-    Matrix4f *transFoot=new Matrix4f();
-    transFoot->translation(0.0,-0.8,0.4);
-
-    //////////////////////////////////////////////////////
     /////                  LEGS                      /////
     //////////////////////////////////////////////////////
 
     //Create a new Movement
-    Matrix4f * moveKneeRight=new Matrix4f();
-    moveKneeRight->identity();
-    moveMatrix.push_back(moveKneeRight);
-
-    Matrix4f * moveKneeLeft=new Matrix4f();
-    moveKneeLeft->identity();
-    moveMatrix.push_back(moveKneeLeft);
-
     Matrix4f * moveLegRight=new Matrix4f();
     moveLegRight->identity();
     moveMatrix.push_back(moveLegRight);
@@ -101,78 +59,21 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     moveLegLeft->identity();
     moveMatrix.push_back(moveLegLeft);
 
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
-    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
-    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
-    MatrixStatic * notMove=new MatrixStatic();
-
-    //Movement to the first leg
-    MatrixScript * KneeScriptLeft=new MatrixScript();
-    MatrixScript * LegScriptLeft=new MatrixScript();
-    KneeScriptLeft->add(0.5,oscillateKnee);
-    KneeScriptLeft->add(0.5,notMove);
-    LegScriptLeft->add(0.5,oscillateLeg);
-    LegScriptLeft->add(0.5,oscillateLegSecond);
-
-
-    //Movement to the second leg
-    MatrixScript * KneeScriptRight=new MatrixScript();
-    MatrixScript * LegScriptRight=new MatrixScript();
-    KneeScriptRight->add(0.5,notMove);
-    KneeScriptRight->add(0.5,oscillateKnee);
-    LegScriptRight->add(0.5,oscillateLegSecond);
-    LegScriptRight->add(0.5,oscillateLeg);
-
-    //Add the script to our animation
-    animation.add(KneeScriptRight);
-    animation.add(KneeScriptLeft);
-    animation.add(LegScriptRight);
-    animation.add(LegScriptLeft);
-
-    //Ankle + foot
-    NodeSceneGraph * foot=new NodeSceneGraph();
-    foot->add(transFoot);
-    foot->add(scaleFoot);
-    foot->add(materialCollect->getMaterial(mENEMY));
-    foot->add(meshCollect->getMesh(FOOT));
-
-    //knee + ankle
-    NodeSceneGraph * knee_ankle=new NodeSceneGraph();
-
-    //knee_ankle->add(transCylinder);
-    //knee_ankle->add(moveKnee);
-    knee_ankle->add(transCylinder);
-    knee_ankle->add(foot);
-    knee_ankle->add(scaleKnee);
-    knee_ankle->add(meshCollect->getMesh(KNEE));
-
-    //Leg
-    NodeSceneGraph * knee_ankleRight=new NodeSceneGraph();
-    knee_ankleRight->add(transCylinder);
-    knee_ankleRight->add(moveKneeRight);
-    knee_ankleRight->add(knee_ankle);
-
-    NodeSceneGraph * knee_ankleLeft=new NodeSceneGraph();
-    knee_ankleLeft->add(transCylinder);
-    knee_ankleLeft->add(moveKneeLeft);
-    knee_ankleLeft->add(knee_ankle);
+    Matrix4f *transLeg=new Matrix4f();
+    transLeg->translation(0.0,-0.6,0.0);
 
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
     legLeft->add(transLeg);
-    legLeft->add(knee_ankleLeft);
-    legLeft->add(scaleKnee);
-    legLeft->add(materialCollect->getMaterial(mENEMY));
-    legLeft->add(meshCollect->getMesh(KNEE));
+    legLeft->add(materialCollect->getMaterial(mARMOUR));
+    legLeft->add(meshCollect->getMesh(KNEE2));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
     legRight->add(transLeg);
-    legRight->add(knee_ankleRight);
-    legRight->add(scaleKnee);
-    legRight->add(materialCollect->getMaterial(mENEMY));
+    legRight->add(materialCollect->getMaterial(mARMOUR));
     legRight->add(meshCollect->getMesh(KNEE));
 
     //////////////////////////////////////////////////////
@@ -197,43 +98,17 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     moveArmLeft->identity();
     moveMatrix.push_back(moveArmLeft);
 
-    //Matrix4fDinamic
-    OscillateRotation * oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
 
-    //Movement to the first arm
-    MatrixScript * ElbowScriptLeft=new MatrixScript();
-    MatrixScript * ArmScriptLeft=new MatrixScript();
-    ElbowScriptLeft->add(0.5,notMove);
-    ElbowScriptLeft->add(0.5,notMove);
-    ArmScriptLeft->add(0.5,oscillateShoulder);
-    ArmScriptLeft->add(0.5,notMove);
-
-    //Movement to the second arm
-    MatrixScript * ElbowScriptRight=new MatrixScript();
-    MatrixScript * ArmScriptRight=new MatrixScript();
-    ElbowScriptRight->add(0.5,notMove);
-    ElbowScriptRight->add(0.5,notMove);
-    ArmScriptRight->add(0.5,notMove);
-    ArmScriptRight->add(0.5,oscillateShoulder);
-
-
-    //Add the script to our animation
-    animation.add(ElbowScriptRight);
-    animation.add(ElbowScriptLeft);
-    animation.add(ArmScriptRight);
-    animation.add(ArmScriptLeft);
-
-    Matrix4f * scaleHand=new Matrix4f();
-    scaleHand->scale(0.4,0.3,0.4);
+    //Material * materialArmour=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),32.0f,"./textures/plateArmor.png");
 
     Matrix4f * scaleHandInvert=new Matrix4f();
     scaleHandInvert->scale(1.0,1.0,-1.0);
 
     Matrix4f * transHand=new Matrix4f();
-    transHand->translation(0.0,-1.1,-0.1);
+    transHand->translation(-0.15,-0.2,0.0);
 
     Matrix4f * transHandLeft=new Matrix4f();
-    transHandLeft->translation(0.0,-1.1,-0.2);
+    transHandLeft->translation(0.15,-0.2,0.0);
 
     Matrix4f * rotateXHand=new Matrix4f();
     rotateXHand->rotation(30,1,0,0);
@@ -241,20 +116,8 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     Matrix4f * rotateYHand=new Matrix4f();
     rotateYHand->rotation(180,0,1,0);
 
-    Matrix4f * scaleElbowCylin=new Matrix4f();
-    scaleElbowCylin->scale(0.2,0.3,0.2);
-
-    Matrix4f * scaleArmTop=new Matrix4f();
-    scaleArmTop->scale(0.2,0.4,0.2);
-
-    Matrix4f * scaleShoulder=new Matrix4f();
-    scaleShoulder->scale(0.8,0.6,0.8);
-
     Matrix4f * rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(180,0.0,1.0,0.0);
-
-    Matrix4f * rotateXShoulder=new Matrix4f();
-    rotateXShoulder->rotation(-5,1,0,0);
 
     Matrix4f * transElbow=new Matrix4f();
     transElbow->translation(0.0,-0.4,0.0);
@@ -262,65 +125,58 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     Matrix4f * transArms=new Matrix4f();
     transArms->translation(0.0,-0.5,-0.2);
 
-    //wrist + hand
-    NodeSceneGraph * handLeft=new NodeSceneGraph(true);
-    handLeft->add(transHandLeft);
-    //handLeft->add(scaleHandInvert);
-    handLeft->add(scaleHand);
-    handLeft->add(rotateYHand);
-    handLeft->add(materialCollect->getMaterial(mDHAND));
-    handLeft->add(meshCollect->getMesh(HAND));
+    Matrix4f * tranSword=new Matrix4f();
+    tranSword->translation(0.05,-0.1,0.68);
 
-    NodeSceneGraph * handRight=new NodeSceneGraph();
-    handRight->add(transHand);
-    handRight->add(scaleHand);
-    handRight->add(materialCollect->getMaterial(mDHAND));
-    handRight->add(meshCollect->getMesh(HAND));
-
-    //elbow + wrist
+    Matrix4f * tranShield=new Matrix4f();
+    tranShield->translation(-0.275,0.0,0.0);
 
     //Arms
-    NodeSceneGraph * elbow_wristRight=new NodeSceneGraph();
-    elbow_wristRight->add(transElbow);
-    elbow_wristRight->add(moveElbowRight);
-    elbow_wristRight->add(rotateXHand);
-    elbow_wristRight->add(handRight);
+    NodeSceneGraph * handRight=new NodeSceneGraph();
+    handRight->add(transElbow);
+    handRight->add(moveElbowRight);
+    handRight->add(transHand);
+    handRight->add(materialCollect->getMaterial(mARMOUR));
+    handRight->add(meshCollect->getMesh(HAND));
+    handRight->add(tranSword);
+    handRight->add(materialCollect->getMaterial(mSWORD));
+    handRight->add(meshCollect->getMesh(SWORD));
 
-    NodeSceneGraph * elbow_wristLeft=new NodeSceneGraph();
-    elbow_wristLeft->add(transElbow);
-    elbow_wristLeft->add(moveElbowLeft);
-    elbow_wristLeft->add(rotateXHand);
-    elbow_wristLeft->add(handLeft);
+    NodeSceneGraph * handLeft=new NodeSceneGraph();
+    handLeft->add(transElbow);
+    handLeft->add(moveElbowLeft);
+    handLeft->add(transHandLeft);
+    //handLeft->add(scaleHandInvert);
+    handLeft->add(rotateYHand);
+    handLeft->add(materialCollect->getMaterial(mARMOUR));
+    handLeft->add(meshCollect->getMesh(HANDS));
+    handLeft->add(tranShield);
+    handLeft->add(materialCollect->getMaterial(mSHIELD));
+    handLeft->add(meshCollect->getMesh(SHIELD));
 
     //Shoulder
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
-    shoulderLeft->add(scaleShoulder);
-    shoulderLeft->add(rotateXShoulder);
-    shoulderLeft->add(materialCollect->getMaterial(mENEMY));
+    shoulderLeft->add(materialCollect->getMaterial(mARMOUR));
     shoulderLeft->add(meshCollect->getMesh(TOPARM));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
-    shoulderRight->add(rotateXShoulder);
     shoulderRight->add(rotateShoulder);
-    shoulderRight->add(scaleShoulder);
-    shoulderRight->add(materialCollect->getMaterial(mENEMY));
+    shoulderRight->add(materialCollect->getMaterial(mARMOUR));
     shoulderRight->add(meshCollect->getMesh(TOPARM));
 
     //Arm left
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
-    ArmLeft->add(moveArmLeft);
     ArmLeft->add(transArms);
-    ArmLeft->add(elbow_wristLeft);
-    //ArmLeft->add(scaleArmTop);
+    ArmLeft->add(moveArmLeft);
+    ArmLeft->add(handLeft);
     ArmLeft->add(shoulderLeft);
 
 
     //Arm Right
     NodeSceneGraph * ArmRight=new NodeSceneGraph();
-    ArmRight->add(moveArmRight);
     ArmRight->add(transArms);
-    ArmRight->add(elbow_wristRight);
-    //ArmRight->add(scaleArmTop);
+    ArmRight->add(moveArmRight);
+    ArmRight->add(handRight);
     ArmRight->add(shoulderRight);
 
     //////////////////////////////////////////////////////
@@ -332,107 +188,59 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     AvatarMove::moveAvatar->translation(position.x,position.y,position.z);
     root->add(AvatarMove::moveAvatar);
 
-    Matrix4f *mat=new Matrix4f();
-    mat->translation(-0.8,0.0,0.0);
+    Matrix4f *transLegScene=new Matrix4f();
+    transLegScene->translation(-0.6,0.0,0.0);
 
-    Matrix4f *mat2=new Matrix4f();
-    mat2->translation(0.4,0.0,0.0);
+    Matrix4f *transLegSceneI=new Matrix4f();
+    transLegSceneI->translation(0.3,0.97,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
     scaleHero->scale(0.5,0.5,0.5);
 
-    Matrix4f *trasn2Arms=new Matrix4f();
-    trasn2Arms->translation(-1.8,0.0,0.0);
+    Matrix4f * trasnArms=new Matrix4f();
+    trasnArms->translation(-1.0,0.0,0.0);
 
-    Matrix4f *trasn2Arms2=new Matrix4f();
-    trasn2Arms2->translation(0.9,0.7,0.0);
-
-    Matrix4f *scaleArmour=new Matrix4f();
-    scaleArmour->scale(0.3,0.3,0.25);
-
-    Matrix4f *scaleArmour2=new Matrix4f();
-    scaleArmour2->scale(0.3,0.3,0.3);
-
-    Matrix4f *transArmourChest=new Matrix4f();
-    transArmourChest->translation(0.0,1.3,0.0);
-
-    Matrix4f *scaleArmourChest=new Matrix4f();
-    scaleArmourChest->scale(0.25,0.28,0.28);
-    //scaleArmourChest->scale(1.2,1.2,1.4);
-
-    Matrix4f *transArmour=new Matrix4f();
-    transArmour->translation(0.0,1.8,0.0);
-
-    Matrix4f *scaleHip=new Matrix4f();
-    scaleHip->scale(0.9,0.5,0.6);
-
-    Matrix4f *scaleHead=new Matrix4f();
-    scaleHead->scale(3.5,3.5,3.5);
+    Matrix4f *trasnArmsI=new Matrix4f();
+    trasnArmsI->translation(0.5,0.83,0.2);
 
     Matrix4f *transHead=new Matrix4f();
-    transHead->translation(0.0,2.5,0.2);
+    transHead->translation(0.0,2.5,0.0);
 
     Matrix4f *transChest=new Matrix4f();
     transChest->translation(0.0,1.1,0.0);
 
-    Matrix4f *transHip=new Matrix4f();
-    transHip->translation(0.0,0.0,0.0);
-
-    Matrix4f *scaleChest=new Matrix4f();
-    scaleChest->scale(1.0,0.9,0.6);
-
-    NodeSceneGraph * armourNode=new NodeSceneGraph();
-    armourNode->add(transArmour);
-    armourNode->add(scaleArmour);
-    armourNode->add(materialCollect->getMaterial(mARMOUR));
-    //armourNode->add(meshCollect->getMesh(ARMOUR));
-
-    NodeSceneGraph * armour2Node=new NodeSceneGraph();
-    armour2Node->add(scaleArmour2);
-    armour2Node->add(materialCollect->getMaterial(mARMOUR));
-    //armour2Node->add(meshCollect->getMesh(ARMOUR2));
-
-    NodeSceneGraph * armourChestNode=new NodeSceneGraph();
-    armourChestNode->add(transArmourChest);
-    armourChestNode->add(scaleArmourChest);
-    armourChestNode->add(materialCollect->getMaterial(mARMOUR));
-    //armourChestNode->add(meshCollect->getMesh(ARMOURCHEST));
-
     NodeSceneGraph * chestNode=new NodeSceneGraph();
-    chestNode->add(scaleChest);
-    chestNode->add(materialCollect->getMaterial(mENEMY));
+    chestNode->add(materialCollect->getMaterial(mARMOUR));
     chestNode->add(meshCollect->getMesh(CHEST));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
-    //headNode->add(scaleHead);
-    headNode->add(materialCollect->getMaterial(mENEMY));
-    headNode->add(meshCollect->getMesh(EHEAD));
+    headNode->add(materialCollect->getMaterial(mARMOUR));
+    headNode->add(meshCollect->getMesh(HEAD));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
     chest_ArmsNode->add(transChest);
     chest_ArmsNode->add(chestNode);
-    chest_ArmsNode->add(trasn2Arms2);
+    chest_ArmsNode->add(trasnArmsI);
     chest_ArmsNode->add(ArmLeft);
-    chest_ArmsNode->add(trasn2Arms);
+    chest_ArmsNode->add(trasnArms);
     chest_ArmsNode->add(ArmRight);
 
     root->add(scaleHero);
-    root->add(materialCollect->getMaterial(mENEMY));
-    root->add(armourChestNode);
-    //root->add(armourChestTestNode);
-    root->add(armour2Node);
-    root->add(armourNode);
+    root->add(materialCollect->getMaterial(mWOOD));
     root->add(headNode);
     root->add(chest_ArmsNode);
-    root->add(mat2);
-    root->add(materialCollect->getMaterial(mENEMY));
+    root->add(transLegSceneI);
+    root->add(materialCollect->getMaterial(mWOOD));
     root->add(legLeft);
-    root->add(mat);
+    root->add(transLegScene);
     root->add(legRight);
     currentTime=SDL_GetTicks();
     jumpDelay=currentTime;
     hitDelay=currentTime;
+
+    //Init all animations of our hero
+    initAnimation();
 }
 
 //**********************************************************************//
@@ -517,17 +325,17 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
             moveMatrix[i]->identity();
         Matrix4f rot;
         rot.rotation(30,0,0,1);
-        moveMatrix[6]->setMatrix(rot.getMatrix());
+        moveMatrix[4]->setMatrix(rot.getMatrix());
         rot.rotation(-30,0,0,1);
-        moveMatrix[7]->setMatrix(rot.getMatrix());
+        moveMatrix[5]->setMatrix(rot.getMatrix());
     }
     else if(isJumping){
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
         Matrix4f rot;
         rot.rotation(30,1,0,0);
-        moveMatrix[6]->setMatrix(rot.getMatrix());
-        moveMatrix[7]->setMatrix(rot.getMatrix());
+        moveMatrix[4]->setMatrix(rot.getMatrix());
+        moveMatrix[5]->setMatrix(rot.getMatrix());
     }
 
     currentTime+=(time-currentTime);
@@ -598,5 +406,57 @@ bool Enemy::detectHit(vec3f posHero,avatarDirection dirHero){
 
  float Enemy::getLife(){
     return life;
+ }
+
+
+//**********************************************************************//
+//                              PRIVATE                                 //
+//**********************************************************************//
+
+ void Enemy::initAnimation(){
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
+    MatrixStatic * notMove=new MatrixStatic();
+
+    //Movement to the first leg
+    MatrixScript * LegScriptLeft=new MatrixScript();
+    LegScriptLeft->add(0.5,oscillateLeg);
+    LegScriptLeft->add(0.5,oscillateLegSecond);
+
+
+    //Movement to the second leg
+    MatrixScript * LegScriptRight=new MatrixScript();
+    LegScriptRight->add(0.5,oscillateLegSecond);
+    LegScriptRight->add(0.5,oscillateLeg);
+
+    //Add the script to our animation
+    animation.add(LegScriptRight);
+    animation.add(LegScriptLeft);
+
+    //Matrix4fDinamic
+    OscillateRotation * oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
+
+    //Movement to the first arm
+    MatrixScript * ElbowScriptLeft=new MatrixScript();
+    MatrixScript * ArmScriptLeft=new MatrixScript();
+    ElbowScriptLeft->add(0.5,notMove);
+    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,oscillateShoulder);
+    ArmScriptLeft->add(0.5,notMove);
+
+    //Movement to the second arm
+    MatrixScript * ElbowScriptRight=new MatrixScript();
+    MatrixScript * ArmScriptRight=new MatrixScript();
+    ElbowScriptRight->add(0.5,notMove);
+    ElbowScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,oscillateShoulder);
+
+
+    //Add the script to our animation
+    animation.add(ElbowScriptRight);
+    animation.add(ElbowScriptLeft);
+    animation.add(ArmScriptRight);
+    animation.add(ArmScriptLeft);
  }
 
