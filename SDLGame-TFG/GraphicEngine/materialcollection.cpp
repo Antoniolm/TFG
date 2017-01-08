@@ -86,6 +86,10 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/actionDialog.png");
     collection.push_back(material);
 
+    //Scene Material
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/furniture.png");
+    collection.push_back(material);
+
 
     //Create our map
     enumMap.insert(pair<string,materialElement> ("mCUBE_GRASS",mCUBE_GRASS));
@@ -108,6 +112,7 @@ MaterialCollection::MaterialCollection()
     enumMap.insert(pair<string,materialElement> ("mDHAND",mDHAND));
     enumMap.insert(pair<string,materialElement> ("mDIALOG",mDIALOG));
     enumMap.insert(pair<string,materialElement> ("mADIALOG",mADIALOG));
+    enumMap.insert(pair<string,materialElement> ("mFURNITURE",mFURNITURE));
 }
 
 //**********************************************************************//

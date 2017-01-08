@@ -67,7 +67,7 @@ bool Window::createWindow(){
         SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,16);
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
 
-        window = SDL_CreateWindow(title.c_str() , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, height, width, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE);
+        window = SDL_CreateWindow(title.c_str() , 20, SDL_WINDOWPOS_CENTERED, height, width, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE);
 		if (window == NULL) {
 			printf("SDL_Error: %s\n", SDL_GetError());
 			salida=false;

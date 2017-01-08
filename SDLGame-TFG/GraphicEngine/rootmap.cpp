@@ -220,6 +220,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
         pos=objs[i]->getPosition();
         bounding=objs[i]->getBoundingBox();
         bounding.minValue.z+=0.1;
+        bounding.minValue.x-=0.1;
 
         for(int x=bounding.minValue.x;x<bounding.maxValue.x;x++){
             for(int z=bounding.minValue.z;z<bounding.maxValue.z;z++){

@@ -47,7 +47,8 @@ enum materialElement{
     mENEMY,      //13
     mDHAND,      //14
     mDIALOG,     //15
-    mADIALOG     //16
+    mADIALOG,     //16
+    mFURNITURE
 };
 
 

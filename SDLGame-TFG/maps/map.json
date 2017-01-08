@@ -35,22 +35,7 @@
     ],
 
     "particleSystem":[
-            {   "number":100,
-                "material":"mWATER",
-                "minPosition":[1.0,1.0,-1.0],
-                "maxPosition":[2.0,1.0,-2.0],
-                "velocity":[0.0,1.0,0.0],
-                "minLife":500,
-                "maxLife":1000
-            },
-            {   "number":50,
-                "material":"mCUBE_LAND",
-                "minPosition":[3.0,1.0,-1.0],
-                "maxPosition":[4.0,1.0,-4.0],
-                "velocity":[0.0,2.0,0.0],
-                "minLife":500,
-                "maxLife":1000
-            }
+        
     ],
 
 
@@ -122,7 +107,7 @@
             {   "position":[0,4.5,1],
                 "YNumber":4,        
                 "XNumber":1,         
-                "ZNumber":7,         
+                "ZNumber":14,         
                 "materialTop":"mCUBE_WALL",
                 "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE", 
@@ -131,7 +116,7 @@
             {   "position":[1,0.5,2],
                 "YNumber":1,        
                 "XNumber":7,         
-                "ZNumber":6,         
+                "ZNumber":13,         
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_LAND", 
                 "mesh":"CUBE", 
@@ -248,7 +233,7 @@
                 "materialMiddle":"mCUBE_LAND",
                 "mesh":"CUBE", 
                 "damage":0.0  },
-            {   "position":[1,4.5,8],
+            {   "position":[1,4.5,14],
                 "YNumber":4,  
                 "XNumber":7,    
                 "ZNumber":1,
@@ -281,7 +266,7 @@
                     {   "translation":true,
                         "scale":false,
                         "rotation":false,
-                        "values":[7.0,1.8,-5.9]
+                        "values":[4.0,1.8,-11.9]
                     },
                     {   "translation":false,
                         "scale":true,
@@ -297,7 +282,23 @@
                     {   "translation":true,
                         "scale":false,
                         "rotation":false,
-                        "values":[2.0,2.3,-7.5]
+                        "values":[1.5,2.3,-4.5]
+                    },
+                    {   "translation":false,
+                        "scale":true,
+                        "rotation":false,
+                        "values":[0.9,0.9,1.0]
+                    }
+                ],       
+                "material":"mFURNITURE",
+                "mesh":"CUPBOARD",
+                "collision": true
+            },
+            {   "transforms":[
+                    {   "translation":true,
+                        "scale":false,
+                        "rotation":false,
+                        "values":[2.0,1.7,-13.5]
                     },
                     {   "translation":false,
                         "scale":true,
@@ -311,9 +312,30 @@
                     }
                 ],       
                 "material":"mFURNITURE",
-                "mesh":"CUPBOARD",
+                "mesh":"BEDSIDETABLE",
                 "collision": true
-            }      
+            },
+            {   "transforms":[
+                    {   "translation":true,
+                        "scale":false,
+                        "rotation":false,
+                        "values":[6.0,1.7,-13.5]
+                    },
+                    {   "translation":false,
+                        "scale":true,
+                        "rotation":false,
+                        "values":[0.9,0.9,1.0]
+                    },
+                    {   "translation":false,
+                        "scale":false,
+                        "rotation":true,
+                        "values":[90,0.0,1.0,0.0]
+                    }
+                ],       
+                "material":"mFURNITURE",
+                "mesh":"BEDSIDETABLE",
+                "collision": true
+            }        
     ]
 
 

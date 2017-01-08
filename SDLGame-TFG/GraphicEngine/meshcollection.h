@@ -48,7 +48,10 @@ enum meshElement{
     EHEAD,
     ECHEST,
     EHAND,
-    EFOOT
+    EFOOT,
+    BED,
+    CUPBOARD,
+    BEDSIDETABLE
 };
 
 class MeshCollection

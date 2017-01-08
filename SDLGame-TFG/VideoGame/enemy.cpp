@@ -165,10 +165,10 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     root->add(AvatarMove::moveAvatar);
 
     Matrix4f *transLegScene=new Matrix4f();
-    transLegScene->translation(-0.6,0.0,0.0);
+    transLegScene->translation(-0.4,0.0,0.0);
 
     Matrix4f *transLegSceneI=new Matrix4f();
-    transLegSceneI->translation(0.3,0.97,0.0);
+    transLegSceneI->translation(0.2,0.97,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
     scaleHero->scale(0.5,0.5,0.5);

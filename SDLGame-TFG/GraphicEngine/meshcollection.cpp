@@ -142,6 +142,20 @@ MeshCollection::MeshCollection()
     element->init();
     collection.push_back(element);
 
+    //scene mesh
+    //Mesh 19
+    element=new Mesh("geometries/bed.obj");
+    element->init();
+    collection.push_back(element);
+
+    element=new Mesh("geometries/cupBoard.obj");
+    element->init();
+    collection.push_back(element);
+
+    element=new Mesh("geometries/bedsideTable.obj");
+    element->init();
+    collection.push_back(element);
+
     //Create our map
     enumMap.insert(pair<string,meshElement> ("CUBE",CUBE));
     enumMap.insert(pair<string,meshElement> ("FENCE",FENCE));
@@ -166,6 +180,9 @@ MeshCollection::MeshCollection()
     enumMap.insert(pair<string,meshElement> ("ECHEST",ECHEST));
     enumMap.insert(pair<string,meshElement> ("EHAND",EHAND));
     enumMap.insert(pair<string,meshElement> ("EFOOT",EFOOT));
+    enumMap.insert(pair<string,meshElement> ("BED",BED));
+    enumMap.insert(pair<string,meshElement> ("CUPBOARD",CUPBOARD));
+    enumMap.insert(pair<string,meshElement> ("BEDSIDETABLE",BEDSIDETABLE));
 }
 
 //**********************************************************************//

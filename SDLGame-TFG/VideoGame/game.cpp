@@ -26,7 +26,7 @@ Game* Game::instance = NULL;
 
 Game::Game(){
     window=Window::getInstance();
-    window->setParameters("SDL_Game",800,600);
+    window->setParameters("SDL_Game",1100,900);
     window->createWindow();
 
     //Create our shader
@@ -88,7 +88,7 @@ void Game::loop(){
     vec3f direction(2.0,3.0,0.0);
     vec3f up(0.0,1.0,0.0);
     Camera camera;
-    camera.setPerspectiveProjection(30.0f,(float)( 800.0f / 600.0f), 0.1f, 200.0f);
+    camera.setPerspectiveProjection(30.0f,(float)( 1100.0f / 900.0f), 0.1f, 200.0f);
     camera.setOrthographicProjection(-1,1,-1,1,-3,3);
     camera.setCamera(position,direction,up);
     camera.createCamera();
