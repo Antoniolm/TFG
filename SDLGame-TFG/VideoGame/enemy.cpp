@@ -66,15 +66,15 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
     legLeft->add(transLeg);
-    legLeft->add(materialCollect->getMaterial(mARMOUR));
-    legLeft->add(meshCollect->getMesh(KNEE2));
+    legLeft->add(materialCollect->getMaterial(mENEMY));
+    legLeft->add(meshCollect->getMesh(EFOOT));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
     legRight->add(transLeg);
-    legRight->add(materialCollect->getMaterial(mARMOUR));
-    legRight->add(meshCollect->getMesh(KNEE));
+    legRight->add(materialCollect->getMaterial(mENEMY));
+    legRight->add(meshCollect->getMesh(EFOOT));
 
     //////////////////////////////////////////////////////
     /////                  Arms                      /////
@@ -123,7 +123,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     transElbow->translation(0.0,-0.4,0.0);
 
     Matrix4f * transArms=new Matrix4f();
-    transArms->translation(0.0,-0.5,-0.2);
+    transArms->translation(0.0,-0.3,-0.2);
 
     //Arms
     NodeSceneGraph * handRight=new NodeSceneGraph();
@@ -142,22 +142,11 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     handLeft->add(materialCollect->getMaterial(mENEMY));
     handLeft->add(meshCollect->getMesh(EHAND));
 
-    //Shoulder
-    NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
-    shoulderLeft->add(materialCollect->getMaterial(mARMOUR));
-    shoulderLeft->add(meshCollect->getMesh(TOPARM));
-
-    NodeSceneGraph * shoulderRight=new NodeSceneGraph();
-    shoulderRight->add(rotateShoulder);
-    shoulderRight->add(materialCollect->getMaterial(mARMOUR));
-    shoulderRight->add(meshCollect->getMesh(TOPARM));
-
     //Arm left
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
     ArmLeft->add(transArms);
     ArmLeft->add(moveArmLeft);
     ArmLeft->add(handLeft);
-    ArmLeft->add(shoulderLeft);
 
 
     //Arm Right
@@ -165,7 +154,6 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     ArmRight->add(transArms);
     ArmRight->add(moveArmRight);
     ArmRight->add(handRight);
-    ArmRight->add(shoulderRight);
 
     //////////////////////////////////////////////////////
     /////         Construction of the hero           /////
@@ -186,16 +174,16 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     scaleHero->scale(0.5,0.5,0.5);
 
     Matrix4f * trasnArms=new Matrix4f();
-    trasnArms->translation(-1.0,0.0,0.0);
+    trasnArms->translation(-0.6,0.0,0.0);
 
     Matrix4f *trasnArmsI=new Matrix4f();
-    trasnArmsI->translation(0.5,0.3,0.2);
+    trasnArmsI->translation(0.3,0.3,0.3);
 
     Matrix4f *transHead=new Matrix4f();
-    transHead->translation(0.0,2.5,0.0);
+    transHead->translation(0.0,1.8,0.0);
 
     Matrix4f *transChest=new Matrix4f();
-    transChest->translation(0.0,2.0,-0.3);
+    transChest->translation(0.0,1.3,-0.3);
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(materialCollect->getMaterial(mENEMY));
