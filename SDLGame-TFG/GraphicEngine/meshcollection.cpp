@@ -132,6 +132,11 @@ MeshCollection::MeshCollection()
     element->init();
     collection.push_back(element);
 
+    //Mesh 19
+    element=new Mesh("geometries/enemyHand.obj");
+    element->init();
+    collection.push_back(element);
+
     //Create our map
     enumMap.insert(pair<string,meshElement> ("CUBE",CUBE));
     enumMap.insert(pair<string,meshElement> ("FENCE",FENCE));
@@ -154,6 +159,7 @@ MeshCollection::MeshCollection()
     enumMap.insert(pair<string,meshElement> ("COIN",COIN));
     enumMap.insert(pair<string,meshElement> ("EHEAD",EHEAD));
     enumMap.insert(pair<string,meshElement> ("ECHEST",ECHEST));
+    enumMap.insert(pair<string,meshElement> ("EHAND",EHAND));
 }
 
 //**********************************************************************//
