@@ -338,6 +338,49 @@ bool AvatarMove::jump(float time){
 
 //**********************************************************************//
 
+bool AvatarMove::detectHit(vec3f posAvatar,avatarDirection dirAvatar){
+    bool result=false;
+
+    switch(dirAvatar){
+        case FORWARD:
+            if(position.z>posAvatar.z && (position.x>=posAvatar.x-0.3 && position.x<=posAvatar.x+0.3))
+                result=true;
+            break;
+        case BACKWARD:
+            if(position.z<posAvatar.z && (position.x>=posAvatar.x-0.3 && position.x<=posAvatar.x+0.3))
+                result=true;
+            break;
+        case LEFTWARD:
+            if(position.x<posAvatar.x && (position.z>=posAvatar.z-0.3 && position.z<=posAvatar.z+0.3))
+                result=true;
+            break;
+        case RIGHTWARD:
+            if(position.x>posAvatar.x && (position.z>=posAvatar.z-0.3 && position.z<=posAvatar.z+0.3))
+                result=true;
+            break;
+        case FOR_LEFTWARD:
+            if(position.x<posAvatar.x && position.z>posAvatar.z)
+                result=true;
+            break;
+        case FOR_RIGHTWARD:
+            if(position.x>posAvatar.x && position.z>posAvatar.z)
+                result=true;
+            break;
+        case BACK_LEFTWARD:
+            if(position.x<posAvatar.x && position.z<posAvatar.z)
+                result=true;
+            break;
+        case BACK_RIGHTWARD:
+            if(position.x>posAvatar.x && position.z<posAvatar.z)
+                result=true;
+            break;
+    }
+
+    return result;
+}
+
+//**********************************************************************//
+
 vec3f AvatarMove::getPosition(){
     return vec3f(position.x,position.y,position.z);
 }

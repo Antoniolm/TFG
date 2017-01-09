@@ -266,7 +266,6 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
                 activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
             }
-            isHitting=false;
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
             isHitting=true;
@@ -319,6 +318,9 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         animationHit.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
+
+        if(animationHit.getScriptState(3)==3 || animationHit.getScriptState(4)==1)
+            isHitting=false;
     }
 
     currentTime+=(time-currentTime);
@@ -340,49 +342,6 @@ bool Enemy::isActivate(){
 
 vec3f Enemy::getRadioActivity(){
     return radioActivity;
-}
-
-//**********************************************************************//
-
-bool Enemy::detectHit(vec3f posHero,avatarDirection dirHero){
-    bool result=false;
-
-    switch(dirHero){
-        case FORWARD:
-            if(position.z>posHero.z && (position.x>=posHero.x-0.3 && position.x<=posHero.x+0.3))
-                result=true;
-            break;
-        case BACKWARD:
-            if(position.z<posHero.z && (position.x>=posHero.x-0.3 && position.x<=posHero.x+0.3))
-                result=true;
-            break;
-        case LEFTWARD:
-            if(position.x<posHero.x && (position.z>=posHero.z-0.3 && position.z<=posHero.z+0.3))
-                result=true;
-            break;
-        case RIGHTWARD:
-            if(position.x>posHero.x && (position.z>=posHero.z-0.3 && position.z<=posHero.z+0.3))
-                result=true;
-            break;
-        case FOR_LEFTWARD:
-            if(position.x<posHero.x && position.z>posHero.z)
-                result=true;
-            break;
-        case FOR_RIGHTWARD:
-            if(position.x>posHero.x && position.z>posHero.z)
-                result=true;
-            break;
-        case BACK_LEFTWARD:
-            if(position.x<posHero.x && position.z<posHero.z)
-                result=true;
-            break;
-        case BACK_RIGHTWARD:
-            if(position.x>posHero.x && position.z<posHero.z)
-                result=true;
-            break;
-    }
-
-    return result;
 }
 
 //**********************************************************************//

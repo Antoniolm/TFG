@@ -107,6 +107,7 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
+        bool detectHit(vec3f posAvatar,avatarDirection dirAvatar);
     protected:
         RootMap * currentMap;
         Matrix4f * moveAvatar;

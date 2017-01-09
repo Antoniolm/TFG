@@ -105,7 +105,6 @@ class Enemy: public AvatarMove
     protected:
     private:
         void initAnimation();
-        bool detectHit(vec3f posHero,avatarDirection dirHeros);
         vector<Matrix4f *> moveMatrix;
         ScriptLMD animation,animationHit;
         vec3f radioActivity;
