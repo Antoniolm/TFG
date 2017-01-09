@@ -92,7 +92,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
 
         //Check if the hero is near to a npc
         distance=(npcs[i]->getPosition())-(posHero);
-        if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1) && !isActivate){
+        if((distance.x>-1 && distance.x<1)&&(distance.y>-2 && distance.y<2)&&(distance.z>-1 && distance.z<1) && !isActivate){
             hero->activateDialog(true,1);
             hero->setDialog("A",1);
             isNearNpc=true;
@@ -101,7 +101,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
 
     if(isActivate){ //If hero is talking and he is a good distance
         distance=(npcs[currentNpc]->getPosition())-(posHero);
-        if((distance.x<-2 || distance.x>2)||(distance.y<-1 || distance.y>1)||(distance.z<-2 || distance.z>2)){
+        if((distance.x<-2 || distance.x>2)||(distance.y<-2 || distance.y>2)||(distance.z<-2 || distance.z>2)){
             npcs[currentNpc]->activateNpc(false);
             hero->activateDialog(false,0);
         }
@@ -133,7 +133,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
         else { //Else Check if hero will start a new conversation.
             for(unsigned j=0;j<npcs.size();j++){
                 distance=(npcs[j]->getPosition())-(posHero);
-                if((distance.x>-1 && distance.x<1)&&(distance.y>-1 && distance.y<1)&&(distance.z>-1 && distance.z<1)){
+                if((distance.x>-1 && distance.x<1)&&(distance.y>-2 && distance.y<2)&&(distance.z>-1 && distance.z<1)){
                     npcs[j]->activateNpc(true);
                     hero->activateDialog(false,1);
                     //Check the speaker

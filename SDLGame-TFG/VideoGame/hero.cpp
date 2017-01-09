@@ -206,16 +206,20 @@ Hero::Hero()
     /////         Construction of the hero           /////
     //////////////////////////////////////////////////////
 
+    Matrix4f * moveBodyHead=new Matrix4f();
+    moveBodyHead->identity();
+    moveMatrix.push_back(moveBodyHead);
+
     //Movement for our hero
     AvatarMove::moveAvatar= new Matrix4f();
     AvatarMove::moveAvatar->translation(1.5,2.5,-2.5);
     root->add(AvatarMove::moveAvatar);
 
     Matrix4f *transLegScene=new Matrix4f();
-    transLegScene->translation(-0.6,0.0,0.0);
+    transLegScene->translation(-0.5,0.0,0.0);
 
     Matrix4f *transLegSceneI=new Matrix4f();
-    transLegSceneI->translation(0.3,0.97,0.0);
+    transLegSceneI->translation(0.25,0.97,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
     scaleHero->scale(0.5,0.5,0.5);
@@ -227,7 +231,7 @@ Hero::Hero()
     trasnArmsI->translation(0.5,0.83,0.2);
 
     Matrix4f *transHead=new Matrix4f();
-    transHead->translation(0.0,2.5,0.0);
+    transHead->translation(0.0,1.4,0.0);
 
     Matrix4f *transChest=new Matrix4f();
     transChest->translation(0.0,1.1,0.0);
@@ -241,18 +245,19 @@ Hero::Hero()
     headNode->add(materialCollect->getMaterial(mARMOUR));
     headNode->add(meshCollect->getMesh(HEAD));
 
-    NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
-    chest_ArmsNode->add(transChest);
-    chest_ArmsNode->add(chestNode);
-    chest_ArmsNode->add(trasnArmsI);
-    chest_ArmsNode->add(ArmLeft);
-    chest_ArmsNode->add(trasnArms);
-    chest_ArmsNode->add(ArmRight);
+    NodeSceneGraph * chest_Arms_HeadNode=new NodeSceneGraph();
+    chest_Arms_HeadNode->add(transChest);
+    chest_Arms_HeadNode->add(moveBodyHead);
+    chest_Arms_HeadNode->add(headNode);
+    chest_Arms_HeadNode->add(chestNode);
+    chest_Arms_HeadNode->add(trasnArmsI);
+    chest_Arms_HeadNode->add(ArmLeft);
+    chest_Arms_HeadNode->add(trasnArms);
+    chest_Arms_HeadNode->add(ArmRight);
 
     root->add(scaleHero);
     root->add(materialCollect->getMaterial(mWOOD));
-    root->add(headNode);
-    root->add(chest_ArmsNode);
+    root->add(chest_Arms_HeadNode);
     root->add(transLegSceneI);
     root->add(materialCollect->getMaterial(mWOOD));
     root->add(legLeft);
@@ -466,7 +471,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
 
     for(unsigned i=0;i<texts.size();i++)
         if(activatedTexts[i])
-            texts[i]->setPosition(vec3f(position.x,position.y+1.5f,position.z));
+            texts[i]->setPosition(vec3f(position.x,position.y+2.0f,position.z));
 
     //If hero does not take a coin in the last 300 ms
     if(coinDelay<time-700)
@@ -488,7 +493,7 @@ void Hero::enableSound(bool value){
 //**********************************************************************//
 
 void Hero::setDialog(string message,int index){
-    texts[index]->setPosition(vec3f(position.x,position.y+1.5f,position.z));
+    texts[index]->setPosition(vec3f(position.x,position.y+2.0f,position.z));
     texts[index]->setMessage(message);
     texts[index]->init();
 }
@@ -555,25 +560,36 @@ bool Hero::isHit(){
 //**********************************************************************//
 
  void Hero::initAnimation(){
-    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
-    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
+
+    //////////////////////////////////
+    // Move Animation
+    /////////////////////////////////
+
+    ///////////////////
+    // LEG
+    //////////////////
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,30,0,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-30,1,150,vec3f(1,0,0),1);
     MatrixStatic * notMove=new MatrixStatic();
 
     //Movement to the first leg
     MatrixScript * LegScriptLeft=new MatrixScript();
-    LegScriptLeft->add(0.5,oscillateLeg);
-    LegScriptLeft->add(0.5,oscillateLegSecond);
+    LegScriptLeft->add(0.3,oscillateLeg);
+    LegScriptLeft->add(0.3,oscillateLegSecond);
 
 
     //Movement to the second leg
     MatrixScript * LegScriptRight=new MatrixScript();
-    LegScriptRight->add(0.5,oscillateLegSecond);
-    LegScriptRight->add(0.5,oscillateLeg);
+    LegScriptRight->add(0.3,oscillateLegSecond);
+    LegScriptRight->add(0.3,oscillateLeg);
 
     //Add the script to our animation
     animation.add(LegScriptRight);
     animation.add(LegScriptLeft);
 
+    ///////////////////
+    // ARM
+    //////////////////
     //Matrix4fDinamic
     OscillateRotation * oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
 
@@ -599,6 +615,20 @@ bool Hero::isHit(){
     animation.add(ElbowScriptLeft);
     animation.add(ArmScriptRight);
     animation.add(ArmScriptLeft);
+
+    ///////////////////
+    // BODY
+    //////////////////
+    //Matrix4fDinamic
+    OscillateRotation * oscillateBody=new OscillateRotation(true,5,0,1,25,vec3f(0,0,1),1);
+    OscillateRotation * oscillateBodySecond=new OscillateRotation(false,0,-5,1,25,vec3f(0,0,1),1);
+
+    //Movement to the first arm
+    MatrixScript * bodyScript=new MatrixScript();
+    bodyScript->add(0.3,oscillateBody);
+    bodyScript->add(0.3,oscillateBodySecond);
+
+    animation.add(bodyScript);
 
     /////////////////////////////////
     // ANIMATION HIT
@@ -665,4 +695,13 @@ bool Hero::isHit(){
     animationHit.add(ElbowScriptLeft);  //5
     animationHit.add(ArmScriptRight);   //6
     animationHit.add(ArmScriptLeft);    //7
+
+    ///////////////////
+    // BODY
+    //////////////////
+    //Movement to the first arm
+    bodyScript=new MatrixScript();
+    bodyScript->add(0.3,notMove);
+
+    animationHit.add(bodyScript);
  }
