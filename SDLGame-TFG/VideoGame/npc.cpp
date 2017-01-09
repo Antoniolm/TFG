@@ -29,21 +29,20 @@ Npc::Npc(vec3f aPosition)
     npcActivate=false;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
+    MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
-    Matrix4f * transOneCube=new Matrix4f();
-    transOneCube->translation(position.x,position.y,position.z);
+    Matrix4f * transNPC=new Matrix4f();
+    transNPC->translation(position.x,position.y,position.z);
 
-    Matrix4f * scaleCube=new Matrix4f();
-    scaleCube->scale(0.5,1,0.5);
+    Matrix4f * scaleNPC=new Matrix4f();
+    scaleNPC->scale(0.5,1,0.5);
 
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/wood.png");
-
-    NodeSceneGraph * cubeNode=new NodeSceneGraph();
-    cubeNode->add(transOneCube);
-    cubeNode->add(scaleCube);
-    cubeNode->add(material);
-    cubeNode->add(meshCollect->getMesh(CUBE));
-    root->add(cubeNode);
+    NodeSceneGraph * npcNode=new NodeSceneGraph();
+    npcNode->add(transNPC);
+    //npcNode->add(scaleNPC);
+    npcNode->add(materialCollect->getMaterial(mBUTLER));
+    npcNode->add(meshCollect->getMesh(BUTLER));
+    root->add(npcNode);
 
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);
     currentText=new Text(mDIALOG,font);

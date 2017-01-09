@@ -49,6 +49,7 @@ enum meshElement{
     ECHEST,
     EHAND,
     EFOOT,
+    BUTLER,
     BED,
     CUPBOARD,
     BEDSIDETABLE

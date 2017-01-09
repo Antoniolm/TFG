@@ -142,6 +142,12 @@ MeshCollection::MeshCollection()
     element->init();
     collection.push_back(element);
 
+    //NPC mesh
+    //Mesh 19
+    element=new Mesh("geometries/ghostButler.obj");
+    element->init();
+    collection.push_back(element);
+
     //scene mesh
     //Mesh 19
     element=new Mesh("geometries/bed.obj");
@@ -180,6 +186,7 @@ MeshCollection::MeshCollection()
     enumMap.insert(pair<string,meshElement> ("ECHEST",ECHEST));
     enumMap.insert(pair<string,meshElement> ("EHAND",EHAND));
     enumMap.insert(pair<string,meshElement> ("EFOOT",EFOOT));
+    enumMap.insert(pair<string,meshElement> ("BUTLER",BUTLER));
     enumMap.insert(pair<string,meshElement> ("BED",BED));
     enumMap.insert(pair<string,meshElement> ("CUPBOARD",CUPBOARD));
     enumMap.insert(pair<string,meshElement> ("BEDSIDETABLE",BEDSIDETABLE));
