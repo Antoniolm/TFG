@@ -637,8 +637,10 @@ bool Hero::isHit(){
 
     //Movement to the first arm
     MatrixScript * bodyTScript=new MatrixScript();
-    bodyTScript->add(0.3,transBody);
-    bodyTScript->add(0.3,transBodySecond);
+    bodyTScript->add(0.15,transBody);
+    bodyTScript->add(0.15,transBodySecond);
+    bodyTScript->add(0.15,transBody);
+    bodyTScript->add(0.15,transBodySecond);
 
     animation.add(bodyScript);
     animation.add(bodyTScript);
@@ -716,5 +718,9 @@ bool Hero::isHit(){
     bodyScript=new MatrixScript();
     bodyScript->add(0.3,notMove);
 
+    bodyTScript=new MatrixScript();
+    bodyTScript->add(0.3,notMove);
+
     animationHit.add(bodyScript);
+    animationHit.add(bodyTScript);
  }
