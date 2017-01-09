@@ -112,7 +112,7 @@ class Enemy: public AvatarMove
         bool enemyActivate;
         bool activatedDialog;
         Text * currentText;
-        float jumpDelay,hitDelay;
+        float jumpDelay;
 };
 
 #endif // ENEMY_H

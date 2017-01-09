@@ -214,7 +214,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     root->add(legRight);
     currentTime=SDL_GetTicks();
     jumpDelay=currentTime;
-    hitDelay=currentTime;
+    dmgDelay=currentTime;
 
     //Init all animations of our hero
     initAnimation();
@@ -269,16 +269,16 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
             isHitting=true;
-            if(hero->isHit() && hitDelay<(time-700) && detectHit(posHero,dirHero)){ //If the hero is hitting
+            if(hero->isHit() && dmgDelay<(time-700) && detectHit(posHero,dirHero)){ //If the hero is hitting
                 addLife(-10);
                 activatedDialog=true;
                 currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
                 currentText->setMessage("-10");
                 currentText->init();
-                hitDelay=time;
+                dmgDelay=time;
             }
             else { //If the hero is not hitting
-                if(hitDelay<(time-300))
+                if(dmgDelay<(time-300))
                     activatedDialog=false;
             }
         }
@@ -319,8 +319,10 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
 
-        if(animationHit.getScriptState(3)==3 || animationHit.getScriptState(4)==1)
+        if(animationHit.getScriptState(3)==3 || animationHit.getScriptState(4)==1){
             isHitting=false;
+            hero->takeDamage(position,direction,time);
+        }
     }
 
     currentTime+=(time-currentTime);

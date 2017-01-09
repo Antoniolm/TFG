@@ -271,6 +271,7 @@ Hero::Hero()
     currentTime=SDL_GetTicks();
     jumpDelay=currentTime;
     hitDelay=currentTime;
+    dmgDelay=currentTime;
 
     //Init all animations of our hero
     initAnimation();
@@ -558,6 +559,16 @@ bool Hero::isHit(){
     setDialog("+"+convert.str(),2);
 
     activateDialog(true,2);
+ }
+
+ //**********************************************************************//
+
+ void Hero::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float time){
+
+    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(time-700)){
+        addLife(-10);
+        dmgDelay=time;
+    }
  }
 
 //**********************************************************************//
