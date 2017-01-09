@@ -210,6 +210,10 @@ Hero::Hero()
     moveBodyHead->identity();
     moveMatrix.push_back(moveBodyHead);
 
+    Matrix4f * moveTBodyHead=new Matrix4f();
+    moveTBodyHead->identity();
+    moveMatrix.push_back(moveTBodyHead);
+
     //Movement for our hero
     AvatarMove::moveAvatar= new Matrix4f();
     AvatarMove::moveAvatar->translation(1.5,2.5,-2.5);
@@ -247,6 +251,7 @@ Hero::Hero()
 
     NodeSceneGraph * chest_Arms_HeadNode=new NodeSceneGraph();
     chest_Arms_HeadNode->add(transChest);
+    chest_Arms_HeadNode->add(moveTBodyHead);
     chest_Arms_HeadNode->add(moveBodyHead);
     chest_Arms_HeadNode->add(headNode);
     chest_Arms_HeadNode->add(chestNode);
@@ -620,15 +625,23 @@ bool Hero::isHit(){
     // BODY
     //////////////////
     //Matrix4fDinamic
-    OscillateRotation * oscillateBody=new OscillateRotation(true,5,0,1,25,vec3f(0,0,1),1);
-    OscillateRotation * oscillateBodySecond=new OscillateRotation(false,0,-5,1,25,vec3f(0,0,1),1);
+    OscillateRotation * oscillateBody=new OscillateRotation(true,5,0,1,25,vec3f(0,1,0),1);
+    OscillateRotation * oscillateBodySecond=new OscillateRotation(false,0,-5,1,25,vec3f(0,1,0),1);
+    LinearMovement * transBody=new LinearMovement(vec3f(0,2.0,0));
+    LinearMovement * transBodySecond=new LinearMovement(vec3f(0,-2.0,0));
 
     //Movement to the first arm
     MatrixScript * bodyScript=new MatrixScript();
     bodyScript->add(0.3,oscillateBody);
     bodyScript->add(0.3,oscillateBodySecond);
 
+    //Movement to the first arm
+    MatrixScript * bodyTScript=new MatrixScript();
+    bodyTScript->add(0.3,transBody);
+    bodyTScript->add(0.3,transBodySecond);
+
     animation.add(bodyScript);
+    animation.add(bodyTScript);
 
     /////////////////////////////////
     // ANIMATION HIT

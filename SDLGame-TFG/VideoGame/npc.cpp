@@ -35,11 +35,11 @@ Npc::Npc(vec3f aPosition)
     transNPC->translation(position.x,position.y,position.z);
 
     Matrix4f * scaleNPC=new Matrix4f();
-    scaleNPC->scale(0.5,1,0.5);
+    scaleNPC->scale(1.5,1.5,1.5);
 
     NodeSceneGraph * npcNode=new NodeSceneGraph();
     npcNode->add(transNPC);
-    //npcNode->add(scaleNPC);
+    npcNode->add(scaleNPC);
     npcNode->add(materialCollect->getMaterial(mBUTLER));
     npcNode->add(meshCollect->getMesh(BUTLER));
     root->add(npcNode);

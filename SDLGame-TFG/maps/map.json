@@ -35,7 +35,22 @@
     ],
 
     "particleSystem":[
-        
+        {   "number":100,
+            "material":"mWATER",
+            "minPosition":[1.0,1.0,-1.0],
+            "maxPosition":[2.0,1.0,-2.0],
+            "velocity":[0.0,1.0,0.0],
+            "minLife":500,
+            "maxLife":1000
+        },
+        {   "number":50,
+            "material":"mCUBE_LAND",
+            "minPosition":[3.0,1.0,-1.0],
+            "maxPosition":[4.0,1.0,-4.0],
+            "velocity":[0.0,2.0,0.0],
+            "minLife":500,
+            "maxLife":1000
+        }
     ],
 
 
