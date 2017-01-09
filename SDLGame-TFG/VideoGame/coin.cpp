@@ -30,7 +30,6 @@ Coin::Coin(vec3f aPosition,int aValue){
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
     SoundCollection * soundCollect = SoundCollection::getInstance();
 
-
     animationMatrix=new Matrix4f();
     animationMatrix->identity();
 

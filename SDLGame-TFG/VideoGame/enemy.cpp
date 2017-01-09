@@ -249,7 +249,6 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     avatarDirection dirHero=hero->getDirection();
     vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
 
-
     if(time-currentTime>200)
         currentTime=time-50;
 
@@ -434,5 +433,69 @@ bool Enemy::detectHit(vec3f posHero,avatarDirection dirHero){
     animation.add(ElbowScriptLeft);
     animation.add(ArmScriptRight);
     animation.add(ArmScriptLeft);
+
+    /////////////////////////////////
+    // ANIMATION HIT
+    /////////////////////////////////
+    oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
+    oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
+
+    //Movement to the first leg
+    LegScriptLeft=new MatrixScript();
+    LegScriptLeft->add(0.5,notMove);
+    LegScriptLeft->add(0.5,notMove);
+
+
+    //Movement to the second leg
+    LegScriptRight=new MatrixScript();
+    LegScriptRight->add(0.5,notMove);
+    LegScriptRight->add(0.5,notMove);
+
+    //Add the script to our animation
+    animationHit.add(LegScriptRight);
+    animationHit.add(LegScriptLeft);
+
+    //Matrix4fDinamic
+    OscillateRotation * shoulderCharge=new OscillateRotation(false,0,-40,1,250,vec3f(1.0,0.0,0),1);
+    OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
+    Matrix4f * rotateShoulder=new Matrix4f();
+    rotateShoulder->rotation(90,1.0,0.0,0.0);
+
+    Matrix4f * rotateElbow=new Matrix4f();
+    rotateElbow->rotation(-30,1.0,0.0,0.0);
+
+    MatrixStatic *staticShoulder=new MatrixStatic(*rotateShoulder);
+    MatrixStatic *staticElbow=new MatrixStatic(*rotateElbow);
+
+    //Movement to the first arm
+    ElbowScriptLeft=new MatrixScript();
+    ArmScriptLeft=new MatrixScript();
+    ElbowScriptLeft->add(0.5,oscillateElbow);
+    ElbowScriptLeft->add(0.5,staticElbow);
+    ElbowScriptLeft->add(0.5,notMove);
+    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,shoulderCharge);
+    ArmScriptLeft->add(0.5,staticShoulder);
+    ArmScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,notMove);
+
+    //Movement to the second arm
+    ElbowScriptRight=new MatrixScript();
+    ArmScriptRight=new MatrixScript();
+    ElbowScriptRight->add(0.5,notMove);
+    ElbowScriptRight->add(0.5,notMove);
+    ElbowScriptRight->add(0.5,oscillateElbow);
+    ElbowScriptRight->add(0.5,staticElbow);
+    ArmScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,shoulderCharge);
+    ArmScriptRight->add(0.5,staticShoulder);
+
+
+    //Add the script to our animation
+    animationHit.add(ElbowScriptRight); //4
+    animationHit.add(ElbowScriptLeft);  //5
+    animationHit.add(ArmScriptRight);   //6
+    animationHit.add(ArmScriptLeft);    //7
  }
 

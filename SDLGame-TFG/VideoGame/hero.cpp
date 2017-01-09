@@ -487,7 +487,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
 //**********************************************************************//
 
 void Hero::enableSound(bool value){
-    for(int i=0;i<heroSound.size();i++)
+    for(unsigned i=0;i<heroSound.size();i++)
     if(value)
         heroSound[i]->resume();
     else{
@@ -648,7 +648,6 @@ bool Hero::isHit(){
     /////////////////////////////////
     // ANIMATION HIT
     /////////////////////////////////
-    OscillateRotation * oscillateKnee=new OscillateRotation(false,0,-40,1,150,vec3f(1,0,0),2);
     oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
     oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
     notMove=new MatrixStatic();

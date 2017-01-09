@@ -130,7 +130,7 @@ bool Shader::linkShaders(){
 	glDeleteShader(vertexID);
     glDeleteShader(fragmentID);
 
-    return false;
+    return result;
 }
 
 //**********************************************************************//

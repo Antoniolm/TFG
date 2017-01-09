@@ -82,7 +82,7 @@ void NpcList::visualization(Context & cv){
 void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
 
     //Check if the hero is speaking with a avatar
-    bool isActivate=false,isNearNpc=false;vec3f distance,posHero;unsigned currentNpc,nearNpc;
+    bool isActivate=false,isNearNpc=false;vec3f distance,posHero;unsigned currentNpc;
 
     Hero * hero=rootMap->getHero();
     posHero=hero->getPosition();

@@ -107,7 +107,7 @@ class Enemy: public AvatarMove
         void initAnimation();
         bool detectHit(vec3f posHero,avatarDirection dirHeros);
         vector<Matrix4f *> moveMatrix;
-        ScriptLMD animation;
+        ScriptLMD animation,animationHit;
         vec3f radioActivity;
         IAEnemy IA;
         bool enemyActivate;

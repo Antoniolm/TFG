@@ -46,7 +46,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     glUniform1i(glGetUniformLocation(shader.getProgram(), "numActivateLight"), lights.Size()-1);
     Light * light;
 
-    for(int currentLight=0;currentLight<lights.Size();currentLight++){
+    for(unsigned currentLight=0;currentLight<lights.Size();currentLight++){
         //Create our light
         if(lights[currentLight]["type"].GetFloat()==0){
             light=new Light(vec3f(lights[currentLight]["position"][0].GetFloat(), lights[currentLight]["position"][1].GetFloat(), lights[currentLight]["position"][2].GetFloat()),
@@ -71,7 +71,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     /////////////////////////////////////////
     ParticleSystem * pSystem;
     const rapidjson::Value & particleSys=document["particleSystem"];
-    for(int currentPSys=0;currentPSys<particleSys.Size();currentPSys++){
+    for(unsigned currentPSys=0;currentPSys<particleSys.Size();currentPSys++){
         pSystem=new ParticleSystem(particleSys[currentPSys]["number"].GetFloat(),
                                    particleSys[currentPSys]["material"].GetString(),
                                    vec3f(particleSys[currentPSys]["minPosition"][0].GetFloat(), particleSys[currentPSys]["minPosition"][1].GetFloat(), particleSys[currentPSys]["minPosition"][2].GetFloat()),
@@ -89,7 +89,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     int tamX,tamY,tamZ,initialX,initialZ;
     float initialY;
 
-    for(int currentGroup=0;currentGroup<voxelGroup.Size();currentGroup++){
+    for(unsigned currentGroup=0;currentGroup<voxelGroup.Size();currentGroup++){
         //For each group
         tamX=voxelGroup[currentGroup]["XNumber"].GetInt();
         tamY=voxelGroup[currentGroup]["YNumber"].GetInt();
@@ -122,11 +122,11 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     /////////////////////////////////////////
     Matrix4f * transformation;
     const rapidjson::Value & decoObject=document["decorationObject"];
-    for(int currentDeco=0;currentDeco<decoObject.Size();currentDeco++){
+    for(unsigned currentDeco=0;currentDeco<decoObject.Size();currentDeco++){
 
         objNode=new NodeSceneGraph();
 
-        for(int currentTrans=0;currentTrans<decoObject[currentDeco]["transforms"].Size();currentTrans++){
+        for(unsigned currentTrans=0;currentTrans<decoObject[currentDeco]["transforms"].Size();currentTrans++){
             transformation=new Matrix4f();
             if(decoObject[currentDeco]["transforms"][currentTrans]["translation"].GetBool()){ //If is a translation
 
@@ -181,7 +181,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     // Add coins to our map
     /////////////////////////////////////////
     const rapidjson::Value & coinValue=document["coins"];
-    for(int i=0;i<coinValue.Size();i++){
+    for(unsigned i=0;i<coinValue.Size();i++){
         coins.push_back(new Coin(vec3f(coinValue[i]["position"][0].GetFloat(),coinValue[i]["position"][1].GetFloat(),coinValue[i]["position"][2].GetFloat()),
                                  coinValue[i]["value"].GetInt()));
     }
@@ -254,6 +254,11 @@ RootMap::~RootMap()
     MeshCollection * meshCollect= MeshCollection::getInstance();
     delete meshCollect;
 
+    MaterialCollection * materialCollect= MaterialCollection::getInstance();
+    delete materialCollect;
+
+    SoundCollection * soundCollect= SoundCollection::getInstance();
+    delete soundCollect;
 }
 
 //**********************************************************************//

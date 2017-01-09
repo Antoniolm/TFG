@@ -72,7 +72,6 @@ void OscillateRotation::setParameters(bool incre,float maxG,float minG,float ini
 Matrix4f & OscillateRotation::updateState(float time){
     time=time/1000;
 
-    float grade;
     if(currentGrade>= maxGrade && increment){
         increment=false;
         currentLoop++;

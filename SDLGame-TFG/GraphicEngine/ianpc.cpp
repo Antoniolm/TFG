@@ -99,7 +99,7 @@ bool IANpc::isFirstState(){
 bool IANpc::isLastState(){
     bool result=false;
 
-    if(currentState==states.size()-1)
+    if((unsigned)currentState==states.size()-1)
         result=true;
 
     return result;

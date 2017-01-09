@@ -94,7 +94,7 @@ void ObjectScene::generateBoundingbox(){
     vertex.push_back(vec4f(boundingBox.minValue.x,boundingBox.maxValue.y,boundingBox.minValue.z,1.0));   vertex.push_back(vec4f(boundingBox.minValue.x,boundingBox.minValue.y,boundingBox.minValue.z,1.0));
     vertex.push_back(vec4f(boundingBox.maxValue.x,boundingBox.maxValue.y,boundingBox.minValue.z,1.0));   vertex.push_back(vec4f(boundingBox.maxValue.x,boundingBox.minValue.y,boundingBox.minValue.z,1.0));
 
-    for(int i=0;i<vertex.size();i++)
+    for(unsigned i=0;i<vertex.size();i++)
         vertex[i]=matrixBounding.product(vertex[i]);
 
     //Generate the new boundingBox
@@ -104,7 +104,7 @@ void ObjectScene::generateBoundingbox(){
 
     int tam=vertex.size();
 
-    for(int i=1;i<tam;i++){
+    for(unsigned i=1;i<tam;i++){
         if(vertex[i].x >maxX) maxX=vertex[i].x;
         if(vertex[i].y >maxY) maxY=vertex[i].y;
         if(vertex[i].z >maxZ) maxZ=vertex[i].z;

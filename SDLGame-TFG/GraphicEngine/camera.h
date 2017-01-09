@@ -26,6 +26,7 @@
 #include <glew.h>
 #include <SDL.h>
 
+class RootMap;
 class Camera
 {
     public:
@@ -70,7 +71,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setPerspectiveProjection(float fov, float aspect, float near, float far);
+        void setPerspectiveProjection(float fov, float aspect, float nearPro, float farPro);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -84,7 +85,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setOrthographicProjection(float left,float right,float bottom,float top,float near = -1.0f,float far = 1.0f );
+        void setOrthographicProjection(float left,float right,float bottom,float top,float nearPro = -1.0f,float farPro = 1.0f );
 
         //////////////////////////////////////////////////////////////////////////
         /**

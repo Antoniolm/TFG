@@ -130,7 +130,7 @@ void FileObj::readEverything(const char * fileName,std::vector<vec3f> & vertex,s
     }
     if(flagOrigin){
         vec3f origin=calculate_origin(vertexAux);
-        for(int i=0;i< vertexAux.size();i++){
+        for(unsigned i=0;i< vertexAux.size();i++){
             vertexAux[i]=vertexAux[i]-origin;
 
         }
@@ -140,7 +140,7 @@ void FileObj::readEverything(const char * fileName,std::vector<vec3f> & vertex,s
     if(flagNormal)
         calculate_normals(vertexAux,trianglesIndex,normalAux);
 
-    for(int i=0;i<trianglesIndex.size();i++){
+    for(unsigned i=0;i<trianglesIndex.size();i++){
         vertex.push_back(vertexAux[trianglesIndex[i]]);
 
         if(flagNormal)
@@ -158,13 +158,12 @@ void FileObj::readEverything(const char * fileName,std::vector<vec3f> & vertex,s
 void FileObj::calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals){
     //Calculate face normals
     vec3f v1,v2,normalFace;
-	float modulo;
 
-	for(int i=0;i<vertex.size();i++){
+	for(unsigned i=0;i<vertex.size();i++){
 		normals.push_back(vec3f(0.0,0.0,0.0));
 	}
 
-	for(int i=0;i<triangles.size();i=i+3){
+	for(unsigned i=0;i<triangles.size();i=i+3){
         int i0 = triangles[i];
         int i1 = triangles[i + 1];
         int i2 = triangles[i + 2];
@@ -181,7 +180,7 @@ void FileObj::calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort
         normals[i2]=normals[i2] + normalFace;
 	}
 
-    for(int k=0;k<normals.size();k++){
+    for(unsigned k=0;k<normals.size();k++){
         normals[k].normalize();
 	}
 
@@ -194,7 +193,7 @@ vec3f FileObj::calculate_origin(std::vector<vec3f> & vertex){
     maxX=vertex[0].x;  maxY=vertex[0].y;  maxZ=vertex[0].z;
     minX=vertex[0].x;  minY=vertex[0].y;  minZ=vertex[0].z;
 
-    for(int i=1;i<vertex.size();i++){
+    for(unsigned i=1;i<vertex.size();i++){
         if(vertex[i].x >maxX) maxX=vertex[i].x;
         if(vertex[i].y >maxY) maxY=vertex[i].y;
         if(vertex[i].z >maxZ) maxZ=vertex[i].z;

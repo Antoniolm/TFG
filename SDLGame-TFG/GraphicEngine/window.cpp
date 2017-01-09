@@ -86,7 +86,7 @@ bool Window::createWindow(){
         cout << "SDL_ttf could not initialize! SDL_ttf Error:"<< endl;
         salida=false;
     }
-    GLenum err=glewInit();
+    glewInit();
 
     glEnable(GL_DEPTH_TEST);
 

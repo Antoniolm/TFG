@@ -28,8 +28,10 @@ Sound::Sound()
 
 Sound::~Sound()
 {
+    cout<< "LLegamos"<< endl;
     Mix_FreeMusic(music);
     Mix_FreeChunk(effect);
+    cout<< "LLegamos y salimos"<< endl;
 }
 
 //**********************************************************************//

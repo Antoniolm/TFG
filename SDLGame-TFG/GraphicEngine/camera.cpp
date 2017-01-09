@@ -18,6 +18,7 @@
 // *********************************************************************
 
 #include "camera.h"
+#include "rootmap.h"
 
 Camera::Camera(){
 
@@ -51,28 +52,28 @@ void Camera::setCamera(vec3f eye,vec3f aTarget,vec3f aUp){
 
 //**********************************************************************//
 
-void Camera::setPerspectiveProjection(float fov, float aspect, float near, float far){
+void Camera::setPerspectiveProjection(float fov, float aspect, float nearPro, float farPro){
     float f=(float) 1/tan((fov * 3.1416) / 360.0);
 
     //Create the projection
     GLfloat * projec=new GLfloat[16];
     projec[0]=f/(aspect);  projec[1]=0;        projec[2]=0;                          projec[3]=0;
 	projec[4]=0;                projec[5]=f;   projec[6]=0;                          projec[7]=0;
-	projec[8]=0;                projec[9]=0;   projec[10]=(far+near)/(near-far);    projec[11]=-1.0f;
-	projec[12]=0;               projec[13]=0;  projec[14]=(2.0f*far*near)/(near-far); projec[15]=0;
+	projec[8]=0;                projec[9]=0;   projec[10]=(farPro+nearPro)/(nearPro-farPro);    projec[11]=-1.0f;
+	projec[12]=0;               projec[13]=0;  projec[14]=(2.0f*farPro*nearPro)/(nearPro-farPro); projec[15]=0;
 
     perspecProjection.setMatrix(projec);
 }
 
 //**********************************************************************//
 
-void Camera::setOrthographicProjection(float left,float right,float bottom,float top,float near,float far){
+void Camera::setOrthographicProjection(float left,float right,float bottom,float top,float nearPro,float farPro){
 
     //Create the projection
     GLfloat * projec=new GLfloat[16];
     projec[0]=2.0f/(right-left);        projec[1]=0;                        projec[2]=0;                 projec[3]=((right+left)/(right-left));
 	projec[4]=0;                        projec[5]=2.0f/(top-bottom);        projec[6]=0;                 projec[7]=((top+bottom)/(top-bottom));
-	projec[8]=0;                        projec[9]=0;                        projec[10]=-2.0f/(far-near); projec[11]=(far+near)/(far-near);
+	projec[8]=0;                        projec[9]=0;                        projec[10]=-2.0f/(farPro-nearPro); projec[11]=(farPro+nearPro)/(farPro-nearPro);
 	projec[12]=0;                       projec[13]=0;                       projec[14]=0;                projec[15]=1;
 
 	orthoProjection.setMatrix(projec);

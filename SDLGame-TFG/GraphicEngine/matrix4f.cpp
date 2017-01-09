@@ -94,7 +94,6 @@ void Matrix4f::product(const GLfloat * aMatrix){
 
 vec4f Matrix4f::product(const vec4f aVector){
         vec4f result(0.0,0.0,0.0,1.0);
-        GLfloat * newMatrix=new GLfloat[16];
         int cont=0;
 
         for(int j=0;j<4;j++){
