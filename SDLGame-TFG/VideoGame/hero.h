@@ -148,7 +148,6 @@ class Hero: public AvatarMove
         ScriptLMD animationHit;
         vector<Text *> texts;
         vector<bool> activatedTexts;
-        bool isHitting;
         float jumpDelay,hitDelay,coinDelay;
         int currentCoin;
 };

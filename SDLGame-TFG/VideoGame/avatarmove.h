@@ -112,7 +112,7 @@ class AvatarMove: public Avatar
         Matrix4f * moveAvatar;
         avatarDirection direction;
         AcceleratedMovement * acceleratedMove;
-        bool isMoving,isFalling,isJumping,isMoveCollision;
+        bool isMoving,isFalling,isJumping,isMoveCollision,isHitting;
         float currentTime,dmgDelay;
     private:
 };

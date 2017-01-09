@@ -31,6 +31,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     isMoving=false;
     isFalling=false;
     isJumping=false;
+    isHitting=false;
     enemyActivate=false;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
@@ -265,8 +266,10 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
                 activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
             }
+            isHitting=false;
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
+            isHitting=true;
             if(hero->isHit() && hitDelay<(time-700) && detectHit(posHero,dirHero)){ //If the hero is hitting
                 addLife(-10);
                 activatedDialog=true;
@@ -290,7 +293,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     //Update our vec4f position
     position=moveAvatar->product(vec4f());
     //Update Animation
-    if(isMoving && !isFalling && !isJumping){
+    if(isMoving && !isFalling && !isJumping && !isHitting){
         animation.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
@@ -311,6 +314,11 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         rot.rotation(30,1,0,0);
         moveMatrix[4]->setMatrix(rot.getMatrix());
         moveMatrix[5]->setMatrix(rot.getMatrix());
+    }
+    else if(isHitting){
+        animationHit.updateState(time-currentTime);
+        for(unsigned i=0;i<moveMatrix.size();i++)
+            moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
     }
 
     currentTime+=(time-currentTime);
