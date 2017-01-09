@@ -321,7 +321,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
 
         if(animationHit.getScriptState(3)==3 || animationHit.getScriptState(4)==1){
             isHitting=false;
-            hero->takeDamage(position,direction,time);
+            hero->takeDamage(position,direction);
         }
     }
 

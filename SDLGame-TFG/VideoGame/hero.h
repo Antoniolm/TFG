@@ -138,7 +138,7 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void addCoin(int value);
 
-        void takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float time);
+        void takeDamage(vec3f posAvatar,avatarDirection dirAvatar);
     protected:
 
     private:

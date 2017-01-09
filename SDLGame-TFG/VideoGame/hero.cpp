@@ -483,6 +483,10 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     if(coinDelay<time-700)
         activateDialog(false,2);
     currentTime+=(time-currentTime);
+
+    //If hero does not take a coin in the last 300 ms
+    if(dmgDelay<time-1200)
+        activateDialog(false,3);
 }
 
 //**********************************************************************//
@@ -563,11 +567,26 @@ bool Hero::isHit(){
 
  //**********************************************************************//
 
- void Hero::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float time){
+ void Hero::takeDamage(vec3f posAvatar,avatarDirection dirAvatar){
 
-    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(time-700)){
+    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700)){
         addLife(-10);
-        dmgDelay=time;
+        stringstream convert;
+        int value=-10;
+        if(activatedTexts[3]){ //if is activate the text ->//Join values
+            int lastValue;
+            string currentValue=texts[3]->getMessage();
+            lastValue=atoi(currentValue.c_str());
+            value+=lastValue;
+            cout<< value<< endl;
+            cout<< lastValue<<endl;
+        }
+        dmgDelay=currentTime;
+
+        convert << value;
+        setDialog(convert.str(),3);
+
+        activateDialog(true,3);
     }
  }
 
