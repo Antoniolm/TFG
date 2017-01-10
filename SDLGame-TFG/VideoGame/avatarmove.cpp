@@ -382,8 +382,45 @@ bool AvatarMove::detectHit(vec3f posAvatar,avatarDirection dirAvatar){
 //**********************************************************************//
 
 void AvatarMove::activeImpact(avatarDirection dirAvatar){
-    vec3f velocity(10.0,0.0,10.0),acceleration(-5.0,0.0,-5.0);
-    impactMovement=new AcceleratedMovement(velocity.x,velocity.y,velocity.z,acceleration.x,acceleration.y,acceleration.z);
+    vec3f velocity,acceleration;
+    impactTime=currentTime;
+    switch(dirAvatar){
+        case FORWARD:
+            cout<< "FORWARD"<<endl;
+            velocity=vec3f(0.0,0.0,50.0);
+            break;
+        case BACKWARD:
+            cout<< "BACKWARD"<<endl;
+            velocity=vec3f(0.0,0.0,-50.0);
+            break;
+        case LEFTWARD:
+            cout<< "LEFTWARD"<<endl;
+            velocity=vec3f(-50.0,0.0,0.0);
+            break;
+        case RIGHTWARD:
+            cout<< "RIGHTWARD"<<endl;
+             velocity=vec3f(50.0,0.0,0.0);
+            break;
+        case FOR_LEFTWARD:
+            cout<< "FOR_LEFTWARD"<<endl;
+            velocity=vec3f(-50.0,0.0,50.0);
+            break;
+        case FOR_RIGHTWARD:
+            cout<< "FOR_RIGHTWARD"<<endl;
+            velocity=vec3f(50.0,0.0,50.0);
+
+            break;
+        case BACK_LEFTWARD:
+            cout<< "BACK_LEFTWARD"<<endl;
+            velocity=vec3f(-50.0,0.0,-50.0);
+            break;
+        case BACK_RIGHTWARD:
+            cout<< "BACK_RIGHTWARD"<<endl;
+            velocity=vec3f(50.0,0.0,-50.0);
+            break;
+    }
+
+    impactMovement=new LinearMovement(velocity.x,velocity.y,velocity.z);
     isImpacted=true;
 }
 
@@ -392,7 +429,7 @@ void AvatarMove::impactMove(float time){
 
     vec3f posHero=getPosition();
 
-    if(moveGravity[12]>0 || moveGravity[14]>0){
+    if(impactTime>(time-500)){
         moveBody(vec3f(moveGravity[12],moveGravity[13],moveGravity[14]),direction);
     }
     else{

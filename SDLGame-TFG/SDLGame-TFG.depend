@@ -1011,7 +1011,7 @@
 	<stdlib.h>
 	<vector>
 
-1484042420 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1484044796 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1644,14 +1644,15 @@
 	"structdata.h"
 	<SDL.h>
 
-1484042395 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1484044504 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
-1484042238 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
+1484044354 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
 	"avatar.h"
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/acceleratedmovement.h"
+	"../GraphicEngine/linearmovement.h"
 
 1454362933 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\sdl2_ttf-2.0.14\i686-w64-mingw32\include\sdl2\sdl_ttf.h
 	"SDL.h"

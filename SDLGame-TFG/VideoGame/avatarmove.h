@@ -23,6 +23,7 @@
 #include "avatar.h"
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/acceleratedmovement.h"
+#include "../GraphicEngine/linearmovement.h"
 
 class RootMap;
 class AvatarMove: public Avatar
@@ -115,9 +116,10 @@ class AvatarMove: public Avatar
         RootMap * currentMap;
         Matrix4f * moveAvatar;
         avatarDirection direction;
-        AcceleratedMovement * acceleratedMove,* impactMovement;
+        AcceleratedMovement * acceleratedMove;
+        LinearMovement * impactMovement;
         bool isMoving,isFalling,isJumping,isMoveCollision,isHitting,isImpacted;
-        float currentTime,dmgDelay;
+        float currentTime,dmgDelay,impactTime;
     private:
 };
 

@@ -453,7 +453,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     position=moveAvatar->product(vec4f());
 
     //Update Animation
-    if(isMoving && !isFalling && !isJumping && !isHitting){
+    if(isMoving && !isFalling && !isJumping && !isHitting && !isImpacted){
         animation.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
