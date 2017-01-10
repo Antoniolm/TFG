@@ -381,6 +381,29 @@ bool AvatarMove::detectHit(vec3f posAvatar,avatarDirection dirAvatar){
 
 //**********************************************************************//
 
+void AvatarMove::activeImpact(avatarDirection dirAvatar){
+    vec3f velocity(10.0,0.0,10.0),acceleration(-5.0,0.0,-5.0);
+    impactMovement=new AcceleratedMovement(velocity.x,velocity.y,velocity.z,acceleration.x,acceleration.y,acceleration.z);
+    isImpacted=true;
+}
+
+void AvatarMove::impactMove(float time){
+    GLfloat * moveGravity=impactMovement->updateState(time-currentTime).getMatrix();
+
+    vec3f posHero=getPosition();
+
+    if(moveGravity[12]>0 || moveGravity[14]>0){
+        moveBody(vec3f(moveGravity[12],moveGravity[13],moveGravity[14]),direction);
+    }
+    else{
+        isImpacted=false;
+        impactMovement->resetState();
+    }
+
+}
+
+//**********************************************************************//
+
 vec3f AvatarMove::getPosition(){
     return vec3f(position.x,position.y,position.z);
 }

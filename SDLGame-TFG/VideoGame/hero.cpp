@@ -29,6 +29,7 @@ Hero::Hero()
     isFalling=false;
     isJumping=false;
     isHitting=false;
+    isImpacted=false;
     life=150;
     currentCoin=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();
@@ -439,9 +440,14 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         if(heroSound[0]->isPlaying())
             heroSound[0]->stop();
     }
-
     //If the jump is not activate
     else gravity(time);
+
+    //If the jump is activate
+    if(isImpacted){
+        impactMove(time);
+    }
+
 
     //Update our vec4f position
     position=moveAvatar->product(vec4f());
@@ -474,6 +480,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
     }
+
 
     for(unsigned i=0;i<texts.size();i++)
         if(activatedTexts[i])
@@ -565,21 +572,18 @@ bool Hero::isHit(){
     activateDialog(true,2);
  }
 
- //**********************************************************************//
+//**********************************************************************//
 
- void Hero::takeDamage(vec3f posAvatar,avatarDirection dirAvatar){
+ void Hero::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value){
 
     if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700)){
-        addLife(-10);
+        addLife(value);
         stringstream convert;
-        int value=-10;
         if(activatedTexts[3]){ //if is activate the text ->//Join values
             int lastValue;
             string currentValue=texts[3]->getMessage();
             lastValue=atoi(currentValue.c_str());
             value+=lastValue;
-            cout<< value<< endl;
-            cout<< lastValue<<endl;
         }
         dmgDelay=currentTime;
 
@@ -587,9 +591,28 @@ bool Hero::isHit(){
         setDialog(convert.str(),3);
 
         activateDialog(true,3);
+        if(!isImpacted)
+            activeImpact(dirAvatar);
     }
  }
 
+ void Hero::takeDamage(float value){
+
+    addLife(value);
+    stringstream convert;
+    if(activatedTexts[3]){  //if is activate the text ->//Join values
+        int lastValue;
+        string currentValue=texts[3]->getMessage();
+        lastValue=atoi(currentValue.c_str());
+        value+=lastValue;
+    }
+    dmgDelay=currentTime;
+
+    convert << value;
+    setDialog(convert.str(),3);
+
+    activateDialog(true,3);
+ }
 //**********************************************************************//
 //                              PRIVATE                                 //
 //**********************************************************************//

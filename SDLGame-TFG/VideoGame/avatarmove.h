@@ -108,12 +108,15 @@ class AvatarMove: public Avatar
         virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
         bool detectHit(vec3f posAvatar,avatarDirection dirAvatar);
+        void activeImpact(avatarDirection dirAvatar);
+        void impactMove(float time);
+
     protected:
         RootMap * currentMap;
         Matrix4f * moveAvatar;
         avatarDirection direction;
-        AcceleratedMovement * acceleratedMove;
-        bool isMoving,isFalling,isJumping,isMoveCollision,isHitting;
+        AcceleratedMovement * acceleratedMove,* impactMovement;
+        bool isMoving,isFalling,isJumping,isMoveCollision,isHitting,isImpacted;
         float currentTime,dmgDelay;
     private:
 };

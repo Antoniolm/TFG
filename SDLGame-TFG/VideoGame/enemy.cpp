@@ -32,6 +32,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     isFalling=false;
     isJumping=false;
     isHitting=false;
+    isImpacted=false;
     enemyActivate=false;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
@@ -321,7 +322,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
 
         if(animationHit.getScriptState(3)==3 || animationHit.getScriptState(4)==1){
             isHitting=false;
-            hero->takeDamage(position,direction);
+            hero->takeDamage(position,direction,-10);
         }
     }
 
