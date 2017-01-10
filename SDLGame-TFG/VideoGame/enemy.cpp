@@ -262,7 +262,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     if(enemyActivate){ //If enemy is activated
         moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),posHero);
 
-        if(moveHero.second.x!=0.0 || moveHero.second.y!=0.0 || moveHero.second.z!=0.0){ //IA-> is not near of our hero
+        if((moveHero.second.x!=0.0 || moveHero.second.y!=0.0 || moveHero.second.z!=0.0)&& !isImpacted){ //IA-> is not near of our hero
             if(!moveBody(moveHero.second,moveHero.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
                 activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
@@ -277,11 +277,14 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
                 currentText->setMessage("-10");
                 currentText->init();
                 dmgDelay=time;
+                activeImpact(dirHero);
             }
             else { //If the hero is not hitting
                 if(dmgDelay<(time-300))
                     activatedDialog=false;
             }
+            if(isImpacted) //if is impacted
+                impactMove(time);
         }
         if(isJumping){
             jump(time);
