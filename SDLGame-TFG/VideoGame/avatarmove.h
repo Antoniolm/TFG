@@ -118,7 +118,7 @@ class AvatarMove: public Avatar
         avatarDirection direction;
         AcceleratedMovement * acceleratedMove;
         LinearMovement * impactMovement;
-        bool isMoving,isFalling,isJumping,isMoveCollision,isHitting,isImpacted;
+        bool isMoving,isFalling,isJumping,isMoveCollision,isHitting,isImpacted,isShielded;
         float currentTime,dmgDelay,impactTime;
     private:
 };

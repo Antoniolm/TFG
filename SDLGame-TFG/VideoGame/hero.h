@@ -148,6 +148,7 @@ class Hero: public AvatarMove
         vector<Sound *> heroSound;
         ScriptLMD animation;
         ScriptLMD animationHit;
+        ScriptLMD animationShield;
         vector<Text *> texts;
         vector<bool> activatedTexts;
         float jumpDelay,hitDelay,coinDelay;

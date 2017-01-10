@@ -30,6 +30,7 @@ Hero::Hero()
     isJumping=false;
     isHitting=false;
     isImpacted=false;
+    isShielded=false;
     life=150;
     currentCoin=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();
@@ -110,9 +111,17 @@ Hero::Hero()
     moveElbowRight->identity();
     moveMatrix.push_back(moveElbowRight);
 
+    Matrix4f * moveElbowTRight=new Matrix4f();
+    moveElbowTRight->identity();
+    moveMatrix.push_back(moveElbowTRight);
+
     Matrix4f * moveElbowLeft=new Matrix4f();
     moveElbowLeft->identity();
     moveMatrix.push_back(moveElbowLeft);
+
+    Matrix4f * moveElbowTLeft=new Matrix4f();
+    moveElbowTLeft->identity();
+    moveMatrix.push_back(moveElbowTLeft);
 
     Matrix4f * moveArmRight=new Matrix4f();
     moveArmRight->identity();
@@ -159,6 +168,7 @@ Hero::Hero()
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transElbow);
     handRight->add(moveElbowRight);
+    handRight->add(moveElbowTRight);
     handRight->add(transHand);
     handRight->add(materialCollect->getMaterial(mARMOUR));
     handRight->add(meshCollect->getMesh(HAND));
@@ -169,6 +179,7 @@ Hero::Hero()
     NodeSceneGraph * handLeft=new NodeSceneGraph();
     handLeft->add(transElbow);
     handLeft->add(moveElbowLeft);
+    handLeft->add(moveElbowTLeft);
     handLeft->add(transHandLeft);
     //handLeft->add(scaleHandInvert);
     handLeft->add(rotateYHand);
@@ -410,7 +421,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             heroSound[0]->stop();
     }
 
-    //Case-> Push Scape bottom to jump
+    //Case-> Push S bottom to jump
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !isJumping && !isFalling && jumpDelay<(time-600)){
         activeJump(vec3f(velocityHero.x,15.0,velocityHero.y),vec3f(accelerationHero.x,5.0,accelerationHero.z));
         jumpDelay=time;
@@ -429,8 +440,16 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         }
     }
 
+    //Case-> Push W bottom to shield
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)]){ //If hero is shielding
+        isShielded=true;
+    }
+    else { //if not
+        isShielded=false;
+    }
+
     //Move the body
-    if(hasMove && !isImpacted){
+    if(hasMove && !isImpacted && !isShielded){
         moveBody(moveHero,heroDir);
         heroSound[0]->play();
     }
@@ -452,8 +471,10 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     //Update our vec4f position
     position=moveAvatar->product(vec4f());
 
-    //Update Animation
-    if(isMoving && !isFalling && !isJumping && !isHitting && !isImpacted){
+    ////////////////////////////
+    //UPDATE ANIMATION
+    ////////////////////////////
+    if(isMoving && !isFalling && !isJumping && !isHitting && !isImpacted && !isShielded){
         animation.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
@@ -479,6 +500,15 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         animationHit.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
+    }
+    else if(isShielded){
+        cout<<"prueba->"<<endl;
+        animationShield.updateState(time-currentTime);
+        cout<<"prueba1->"<<endl;
+        for(unsigned i=0;i<moveMatrix.size();i++){
+            cout<<"prueba->"<< i<<endl;
+            moveMatrix[i]->setMatrix(animationShield.readMatrix(i).getMatrix());
+        }
     }
 
 
@@ -654,25 +684,32 @@ bool Hero::isHit(){
     //Movement to the first arm
     MatrixScript * ElbowScriptLeft=new MatrixScript();
     MatrixScript * ArmScriptLeft=new MatrixScript();
+    MatrixScript * ElbowScriptTLeft=new MatrixScript();
     ElbowScriptLeft->add(0.5,notMove);
     ElbowScriptLeft->add(0.5,notMove);
     ArmScriptLeft->add(0.5,oscillateShoulder);
     ArmScriptLeft->add(0.5,notMove);
+    ElbowScriptTLeft->add(0.5,notMove);
 
     //Movement to the second arm
     MatrixScript * ElbowScriptRight=new MatrixScript();
     MatrixScript * ArmScriptRight=new MatrixScript();
+    MatrixScript * ElbowScriptTRight=new MatrixScript();
     ElbowScriptRight->add(0.5,notMove);
     ElbowScriptRight->add(0.5,notMove);
     ArmScriptRight->add(0.5,notMove);
     ArmScriptRight->add(0.5,oscillateShoulder);
+    ElbowScriptTRight->add(0.5,notMove);
 
 
     //Add the script to our animation
     animation.add(ElbowScriptRight);
+    animation.add(ElbowScriptTRight);
     animation.add(ElbowScriptLeft);
+    animation.add(ElbowScriptTLeft);
     animation.add(ArmScriptRight);
     animation.add(ArmScriptLeft);
+
 
     ///////////////////
     // BODY
@@ -758,10 +795,13 @@ bool Hero::isHit(){
 
 
     //Add the script to our animation
-    animationHit.add(ElbowScriptRight); //4
-    animationHit.add(ElbowScriptLeft);  //5
-    animationHit.add(ArmScriptRight);   //6
-    animationHit.add(ArmScriptLeft);    //7
+    animationHit.add(ElbowScriptRight);  //4
+    animationHit.add(ElbowScriptTRight);   //7
+    animationHit.add(ElbowScriptLeft);   //5
+    animationHit.add(ElbowScriptTLeft);    //9
+    animationHit.add(ArmScriptRight);    //6
+    animationHit.add(ArmScriptLeft);     //8
+
 
     ///////////////////
     // BODY
@@ -775,4 +815,73 @@ bool Hero::isHit(){
 
     animationHit.add(bodyScript);
     animationHit.add(bodyTScript);
+
+     /////////////////////////////////
+    // ANIMATION SHIELD
+    /////////////////////////////////
+    //Movement to the first leg
+    LegScriptLeft=new MatrixScript();
+    LegScriptLeft->add(0.5,notMove);
+
+    //Movement to the second leg
+    LegScriptRight=new MatrixScript();
+    LegScriptRight->add(0.5,notMove);
+
+    //Add the script to our animation
+    animationShield.add(LegScriptRight);
+    animationShield.add(LegScriptLeft);
+
+    //Matrix4fDinamic
+    shoulderCharge=new OscillateRotation(false,0,-40,1,250,vec3f(1.0,0.0,0),1);
+    oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
+    rotateShoulder=new Matrix4f();
+    rotateShoulder->rotation(90,1.0,0.0,0.0);
+
+    rotateElbow=new Matrix4f();
+    rotateElbow->rotation(45,0.0,0.0,1.0);
+
+    Matrix4f * TransElbow=new Matrix4f();
+    TransElbow->translation(0.0,0.0,1.0);
+
+    staticShoulder=new MatrixStatic(*rotateShoulder);
+    staticElbow=new MatrixStatic(*rotateElbow);
+    MatrixStatic * staticTrans=new MatrixStatic(*TransElbow);
+
+    //Movement to the first arm
+    ElbowScriptLeft=new MatrixScript();
+    ArmScriptLeft=new MatrixScript();
+    ElbowScriptTLeft=new MatrixScript();
+
+    ElbowScriptLeft->add(0.5,staticElbow);
+    ArmScriptLeft->add(0.5,staticShoulder);
+    ElbowScriptTLeft->add(0.5,notMove);
+
+    //Movement to the second arm
+    ElbowScriptRight=new MatrixScript();
+    ArmScriptRight=new MatrixScript();
+    ElbowScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,notMove);
+
+
+    //Add the script to our animation
+    animationShield.add(ElbowScriptRight); //4
+    animationShield.add(ElbowScriptTRight);   //7
+    animationShield.add(ElbowScriptLeft);  //5
+    animationShield.add(ElbowScriptTLeft);   //7
+    animationShield.add(ArmScriptRight);
+    animationShield.add(ArmScriptLeft);    //7
+
+
+    ///////////////////
+    // BODY
+    //////////////////
+    //Movement to the first arm
+    bodyScript=new MatrixScript();
+    bodyScript->add(0.3,notMove);
+
+    bodyTScript=new MatrixScript();
+    bodyTScript->add(0.3,notMove);
+
+    animationShield.add(bodyScript);
+    animationShield.add(bodyTScript);
  }

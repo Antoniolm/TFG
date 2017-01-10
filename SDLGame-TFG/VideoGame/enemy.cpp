@@ -33,6 +33,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     isJumping=false;
     isHitting=false;
     isImpacted=false;
+    isShielded=false;
     enemyActivate=false;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
