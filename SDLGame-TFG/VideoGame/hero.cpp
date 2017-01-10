@@ -502,13 +502,9 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
     }
     else if(isShielded){
-        cout<<"prueba->"<<endl;
         animationShield.updateState(time-currentTime);
-        cout<<"prueba1->"<<endl;
-        for(unsigned i=0;i<moveMatrix.size();i++){
-            cout<<"prueba->"<< i<<endl;
+        for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationShield.readMatrix(i).getMatrix());
-        }
     }
 
 
@@ -838,10 +834,10 @@ bool Hero::isHit(){
     rotateShoulder->rotation(90,1.0,0.0,0.0);
 
     rotateElbow=new Matrix4f();
-    rotateElbow->rotation(45,0.0,0.0,1.0);
+    rotateElbow->rotation(60,0.0,0.0,1.0);
 
     Matrix4f * TransElbow=new Matrix4f();
-    TransElbow->translation(0.0,0.0,1.0);
+    TransElbow->translation(-0.5,-0.3,-0.3);
 
     staticShoulder=new MatrixStatic(*rotateShoulder);
     staticElbow=new MatrixStatic(*rotateElbow);
@@ -854,7 +850,7 @@ bool Hero::isHit(){
 
     ElbowScriptLeft->add(0.5,staticElbow);
     ArmScriptLeft->add(0.5,staticShoulder);
-    ElbowScriptTLeft->add(0.5,notMove);
+    ElbowScriptTLeft->add(0.5,staticTrans);
 
     //Movement to the second arm
     ElbowScriptRight=new MatrixScript();
