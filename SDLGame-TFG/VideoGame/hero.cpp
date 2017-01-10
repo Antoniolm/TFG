@@ -602,7 +602,7 @@ bool Hero::isHit(){
 
  void Hero::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value){
 
-    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700)){
+    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) && !isShielded){
         addLife(value);
         stringstream convert;
         if(activatedTexts[3]){ //if is activate the text ->//Join values
