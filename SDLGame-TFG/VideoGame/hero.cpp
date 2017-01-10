@@ -430,7 +430,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
 
     //Move the body
-    if(hasMove){
+    if(hasMove && !isImpacted){
         moveBody(moveHero,heroDir);
         heroSound[0]->play();
     }

@@ -386,36 +386,28 @@ void AvatarMove::activeImpact(avatarDirection dirAvatar){
     impactTime=currentTime;
     switch(dirAvatar){
         case FORWARD:
-            cout<< "FORWARD"<<endl;
             velocity=vec3f(0.0,0.0,50.0);
             break;
         case BACKWARD:
-            cout<< "BACKWARD"<<endl;
             velocity=vec3f(0.0,0.0,-50.0);
             break;
         case LEFTWARD:
-            cout<< "LEFTWARD"<<endl;
             velocity=vec3f(-50.0,0.0,0.0);
             break;
         case RIGHTWARD:
-            cout<< "RIGHTWARD"<<endl;
              velocity=vec3f(50.0,0.0,0.0);
             break;
         case FOR_LEFTWARD:
-            cout<< "FOR_LEFTWARD"<<endl;
             velocity=vec3f(-50.0,0.0,50.0);
             break;
         case FOR_RIGHTWARD:
-            cout<< "FOR_RIGHTWARD"<<endl;
             velocity=vec3f(50.0,0.0,50.0);
 
             break;
         case BACK_LEFTWARD:
-            cout<< "BACK_LEFTWARD"<<endl;
             velocity=vec3f(-50.0,0.0,-50.0);
             break;
         case BACK_RIGHTWARD:
-            cout<< "BACK_RIGHTWARD"<<endl;
             velocity=vec3f(50.0,0.0,-50.0);
             break;
     }
