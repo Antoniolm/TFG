@@ -40,7 +40,13 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 
     //Print a message for check
     cout<< "< Game is loading our enemy >"<< endl;
+    //////////////////////////////////////////////////////
+    /////              All the sounds                /////
+    //////////////////////////////////////////////////////
+    SoundCollection * soundCollect =SoundCollection::getInstance();
 
+    enemySound.push_back(soundCollect->getSound(EMOVE));
+    enemySound.push_back(soundCollect->getSound(EHIT));
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
     //////////////////////////////////////////////////////

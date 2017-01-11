@@ -28,8 +28,16 @@ SoundCollection::SoundCollection()
     Sound * sound=new Sound("sounds/coin.wav",1,30,4,0);
     collection.push_back(sound);
 
+    sound=new Sound("sounds/walking.wav",1,40,7,-1);
+    collection.push_back(sound);
+
+    sound=new Sound("sounds/enemyHit.wav",1,30,8,0);
+    collection.push_back(sound);
+
     //Create our map
     enumMap.insert(pair<string,soundElement> ("sCoin",sCoin));
+    enumMap.insert(pair<string,soundElement> ("EMOVE",EMOVE));
+    enumMap.insert(pair<string,soundElement> ("EHIT",EHIT));
 }
 
 //**********************************************************************//

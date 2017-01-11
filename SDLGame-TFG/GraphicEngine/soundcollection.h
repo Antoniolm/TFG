@@ -26,7 +26,9 @@
 #include <string>
 
 enum soundElement{
-    sCoin //0
+    sCoin, //0
+    EMOVE,
+    EHIT
 };
 
 class SoundCollection
