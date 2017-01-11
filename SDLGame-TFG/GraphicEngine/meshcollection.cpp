@@ -29,31 +29,6 @@ MeshCollection::MeshCollection()
     element->init();
     collection.push_back(element);
 
-    //Mesh 1
-    element=new Mesh("geometries/fence.obj");
-    element->init();
-    collection.push_back(element);
-
-    //Mesh 2
-    element=new Mesh("geometries/tree.obj");
-    element->init();
-    collection.push_back(element);
-
-    //Mesh 3
-    element=new Mesh("geometries/grass.obj");
-    element->init();
-    collection.push_back(element);
-
-    //Mesh 4
-    element=new Mesh("geometries/mushroomWhite.obj");
-    element->init();
-    collection.push_back(element);
-
-    //Mesh 5
-    element=new Mesh("geometries/treeDie.obj");
-    element->init();
-    collection.push_back(element);
-
     //Mesh 6
     element=new Mesh("geometries/sphereBackground.obj");
     element->init();
@@ -96,11 +71,6 @@ MeshCollection::MeshCollection()
 
     //Mesh 13
     element=new Mesh("geometries/KnightBody.obj");
-    element->init();
-    collection.push_back(element);
-
-    //Mesh 14
-    element=new Mesh("geometries/foot.obj");
     element->init();
     collection.push_back(element);
 
@@ -164,11 +134,6 @@ MeshCollection::MeshCollection()
 
     //Create our map
     enumMap.insert(pair<string,meshElement> ("CUBE",CUBE));
-    enumMap.insert(pair<string,meshElement> ("FENCE",FENCE));
-    enumMap.insert(pair<string,meshElement> ("TREE",TREE));
-    enumMap.insert(pair<string,meshElement> ("GRASS",GRASS));
-    enumMap.insert(pair<string,meshElement> ("MUSHWHITE",MUSHWHITE));
-    enumMap.insert(pair<string,meshElement> ("TREEDIE",TREEDIE));
     enumMap.insert(pair<string,meshElement> ("BACKGROUND",BACKGROUND));
     enumMap.insert(pair<string,meshElement> ("KNEE",KNEE));
     enumMap.insert(pair<string,meshElement> ("KNEE2",KNEE2));
@@ -178,7 +143,6 @@ MeshCollection::MeshCollection()
     enumMap.insert(pair<string,meshElement> ("HANDS",HANDS));
     enumMap.insert(pair<string,meshElement> ("TOPARM",TOPARM));
     enumMap.insert(pair<string,meshElement> ("CHEST",CHEST));
-    enumMap.insert(pair<string,meshElement> ("FOOT",FOOT));
     enumMap.insert(pair<string,meshElement> ("HEAD",HEAD));
     enumMap.insert(pair<string,meshElement> ("TEXT",TEXT));
     enumMap.insert(pair<string,meshElement> ("COIN",COIN));

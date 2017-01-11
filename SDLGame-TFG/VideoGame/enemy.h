@@ -106,6 +106,7 @@ class Enemy: public AvatarMove
     private:
         void initAnimation();
         vector<Matrix4f *> moveMatrix;
+        vector<Sound *> enemySound;
         ScriptLMD animation,animationHit;
         vec3f radioActivity;
         IAEnemy IA;

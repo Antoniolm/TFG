@@ -45,7 +45,7 @@ Hero::Hero()
     //////////////////////////////////////////////////////
     Sound * sound=new Sound("sounds/walking.wav",1,40,3,-1);
     heroSound.push_back(sound);
-    sound=new Sound("sounds/heroHit.wav",1,40,5,0);
+    sound=new Sound("sounds/heroHit.wav",1,20,5,0);
     heroSound.push_back(sound);
     sound=new Sound("sounds/shield.wav",1,40,6,0);
     heroSound.push_back(sound);
