@@ -436,7 +436,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         hitDelay=time;
     }
     else { // If hero is not hitting -> resetAnimation
-        if(hitDelay<(time-1000)){
+        if(hitDelay<(time-600)){
             animationHit.resetState();
             for(unsigned i=0;i<moveMatrix.size();i++)
                 moveMatrix[i]->identity();
@@ -565,7 +565,7 @@ void Hero::noMove(){
 
 bool Hero::isHit(){
     bool result=false;
-    if(animationHit.getScriptState(4)==3 || animationHit.getScriptState(5)==1)
+    if(animationHit.getScriptState(6)==0 && isHitting)
         result=true;
 
     return result;
@@ -766,7 +766,8 @@ bool Hero::isHit(){
     animationHit.add(LegScriptLeft);
 
     //Matrix4fDinamic
-    OscillateRotation * shoulderCharge=new OscillateRotation(false,0,-40,1,250,vec3f(1.0,0.0,0),1);
+    OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,130,250,vec3f(1.0,0.0,0),1);
+    //OscillateRotation * shoulderCharge=new OscillateRotation(false,0,-40,1,250,vec3f(1.0,0.0,0),1);
     OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
     Matrix4f * rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(90,1.0,0.0,0.0);
@@ -780,12 +781,8 @@ bool Hero::isHit(){
     //Movement to the first arm
     ElbowScriptLeft=new MatrixScript();
     ArmScriptLeft=new MatrixScript();
-    ElbowScriptLeft->add(0.5,oscillateElbow);
-    ElbowScriptLeft->add(0.5,staticElbow);
     ElbowScriptLeft->add(0.5,notMove);
     ElbowScriptLeft->add(0.5,notMove);
-    ArmScriptLeft->add(0.5,shoulderCharge);
-    ArmScriptLeft->add(0.5,staticShoulder);
     ArmScriptLeft->add(0.5,notMove);
     ArmScriptLeft->add(0.5,notMove);
 
@@ -793,22 +790,16 @@ bool Hero::isHit(){
     ElbowScriptRight=new MatrixScript();
     ArmScriptRight=new MatrixScript();
     ElbowScriptRight->add(0.5,notMove);
-    ElbowScriptRight->add(0.5,notMove);
-    ElbowScriptRight->add(0.5,oscillateElbow);
-    ElbowScriptRight->add(0.5,staticElbow);
-    ArmScriptRight->add(0.5,notMove);
-    ArmScriptRight->add(0.5,notMove);
     ArmScriptRight->add(0.5,shoulderCharge);
-    ArmScriptRight->add(0.5,staticShoulder);
 
 
     //Add the script to our animation
-    animationHit.add(ElbowScriptRight);  //4
-    animationHit.add(ElbowScriptTRight);   //7
-    animationHit.add(ElbowScriptLeft);   //5
-    animationHit.add(ElbowScriptTLeft);    //9
+    animationHit.add(ElbowScriptRight);  //2
+    animationHit.add(ElbowScriptTRight); //3
+    animationHit.add(ElbowScriptLeft);   //4
+    animationHit.add(ElbowScriptTLeft);  //5
     animationHit.add(ArmScriptRight);    //6
-    animationHit.add(ArmScriptLeft);     //8
+    animationHit.add(ArmScriptLeft);     //7
 
 
     ///////////////////
@@ -872,12 +863,12 @@ bool Hero::isHit(){
 
 
     //Add the script to our animation
-    animationShield.add(ElbowScriptRight); //4
-    animationShield.add(ElbowScriptTRight);   //7
-    animationShield.add(ElbowScriptLeft);  //5
-    animationShield.add(ElbowScriptTLeft);   //7
+    animationShield.add(ElbowScriptRight);  //4
+    animationShield.add(ElbowScriptTRight); //7
+    animationShield.add(ElbowScriptLeft);   //5
+    animationShield.add(ElbowScriptTLeft);  //7
     animationShield.add(ArmScriptRight);
-    animationShield.add(ArmScriptLeft);    //7
+    animationShield.add(ArmScriptLeft);     //7
 
 
     ///////////////////

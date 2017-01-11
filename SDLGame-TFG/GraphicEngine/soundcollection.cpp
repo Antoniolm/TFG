@@ -28,10 +28,10 @@ SoundCollection::SoundCollection()
     Sound * sound=new Sound("sounds/coin.wav",1,30,4,0);
     collection.push_back(sound);
 
-    sound=new Sound("sounds/walking.wav",1,40,7,-1);
+    sound=new Sound("sounds/walking.wav",1,40,8,-1);
     collection.push_back(sound);
 
-    sound=new Sound("sounds/enemyHit.wav",1,30,8,0);
+    sound=new Sound("sounds/enemyHit.wav",1,50,7,0);
     collection.push_back(sound);
 
     //Create our map

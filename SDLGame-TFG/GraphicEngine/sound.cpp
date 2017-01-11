@@ -28,10 +28,8 @@ Sound::Sound()
 
 Sound::~Sound()
 {
-    cout<< "LLegamos"<< endl;
     Mix_FreeMusic(music);
     Mix_FreeChunk(effect);
-    cout<< "LLegamos y salimos"<< endl;
 }
 
 //**********************************************************************//
@@ -76,6 +74,7 @@ Sound::Sound(const string & aFile,unsigned int aType,int aVolume,int aChannel,in
             if( effect == NULL) cout<< "Unable to load the effect ->"<< file<<endl;
         break;
     }
+
 }
 
 //**********************************************************************//

@@ -107,9 +107,6 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     moveArmLeft->identity();
     moveMatrix.push_back(moveArmLeft);
 
-
-    //Material * materialArmour=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),32.0f,"./textures/plateArmor.png");
-
     Matrix4f * scaleHandInvert=new Matrix4f();
     scaleHandInvert->scale(1.0,1.0,-1.0);
 
@@ -285,6 +282,8 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
                 currentText->init();
                 dmgDelay=time;
                 activeImpact(dirHero);
+                enemySound[1]->stop();
+                enemySound[1]->play();
             }
             else { //If the hero is not hitting
                 if(dmgDelay<(time-300))
