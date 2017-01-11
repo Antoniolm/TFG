@@ -47,6 +47,8 @@ Hero::Hero()
     heroSound.push_back(sound);
     sound=new Sound("sounds/heroHit.wav",1,40,5,0);
     heroSound.push_back(sound);
+    sound=new Sound("sounds/shield.wav",1,40,6,0);
+    heroSound.push_back(sound);
 
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
@@ -286,6 +288,7 @@ Hero::Hero()
     jumpDelay=currentTime;
     hitDelay=currentTime;
     dmgDelay=currentTime;
+    shieldDelay=currentTime;
 
     //Init all animations of our hero
     initAnimation();
@@ -623,6 +626,11 @@ bool Hero::isHit(){
             activeImpact(dirAvatar);
         heroSound[1]->stop();
         heroSound[1]->play();
+    }
+    if(detectHit(posAvatar,dirAvatar) && shieldDelay<(currentTime-700) && isShielded){
+        heroSound[2]->stop();
+        heroSound[2]->play();
+        shieldDelay=currentTime;
     }
  }
 

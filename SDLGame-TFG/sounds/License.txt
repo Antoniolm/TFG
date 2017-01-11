@@ -3,3 +3,4 @@ Pop sound effect by Debsound. is licensed under the Attribution Noncommercial. h
 Zombie by Under7dude is licensed under CC Attribution http://www.freesound.org/people/Under7dude/sounds/163447/  -> used in the sound:enemyHit.wav
 Getting hit - Eeeh 01 (Mouth Fx) man voice by Flying_Deer_Fx  is licensed under CC Attribution http://www.freesound.org/people/Flying_Deer_Fx/sounds/369003/ -> used in the sound heroHit.wav
 Dead Walking by soundmatch24 is licensed under the Creative Commons 0 License. http://www.freesound.org/people/soundmatch24/sounds/186876/ -> used in the sound: backsound.wav
+Shield Hit 1 by Liam Gilchrist is licensed under the Creative Commons http://www.freesound.org/people/CTCollab/sounds/223630/ -> used in the sound: shield.wav
