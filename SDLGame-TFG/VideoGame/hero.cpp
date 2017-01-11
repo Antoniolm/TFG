@@ -43,8 +43,10 @@ Hero::Hero()
     //////////////////////////////////////////////////////
     /////              All the sounds                /////
     //////////////////////////////////////////////////////
-    Sound * walking=new Sound("sounds/walking.wav",1,40,3,-1);
-    heroSound.push_back(walking);
+    Sound * sound=new Sound("sounds/walking.wav",1,40,3,-1);
+    heroSound.push_back(sound);
+    sound=new Sound("sounds/heroHit.wav",1,40,5,0);
+    heroSound.push_back(sound);
 
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
@@ -422,7 +424,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
 
     //Case-> Push S bottom to jump
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !isJumping && !isFalling && jumpDelay<(time-600)){
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && !isJumping && !isFalling && !isImpacted && !isShielded && jumpDelay<(time-600) ){
         activeJump(vec3f(velocityHero.x,15.0,velocityHero.y),vec3f(accelerationHero.x,5.0,accelerationHero.z));
         jumpDelay=time;
     }
@@ -484,17 +486,17 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             moveMatrix[i]->identity();
         Matrix4f rot;
         rot.rotation(30,0,0,1);
-        moveMatrix[4]->setMatrix(rot.getMatrix());
+        moveMatrix[6]->setMatrix(rot.getMatrix());
         rot.rotation(-30,0,0,1);
-        moveMatrix[5]->setMatrix(rot.getMatrix());
+        moveMatrix[7]->setMatrix(rot.getMatrix());
     }
     else if(isJumping){
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
         Matrix4f rot;
         rot.rotation(30,1,0,0);
-        moveMatrix[4]->setMatrix(rot.getMatrix());
-        moveMatrix[5]->setMatrix(rot.getMatrix());
+        moveMatrix[6]->setMatrix(rot.getMatrix());
+        moveMatrix[7]->setMatrix(rot.getMatrix());
     }
     else if(isHitting){
         animationHit.updateState(time-currentTime);
@@ -619,6 +621,8 @@ bool Hero::isHit(){
         activateDialog(true,3);
         if(!isImpacted)
             activeImpact(dirAvatar);
+        heroSound[1]->stop();
+        heroSound[1]->play();
     }
  }
 
