@@ -128,21 +128,21 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
 
         for(unsigned currentTrans=0;currentTrans<decoObject[currentDeco]["transforms"].Size();currentTrans++){
             transformation=new Matrix4f();
-            if(decoObject[currentDeco]["transforms"][currentTrans]["translation"].GetBool()){ //If is a translation
+            if(strcmp(decoObject[currentDeco]["transforms"][currentTrans]["type"].GetString(),"translation")==0){ //If is a translation
 
                 transformation->translation(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
                                             decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
                                             decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
 
             }
-            else if(decoObject[currentDeco]["transforms"][currentTrans]["scale"].GetBool()){ //If is a scale
+            else if(strcmp(decoObject[currentDeco]["transforms"][currentTrans]["type"].GetString(),"scale")==0){ //If is a scale
 
                 transformation->scale(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
                                       decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
                                       decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
 
             }
-            else if(decoObject[currentDeco]["transforms"][currentTrans]["rotation"].GetBool()){ //If is a rotation
+            else if(strcmp(decoObject[currentDeco]["transforms"][currentTrans]["type"].GetString(),"rotation")==0){ //If is a rotation
 
                 transformation->rotation(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
                                          decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),

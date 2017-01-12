@@ -432,14 +432,14 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         jumpDelay=time;
     }
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]){ //If hero is hitting
+        if(!isHitting)
+            animationHit.resetState();
         isHitting=true;
         hitDelay=time;
     }
     else { // If hero is not hitting -> resetAnimation
-        if(hitDelay<(time-600)){
-            animationHit.resetState();
-            for(unsigned i=0;i<moveMatrix.size();i++)
-                moveMatrix[i]->identity();
+        if(hitDelay<(time-500)){
+            //animationHit.resetState();
             hitDelay=time;
             isHitting=false;
         }
@@ -766,8 +766,9 @@ bool Hero::isHit(){
     animationHit.add(LegScriptLeft);
 
     //Matrix4fDinamic
-    OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,130,250,vec3f(1.0,0.0,0),1);
-    //OscillateRotation * shoulderCharge=new OscillateRotation(false,0,-40,1,250,vec3f(1.0,0.0,0),1);
+    OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,140,250,vec3f(1.0,0.0,0),1);
+    //OscillateRotation * shoulderCharge=new OscillateRotation(false,140,60,140,250,vec3f(1.0,0.0,0),1);
+    OscillateRotation * shoulderCharge2=new OscillateRotation(false,60,0,60,250,vec3f(1.0,0.0,0),1);
     OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
     Matrix4f * rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(90,1.0,0.0,0.0);
@@ -791,6 +792,8 @@ bool Hero::isHit(){
     ArmScriptRight=new MatrixScript();
     ElbowScriptRight->add(0.5,notMove);
     ArmScriptRight->add(0.5,shoulderCharge);
+    //ArmScriptRight->add(0.25,shoulderCharge);
+    //ArmScriptRight->add(0.25,shoulderCharge2);
 
 
     //Add the script to our animation

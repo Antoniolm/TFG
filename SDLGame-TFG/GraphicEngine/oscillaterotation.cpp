@@ -61,7 +61,6 @@ void OscillateRotation::setParameters(bool incre,float maxG,float minG,float ini
     loop=aLoop;
 
     currentGrade=initialGrade;
-    currentTime=SDL_GetTicks()/1000;
     currentMatrix.identity();
 
     currentLoop=0;
@@ -72,11 +71,11 @@ void OscillateRotation::setParameters(bool incre,float maxG,float minG,float ini
 Matrix4f & OscillateRotation::updateState(float time){
     time=time/1000;
 
-    if(currentGrade>= maxGrade && increment){
+    if((currentGrade>= maxGrade) && increment){
         increment=false;
         currentLoop++;
     }
-    else if(currentGrade<=minGrade && !increment){
+    else if((currentGrade<=minGrade) && !increment){
         increment=true;
         currentLoop++;
         //cout<< "Time decremento"<< SDL_GetTicks()<< endl;
@@ -89,12 +88,10 @@ Matrix4f & OscillateRotation::updateState(float time){
         currentGrade+=angularVelocity*(time);
     }
 
-    //cout<< "CurrentLoop -> "<<currentLoop<<endl;
-
-    if(loop==-1 || currentLoop<=loop)
+    //cout<<currentGrade<< endl;
+    if(loop==-1 || currentLoop<loop)
         currentMatrix.rotation(currentGrade,direction.x,direction.y,direction.z);
 
-    currentTime+=time;
     return currentMatrix;
 
 
@@ -108,5 +105,6 @@ void OscillateRotation::resetState(){
         currentLoop=0;
         currentMatrix.identity();
     }
+    //cout<< "reseteo"<<endl;
 }
 

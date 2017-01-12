@@ -27,6 +27,7 @@ using namespace std;
 
 enum meshElement{
     CUBE,       //0
+    SPHERE,
     BACKGROUND, //6
     KNEE,       //7
     KNEE2,      //7

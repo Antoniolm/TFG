@@ -1,6 +1,6 @@
 {
     "name": "First map",
-    "title": "Adventure",
+    "title": "Adventure ",
     "bkgdMaterial":"mWATER",
     "sound":"sounds/backsound.wav",
     "volSound":60.0,
@@ -38,16 +38,8 @@
         {   "number":100,
             "material":"mWATER",
             "minPosition":[1.0,1.0,-1.0],
-            "maxPosition":[2.0,1.0,-2.0],
+            "maxPosition":[8.0,1.0,-2.0],
             "velocity":[0.0,1.0,0.0],
-            "minLife":500,
-            "maxLife":1000
-        },
-        {   "number":50,
-            "material":"mADIALOG",
-            "minPosition":[3.0,1.0,-1.0],
-            "maxPosition":[4.0,1.0,-4.0],
-            "velocity":[0.0,2.0,0.0],
             "minLife":500,
             "maxLife":1000
         }
@@ -262,14 +254,10 @@
 
     "decorationObject":[
             {   "transforms":[
-                    {   "translation":true,
-                        "scale":false,
-                        "rotation":false,
+                    {   "type":"translation",
                         "values":[14.5,-2.5,-4.5]
                     },
-                    {   "translation":false,
-                        "scale":true,
-                        "rotation":false,
+                    {   "type":"scale",
                         "values":[3.5,0.5,3.5]
                     }
                 ],       
@@ -278,14 +266,10 @@
                 "collision": false 
             },
             {   "transforms":[
-                    {   "translation":true,
-                        "scale":false,
-                        "rotation":false,
+                    {   "type":"translation",
                         "values":[4.0,1.8,-11.9]
                     },
-                    {   "translation":false,
-                        "scale":true,
-                        "rotation":false,
+                    {    "type":"scale",
                         "values":[1.0,1.0,1.1]
                     }
                 ],       
@@ -294,14 +278,10 @@
                 "collision": true
             },
             {   "transforms":[
-                    {   "translation":true,
-                        "scale":false,
-                        "rotation":false,
+                    {   "type":"translation",
                         "values":[1.5,2.3,-4.5]
                     },
-                    {   "translation":false,
-                        "scale":true,
-                        "rotation":false,
+                    {    "type":"scale",
                         "values":[0.9,0.9,1.0]
                     }
                 ],       
@@ -310,19 +290,13 @@
                 "collision": true
             },
             {   "transforms":[
-                    {   "translation":true,
-                        "scale":false,
-                        "rotation":false,
+                    {   "type":"translation",
                         "values":[2.0,1.7,-13.5]
                     },
-                    {   "translation":false,
-                        "scale":true,
-                        "rotation":false,
+                    {   "type":"scale",
                         "values":[0.9,0.9,1.0]
                     },
-                    {   "translation":false,
-                        "scale":false,
-                        "rotation":true,
+                    {   "type":"rotation",
                         "values":[90,0.0,1.0,0.0]
                     }
                 ],       
@@ -331,19 +305,13 @@
                 "collision": true
             },
             {   "transforms":[
-                    {   "translation":true,
-                        "scale":false,
-                        "rotation":false,
+                    {   "type":"translation",
                         "values":[6.0,1.7,-13.5]
                     },
-                    {   "translation":false,
-                        "scale":true,
-                        "rotation":false,
+                    {   "type":"scale",
                         "values":[0.9,0.9,1.0]
                     },
-                    {   "translation":false,
-                        "scale":false,
-                        "rotation":true,
+                    {   "type":"rotation",
                         "values":[90,0.0,1.0,0.0]
                     }
                 ],       

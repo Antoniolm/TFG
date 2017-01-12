@@ -65,7 +65,6 @@ int ScriptLMD::getScriptState(int index){
 
 void ScriptLMD::resetState(){
     vector<MatrixScript *>::iterator it;
-
     for(it=script.begin();it!=script.end();it++){
         (*it)->resetState();
     }

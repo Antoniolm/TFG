@@ -37,14 +37,14 @@ Particle::Particle(Material * material,vec3f minPos,vec3f maxPos,vec3f aVelocity
     transMatrix->translation(position.x,position.y,position.z);
 
     Matrix4f * scaleCube=new Matrix4f();
-    scaleCube->scale(0.1,0.3,1.0);
+    scaleCube->scale(0.1,0.1,0.1);
 
     root=new NodeSceneGraph();
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
     cubeNode->add(transMatrix);
     cubeNode->add(scaleCube);
     cubeNode->add(material);
-    cubeNode->add(meshCollect->getMesh(TEXT));
+    cubeNode->add(meshCollect->getMesh(SPHERE));
     root->add(cubeNode);
     currentTime=SDL_GetTicks();
 }

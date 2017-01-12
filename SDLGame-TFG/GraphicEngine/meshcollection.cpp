@@ -29,6 +29,10 @@ MeshCollection::MeshCollection()
     element->init();
     collection.push_back(element);
 
+    element=new Mesh("geometries/sphere.obj");
+    element->init();
+    collection.push_back(element);
+
     //Mesh 6
     element=new Mesh("geometries/sphereBackground.obj");
     element->init();
@@ -134,6 +138,7 @@ MeshCollection::MeshCollection()
 
     //Create our map
     enumMap.insert(pair<string,meshElement> ("CUBE",CUBE));
+    enumMap.insert(pair<string,meshElement> ("SPHERE",SPHERE));
     enumMap.insert(pair<string,meshElement> ("BACKGROUND",BACKGROUND));
     enumMap.insert(pair<string,meshElement> ("KNEE",KNEE));
     enumMap.insert(pair<string,meshElement> ("KNEE2",KNEE2));
