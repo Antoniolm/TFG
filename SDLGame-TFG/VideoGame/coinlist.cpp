@@ -19,34 +19,43 @@
 
 #include "coinlist.h"
 
-coinList::coinList()
+CoinList::CoinList()
 {
     //ctor
 }
 
 //**********************************************************************//
 
-coinList::~coinList()
+CoinList::CoinList(const Value & coinFeatures){
+    for(unsigned i=0;i<coinFeatures.Size();i++){
+        coins.push_back(new Coin(vec3f(coinFeatures[i]["position"][0].GetFloat(),coinFeatures[i]["position"][1].GetFloat(),coinFeatures[i]["position"][2].GetFloat()),
+                                 coinFeatures[i]["value"].GetInt()));
+    }
+}
+
+//**********************************************************************//
+
+CoinList::~CoinList()
 {
     //dtor
 }
 
 //**********************************************************************//
 
-void coinList::add(Coin * coin){
+void CoinList::add(Coin * coin){
     coins.push_back(coin);
 }
 
 //**********************************************************************//
 
-void coinList::visualization(Context & cv){
+void CoinList::visualization(Context & cv){
     for(unsigned i=0;i<coins.size();i++)
         coins[i]->visualization(cv);
 }
 
 //**********************************************************************//
 
-void coinList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
+void CoinList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
     vector<Coin*>::iterator it=coins.begin();
     while(it!=coins.end()){
         (*it)->updateState(time,currentKeyStates,rootMap);

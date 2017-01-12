@@ -52,6 +52,7 @@ class Enemy;
 class Coin;
 class NpcList;
 class EnemyList;
+class CoinList;
 class ParticleSystem;
 class RootMap : public Object3D
 {
@@ -127,11 +128,11 @@ class RootMap : public Object3D
         vector<int> indexMap[100][100];
         vector<ObjectScene *> objs;
         vector<ObjectScene *> decorationObjs;
-        vector<Coin *> coins;
         vector<ParticleSystem *> particleSystem;
         ObjectScene * background;
         NpcList * npcList;
         EnemyList * enemyList;
+        CoinList *coinList;
         Sound * backSound;
         Hero * hero;
 };

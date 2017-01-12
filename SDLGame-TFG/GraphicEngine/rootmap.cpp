@@ -20,6 +20,7 @@
 #include "rootmap.h"
 #include "../VideoGame/npclist.h"
 #include "../VideoGame/enemylist.h"
+#include "../VideoGame/coinlist.h"
 #include <stdlib.h>     /* srand, rand */
 RootMap::RootMap(){
 }
@@ -181,11 +182,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     // Add coins to our map
     /////////////////////////////////////////
     const rapidjson::Value & coinValue=document["coins"];
-    for(unsigned i=0;i<coinValue.Size();i++){
-        coins.push_back(new Coin(vec3f(coinValue[i]["position"][0].GetFloat(),coinValue[i]["position"][1].GetFloat(),coinValue[i]["position"][2].GetFloat()),
-                                 coinValue[i]["value"].GetInt()));
-    }
-
+    coinList=new CoinList(coinValue);
 
     /////////////////////////////////////////
     // Add npcs of our map
@@ -295,18 +292,14 @@ void RootMap::visualization(Context & cv){
     //Draw enemies
     enemyList->visualization(cv);
 
+    //Draw coins
+    coinList->visualization(cv);
+
     //Draw decoration object
     for(unsigned i=0;i<decorationObjs.size();i++){
         position=decorationObjs[i]->getPosition();
         if(position.x>posHero.x-8 && position.x<posHero.x+8)
             decorationObjs[i]->visualization(cv);
-    }
-
-    //Draw coins
-    for(unsigned i=0;i<coins.size();i++){
-        position=vec3f(coins[i]->getPosition());
-        if(position.x>posHero.x-8 && position.x<posHero.x+8)
-            coins[i]->visualization(cv);
     }
 
     //Draw particles system
@@ -331,7 +324,7 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
         objs[i]->updateState(time,currentKeyStates,rootMap);
 
     //Update the Scene
-    coins.updateSu
+    coinList->updateState(time,currentKeyStates,rootMap);
 
     //Update particles system
     for(unsigned i=0;i<particleSystem.size();i++){
