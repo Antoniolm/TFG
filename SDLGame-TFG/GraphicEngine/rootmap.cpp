@@ -46,7 +46,6 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     const rapidjson::Value & lights=document["light"];
     glUniform1i(glGetUniformLocation(shader.getProgram(), "numActivateLight"), lights.Size()-1);
     Light * light;
-
     for(unsigned currentLight=0;currentLight<lights.Size();currentLight++){
         //Create our light
         if(lights[currentLight]["type"].GetFloat()==0){
@@ -184,6 +183,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     const rapidjson::Value & coinValue=document["coins"];
     coinList=new CoinList(coinValue);
 
+
     /////////////////////////////////////////
     // Add npcs of our map
     /////////////////////////////////////////
@@ -224,7 +224,6 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
             }
         }
     }
-
     /////////////////////////////////////////
     // Add sound of our map
     backSound=new Sound(document["sound"].GetString(),0,document["volSound"].GetFloat());

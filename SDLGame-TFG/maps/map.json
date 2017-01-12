@@ -8,14 +8,14 @@
     "light":[
             {   "type":0,
                 "channel":"0",
-                "position":[0.1,0.1,0.1],
-                "ambient":[0.7,0.7,0.7],
-                "diffuse":[0.1,0.1,0.1],
+                "position":[1.0,1.0,1.0],
+                "ambient":[0.4,0.4,0.4],
+                "diffuse":[0.2,0.2,0.2],
                 "specular":[1.0,1.0,1.0] },
 
             {   "type":1,
                 "channel":"0",
-                "position":[1.0,1.0,1.0],
+                "position":[3.0,2.0,4.0],
                 "ambient":[0.8,0.8,0.8],
                 "diffuse":[0.5,0.5,0.5],
                 "specular":[1.0,1.0,1.0],

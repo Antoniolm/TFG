@@ -326,7 +326,7 @@ void Hero::visualization(Context & cv){
 void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     bool hasMove=true;
 
-    avatarDirection heroDir;
+    avatarDirection heroDir=direction;
     vec3f moveHero,velocityHero,accelerationHero;
     currentMap=rootMap;
 
@@ -507,6 +507,8 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
     }
     else if(isShielded){
+        if(heroDir!=direction)
+            changeDirection(heroDir);
         animationShield.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationShield.readMatrix(i).getMatrix());
@@ -606,8 +608,8 @@ bool Hero::isHit(){
 //**********************************************************************//
 
  void Hero::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value){
-
-    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) && !isShielded){
+                                                                        //The hero is protected
+    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) && !detectShield(posAvatar,direction)){
         addLife(value);
         stringstream convert;
         if(activatedTexts[3]){ //if is activate the text ->//Join values

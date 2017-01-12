@@ -109,6 +109,7 @@ class AvatarMove: public Avatar
         virtual void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
         bool detectHit(vec3f posAvatar,avatarDirection dirAvatar);
+        bool detectShield(vec3f posAvatar,avatarDirection dirAvatar);
         void activeImpact(avatarDirection dirAvatar);
         void impactMove(float time);
         void changeDirection(avatarDirection aDir);

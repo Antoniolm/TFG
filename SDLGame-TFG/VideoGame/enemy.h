@@ -109,6 +109,7 @@ class Enemy: public AvatarMove
         vector<Sound *> enemySound;
         ScriptLMD animation,animationHit;
         vec3f radioActivity;
+        vec3f currentMove;
         IAEnemy IA;
         bool enemyActivate;
         bool activatedDialog;
