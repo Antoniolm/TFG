@@ -331,14 +331,7 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
         objs[i]->updateState(time,currentKeyStates,rootMap);
 
     //Update the Scene
-    vector<Coin*>::iterator it=coins.begin();
-    while(it!=coins.end()){
-        (*it)->updateState(time,currentKeyStates,rootMap);
-        if((*it)->isTake())
-            coins.erase(it);
-        else
-            it++;
-    }
+    coins.updateSu
 
     //Update particles system
     for(unsigned i=0;i<particleSystem.size();i++){
