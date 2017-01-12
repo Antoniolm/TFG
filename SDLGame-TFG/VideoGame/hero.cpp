@@ -458,6 +458,10 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         moveBody(moveHero,heroDir);
         heroSound[0]->play();
     }
+    if(hasMove && !isImpacted && isShielded){
+        moveBody(moveHero,direction);
+        heroSound[0]->play();
+    }
     //If the jump is activate
     if(isJumping){
         jump(time);
@@ -507,8 +511,6 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
     }
     else if(isShielded){
-        if(heroDir!=direction)
-            changeDirection(heroDir);
         animationShield.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationShield.readMatrix(i).getMatrix());
@@ -608,8 +610,12 @@ bool Hero::isHit(){
 //**********************************************************************//
 
  void Hero::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value){
-                                                                        //The hero is protected
-    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) && !detectShield(posAvatar,direction)){
+     //check if the hero is shielding
+     bool canShield=false;
+     if(isShielded && detectShield(posAvatar,direction)) canShield=true;
+
+
+    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) && !canShield){
         addLife(value);
         stringstream convert;
         if(activatedTexts[3]){ //if is activate the text ->//Join values

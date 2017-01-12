@@ -457,7 +457,7 @@ void AvatarMove::activeImpact(avatarDirection dirAvatar){
 void AvatarMove::impactMove(float time){
     vec3f posHero=getPosition();
 
-    if(impactTime>(time-300)){
+    if(impactTime>(time-150)){
         moveBody(impactMovement,direction);
     }
     else{
