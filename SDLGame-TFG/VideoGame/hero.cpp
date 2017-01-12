@@ -829,13 +829,22 @@ bool Hero::isHit(){
      /////////////////////////////////
     // ANIMATION SHIELD
     /////////////////////////////////
+    ///////////////////
+    // LEG
+    //////////////////
+    oscillateLeg=new OscillateRotation(true,30,0,1,150,vec3f(1,0,0),2);
+    oscillateLegSecond=new OscillateRotation(false,0,-30,1,150,vec3f(1,0,0),1);
+
     //Movement to the first leg
     LegScriptLeft=new MatrixScript();
-    LegScriptLeft->add(0.5,notMove);
+    LegScriptLeft->add(0.3,oscillateLeg);
+    LegScriptLeft->add(0.3,oscillateLegSecond);
+
 
     //Movement to the second leg
     LegScriptRight=new MatrixScript();
-    LegScriptRight->add(0.5,notMove);
+    LegScriptRight->add(0.3,oscillateLegSecond);
+    LegScriptRight->add(0.3,oscillateLeg);
 
     //Add the script to our animation
     animationShield.add(LegScriptRight);
@@ -885,12 +894,19 @@ bool Hero::isHit(){
     ///////////////////
     // BODY
     //////////////////
+    //Matrix4fDinamic
+
     //Movement to the first arm
     bodyScript=new MatrixScript();
-    bodyScript->add(0.3,notMove);
+    bodyScript->add(0.3,oscillateBody);
+    bodyScript->add(0.3,oscillateBodySecond);
 
+    //Movement to the first arm
     bodyTScript=new MatrixScript();
-    bodyTScript->add(0.3,notMove);
+    bodyTScript->add(0.15,transBody);
+    bodyTScript->add(0.15,transBodySecond);
+    bodyTScript->add(0.15,transBody);
+    bodyTScript->add(0.15,transBodySecond);
 
     animationShield.add(bodyScript);
     animationShield.add(bodyTScript);
