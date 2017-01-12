@@ -220,6 +220,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     currentTime=SDL_GetTicks();
     jumpDelay=currentTime;
     dmgDelay=currentTime;
+    hitDelay=currentTime;
 
     //Init all animations of our hero
     initAnimation();
@@ -331,8 +332,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
 
-        if(animationHit.getScriptState(3)==3 || animationHit.getScriptState(4)==1){
-            isHitting=false;
+        if((animationHit.getScriptState(3)==3 || animationHit.getScriptState(4)==1) && hitDelay<(time-700)){
             hero->takeDamage(position,direction,-10);
         }
     }
