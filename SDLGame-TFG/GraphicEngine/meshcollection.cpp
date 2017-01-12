@@ -91,7 +91,7 @@ MeshCollection::MeshCollection()
 
     //Coin mesh
     //Mesh 19
-    element=new Mesh("geometries/coin.obj");
+    element=new Mesh("geometries/crystal.obj");
     element->init();
     collection.push_back(element);
 
