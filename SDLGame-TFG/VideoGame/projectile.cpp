@@ -19,8 +19,11 @@
 
 #include "projectile.h"
 
-Projectile::Projectile(vec3f aPosition,MeshIndex msIndex,MaterialIndex maIndex)
+Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,MeshIndex msIndex,MaterialIndex maIndex)
 {
+    direction=aDir;
+    velocity=aVelocity;
+
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection *materialCollect=MaterialCollection::getInstance();

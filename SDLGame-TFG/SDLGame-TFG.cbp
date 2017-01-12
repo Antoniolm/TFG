@@ -135,6 +135,8 @@
 		<Unit filename="VideoGame/avatarmove.h" />
 		<Unit filename="VideoGame/coin.cpp" />
 		<Unit filename="VideoGame/coin.h" />
+		<Unit filename="VideoGame/coinlist.cpp" />
+		<Unit filename="VideoGame/coinlist.h" />
 		<Unit filename="VideoGame/enemy.cpp" />
 		<Unit filename="VideoGame/enemy.h" />
 		<Unit filename="VideoGame/enemylist.cpp" />
@@ -147,6 +149,8 @@
 		<Unit filename="VideoGame/npc.h" />
 		<Unit filename="VideoGame/npclist.cpp" />
 		<Unit filename="VideoGame/npclist.h" />
+		<Unit filename="VideoGame/projectile.cpp" />
+		<Unit filename="VideoGame/projectile.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

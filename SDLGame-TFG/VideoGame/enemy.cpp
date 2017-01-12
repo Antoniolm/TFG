@@ -240,8 +240,10 @@ Enemy::~Enemy()
 void Enemy::visualization(Context & cv){
     root->visualization(cv);
 
-    if(activatedDialog)
+    if(activatedDialog){
+        currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
         currentText->visualization(cv);
+    }
 }
 
 //**********************************************************************//

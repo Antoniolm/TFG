@@ -21,18 +21,18 @@
 #define PROJECTILE_H
 
 
-#include "../GraphicEngine/object3d.h"
+#include "avatarmove.h"
 #include "../GraphicEngine/nodescenegraph.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/materialcollection.h"
 
-class Projectile : public Object3D
+class Projectile : public AvatarMove
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Projectile(vec3f aPosition,MeshIndex msIndex,MaterialIndex maIndex);
+        Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,MeshIndex msIndex,MaterialIndex maIndex);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -59,6 +59,7 @@ class Projectile : public Object3D
 
     private:
         NodeSceneGraph * root;
+        vec3f velocity;
 };
 
 #endif // PROJECTILE_H

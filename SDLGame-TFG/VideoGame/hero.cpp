@@ -231,9 +231,9 @@ Hero::Hero()
     moveMatrix.push_back(moveTBodyHead);
 
     //Movement for our hero
-    AvatarMove::moveAvatar= new Matrix4f();
-    AvatarMove::moveAvatar->translation(1.5,2.5,-2.5);
-    root->add(AvatarMove::moveAvatar);
+    moveAvatar= new Matrix4f();
+    moveAvatar->translation(1.5,2.5,-2.5);
+    root->add(moveAvatar);
 
     Matrix4f *transLegScene=new Matrix4f();
     transLegScene->translation(-0.5,0.0,0.0);
