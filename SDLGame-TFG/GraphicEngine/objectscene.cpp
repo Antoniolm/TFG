@@ -42,13 +42,6 @@ ObjectScene::~ObjectScene()
 
 void ObjectScene::visualization(Context & vis){
     object->visualization(vis);
-
-    if(vis.visualization_mode==1){
-        matrix=Matrix4f(vis.currentTransf);
-        position=matrix.product(vec4f());
-        generateBoundingbox();
-    }
-
 }
 
 //**********************************************************************//
@@ -116,5 +109,14 @@ void ObjectScene::generateBoundingbox(){
 
 	boundingBox.maxValue=vec3f(maxX,maxY,maxZ);
 	boundingBox.minValue=vec3f(minX,minY,minZ);
+}
+
+//**********************************************************************//
+void ObjectScene::obtainPosition(Context vis){
+    object->visualization(vis);
+
+    matrix=Matrix4f(vis.currentTransf);
+    position=matrix.product(vec4f());
+    generateBoundingbox();
 }
 

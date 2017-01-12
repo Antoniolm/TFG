@@ -26,7 +26,7 @@ Text::Text()
 
 //**********************************************************************//
 
-Text::Text(materialElement material,TTF_Font * aFont,SDL_Color aColor,bool ahasDialog){
+Text::Text(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor,bool ahasDialog){
     font=aFont;
     hasDialog=ahasDialog;
     color=aColor;
@@ -75,7 +75,7 @@ Text::~Text()
 
 //**********************************************************************//
 
-void Text::setParameters(materialElement material,TTF_Font * aFont,SDL_Color aColor,bool ahasDialog){
+void Text::setParameters(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor,bool ahasDialog){
     Text(material,aFont,aColor,ahasDialog);
 }
 

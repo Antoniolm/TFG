@@ -66,6 +66,7 @@ Matrix4f & MatrixScript::updateState(float time){
 //**********************************************************************//
 
 void MatrixScript::resetState(){
+    currentTime=0;
     currentMove=0;
     for(unsigned i=0;i<script.size();i++)
         (script[i].second)->resetState();

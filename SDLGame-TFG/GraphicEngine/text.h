@@ -46,7 +46,7 @@ class Text : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Text(materialElement material,TTF_Font * aFont,SDL_Color aColor=SDL_Color{0,0,0},bool ahasDialog=true);
+        Text(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor=SDL_Color{0,0,0},bool ahasDialog=true);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -59,7 +59,7 @@ class Text : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setParameters(materialElement material,TTF_Font * aFont,SDL_Color aColor=SDL_Color{0,0,0},bool ahasDialog=true);
+        void setParameters(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor=SDL_Color{0,0,0},bool ahasDialog=true);
 
         //////////////////////////////////////////////////////////////////////////
         /**

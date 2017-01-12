@@ -203,13 +203,12 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     //Create the indexMap;
 
     Context cv;
-    cv.visualization_mode=1;
     for(unsigned i=0;i<objs.size();i++){
-        objs[i]->visualization(cv);
+        objs[i]->obtainPosition(cv);
     }
 
     for(unsigned i=0;i<decorationObjs.size();i++){
-        decorationObjs[i]->visualization(cv);
+        decorationObjs[i]->obtainPosition(cv);
     }
 
     vec3f pos;

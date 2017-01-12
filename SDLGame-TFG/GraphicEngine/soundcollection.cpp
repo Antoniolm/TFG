@@ -35,9 +35,9 @@ SoundCollection::SoundCollection()
     collection.push_back(sound);
 
     //Create our map
-    enumMap.insert(pair<string,soundElement> ("sCoin",sCoin));
-    enumMap.insert(pair<string,soundElement> ("EMOVE",EMOVE));
-    enumMap.insert(pair<string,soundElement> ("EHIT",EHIT));
+    enumMap.insert(pair<string,SoundIndex> ("sCoin",sCoin));
+    enumMap.insert(pair<string,SoundIndex> ("EMOVE",EMOVE));
+    enumMap.insert(pair<string,SoundIndex> ("EHIT",EHIT));
 }
 
 //**********************************************************************//
@@ -55,7 +55,7 @@ SoundCollection::~SoundCollection()
 
 //**********************************************************************//
 
-Sound* SoundCollection::getSound(soundElement element){
+Sound* SoundCollection::getSound(SoundIndex element){
     return collection[element];
 }
 

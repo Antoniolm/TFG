@@ -25,7 +25,7 @@ class Mesh;
 
 using namespace std;
 
-enum meshElement{
+enum MeshIndex{
     CUBE,       //0
     SPHERE,
     BACKGROUND, //6
@@ -65,7 +65,7 @@ class MeshCollection
             return instance;
         }
 
-        Mesh * getMesh(meshElement element);
+        Mesh * getMesh(MeshIndex element);
         Mesh * getMesh(string element);
 
     protected:
@@ -78,7 +78,7 @@ class MeshCollection
 
         static MeshCollection* instance;
         vector<Mesh *> collection;
-        map<string,meshElement> enumMap;
+        map<string,MeshIndex> enumMap;
 };
 
 #endif // MESHCOLLECTION_H

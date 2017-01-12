@@ -25,7 +25,7 @@
 #include <map>
 #include <string>
 
-enum soundElement{
+enum SoundIndex{
     sCoin, //0
     EMOVE,
     EHIT
@@ -46,7 +46,7 @@ class SoundCollection
             return instance;
         }
 
-        Sound * getSound(soundElement element);
+        Sound * getSound(SoundIndex element);
         Sound * getSound(string element);
     protected:
 
@@ -58,7 +58,7 @@ class SoundCollection
 
         static SoundCollection* instance;
         vector<Sound *> collection;
-        map<string,soundElement> enumMap;
+        map<string,SoundIndex> enumMap;
 };
 
 #endif // SOUNDCOLLECTION_H

@@ -96,28 +96,28 @@ MaterialCollection::MaterialCollection()
 
 
     //Create our map
-    enumMap.insert(pair<string,materialElement> ("mCUBE_GRASS",mCUBE_GRASS));
-    enumMap.insert(pair<string,materialElement> ("mCUBE_SAND",mCUBE_SAND));
-    enumMap.insert(pair<string,materialElement> ("mCUBE_LAND",mCUBE_LAND));
-    enumMap.insert(pair<string,materialElement> ("mCUBE_BOX",mCUBE_BOX));
-    enumMap.insert(pair<string,materialElement> ("mCUBE_DUNG",mCUBE_DUNG));
-    enumMap.insert(pair<string,materialElement> ("mCUBE_WALL",mCUBE_WALL));
-    enumMap.insert(pair<string,materialElement> ("mWOOD",mWOOD));
-    enumMap.insert(pair<string,materialElement> ("MUSH",MUSH));
-    enumMap.insert(pair<string,materialElement> ("mGRASS",mGRASS));
-    enumMap.insert(pair<string,materialElement> ("mWATER",mWATER));
-    enumMap.insert(pair<string,materialElement> ("mVOID",mVOID));
-    enumMap.insert(pair<string,materialElement> ("mCOIN10",mCOIN10));
-    enumMap.insert(pair<string,materialElement> ("mCOIN50",mCOIN50));
-    enumMap.insert(pair<string,materialElement> ("mARMOUR",mARMOUR));
-    enumMap.insert(pair<string,materialElement> ("mSWORD",mSWORD));
-    enumMap.insert(pair<string,materialElement> ("mSHIELD",mSHIELD));
-    enumMap.insert(pair<string,materialElement> ("mENEMY",mENEMY));
-    enumMap.insert(pair<string,materialElement> ("mDHAND",mDHAND));
-    enumMap.insert(pair<string,materialElement> ("mDIALOG",mDIALOG));
-    enumMap.insert(pair<string,materialElement> ("mADIALOG",mADIALOG));
-    enumMap.insert(pair<string,materialElement> ("mBUTLER",mBUTLER));
-    enumMap.insert(pair<string,materialElement> ("mFURNITURE",mFURNITURE));
+    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_GRASS",mCUBE_GRASS));
+    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_SAND",mCUBE_SAND));
+    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_LAND",mCUBE_LAND));
+    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_BOX",mCUBE_BOX));
+    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_DUNG",mCUBE_DUNG));
+    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_WALL",mCUBE_WALL));
+    enumMap.insert(pair<string,MaterialIndex> ("mWOOD",mWOOD));
+    enumMap.insert(pair<string,MaterialIndex> ("MUSH",MUSH));
+    enumMap.insert(pair<string,MaterialIndex> ("mGRASS",mGRASS));
+    enumMap.insert(pair<string,MaterialIndex> ("mWATER",mWATER));
+    enumMap.insert(pair<string,MaterialIndex> ("mVOID",mVOID));
+    enumMap.insert(pair<string,MaterialIndex> ("mCOIN10",mCOIN10));
+    enumMap.insert(pair<string,MaterialIndex> ("mCOIN50",mCOIN50));
+    enumMap.insert(pair<string,MaterialIndex> ("mARMOUR",mARMOUR));
+    enumMap.insert(pair<string,MaterialIndex> ("mSWORD",mSWORD));
+    enumMap.insert(pair<string,MaterialIndex> ("mSHIELD",mSHIELD));
+    enumMap.insert(pair<string,MaterialIndex> ("mENEMY",mENEMY));
+    enumMap.insert(pair<string,MaterialIndex> ("mDHAND",mDHAND));
+    enumMap.insert(pair<string,MaterialIndex> ("mDIALOG",mDIALOG));
+    enumMap.insert(pair<string,MaterialIndex> ("mADIALOG",mADIALOG));
+    enumMap.insert(pair<string,MaterialIndex> ("mBUTLER",mBUTLER));
+    enumMap.insert(pair<string,MaterialIndex> ("mFURNITURE",mFURNITURE));
 
 }
 
@@ -136,7 +136,7 @@ MaterialCollection::~MaterialCollection()
 
 //**********************************************************************//
 
-Material* MaterialCollection::getMaterial(materialElement element){
+Material* MaterialCollection::getMaterial(MaterialIndex element){
     return collection[element];
 }
 

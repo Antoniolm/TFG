@@ -27,7 +27,7 @@
 
 using namespace std;
 
-enum materialElement{
+enum MaterialIndex{
     mCUBE_GRASS, //0
     mCUBE_SAND,  //1
     mCUBE_LAND,  //2
@@ -69,7 +69,7 @@ class MaterialCollection
             return instance;
         }
 
-        Material * getMaterial(materialElement element);
+        Material * getMaterial(MaterialIndex element);
         Material * getMaterial(string element);
     protected:
 
@@ -81,7 +81,7 @@ class MaterialCollection
 
         static MaterialCollection* instance;
         vector<Material *> collection;
-        map<string,materialElement> enumMap;
+        map<string,MaterialIndex> enumMap;
 };
 
 #endif // MATERIALCOLLECTION_H
