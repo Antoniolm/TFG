@@ -111,6 +111,7 @@ class AvatarMove: public Avatar
         bool detectHit(vec3f posAvatar,avatarDirection dirAvatar);
         void activeImpact(avatarDirection dirAvatar);
         void impactMove(float time);
+        void changeDirection(avatarDirection aDir);
 
     protected:
         RootMap * currentMap;

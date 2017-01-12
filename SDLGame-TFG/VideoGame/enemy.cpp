@@ -250,7 +250,7 @@ void Enemy::visualization(Context & cv){
 //**********************************************************************//
 
 void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
-    pair<avatarDirection,vec3f> moveHero;
+    pair<avatarDirection,vec3f> moveEnemy;
     vec3f aux;
     currentMap=rootMap;
     Hero * hero=rootMap->getHero();
@@ -267,16 +267,18 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     }
 
     if(enemyActivate){ //If enemy is activated
-        moveHero=IA.nextPosition(vec3f(position.x,position.y,position.z),posHero);
+        moveEnemy=IA.nextPosition(vec3f(position.x,position.y,position.z),posHero);
 
-        if((moveHero.second.x!=0.0 || moveHero.second.y!=0.0 || moveHero.second.z!=0.0)&& !isImpacted){ //IA-> is not near of our hero
-            if(!moveBody(moveHero.second,moveHero.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
+        if((moveEnemy.second.x!=0.0 || moveEnemy.second.y!=0.0 || moveEnemy.second.z!=0.0)&& !isImpacted){ //IA-> is not near of our hero
+            if(!moveBody(moveEnemy.second,moveEnemy.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
                 activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
             }
+            isHitting=false;
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
             isHitting=true;
+            changeDirection(moveEnemy.first);
             if(hero->isHit() && dmgDelay<(time-700) && detectHit(posHero,dirHero)){ //If the hero is hitting
                 addLife(-10);
                 activatedDialog=true;

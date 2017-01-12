@@ -41,7 +41,23 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
 
     //If the enemy is near of our hero. The enemy stop the movement
     if(sqrt(pow(posEnemy.x-posHero.x,2.0)+pow(posEnemy.y-posHero.y,2.0)+pow(posEnemy.z-posHero.z,2.0))<0.7){
-        result.first=FORWARD;
+
+        if(posEnemy.z>posHero.z && (posEnemy.x>=posHero.x-0.3 && posEnemy.x<=posHero.x+0.3))
+            result.first=BACKWARD;
+        else if(posEnemy.z<posHero.z && (posEnemy.x>=posHero.x-0.3 && posEnemy.x<=posHero.x+0.3))
+            result.first=FORWARD;
+        else if(posEnemy.x<posHero.x && (posEnemy.z>=posHero.z-0.3 && posEnemy.z<=posHero.z+0.3))
+                result.first=RIGHTWARD;
+        else if(posEnemy.x>posHero.x && (posEnemy.z>=posHero.z-0.3 && posEnemy.z<=posHero.z+0.3))
+                result.first=LEFTWARD;
+        else if(posEnemy.x<posHero.x && posEnemy.z>posHero.z)
+                result.first=BACK_RIGHTWARD;
+        else if(posEnemy.x>posHero.x && posEnemy.z>posHero.z)
+                result.first=BACK_LEFTWARD;
+        else if(posEnemy.x<posHero.x && posEnemy.z<posHero.z)
+                result.first=FOR_RIGHTWARD;
+        else if(posEnemy.x>posHero.x && posEnemy.z<posHero.z)
+                result.first=FOR_LEFTWARD;
         result.second=vec3f(0.0f,0.0f,0.0f);
         return result;
     }

@@ -440,6 +440,21 @@ avatarDirection AvatarMove::getDirection(){
 
 //**********************************************************************//
 
+void AvatarMove::changeDirection(avatarDirection aDir){
+    direction=aDir;
+    vec4f myPos;
+    myPos=moveAvatar->product(myPos);
+    Matrix4f transHero;
+    transHero.translation(myPos.x,myPos.y,myPos.z);
+
+    moveAvatar->rotation(45*aDir,0.0f,1.0f,0.0f);
+    moveAvatar->product(transHero.getMatrix());
+
+    direction=aDir;
+}
+
+//**********************************************************************//
+
 void AvatarMove::visualization(Context & cv){
 }
 
