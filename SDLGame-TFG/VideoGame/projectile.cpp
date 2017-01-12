@@ -19,12 +19,37 @@
 
 #include "projectile.h"
 
-Projectile::Projectile()
+Projectile::Projectile(vec3f aPosition,MeshIndex msIndex,MaterialIndex maIndex)
 {
-    //ctor
+    position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
+    MeshCollection * meshCollect =MeshCollection::getInstance();
+    MaterialCollection *materialCollect=MaterialCollection::getInstance();
+
+    Matrix4f * posMatrix=new Matrix4f();
+    posMatrix->translation(position.x,position.y,position.z);
+
+    root=new NodeSceneGraph(false,true);
+    root->add(posMatrix);
+    root->add(materialCollect->getMaterial(maIndex));
+    root->add(meshCollect->getMesh(msIndex));
+
 }
+
+//**********************************************************************//
 
 Projectile::~Projectile()
 {
     //dtor
+}
+
+//**********************************************************************//
+
+void Projectile::visualization(Context & vis){
+    root->visualization(vis);
+}
+
+//**********************************************************************//
+
+void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap ){
+    root->updateState(time,currentKeyStates,rootMap);
 }

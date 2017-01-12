@@ -21,19 +21,44 @@
 #define PROJECTILE_H
 
 
-#include "../GraphicEngine/projectile.h"
+#include "../GraphicEngine/object3d.h"
+#include "../GraphicEngine/nodescenegraph.h"
+#include "../GraphicEngine/meshcollection.h"
+#include "../GraphicEngine/materialcollection.h"
 
 class Projectile : public Object3D
 {
     public:
-        /** Default constructor */
-        Projectile();
-        /** Default destructor */
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
+        Projectile(vec3f aPosition,MeshIndex msIndex,MaterialIndex maIndex);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
         virtual ~Projectile();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will show the object in our scene
+        *    \return void
+        */
+        /////////////////////////////////////////////////////////////////////////
+        void visualization(Context & vis);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will update the state of the object. That change need the
+        *    current time in our application
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap );
     protected:
 
     private:
+        NodeSceneGraph * root;
 };
 
 #endif // PROJECTILE_H

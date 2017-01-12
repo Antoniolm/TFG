@@ -382,51 +382,46 @@ bool AvatarMove::detectHit(vec3f posAvatar,avatarDirection dirAvatar){
 //**********************************************************************//
 
 void AvatarMove::activeImpact(avatarDirection dirAvatar){
-    vec3f velocity,acceleration;
     impactTime=currentTime;
     switch(dirAvatar){
         case FORWARD:
-            velocity=vec3f(0.0,0.0,50.0);
+            impactMovement=vec3f(0.0,0.0,3.0);
             break;
         case BACKWARD:
-            velocity=vec3f(0.0,0.0,-50.0);
+            impactMovement=vec3f(0.0,0.0,-3.0);
             break;
         case LEFTWARD:
-            velocity=vec3f(-50.0,0.0,0.0);
+            impactMovement=vec3f(-3.0,0.0,0.0);
             break;
         case RIGHTWARD:
-             velocity=vec3f(50.0,0.0,0.0);
+             impactMovement=vec3f(3.0,0.0,0.0);
             break;
         case FOR_LEFTWARD:
-            velocity=vec3f(-50.0,0.0,50.0);
+            impactMovement=vec3f(-2.0,0.0,2.0);
             break;
         case FOR_RIGHTWARD:
-            velocity=vec3f(50.0,0.0,50.0);
+            impactMovement=vec3f(2.0,0.0,2.0);
 
             break;
         case BACK_LEFTWARD:
-            velocity=vec3f(-50.0,0.0,-50.0);
+            impactMovement=vec3f(-2.0,0.0,-2.0);
             break;
         case BACK_RIGHTWARD:
-            velocity=vec3f(50.0,0.0,-50.0);
+            impactMovement=vec3f(2.0,0.0,-2.0);
             break;
     }
 
-    impactMovement=new LinearMovement(velocity.x,velocity.y,velocity.z);
     isImpacted=true;
 }
 
 void AvatarMove::impactMove(float time){
-    GLfloat * moveGravity=impactMovement->updateState(time-currentTime).getMatrix();
-
     vec3f posHero=getPosition();
 
-    if(impactTime>(time-500)){
-        moveBody(vec3f(moveGravity[12],moveGravity[13],moveGravity[14]),direction);
+    if(impactTime>(time-300)){
+        moveBody(impactMovement,direction);
     }
     else{
         isImpacted=false;
-        impactMovement->resetState();
     }
 
 }

@@ -117,7 +117,7 @@ class AvatarMove: public Avatar
         Matrix4f * moveAvatar;
         avatarDirection direction;
         AcceleratedMovement * acceleratedMove;
-        LinearMovement * impactMovement;
+        vec3f impactMovement;
         bool isMoving,isFalling,isJumping,isMoveCollision,isHitting,isImpacted,isShielded;
         float currentTime,dmgDelay,impactTime;
     private:

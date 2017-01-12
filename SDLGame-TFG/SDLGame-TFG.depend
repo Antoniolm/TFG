@@ -1645,11 +1645,11 @@
 	"structdata.h"
 	<SDL.h>
 
-1484045812 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1484236486 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 
-1484051310 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
+1484236118 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.h
 	"avatar.h"
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/acceleratedmovement.h"
@@ -2101,4 +2101,13 @@
 
 1484227699 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coinlist.cpp
 	"coinlist.h"
+
+1484236923 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
+	"projectile.h"
+
+1484236877 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
+	"../GraphicEngine/object3d.h"
+	"../GraphicEngine/nodescenegraph.h"
+	"../GraphicEngine/meshcollection.h"
+	"../GraphicEngine/materialcollection.h"
 
