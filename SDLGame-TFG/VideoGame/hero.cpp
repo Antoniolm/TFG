@@ -431,7 +431,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         activeJump(vec3f(velocityHero.x,15.0,velocityHero.y),vec3f(accelerationHero.x,5.0,accelerationHero.z));
         jumpDelay=time;
     }
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]){ //If hero is hitting
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)] && !isShielded){ //If hero is hitting
         if(!isHitting)
             animationHit.resetState();
         isHitting=true;
@@ -446,7 +446,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
 
     //Case-> Push W bottom to shield
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)]){ //If hero is shielding
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)] && !isHitting){ //If hero is shielding
         isShielded=true;
     }
     else { //if not
@@ -635,7 +635,7 @@ bool Hero::isHit(){
         heroSound[1]->stop();
         heroSound[1]->play();
     }
-    if(detectHit(posAvatar,dirAvatar) && shieldDelay<(currentTime-700) && isShielded){
+    if(detectHit(posAvatar,dirAvatar) && shieldDelay<(currentTime-700) && canShield){
         heroSound[2]->stop();
         heroSound[2]->play();
         shieldDelay=currentTime;

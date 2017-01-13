@@ -290,10 +290,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
                 enemySound[1]->stop();
                 enemySound[1]->play();
             }
-            else { //If the hero is not hitting
-                if(dmgDelay<(time-300))
-                    activatedDialog=false;
-            }
+
             if(isImpacted) //if is impacted
                 impactMove(time);
         }
@@ -303,6 +300,10 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         else
             gravity(time);
     }
+
+    if(dmgDelay<(time-300))
+        activatedDialog=false;
+
 
     //Update our vec4f position
     position=moveAvatar->product(vec4f());
@@ -336,6 +337,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
 
         if((animationHit.getScriptState(3)==3 || animationHit.getScriptState(4)==1) && hitDelay<(time-700)){
             hero->takeDamage(position,direction,-10);
+            hitDelay=time;
         }
     }
 
