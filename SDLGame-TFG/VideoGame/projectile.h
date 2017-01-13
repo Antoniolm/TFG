@@ -58,7 +58,6 @@ class Projectile : public AvatarMove
     protected:
 
     private:
-        NodeSceneGraph * root;
         vec3f velocity;
         bool isLive;
 };

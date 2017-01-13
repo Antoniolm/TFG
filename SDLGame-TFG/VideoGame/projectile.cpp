@@ -23,16 +23,7 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh
 {
     direction=aDir;
     velocity=aVelocity;
-    acceleratedMove=new AcceleratedMovement();
-    acceleratedMove->resetState();
     isLive=true;
-    isMoving=false;
-    isFalling=false;
-    isJumping=false;
-    isHitting=false;
-    isImpacted=false;
-    isShielded=false;
-    life=100;
 
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     MeshCollection * meshCollect =MeshCollection::getInstance();
@@ -41,7 +32,7 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh
     moveAvatar= new Matrix4f();
     moveAvatar->translation(position.x,position.y,position.z);
 
-    root=new NodeSceneGraph();
+    root=new NodeSceneGraph(false,true);
     root->add(moveAvatar);
     root->add(materialCollect->getMaterial(maIndex));
     root->add(meshCollect->getMesh(msIndex));
@@ -67,7 +58,9 @@ void Projectile::visualization(Context & vis){
 //**********************************************************************//
 
 void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap ){
-    //moveBody(velocity,direction);
+    //isLive=moveBody(velocity,direction);
+    LinearMovement lineMove(velocity);
+    moveAvatar->product(lineMove.updateState(time-currentTime).getMatrix());
     root->updateState(time,currentKeyStates,rootMap);
     currentTime+=(time-currentTime);
 }
