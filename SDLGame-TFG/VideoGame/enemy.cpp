@@ -166,9 +166,9 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     //////////////////////////////////////////////////////
 
     //Movement for our hero
-    AvatarMove::moveAvatar= new Matrix4f();
-    AvatarMove::moveAvatar->translation(position.x,position.y,position.z);
-    root->add(AvatarMove::moveAvatar);
+    moveAvatar= new Matrix4f();
+    moveAvatar->translation(position.x,position.y,position.z);
+    root->add(moveAvatar);
 
     Matrix4f *transLegScene=new Matrix4f();
     transLegScene->translation(-0.4,0.0,0.0);

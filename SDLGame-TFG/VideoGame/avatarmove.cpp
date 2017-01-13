@@ -35,6 +35,7 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
     vec3f posHero=vec3f(position.x,position.y,position.z);
     posHero.y+=1.0;
     //Check the collision first
+
     switch(aDir){
         case FORWARD:
             tenthValue=posHero.x-(int)posHero.x;
@@ -131,7 +132,6 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
             }
         break;
     }
-
     float time=SDL_GetTicks();
     if(hasCollision==0){ //Case -> the hero can move = No collision
         if(direction!=aDir){

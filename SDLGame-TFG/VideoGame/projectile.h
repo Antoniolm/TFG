@@ -60,6 +60,7 @@ class Projectile : public AvatarMove
     private:
         NodeSceneGraph * root;
         vec3f velocity;
+        bool isLive;
 };
 
 #endif // PROJECTILE_H

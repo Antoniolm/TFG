@@ -23,18 +23,30 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh
 {
     direction=aDir;
     velocity=aVelocity;
+    acceleratedMove=new AcceleratedMovement();
+    acceleratedMove->resetState();
+    isLive=true;
+    isMoving=false;
+    isFalling=false;
+    isJumping=false;
+    isHitting=false;
+    isImpacted=false;
+    isShielded=false;
+    life=100;
 
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection *materialCollect=MaterialCollection::getInstance();
 
-    Matrix4f * posMatrix=new Matrix4f();
-    posMatrix->translation(position.x,position.y,position.z);
+    moveAvatar= new Matrix4f();
+    moveAvatar->translation(position.x,position.y,position.z);
 
-    root=new NodeSceneGraph(false,true);
-    root->add(posMatrix);
+    root=new NodeSceneGraph();
+    root->add(moveAvatar);
     root->add(materialCollect->getMaterial(maIndex));
     root->add(meshCollect->getMesh(msIndex));
+
+    currentTime=SDL_GetTicks();
 
 }
 
@@ -48,11 +60,14 @@ Projectile::~Projectile()
 //**********************************************************************//
 
 void Projectile::visualization(Context & vis){
-    root->visualization(vis);
+    if(isLive)
+        root->visualization(vis);
 }
 
 //**********************************************************************//
 
 void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap ){
+    //moveBody(velocity,direction);
     root->updateState(time,currentKeyStates,rootMap);
+    currentTime+=(time-currentTime);
 }
