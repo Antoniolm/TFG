@@ -47,7 +47,8 @@ enum MeshIndex{
     BUTLER,
     BED,
     CUPBOARD,
-    BEDSIDETABLE
+    BEDSIDETABLE,
+    ARROW
 };
 
 class MeshCollection

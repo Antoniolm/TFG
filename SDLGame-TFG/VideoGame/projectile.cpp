@@ -58,9 +58,17 @@ void Projectile::visualization(Context & vis){
 //**********************************************************************//
 
 void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap ){
+    vec3f posHero=rootMap->getHero()->getPosition();
+    float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.y-posHero.y,2.0)+pow(position.z-posHero.z,2.0));
+    if(distance<=1.0){
+        rootMap->getHero()->takeDamage(position,direction,-20);
+        isLive=false;
+    }
     //isLive=moveBody(velocity,direction);
     LinearMovement lineMove(velocity);
     moveAvatar->product(lineMove.updateState(time-currentTime).getMatrix());
     root->updateState(time,currentKeyStates,rootMap);
+    //Update our vec4f position
+    position=moveAvatar->product(vec4f());
     currentTime+=(time-currentTime);
 }

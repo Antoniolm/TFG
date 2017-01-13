@@ -136,6 +136,10 @@ MeshCollection::MeshCollection()
     element->init();
     collection.push_back(element);
 
+    element=new Mesh("geometries/arrow.obj");
+    element->init();
+    collection.push_back(element);
+
     //Create our map
     enumMap.insert(pair<string,MeshIndex> ("CUBE",CUBE));
     enumMap.insert(pair<string,MeshIndex> ("SPHERE",SPHERE));
@@ -159,6 +163,7 @@ MeshCollection::MeshCollection()
     enumMap.insert(pair<string,MeshIndex> ("BED",BED));
     enumMap.insert(pair<string,MeshIndex> ("CUPBOARD",CUPBOARD));
     enumMap.insert(pair<string,MeshIndex> ("BEDSIDETABLE",BEDSIDETABLE));
+    enumMap.insert(pair<string,MeshIndex> ("ARROW",ARROW));
 }
 
 //**********************************************************************//
