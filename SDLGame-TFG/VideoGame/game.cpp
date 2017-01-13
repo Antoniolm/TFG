@@ -84,7 +84,7 @@ void Game::loop(){
     rootMap->setHero(hero);
 
     //Test projectile
-    Projectile * project=new Projectile(vec3f(10.0,1.5,-2.0),vec3f(-1.0,0.0,0.0),LEFTWARD,ARROW,mARCHENEMY);
+    Projectile * project=new Projectile(vec3f(7.0,1.5,-2.0),vec3f(-2.0,0.0,0.0),LEFTWARD,ARROW,mARCHENEMY);
 
     //Create our camera
     vec3f position(2.0,4.0,5.0);
