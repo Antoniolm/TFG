@@ -76,7 +76,7 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/enemyTexture.png");
     collection.push_back(material);
 
-    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureLeg.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/archerTexture.png");
     collection.push_back(material);
 
     //Text Material
@@ -113,7 +113,7 @@ MaterialCollection::MaterialCollection()
     enumMap.insert(pair<string,MaterialIndex> ("mSWORD",mSWORD));
     enumMap.insert(pair<string,MaterialIndex> ("mSHIELD",mSHIELD));
     enumMap.insert(pair<string,MaterialIndex> ("mENEMY",mENEMY));
-    enumMap.insert(pair<string,MaterialIndex> ("mDHAND",mDHAND));
+    enumMap.insert(pair<string,MaterialIndex> ("mARCHENEMY",mARCHENEMY));
     enumMap.insert(pair<string,MaterialIndex> ("mDIALOG",mDIALOG));
     enumMap.insert(pair<string,MaterialIndex> ("mADIALOG",mADIALOG));
     enumMap.insert(pair<string,MaterialIndex> ("mBUTLER",mBUTLER));

@@ -45,7 +45,7 @@ enum MaterialIndex{
     mSWORD,       //12
     mSHIELD,       //12
     mENEMY,      //13
-    mDHAND,      //14
+    mARCHENEMY,      //14
     mDIALOG,     //15
     mADIALOG,     //16
     mBUTLER,

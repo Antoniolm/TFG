@@ -8,3 +8,4 @@ Dungeon by Yuliia Tsukanova is licensed under CC Attribution https://skfb.ly/N6T
 Brick Wall Test by adamdart7 is licensed under CC Attribution https://skfb.ly/EzMp -> used in the texture: cubeWall.png
 Crystal by SomjadeChunthavorn is licensed under CC Attribution https://skfb.ly/CssO -> used in the obj: TEX_crystal.png
 FREE ZOMBIE COMMONER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-zombie-commoner) -> used in the texture: enemyTexture.png
+FREE ZOMBIE COMMONER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-zombie-commoner) -> used in the texture: archerTexture.png

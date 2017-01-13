@@ -209,11 +209,9 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     chest_ArmsNode->add(ArmRight);
 
     root->add(scaleHero);
-    root->add(materialCollect->getMaterial(mWOOD));
     root->add(headNode);
     root->add(chest_ArmsNode);
     root->add(transLegSceneI);
-    root->add(materialCollect->getMaterial(mWOOD));
     root->add(legLeft);
     root->add(transLegScene);
     root->add(legRight);

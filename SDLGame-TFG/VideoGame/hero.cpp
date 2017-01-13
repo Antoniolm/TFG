@@ -277,10 +277,8 @@ Hero::Hero()
     chest_Arms_HeadNode->add(ArmRight);
 
     root->add(scaleHero);
-    root->add(materialCollect->getMaterial(mWOOD));
     root->add(chest_Arms_HeadNode);
     root->add(transLegSceneI);
-    root->add(materialCollect->getMaterial(mWOOD));
     root->add(legLeft);
     root->add(transLegScene);
     root->add(legRight);
