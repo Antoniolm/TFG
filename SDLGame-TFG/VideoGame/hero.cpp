@@ -239,7 +239,7 @@ Hero::Hero()
     transLegScene->translation(-0.5,0.0,0.0);
 
     Matrix4f *transLegSceneI=new Matrix4f();
-    transLegSceneI->translation(0.25,0.97,0.0);
+    transLegSceneI->translation(0.25,0.0,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
     scaleHero->scale(0.5,0.5,0.5);
@@ -254,7 +254,7 @@ Hero::Hero()
     transHead->translation(0.0,1.4,0.0);
 
     Matrix4f *transChest=new Matrix4f();
-    transChest->translation(0.0,1.1,0.0);
+    transChest->translation(0.0,0.1,0.0);
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(materialCollect->getMaterial(mARMOUR));
@@ -452,7 +452,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
 
     //Move the body
-    if(hasMove && !isImpacted && !isShielded){
+    if(hasMove && !isImpacted && !isShielded && !isHitting){
         moveBody(moveHero,heroDir);
         heroSound[0]->play();
     }
@@ -610,8 +610,7 @@ bool Hero::isHit(){
  void Hero::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value){
      //check if the hero is shielding
      bool canShield=false;
-     if(isShielded && detectShield(posAvatar,direction)) canShield=true;
-
+    if(isShielded && detectShield(posAvatar,direction)) canShield=true;
 
     if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) && !canShield){
         addLife(value);

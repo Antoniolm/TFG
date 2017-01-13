@@ -58,9 +58,13 @@ void Projectile::visualization(Context & vis){
 //**********************************************************************//
 
 void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap ){
+    if(time-currentTime>200)
+        currentTime=time-50;
+
     vec3f posHero=rootMap->getHero()->getPosition();
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.y-posHero.y,2.0)+pow(position.z-posHero.z,2.0));
-    if(distance<=1.0 && isLive){
+    //cout<< "Distancia "<< distance<<endl;
+    if(distance<=0.7 && isLive){
         rootMap->getHero()->takeDamage(position,direction,-20);
         isLive=false;
     }

@@ -174,7 +174,7 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     transLegScene->translation(-0.4,0.0,0.0);
 
     Matrix4f *transLegSceneI=new Matrix4f();
-    transLegSceneI->translation(0.2,0.97,0.0);
+    transLegSceneI->translation(0.2,0.0,0.0);
 
     Matrix4f * scaleHero=new Matrix4f();
     scaleHero->scale(0.5,0.5,0.5);
@@ -186,10 +186,10 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     trasnArmsI->translation(0.3,0.3,0.3);
 
     Matrix4f *transHead=new Matrix4f();
-    transHead->translation(0.0,1.8,0.0);
+    transHead->translation(0.0,0.7,0.0);
 
     Matrix4f *transChest=new Matrix4f();
-    transChest->translation(0.0,1.3,-0.3);
+    transChest->translation(0.0,0.1,-0.3);
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
     chestNode->add(materialCollect->getMaterial(mENEMY));
@@ -272,7 +272,10 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
                 activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
             }
+            if(isHitting)
+                animationHit.resetState();
             isHitting=false;
+
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
             isHitting=true;
@@ -333,7 +336,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
 
-        if((animationHit.getScriptState(3)==3 || animationHit.getScriptState(4)==1) && hitDelay<(time-700)){
+        if((animationHit.getScriptState(2)==3 || animationHit.getScriptState(3)==1) && hitDelay<(time-700)){
             hero->takeDamage(position,direction,-10);
             hitDelay=time;
         }

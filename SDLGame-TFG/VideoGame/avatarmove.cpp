@@ -33,7 +33,7 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
     bool result=false;
     float tenthValue,tenthValue2;
     vec3f posHero=vec3f(position.x,position.y,position.z);
-    posHero.y+=1.0;
+    //posHero.y+=1.0;
     //Check the collision first
 
     switch(aDir){
@@ -185,7 +185,7 @@ bool AvatarMove::gravity(float time){
 
     vec3f posHero=getPosition();
     //posHero.y-=0.01;
-    //posHero.y-=0.51;
+    posHero.y-=0.51;
 
     //Get the tenth of our position
     tenthValueX=posHero.x-(int)posHero.x;
@@ -274,7 +274,7 @@ bool AvatarMove::jump(float time){
     GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
 
     vec3f posHero=getPosition();
-    posHero.y+=1.2;
+    posHero.y+=0.5;
 
     if(moveGravity[13]>0){
         //Get the tenth of our position
