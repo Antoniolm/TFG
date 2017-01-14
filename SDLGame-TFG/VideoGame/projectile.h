@@ -72,18 +72,10 @@ class Projectile : public AvatarMove
     protected:
 
     private:
-        vec3f velocity;
+        void calculateHead();
+        vec3f velocity,projectileHead;
         bool isLive;
-        vector<Matrix4f *> moveMatrix;
-        vector<Sound *> enemySound;
-        ScriptLMD animation,animationHit;
-        vec3f radioActivity;
-        vec3f currentMove;
-        IAEnemy IA;
-        bool enemyActivate;
-        bool activatedDialog;
-        Text * currentText;
-        float jumpDelay,hitDelay;
+
 };
 
 #endif // PROJECTILE_H

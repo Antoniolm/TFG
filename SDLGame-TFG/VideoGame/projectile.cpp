@@ -63,9 +63,10 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
 
     currentMap=rootMap;
     vec3f posHero=rootMap->getHero()->getPosition();
-    float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.y-posHero.y,2.0)+pow(position.z-posHero.z,2.0));
-    cout<< "Distancia "<< distance<<endl;
-    if(distance<=0.7 && isLive){
+
+    float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0));
+    //cout<< "Distancia "<< distance<<endl;
+    if(distance<=0.4 && isLive){
         rootMap->getHero()->takeDamage(position,direction,-20);
         isLive=false;
     }
@@ -75,4 +76,36 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     root->updateState(time,currentKeyStates,rootMap);
     position=moveAvatar->product(vec4f());
     currentTime+=(time-currentTime);
+}
+
+//**********************************************************************//
+
+void Projectile::calculateHead(){
+    switch(direction){
+            case FORWARD:
+                projectileHead=vec3f(0.0,0.0,0.5);
+            break;
+            case BACKWARD:
+                projectileHead=vec3f(0.0,0.0,-0.5);
+            break;
+            case LEFTWARD:
+                projectileHead=vec3f(-0.5,0.0,0.0);
+            break;
+            case RIGHTWARD:
+                projectileHead=vec3f(0.5,0.0,0.0);
+            break;
+            case FOR_LEFTWARD:
+                projectileHead=vec3f(-0.4,0.0,0.4);
+            break;
+            case FOR_RIGHTWARD:
+                projectileHead=vec3f(0.4,0.0,0.4);
+            break;
+            case BACK_LEFTWARD:
+                projectileHead=vec3f(-0.4,0.0,-0.4);
+            break;
+            case BACK_RIGHTWARD:
+                projectileHead=vec3f(0.4,0.0,-0.4);
+            break;
+        }
+
 }

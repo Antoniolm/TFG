@@ -771,17 +771,23 @@ bool Hero::isHit(){
 
     //Matrix4fDinamic
     OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,140,500,vec3f(1.0,0.0,0),1);
-    //OscillateRotation * shoulderCharge=new OscillateRotation(false,140,60,140,250,vec3f(1.0,0.0,0),1);
-    OscillateRotation * shoulderCharge2=new OscillateRotation(false,60,0,60,250,vec3f(1.0,0.0,0),1);
+    OscillateRotation * shoulderCharge2=new OscillateRotation(false,140,0,140,500,vec3f(0.0,1.0,0),1);
     OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
     Matrix4f * rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(90,1.0,0.0,0.0);
 
     Matrix4f * rotateElbow=new Matrix4f();
-    rotateElbow->rotation(-30,1.0,0.0,0.0);
+    rotateElbow->rotation(90,1.0,0.0,0.0);
+
+    Matrix4f * transElbow=new Matrix4f();
+    transElbow->translation(0.0,-0.5,0.0);
+
+    rotateElbow->product(transElbow->getMatrix());
+
 
     MatrixStatic *staticShoulder=new MatrixStatic(*rotateShoulder);
     MatrixStatic *staticElbow=new MatrixStatic(*rotateElbow);
+    MatrixStatic *staticTransElbow=new MatrixStatic(*rotateElbow);
 
     //Movement to the first arm
     ElbowScriptLeft=new MatrixScript();
@@ -794,10 +800,20 @@ bool Hero::isHit(){
     //Movement to the second arm
     ElbowScriptRight=new MatrixScript();
     ArmScriptRight=new MatrixScript();
-    ElbowScriptRight->add(0.5,notMove);
-    ArmScriptRight->add(0.25,shoulderCharge);
-    ArmScriptRight->add(0.4,notMove);
+    ElbowScriptTRight=new MatrixScript();
 
+    ElbowScriptRight->add(0.65,notMove);
+    //ElbowScriptRight->add(0.25,shoulderCharge2);
+    //ElbowScriptRight->add(0.4,notMove);
+
+    ElbowScriptTRight->add(0.65,notMove);
+    //ElbowScriptTRight->add(0.25,staticTransElbow);
+    //ElbowScriptTRight->add(0.4,notMove);
+
+    ArmScriptRight->add(0.25,shoulderCharge);
+    ArmScriptRight->add(0.35,notMove);
+    //ArmScriptRight->add(0.30,staticShoulder);
+    //ArmScriptRight->add(0.4,notMove);
 
     //Add the script to our animation
     animationHit.add(ElbowScriptRight);  //2
