@@ -219,6 +219,9 @@ Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     jumpDelay=currentTime;
     dmgDelay=currentTime;
     hitDelay=currentTime;
+    IADelay=currentTime;
+    currentMove.first=FORWARD;
+    currentMove.second=vec3f();
 
     //Init all animations of our hero
     initAnimation();
@@ -248,7 +251,6 @@ void Enemy::visualization(Context & cv){
 //**********************************************************************//
 
 void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
-    pair<avatarDirection,vec3f> moveEnemy;
     vec3f aux;
     currentMap=rootMap;
     Hero * hero=rootMap->getHero();
@@ -265,10 +267,12 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     }
 
     if(enemyActivate){ //If enemy is activated
-        moveEnemy=IA.nextPosition(vec3f(position.x,position.y,position.z),posHero);
-
-        if((moveEnemy.second.x!=0.0 || moveEnemy.second.y!=0.0 || moveEnemy.second.z!=0.0)&& !isImpacted){ //IA-> is not near of our hero
-            if(!moveBody(moveEnemy.second,moveEnemy.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
+        if(IADelay<(time-200)){
+            currentMove=IA.nextPosition(vec3f(position.x,position.y,position.z),posHero);
+            IADelay=time;
+        }
+        if((currentMove.second.x!=0.0 || currentMove.second.y!=0.0 || currentMove.second.z!=0.0)&& !isImpacted){ //IA-> is not near of our hero
+            if(!moveBody(currentMove.second,currentMove.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
                 activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
             }
@@ -279,7 +283,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
             isHitting=true;
-            changeDirection(moveEnemy.first);
+            changeDirection(currentMove.first);
             if(hero->isHit() && dmgDelay<(time-700) && detectHit(posHero,dirHero)){ //If the hero is hitting
                 addLife(-10);
                 activatedDialog=true;
