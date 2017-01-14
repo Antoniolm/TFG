@@ -29,11 +29,11 @@ enum avatarDirection
 	FORWARD,       //0
 	FOR_LEFTWARD,  //1
 	LEFTWARD,      //2
-	BACK_LEFTWARD, //1
-	BACKWARD,      //5
-	BACK_RIGHTWARD,//1
-	RIGHTWARD,     //0
-	FOR_RIGHTWARD  //1
+	BACK_LEFTWARD, //3
+	BACKWARD,      //4
+	BACK_RIGHTWARD,//5
+	RIGHTWARD,     //6
+	FOR_RIGHTWARD  //7
 };
 
 class Avatar: public Object3D

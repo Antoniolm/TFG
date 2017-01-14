@@ -61,11 +61,10 @@ void ProjectileSystem::updateState(float time,const Uint8* currentKeyStates,Root
     list<Projectile *>::iterator it=projectiles.begin();
     while(it!=projectiles.end()){
         (*it)->updateState(time,currentKeyStates,rootMap);
-        /*if((*it)->isLive()){
-            delete (*it);
+        if(!(*it)->isLive()){
             it=projectiles.erase(it);
         }
-        else*/
+        else
             it++;
     }
 

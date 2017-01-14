@@ -54,6 +54,14 @@
             "delay":2000,
             "material":"mARCHENEMY",
             "mesh":"ARROW"
+        },
+        {   "radioActivity":[2.0,2.0,2.0],
+            "position":[2.5,2.0,-6.5],
+            "velocity":[0.0,0.0,2.0],
+            "direction":0,
+            "delay":2000,
+            "material":"mARCHENEMY",
+            "mesh":"ARROW"
         }
     ],
 

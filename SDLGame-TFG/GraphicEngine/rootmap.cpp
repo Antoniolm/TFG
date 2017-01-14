@@ -83,7 +83,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     }
 
     /////////////////////////////////////////
-    // Add particleSystems to our map
+    // Add projectileSystem to our map
     /////////////////////////////////////////
     const rapidjson::Value & projectileSys=document["projectileSystem"];
     for(unsigned currentPSys=0;currentPSys<projectileSys.Size();currentPSys++){

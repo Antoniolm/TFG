@@ -25,12 +25,15 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh
     velocity=aVelocity;
     live=true;
 
+
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection *materialCollect=MaterialCollection::getInstance();
 
     moveAvatar= new Matrix4f();
     moveAvatar->translation(position.x,position.y,position.z);
+    //Update direction
+    changeDirection(direction);
 
     root=new NodeSceneGraph(false,true);
     root->add(moveAvatar);
@@ -67,8 +70,8 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     vec3f posHero=rootMap->getHero()->getPosition();
     vec3f posHead=vec3f(vec3f(position)+projectileHead);
     float distance=sqrt(pow(posHead.x-posHero.x,2.0)+pow(posHead.z-posHero.z,2.0));
-    //cout<< "Distancia "<< distance<<endl;
-    if(distance<=0.4 && live){
+
+    if(distance<=0.3 && live){
         rootMap->getHero()->takeDamage(position,direction,-20);
         live=false;
     }
