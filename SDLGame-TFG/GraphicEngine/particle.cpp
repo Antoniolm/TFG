@@ -24,7 +24,7 @@ Particle::Particle(){
 
 //**********************************************************************//
 
-Particle::Particle(Material * material,vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float maxTime){
+Particle::Particle(Material * material,vec3f aScale,vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float maxTime){
     position.x=minPos.x + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxPos.x-minPos.x)));
     position.y=minPos.y + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxPos.y-minPos.y)));
     position.z=minPos.z + static_cast <float> (rand()) /( static_cast <float> (RAND_MAX/(maxPos.z-minPos.z)));
@@ -36,13 +36,13 @@ Particle::Particle(Material * material,vec3f minPos,vec3f maxPos,vec3f aVelocity
     transMatrix=new Matrix4f();
     transMatrix->translation(position.x,position.y,position.z);
 
-    Matrix4f * scaleCube=new Matrix4f();
-    scaleCube->scale(0.1,0.1,0.1);
+    Matrix4f * scaleParticle=new Matrix4f();
+    scaleParticle->scale(aScale.x,aScale.y,aScale.z);
 
     root=new NodeSceneGraph();
     NodeSceneGraph * cubeNode=new NodeSceneGraph();
     cubeNode->add(transMatrix);
-    cubeNode->add(scaleCube);
+    cubeNode->add(scaleParticle);
     cubeNode->add(material);
     cubeNode->add(meshCollect->getMesh(SPHERE));
     root->add(cubeNode);

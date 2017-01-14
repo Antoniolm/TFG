@@ -37,6 +37,7 @@
     "particleSystem":[
         {   "number":100,
             "material":"mWATER",
+            "scale":[0.1,0.1,0.1],
             "minPosition":[1.0,1.0,-1.0],
             "maxPosition":[8.0,1.0,-2.0],
             "velocity":[0.0,1.0,0.0],

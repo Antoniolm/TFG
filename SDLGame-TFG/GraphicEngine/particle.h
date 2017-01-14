@@ -39,7 +39,7 @@ class Particle : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Particle(Material * material,vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float maxTime);
+        Particle(Material * material,vec3f aScale,vec3f minPos,vec3f maxPos,vec3f aVelocity,float minTime,float maxTime);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -68,7 +68,7 @@ class Particle : public Object3D
     protected:
 
     private:
-        vec3f position,velocity, color;
+        vec3f position,velocity;
         NodeSceneGraph *root;
         Matrix4f * transMatrix;
         float remainingTime;

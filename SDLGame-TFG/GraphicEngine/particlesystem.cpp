@@ -26,7 +26,7 @@ ParticleSystem::ParticleSystem()
 
 //**********************************************************************//
 
-ParticleSystem::ParticleSystem(int numParticle,string aMaterial,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime)
+ParticleSystem::ParticleSystem(int numParticle,string aMaterial,vec3f aScale,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime)
 {
     vec3f pos=(aMaxPos-aMinPos)/2;
     position=vec4f(pos.x,pos.y,pos.z,1.0);
@@ -34,6 +34,7 @@ ParticleSystem::ParticleSystem(int numParticle,string aMaterial,vec3f aMinPos,ve
     MaterialCollection * materialCollect=MaterialCollection::getInstance();
 
     material=materialCollect->getMaterial(aMaterial);
+    scale=aScale;
     nParticles=numParticle;
     minPos=aMinPos;
     maxPos=aMaxPos;
@@ -80,7 +81,7 @@ void ParticleSystem::updateState(float time,const Uint8* currentKeyStates,RootMa
     //Create new particles if some of them is dead
     int diff=nParticles-currentParticles;
     for(unsigned i=0;i<diff;i++){
-        particles.push_back(new Particle(material,minPos,maxPos,velocity,minTime,maxTime));
+        particles.push_back(new Particle(material,scale,minPos,maxPos,velocity,minTime,maxTime));
         currentParticles++;
     }
 

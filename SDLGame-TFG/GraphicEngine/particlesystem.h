@@ -41,7 +41,7 @@ class ParticleSystem : public NodeSceneGraph
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        ParticleSystem(int numParticle,string aMaterial,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime);
+        ParticleSystem(int numParticle,string aMaterial,vec3f aScale,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -71,7 +71,7 @@ class ParticleSystem : public NodeSceneGraph
         list<Particle *> particles;
         int nParticles;         //total number of particles that our system has to have with life
         int currentParticles;   //number of live particles in our system
-        vec3f maxPos,minPos,velocity;
+        vec3f maxPos,minPos,velocity,scale;
         float minTime,maxTime;
         Material * material;
 };
