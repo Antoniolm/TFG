@@ -19,9 +19,17 @@
 
 #include "projectilesystem.h"
 
-ProjectileSystem::ProjectileSystem()
+ProjectileSystem::ProjectileSystem(vec3f aRadio,vec3f aPos,vec3f aVeloc,avatarDirection aDir,float aDelay,MeshIndex aMesh,MaterialIndex aMaterial)
 {
+    radioActivity=aRadio;
+    position=aPos;
+    velocity=aVeloc;
+    direction=aDir;
+    timeBWprojectile=aDelay;//time between one projectile and another
+    mesh=aMesh;
+    material=aMaterial;
     currentTime=SDL_GetTicks();
+    projectileDelay=currentTime;
 }
 
 //**********************************************************************//
@@ -55,6 +63,11 @@ void ProjectileSystem::updateState(float time,const Uint8* currentKeyStates,Root
         }
         else
             it++;
+    }
+
+    if(projectileDelay<(time-timeBWprojectile)){
+        projectiles.push_back(new Projectile(position,velocity,direction,mesh,material));
+        projectileDelay=time;
     }
 
 

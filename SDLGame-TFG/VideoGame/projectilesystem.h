@@ -34,7 +34,7 @@ class ProjectileSystem : public NodeSceneGraph
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        ProjectileSystem();
+        ProjectileSystem(vec3f aRadio,vec3f aPos,vec3f aVeloc,avatarDirection aDir,float aDelay,MeshIndex aMesh,MaterialIndex aMaterial);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -62,6 +62,12 @@ class ProjectileSystem : public NodeSceneGraph
 
     private:
         list<Projectile *> projectiles;
+        vec3f radioActivity,position,velocity;
+        avatarDirection direction;
+        float projectileDelay; //time delay
+        float timeBWprojectile;//time between one projectile and another
+        MeshIndex mesh;
+        MaterialIndex material;
 };
 
 #endif // PROJECTILESYSTEM_H
