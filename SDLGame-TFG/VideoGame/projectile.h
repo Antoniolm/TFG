@@ -20,12 +20,26 @@
 #ifndef PROJECTILE_H
 #define PROJECTILE_H
 
-
+#include "avatar.h"
 #include "avatarmove.h"
-#include "../GraphicEngine/nodescenegraph.h"
+#include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/meshcollection.h"
-#include "../GraphicEngine/materialcollection.h"
+#include "../GraphicEngine/scriptlmd.h"
+#include "../GraphicEngine/context.h"
+#include "../GraphicEngine/matrixscript.h"
+#include "../GraphicEngine/rootmap.h"
+#include "../GraphicEngine/matrix4f.h"
+#include "../GraphicEngine/objectscene.h"
+#include "../GraphicEngine/acceleratedmovement.h"
+#include "../GraphicEngine/sound.h"
+#include "../GraphicEngine/iaenemy.h"
+#include "../GraphicEngine/text.h"
 
+#include <vector>
+
+
+using namespace std;
+class RootMap;
 class Projectile : public AvatarMove
 {
     public:
@@ -60,6 +74,16 @@ class Projectile : public AvatarMove
     private:
         vec3f velocity;
         bool isLive;
+        vector<Matrix4f *> moveMatrix;
+        vector<Sound *> enemySound;
+        ScriptLMD animation,animationHit;
+        vec3f radioActivity;
+        vec3f currentMove;
+        IAEnemy IA;
+        bool enemyActivate;
+        bool activatedDialog;
+        Text * currentText;
+        float jumpDelay,hitDelay;
 };
 
 #endif // PROJECTILE_H

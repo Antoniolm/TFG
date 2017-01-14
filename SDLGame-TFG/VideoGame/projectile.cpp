@@ -61,18 +61,18 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     if(time-currentTime>200)
         currentTime=time-50;
 
+    currentMap=rootMap;
     vec3f posHero=rootMap->getHero()->getPosition();
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.y-posHero.y,2.0)+pow(position.z-posHero.z,2.0));
-    //cout<< "Distancia "<< distance<<endl;
+    cout<< "Distancia "<< distance<<endl;
     if(distance<=0.7 && isLive){
         rootMap->getHero()->takeDamage(position,direction,-20);
         isLive=false;
     }
-    //isLive=moveBody(velocity,direction);
-    LinearMovement lineMove(velocity);
-    moveAvatar->product(lineMove.updateState(time-currentTime).getMatrix());
+    if(isLive)
+        isLive=moveBody(velocity,direction);
+
     root->updateState(time,currentKeyStates,rootMap);
-    //Update our vec4f position
     position=moveAvatar->product(vec4f());
     currentTime+=(time-currentTime);
 }
