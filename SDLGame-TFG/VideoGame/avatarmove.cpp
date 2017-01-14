@@ -185,7 +185,7 @@ bool AvatarMove::gravity(float time){
 
     vec3f posHero=getPosition();
     //posHero.y-=0.01;
-    posHero.y-=0.51;
+    posHero.y-=0.5;
 
     //Get the tenth of our position
     tenthValueX=posHero.x-(int)posHero.x;

@@ -437,7 +437,6 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
     else { // If hero is not hitting -> resetAnimation
         if(hitDelay<(time-500)){
-            //animationHit.resetState();
             hitDelay=time;
             isHitting=false;
         }
@@ -452,7 +451,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
 
     //Move the body
-    if(hasMove && !isImpacted && !isShielded && !isHitting){
+    if(hasMove && !isImpacted && !isShielded && !isHit()){
         moveBody(moveHero,heroDir);
         heroSound[0]->play();
     }
@@ -481,7 +480,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     ////////////////////////////
     //UPDATE ANIMATION
     ////////////////////////////
-    if(isMoving && !isFalling && !isJumping && !isHitting && !isImpacted && !isShielded){
+    if(isMoving && !isFalling && !isJumping && !isHit() && !isImpacted && !isShielded){
         animation.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
@@ -771,7 +770,7 @@ bool Hero::isHit(){
     animationHit.add(LegScriptLeft);
 
     //Matrix4fDinamic
-    OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,140,250,vec3f(1.0,0.0,0),1);
+    OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,140,500,vec3f(1.0,0.0,0),1);
     //OscillateRotation * shoulderCharge=new OscillateRotation(false,140,60,140,250,vec3f(1.0,0.0,0),1);
     OscillateRotation * shoulderCharge2=new OscillateRotation(false,60,0,60,250,vec3f(1.0,0.0,0),1);
     OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
@@ -796,9 +795,8 @@ bool Hero::isHit(){
     ElbowScriptRight=new MatrixScript();
     ArmScriptRight=new MatrixScript();
     ElbowScriptRight->add(0.5,notMove);
-    ArmScriptRight->add(0.5,shoulderCharge);
-    //ArmScriptRight->add(0.25,shoulderCharge);
-    //ArmScriptRight->add(0.25,shoulderCharge2);
+    ArmScriptRight->add(0.25,shoulderCharge);
+    ArmScriptRight->add(0.4,notMove);
 
 
     //Add the script to our animation

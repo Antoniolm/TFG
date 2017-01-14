@@ -29,12 +29,9 @@ using namespace std;
 
 enum MaterialIndex{
     mCUBE_GRASS, //0
-    mCUBE_SAND,  //1
-    mCUBE_LAND,  //2
     mCUBE_BOX,   //3
     mCUBE_DUNG,   //3
     mCUBE_WALL,
-    mWOOD,       //4
     MUSH,        //5
     mGRASS,      //6
     mWATER,      //7

@@ -26,12 +26,6 @@ MaterialCollection::MaterialCollection()
     Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeGrass.png");
     collection.push_back(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeSand.png");
-    collection.push_back(material);
-
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeLand.png");
-    collection.push_back(material);
-
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
     collection.push_back(material);
 
@@ -39,9 +33,6 @@ MaterialCollection::MaterialCollection()
     collection.push_back(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeWall.png");
-    collection.push_back(material);
-
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/Wood.png");
     collection.push_back(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
@@ -97,12 +88,9 @@ MaterialCollection::MaterialCollection()
 
     //Create our map
     enumMap.insert(pair<string,MaterialIndex> ("mCUBE_GRASS",mCUBE_GRASS));
-    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_SAND",mCUBE_SAND));
-    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_LAND",mCUBE_LAND));
     enumMap.insert(pair<string,MaterialIndex> ("mCUBE_BOX",mCUBE_BOX));
     enumMap.insert(pair<string,MaterialIndex> ("mCUBE_DUNG",mCUBE_DUNG));
     enumMap.insert(pair<string,MaterialIndex> ("mCUBE_WALL",mCUBE_WALL));
-    enumMap.insert(pair<string,MaterialIndex> ("mWOOD",mWOOD));
     enumMap.insert(pair<string,MaterialIndex> ("MUSH",MUSH));
     enumMap.insert(pair<string,MaterialIndex> ("mGRASS",mGRASS));
     enumMap.insert(pair<string,MaterialIndex> ("mWATER",mWATER));
