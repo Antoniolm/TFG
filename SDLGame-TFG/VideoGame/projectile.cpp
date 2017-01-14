@@ -23,7 +23,7 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh
 {
     direction=aDir;
     velocity=aVelocity;
-    isLive=true;
+    live=true;
 
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     MeshCollection * meshCollect =MeshCollection::getInstance();
@@ -36,6 +36,8 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh
     root->add(moveAvatar);
     root->add(materialCollect->getMaterial(maIndex));
     root->add(meshCollect->getMesh(msIndex));
+
+    calculateHead();
 
     currentTime=SDL_GetTicks();
 
@@ -51,7 +53,7 @@ Projectile::~Projectile()
 //**********************************************************************//
 
 void Projectile::visualization(Context & vis){
-    if(isLive)
+    if(live)
         root->visualization(vis);
 }
 
@@ -63,19 +65,24 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
 
     currentMap=rootMap;
     vec3f posHero=rootMap->getHero()->getPosition();
-
-    float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0));
+    vec3f posHead=vec3f(vec3f(position)+projectileHead);
+    float distance=sqrt(pow(posHead.x-posHero.x,2.0)+pow(posHead.z-posHero.z,2.0));
     //cout<< "Distancia "<< distance<<endl;
-    if(distance<=0.4 && isLive){
+    if(distance<=0.4 && live){
         rootMap->getHero()->takeDamage(position,direction,-20);
-        isLive=false;
+        live=false;
     }
-    if(isLive)
-        isLive=moveBody(velocity,direction);
+    if(live)
+        live=moveBody(velocity,direction);
 
     root->updateState(time,currentKeyStates,rootMap);
     position=moveAvatar->product(vec4f());
     currentTime+=(time-currentTime);
+}
+//**********************************************************************//
+
+bool Projectile::isLive(){
+    return live;
 }
 
 //**********************************************************************//

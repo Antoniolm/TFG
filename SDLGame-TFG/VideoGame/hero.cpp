@@ -232,7 +232,7 @@ Hero::Hero()
 
     //Movement for our hero
     moveAvatar= new Matrix4f();
-    moveAvatar->translation(1.5,2.5,-2.5);
+    moveAvatar->translation(1.5,2.5,-2.0);
     root->add(moveAvatar);
 
     Matrix4f *transLegScene=new Matrix4f();

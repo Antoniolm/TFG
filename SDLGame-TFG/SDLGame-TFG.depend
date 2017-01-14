@@ -399,7 +399,7 @@
 	"window.h"
 	"file_obj.h"
 
-1484389099 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1484423482 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -894,7 +894,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1484394218 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1484399125 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -1012,7 +1012,7 @@
 	<stdlib.h>
 	<vector>
 
-1484388173 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1484423363 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1706,7 +1706,7 @@
 1483994188 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
 	"npclist.h"
 
-1484340372 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
+1484398402 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
 	"enemy.h"
 
 1484398233 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
@@ -2031,7 +2031,7 @@
 1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\strfunc.h
 	"../stream.h"
 
-1484394277 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
+1484426455 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
 	"particlesystem.h"
 
 1484393849 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
@@ -2099,13 +2099,13 @@
 	<vector>
 	"../lib/rapidjson/document.h"
 
-1484227699 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coinlist.cpp
+1484426476 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coinlist.cpp
 	"coinlist.h"
 
-1484389205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
+1484426274 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
 	"projectile.h"
 
-1484388533 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
+1484426256 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -2121,4 +2121,14 @@
 	"../GraphicEngine/iaenemy.h"
 	"../GraphicEngine/text.h"
 	<vector>
+
+1484426445 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
+	"projectilesystem.h"
+
+1484426365 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.h
+	"projectile.h"
+	"../GraphicEngine/nodescenegraph.h"
+	<../GraphicEngine/nodescenegraph.h>
+	<../GraphicEngine/rootmap.h>
+	<list>
 

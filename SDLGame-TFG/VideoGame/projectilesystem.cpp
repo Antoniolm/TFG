@@ -17,74 +17,46 @@
 // **
 // *********************************************************************
 
-#include "particlesystem.h"
+#include "projectilesystem.h"
 
-ParticleSystem::ParticleSystem()
+ProjectileSystem::ProjectileSystem()
 {
-    //ctor
-}
-
-//**********************************************************************//
-
-ParticleSystem::ParticleSystem(int numParticle,string aMaterial,vec3f aScale,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime)
-{
-    vec3f pos=(aMaxPos-aMinPos)/2;
-    position=vec4f(pos.x,pos.y,pos.z,1.0);
-
-    MaterialCollection * materialCollect=MaterialCollection::getInstance();
-
-    material=materialCollect->getMaterial(aMaterial);
-    scale=aScale;
-    nParticles=numParticle;
-    minPos=aMinPos;
-    maxPos=aMaxPos;
-    velocity=aVelocity;
-    minTime=aMinTime;
-    maxTime=aMaxTime;
-    currentParticles=0;
     currentTime=SDL_GetTicks();
 }
 
 //**********************************************************************//
 
-ParticleSystem::~ParticleSystem()
+ProjectileSystem::~ProjectileSystem()
 {
     //dtor
 }
 
 //**********************************************************************//
 
-void ParticleSystem::visualization(Context & cv){
-    list<Particle *>::iterator it;
-    for(it=particles.begin();it!=particles.end();it++){
+void ProjectileSystem::visualization(Context & cv){
+    list<Projectile *>::iterator it;
+    for(it=projectiles.begin();it!=projectiles.end();it++){
         (*it)->visualization(cv);
     }
 }
 
 //**********************************************************************//
 
-void ParticleSystem::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void ProjectileSystem::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     if(time-currentTime>200)
         currentTime=time-50;
 
-    list<Particle *>::iterator it=particles.begin();
-    while(it!=particles.end()){
+    list<Projectile *>::iterator it=projectiles.begin();
+    while(it!=projectiles.end()){
         (*it)->updateState(time,currentKeyStates,rootMap);
-        if((*it)->getRemainingTime()<=0.0){
+        if((*it)->isLive()){
             delete (*it);
-            it=particles.erase(it);
-            currentParticles--;
+            it=projectiles.erase(it);
         }
         else
             it++;
     }
 
-    //Create new particles if some of them is dead
-    int diff=nParticles-currentParticles;
-    for(unsigned i=0;i<diff;i++){
-        particles.push_back(new Particle(material,scale,minPos,maxPos,velocity,minTime,maxTime));
-        currentParticles++;
-    }
 
     currentTime+=(time-currentTime);
 }

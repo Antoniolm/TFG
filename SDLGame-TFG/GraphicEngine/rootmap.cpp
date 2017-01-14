@@ -106,7 +106,6 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
                     transObj->translation(initialX+x+0.5f,initialY-y,initialZ-z-0.5f);
                     objNode=new NodeSceneGraph();
                     objNode->add(transObj);
-                    objNode->add(scaleObj);
                     if(y==0)
                     objNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialTop"].GetString()));
                     else

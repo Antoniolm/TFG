@@ -17,49 +17,37 @@
 // **
 // *********************************************************************
 
-#ifndef PROJECTILE_H
-#define PROJECTILE_H
+#ifndef PROJECTILESYSTEM_H
+#define PROJECTILESYSTEM_H
 
-#include "avatar.h"
-#include "avatarmove.h"
-#include "../GraphicEngine/mesh.h"
-#include "../GraphicEngine/meshcollection.h"
-#include "../GraphicEngine/scriptlmd.h"
-#include "../GraphicEngine/context.h"
-#include "../GraphicEngine/matrixscript.h"
-#include "../GraphicEngine/rootmap.h"
-#include "../GraphicEngine/matrix4f.h"
-#include "../GraphicEngine/objectscene.h"
-#include "../GraphicEngine/acceleratedmovement.h"
-#include "../GraphicEngine/sound.h"
-#include "../GraphicEngine/iaenemy.h"
-#include "../GraphicEngine/text.h"
+#include "projectile.h"
+#include "../GraphicEngine/nodescenegraph.h"
 
-#include <vector>
+#include <../GraphicEngine/nodescenegraph.h>
+#include <../GraphicEngine/rootmap.h>
+#include <list>
 
 
-using namespace std;
-class RootMap;
-class Projectile : public AvatarMove
+class ProjectileSystem : public NodeSceneGraph
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,MeshIndex msIndex,MaterialIndex maIndex);
+        ProjectileSystem();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~Projectile();
+        virtual ~ProjectileSystem();
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will show the object in our scene
+        *    The method will show the object in our interface
         *    \return void
         */
-        /////////////////////////////////////////////////////////////////////////
-        void visualization(Context & vis);
+        //////////////////////////////////////////////////////////////////////////
+        void visualization(Context & cv);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -68,16 +56,12 @@ class Projectile : public AvatarMove
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap );
+        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
-        bool isLive();
     protected:
 
     private:
-        void calculateHead();
-        vec3f velocity,projectileHead;
-        bool live;
-
+        list<Projectile *> projectiles;
 };
 
-#endif // PROJECTILE_H
+#endif // PROJECTILESYSTEM_H

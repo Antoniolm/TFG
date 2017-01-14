@@ -59,8 +59,10 @@ void CoinList::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
     vector<Coin*>::iterator it=coins.begin();
     while(it!=coins.end()){
         (*it)->updateState(time,currentKeyStates,rootMap);
-        if((*it)->isTake())
+        if((*it)->isTake()){
+            delete (*it);
             coins.erase(it);
+        }
         else
             it++;
     }
