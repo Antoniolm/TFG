@@ -23,6 +23,7 @@
 #include "avatar.h"
 #include "avatarmove.h"
 #include "../GraphicEngine/mesh.h"
+#include "../GraphicEngine/material.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/scriptlmd.h"
 #include "../GraphicEngine/context.h"
@@ -40,13 +41,15 @@
 
 using namespace std;
 class RootMap;
+class Mesh;
+class Material;
 class Projectile : public AvatarMove
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,MeshIndex msIndex,MaterialIndex maIndex);
+        Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh * mesh,Material * material);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */

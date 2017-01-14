@@ -22,19 +22,19 @@
 
 #include "projectile.h"
 #include "../GraphicEngine/nodescenegraph.h"
-
+#include <string>
 #include <../GraphicEngine/nodescenegraph.h>
 #include <../GraphicEngine/rootmap.h>
 #include <list>
 
-
+class Projectile;
 class ProjectileSystem : public NodeSceneGraph
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        ProjectileSystem(vec3f aRadio,vec3f aPos,vec3f aVeloc,avatarDirection aDir,float aDelay,MeshIndex aMesh,MaterialIndex aMaterial);
+        ProjectileSystem(vec3f aRadio,vec3f aPos,vec3f aVeloc,int aDir,float aDelay,string aMesh,string aMaterial);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -66,8 +66,8 @@ class ProjectileSystem : public NodeSceneGraph
         avatarDirection direction;
         float projectileDelay; //time delay
         float timeBWprojectile;//time between one projectile and another
-        MeshIndex mesh;
-        MaterialIndex material;
+        Mesh * mesh;
+        Material * material;
 };
 
 #endif // PROJECTILESYSTEM_H

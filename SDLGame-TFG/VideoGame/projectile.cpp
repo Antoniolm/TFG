@@ -19,7 +19,7 @@
 
 #include "projectile.h"
 
-Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,MeshIndex msIndex,MaterialIndex maIndex)
+Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh * mesh,Material * material)
 {
     direction=aDir;
     velocity=aVelocity;
@@ -34,8 +34,8 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh
 
     root=new NodeSceneGraph(false,true);
     root->add(moveAvatar);
-    root->add(materialCollect->getMaterial(maIndex));
-    root->add(meshCollect->getMesh(msIndex));
+    root->add(material);
+    root->add(mesh);
 
     calculateHead();
 

@@ -48,11 +48,11 @@
 
     "projectileSystem":[
         {   "radioActivity":[2.0,2.0,2.0],
-            "position":[5.5,2.0,-1.5],
-            "velocity":[0.0,1.0,0.0],
-            "direction":"LEFTWARD",
-            "delay":500,
-            "material":"mWATER",
+            "position":[6.5,2.0,-2.5],
+            "velocity":[-2.0,0.0,0.0],
+            "direction":2,
+            "delay":2000,
+            "material":"mARCHENEMY",
             "mesh":"ARROW"
         }
     ],

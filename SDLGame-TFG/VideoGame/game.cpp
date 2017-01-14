@@ -83,9 +83,6 @@ void Game::loop(){
     hero=new Hero();
     rootMap->setHero(hero);
 
-    //Test projectile
-    Projectile * project=new Projectile(vec3f(7.0,2.0,-1.5),vec3f(-2.0,0.0,0.0),LEFTWARD,ARROW,mARCHENEMY);
-
     //Create our camera
     vec3f position(2.0,4.0,5.0);
     vec3f direction(2.0,3.0,0.0);
@@ -141,7 +138,6 @@ void Game::loop(){
 
         if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate()){ //If  menu is not activate
             rootMap->updateState(time,currentKeyStates,rootMap);
-            project->updateState(time,currentKeyStates,rootMap);
             if(wasActivatedMenu) //If is the first time that it is not activated
                 rootMap->enableSound(true);
             wasActivatedMenu=false;
@@ -162,7 +158,6 @@ void Game::loop(){
 
         camera.activatePerspecProjection(&context.currentShader);
         rootMap->visualization(context);
-        project->visualization(context);
 
         camera.activateOrthoProjection(&context.currentShader);
         lifeText->visualization(context);

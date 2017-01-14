@@ -83,6 +83,19 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     }
 
     /////////////////////////////////////////
+    // Add particleSystems to our map
+    /////////////////////////////////////////
+    const rapidjson::Value & projectileSys=document["projectileSystem"];
+    for(unsigned currentPSys=0;currentPSys<projectileSys.Size();currentPSys++){
+        projectileSystem.push_back(new ProjectileSystem(
+                                   vec3f(projectileSys[currentPSys]["radioActivity"][0].GetFloat(), projectileSys[currentPSys]["radioActivity"][1].GetFloat(), projectileSys[currentPSys]["radioActivity"][2].GetFloat()),
+                                   vec3f(projectileSys[currentPSys]["position"][0].GetFloat(), projectileSys[currentPSys]["position"][1].GetFloat(), projectileSys[currentPSys]["position"][2].GetFloat()),
+                                   vec3f(projectileSys[currentPSys]["velocity"][0].GetFloat(), projectileSys[currentPSys]["velocity"][1].GetFloat(), projectileSys[currentPSys]["velocity"][2].GetFloat()),
+                                   projectileSys[currentPSys]["direction"].GetFloat(),projectileSys[currentPSys]["delay"].GetFloat(),
+                                   projectileSys[currentPSys]["mesh"].GetString(),projectileSys[currentPSys]["material"].GetString()));
+    }
+
+    /////////////////////////////////////////
     // Add voxelGroup to our map
     /////////////////////////////////////////
     NodeSceneGraph * objNode=new NodeSceneGraph();
@@ -307,6 +320,11 @@ void RootMap::visualization(Context & cv){
         if(position.x>posHero.x-8 && position.x<posHero.x+8)
             particleSystem[i]->visualization(cv);
     }
+
+    //Draw projectile system
+    for(unsigned i=0;i<projectileSystem.size();i++){
+            projectileSystem[i]->visualization(cv);
+    }
 }
 
 //**********************************************************************//
@@ -328,6 +346,11 @@ void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     //Update particles system
     for(unsigned i=0;i<particleSystem.size();i++){
         particleSystem[i]->updateState(time,currentKeyStates,rootMap);
+    }
+
+    //Update projectile system
+    for(unsigned i=0;i<projectileSystem.size();i++){
+        projectileSystem[i]->updateState(time,currentKeyStates,rootMap);
     }
 
     npcList->updateState(time,currentKeyStates,rootMap);

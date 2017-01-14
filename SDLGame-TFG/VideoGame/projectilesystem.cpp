@@ -19,15 +19,19 @@
 
 #include "projectilesystem.h"
 
-ProjectileSystem::ProjectileSystem(vec3f aRadio,vec3f aPos,vec3f aVeloc,avatarDirection aDir,float aDelay,MeshIndex aMesh,MaterialIndex aMaterial)
+ProjectileSystem::ProjectileSystem(vec3f aRadio,vec3f aPos,vec3f aVeloc,int aDir,float aDelay,string aMesh,string aMaterial)
 {
     radioActivity=aRadio;
     position=aPos;
     velocity=aVeloc;
-    direction=aDir;
+
+    MaterialCollection * materialCollect=MaterialCollection::getInstance();
+    MeshCollection * meshCollect=MeshCollection::getInstance();
+
+    direction=(avatarDirection)aDir;
     timeBWprojectile=aDelay;//time between one projectile and another
-    mesh=aMesh;
-    material=aMaterial;
+    mesh=meshCollect->getMesh(aMesh);
+    material=materialCollect->getMaterial(aMaterial);
     currentTime=SDL_GetTicks();
     projectileDelay=currentTime;
 }
@@ -57,11 +61,11 @@ void ProjectileSystem::updateState(float time,const Uint8* currentKeyStates,Root
     list<Projectile *>::iterator it=projectiles.begin();
     while(it!=projectiles.end()){
         (*it)->updateState(time,currentKeyStates,rootMap);
-        if((*it)->isLive()){
+        /*if((*it)->isLive()){
             delete (*it);
             it=projectiles.erase(it);
         }
-        else
+        else*/
             it++;
     }
 

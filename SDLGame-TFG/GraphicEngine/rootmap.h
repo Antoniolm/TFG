@@ -39,6 +39,7 @@
 #include "../VideoGame/npc.h"
 #include "../VideoGame/enemy.h"
 #include "../VideoGame/coin.h"
+#include "../VideoGame/projectilesystem.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "../lib/rapidjson/document.h"
@@ -54,6 +55,7 @@ class NpcList;
 class EnemyList;
 class CoinList;
 class ParticleSystem;
+class ProjectileSystem;
 class RootMap : public Object3D
 {
     public:
@@ -129,6 +131,7 @@ class RootMap : public Object3D
         vector<ObjectScene *> objs;
         vector<ObjectScene *> decorationObjs;
         vector<ParticleSystem *> particleSystem;
+        vector<ProjectileSystem *> projectileSystem;
         ObjectScene * background;
         NpcList * npcList;
         EnemyList * enemyList;
