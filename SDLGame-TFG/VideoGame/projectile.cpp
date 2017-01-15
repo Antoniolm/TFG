@@ -35,8 +35,19 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh
     //Update direction
     changeDirection(direction);
 
+    animationMatrix=new Matrix4f();
+    animationMatrix->identity();
+
+
+    Matrix4f * transMatrix=new Matrix4f();
+    transMatrix->translation(0.0,0.11,0.0);
+
+    rotation=new AxisRotation(200,0.0,0.0,1.0);
+
     root=new NodeSceneGraph(false,true);
     root->add(moveAvatar);
+    root->add(animationMatrix);
+    root->add(transMatrix);
     root->add(material);
     root->add(mesh);
 
@@ -80,6 +91,8 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
 
     root->updateState(time,currentKeyStates,rootMap);
     position=moveAvatar->product(vec4f());
+    //Animation
+    animationMatrix->setMatrix(rotation->updateState(time-currentTime).getMatrix());
     currentTime+=(time-currentTime);
 }
 //**********************************************************************//

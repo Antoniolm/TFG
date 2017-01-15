@@ -151,6 +151,8 @@
 		<Unit filename="VideoGame/npclist.h" />
 		<Unit filename="VideoGame/projectile.cpp" />
 		<Unit filename="VideoGame/projectile.h" />
+		<Unit filename="VideoGame/projectilesystem.cpp" />
+		<Unit filename="VideoGame/projectilesystem.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

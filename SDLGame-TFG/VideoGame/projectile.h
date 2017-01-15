@@ -80,6 +80,8 @@ class Projectile : public AvatarMove
         void calculateHead();
         vec3f velocity,projectileHead;
         bool live;
+        Matrix4f * animationMatrix;
+        AxisRotation * rotation;
 
 };
 
