@@ -21,6 +21,8 @@
 #define MESHCOLLECTION_H
 
 #include "mesh.h"
+#include "collection.h"
+#include "collection.cpp"
 class Mesh;
 
 using namespace std;
@@ -78,8 +80,7 @@ class MeshCollection
         MeshCollection();
 
         static MeshCollection* instance;
-        vector<Mesh *> collection;
-        map<string,MeshIndex> enumMap;
+        Collection<Mesh,MeshIndex> collection;
 };
 
 #endif // MESHCOLLECTION_H

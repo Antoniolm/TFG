@@ -27,8 +27,6 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh
 
 
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
-    MeshCollection * meshCollect =MeshCollection::getInstance();
-    MaterialCollection *materialCollect=MaterialCollection::getInstance();
 
     moveAvatar= new Matrix4f();
     moveAvatar->translation(position.x,position.y,position.z);

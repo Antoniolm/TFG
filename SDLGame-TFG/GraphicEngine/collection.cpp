@@ -19,7 +19,7 @@
 
 #include "collection.h"
 
-template <typename T,typename T2>
+template <class T,class T2>
 Collection<T,T2>::Collection()
 {
     //ctor
@@ -27,36 +27,38 @@ Collection<T,T2>::Collection()
 
 //**********************************************************************//
 
-template <typename T,typename T2>
+template <class T,class T2>
 Collection<T,T2>::~Collection()
 {
-    //dtor
+    for(int i=0;i<collection.size();i++){
+       delete collection[i];
+    }
 }
 
 //**********************************************************************//
 
-template <typename T,typename T2>
+template <class T,class T2>
 void Collection<T,T2>::addElement(T * element){
     collection.push_back(element);
 }
 
 //**********************************************************************//
 
-template <typename T,typename T2>
+template <class T,class T2>
 void Collection<T,T2>::addIndex(string index,T2 value){
     enumMap.insert(pair<string,T2> (index,value));
 }
 
 //**********************************************************************//
 
-template <typename T,typename T2>
+template <class T,class T2>
 T * Collection<T,T2>::getElement(T2 value){
     return collection[value];
 }
 
 //**********************************************************************//
 
-template <typename T,typename T2>
+template <class T,class T2>
 T * Collection<T,T2>::getElement(string index){
     return collection[(enumMap.find(index))->second];
 }

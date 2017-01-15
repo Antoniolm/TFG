@@ -27,143 +27,143 @@ MeshCollection::MeshCollection()
     //Mesh 0
     Mesh * element=new Mesh("geometries/cube.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     element=new Mesh("geometries/sphere.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 6
     element=new Mesh("geometries/sphereBackground.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Hero-Enemy mesh
     //Mesh 7
     element=new Mesh("geometries/knightFoot.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 8
     element=new Mesh("geometries/knightFootInv.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 9
     element=new Mesh("geometries/sword.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 10
     element=new Mesh("geometries/shield.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 11
     element=new Mesh("geometries/KnightHand.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     element=new Mesh("geometries/KnightHandShield.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 12
     element=new Mesh("geometries/KnightArm.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 13
     element=new Mesh("geometries/KnightBody.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 16
     element=new Mesh("geometries/KnightHead.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Text-menu mesh
     //Mesh 18
     element=new Mesh("geometries/text.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Coin mesh
     //Mesh 19
     element=new Mesh("geometries/crystal.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Enemy mesh
     //Mesh 19
     element=new Mesh("geometries/enemyHead.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 19
     element=new Mesh("geometries/enemyBody.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 19
     element=new Mesh("geometries/enemyHand.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Mesh 19
     element=new Mesh("geometries/enemyFoot.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //NPC mesh
     //Mesh 19
     element=new Mesh("geometries/ghostButler.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //scene mesh
     //Mesh 19
     element=new Mesh("geometries/bed.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     element=new Mesh("geometries/cupBoard.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     element=new Mesh("geometries/bedsideTable.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     element=new Mesh("geometries/arrow.obj");
     element->init();
-    collection.push_back(element);
+    collection.addElement(element);
 
     //Create our map
-    enumMap.insert(pair<string,MeshIndex> ("CUBE",CUBE));
-    enumMap.insert(pair<string,MeshIndex> ("SPHERE",SPHERE));
-    enumMap.insert(pair<string,MeshIndex> ("BACKGROUND",BACKGROUND));
-    enumMap.insert(pair<string,MeshIndex> ("KNEE",KNEE));
-    enumMap.insert(pair<string,MeshIndex> ("KNEE2",KNEE2));
-    enumMap.insert(pair<string,MeshIndex> ("SWORD",SWORD));
-    enumMap.insert(pair<string,MeshIndex> ("SHIELD",SHIELD));
-    enumMap.insert(pair<string,MeshIndex> ("HAND",HAND));
-    enumMap.insert(pair<string,MeshIndex> ("HANDS",HANDS));
-    enumMap.insert(pair<string,MeshIndex> ("TOPARM",TOPARM));
-    enumMap.insert(pair<string,MeshIndex> ("CHEST",CHEST));
-    enumMap.insert(pair<string,MeshIndex> ("HEAD",HEAD));
-    enumMap.insert(pair<string,MeshIndex> ("TEXT",TEXT));
-    enumMap.insert(pair<string,MeshIndex> ("COIN",COIN));
-    enumMap.insert(pair<string,MeshIndex> ("EHEAD",EHEAD));
-    enumMap.insert(pair<string,MeshIndex> ("ECHEST",ECHEST));
-    enumMap.insert(pair<string,MeshIndex> ("EHAND",EHAND));
-    enumMap.insert(pair<string,MeshIndex> ("EFOOT",EFOOT));
-    enumMap.insert(pair<string,MeshIndex> ("BUTLER",BUTLER));
-    enumMap.insert(pair<string,MeshIndex> ("BED",BED));
-    enumMap.insert(pair<string,MeshIndex> ("CUPBOARD",CUPBOARD));
-    enumMap.insert(pair<string,MeshIndex> ("BEDSIDETABLE",BEDSIDETABLE));
-    enumMap.insert(pair<string,MeshIndex> ("ARROW",ARROW));
+    collection.addIndex("CUBE",CUBE);
+    collection.addIndex("SPHERE",SPHERE);
+    collection.addIndex("BACKGROUND",BACKGROUND);
+    collection.addIndex("KNEE",KNEE);
+    collection.addIndex("KNEE2",KNEE2);
+    collection.addIndex("SWORD",SWORD);
+    collection.addIndex("SHIELD",SHIELD);
+    collection.addIndex("HAND",HAND);
+    collection.addIndex("HANDS",HANDS);
+    collection.addIndex("TOPARM",TOPARM);
+    collection.addIndex("CHEST",CHEST);
+    collection.addIndex("HEAD",HEAD);
+    collection.addIndex("TEXT",TEXT);
+    collection.addIndex("COIN",COIN);
+    collection.addIndex("EHEAD",EHEAD);
+    collection.addIndex("ECHEST",ECHEST);
+    collection.addIndex("EHAND",EHAND);
+    collection.addIndex("EFOOT",EFOOT);
+    collection.addIndex("BUTLER",BUTLER);
+    collection.addIndex("BED",BED);
+    collection.addIndex("CUPBOARD",CUPBOARD);
+    collection.addIndex("BEDSIDETABLE",BEDSIDETABLE);
+    collection.addIndex("ARROW",ARROW);
 }
 
 //**********************************************************************//
@@ -171,10 +171,7 @@ MeshCollection::MeshCollection()
 MeshCollection::~MeshCollection()
 {
     if(instance!=NULL){
-        vector<Mesh *>::iterator it;
-        for(it=collection.begin();it!=collection.end();it++){
-            delete (*it);
-        }
+
         instance=NULL;
     }
 }
@@ -182,11 +179,11 @@ MeshCollection::~MeshCollection()
 //**********************************************************************//
 
 Mesh * MeshCollection::getMesh(MeshIndex element){
-    return collection[element];
+    return collection.getElement(element);
 }
 
 //**********************************************************************//
 
 Mesh * MeshCollection::getMesh(string element){
-    return collection[(enumMap.find(element))->second];
+    return collection.getElement(element);
 }

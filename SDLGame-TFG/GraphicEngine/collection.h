@@ -26,7 +26,7 @@
 
 using namespace std;
 
-template <typename T,typename T2>
+template <class T,class T2>
 class Collection
 {
     public:
