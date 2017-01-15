@@ -2066,8 +2066,10 @@
 	"stream.h"
 	<cstdio>
 
-1482431773 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection.h
+1484473978 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection.h
+	<map>
 	<vector>
+	<string>
 
 1484351923 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
 	"material.h"
@@ -2103,7 +2105,7 @@
 1484426476 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coinlist.cpp
 	"coinlist.h"
 
-1484471595 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
+1484471862 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
 	"projectile.h"
 
 1484471155 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
@@ -2134,4 +2136,12 @@
 	<../GraphicEngine/nodescenegraph.h>
 	<../GraphicEngine/rootmap.h>
 	<list>
+
+1484472853 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection.cpp
+	"collection.h"
+
+1484472289 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesyslist.cpp
+	"particlesyslist.h"
+
+1484472315 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesyslist.h
 
