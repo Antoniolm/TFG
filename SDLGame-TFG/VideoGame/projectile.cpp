@@ -82,7 +82,7 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     vec3f posHead=vec3f(vec3f(position)+projectileHead);
     float distance=sqrt(pow(posHead.x-posHero.x,2.0)+pow(posHead.z-posHero.z,2.0));
 
-    if(distance<=0.3 && live){
+    if(distance<=0.3 && live && (position.y>posHero.y-1 && position.y<posHero.y+1)){
         rootMap->getHero()->takeDamage(position,direction,-20);
         live=false;
     }
