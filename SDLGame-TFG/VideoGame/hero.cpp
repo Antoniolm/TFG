@@ -451,13 +451,12 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
 
     //Move the body
-    if(hasMove && !isImpacted && !isShielded && !isHit()){
+    if(hasMove && !isImpacted && !isHit()){
+        avatarDirection lastDir=direction;
         moveBody(moveHero,heroDir);
         heroSound[0]->play();
-    }
-    if(hasMove && !isImpacted && isShielded){
-        moveBody(moveHero,direction);
-        heroSound[0]->play();
+        if(isShielded)
+            changeDirection(lastDir);
     }
     //If the jump is activate
     if(isJumping){
