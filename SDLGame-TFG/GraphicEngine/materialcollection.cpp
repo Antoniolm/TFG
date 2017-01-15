@@ -24,88 +24,88 @@ MaterialCollection* MaterialCollection::instance = NULL;
 MaterialCollection::MaterialCollection()
 {
     Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeGrass.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeDungeon.png");
-    collection.push_back(material);
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeDungeon2.png");
+    collection.addElement(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeWall.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grass.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/water.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/void.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/TEX_crystal.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureCoin50.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     //Hero material
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),32.0f,"./textures/heroTexture.jpg");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/swordTexture.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/shieldTexture.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     //Enemy material
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/enemyTexture.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/archerTexture.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     //Text Material
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/dialog.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/actionDialog.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     //NPC
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/butlerTexture.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
     //Scene Material
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/furniture.png");
-    collection.push_back(material);
+    collection.addElement(material);
 
 
     //Create our map
-    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_GRASS",mCUBE_GRASS));
-    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_BOX",mCUBE_BOX));
-    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_DUNG",mCUBE_DUNG));
-    enumMap.insert(pair<string,MaterialIndex> ("mCUBE_WALL",mCUBE_WALL));
-    enumMap.insert(pair<string,MaterialIndex> ("MUSH",MUSH));
-    enumMap.insert(pair<string,MaterialIndex> ("mGRASS",mGRASS));
-    enumMap.insert(pair<string,MaterialIndex> ("mWATER",mWATER));
-    enumMap.insert(pair<string,MaterialIndex> ("mVOID",mVOID));
-    enumMap.insert(pair<string,MaterialIndex> ("mCOIN10",mCOIN10));
-    enumMap.insert(pair<string,MaterialIndex> ("mCOIN50",mCOIN50));
-    enumMap.insert(pair<string,MaterialIndex> ("mARMOUR",mARMOUR));
-    enumMap.insert(pair<string,MaterialIndex> ("mSWORD",mSWORD));
-    enumMap.insert(pair<string,MaterialIndex> ("mSHIELD",mSHIELD));
-    enumMap.insert(pair<string,MaterialIndex> ("mENEMY",mENEMY));
-    enumMap.insert(pair<string,MaterialIndex> ("mARCHENEMY",mARCHENEMY));
-    enumMap.insert(pair<string,MaterialIndex> ("mDIALOG",mDIALOG));
-    enumMap.insert(pair<string,MaterialIndex> ("mADIALOG",mADIALOG));
-    enumMap.insert(pair<string,MaterialIndex> ("mBUTLER",mBUTLER));
-    enumMap.insert(pair<string,MaterialIndex> ("mFURNITURE",mFURNITURE));
+    collection.addIndex("mCUBE_GRASS",mCUBE_GRASS);
+    collection.addIndex("mCUBE_BOX",mCUBE_BOX);
+    collection.addIndex("mCUBE_DUNG",mCUBE_DUNG);
+    collection.addIndex("mCUBE_WALL",mCUBE_WALL);
+    collection.addIndex("MUSH",MUSH);
+    collection.addIndex("mGRASS",mGRASS);
+    collection.addIndex("mWATER",mWATER);
+    collection.addIndex("mVOID",mVOID);
+    collection.addIndex("mCOIN10",mCOIN10);
+    collection.addIndex("mCOIN50",mCOIN50);
+    collection.addIndex("mARMOUR",mARMOUR);
+    collection.addIndex("mSWORD",mSWORD);
+    collection.addIndex("mSHIELD",mSHIELD);
+    collection.addIndex("mENEMY",mENEMY);
+    collection.addIndex("mARCHENEMY",mARCHENEMY);
+    collection.addIndex("mDIALOG",mDIALOG);
+    collection.addIndex("mADIALOG",mADIALOG);
+    collection.addIndex("mBUTLER",mBUTLER);
+    collection.addIndex("mFURNITURE",mFURNITURE);
 
 }
 
@@ -113,23 +113,16 @@ MaterialCollection::MaterialCollection()
 
 MaterialCollection::~MaterialCollection()
 {
-    if(instance!=NULL){
-        vector<Material *>::iterator it;
-        for(it=collection.begin();it!=collection.end();it++){
-            delete (*it);
-        }
-        instance=NULL;
-    }
 }
 
 //**********************************************************************//
 
 Material* MaterialCollection::getMaterial(MaterialIndex element){
-    return collection[element];
+    return collection.getElement(element);
 }
 
 //**********************************************************************//
 
 Material* MaterialCollection::getMaterial(string element){
-    return collection[(enumMap.find(element))->second];
+    return collection.getElement(element);
 }

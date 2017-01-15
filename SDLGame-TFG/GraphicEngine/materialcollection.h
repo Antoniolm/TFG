@@ -23,6 +23,8 @@
 #include "material.h"
 #include <vector>
 #include <map>
+#include "collection.h"
+#include "collection.cpp"
 #include <string>
 
 using namespace std;
@@ -77,8 +79,7 @@ class MaterialCollection
         MaterialCollection();
 
         static MaterialCollection* instance;
-        vector<Material *> collection;
-        map<string,MaterialIndex> enumMap;
+        Collection<Material,MaterialIndex> collection;
 };
 
 #endif // MATERIALCOLLECTION_H

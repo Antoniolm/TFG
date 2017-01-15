@@ -170,10 +170,9 @@ MeshCollection::MeshCollection()
 
 MeshCollection::~MeshCollection()
 {
-    if(instance!=NULL){
-
+   /*if(instance!=NULL){
         instance=NULL;
-    }
+    }*/
 }
 
 //**********************************************************************//

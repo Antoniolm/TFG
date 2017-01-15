@@ -894,7 +894,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1484433762 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1484476412 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -1763,7 +1763,7 @@
 	"collection.h"
 	"collection.cpp"
 
-1484475666 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.cpp
+1484476313 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.cpp
 	"meshcollection.h"
 
 1481823202 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\damageobject.cpp
@@ -2073,13 +2073,15 @@
 	<vector>
 	<string>
 
-1484351923 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
+1484476984 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
 	"material.h"
 	<vector>
 	<map>
+	"collection.h"
+	"collection.cpp"
 	<string>
 
-1484351930 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
+1484476805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
 	"materialcollection.h"
 
 1482586318 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\enumparser.cpp
@@ -2092,11 +2094,13 @@
 1484224572 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
 	"soundcollection.h"
 
-1484224564 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.h
+1484477153 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.h
 	"sound.h"
 	<vector>
 	<map>
 	<string>
+	"collection.h"
+	"collection.cpp"
 
 1484227494 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coinlist.h
 	"../GraphicEngine/nodeSceneGraph.h"
@@ -2139,7 +2143,7 @@
 	<../GraphicEngine/rootmap.h>
 	<list>
 
-1484475392 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection.cpp
+1484476979 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection.cpp
 	"collection.h"
 
 1484472289 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesyslist.cpp
@@ -2147,6 +2151,6 @@
 
 1484472315 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesyslist.h
 
-1484476075 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection.cpp
+1484476979 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection.cpp
 	"collection.h"
 

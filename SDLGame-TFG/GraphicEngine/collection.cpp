@@ -16,6 +16,8 @@
 // ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // **
 // *********************************************************************
+#ifndef COLLECTION_CPP
+#define COLLECTION_CPP
 
 #include "collection.h"
 
@@ -62,3 +64,5 @@ template <class T,class T2>
 T * Collection<T,T2>::getElement(string index){
     return collection[(enumMap.find(index))->second];
 }
+
+#endif // COLLECTION_CPP

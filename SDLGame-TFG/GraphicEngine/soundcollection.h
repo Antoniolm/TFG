@@ -24,6 +24,8 @@
 #include <vector>
 #include <map>
 #include <string>
+#include "collection.h"
+#include "collection.cpp"
 
 enum SoundIndex{
     sCoin, //0
@@ -57,8 +59,7 @@ class SoundCollection
         SoundCollection();
 
         static SoundCollection* instance;
-        vector<Sound *> collection;
-        map<string,SoundIndex> enumMap;
+        Collection<Sound,SoundIndex> collection;
 };
 
 #endif // SOUNDCOLLECTION_H

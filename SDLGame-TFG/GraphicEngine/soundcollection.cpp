@@ -26,41 +26,34 @@ SoundCollection* SoundCollection::instance = NULL;
 SoundCollection::SoundCollection()
 {
     Sound * sound=new Sound("sounds/coin.wav",1,30,4,0);
-    collection.push_back(sound);
+    collection.addElement(sound);
 
     sound=new Sound("sounds/walking.wav",1,40,8,-1);
-    collection.push_back(sound);
+    collection.addElement(sound);
 
     sound=new Sound("sounds/enemyHit.wav",1,50,7,0);
-    collection.push_back(sound);
+    collection.addElement(sound);
 
     //Create our map
-    enumMap.insert(pair<string,SoundIndex> ("sCoin",sCoin));
-    enumMap.insert(pair<string,SoundIndex> ("EMOVE",EMOVE));
-    enumMap.insert(pair<string,SoundIndex> ("EHIT",EHIT));
+    collection.addIndex("sCoin",sCoin);
+    collection.addIndex("EMOVE",EMOVE);
+    collection.addIndex("EHIT",EHIT);
 }
 
 //**********************************************************************//
 
 SoundCollection::~SoundCollection()
 {
-    if(instance!=NULL){
-        vector<Sound *>::iterator it;
-        for(it=collection.begin();it!=collection.end();it++){
-            delete (*it);
-        }
-        instance=NULL;
-    }
 }
 
 //**********************************************************************//
 
 Sound* SoundCollection::getSound(SoundIndex element){
-    return collection[element];
+    return collection.getElement(element);
 }
 
 //**********************************************************************//
 
 Sound* SoundCollection::getSound(string element){
-    return collection[(enumMap.find(element))->second];
+    return collection.getElement(element);
 }
