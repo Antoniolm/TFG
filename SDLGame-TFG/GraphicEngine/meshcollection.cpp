@@ -144,6 +144,10 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
+    element=new Mesh("geometries/firePlace.obj");
+    element->init();
+    collection.addElement(element);
+
     //Create our map
     collection.addIndex("CUBE",CUBE);
     collection.addIndex("SPHERE",SPHERE);
@@ -169,6 +173,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("BEDSIDETABLE",BEDSIDETABLE);
     collection.addIndex("ARROW",ARROW);
     collection.addIndex("BKSHELF",BKSHELF);
+    collection.addIndex("FIREPLACE",FIREPLACE);
 }
 
 //**********************************************************************//
