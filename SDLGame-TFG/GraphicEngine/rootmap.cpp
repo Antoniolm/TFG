@@ -41,6 +41,11 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     transObj->translation(0.5,0.5,-0.5);
 
     /////////////////////////////////////////
+    // Create hero
+    /////////////////////////////////////////
+    hero=new Hero(vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat()));
+
+    /////////////////////////////////////////
     // Add Light to our map
     /////////////////////////////////////////
     const rapidjson::Value & lights=document["light"];

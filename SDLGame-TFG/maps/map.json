@@ -4,6 +4,7 @@
     "bkgdMaterial":"mWATER",
     "sound":"sounds/backsound.wav",
     "volSound":60.0,
+    "heroPosition":[10.0,2,-3.5],
 
     "light":[
             {   "type":0,

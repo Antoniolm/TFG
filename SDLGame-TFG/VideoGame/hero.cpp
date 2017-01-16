@@ -19,7 +19,7 @@
 
 #include "hero.h"
 
-Hero::Hero()
+Hero::Hero(vec3f aPos)
 {
     acceleratedMove=new AcceleratedMovement();
     acceleratedMove->resetState();
@@ -32,6 +32,7 @@ Hero::Hero()
     isImpacted=false;
     isShielded=false;
     life=150;
+    position=vec4f(aPos.x,aPos.y,aPos.z,1.0);
     currentCoin=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
@@ -232,7 +233,7 @@ Hero::Hero()
 
     //Movement for our hero
     moveAvatar= new Matrix4f();
-    moveAvatar->translation(1.5,2.5,-2.0);
+    moveAvatar->translation(position.x,position.y,position.z);
     root->add(moveAvatar);
 
     Matrix4f *transLegScene=new Matrix4f();

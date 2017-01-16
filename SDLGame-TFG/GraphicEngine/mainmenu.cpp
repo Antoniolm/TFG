@@ -19,7 +19,7 @@
 
 #include "mainmenu.h"
 
-MainMenu::MainMenu()
+MainMenu::MainMenu(vec3f posHero)
 {
     currentOption=0;
     activateMenu=false;
@@ -29,7 +29,7 @@ MainMenu::MainMenu()
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
 
     positionMenu=new Matrix4f();
-    positionMenu->translation(0.0,5.25,13.0);
+    positionMenu->translation(posHero.x,posHero.y+5.25,posHero.z+13.0);
     Matrix4f * scaleMenu=new Matrix4f();
     scaleMenu->scale(0.4,1.3,0.4);
     Matrix4f * scaleMenuBack=new Matrix4f();

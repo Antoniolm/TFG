@@ -44,8 +44,6 @@ Game::Game(){
     fclose(fp);
 
     pauseMenu = new PauseMenu();
-    mainMenu = new MainMenu();
-    mainMenu->activate();
     deadMenu = new DeadMenu();
 
     //////////////////////////////////////////////////////
@@ -80,12 +78,15 @@ void Game::loop(){
     int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;
 
-    hero=new Hero();
-    rootMap->setHero(hero);
+    hero=rootMap->getHero();
+    posHero=hero->getPosition();
+
+    mainMenu = new MainMenu(posHero);
+    mainMenu->activate();
 
     //Create our camera
-    vec3f position(2.0,4.0,5.0);
-    vec3f direction(2.0,3.0,0.0);
+    vec3f position(posHero.x,posHero.y+6.0f,posHero.z+15.0f);
+    vec3f direction(posHero.x,posHero.y,posHero.z);
     vec3f up(0.0,1.0,0.0);
     Camera camera;
     camera.setPerspectiveProjection(30.0f,(float)( 1000.0f / 800.0f), 0.1f, 200.0f);
