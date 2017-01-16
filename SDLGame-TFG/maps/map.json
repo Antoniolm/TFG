@@ -181,10 +181,8 @@
     ],
 
     "decorationObject":[
-            {   "transforms":[
-                    {   "type":"translation",
-                        "values":[14.5,-2.5,-4.5]
-                    },
+            {   "position":[14.5,-2.5,-4.5],
+                "transforms":[
                     {   "type":"scale",
                         "values":[7.0,1.0,9.0]
                     }
@@ -193,10 +191,8 @@
                 "mesh":"CUBE",
                 "collision": false 
             },
-            {   "transforms":[
-                    {   "type":"translation",
-                        "values":[4.0,1.8,-11.9]
-                    },
+            {   "position":[4.0,1.8,-11.9],
+                "transforms":[
                     {    "type":"scale",
                         "values":[1.0,1.0,1.1]
                     }
@@ -205,10 +201,8 @@
                 "mesh":"BED",
                 "collision": true
             },
-            {   "transforms":[
-                    {   "type":"translation",
-                        "values":[1.5,2.3,-4.5]
-                    },
+            {   "position":[1.5,2.3,-4.5],
+                "transforms":[
                     {    "type":"scale",
                         "values":[0.9,0.9,1.0]
                     }
@@ -217,10 +211,9 @@
                 "mesh":"CUPBOARD",
                 "collision": true
             },
-            {   "transforms":[
-                    {   "type":"translation",
-                        "values":[2.0,1.7,-13.5]
-                    },
+            {   "position":[2.0,1.7,-13.5,
+                            6.0,1.7,-13.5],
+                "transforms":[
                     {   "type":"scale",
                         "values":[0.9,0.9,1.0]
                     },
@@ -232,25 +225,8 @@
                 "mesh":"BEDSIDETABLE",
                 "collision": true
             },
-            {   "transforms":[
-                    {   "type":"translation",
-                        "values":[6.0,1.7,-13.5]
-                    },
-                    {   "type":"scale",
-                        "values":[0.9,0.9,1.0]
-                    },
-                    {   "type":"rotation",
-                        "values":[90,0.0,1.0,0.0]
-                    }
-                ],       
-                "material":"mFURNITURE",
-                "mesh":"BEDSIDETABLE",
-                "collision": true
-            },
-            {   "transforms":[
-                    {   "type":"translation",
-                        "values":[13.0,2.3,-12.5]
-                    },
+            {   "position":[13.0,2.3,-12.5],
+                "transforms":[
                     {   "type":"scale",
                         "values":[0.9,0.9,1.0]
                     }

@@ -137,43 +137,50 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     const rapidjson::Value & decoObject=document["decorationObject"];
     for(unsigned currentDeco=0;currentDeco<decoObject.Size();currentDeco++){
 
-        objNode=new NodeSceneGraph();
-
-        for(unsigned currentTrans=0;currentTrans<decoObject[currentDeco]["transforms"].Size();currentTrans++){
+        for(unsigned i=0;i<decoObject[currentDeco]["position"].Size();i+=3){
+            objNode=new NodeSceneGraph();
             transformation=new Matrix4f();
-            if(strcmp(decoObject[currentDeco]["transforms"][currentTrans]["type"].GetString(),"translation")==0){ //If is a translation
-
-                transformation->translation(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
-                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
-                                            decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
-
-            }
-            else if(strcmp(decoObject[currentDeco]["transforms"][currentTrans]["type"].GetString(),"scale")==0){ //If is a scale
-
-                transformation->scale(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
-                                      decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
-                                      decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
-
-            }
-            else if(strcmp(decoObject[currentDeco]["transforms"][currentTrans]["type"].GetString(),"rotation")==0){ //If is a rotation
-
-                transformation->rotation(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
-                                         decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
-                                         decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat(),
-                                         decoObject[currentDeco]["transforms"][currentTrans]["values"][3].GetFloat());
-
-            }
+            transformation->translation(decoObject[currentDeco]["position"][i].GetFloat(),
+                                        decoObject[currentDeco]["position"][i+1].GetFloat(),
+                                        decoObject[currentDeco]["position"][i+2].GetFloat());
             objNode->add(transformation);
+            for(unsigned currentTrans=0;currentTrans<decoObject[currentDeco]["transforms"].Size();currentTrans++){
+                transformation=new Matrix4f();
+                if(strcmp(decoObject[currentDeco]["transforms"][currentTrans]["type"].GetString(),"translation")==0){ //If is a translation
 
-        }
+                    transformation->translation(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
+                                                decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
+                                                decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
 
-        objNode->add(materialCollect->getMaterial(decoObject[currentDeco]["material"].GetString()));
-        objNode->add(meshCollect->getMesh(decoObject[currentDeco]["mesh"].GetString()));
+                }
+                else if(strcmp(decoObject[currentDeco]["transforms"][currentTrans]["type"].GetString(),"scale")==0){ //If is a scale
 
-        if(decoObject[currentDeco]["collision"].GetBool()) //If collision
-            objs.push_back(new ObjectScene(objNode));
-        else{ //If is a decoration obj
-            decorationObjs.push_back(new ObjectScene(objNode));
+                    transformation->scale(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
+                                          decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
+                                          decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat());
+
+                }
+                else if(strcmp(decoObject[currentDeco]["transforms"][currentTrans]["type"].GetString(),"rotation")==0){ //If is a rotation
+
+                    transformation->rotation(decoObject[currentDeco]["transforms"][currentTrans]["values"][0].GetFloat(),
+                                             decoObject[currentDeco]["transforms"][currentTrans]["values"][1].GetFloat(),
+                                             decoObject[currentDeco]["transforms"][currentTrans]["values"][2].GetFloat(),
+                                             decoObject[currentDeco]["transforms"][currentTrans]["values"][3].GetFloat());
+
+                }
+                objNode->add(transformation);
+
+            }
+
+
+            objNode->add(materialCollect->getMaterial(decoObject[currentDeco]["material"].GetString()));
+            objNode->add(meshCollect->getMesh(decoObject[currentDeco]["mesh"].GetString()));
+
+            if(decoObject[currentDeco]["collision"].GetBool()) //If collision
+                objs.push_back(new ObjectScene(objNode));
+            else{ //If is a decoration obj
+                decorationObjs.push_back(new ObjectScene(objNode));
+            }
         }
     }
 
