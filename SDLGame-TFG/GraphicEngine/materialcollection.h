@@ -49,7 +49,8 @@ enum MaterialIndex{
     mADIALOG,     //16
     mBUTLER,
     mFURNITURE,
-    mFIREPLACE
+    mFIREPLACE,
+    mPERUG
 
 };
 

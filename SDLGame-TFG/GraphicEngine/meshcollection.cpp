@@ -148,6 +148,18 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
+    element=new Mesh("geometries/smallTable.obj");
+    element->init();
+    collection.addElement(element);
+
+    element=new Mesh("geometries/chair.obj");
+    element->init();
+    collection.addElement(element);
+
+    element=new Mesh("geometries/rug.obj");
+    element->init();
+    collection.addElement(element);
+
     //Create our map
     collection.addIndex("CUBE",CUBE);
     collection.addIndex("SPHERE",SPHERE);
@@ -174,6 +186,9 @@ MeshCollection::MeshCollection()
     collection.addIndex("ARROW",ARROW);
     collection.addIndex("BKSHELF",BKSHELF);
     collection.addIndex("FIREPLACE",FIREPLACE);
+    collection.addIndex("SMALLTABLE",SMALLTABLE);
+    collection.addIndex("CHAIR",CHAIR);
+    collection.addIndex("RUG",RUG);
 }
 
 //**********************************************************************//

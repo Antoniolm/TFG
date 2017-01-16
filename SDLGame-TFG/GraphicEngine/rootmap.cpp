@@ -323,8 +323,8 @@ void RootMap::visualization(Context & cv){
 
     //Draw particles system
     for(unsigned i=0;i<particleSystem.size();i++){
-        position=vec3f(particleSystem[i]->getPosition());
-        if(position.x>posHero.x-8 && position.x<posHero.x+8)
+        //position=vec3f(particleSystem[i]->getPosition());
+        //if(position.x>posHero.x-8 && position.x<posHero.x+8)
             particleSystem[i]->visualization(cv);
     }
 

@@ -9,3 +9,4 @@ Brick Wall Test by adamdart7 is licensed under CC Attribution https://skfb.ly/Ez
 Crystal by SomjadeChunthavorn is licensed under CC Attribution https://skfb.ly/CssO -> used in the obj: TEX_crystal.png
 FREE ZOMBIE COMMONER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-zombie-commoner) -> used in the texture: enemyTexture.png
 SKELETON ARCHER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-skeleton-archer) -> used in the texture: archerTexture.png
+Persian Rug by Nicholas Record is licensed under CC Attribution https://skfb.ly/KWsy -> used in the texture: persianRug.png

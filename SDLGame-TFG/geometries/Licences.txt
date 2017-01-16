@@ -1,7 +1,9 @@
 swamp location by bocharova is licensed under CC Attribution-NonCommercial https://skfb.ly/FAZH -> used in the objs: tree.obj,grass.obj
-Knight by rougher is licensed under CC Attribution-NonCommercial https://sketchfab.com/models/aa451ea41ecd4e439f199aea4955bad0# -> used in the objs: knightHead, knightArm,knightBody,knightFoot,knightFootInv,knightHand,knightHandShield
-FREE ZOMBIE COMMONER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-zombie-commoner) -> used in the objs: enemyBody,enemyFoot,enemyHand,enemyHead,enemyClub
+Knight by rougher is licensed under CC Attribution-NonCommercial https://sketchfab.com/models/aa451ea41ecd4e439f199aea4955bad0# -> modified and used in the objs: knightHead, knightArm,knightBody,knightFoot,knightFootInv,knightHand,knightHandShield
+FREE ZOMBIE COMMONER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-zombie-commoner) -> modified and used in the objs: enemyBody,enemyFoot,enemyHand,enemyHead,enemyClub
 Great Sword of Frozen Night by ZugZug is licensed under CC Attribution https://skfb.ly/GoHQ -> used in the objs : sword.obj
 Flaming Forge shield by pipclank is licensed under CC Attribution https://skfb.ly/JUrX -> used in the objs: shield.obj
 Crystal by SomjadeChunthavorn is licensed under CC Attribution https://skfb.ly/CssO -> used in the obj: crystal.obj
-SKELETON ARCHER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-skeleton-archer) -> used in the obj: arrow.obj
+SKELETON ARCHER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-skeleton-archer) -> modified and used in the obj: arrow.obj
+fireplace-1 1150x1465x215mm by Dikart is licensed under CC Attribution https://skfb.ly/KIoz -> modified and use in the objs: firePlace.obj
+Persian Rug by Nicholas Record is licensed under CC Attribution https://skfb.ly/KWsy -> used in the obj: rug.obj

@@ -52,7 +52,10 @@ enum MeshIndex{
     BEDSIDETABLE,
     ARROW,
     BKSHELF,
-    FIREPLACE
+    FIREPLACE,
+    SMALLTABLE,
+    CHAIR,
+    RUG
 };
 
 class MeshCollection

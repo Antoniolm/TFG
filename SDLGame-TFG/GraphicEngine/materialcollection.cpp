@@ -88,6 +88,9 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/fpTexture.png");
     collection.addElement(material);
 
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/persianRug.png");
+    collection.addElement(material);
+
 
     //Create our map
     collection.addIndex("mCUBE_GRASS",mCUBE_GRASS);
@@ -110,6 +113,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mBUTLER",mBUTLER);
     collection.addIndex("mFURNITURE",mFURNITURE);
     collection.addIndex("mFIREPLACE",mFIREPLACE);
+    collection.addIndex("mPERUG",mPERUG);
 
 }
 
