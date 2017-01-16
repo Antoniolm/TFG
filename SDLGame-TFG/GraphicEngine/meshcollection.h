@@ -50,7 +50,8 @@ enum MeshIndex{
     BED,
     CUPBOARD,
     BEDSIDETABLE,
-    ARROW
+    ARROW,
+    BKSHELF
 };
 
 class MeshCollection

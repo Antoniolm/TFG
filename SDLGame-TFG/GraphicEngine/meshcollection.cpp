@@ -140,6 +140,10 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
+    element=new Mesh("geometries/bookShelf.obj");
+    element->init();
+    collection.addElement(element);
+
     //Create our map
     collection.addIndex("CUBE",CUBE);
     collection.addIndex("SPHERE",SPHERE);
@@ -164,6 +168,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("CUPBOARD",CUPBOARD);
     collection.addIndex("BEDSIDETABLE",BEDSIDETABLE);
     collection.addIndex("ARROW",ARROW);
+    collection.addIndex("BKSHELF",BKSHELF);
 }
 
 //**********************************************************************//
