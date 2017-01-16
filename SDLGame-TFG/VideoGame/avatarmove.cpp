@@ -234,11 +234,11 @@ bool AvatarMove::gravity(float time){
         if(isFalling){
             vec3f positionObs=hasCollision->getPosition();
             BoundingBox box=hasCollision->getBoundingBox();
-            Matrix4f trans;
-            //trans.translation(0.0,(positionObs.y+box.maxValue.y)-(posHero.y-0.23),0.0);
-            trans.translation(0.0,(positionObs.y+box.maxValue.y)-(posHero.y),0.0);
-            //cout<< "Trans->"<<(positionObs.y+box.maxValue.y)-(posHero.y) <<endl;
-            moveAvatar->product(trans.getMatrix());
+            if((positionObs.y+box.maxValue.y)-(posHero.y)>0.1){
+                Matrix4f trans;
+                trans.translation(0.0,(positionObs.y+box.maxValue.y)-(posHero.y),0.0);
+                moveAvatar->product(trans.getMatrix());
+            }
         }
         isFalling=false;
         acceleratedMove->resetState();
