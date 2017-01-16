@@ -466,7 +466,13 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             heroSound[0]->stop();
     }
     //If the jump is not activate
-    else gravity(time);
+    else {
+        ObjectScene * object=gravity(time);
+        if(object!=0 && object->getDamage()!=0.0 && dmgDelay<(time-200)){ //If the object do damage
+            takeDamage(object->getDamage());
+            dmgDelay=time;
+        }
+    }
 
     //If the jump is activate
     if(isImpacted){
@@ -654,6 +660,9 @@ bool Hero::isHit(){
     setDialog(convert.str(),3);
 
     activateDialog(true,3);
+
+    heroSound[1]->stop();
+    heroSound[1]->play();
  }
 //**********************************************************************//
 //                              PRIVATE                                 //

@@ -24,6 +24,7 @@
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/acceleratedmovement.h"
 #include "../GraphicEngine/linearmovement.h"
+#include "../GraphicEngine/objectscene.h"
 
 class RootMap;
 class AvatarMove: public Avatar
@@ -54,7 +55,7 @@ class AvatarMove: public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        bool gravity(float time);
+        ObjectScene * gravity(float time);
 
 
         //////////////////////////////////////////////////////////////////////////

@@ -23,10 +23,14 @@
 AvatarMove::AvatarMove(){
 }
 
+//**********************************************************************//
+
 AvatarMove::~AvatarMove(){
     delete acceleratedMove;
     delete moveAvatar;
 }
+
+//**********************************************************************//
 
 bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
     ObjectScene * hasCollision=0;
@@ -174,17 +178,16 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
     return result;
 }
 
+//**********************************************************************//
 
-bool AvatarMove::gravity(float time){
+ObjectScene * AvatarMove::gravity(float time){
     ObjectScene * hasCollision;
-    bool result=true;
     float tenthValueX,tenthValueZ;
 
     if(!isJumping){
     GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
 
     vec3f posHero=getPosition();
-    //posHero.y-=0.01;
     posHero.y-=0.5;
 
     //Get the tenth of our position
@@ -242,19 +245,11 @@ bool AvatarMove::gravity(float time){
         }
         isFalling=false;
         acceleratedMove->resetState();
-        result=false;
-        if(hasCollision->getDamage()!=0.0 && dmgDelay<(time-200)){ //If the object do damage
-            addLife(hasCollision->getDamage());
-            dmgDelay=time;
+
         }
-
-    }
-    }
-    else {
-        result=false;
     }
 
-    return result;
+    return hasCollision;
 }
 
 //**********************************************************************//
@@ -379,6 +374,8 @@ bool AvatarMove::detectHit(vec3f posAvatar,avatarDirection dirAvatar){
     return result;
 }
 
+//**********************************************************************//
+
 bool AvatarMove::detectShield(vec3f posAvatar,avatarDirection dirAvatar){
     bool result=false;
 
@@ -453,6 +450,8 @@ void AvatarMove::activeImpact(avatarDirection dirAvatar){
 
     isImpacted=true;
 }
+
+//**********************************************************************//
 
 void AvatarMove::impactMove(float time){
     vec3f posHero=getPosition();
