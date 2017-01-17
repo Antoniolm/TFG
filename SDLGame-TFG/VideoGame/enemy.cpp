@@ -302,8 +302,13 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         if(isJumping){
             jump(time);
         }
-        else
-            gravity(time);
+        else{
+            ObjectScene * object=gravity(time);
+            if(object!=0 && object->getDamage()!=0.0 && dmgDelay<(time-200)){ //If the object do damage
+                takeDamage(object->getDamage());
+                dmgDelay=time;
+            }
+        }
     }
 
     if(dmgDelay<(time-300))
@@ -371,6 +376,28 @@ vec3f Enemy::getRadioActivity(){
 
  float Enemy::getLife(){
     return life;
+ }
+
+ //**********************************************************************//
+
+void Enemy::takeDamage(float value){
+    addLife(value);
+
+    stringstream convert;
+    int lastValue;
+    string currentValue=currentText->getMessage();
+    lastValue=atoi(currentValue.c_str());
+    value+=lastValue;
+
+    convert << value;
+
+    activatedDialog=true;
+    currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
+    currentText->setMessage(convert.str());
+    currentText->init();
+
+    enemySound[1]->stop();
+    enemySound[1]->play();
  }
 
 

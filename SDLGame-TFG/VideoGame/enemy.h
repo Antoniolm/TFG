@@ -34,6 +34,7 @@
 #include "../GraphicEngine/sound.h"
 #include "../GraphicEngine/iaenemy.h"
 #include "../GraphicEngine/text.h"
+#include <stdlib.h>
 
 #include <vector>
 
@@ -101,6 +102,8 @@ class Enemy: public AvatarMove
         */
         //////////////////////////////////////////////////////////////////////////
         float getLife();
+
+        void takeDamage(float value);
 
     protected:
     private:

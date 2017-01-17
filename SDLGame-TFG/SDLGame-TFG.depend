@@ -1686,10 +1686,10 @@
 	<vector>
 	<string>
 
-1483996184 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
+1484652637 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
-1482231480 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
+1484659060 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
 	"../GraphicEngine/ianpc.h"
 	"avatar.h"
 	"../GraphicEngine/mesh.h"
@@ -1711,7 +1711,7 @@
 1484398402 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
 	"enemy.h"
 
-1484398233 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
+1484659464 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -1725,6 +1725,7 @@
 	"../GraphicEngine/sound.h"
 	"../GraphicEngine/iaenemy.h"
 	"../GraphicEngine/text.h"
+	<stdlib.h>
 	<vector>
 
 1482415148 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemylist.h
@@ -2074,7 +2075,7 @@
 	<vector>
 	<string>
 
-1484580630 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
+1484647690 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
 	"material.h"
 	<vector>
 	<map>
@@ -2082,7 +2083,7 @@
 	"collection.cpp"
 	<string>
 
-1484580627 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
+1484647705 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
 	"materialcollection.h"
 
 1482586318 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\enumparser.cpp

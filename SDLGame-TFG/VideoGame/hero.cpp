@@ -644,6 +644,8 @@ bool Hero::isHit(){
     }
  }
 
+ //**********************************************************************//
+
  void Hero::takeDamage(float value){
 
     addLife(value);
