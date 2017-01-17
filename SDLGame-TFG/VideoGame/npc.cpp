@@ -31,6 +31,15 @@ Npc::Npc(vec3f aPosition)
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
+    //Matrix for animation
+    Matrix4f * matrix=new Matrix4f();
+    matrix->identity();
+    moveMatrix.push_back(matrix);
+
+    matrix=new Matrix4f();
+    matrix->identity();
+    moveMatrix.push_back(matrix);
+
     Matrix4f * transNPC=new Matrix4f();
     transNPC->translation(position.x,position.y,position.z);
 
@@ -39,6 +48,8 @@ Npc::Npc(vec3f aPosition)
 
     NodeSceneGraph * npcNode=new NodeSceneGraph();
     npcNode->add(transNPC);
+    npcNode->add(moveMatrix[1]);
+    npcNode->add(moveMatrix[0]);
     npcNode->add(scaleNPC);
     npcNode->add(materialCollect->getMaterial(mBUTLER));
     npcNode->add(meshCollect->getMesh(BUTLER));
@@ -47,6 +58,8 @@ Npc::Npc(vec3f aPosition)
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);
     currentText=new Text(mDIALOG,font);
     currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
+    currentTime=SDL_GetTicks();
+    initAnimation();
 
 }
 
@@ -94,7 +107,14 @@ void Npc::visualization(Context & cv){
 //**********************************************************************//
 
 void Npc::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
+    if(time-currentTime>200)
+        currentTime=time-50;
 
+    animation.updateState(time-currentTime);
+    for(unsigned i=0;i<moveMatrix.size();i++)
+        moveMatrix[i]->product(animation.readMatrix(i).getMatrix());
+
+    currentTime+=time-currentTime;
 }
 
 //**********************************************************************//
@@ -133,4 +153,25 @@ vec3f Npc::getPosition(){
 
 bool Npc::isInitialState(){
     return stateMachine.isFirstState();
+}
+
+//**********************************************************************//
+void Npc::initAnimation(){
+    LinearMovement * transBody=new LinearMovement(vec3f(1.0,0.0,0));
+    LinearMovement * transBodySecond=new LinearMovement(vec3f(-1.0,0.0,0));
+
+    LinearMovement * transBody2=new LinearMovement(vec3f(0.0,1.0,0));
+    LinearMovement * transBodySecond2=new LinearMovement(vec3f(0.0,-1.0,0));
+
+    //Movement to the first arm
+    MatrixScript * bodyScript=new MatrixScript();
+    MatrixScript * bodyTScript=new MatrixScript();
+    bodyScript->add(0.2,transBody);
+    bodyScript->add(0.2,transBodySecond);
+    bodyTScript->add(0.2,transBody2);
+    bodyTScript->add(0.2,transBodySecond2);
+
+    animation.add(bodyScript);
+    animation.add(bodyTScript);
+
 }

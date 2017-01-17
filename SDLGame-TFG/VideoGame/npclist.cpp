@@ -87,6 +87,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     Hero * hero=rootMap->getHero();
     posHero=hero->getPosition();
     for(unsigned i=0;i<npcs.size() && !isActivate;i++){ //Check if hero is talking now
+        npcs[i]->updateState(time,currentKeyStates,rootMap);
         isActivate=npcs[i]->getActivate();
         currentNpc=i;
 

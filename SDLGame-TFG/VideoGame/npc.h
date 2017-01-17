@@ -26,6 +26,7 @@
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/structdata.h"
+#include "../GraphicEngine/scriptlmd.h"
 #include <SDL_TTF.h>
 
 class Text;
@@ -141,8 +142,11 @@ class Npc : public Avatar
     protected:
 
     private:
+        void initAnimation();
         IANpc stateMachine;
         Text * currentText;
+        ScriptLMD animation;
+        vector<Matrix4f *> moveMatrix;
         bool npcActivate;
 };
 

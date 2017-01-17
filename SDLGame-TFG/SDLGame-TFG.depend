@@ -1013,7 +1013,7 @@
 	<stdlib.h>
 	<vector>
 
-1484603488 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1484658795 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1686,16 +1686,17 @@
 	<vector>
 	<string>
 
-1484652637 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
+1484671474 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
-1484659060 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
+1484671228 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
 	"../GraphicEngine/ianpc.h"
 	"avatar.h"
 	"../GraphicEngine/mesh.h"
 	"../GraphicEngine/meshcollection.h"
 	"../GraphicEngine/text.h"
 	"../GraphicEngine/structdata.h"
+	"../GraphicEngine/scriptlmd.h"
 	<SDL_TTF.h>
 
 1483292981 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.h
@@ -1705,10 +1706,10 @@
 	"../lib/rapidjson/document.h"
 	<vector>
 
-1483994188 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
+1484671018 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
 	"npclist.h"
 
-1484398402 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
+1484659503 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
 	"enemy.h"
 
 1484659464 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
