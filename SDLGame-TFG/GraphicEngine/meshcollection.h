@@ -55,7 +55,8 @@ enum MeshIndex{
     FIREPLACE,
     SMALLTABLE,
     CHAIR,
-    RUG
+    RUG,
+    WINDOW
 };
 
 class MeshCollection

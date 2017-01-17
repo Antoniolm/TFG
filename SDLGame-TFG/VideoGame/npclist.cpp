@@ -24,7 +24,7 @@ NpcList::NpcList(){
 
 //**********************************************************************//
 
-NpcList::NpcList(const Value & npcsFeatures,vector<ObjectScene *> & objs){
+NpcList::NpcList(const Value & npcsFeatures){
     speakerMessage speaker;
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
@@ -40,19 +40,6 @@ NpcList::NpcList(const Value & npcsFeatures,vector<ObjectScene *> & objs){
             currentNpc->addDialog(std::string(dialogs[j]["string"].GetString()),speaker);
         }
         npcs.push_back(currentNpc);
-
-
-        //Added his void cube for collision
-        Matrix4f * transMatrix=new Matrix4f();
-        transMatrix->translation(npcsFeatures[i]["position"][0].GetFloat(),npcsFeatures[i]["position"][1].GetFloat(),npcsFeatures[i]["position"][2].GetFloat());
-        Matrix4f * scaleMatrix =new Matrix4f();
-        scaleMatrix->scale(0.5,1,0.5);
-        NodeSceneGraph * collisionNode=new NodeSceneGraph();
-        collisionNode->add(transMatrix);
-        collisionNode->add(scaleMatrix);
-        collisionNode->add(materialCollect->getMaterial(mVOID));
-        collisionNode->add(meshCollect->getMesh(CUBE));
-        objs.push_back(new ObjectScene(collisionNode));
     }
 }
 

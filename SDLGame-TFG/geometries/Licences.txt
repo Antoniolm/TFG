@@ -7,3 +7,4 @@ Crystal by SomjadeChunthavorn is licensed under CC Attribution https://skfb.ly/C
 SKELETON ARCHER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-skeleton-archer) -> modified and used in the obj: arrow.obj
 fireplace-1 1150x1465x215mm by Dikart is licensed under CC Attribution https://skfb.ly/KIoz -> modified and use in the objs: firePlace.obj
 Persian Rug by Nicholas Record is licensed under CC Attribution https://skfb.ly/KWsy -> used in the obj: rug.obj
+Imperial Window-frame big by supaluci is licensed under CC Attribution https://skfb.ly/JSXt -> used in the obj: window.obj

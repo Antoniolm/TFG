@@ -160,6 +160,10 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
+    element=new Mesh("geometries/window.obj");
+    element->init();
+    collection.addElement(element);
+
     //Create our map
     collection.addIndex("CUBE",CUBE);
     collection.addIndex("SPHERE",SPHERE);
@@ -189,6 +193,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("SMALLTABLE",SMALLTABLE);
     collection.addIndex("CHAIR",CHAIR);
     collection.addIndex("RUG",RUG);
+    collection.addIndex("WINDOW",WINDOW);
 }
 
 //**********************************************************************//
