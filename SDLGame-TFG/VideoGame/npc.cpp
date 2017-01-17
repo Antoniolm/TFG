@@ -157,19 +157,21 @@ bool Npc::isInitialState(){
 
 //**********************************************************************//
 void Npc::initAnimation(){
-    LinearMovement * transBody=new LinearMovement(vec3f(1.0,0.0,0));
-    LinearMovement * transBodySecond=new LinearMovement(vec3f(-1.0,0.0,0));
+    LinearMovement * transBody=new LinearMovement(vec3f(0.1,0.0,0));
+    LinearMovement * transBodySecond=new LinearMovement(vec3f(-0.1,0.0,0));
 
-    LinearMovement * transBody2=new LinearMovement(vec3f(0.0,1.0,0));
-    LinearMovement * transBodySecond2=new LinearMovement(vec3f(0.0,-1.0,0));
+    LinearMovement * transBody2=new LinearMovement(vec3f(0.0,0.2,0));
+    LinearMovement * transBodySecond2=new LinearMovement(vec3f(0.0,-0.2,0));
 
     //Movement to the first arm
     MatrixScript * bodyScript=new MatrixScript();
     MatrixScript * bodyTScript=new MatrixScript();
-    bodyScript->add(0.2,transBody);
-    bodyScript->add(0.2,transBodySecond);
-    bodyTScript->add(0.2,transBody2);
-    bodyTScript->add(0.2,transBodySecond2);
+    bodyScript->add(0.1,transBody);
+    bodyScript->add(0.1,transBodySecond);
+    bodyScript->add(0.1,transBody);
+    bodyScript->add(0.1,transBodySecond);
+    bodyTScript->add(0.5,transBody2);
+    bodyTScript->add(0.5,transBodySecond2);
 
     animation.add(bodyScript);
     animation.add(bodyTScript);
