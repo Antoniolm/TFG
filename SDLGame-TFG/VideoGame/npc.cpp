@@ -36,10 +36,6 @@ Npc::Npc(vec3f aPosition)
     matrix->identity();
     moveMatrix.push_back(matrix);
 
-    matrix=new Matrix4f();
-    matrix->identity();
-    moveMatrix.push_back(matrix);
-
     Matrix4f * transNPC=new Matrix4f();
     transNPC->translation(position.x,position.y,position.z);
 
@@ -48,7 +44,6 @@ Npc::Npc(vec3f aPosition)
 
     NodeSceneGraph * npcNode=new NodeSceneGraph();
     npcNode->add(transNPC);
-    npcNode->add(moveMatrix[1]);
     npcNode->add(moveMatrix[0]);
     npcNode->add(scaleNPC);
     npcNode->add(materialCollect->getMaterial(mBUTLER));
@@ -111,8 +106,7 @@ void Npc::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap
         currentTime=time-50;
 
     animation.updateState(time-currentTime);
-    for(unsigned i=0;i<moveMatrix.size();i++)
-        moveMatrix[i]->product(animation.readMatrix(i).getMatrix());
+    moveMatrix[0]->product(animation.readMatrix(0).getMatrix());
 
     currentTime+=time-currentTime;
 }
@@ -157,23 +151,16 @@ bool Npc::isInitialState(){
 
 //**********************************************************************//
 void Npc::initAnimation(){
-    LinearMovement * transBody=new LinearMovement(vec3f(0.1,0.0,0));
-    LinearMovement * transBodySecond=new LinearMovement(vec3f(-0.1,0.0,0));
-
-    LinearMovement * transBody2=new LinearMovement(vec3f(0.0,0.2,0));
-    LinearMovement * transBodySecond2=new LinearMovement(vec3f(0.0,-0.2,0));
+    LinearMovement * transBody=new LinearMovement(vec3f(0.0,0.2,0));
+    LinearMovement * transBodySecond=new LinearMovement(vec3f(0.0,-0.2,0));
 
     //Movement to the first arm
     MatrixScript * bodyScript=new MatrixScript();
-    MatrixScript * bodyTScript=new MatrixScript();
-    bodyScript->add(0.1,transBody);
-    bodyScript->add(0.1,transBodySecond);
-    bodyScript->add(0.1,transBody);
-    bodyScript->add(0.1,transBodySecond);
-    bodyTScript->add(0.5,transBody2);
-    bodyTScript->add(0.5,transBodySecond2);
+
+    bodyScript->add(0.5,transBody);
+    bodyScript->add(0.5,transBodySecond);
 
     animation.add(bodyScript);
-    animation.add(bodyTScript);
+
 
 }
