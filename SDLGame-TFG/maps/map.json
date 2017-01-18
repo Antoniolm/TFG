@@ -555,7 +555,17 @@
                 "material":"mWINDOW",
                 "mesh":"WINDOW",
                 "collision": false
-            }    
+            },
+            {   "position":[27.5,7.0,-22],
+                "transforms":[
+                    {   "type":"scale",
+                        "values":[1.0,1.0,1.0]
+                    }
+                ],       
+                "material":"mPILLAR",
+                "mesh":"PILLAR",
+                "collision": false
+            }         
                
     ]
 

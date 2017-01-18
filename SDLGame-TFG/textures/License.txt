@@ -5,7 +5,7 @@ Knight by rougher is licensed under CC Attribution-NonCommercial https://sketchf
 Great Sword of Frozen Night by ZugZug is licensed under CC Attribution https://skfb.ly/GoHQ -> used in the texture : swordTexture.png
 Flaming Forge shield by pipclank is licensed under CC Attribution https://skfb.ly/JUrX -> used in the texture : shieldTexture.png
 Dungeon by Yuliia Tsukanova is licensed under CC Attribution https://skfb.ly/N6T6 -> used in the texture : cubeDungeon.png
-Hyrule Castle Courtyard (Ocarina Of Time 3D) by Dillon is licensed under CC Attribution https://skfb.ly/YFw7 -> used in the texture: cubeWall.png
+Hyrule Castle Courtyard (Ocarina Of Time 3D) by Dillon is licensed under CC Attribution https://skfb.ly/YFw7 -> used in the texture: cubeWall.png,pillar.png
 Crystal by SomjadeChunthavorn is licensed under CC Attribution https://skfb.ly/CssO -> used in the obj: TEX_crystal.png
 FREE ZOMBIE COMMONER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-zombie-commoner) -> used in the texture: enemyTexture.png
 SKELETON ARCHER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-skeleton-archer) -> used in the texture: archerTexture.png

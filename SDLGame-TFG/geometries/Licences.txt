@@ -8,3 +8,4 @@ SKELETON ARCHER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of
 fireplace-1 1150x1465x215mm by Dikart is licensed under CC Attribution https://skfb.ly/KIoz -> modified and use in the objs: firePlace.obj
 Persian Rug by Nicholas Record is licensed under CC Attribution https://skfb.ly/KWsy -> used in the obj: rug.obj
 Imperial Window-frame big by supaluci is licensed under CC Attribution https://skfb.ly/JSXt -> used in the obj: window.obj
+Hyrule Castle Courtyard (Ocarina Of Time 3D) by Dillon is licensed under CC Attribution https://skfb.ly/YFw7 -> used in the objs: pillar.obj
