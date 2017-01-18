@@ -96,14 +96,14 @@ Hero::Hero(vec3f aPos)
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
     legLeft->add(transLeg);
-    legLeft->add(materialCollect->getMaterial(mARMOUR));
+    legLeft->add(materialCollect->getMaterial(mHERO));
     legLeft->add(meshCollect->getMesh(KNEE2));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
     legRight->add(transLeg);
-    legRight->add(materialCollect->getMaterial(mARMOUR));
+    legRight->add(materialCollect->getMaterial(mHERO));
     legRight->add(meshCollect->getMesh(KNEE));
 
     //////////////////////////////////////////////////////
@@ -175,7 +175,7 @@ Hero::Hero(vec3f aPos)
     handRight->add(moveElbowRight);
     handRight->add(moveElbowTRight);
     handRight->add(transHand);
-    handRight->add(materialCollect->getMaterial(mARMOUR));
+    handRight->add(materialCollect->getMaterial(mHERO));
     handRight->add(meshCollect->getMesh(HAND));
     handRight->add(tranSword);
     handRight->add(materialCollect->getMaterial(mSWORD));
@@ -188,7 +188,7 @@ Hero::Hero(vec3f aPos)
     handLeft->add(transHandLeft);
     //handLeft->add(scaleHandInvert);
     handLeft->add(rotateYHand);
-    handLeft->add(materialCollect->getMaterial(mARMOUR));
+    handLeft->add(materialCollect->getMaterial(mHERO));
     handLeft->add(meshCollect->getMesh(HANDS));
     handLeft->add(tranShield);
     handLeft->add(materialCollect->getMaterial(mSHIELD));
@@ -196,12 +196,12 @@ Hero::Hero(vec3f aPos)
 
     //Shoulder
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
-    shoulderLeft->add(materialCollect->getMaterial(mARMOUR));
+    shoulderLeft->add(materialCollect->getMaterial(mHERO));
     shoulderLeft->add(meshCollect->getMesh(TOPARM));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
     shoulderRight->add(rotateShoulder);
-    shoulderRight->add(materialCollect->getMaterial(mARMOUR));
+    shoulderRight->add(materialCollect->getMaterial(mHERO));
     shoulderRight->add(meshCollect->getMesh(TOPARM));
 
     //Arm left
@@ -258,12 +258,12 @@ Hero::Hero(vec3f aPos)
     transChest->translation(0.0,0.1,0.0);
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
-    chestNode->add(materialCollect->getMaterial(mARMOUR));
+    chestNode->add(materialCollect->getMaterial(mHERO));
     chestNode->add(meshCollect->getMesh(CHEST));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
-    headNode->add(materialCollect->getMaterial(mARMOUR));
+    headNode->add(materialCollect->getMaterial(mHERO));
     headNode->add(meshCollect->getMesh(HEAD));
 
     NodeSceneGraph * chest_Arms_HeadNode=new NodeSceneGraph();

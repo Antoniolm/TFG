@@ -35,12 +35,6 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.2f, 0.2f, 0.2f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeWall.png");
     collection.addElement(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
-    collection.addElement(material);
-
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/grass.png");
-    collection.addElement(material);
-
     material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/water.png");
     collection.addElement(material);
 
@@ -51,9 +45,6 @@ MaterialCollection::MaterialCollection()
     collection.addElement(material);
 
     material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/TEX_crystal.png");
-    collection.addElement(material);
-
-    material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/textureCoin50.png");
     collection.addElement(material);
 
     //Hero material
@@ -108,14 +99,11 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mCUBE_BOX",mCUBE_BOX);
     collection.addIndex("mCUBE_DUNG",mCUBE_DUNG);
     collection.addIndex("mCUBE_WALL",mCUBE_WALL);
-    collection.addIndex("MUSH",MUSH);
-    collection.addIndex("mGRASS",mGRASS);
     collection.addIndex("mWATER",mWATER);
     collection.addIndex("mDWATER",mDWATER);
     collection.addIndex("mVOID",mVOID);
-    collection.addIndex("mCOIN10",mCOIN10);
-    collection.addIndex("mCOIN50",mCOIN50);
-    collection.addIndex("mARMOUR",mARMOUR);
+    collection.addIndex("mCRYSTAL",mCRYSTAL);
+    collection.addIndex("mHERO",mHERO);
     collection.addIndex("mSWORD",mSWORD);
     collection.addIndex("mSHIELD",mSHIELD);
     collection.addIndex("mENEMY",mENEMY);

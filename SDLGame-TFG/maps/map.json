@@ -36,14 +36,14 @@
     ],
 
     "particleSystem":[
-        {   "number":50,
+        {   "number":75,
             "material":"mFIRE",
             "scale":[0.1,0.1,0.1],
-            "minPosition":[15.75,1.0,-13.0],
-            "maxPosition":[16.25,1.0,-13.0],
+            "minPosition":[15.5,1.0,-12.0],
+            "maxPosition":[16.5,1.0,-13.0],
             "velocity":[0.0,1.0,0.0],
-            "minLife":250,
-            "maxLife":500
+            "minLife":500,
+            "maxLife":1000
         }
     ],
 

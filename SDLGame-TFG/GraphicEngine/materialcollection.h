@@ -34,14 +34,11 @@ enum MaterialIndex{
     mCUBE_BOX,   //3
     mCUBE_DUNG,   //3
     mCUBE_WALL,
-    MUSH,        //5
-    mGRASS,      //6
     mWATER,      //7
     mDWATER,      //7
     mVOID,       //8
-    mCOIN10,     //9
-    mCOIN50,     //10
-    mARMOUR,     //11
+    mCRYSTAL,     //9
+    mHERO,     //11
     mSWORD,       //12
     mSHIELD,       //12
     mENEMY,      //13
