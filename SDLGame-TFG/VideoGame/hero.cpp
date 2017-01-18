@@ -499,6 +499,8 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         moveMatrix[6]->setMatrix(rot.getMatrix());
         rot.rotation(-30,0,0,1);
         moveMatrix[7]->setMatrix(rot.getMatrix());
+        if(heroSound[0]->isPlaying())
+            heroSound[0]->stop();
     }
     else if(isJumping){
         for(unsigned i=0;i<moveMatrix.size();i++)

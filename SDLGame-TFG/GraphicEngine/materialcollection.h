@@ -37,6 +37,7 @@ enum MaterialIndex{
     MUSH,        //5
     mGRASS,      //6
     mWATER,      //7
+    mDWATER,      //7
     mVOID,       //8
     mCOIN10,     //9
     mCOIN50,     //10
@@ -51,7 +52,9 @@ enum MaterialIndex{
     mFURNITURE,
     mFIREPLACE,
     mPERUG,
-    mFIRE
+    mFIRE,
+    mWINDOW,
+    mPILLAR
 
 };
 

@@ -29,10 +29,10 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
     collection.addElement(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeDungeon2.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeDungeon.png");
     collection.addElement(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeWall.png");
+    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.2f, 0.2f, 0.2f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeWall.png");
     collection.addElement(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mushrooms.png");
@@ -42,6 +42,9 @@ MaterialCollection::MaterialCollection()
     collection.addElement(material);
 
     material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/water.png");
+    collection.addElement(material);
+
+    material=new Material(vec3f(0.5f, 1.0f, 0.5f),vec3f(0.5f, 1.0f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/water.png");
     collection.addElement(material);
 
     material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/void.png");
@@ -94,6 +97,11 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/fireTexture.png");
     collection.addElement(material);
 
+    material=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"textures/windowTex.png");
+    collection.addElement(material);
+
+    material=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"textures/pillar.png");
+    collection.addElement(material);
 
     //Create our map
     collection.addIndex("mCUBE_GRASS",mCUBE_GRASS);
@@ -103,6 +111,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("MUSH",MUSH);
     collection.addIndex("mGRASS",mGRASS);
     collection.addIndex("mWATER",mWATER);
+    collection.addIndex("mDWATER",mDWATER);
     collection.addIndex("mVOID",mVOID);
     collection.addIndex("mCOIN10",mCOIN10);
     collection.addIndex("mCOIN50",mCOIN50);
@@ -118,6 +127,8 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mFIREPLACE",mFIREPLACE);
     collection.addIndex("mPERUG",mPERUG);
     collection.addIndex("mFIRE",mFIRE);
+    collection.addIndex("mWINDOW",mWINDOW);
+    collection.addIndex("mPILLAR",mPILLAR);
 
 }
 
