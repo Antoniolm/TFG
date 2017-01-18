@@ -88,6 +88,10 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
             position=rootMap->getHero()->getPosition();
             positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
         }
+        else {
+            currentOption=0;
+            currentMaterial->setTexture(options[currentOption]);
+        }
         openSound->play();
     }
     if(activateMenu){ //If the menu is activated
@@ -114,6 +118,8 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
         if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_p)] && menuDelay<(time-300)){ //If the user push the action intro
             switch(currentOption){
                 case 0:
+                    currentOption=0;
+                     currentMaterial->setTexture(options[currentOption]);
                     activateMenu=false;
                     openSound->play();
                 break;
