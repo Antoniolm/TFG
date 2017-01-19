@@ -68,7 +68,9 @@ void ProjectileSystem::updateState(float time,const Uint8* currentKeyStates,Root
             it++;
     }
 
-    if(projectileDelay<(time-timeBWprojectile)){
+    vec3f posHero=rootMap->getHero()->getPosition();
+    vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
+    if(projectileDelay<(time-timeBWprojectile) && (distance.x>-radioActivity.x && distance.x<radioActivity.x)&&(distance.y>-radioActivity.y && distance.y<radioActivity.y)&&(distance.z>-radioActivity.z && distance.z<radioActivity.z)){
         projectiles.push_back(new Projectile(position,velocity,direction,mesh,material));
         projectileDelay=time;
     }
