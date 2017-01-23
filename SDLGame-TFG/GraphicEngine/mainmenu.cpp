@@ -31,7 +31,7 @@ MainMenu::MainMenu(vec3f posHero)
     positionMenu=new Matrix4f();
     positionMenu->translation(posHero.x,posHero.y+5.25,posHero.z+13.0);
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(0.4,1.3,0.4);
+    scaleMenu->scale(0.5,1.6,0.5);
     Matrix4f * scaleMenuBack=new Matrix4f();
     scaleMenuBack->scale(4.0,4.0,4.0);
 
