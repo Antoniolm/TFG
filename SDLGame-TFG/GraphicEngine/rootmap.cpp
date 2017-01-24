@@ -115,13 +115,17 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     /////////////////////////////////////////
     Matrix4f * transformation;
     const rapidjson::Value & decoObject=document["decorationObject"];
+    vec3f posDecoration;
     for(unsigned currentDeco=0;currentDeco<decoObject.Size();currentDeco++){
 
         for(unsigned i=0;i<decoObject[currentDeco]["position"].Size();i+=3){
+            posDecoration=vec3f(decoObject[currentDeco]["position"][i].GetFloat(),
+                                decoObject[currentDeco]["position"][i+1].GetFloat(),
+                                decoObject[currentDeco]["position"][i+2].GetFloat());
             if(decoObject[currentDeco]["collision"].GetBool()) //If collision
-                objs.push_back(new DecorationObject(decoObject[currentDeco]));
+                objs.push_back(new DecorationObject(decoObject[currentDeco],posDecoration));
             else{ //If is a decoration obj
-                decorationObjs.push_back(new DecorationObject(decoObject[currentDeco]));
+                decorationObjs.push_back(new DecorationObject(decoObject[currentDeco],posDecoration));
             }
         }
     }

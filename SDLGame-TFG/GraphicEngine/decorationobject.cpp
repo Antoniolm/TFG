@@ -26,16 +26,14 @@ DecorationObject::DecorationObject()
 
 //**********************************************************************//
 
-DecorationObject::DecorationObject(const rapidjson::Value & DOFeature){
+DecorationObject::DecorationObject(const rapidjson::Value & DOFeature,vec3f posDecoration){
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
     NodeSceneGraph * objNode=new NodeSceneGraph();
 
     Matrix4f * transformation=new Matrix4f();
-    transformation->translation(DOFeature["position"][0].GetFloat(),
-                                DOFeature["position"][1].GetFloat(),
-                                DOFeature["position"][2].GetFloat());
+    transformation->translation(posDecoration.x,posDecoration.y,posDecoration.z);
 
     objNode->add(transformation);
     for(unsigned currentTrans=0; currentTrans<DOFeature["transforms"].Size(); currentTrans++)

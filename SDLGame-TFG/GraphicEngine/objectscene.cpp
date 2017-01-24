@@ -112,6 +112,7 @@ void ObjectScene::generateBoundingbox(){
 }
 
 //**********************************************************************//
+
 void ObjectScene::obtainPosition(Context vis){
     object->visualization(vis);
 

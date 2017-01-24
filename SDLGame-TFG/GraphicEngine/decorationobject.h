@@ -39,7 +39,7 @@ class DecorationObject: public ObjectScene
         //////////////////////////////////////////////////////////////////////////
         /** Constructor json */
         //////////////////////////////////////////////////////////////////////////
-        DecorationObject(const rapidjson::Value & lightFeature);
+        DecorationObject(const rapidjson::Value & lightFeature,vec3f posDecoration);
 
     protected:
 
