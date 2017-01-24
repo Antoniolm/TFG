@@ -41,6 +41,8 @@ class AnimationList
 
         void resetAnimation(int index);
 
+        int getState();
+
         ScriptLMD * getAnimation();
 
     protected:

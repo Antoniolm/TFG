@@ -151,6 +151,7 @@ class Hero: public AvatarMove
         ScriptLMD animation;
         ScriptLMD animationHit;
         ScriptLMD animationShield;
+        ScriptLMD animationJump;
         vector<Text *> texts;
         vector<bool> activatedTexts;
         float jumpDelay,hitDelay,coinDelay,shieldDelay;

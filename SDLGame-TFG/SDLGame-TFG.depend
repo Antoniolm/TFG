@@ -996,7 +996,7 @@
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 
-1485282545 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
+1485289683 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -1015,7 +1015,7 @@
 	<stdlib.h>
 	<vector>
 
-1485285250 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1485292804 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -2196,10 +2196,10 @@
 	"materialcollection.h"
 	"meshcollection.h"
 
-1485284335 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\animationlist.cpp
+1485290241 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\animationlist.cpp
 	"animationlist.h"
 
-1485283433 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\animationlist.h
+1485290209 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\animationlist.h
 	<vector>
 	"scriptlmd.h"
 

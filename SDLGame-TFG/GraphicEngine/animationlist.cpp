@@ -57,6 +57,12 @@ void AnimationList::resetAnimation(int index){
 
 //**********************************************************************//
 
+int AnimationList::getState(){
+    return currentAnimation;
+}
+
+//**********************************************************************//
+
 ScriptLMD * AnimationList::getAnimation(){
     return animations[currentAnimation];
 }

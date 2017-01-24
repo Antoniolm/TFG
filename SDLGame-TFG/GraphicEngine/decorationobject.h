@@ -28,7 +28,7 @@
 #include "materialcollection.h"
 #include "meshcollection.h"
 
-class DecorationObject: public ObjectScene
+class DecorationObject : public ObjectScene
 {
     public:
         /** Default constructor */

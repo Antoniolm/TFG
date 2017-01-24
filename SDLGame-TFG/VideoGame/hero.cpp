@@ -453,6 +453,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     //If the jump is activate
     if(isJumping){
         jump(time);
+        animations.activate(3);
         if(heroSound[0]->isPlaying())
             heroSound[0]->stop();
     }
@@ -480,6 +481,11 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     if(isMoving && !isFalling && !isJumping && !isHit() && !isImpacted && !isShielded){
         animations.activate(0);
     }
+    if(!isMoving && !isFalling && !isJumping && !isHitting && !isImpacted && !isShielded){
+        animations.activate(-1);
+    }
+    if(isHitting)
+        animations.activate(1);
     /*else if(isFalling){
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
@@ -501,10 +507,14 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }*/
 
 
-    animations.update(time-currentTime);
-    ScriptLMD * animatio=animations.getAnimation();
-    for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->setMatrix(animatio->readMatrix(i).getMatrix());
+    if(animations.getState()!=-1){
+        animations.update(time-currentTime);
+        ScriptLMD * animatio=animations.getAnimation();
+        for(unsigned i=0;i<moveMatrix.size();i++)
+                moveMatrix[i]->setMatrix(animatio->readMatrix(i).getMatrix());
+    }
+    else noMove();
+
 
     for(unsigned i=0;i<texts.size();i++)
         if(activatedTexts[i])
@@ -552,16 +562,13 @@ void Hero::noMove(){
     for(unsigned i=0;i<moveMatrix.size();i++)
         moveMatrix[i]->identity();
     isMoving=false;
+    animations.activate(-1);
 }
 
 //**********************************************************************//
 
 bool Hero::isHit(){
-    bool result=false;
-    if(animationHit.getScriptState(6)==0 && isHitting)
-        result=true;
-
-    return result;
+    return isHitting;
 }
 
 //**********************************************************************//
@@ -838,7 +845,7 @@ bool Hero::isHit(){
 
     animations.add(&animationHit);
 
-     /////////////////////////////////
+    /////////////////////////////////
     // ANIMATION SHIELD
     /////////////////////////////////
     ///////////////////
@@ -924,4 +931,73 @@ bool Hero::isHit(){
     animationShield.add(bodyTScript);
 
     animations.add(&animationShield);
+
+    /////////////////////////////////
+    // ANIMATION JUMP
+    /////////////////////////////////
+    ///////////////////
+    // LEG
+    //////////////////
+    oscillateLeg=new OscillateRotation(true,30,0,1,300,vec3f(1,0,0),2);
+    oscillateLegSecond=new OscillateRotation(false,0,-30,1,300,vec3f(1,0,0),1);
+
+    //Movement to the first leg
+    LegScriptLeft=new MatrixScript();
+    LegScriptLeft->add(0.15,oscillateLeg);
+    LegScriptLeft->add(0.15,oscillateLegSecond);
+
+
+    //Movement to the second leg
+    LegScriptRight=new MatrixScript();
+    LegScriptRight->add(0.15,oscillateLegSecond);
+    LegScriptRight->add(0.15,oscillateLeg);
+
+    //Add the script to our animation
+    animationJump.add(LegScriptRight);
+    animationJump.add(LegScriptLeft);
+
+    //Movement to the first arm
+    ElbowScriptLeft=new MatrixScript();
+    ArmScriptLeft=new MatrixScript();
+    ElbowScriptTLeft=new MatrixScript();
+
+    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,notMove);
+    ElbowScriptTLeft->add(0.5,notMove);
+
+    //Movement to the second arm
+    ElbowScriptRight=new MatrixScript();
+    ArmScriptRight=new MatrixScript();
+    ElbowScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,notMove);
+
+
+    //Add the script to our animation
+    animationJump.add(ElbowScriptRight);  //4
+    animationJump.add(ElbowScriptTRight); //7
+    animationJump.add(ElbowScriptLeft);   //5
+    animationJump.add(ElbowScriptTLeft);  //7
+    animationJump.add(ArmScriptRight);
+    animationJump.add(ArmScriptLeft);     //7
+
+
+    ///////////////////
+    // BODY
+    //////////////////
+    //Matrix4fDinamic
+
+    //Movement to the first arm
+    bodyScript=new MatrixScript();
+    bodyScript->add(0.3,notMove);
+
+
+    //Movement to the first arm
+    bodyTScript=new MatrixScript();
+    bodyTScript->add(0.15,notMove);
+
+
+    animationJump.add(bodyScript);
+    animationJump.add(bodyTScript);
+
+    animations.add(&animationJump);
  }
