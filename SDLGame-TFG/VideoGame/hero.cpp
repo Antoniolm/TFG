@@ -136,9 +136,6 @@ Hero::Hero(vec3f aPos)
     moveArmLeft->identity();
     moveMatrix.push_back(moveArmLeft);
 
-
-    //Material * materialArmour=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),vec3f(0.8f, 0.8f, 0.8f),32.0f,"./textures/plateArmor.png");
-
     Matrix4f * scaleHandInvert=new Matrix4f();
     scaleHandInvert->scale(1.0,1.0,-1.0);
 
@@ -424,8 +421,9 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_l)] && !isShielded){ //If hero is hitting
         if(!isHitting)
-            animationHit.resetState();
+            animations.resetAnimation(1);
         isHitting=true;
+        animations.activate(1);
         hitDelay=time;
     }
     else { // If hero is not hitting -> resetAnimation
@@ -438,6 +436,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     //Case-> Push W bottom to shield
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_i)] && !isHitting){ //If hero is shielding
         isShielded=true;
+        animations.activate(2); //Activate animation
     }
     else { //if not
         isShielded=false;
@@ -447,6 +446,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     if(hasMove && !isImpacted && !isHit()){
         avatarDirection lastDir=direction;
         moveBody(moveHero,heroDir);
+        animations.activate(0); //Activate animation
         heroSound[0]->play();
         if(isShielded)
             changeDirection(lastDir);
@@ -479,11 +479,9 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     //UPDATE ANIMATION
     ////////////////////////////
     if(isMoving && !isFalling && !isJumping && !isHit() && !isImpacted && !isShielded){
-        animation.updateState(time-currentTime);
-        for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
+        animations.activate(0);
     }
-    else if(isFalling){
+    /*else if(isFalling){
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->identity();
         Matrix4f rot;
@@ -503,16 +501,19 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         moveMatrix[7]->setMatrix(rot.getMatrix());
     }
     else if(isHitting){
-        animationHit.updateState(time-currentTime);
-        for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
+
     }
     else if(isShielded){
         animationShield.updateState(time-currentTime);
         for(unsigned i=0;i<moveMatrix.size();i++)
             moveMatrix[i]->setMatrix(animationShield.readMatrix(i).getMatrix());
-    }
+    }*/
 
+
+    animations.update(time-currentTime);
+    ScriptLMD * animatio=animations.getAnimation();
+    for(unsigned i=0;i<moveMatrix.size();i++)
+            moveMatrix[i]->setMatrix(animatio->readMatrix(i).getMatrix());
 
     for(unsigned i=0;i<texts.size();i++)
         if(activatedTexts[i])
@@ -556,7 +557,7 @@ void Hero::activateDialog(bool value,int index){
 //**********************************************************************//
 
 void Hero::noMove(){
-    animation.resetState();
+    //animations.resetAnimation(0);
     for(unsigned i=0;i<moveMatrix.size();i++)
         moveMatrix[i]->identity();
     isMoving=false;
@@ -752,6 +753,8 @@ bool Hero::isHit(){
     animation.add(bodyScript);
     animation.add(bodyTScript);
 
+    animations.add(&animation);
+
     /////////////////////////////////
     // ANIMATION HIT
     /////////////////////////////////
@@ -842,6 +845,8 @@ bool Hero::isHit(){
     animationHit.add(bodyScript);
     animationHit.add(bodyTScript);
 
+    animations.add(&animationHit);
+
      /////////////////////////////////
     // ANIMATION SHIELD
     /////////////////////////////////
@@ -926,4 +931,6 @@ bool Hero::isHit(){
 
     animationShield.add(bodyScript);
     animationShield.add(bodyTScript);
+
+    animations.add(&animationShield);
  }

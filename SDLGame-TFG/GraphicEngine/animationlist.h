@@ -39,6 +39,8 @@ class AnimationList
 
         void update(float time);
 
+        void resetAnimation(int index);
+
         ScriptLMD * getAnimation();
 
     protected:

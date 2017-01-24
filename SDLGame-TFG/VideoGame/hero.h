@@ -33,6 +33,7 @@
 #include "../GraphicEngine/acceleratedmovement.h"
 #include "../GraphicEngine/sound.h"
 #include "../GraphicEngine/text.h"
+#include "../GraphicEngine/animationlist.h"
 #include "../lib/rapidjson/document.h"
 #include <stdlib.h>
 
@@ -146,6 +147,7 @@ class Hero: public AvatarMove
         void initAnimation();
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> heroSound;
+        AnimationList animations;
         ScriptLMD animation;
         ScriptLMD animationHit;
         ScriptLMD animationShield;

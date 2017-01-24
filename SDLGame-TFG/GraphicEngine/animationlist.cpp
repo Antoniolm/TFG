@@ -51,6 +51,12 @@ void AnimationList::update(float time){
 
 //**********************************************************************//
 
+void AnimationList::resetAnimation(int index){
+    animations[currentAnimation]->resetState();
+}
+
+//**********************************************************************//
+
 ScriptLMD * AnimationList::getAnimation(){
     return animations[currentAnimation];
 }
