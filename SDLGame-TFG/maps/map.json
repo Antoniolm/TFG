@@ -4,7 +4,7 @@
     "bkgdMaterial":"mWATER",
     "sound":"sounds/backsound.wav",
     "volSound":30.0,
-    "heroPosition":[38.5,6.0,-19],
+    "heroPosition":[3.5,2.5,-3],
 
     "light":[
             {   "type":0,
@@ -36,7 +36,7 @@
     ],
 
     "particleSystem":[
-        {   "number":75,
+        {   "number":2,
             "material":"mFIRE",
             "scale":[0.1,0.1,0.1],
             "minPosition":[15.5,1.0,-12.0],
@@ -48,7 +48,7 @@
     ],
 
     "projectileSystem":[
-        {   "radioActivity":[2.0,2.0,2.0],
+        {   "radioActivity":[4.0,4.0,2.0],
             "position":[6.5,1.5,-2.5],
             "velocity":[-2.0,0.0,0.0],
             "direction":2,
@@ -56,7 +56,7 @@
             "material":"mARCHENEMY",
             "mesh":"ARROW"
         },
-        {   "radioActivity":[2.0,2.0,2.0],
+        {   "radioActivity":[4.0,4.0,4.0],
             "position":[6.5,1.5,-1.5],
             "velocity":[-2.0,0.0,-2.0],
             "direction":3,
@@ -466,16 +466,6 @@
     ],
 
     "decorationObject":[
-            {   "position":[14.5,-2.5,-4.5],
-                "transforms":[
-                    {   "type":"scale",
-                        "values":[7.0,1.0,9.0]
-                    }
-                ],       
-                "material":"mWATER",
-                "mesh":"CUBE",
-                "collision": false 
-            },
             {   "position":[4.0,1.8,-11.9],
                 "transforms":[
                     {    "type":"scale",

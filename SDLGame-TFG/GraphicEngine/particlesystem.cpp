@@ -47,6 +47,29 @@ ParticleSystem::ParticleSystem(int numParticle,string aMaterial,vec3f aScale,vec
 
 //**********************************************************************//
 
+ParticleSystem::ParticleSystem(const rapidjson::Value & particleFeature){
+
+    MaterialCollection * materialCollect=MaterialCollection::getInstance();
+
+    material=materialCollect->getMaterial(particleFeature["material"].GetString());
+    scale=vec3f(particleFeature["scale"][0].GetFloat(), particleFeature["scale"][1].GetFloat(), particleFeature["scale"][2].GetFloat());
+    nParticles=particleFeature["number"].GetFloat();
+    minPos=vec3f(particleFeature["minPosition"][0].GetFloat(), particleFeature["minPosition"][1].GetFloat(), particleFeature["minPosition"][2].GetFloat());
+    maxPos=vec3f(particleFeature["maxPosition"][0].GetFloat(), particleFeature["maxPosition"][1].GetFloat(), particleFeature["maxPosition"][2].GetFloat());
+    velocity=vec3f(particleFeature["velocity"][0].GetFloat(), particleFeature["velocity"][1].GetFloat(), particleFeature["velocity"][2].GetFloat());
+    minTime=particleFeature["minLife"].GetFloat();
+    maxTime=particleFeature["maxLife"].GetFloat();
+    currentParticles=0;
+    currentTime=SDL_GetTicks();
+
+    vec3f pos=(maxPos-minPos)/2;
+    position=vec4f(pos.x,pos.y,pos.z,1.0);
+
+
+}
+
+//**********************************************************************//
+
 ParticleSystem::~ParticleSystem()
 {
     //dtor

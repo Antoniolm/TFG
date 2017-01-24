@@ -26,15 +26,22 @@
 #include <../GraphicEngine/nodescenegraph.h>
 #include <../GraphicEngine/rootmap.h>
 #include <list>
+#include "../lib/rapidjson/document.h"
+
 
 class Projectile;
-class ProjectileSystem : public NodeSceneGraph
+class ProjectileSystem : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         ProjectileSystem(vec3f aRadio,vec3f aPos,vec3f aVeloc,int aDir,float aDelay,string aMesh,string aMaterial);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with json*/
+        //////////////////////////////////////////////////////////////////////////
+        ProjectileSystem(const rapidjson::Value & projectileSys);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */

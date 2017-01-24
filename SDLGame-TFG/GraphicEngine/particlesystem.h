@@ -28,9 +28,10 @@
 #include <list>
 #include <particle.h>
 #include <string>
+#include "../lib/rapidjson/document.h"
 
 class Particle;
-class ParticleSystem : public NodeSceneGraph
+class ParticleSystem : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
@@ -42,6 +43,11 @@ class ParticleSystem : public NodeSceneGraph
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
         ParticleSystem(int numParticle,string aMaterial,vec3f aScale,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with json*/
+        //////////////////////////////////////////////////////////////////////////
+        ParticleSystem(const rapidjson::Value & particleSys);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */

@@ -175,7 +175,6 @@ Hero::Hero(vec3f aPos)
     handRight->add(moveElbowRight);
     handRight->add(moveElbowTRight);
     handRight->add(transHand);
-    handRight->add(materialCollect->getMaterial(mHERO));
     handRight->add(meshCollect->getMesh(HAND));
     handRight->add(tranSword);
     handRight->add(materialCollect->getMaterial(mSWORD));
@@ -188,7 +187,6 @@ Hero::Hero(vec3f aPos)
     handLeft->add(transHandLeft);
     //handLeft->add(scaleHandInvert);
     handLeft->add(rotateYHand);
-    handLeft->add(materialCollect->getMaterial(mHERO));
     handLeft->add(meshCollect->getMesh(HANDS));
     handLeft->add(tranShield);
     handLeft->add(materialCollect->getMaterial(mSHIELD));
@@ -196,12 +194,10 @@ Hero::Hero(vec3f aPos)
 
     //Shoulder
     NodeSceneGraph * shoulderLeft=new NodeSceneGraph();
-    shoulderLeft->add(materialCollect->getMaterial(mHERO));
     shoulderLeft->add(meshCollect->getMesh(TOPARM));
 
     NodeSceneGraph * shoulderRight=new NodeSceneGraph();
     shoulderRight->add(rotateShoulder);
-    shoulderRight->add(materialCollect->getMaterial(mHERO));
     shoulderRight->add(meshCollect->getMesh(TOPARM));
 
     //Arm left
@@ -257,13 +253,8 @@ Hero::Hero(vec3f aPos)
     Matrix4f *transChest=new Matrix4f();
     transChest->translation(0.0,0.1,0.0);
 
-    NodeSceneGraph * chestNode=new NodeSceneGraph();
-    chestNode->add(materialCollect->getMaterial(mHERO));
-    chestNode->add(meshCollect->getMesh(CHEST));
-
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
-    headNode->add(materialCollect->getMaterial(mHERO));
     headNode->add(meshCollect->getMesh(HEAD));
 
     NodeSceneGraph * chest_Arms_HeadNode=new NodeSceneGraph();
@@ -271,13 +262,14 @@ Hero::Hero(vec3f aPos)
     chest_Arms_HeadNode->add(moveTBodyHead);
     chest_Arms_HeadNode->add(moveBodyHead);
     chest_Arms_HeadNode->add(headNode);
-    chest_Arms_HeadNode->add(chestNode);
+    chest_Arms_HeadNode->add(meshCollect->getMesh(CHEST));
     chest_Arms_HeadNode->add(trasnArmsI);
     chest_Arms_HeadNode->add(ArmLeft);
     chest_Arms_HeadNode->add(trasnArms);
     chest_Arms_HeadNode->add(ArmRight);
 
     root->add(scaleHero);
+    root->add(materialCollect->getMaterial(mHERO));
     root->add(chest_Arms_HeadNode);
     root->add(transLegSceneI);
     root->add(legLeft);

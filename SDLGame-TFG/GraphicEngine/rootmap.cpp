@@ -74,30 +74,17 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     /////////////////////////////////////////
     // Add particleSystems to our map
     /////////////////////////////////////////
-    ParticleSystem * pSystem;
-    const rapidjson::Value & particleSys=document["particleSystem"];
-    for(unsigned currentPSys=0;currentPSys<particleSys.Size();currentPSys++){
-        pSystem=new ParticleSystem(particleSys[currentPSys]["number"].GetFloat(),
-                                   particleSys[currentPSys]["material"].GetString(),
-                                   vec3f(particleSys[currentPSys]["scale"][0].GetFloat(), particleSys[currentPSys]["scale"][1].GetFloat(), particleSys[currentPSys]["scale"][2].GetFloat()),
-                                   vec3f(particleSys[currentPSys]["minPosition"][0].GetFloat(), particleSys[currentPSys]["minPosition"][1].GetFloat(), particleSys[currentPSys]["minPosition"][2].GetFloat()),
-                                   vec3f(particleSys[currentPSys]["maxPosition"][0].GetFloat(), particleSys[currentPSys]["maxPosition"][1].GetFloat(), particleSys[currentPSys]["maxPosition"][2].GetFloat()),
-                                   vec3f(particleSys[currentPSys]["velocity"][0].GetFloat(), particleSys[currentPSys]["velocity"][1].GetFloat(), particleSys[currentPSys]["velocity"][2].GetFloat()),
-                                   particleSys[currentPSys]["minLife"].GetFloat(),particleSys[currentPSys]["maxLife"].GetFloat());
-        particleSystem.push_back(pSystem);
+    const rapidjson::Value & particleFeature=document["particleSystem"];
+    for(unsigned currentPSys=0;currentPSys<particleFeature.Size();currentPSys++){
+        particleSystem.push_back(new ParticleSystem(particleFeature[currentPSys]));
     }
 
     /////////////////////////////////////////
     // Add projectileSystem to our map
     /////////////////////////////////////////
-    const rapidjson::Value & projectileSys=document["projectileSystem"];
-    for(unsigned currentPSys=0;currentPSys<projectileSys.Size();currentPSys++){
-        projectileSystem.push_back(new ProjectileSystem(
-                                   vec3f(projectileSys[currentPSys]["radioActivity"][0].GetFloat(), projectileSys[currentPSys]["radioActivity"][1].GetFloat(), projectileSys[currentPSys]["radioActivity"][2].GetFloat()),
-                                   vec3f(projectileSys[currentPSys]["position"][0].GetFloat(), projectileSys[currentPSys]["position"][1].GetFloat(), projectileSys[currentPSys]["position"][2].GetFloat()),
-                                   vec3f(projectileSys[currentPSys]["velocity"][0].GetFloat(), projectileSys[currentPSys]["velocity"][1].GetFloat(), projectileSys[currentPSys]["velocity"][2].GetFloat()),
-                                   projectileSys[currentPSys]["direction"].GetFloat(),projectileSys[currentPSys]["delay"].GetFloat(),
-                                   projectileSys[currentPSys]["mesh"].GetString(),projectileSys[currentPSys]["material"].GetString()));
+    const rapidjson::Value & projectileFeature=document["projectileSystem"];
+    for(unsigned currentPSys=0;currentPSys<projectileFeature.Size();currentPSys++){
+        projectileSystem.push_back(new ProjectileSystem(projectileFeature[currentPSys]));
     }
 
     /////////////////////////////////////////

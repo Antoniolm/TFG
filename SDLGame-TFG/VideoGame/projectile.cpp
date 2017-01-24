@@ -42,7 +42,7 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh
 
     rotation=new AxisRotation(200,0.0,0.0,1.0);
 
-    root=new NodeSceneGraph(false,true);
+    root=new NodeSceneGraph();
     root->add(moveAvatar);
     root->add(animationMatrix);
     root->add(transMatrix);

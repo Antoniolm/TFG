@@ -29,7 +29,7 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeBox.png");
     collection.addElement(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeDungeon.png");
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.0f, 0.0f, 0.0f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeDungeon.png");
     collection.addElement(material);
 
     material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.2f, 0.2f, 0.2f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"./textures/cubeWall.png");
