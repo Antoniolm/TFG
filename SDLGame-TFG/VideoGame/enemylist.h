@@ -25,12 +25,13 @@
 #include "npc.h"
 #include "hero.h"
 #include "../GraphicEngine/nodescenegraph.h"
+#include "../GraphicEngine/object3d.h"
 #include "../lib/rapidjson/document.h"
 #include <vector>
 
 using namespace rapidjson;
 
-class EnemyList : public NodeSceneGraph
+class EnemyList : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////

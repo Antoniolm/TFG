@@ -122,6 +122,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
             posDecoration=vec3f(decoObject[currentDeco]["position"][i].GetFloat(),
                                 decoObject[currentDeco]["position"][i+1].GetFloat(),
                                 decoObject[currentDeco]["position"][i+2].GetFloat());
+
             if(decoObject[currentDeco]["collision"].GetBool()) //If collision
                 objs.push_back(new DecorationObject(decoObject[currentDeco],posDecoration));
             else{ //If is a decoration obj
