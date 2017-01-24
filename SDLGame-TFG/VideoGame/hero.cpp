@@ -446,7 +446,6 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     if(hasMove && !isImpacted && !isHit()){
         avatarDirection lastDir=direction;
         moveBody(moveHero,heroDir);
-        animations.activate(0); //Activate animation
         heroSound[0]->play();
         if(isShielded)
             changeDirection(lastDir);
@@ -499,14 +498,6 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         rot.rotation(30,1,0,0);
         moveMatrix[6]->setMatrix(rot.getMatrix());
         moveMatrix[7]->setMatrix(rot.getMatrix());
-    }
-    else if(isHitting){
-
-    }
-    else if(isShielded){
-        animationShield.updateState(time-currentTime);
-        for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->setMatrix(animationShield.readMatrix(i).getMatrix());
     }*/
 
 
@@ -557,7 +548,7 @@ void Hero::activateDialog(bool value,int index){
 //**********************************************************************//
 
 void Hero::noMove(){
-    //animations.resetAnimation(0);
+    animations.resetAnimation(0);
     for(unsigned i=0;i<moveMatrix.size();i++)
         moveMatrix[i]->identity();
     isMoving=false;

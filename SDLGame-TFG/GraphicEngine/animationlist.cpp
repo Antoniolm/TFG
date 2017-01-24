@@ -52,7 +52,7 @@ void AnimationList::update(float time){
 //**********************************************************************//
 
 void AnimationList::resetAnimation(int index){
-    animations[currentAnimation]->resetState();
+    animations[index]->resetState();
 }
 
 //**********************************************************************//
