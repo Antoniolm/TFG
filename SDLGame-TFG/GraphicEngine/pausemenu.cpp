@@ -30,6 +30,10 @@ PauseMenu::PauseMenu()
 
     positionMenu=new Matrix4f();
     positionMenu->identity();
+
+    Matrix4f * betweenMenu=new Matrix4f();
+    betweenMenu->translation(0.0,0.0,-0.1);
+
     Matrix4f * scaleMenu=new Matrix4f();
     scaleMenu->scale(0.4,1.5,0.4);
     Matrix4f * scaleMenuBack=new Matrix4f();
@@ -44,6 +48,7 @@ PauseMenu::PauseMenu()
     root->add(scaleMenu);
     root->add(currentMaterial);
     root->add(meshCollect->getMesh(TEXT));
+    root->add(betweenMenu);
     root->add(scaleMenuBack);
     root->add(materialBack);
     root->add(meshCollect->getMesh(TEXT));

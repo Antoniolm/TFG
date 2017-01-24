@@ -30,6 +30,10 @@ MainMenu::MainMenu(vec3f posHero)
 
     positionMenu=new Matrix4f();
     positionMenu->translation(posHero.x,posHero.y+5.25,posHero.z+13.0);
+
+    Matrix4f * betweenMenu=new Matrix4f();
+    betweenMenu->translation(0.0,0.0,-0.1);
+
     Matrix4f * scaleMenu=new Matrix4f();
     scaleMenu->scale(0.5,1.6,0.5);
     Matrix4f * scaleMenuBack=new Matrix4f();
@@ -44,6 +48,7 @@ MainMenu::MainMenu(vec3f posHero)
     root->add(scaleMenu);
     root->add(currentMaterial);
     root->add(meshCollect->getMesh(TEXT));
+    root->add(betweenMenu);
     root->add(scaleMenuBack);
     root->add(materialBack);
     root->add(meshCollect->getMesh(TEXT));

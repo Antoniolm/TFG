@@ -148,10 +148,6 @@ class Hero: public AvatarMove
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> heroSound;
         AnimationList animations;
-        ScriptLMD animation;
-        ScriptLMD animationHit;
-        ScriptLMD animationShield;
-        ScriptLMD animationJump;
         vector<Text *> texts;
         vector<bool> activatedTexts;
         float jumpDelay,hitDelay,coinDelay,shieldDelay;

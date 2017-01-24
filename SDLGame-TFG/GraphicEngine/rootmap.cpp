@@ -34,12 +34,6 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
-    Matrix4f * scaleObj=new Matrix4f();
-    scaleObj->scale(0.5,0.5,0.5);
-
-    Matrix4f * transObj=new Matrix4f();
-    transObj->translation(0.5,0.5,-0.5);
-
     /////////////////////////////////////////
     // Create hero
     /////////////////////////////////////////
@@ -81,6 +75,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     NodeSceneGraph * objNode=new NodeSceneGraph();
     const rapidjson::Value & voxelGroup=document["voxelGroup"];
     int tamX,tamY,tamZ,initialX,initialZ;
+    Matrix4f * transObj;
     float initialY;
 
     for(unsigned currentGroup=0;currentGroup<voxelGroup.Size();currentGroup++){
@@ -103,6 +98,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
                     objNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialTop"].GetString()));
                     else
                     objNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialMiddle"].GetString()));
+
                     objNode->add(meshCollect->getMesh(voxelGroup[currentGroup]["mesh"].GetString()));
                     objs.push_back(new ObjectScene(objNode,voxelGroup[currentGroup]["damage"].GetFloat()));
                 }
