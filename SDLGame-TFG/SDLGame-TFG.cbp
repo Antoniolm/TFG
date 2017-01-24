@@ -104,8 +104,6 @@
 		<Unit filename="GraphicEngine/oscillaterotation.h" />
 		<Unit filename="GraphicEngine/particle.cpp" />
 		<Unit filename="GraphicEngine/particle.h" />
-		<Unit filename="GraphicEngine/particlesyslist.cpp" />
-		<Unit filename="GraphicEngine/particlesyslist.h" />
 		<Unit filename="GraphicEngine/particlesystem.cpp" />
 		<Unit filename="GraphicEngine/particlesystem.h" />
 		<Unit filename="GraphicEngine/pausemenu.cpp" />

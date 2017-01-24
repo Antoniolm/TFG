@@ -894,7 +894,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1485257879 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1485260586 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -1585,14 +1585,15 @@
 	"texture.h"
 	"shader.h"
 
-1480182058 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
+1485259996 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
 	"light.h"
 
-1480181739 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.h
+1485259404 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.h
 	"structdata.h"
 	"shader.h"
 	<string>
 	<cstdlib>
+	"../lib/rapidjson/document.h"
 
 1418876674 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\stb_image.c
 	"stb_image.h"
@@ -2136,7 +2137,7 @@
 	"../GraphicEngine/text.h"
 	<vector>
 
-1484855116 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
+1485258834 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
 	"projectilesystem.h"
 
 1485258428 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.h

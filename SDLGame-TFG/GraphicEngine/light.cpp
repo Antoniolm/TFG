@@ -61,6 +61,25 @@ Light::Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,c
 
 //**********************************************************************//
 
+Light::Light(const rapidjson::Value & lightFeature){
+    if(lightFeature["type"].GetFloat()==0){
+        type=directional;
+        }
+    else{
+        constant=lightFeature["constant"].GetFloat();
+        linear=lightFeature["linear"].GetFloat();
+        quadratic=lightFeature["quadratic"].GetFloat();
+        type=point;
+    }
+
+    position=vec3f(lightFeature["position"][0].GetFloat(), lightFeature["position"][1].GetFloat(), lightFeature["position"][2].GetFloat());
+    ambient=vec3f(lightFeature["ambient"][0].GetFloat(), lightFeature["ambient"][1].GetFloat(), lightFeature["ambient"][2].GetFloat());
+    diffuse=vec3f(lightFeature["diffuse"][0].GetFloat(), lightFeature["diffuse"][1].GetFloat(), lightFeature["diffuse"][2].GetFloat());
+    specular=vec3f(lightFeature["specular"][0].GetFloat(), lightFeature["specular"][1].GetFloat(), lightFeature["specular"][2].GetFloat());
+}
+
+//**********************************************************************//
+
 Light::~Light()
 {
     //dtor

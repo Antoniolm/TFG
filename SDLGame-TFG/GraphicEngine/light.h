@@ -24,6 +24,7 @@
 #include "shader.h"
 #include <string>
 #include <cstdlib>
+#include "../lib/rapidjson/document.h"
 
 enum typeLight{
     directional,
@@ -54,6 +55,11 @@ class Light
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
         Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor with json */
+        //////////////////////////////////////////////////////////////////////////
+        Light(const rapidjson::Value & lightFeature);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
