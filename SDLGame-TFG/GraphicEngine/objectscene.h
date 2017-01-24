@@ -91,7 +91,10 @@ class ObjectScene : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void obtainPosition(Context vis);
     protected:
-
+        vec4f position;
+        Object3D * object;
+        Matrix4f matrix;
+        float damage;
     private:
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -100,10 +103,7 @@ class ObjectScene : public Object3D
         */
         //////////////////////////////////////////////////////////////////////////
         void generateBoundingbox();
-        vec4f position;
-        Object3D * object;
-        Matrix4f matrix;
-        float damage;
+
 };
 
 #endif // OBJECTSCENE_H

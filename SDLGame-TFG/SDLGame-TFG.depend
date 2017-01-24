@@ -901,7 +901,7 @@
 	"../VideoGame/coinlist.h"
 	<stdlib.h>
 
-1484431193 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1485268128 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -925,6 +925,7 @@
 	"meshcollection.h"
 	"materialcollection.h"
 	"../lib/rapidjson/document.h"
+	"decorationobject.h"
 	"sound.h"
 
 1477389087 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.h
@@ -1585,7 +1586,7 @@
 	"texture.h"
 	"shader.h"
 
-1485259996 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
+1485263092 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
 	"light.h"
 
 1485259404 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.h
@@ -1627,7 +1628,7 @@
 1484225351 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
 	"objectscene.h"
 
-1484225596 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
+1485267582 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
 	"object3d.h"
 	"matrix4f.h"
 	"structdata.h"
@@ -2168,4 +2169,16 @@
 
 1484476979 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection.cpp
 	"collection.h"
+
+1485267716 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\decorationobject.cpp
+	"decorationobject.h"
+
+1485267707 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\decorationobject.h
+	"objectscene.h"
+	"../lib/rapidjson/document.h"
+	"nodescenegraph.h"
+	"object3d.h"
+	"matrix4f.h"
+	"materialcollection.h"
+	"meshcollection.h"
 
