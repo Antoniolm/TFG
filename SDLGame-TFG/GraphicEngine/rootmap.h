@@ -44,6 +44,8 @@
 #include "materialcollection.h"
 #include "../lib/rapidjson/document.h"
 #include "decorationobject.h"
+#include "voxel.h"
+#include "voxelgroup.h"
 #include "sound.h"
 
 using namespace std;

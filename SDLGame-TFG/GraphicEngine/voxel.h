@@ -17,65 +17,38 @@
 // **
 // *********************************************************************
 
-#ifndef COINLIST_H
-#define COINLIST_H
+#ifndef VOXEL_H
+#define VOXEL_H
 
-#include "../GraphicEngine/object3d.h"
-#include "coin.h"
-#include <vector>
+#include "objectscene.h"
 #include "../lib/rapidjson/document.h"
+#include "nodescenegraph.h"
+#include "object3d.h"
+#include "matrix4f.h"
+#include "materialcollection.h"
+#include "meshcollection.h"
 
-using namespace rapidjson;
-
-class CoinList : public Object3D
+class Voxel : public ObjectScene
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        CoinList();
+        Voxel();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor json */
         //////////////////////////////////////////////////////////////////////////
-        CoinList(const Value & coinFeatures);
+        Voxel(const rapidjson::Value & voxelFeature,vec3f posVoxel,string material);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~CoinList();
-
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will add a new enemy on the list
-        *    \param enemy -> The new element that will added on our list
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void add(Coin * coin);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will show the object in our interface
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void visualization(Context & cv);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will update the state of the object. That change need the
-        *    current time in our application
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
+        virtual ~Voxel();
 
     protected:
 
     private:
-        vector<Coin *> coins;
 };
 
-#endif // COINLIST_H
+#endif // VOXEL_H

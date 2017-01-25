@@ -72,38 +72,11 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     /////////////////////////////////////////
     // Add voxelGroup to our map
     /////////////////////////////////////////
-    NodeSceneGraph * objNode=new NodeSceneGraph();
     const rapidjson::Value & voxelGroup=document["voxelGroup"];
-    int tamX,tamY,tamZ,initialX,initialZ;
-    Matrix4f * transObj;
-    float initialY;
+    VoxelGroup * vGroup;
 
     for(unsigned currentGroup=0;currentGroup<voxelGroup.Size();currentGroup++){
-        //For each group
-        tamX=voxelGroup[currentGroup]["XNumber"].GetInt();
-        tamY=voxelGroup[currentGroup]["YNumber"].GetInt();
-        tamZ=voxelGroup[currentGroup]["ZNumber"].GetInt();
-        initialX=voxelGroup[currentGroup]["position"][0].GetFloat();
-        initialY=voxelGroup[currentGroup]["position"][1].GetFloat();
-        initialZ=-voxelGroup[currentGroup]["position"][2].GetFloat();
-
-        for(int x=0;x<tamX;x++){
-            for(int z=0;z<tamZ;z++){
-                for(int y=0;y<tamY;y++){
-                    transObj=new Matrix4f();
-                    transObj->translation(initialX+x+0.5f,initialY-y,initialZ-z-0.5f);
-                    objNode=new NodeSceneGraph();
-                    objNode->add(transObj);
-                    if(y==0)
-                    objNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialTop"].GetString()));
-                    else
-                    objNode->add(materialCollect->getMaterial(voxelGroup[currentGroup]["materialMiddle"].GetString()));
-
-                    objNode->add(meshCollect->getMesh(voxelGroup[currentGroup]["mesh"].GetString()));
-                    objs.push_back(new ObjectScene(objNode,voxelGroup[currentGroup]["damage"].GetFloat()));
-                }
-            }
-        }
+        vGroup=new VoxelGroup(voxelGroup[currentGroup],objs);
     }
 
     /////////////////////////////////////////
@@ -129,11 +102,13 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
 
     ////////////////////////////////////////////
     // Background
-    transObj=new Matrix4f();
+    Matrix4f * transObj=new Matrix4f();
     transObj->translation(0.0f,0.0f,0.0f);
+
     Matrix4f *scaleBack =new Matrix4f();
     scaleBack->scale(10.0,10.0,10.0);
-    objNode=new NodeSceneGraph();
+
+    NodeSceneGraph * objNode=new NodeSceneGraph();
     objNode->add(transObj);
     objNode->add(scaleBack);
     objNode->add(materialCollect->getMaterial(document["bkgdMaterial"].GetString()));
