@@ -74,8 +74,11 @@ void ProjectileSystem::visualization(Context & cv){
 //**********************************************************************//
 
 void ProjectileSystem::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
-    if(time-currentTime>200)
-        currentTime=time-50;
+    if(time-currentTime>200){
+        time+=-50;
+        projectileDelay=time-(currentTime-projectileDelay);
+        currentTime=time;
+    }
 
     list<Projectile *>::iterator it=projectiles.begin();
     while(it!=projectiles.end()){
