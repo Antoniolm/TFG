@@ -26,6 +26,7 @@
 #include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/scriptlmd.h"
+#include "../GraphicEngine/animationlist.h"
 #include "../GraphicEngine/context.h"
 #include "../GraphicEngine/matrixscript.h"
 #include "../GraphicEngine/rootmap.h"
@@ -111,7 +112,7 @@ class Enemy: public AvatarMove
         void initAnimation();
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> enemySound;
-        ScriptLMD animation,animationHit;
+        AnimationList animations;
         vec3f radioActivity;
         pair<avatarDirection,vec3f> currentMove;
         IAEnemy IA;

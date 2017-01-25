@@ -277,7 +277,7 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
                 jumpDelay=time;
             }
             if(isHitting) //If is hitting
-                animationHit.resetState();
+                animations.resetAnimation(1);
             isHitting=false;
 
         }
@@ -309,39 +309,29 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
 
     //Update our vec4f position
     position=moveAvatar->product(vec4f());
-    //Update Animation
+
+    ////////////////////////////
+    //UPDATE ANIMATION
+    ////////////////////////////
     if(isMoving && !isFalling && !isJumping && !isHitting){
-        animation.updateState(time-currentTime);
-        for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->setMatrix(animation.readMatrix(i).getMatrix());
-    }
-    else if(isFalling){
-        for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->identity();
-        Matrix4f rot;
-        rot.rotation(30,0,0,1);
-        moveMatrix[4]->setMatrix(rot.getMatrix());
-        rot.rotation(-30,0,0,1);
-        moveMatrix[5]->setMatrix(rot.getMatrix());
-    }
-    else if(isJumping){
-        for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->identity();
-        Matrix4f rot;
-        rot.rotation(30,1,0,0);
-        moveMatrix[4]->setMatrix(rot.getMatrix());
-        moveMatrix[5]->setMatrix(rot.getMatrix());
+        animations.activate(0);
     }
     else if(isHitting){
-        animationHit.updateState(time-currentTime);
-        for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->setMatrix(animationHit.readMatrix(i).getMatrix());
-
-        if((animationHit.getScriptState(2)==3 || animationHit.getScriptState(3)==1) && hitDelay<(time-700)){
+        animations.activate(1);
+        ScriptLMD * animationHit=animations.getAnimation();
+        if((animationHit->getScriptState(2)==3 || animationHit->getScriptState(3)==1) && hitDelay<(time-700)){
             hero->takeDamage(position,direction,-10);
             hitDelay=time;
         }
     }
+
+    animations.update(time-currentTime);
+
+    ScriptLMD * animatio=animations.getAnimation();
+    for(unsigned i=0;i<moveMatrix.size();i++)
+        moveMatrix[i]->setMatrix(animatio->readMatrix(i).getMatrix());
+
+
 
     currentTime+=(time-currentTime);
 }
@@ -432,6 +422,14 @@ void Enemy::takeDamage(float value){
 //**********************************************************************//
 
  void Enemy::initAnimation(){
+
+    /////////////////////////////////
+    // ANIMATION MOVE
+    /////////////////////////////////
+    ///////////////////
+    // LEG
+    //////////////////
+    ScriptLMD * animation=new ScriptLMD();
     OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
     OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
     MatrixStatic * notMove=new MatrixStatic();
@@ -448,9 +446,12 @@ void Enemy::takeDamage(float value){
     LegScriptRight->add(0.5,oscillateLeg);
 
     //Add the script to our animation
-    animation.add(LegScriptRight);
-    animation.add(LegScriptLeft);
+    animation->add(LegScriptRight);
+    animation->add(LegScriptLeft);
 
+    ///////////////////
+    // ARM
+    //////////////////
     //Matrix4fDinamic
     OscillateRotation * oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
 
@@ -472,14 +473,20 @@ void Enemy::takeDamage(float value){
 
 
     //Add the script to our animation
-    animation.add(ElbowScriptRight);
-    animation.add(ElbowScriptLeft);
-    animation.add(ArmScriptRight);
-    animation.add(ArmScriptLeft);
+    animation->add(ElbowScriptRight);
+    animation->add(ElbowScriptLeft);
+    animation->add(ArmScriptRight);
+    animation->add(ArmScriptLeft);
+
+    animations.add(animation);
 
     /////////////////////////////////
     // ANIMATION HIT
     /////////////////////////////////
+    ///////////////////
+    // LEG
+    //////////////////
+    animation=new ScriptLMD();
     oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
     oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
 
@@ -495,9 +502,12 @@ void Enemy::takeDamage(float value){
     LegScriptRight->add(0.5,notMove);
 
     //Add the script to our animation
-    animationHit.add(LegScriptRight);
-    animationHit.add(LegScriptLeft);
+    animation->add(LegScriptRight);
+    animation->add(LegScriptLeft);
 
+    ///////////////////
+    // ARM
+    //////////////////
     //Matrix4fDinamic
     OscillateRotation * shoulderCharge=new OscillateRotation(false,0,-40,1,250,vec3f(1.0,0.0,0),1);
     OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
@@ -536,9 +546,11 @@ void Enemy::takeDamage(float value){
 
 
     //Add the script to our animation
-    animationHit.add(ElbowScriptRight); //4
-    animationHit.add(ElbowScriptLeft);  //5
-    animationHit.add(ArmScriptRight);   //6
-    animationHit.add(ArmScriptLeft);    //7
+    animation->add(ElbowScriptRight); //4
+    animation->add(ElbowScriptLeft);  //5
+    animation->add(ArmScriptRight);   //6
+    animation->add(ArmScriptLeft);    //7
+
+    animations.add(animation);
  }
 

@@ -460,7 +460,8 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     //If the jump is not activate
     else {
         ObjectScene * object=gravity(time);
-        animations.activate(4);
+        if(!isShielded)
+            animations.activate(4);
         if(object!=0 && object->getDamage()!=0.0 && dmgDelay<(time-200)){ //If the object do damage
             takeDamage(object->getDamage());
             dmgDelay=time;
@@ -487,36 +488,18 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
     if(isHitting)
         animations.activate(1);
-    /*else if(isFalling){
-        for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->identity();
-        Matrix4f rot;
-        rot.rotation(30,0,0,1);
-        moveMatrix[6]->setMatrix(rot.getMatrix());
-        rot.rotation(-30,0,0,1);
-        moveMatrix[7]->setMatrix(rot.getMatrix());
-        if(heroSound[0]->isPlaying())
-            heroSound[0]->stop();
-    }
-    else if(isJumping){
-        for(unsigned i=0;i<moveMatrix.size();i++)
-            moveMatrix[i]->identity();
-        Matrix4f rot;
-        rot.rotation(30,1,0,0);
-        moveMatrix[6]->setMatrix(rot.getMatrix());
-        moveMatrix[7]->setMatrix(rot.getMatrix());
-    }*/
-
 
     if(animations.getState()!=-1){
         animations.update(time-currentTime);
-        ScriptLMD * animatio=animations.getAnimation();
+        ScriptLMD * animation=animations.getAnimation();
         for(unsigned i=0;i<moveMatrix.size();i++)
-                moveMatrix[i]->setMatrix(animatio->readMatrix(i).getMatrix());
+                moveMatrix[i]->setMatrix(animation->readMatrix(i).getMatrix());
     }
     else noMove();
 
-
+    ////////////////////////////
+    //UPDATE TEXT
+    ////////////////////////////
     for(unsigned i=0;i<texts.size();i++)
         if(activatedTexts[i])
             texts[i]->setPosition(vec3f(position.x,position.y+2.0f,position.z));
