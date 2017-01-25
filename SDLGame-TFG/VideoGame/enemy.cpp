@@ -267,16 +267,16 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
     }
 
     if(enemyActivate){ //If enemy is activated
-        if(IADelay<(time-200)){
+        if(IADelay<(time-200)){ //Delay IA
             currentMove=IA.nextPosition(vec3f(position.x,position.y,position.z),posHero);
             IADelay=time;
         }
         if((currentMove.second.x!=0.0 || currentMove.second.y!=0.0 || currentMove.second.z!=0.0)&& !isImpacted){ //IA-> is not near of our hero
-            if(!moveBody(currentMove.second,currentMove.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){
+            if(!moveBody(currentMove.second,currentMove.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){ //If not move -> enemy jump
                 activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
             }
-            if(isHitting)
+            if(isHitting) //If is hitting
                 animationHit.resetState();
             isHitting=false;
 
@@ -284,16 +284,8 @@ void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootM
         else{ //IA -> is near of our hero so the enemy doesn't move
             isHitting=true;
             changeDirection(currentMove.first);
-            if(hero->isHit() && dmgDelay<(time-700) && detectHit(posHero,dirHero)){ //If the hero is hitting
-                addLife(-10);
-                activatedDialog=true;
-                currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
-                currentText->setMessage("-10");
-                currentText->init();
-                dmgDelay=time;
-                activeImpact(dirHero);
-                enemySound[1]->stop();
-                enemySound[1]->play();
+            if(hero->isHit() && dmgDelay<(time-700)){ //If the hero is hitting
+                takeDamage(posHero,dirHero,-10);
             }
 
             if(isImpacted) //if is impacted
@@ -388,10 +380,11 @@ vec3f Enemy::getRadioActivity(){
         stringstream convert;
         int lastValue;
 
-        string currentValue=currentText->getMessage();
-        lastValue=atoi(currentValue.c_str());
-        value+=lastValue;
-
+        if(activatedDialog){
+            string currentValue=currentText->getMessage();
+            lastValue=atoi(currentValue.c_str());
+            value+=lastValue;
+        }
         convert << value;
 
         activatedDialog=true;
@@ -416,9 +409,11 @@ void Enemy::takeDamage(float value){
     stringstream convert;
     int lastValue;
 
-    string currentValue=currentText->getMessage();
-    lastValue=atoi(currentValue.c_str());
-    value+=lastValue;
+    if(activatedDialog){
+        string currentValue=currentText->getMessage();
+        lastValue=atoi(currentValue.c_str());
+        value+=lastValue;
+    }
 
     convert << value;
 
