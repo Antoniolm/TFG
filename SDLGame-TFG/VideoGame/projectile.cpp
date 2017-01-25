@@ -101,11 +101,12 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
         }
     }
 
-    if(live)
+    if(live) //if not collision with something
         live=moveBody(velocity,direction);
 
     root->updateState(time,currentKeyStates,rootMap);
     position=moveAvatar->product(vec4f());
+
     //Animation
     animationMatrix->setMatrix(rotation->updateState(time-currentTime).getMatrix());
     currentTime+=(time-currentTime);
