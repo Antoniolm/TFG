@@ -103,6 +103,7 @@ class Enemy: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         float getLife();
 
+        void takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value);
         void takeDamage(float value);
 
     protected:

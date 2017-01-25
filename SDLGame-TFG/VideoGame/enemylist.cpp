@@ -19,6 +19,7 @@
 
 
 #include "enemylist.h"
+#include "enemy.h"
 
 EnemyList::EnemyList(){
 }
@@ -67,4 +68,10 @@ void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * r
         else //if not dead it++;
             it++;
     }
+}
+
+//**********************************************************************//
+
+vector<Enemy *> EnemyList::getEnemies(){
+    return enemies;
 }

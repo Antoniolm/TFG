@@ -233,6 +233,12 @@ Hero * RootMap::getHero(){
 
 //**********************************************************************//
 
+EnemyList * RootMap::getEnemyList(){
+    return enemyList;
+}
+
+//**********************************************************************//
+
 void RootMap::visualization(Context & cv){
     vec3f position,posHero=hero->getPosition();
     //Draw background

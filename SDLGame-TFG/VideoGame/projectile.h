@@ -31,10 +31,10 @@
 #include "../GraphicEngine/rootmap.h"
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/objectscene.h"
-#include "../GraphicEngine/acceleratedmovement.h"
 #include "../GraphicEngine/sound.h"
-#include "../GraphicEngine/iaenemy.h"
 #include "../GraphicEngine/text.h"
+#include "enemy.h"
+#include "enemylist.h"
 
 #include <vector>
 

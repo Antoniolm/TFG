@@ -27,10 +27,11 @@
 #include "../GraphicEngine/nodescenegraph.h"
 #include "../GraphicEngine/object3d.h"
 #include "../lib/rapidjson/document.h"
+
 #include <vector>
 
 using namespace rapidjson;
-
+class Enemy;
 class EnemyList : public Object3D
 {
     public:
@@ -74,6 +75,14 @@ class EnemyList : public Object3D
         */
         //////////////////////////////////////////////////////////////////////////
         void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return the enemies of our list
+        *    \return hero *
+        */
+        //////////////////////////////////////////////////////////////////////////
+        vector<Enemy *> getEnemies();
     protected:
 
     private:

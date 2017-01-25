@@ -76,6 +76,8 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
         currentTime=time-50;
 
     currentMap=rootMap;
+
+    //Checking the hero
     vec3f posHero=rootMap->getHero()->getPosition();
     vec3f posHead=vec3f(vec3f(position)+projectileHead);
     float distance=sqrt(pow(posHead.x-posHero.x,2.0)+pow(posHead.z-posHero.z,2.0));
@@ -84,6 +86,21 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
         rootMap->getHero()->takeDamage(position,direction,-20);
         live=false;
     }
+
+
+    //Checking the enemies
+    vector<Enemy *> enemies=rootMap->getEnemyList()->getEnemies();
+    vec3f posEnemy;
+    for(int i=0;i<enemies.size() && live;i++){
+        posEnemy=enemies[i]->getPosition(); //Calculate the distance
+        distance=sqrt(pow(posHead.x-posEnemy.x,2.0)+pow(posHead.z-posEnemy.z,2.0));
+
+        if(distance<=0.3 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
+            enemies[i]->takeDamage(position,direction,-20);
+            live=false;
+        }
+    }
+
     if(live)
         live=moveBody(velocity,direction);
 

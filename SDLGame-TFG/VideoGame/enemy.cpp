@@ -380,11 +380,42 @@ vec3f Enemy::getRadioActivity(){
 
  //**********************************************************************//
 
+ void Enemy::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value){
+     //check if the hero is shielding
+
+    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) ){
+        addLife(value);
+        stringstream convert;
+        int lastValue;
+
+        string currentValue=currentText->getMessage();
+        lastValue=atoi(currentValue.c_str());
+        value+=lastValue;
+
+        convert << value;
+
+        activatedDialog=true;
+        currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
+        currentText->setMessage(convert.str());
+        currentText->init();
+
+        dmgDelay=currentTime;
+
+        if(!isImpacted)
+            activeImpact(dirAvatar);
+        enemySound[1]->stop();
+        enemySound[1]->play();
+    }
+ }
+
+ //**********************************************************************//
+
 void Enemy::takeDamage(float value){
     addLife(value);
 
     stringstream convert;
     int lastValue;
+
     string currentValue=currentText->getMessage();
     lastValue=atoi(currentValue.c_str());
     value+=lastValue;
