@@ -460,6 +460,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     //If the jump is not activate
     else {
         ObjectScene * object=gravity(time);
+        animations.activate(4);
         if(object!=0 && object->getDamage()!=0.0 && dmgDelay<(time-200)){ //If the object do damage
             takeDamage(object->getDamage());
             dmgDelay=time;
@@ -1046,20 +1047,28 @@ bool Hero::isHit(){
     ///////////////////
     // ARM
     //////////////////
+    armJumpMatrix=new Matrix4f();
+    armJumpMatrix->rotation(30,0,0,1);
+    MatrixStatic * staticArmRight=new MatrixStatic(*armJumpMatrix);
+
+    armJumpMatrix=new Matrix4f();
+    armJumpMatrix->rotation(-30,0,0,1);
+    MatrixStatic * staticArmLeft=new MatrixStatic(*armJumpMatrix);
+
     //Movement to the first arm
     ElbowScriptLeft=new MatrixScript();
     ArmScriptLeft=new MatrixScript();
     ElbowScriptTLeft=new MatrixScript();
 
     ElbowScriptLeft->add(0.5,notMove);
-    ArmScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,staticArmLeft);
     ElbowScriptTLeft->add(0.5,notMove);
 
     //Movement to the second arm
     ElbowScriptRight=new MatrixScript();
     ArmScriptRight=new MatrixScript();
     ElbowScriptRight->add(0.5,notMove);
-    ArmScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,staticArmRight);
 
 
     //Add the script to our animation
