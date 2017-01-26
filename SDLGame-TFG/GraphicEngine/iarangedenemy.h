@@ -17,35 +17,29 @@
 // **
 // *********************************************************************
 
-#ifndef IAENEMY_H
-#define IAENEMY_H
+#ifndef IARANGEDENEMY_H
+#define IARANGEDENEMY_H
 
-#include "structdata.h"
-#include "avatar.h"
-#include <iostream>
-#include <math.h>
+#include "iaenemy.h"
 
-using namespace std;
-
-class IAEnemy
+class IARangedEnemy : public IAEnemy
 {
     public:
-
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        IAEnemy();
+        IARangedEnemy();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~IAEnemy();
+        virtual ~IARangedEnemy();
 
-        virtual pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero);
+        pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero);
 
     protected:
 
     private:
 };
 
-#endif // IAENEMY_H
+#endif // IARANGEDENEMY_H
