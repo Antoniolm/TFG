@@ -75,7 +75,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     moveMatrix.push_back(moveLegLeft);
 
     Matrix4f *transLeg=new Matrix4f();
-    transLeg->translation(0.0,-0.8,0.0);
+    transLeg->translation(0.0,-0.6,0.0);
 
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
@@ -185,13 +185,13 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     trasnArms->translation(-0.6,0.0,0.0);
 
     Matrix4f *trasnArmsI=new Matrix4f();
-    trasnArmsI->translation(0.3,0.3,0.3);
+    trasnArmsI->translation(0.3,0.6,0.3);
 
     Matrix4f *transHead=new Matrix4f();
-    transHead->translation(0.0,0.7,0.0);
+    transHead->translation(0.0,1.0,0.0);
 
     Matrix4f *transChest=new Matrix4f();
-    transChest->translation(0.3,0.0,0.0);
+    transChest->translation(0.3,0.3,0.0);
 
     Matrix4f *transChestArm=new Matrix4f();
     transChestArm->translation(0.0,0.1,-0.3);
