@@ -29,10 +29,18 @@ EnemyList::EnemyList(){
 
 EnemyList::EnemyList(const Value & enemiesFeatures){
     assert(enemiesFeatures.IsArray());
-    for(unsigned i=0;i<enemiesFeatures.Size();i++)
-        enemies.push_back(new RangedEnemy(enemiesFeatures[i]["life"].GetInt(),
-                                    vec3f(enemiesFeatures[i]["position"][0].GetFloat(),enemiesFeatures[i]["position"][1].GetFloat(),enemiesFeatures[i]["position"][2].GetFloat()),
-                                    vec3f(enemiesFeatures[i]["radioActivity"][0].GetFloat(),enemiesFeatures[i]["radioActivity"][1].GetFloat(),enemiesFeatures[i]["radioActivity"][2].GetFloat())));
+    for(unsigned i=0;i<enemiesFeatures.Size();i++){
+        if(strcmp(enemiesFeatures[i]["type"].GetString(),"ranged")==0){
+            enemies.push_back(new RangedEnemy(enemiesFeatures[i]["life"].GetInt(),
+                                              vec3f(enemiesFeatures[i]["position"][0].GetFloat(),enemiesFeatures[i]["position"][1].GetFloat(),enemiesFeatures[i]["position"][2].GetFloat()),
+                                              vec3f(enemiesFeatures[i]["radioActivity"][0].GetFloat(),enemiesFeatures[i]["radioActivity"][1].GetFloat(),enemiesFeatures[i]["radioActivity"][2].GetFloat())));
+        }
+        else{
+            enemies.push_back(new Enemy(enemiesFeatures[i]["life"].GetInt(),
+                                              vec3f(enemiesFeatures[i]["position"][0].GetFloat(),enemiesFeatures[i]["position"][1].GetFloat(),enemiesFeatures[i]["position"][2].GetFloat()),
+                                              vec3f(enemiesFeatures[i]["radioActivity"][0].GetFloat(),enemiesFeatures[i]["radioActivity"][1].GetFloat(),enemiesFeatures[i]["radioActivity"][2].GetFloat())));
+        }
+    }
 }
 
 //**********************************************************************//

@@ -81,13 +81,15 @@
     "enemies":[
             {   "life":40,
                 "position":[5.5,2.0,-1.5],
-                "radioActivity":[2.0,2.0,2.0]
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"ranged"
             },
 
             {   
                 "life":50,
                 "position":[8.5,2.0,-5.5],
-                "radioActivity":[1.0,1.0,1.0]
+                "radioActivity":[1.0,1.0,1.0],
+                "type":"melee"
             }
     ],
 
