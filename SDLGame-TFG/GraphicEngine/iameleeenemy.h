@@ -17,23 +17,30 @@
 // **
 // *********************************************************************
 
+#ifndef IAMELEEENEMY_H
+#define IAMELEEENEMY_H
+
 #include "iaenemy.h"
 
-IAEnemy::IAEnemy()
+class IAMeleeEnemy : public IAEnemy
 {
-    //ctor
-}
+    public:
 
-//**********************************************************************//
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
+        IAMeleeEnemy();
 
-IAEnemy::~IAEnemy()
-{
-    //dtor
-}
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
+        virtual ~IAMeleeEnemy();
 
-//**********************************************************************//
+        pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero);
 
-pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
-    pair<avatarDirection,vec3f> result;
-    return result;
-}
+    protected:
+
+    private:
+};
+
+#endif // IAMELEEENEMY_H
