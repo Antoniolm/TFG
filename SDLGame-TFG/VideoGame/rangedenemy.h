@@ -28,6 +28,7 @@
 #include "matrix4f.h"
 #include "materialcollection.h"
 #include "meshcollection.h"
+#include "../GraphicEngine/iarangedenemy.h"
 
 
 class RangedEnemy : public Enemy

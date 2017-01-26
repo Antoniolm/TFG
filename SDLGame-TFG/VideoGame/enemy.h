@@ -115,7 +115,7 @@ class Enemy: public AvatarMove
         AnimationList animations;
         vec3f radioActivity;
         pair<avatarDirection,vec3f> currentMove;
-        IAEnemy IA;
+        IAEnemy * IA;
         bool enemyActivate;
         bool activatedDialog;
         Text * currentText;

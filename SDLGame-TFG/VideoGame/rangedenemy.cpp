@@ -28,6 +28,7 @@ RangedEnemy::RangedEnemy(){
 RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 {
     life=aLife;
+    IA=new IARangedEnemy();
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     radioActivity=aRadioActivity;
 
