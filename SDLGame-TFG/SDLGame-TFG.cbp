@@ -133,6 +133,8 @@
 		<Unit filename="GraphicEngine/text.h" />
 		<Unit filename="GraphicEngine/texture.cpp" />
 		<Unit filename="GraphicEngine/texture.h" />
+		<Unit filename="GraphicEngine/voxel.cpp" />
+		<Unit filename="GraphicEngine/voxel.h" />
 		<Unit filename="GraphicEngine/voxelgroup.cpp" />
 		<Unit filename="GraphicEngine/voxelgroup.h" />
 		<Unit filename="GraphicEngine/window.cpp" />

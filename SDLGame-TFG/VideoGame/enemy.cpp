@@ -19,6 +19,12 @@
 
 #include "enemy.h"
 
+Enemy::Enemy(){
+
+}
+
+//**********************************************************************//
+
 Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 {
     life=aLife;

@@ -32,6 +32,7 @@
 
 using namespace rapidjson;
 class Enemy;
+class RangedEnemy;
 class EnemyList : public Object3D
 {
     public:

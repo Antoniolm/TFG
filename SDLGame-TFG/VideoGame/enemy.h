@@ -45,6 +45,7 @@ class Text;
 class Enemy: public AvatarMove
 {
     public:
+        Enemy();
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
@@ -108,7 +109,6 @@ class Enemy: public AvatarMove
         void takeDamage(float value);
 
     protected:
-    private:
         void initAnimation();
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> enemySound;
@@ -120,6 +120,8 @@ class Enemy: public AvatarMove
         bool activatedDialog;
         Text * currentText;
         float jumpDelay,hitDelay,IADelay;
+    private:
+
 };
 
 #endif // ENEMY_H
