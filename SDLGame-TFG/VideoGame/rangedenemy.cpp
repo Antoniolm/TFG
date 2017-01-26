@@ -232,7 +232,83 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     initAnimation();
 }
 
+//**********************************************************************//
+
 RangedEnemy::~RangedEnemy()
 {
     //dtor
+}
+
+//**********************************************************************//
+
+void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+    vec3f aux;
+    currentMap=rootMap;
+    Hero * hero=rootMap->getHero();
+    vec3f posHero=hero->getPosition();
+    avatarDirection dirHero=hero->getDirection();
+    vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
+
+    if(time-currentTime>200)
+        currentTime=time-50;
+
+    //check if the enemy will be activated in this frame
+    if((distance.x>-radioActivity.x && distance.x<radioActivity.x)&&(distance.y>-radioActivity.y && distance.y<radioActivity.y)&&(distance.z>-radioActivity.z && distance.z<radioActivity.z)){
+        enemyActivate=true;
+    }
+
+    if(enemyActivate){ //If enemy is activated
+        if(IADelay<(time-200)){ //Delay IA
+            currentMove=IA->nextPosition(vec3f(position.x,position.y,position.z),posHero);
+            IADelay=time;
+        }
+        if((currentMove.second.x!=0.0 || currentMove.second.y!=0.0 || currentMove.second.z!=0.0)&& !isImpacted){ //IA-> is not near of our hero
+            if(!moveBody(currentMove.second,currentMove.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){ //If not move -> enemy jump
+                activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
+                jumpDelay=time;
+            }
+        }
+        if(isJumping){
+            jump(time);
+        }
+        else{
+            ObjectScene * object=gravity(time);
+            if(object!=0 && object->getDamage()!=0.0 && dmgDelay<(time-200)){ //If the object do damage
+                takeDamage(object->getDamage());
+                dmgDelay=time;
+            }
+        }
+    }
+
+    if(dmgDelay<(time-300))
+        activatedDialog=false;
+
+
+    //Update our vec4f position
+    position=moveAvatar->product(vec4f());
+
+    ////////////////////////////
+    //UPDATE ANIMATION
+    ////////////////////////////
+    if(isMoving && !isFalling && !isJumping && !isHitting){
+        animations.activate(0);
+    }
+    else if(isHitting){
+        animations.activate(1);
+        ScriptLMD * animationHit=animations.getAnimation();
+        if((animationHit->getScriptState(2)==3 || animationHit->getScriptState(3)==1) && hitDelay<(time-700)){
+            hero->takeDamage(position,direction,-10);
+            hitDelay=time;
+        }
+    }
+
+    animations.update(time-currentTime);
+
+    ScriptLMD * animatio=animations.getAnimation();
+    for(unsigned i=0;i<moveMatrix.size();i++)
+        moveMatrix[i]->setMatrix(animatio->readMatrix(i).getMatrix());
+
+
+
+    currentTime+=(time-currentTime);
 }

@@ -49,6 +49,15 @@ class RangedEnemy : public Enemy
         //////////////////////////////////////////////////////////////////////////
         virtual ~RangedEnemy();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will update the state of the object. That change need the
+        *    current time in our application
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
+
     protected:
 
     private:
