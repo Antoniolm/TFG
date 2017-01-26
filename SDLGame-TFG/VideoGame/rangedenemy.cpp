@@ -75,21 +75,19 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     moveMatrix.push_back(moveLegLeft);
 
     Matrix4f *transLeg=new Matrix4f();
-    transLeg->translation(0.0,-0.6,0.0);
+    transLeg->translation(0.0,-0.8,0.0);
 
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
     legLeft->add(transLeg);
-    legLeft->add(materialCollect->getMaterial(mENEMY));
-    legLeft->add(meshCollect->getMesh(EFOOT));
+    legLeft->add(meshCollect->getMesh(RFOOT));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
     legRight->add(transLeg);
-    legRight->add(materialCollect->getMaterial(mENEMY));
-    legRight->add(meshCollect->getMesh(EFOOT));
+    legRight->add(meshCollect->getMesh(RFOOT));
 
     //////////////////////////////////////////////////////
     /////                  Arms                      /////
@@ -142,8 +140,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     handRight->add(transElbow);
     handRight->add(moveElbowRight);
     handRight->add(transHand);
-    handRight->add(materialCollect->getMaterial(mENEMY));
-    handRight->add(meshCollect->getMesh(EHAND));
+    handRight->add(meshCollect->getMesh(RHAND));
 
     NodeSceneGraph * handLeft=new NodeSceneGraph();
     handLeft->add(transElbow);
@@ -151,8 +148,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     handLeft->add(transHandLeft);
     //handLeft->add(scaleHandInvert);
     handLeft->add(rotateYHand);
-    handLeft->add(materialCollect->getMaterial(mENEMY));
-    handLeft->add(meshCollect->getMesh(EHAND));
+    handLeft->add(meshCollect->getMesh(RHAND));
 
     //Arm left
     NodeSceneGraph * ArmLeft=new NodeSceneGraph();
@@ -195,19 +191,21 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     transHead->translation(0.0,0.7,0.0);
 
     Matrix4f *transChest=new Matrix4f();
-    transChest->translation(0.0,0.1,-0.3);
+    transChest->translation(0.3,0.0,0.0);
+
+    Matrix4f *transChestArm=new Matrix4f();
+    transChestArm->translation(0.0,0.1,-0.3);
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
-    chestNode->add(materialCollect->getMaterial(mENEMY));
-    chestNode->add(meshCollect->getMesh(ECHEST));
+    chestNode->add(transChest);
+    chestNode->add(meshCollect->getMesh(RCHEST));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
-    headNode->add(materialCollect->getMaterial(mENEMY));
-    headNode->add(meshCollect->getMesh(EHEAD));
+    headNode->add(meshCollect->getMesh(RHEAD));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
-    chest_ArmsNode->add(transChest);
+    chest_ArmsNode->add(transChestArm);
     chest_ArmsNode->add(chestNode);
     chest_ArmsNode->add(trasnArmsI);
     chest_ArmsNode->add(ArmLeft);
@@ -215,6 +213,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     chest_ArmsNode->add(ArmRight);
 
     root->add(scaleHero);
+    root->add(materialCollect->getMaterial(mARCHENEMY));
     root->add(headNode);
     root->add(chest_ArmsNode);
     root->add(transLegSceneI);

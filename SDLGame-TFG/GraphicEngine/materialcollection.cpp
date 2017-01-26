@@ -94,6 +94,10 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"textures/pillar.png");
     collection.addElement(material);
 
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.0f, 0.0f, 0.0f),32.0f,"textures/bedTexture.png");
+    collection.addElement(material);
+
+
     //Create our map
     collection.addIndex("mCUBE_GRASS",mCUBE_GRASS);
     collection.addIndex("mCUBE_BOX",mCUBE_BOX);
@@ -117,6 +121,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mFIRE",mFIRE);
     collection.addIndex("mWINDOW",mWINDOW);
     collection.addIndex("mPILLAR",mPILLAR);
+    collection.addIndex("mBED",mBED);
 
 }
 

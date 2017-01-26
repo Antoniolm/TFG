@@ -91,7 +91,7 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     //Checking the enemies
     vector<Enemy *> enemies=rootMap->getEnemyList()->getEnemies();
     vec3f posEnemy;
-    for(int i=0;i<enemies.size() && live;i++){
+    for(unsigned i=0;i<enemies.size() && live;i++){
         posEnemy=enemies[i]->getPosition(); //Calculate the distance
         distance=sqrt(pow(posHead.x-posEnemy.x,2.0)+pow(posHead.z-posEnemy.z,2.0));
 

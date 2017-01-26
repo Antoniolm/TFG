@@ -51,7 +51,8 @@ enum MaterialIndex{
     mPERUG,
     mFIRE,
     mWINDOW,
-    mPILLAR
+    mPILLAR,
+    mBED
 
 };
 

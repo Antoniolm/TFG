@@ -466,13 +466,13 @@
     ],
 
     "decorationObject":[
-            {   "position":[4.0,1.8,-11.9],
+            {   "position":[4.0,1.9,-11.9],
                 "transforms":[
                     {    "type":"scale",
-                        "values":[1.0,1.0,1.1]
+                        "values":[0.9,1.0,1.1]
                     }
                 ],       
-                "material":"mFURNITURE",
+                "material":"mBED",
                 "mesh":"BED",
                 "collision": true
             },
@@ -542,7 +542,7 @@
                         "values":[1.0,0.9,1.0]
                     }
                 ],       
-                "material":"mFURNITURE",
+                "material":"mBED",
                 "mesh":"CHAIR",
                 "collision": true
             },

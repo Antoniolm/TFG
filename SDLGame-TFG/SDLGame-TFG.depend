@@ -399,7 +399,7 @@
 	"window.h"
 	"file_obj.h"
 
-1485445754 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1485457376 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1743,9 +1743,10 @@
 	"../lib/rapidjson/document.h"
 	<vector>
 
-1485346491 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemylist.cpp
+1485453997 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemylist.cpp
 	"enemylist.h"
 	"enemy.h"
+	"rangedenemy.h"
 
 1484246469 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.cpp
 	"iaenemy.h"
@@ -1769,12 +1770,12 @@
 	"material.h"
 	"sound.h"
 
-1484768671 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.h
+1485454819 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.h
 	"mesh.h"
 	"collection.h"
 	"collection.cpp"
 
-1484768679 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.cpp
+1485457159 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.cpp
 	"meshcollection.h"
 
 1481823202 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\damageobject.cpp
@@ -2123,7 +2124,7 @@
 1484426476 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coinlist.cpp
 	"coinlist.h"
 
-1485355327 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
+1485455183 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
 	"projectile.h"
 
 1485345856 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
@@ -2218,4 +2219,17 @@
 
 1485352934 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\voxel.cpp
 	"voxel.h"
+
+1485453483 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\rangedenemy.h
+	"enemy.h"
+	"objectscene.h"
+	"../lib/rapidjson/document.h"
+	"nodescenegraph.h"
+	"object3d.h"
+	"matrix4f.h"
+	"materialcollection.h"
+	"meshcollection.h"
+
+1485457224 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\rangedenemy.cpp
+	"rangedenemy.h"
 

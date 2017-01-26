@@ -95,7 +95,7 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
-    //Enemy mesh
+    //Enemy Melee mesh
     //Mesh 19
     element=new Mesh("geometries/enemyHead.obj");
     element->init();
@@ -115,6 +115,28 @@ MeshCollection::MeshCollection()
     element=new Mesh("geometries/enemyFoot.obj");
     element->init();
     collection.addElement(element);
+
+    //Enemy Ranged mesh
+    //Mesh 19
+    element=new Mesh("geometries/rangedHead.obj");
+    element->init();
+    collection.addElement(element);
+
+    //Mesh 19
+    element=new Mesh("geometries/rangedBody.obj");
+    element->init();
+    collection.addElement(element);
+
+    //Mesh 19
+    element=new Mesh("geometries/rangedHand.obj");
+    element->init();
+    collection.addElement(element);
+
+    //Mesh 19
+    element=new Mesh("geometries/rangedFoot.obj");
+    element->init();
+    collection.addElement(element);
+
 
     //NPC mesh
     //Mesh 19
@@ -187,6 +209,10 @@ MeshCollection::MeshCollection()
     collection.addIndex("ECHEST",ECHEST);
     collection.addIndex("EHAND",EHAND);
     collection.addIndex("EFOOT",EFOOT);
+    collection.addIndex("RHEAD",RHEAD);
+    collection.addIndex("RCHEST",RCHEST);
+    collection.addIndex("RHAND",RHAND);
+    collection.addIndex("RFOOT",RFOOT);
     collection.addIndex("BUTLER",BUTLER);
     collection.addIndex("BED",BED);
     collection.addIndex("CUPBOARD",CUPBOARD);
