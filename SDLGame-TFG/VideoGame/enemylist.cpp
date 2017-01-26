@@ -21,6 +21,7 @@
 #include "enemylist.h"
 #include "enemy.h"
 #include "rangedenemy.h"
+#include "meleeenemy.h"
 
 EnemyList::EnemyList(){
 }
@@ -36,7 +37,7 @@ EnemyList::EnemyList(const Value & enemiesFeatures){
                                               vec3f(enemiesFeatures[i]["radioActivity"][0].GetFloat(),enemiesFeatures[i]["radioActivity"][1].GetFloat(),enemiesFeatures[i]["radioActivity"][2].GetFloat())));
         }
         else{
-            enemies.push_back(new Enemy(enemiesFeatures[i]["life"].GetInt(),
+            enemies.push_back(new MeleeEnemy(enemiesFeatures[i]["life"].GetInt(),
                                               vec3f(enemiesFeatures[i]["position"][0].GetFloat(),enemiesFeatures[i]["position"][1].GetFloat(),enemiesFeatures[i]["position"][2].GetFloat()),
                                               vec3f(enemiesFeatures[i]["radioActivity"][0].GetFloat(),enemiesFeatures[i]["radioActivity"][1].GetFloat(),enemiesFeatures[i]["radioActivity"][2].GetFloat())));
         }
