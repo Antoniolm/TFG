@@ -21,14 +21,12 @@
 #define RANGEDENEMY_H
 
 #include "enemy.h"
-#include "objectscene.h"
 #include "../lib/rapidjson/document.h"
-#include "nodescenegraph.h"
-#include "object3d.h"
-#include "matrix4f.h"
-#include "materialcollection.h"
-#include "meshcollection.h"
 #include "../GraphicEngine/iarangedenemy.h"
+#include "projectile.h"
+#include <vector>
+
+
 
 
 class RangedEnemy : public Enemy
@@ -51,6 +49,14 @@ class RangedEnemy : public Enemy
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will show the object in our interface
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void visualization(Context & cv);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
         *    \return void
@@ -61,6 +67,9 @@ class RangedEnemy : public Enemy
     protected:
 
     private:
+        vector<Projectile *> projectiles;
+        Mesh * meshProjectile;
+        Material * materialProjectile;
 };
 
 #endif // RANGEDENEMY_H

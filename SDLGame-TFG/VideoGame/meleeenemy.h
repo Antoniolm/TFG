@@ -21,13 +21,7 @@
 #define MELEEENEMY_H
 
 #include "enemy.h"
-#include "objectscene.h"
 #include "../lib/rapidjson/document.h"
-#include "nodescenegraph.h"
-#include "object3d.h"
-#include "matrix4f.h"
-#include "materialcollection.h"
-#include "meshcollection.h"
 #include "../GraphicEngine/iameleeenemy.h"
 
 class MeleeEnemy : public Enemy

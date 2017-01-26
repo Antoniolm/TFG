@@ -45,6 +45,11 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
+    //INIT PROJECTILES
+    meshProjectile= meshCollect->getMesh(ARROW);
+    materialProjectile=materialCollect->getMaterial(mARCHENEMY);
+
+
     //Print a message for check
     cout<< "< Game is loading our enemy >"<< endl;
     //////////////////////////////////////////////////////
@@ -241,6 +246,22 @@ RangedEnemy::~RangedEnemy()
 
 //**********************************************************************//
 
+void RangedEnemy::visualization(Context & cv){
+    root->visualization(cv);
+
+    if(activatedDialog){
+        currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
+        currentText->visualization(cv);
+    }
+
+    vector<Projectile *>::iterator it;
+    for(it=projectiles.begin();it!=projectiles.end();it++){
+        (*it)->visualization(cv);
+    }
+}
+
+//**********************************************************************//
+
 void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
     vec3f aux;
     currentMap=rootMap;
@@ -268,6 +289,14 @@ void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap *
                 jumpDelay=time;
             }
         }
+        else {  //If is near of the target
+            //shot arrow
+            if(hitDelay<(time-3000)){
+                projectiles.push_back(new Projectile(vec3f(position.x,position.y,position.z),vec3f(0.0,0.0,2.0),FORWARD,meshProjectile,materialProjectile));
+                hitDelay=time;
+            }
+        }
+
         if(isJumping){
             jump(time);
         }
@@ -308,6 +337,18 @@ void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap *
     for(unsigned i=0;i<moveMatrix.size();i++)
         moveMatrix[i]->setMatrix(animatio->readMatrix(i).getMatrix());
 
+    ////////////////////////////
+    //UPDATE PROJECTILES
+    ////////////////////////////
+    vector<Projectile *>::iterator it=projectiles.begin();
+    while(it!=projectiles.end()){
+        (*it)->updateState(time,currentKeyStates,rootMap);
+        if(!(*it)->isLive()){
+            it=projectiles.erase(it);
+        }
+        else
+            it++;
+    }
 
 
     currentTime+=(time-currentTime);
