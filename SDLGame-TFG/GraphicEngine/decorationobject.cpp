@@ -73,6 +73,7 @@ DecorationObject::DecorationObject(const rapidjson::Value & DOFeature,vec3f posD
     objNode->add(meshCollect->getMesh(DOFeature["mesh"].GetString()));
 
     object=objNode;
+    damage=0.0;
 
 }
 

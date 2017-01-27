@@ -78,7 +78,7 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
     //Case -> Leftward
     newMovement.x=posEnemy.x-2.0;newMovement.y=posEnemy.y;newMovement.z=posEnemy.z;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x-0.5,posEnemy.y,posEnemy.z))){ //If Rightward will be our move -> The distance is smallest between them
+    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x-0.2,posEnemy.y,posEnemy.z))){ //If Rightward will be our move -> The distance is smallest between them
         result.first=LEFTWARD;
         result.second=vec3f(-2.0f,0.0f,0.0f);
         minDistance=distance;
@@ -88,7 +88,7 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
     //Case -> Rightward
     newMovement.x=posEnemy.x+2.0;newMovement.z=posEnemy.z;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x+0.5,posEnemy.y,posEnemy.z))){ //If Rightward will be our move -> The distance is smallest between them
+    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x+0.2,posEnemy.y,posEnemy.z))){ //If Rightward will be our move -> The distance is smallest between them
         result.first=RIGHTWARD;
         result.second=vec3f(2.0f,0.0f,0.0f);
         minDistance=distance;
@@ -97,7 +97,7 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
     //Case -> Backward
     newMovement.x=posEnemy.x;newMovement.z=posEnemy.z-2.0;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x,posEnemy.y,posEnemy.z-0.5))){ //If Backward will be our move -> The distance is smallest between them
+    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x,posEnemy.y,posEnemy.z-0.2))){ //If Backward will be our move -> The distance is smallest between them
         result.first=BACKWARD;
         result.second=vec3f(0.0f,0.0f,-2.0f);
         minDistance=distance;
@@ -106,7 +106,7 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
     //Case -> Forward
     newMovement.x=posEnemy.x;newMovement.z=posEnemy.z+2.0;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x,posEnemy.y,posEnemy.z+0.5))){ //If Forward will be our move -> The distance is smallest between them
+    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x,posEnemy.y,posEnemy.z+0.2))){ //If Forward will be our move -> The distance is smallest between them
         result.first=FORWARD;
         result.second=vec3f(0.0f,0.0f,2.0f);
         minDistance=distance;
@@ -115,7 +115,7 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
     //Case -> Left-forward
     newMovement.x=posEnemy.x-1.0;newMovement.z=posEnemy.z+1.0;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x-0.25,posEnemy.y,posEnemy.z+0.25))){ //If Left-forward will be our move -> The distance is smallest between them
+    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x-0.1,posEnemy.y,posEnemy.z+0.1))){ //If Left-forward will be our move -> The distance is smallest between them
         result.first=FOR_LEFTWARD;
         result.second=vec3f(-1.0f,0.0f,1.0f);
         minDistance=distance;
@@ -124,7 +124,7 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
     //Case -> Right-forward
     newMovement.x=posEnemy.x+1.0;newMovement.z=posEnemy.z+1.0;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x+0.25,posEnemy.y,posEnemy.z+0.25))){ //If Right-forward will be our move -> The distance is smallest between them
+    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x+0.1,posEnemy.y,posEnemy.z+0.1))){ //If Right-forward will be our move -> The distance is smallest between them
         result.first=FOR_RIGHTWARD;
         result.second=vec3f(+1.0f,0.0f,+1.0f);
         minDistance=distance;
@@ -133,7 +133,7 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
     //Case -> Left-backward
     newMovement.x=posEnemy.x-1.0;newMovement.z=posEnemy.z-1.0;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x-0.25,posEnemy.y,posEnemy.z-0.25))){ //If Left-backward will be our move -> The distance is smallest between them
+    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x-0.1,posEnemy.y,posEnemy.z-0.1))){ //If Left-backward will be our move -> The distance is smallest between them
         result.first=BACK_LEFTWARD;
         result.second=vec3f(-1.0f,0.0f,-1.0f);
         minDistance=distance;
@@ -142,7 +142,7 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
     //Case -> Right-backward
     newMovement.x=posEnemy.x+1.0;newMovement.z=posEnemy.z-1.0;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x+0.25,posEnemy.y,posEnemy.z-0.25))){ //If Right-backward will be our move -> The distance is smallest between them
+    if(minDistance>distance && !checkCollision(posEnemies,vec3f(posEnemy.x+0.1,posEnemy.y,posEnemy.z-0.1))){ //If Right-backward will be our move -> The distance is smallest between them
         result.first=BACK_RIGHTWARD;
         result.second=vec3f(1.0f,0.0f,-1.0f);
         minDistance=distance;
