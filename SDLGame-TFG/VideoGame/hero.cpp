@@ -419,6 +419,8 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         activeJump(vec3f(velocityHero.x,15.0,velocityHero.y),vec3f(accelerationHero.x,5.0,accelerationHero.z));
         jumpDelay=time;
     }
+
+    //Case-> Push L bottom to hit
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_l)] && !isShielded){ //If hero is hitting
         if(!isHitting)
             animations.resetAnimation(1);
@@ -471,6 +473,22 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     //If the jump is activate
     if(isImpacted){
         impactMove(time);
+    }
+
+
+    //Check enemies
+    //Checking the enemies
+    if(isHitting){
+        vector<Enemy *> enemies=rootMap->getEnemyList()->getEnemies();
+        vec3f posEnemy;float distance;
+        for(unsigned i=0;i<enemies.size();i++){
+            posEnemy=enemies[i]->getPosition(); //Calculate the distance
+            distance=sqrt(pow(position.x-posEnemy.x,2.0)+pow(position.z-posEnemy.z,2.0));
+
+            if(distance<=0.8 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
+                enemies[i]->takeDamage(position,direction,-10);
+            }
+        }
     }
 
 
@@ -643,6 +661,7 @@ bool Hero::isHit(){
     heroSound[1]->stop();
     heroSound[1]->play();
  }
+
 //**********************************************************************//
 //                              PRIVATE                                 //
 //**********************************************************************//

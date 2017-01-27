@@ -86,7 +86,7 @@ vec3f Enemy::getRadioActivity(){
  void Enemy::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value){
      //check if the hero is shielding
 
-    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) ){
+    if(detectHit(posAvatar,dirAvatar) && dmgDelay<(currentTime-700) ){
         addLife(value);
         stringstream convert;
         int lastValue;

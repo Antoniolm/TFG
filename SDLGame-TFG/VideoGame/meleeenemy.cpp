@@ -273,13 +273,9 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
         else{ //IA -> is near of our hero so the enemy doesn't move
             isHitting=true;
             changeDirection(currentMove.first);
-            if(hero->isHit() && dmgDelay<(time-700)){ //If the hero is hitting
-                takeDamage(posHero,dirHero,-10);
-            }
-
-            if(isImpacted) //if is impacted
-                impactMove(time);
         }
+        if(isImpacted) //if is impacted
+            impactMove(time);
         if(isJumping){
             jump(time);
         }
