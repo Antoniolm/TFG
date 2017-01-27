@@ -66,8 +66,12 @@
 		<Unit filename="GraphicEngine/file_obj.h" />
 		<Unit filename="GraphicEngine/iaenemy.cpp" />
 		<Unit filename="GraphicEngine/iaenemy.h" />
+		<Unit filename="GraphicEngine/iameleeenemy.cpp" />
+		<Unit filename="GraphicEngine/iameleeenemy.h" />
 		<Unit filename="GraphicEngine/ianpc.cpp" />
 		<Unit filename="GraphicEngine/ianpc.h" />
+		<Unit filename="GraphicEngine/iarangedenemy.cpp" />
+		<Unit filename="GraphicEngine/iarangedenemy.h" />
 		<Unit filename="GraphicEngine/light.cpp" />
 		<Unit filename="GraphicEngine/light.h" />
 		<Unit filename="GraphicEngine/linearmovement.cpp" />
@@ -155,6 +159,8 @@
 		<Unit filename="VideoGame/game.h" />
 		<Unit filename="VideoGame/hero.cpp" />
 		<Unit filename="VideoGame/hero.h" />
+		<Unit filename="VideoGame/meleeenemy.cpp" />
+		<Unit filename="VideoGame/meleeenemy.h" />
 		<Unit filename="VideoGame/npc.cpp" />
 		<Unit filename="VideoGame/npc.h" />
 		<Unit filename="VideoGame/npclist.cpp" />
@@ -163,6 +169,8 @@
 		<Unit filename="VideoGame/projectile.h" />
 		<Unit filename="VideoGame/projectilesystem.cpp" />
 		<Unit filename="VideoGame/projectilesystem.h" />
+		<Unit filename="VideoGame/rangedenemy.cpp" />
+		<Unit filename="VideoGame/rangedenemy.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

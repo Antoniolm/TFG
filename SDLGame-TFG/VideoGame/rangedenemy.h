@@ -67,6 +67,7 @@ class RangedEnemy : public Enemy
     protected:
 
     private:
+        void createProjectile(vec3f posAvatar);
         vector<Projectile *> projectiles;
         Mesh * meshProjectile;
         Material * materialProjectile;

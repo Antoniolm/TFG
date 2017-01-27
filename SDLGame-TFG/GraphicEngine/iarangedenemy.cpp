@@ -40,7 +40,7 @@ pair<avatarDirection,vec3f> IARangedEnemy::nextPosition(vec3f posEnemy,vec3f pos
     pair<avatarDirection,vec3f> result;
 
     //If the enemy is far of our hero. The enemy stop the movement
-    if(sqrt(pow(posEnemy.x-posHero.x,2.0)+pow(posEnemy.y-posHero.y,2.0)+pow(posEnemy.z-posHero.z,2.0))>4.0){
+    if(sqrt(pow(posEnemy.x-posHero.x,2.0)+pow(posEnemy.y-posHero.y,2.0)+pow(posEnemy.z-posHero.z,2.0))>3.0){
 
         if(posEnemy.z>posHero.z && (posEnemy.x>=posHero.x-0.3 && posEnemy.x<=posHero.x+0.3))
             result.first=BACKWARD;
