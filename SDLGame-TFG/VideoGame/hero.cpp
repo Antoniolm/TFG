@@ -445,7 +445,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
 
     //Move the body
-    if(hasMove && !isImpacted && !isHit()){
+    if(hasMove && !isImpacted && !isHitting){
         avatarDirection lastDir=direction;
         moveBody(moveHero,heroDir);
         heroSound[0]->play();
@@ -475,9 +475,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         impactMove(time);
     }
 
-
     //Check enemies
-    //Checking the enemies
     if(isHitting){
         vector<Enemy *> enemies=rootMap->getEnemyList()->getEnemies();
         vec3f posEnemy;float distance;

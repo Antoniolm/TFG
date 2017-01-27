@@ -304,6 +304,9 @@ void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap *
             }
         }
 
+        if(isImpacted) //if is impacted
+            impactMove(time);
+
         if(isJumping){
             jump(time);
         }

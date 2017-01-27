@@ -106,6 +106,8 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
 
     root->updateState(time,currentKeyStates,rootMap);
     position=moveAvatar->product(vec4f());
+    if(position.z>0.0 || position.x<0.0)
+        live=false;
 
     //Animation
     animationMatrix->setMatrix(rotation->updateState(time-currentTime).getMatrix());

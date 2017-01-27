@@ -274,8 +274,10 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
             isHitting=true;
             changeDirection(currentMove.first);
         }
+
         if(isImpacted) //if is impacted
             impactMove(time);
+
         if(isJumping){
             jump(time);
         }

@@ -13,4 +13,4 @@ Persian Rug by Nicholas Record is licensed under CC Attribution https://skfb.ly/
 Imperial Window-frame big by supaluci is licensed under CC Attribution https://skfb.ly/JSXt -> used in the texture : windowTex.png
 Winter Gnome by Brianna Fromont is licensed under CC Attribution https://skfb.ly/WOXp -> used in the texture : butlerTexture.png
 Wooden Box 2D by Alucard is licensedd under CC Attribution 3.0 http://opengameart.org/content/wooden-box-2d -> used in the texture: cubeBox.png
-Hand Painted Furniture Set by www.handpaintedtextures.com is licensed(https://unity3d.com/es/legal/as_terms) url(https://www.assetstore.unity3d.com/en/#!/content/6595) -> used in the texture: furniture.png
+Table by louvey is licensed under CC Attribution https://skfb.ly/IOH8 -> used in the obj: furnitureText.png
