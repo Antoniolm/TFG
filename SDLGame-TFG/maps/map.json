@@ -49,17 +49,9 @@
 
     "projectileSystem":[
         {   "radioActivity":[4.0,4.0,2.0],
-            "position":[6.5,1.5,-2.5],
+            "position":[34,6.5,-18.5],
             "velocity":[-2.0,0.0,0.0],
             "direction":2,
-            "delay":2000,
-            "material":"mARCHENEMY",
-            "mesh":"ARROW"
-        },
-        {   "radioActivity":[4.0,4.0,4.0],
-            "position":[6.5,1.5,-1.5],
-            "velocity":[-2.0,0.0,-2.0],
-            "direction":3,
             "delay":2000,
             "material":"mARCHENEMY",
             "mesh":"ARROW"
@@ -82,11 +74,16 @@
             {   "life":40,
                 "position":[5.5,2.0,-6.5],
                 "radioActivity":[2.0,2.0,2.0],
-                "type":"ranged"
+                "type":"melee"
             },
-
             {   
-                "life":10,
+                "life":100,
+                "position":[3.5,2.0,-5.5],
+                "radioActivity":[1.0,1.0,1.0],
+                "type":"melee"
+            },   
+            {   
+                "life":100,
                 "position":[8.5,2.0,-5.5],
                 "radioActivity":[1.0,1.0,1.0],
                 "type":"melee"
@@ -507,9 +504,6 @@
                             19.0,2.4,-12.5,
                             21.0,2.4,-12.5],
                 "transforms":[
-                    {   "type":"scale",
-                        "values":[1.0,1.0,1.0]
-                    }
                 ],       
                 "material":"mFURNITURE",
                 "mesh":"BKSHELF",

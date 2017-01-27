@@ -399,7 +399,7 @@
 	"window.h"
 	"file_obj.h"
 
-1485520236 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1485520362 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1017,7 +1017,7 @@
 	<stdlib.h>
 	<vector>
 
-1485360948 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1485541152 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 
 1478955370 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdynamic.h
@@ -1714,10 +1714,11 @@
 1484689990 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
 	"npclist.h"
 
-1485468656 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
+1485539433 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
 	"enemy.h"
+	"../GraphicEngine/iaenemy.h"
 
-1485467495 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
+1485533747 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -1730,7 +1731,6 @@
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/acceleratedmovement.h"
 	"../GraphicEngine/sound.h"
-	"../GraphicEngine/iaenemy.h"
 	"../GraphicEngine/text.h"
 	<stdlib.h>
 	<vector>
@@ -1749,14 +1749,15 @@
 	"rangedenemy.h"
 	"meleeenemy.h"
 
-1485466857 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.cpp
+1485533684 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.cpp
 	"iaenemy.h"
 
-1485465174 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.h
+1485533707 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.h
 	"structdata.h"
 	"avatar.h"
 	<iostream>
 	<math.h>
+	"../VideoGame/enemylist.h"
 
 1481886040 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.cpp
 	"menu.h"
@@ -2095,7 +2096,7 @@
 	"collection.cpp"
 	<string>
 
-1485472457 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
+1485542893 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
 	"materialcollection.h"
 
 1482586318 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\enumparser.cpp
@@ -2125,7 +2126,7 @@
 1484426476 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coinlist.cpp
 	"coinlist.h"
 
-1485455183 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
+1485541517 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
 	"projectile.h"
 
 1485345856 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
@@ -2228,26 +2229,29 @@
 	"projectile.h"
 	<vector>
 
-1485514717 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\rangedenemy.cpp
+1485541704 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\rangedenemy.cpp
 	"rangedenemy.h"
 
-1485469315 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.h
+1485533539 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.h
 	"enemy.h"
 	"../lib/rapidjson/document.h"
 	"../GraphicEngine/iameleeenemy.h"
+	"enemylist.h"
 
-1485519851 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.cpp
+1485545807 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.cpp
 	"meleeenemy.h"
 
-1485466835 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iameleeenemy.cpp
+1485545435 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iameleeenemy.cpp
 	"iameleeenemy.h"
 
-1485467178 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iameleeenemy.h
+1485537293 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iameleeenemy.h
 	"iaenemy.h"
+	"../VideoGame/enemylist.h"
 
-1485513334 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iarangedenemy.cpp
+1485533672 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iarangedenemy.cpp
 	"iarangedenemy.h"
 
-1485465181 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iarangedenemy.h
+1485533704 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iarangedenemy.h
 	"iaenemy.h"
+	"../VideoGame/enemylist.h"
 
