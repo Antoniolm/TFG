@@ -409,7 +409,7 @@ bool AvatarMove::detectShield(vec3f posAvatar,avatarDirection dirAvatar){
                 result=true;
             break;
         case BACK_RIGHTWARD:
-            if(position.x>posAvatar.x && position.z<posAvatar.z)
+            if(position.x<posAvatar.x && position.z>posAvatar.z)
                 result=true;
             break;
     }

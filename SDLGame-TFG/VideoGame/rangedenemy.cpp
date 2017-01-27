@@ -292,7 +292,7 @@ void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap *
         else {  //If is not near of the target
             //shot arrow
             changeDirection(currentMove.first);
-            if(hitDelay<(time-2000)){
+            if(hitDelay<(time-3000)){
                 createProjectile(posHero);
                 hitDelay=time;
             }
@@ -363,55 +363,55 @@ void RangedEnemy::createProjectile(vec3f posAvatar){
     avatarDirection dirProject=RIGHTWARD;
     //case FORWARD:
     if(position.z>posAvatar.z && (position.x>=posAvatar.x-0.6 && position.x<=posAvatar.x+0.6)){
-        posProject=vec3f(position.x,position.y,position.z-1.0);
+        posProject=vec3f(position.x,position.y,position.z-0.5);
         velocityProject=vec3f(0.0,0.0,-2.0);
         dirProject=BACKWARD;
 
     }
     //case BACKWARD:
     else if(position.z<posAvatar.z && (position.x>=posAvatar.x-0.6 && position.x<=posAvatar.x+0.6)){
-        posProject=vec3f(position.x,position.y,position.z+1.0);
+        posProject=vec3f(position.x,position.y,position.z+0.5);
         velocityProject=vec3f(0.0,0.0,2.0);
         dirProject=FORWARD;
     }
     //case LEFTWARD:
     else if(position.x<posAvatar.x && (position.z>=posAvatar.z-0.6 && position.z<=posAvatar.z+0.6)){
-        posProject=vec3f(position.x+1.0,position.y,position.z);
+        posProject=vec3f(position.x+0.5,position.y,position.z);
         velocityProject=vec3f(2.0,0.0,0.0);
         dirProject=RIGHTWARD;
     }
 
     //case RIGHTWARD:
     else if(position.x>posAvatar.x && (position.z>=posAvatar.z-0.6 && position.z<=posAvatar.z+0.6)){
-        posProject=vec3f(position.x-1.0,position.y,position.z);
+        posProject=vec3f(position.x-0.5,position.y,position.z);
         velocityProject=vec3f(-2.0,0.0,0.0);
         dirProject=LEFTWARD;
     }
 
     //case FOR_LEFTWARD:
     else if(position.x<posAvatar.x && position.z>posAvatar.z){
-        posProject=vec3f(position.x+1.0,position.y,position.z-1.0);
+        posProject=vec3f(position.x+0.5,position.y,position.z-0.5);
         velocityProject=vec3f(2.0,0.0,-2.0);
         dirProject=BACK_RIGHTWARD;
     }
 
     //case FOR_RIGHTWARD:
     else if(position.x>posAvatar.x && position.z>posAvatar.z){
-        posProject=vec3f(position.x-1.0,position.y,position.z-1.0);
+        posProject=vec3f(position.x-0.5,position.y,position.z-0.5);
         velocityProject=vec3f(-2.0,0.0,-2.0);
         dirProject=BACK_LEFTWARD;
     }
 
     //case BACK_LEFTWARD:
     else if(position.x<posAvatar.x && position.z<posAvatar.z){
-        posProject=vec3f(position.x+1.0,position.y,position.z+1.0);
+        posProject=vec3f(position.x+0.5,position.y,position.z+0.5);
         velocityProject=vec3f(2.0,0.0,2.0);
         dirProject=FOR_RIGHTWARD;
     }
 
     //case BACK_RIGHTWARD:
     else if(position.x>posAvatar.x && position.z<posAvatar.z){
-        posProject=vec3f(position.x-1.0,position.y,position.z+1.0);
+        posProject=vec3f(position.x-0.5,position.y,position.z+0.5);
         velocityProject=vec3f(-2.0,0.0,2.0);
         dirProject=FOR_LEFTWARD;
 
