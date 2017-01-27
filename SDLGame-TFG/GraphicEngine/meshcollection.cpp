@@ -190,6 +190,10 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
+    element=new Mesh("geometries/crossbow.obj");
+    element->init();
+    collection.addElement(element);
+
     //Create our map
     collection.addIndex("CUBE",CUBE);
     collection.addIndex("SPHERE",SPHERE);
@@ -225,6 +229,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("RUG",RUG);
     collection.addIndex("WINDOW",WINDOW);
     collection.addIndex("PILLAR",PILLAR);
+    collection.addIndex("CBOW",CBOW);
 }
 
 //**********************************************************************//

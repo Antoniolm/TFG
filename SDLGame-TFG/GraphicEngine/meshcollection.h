@@ -61,7 +61,8 @@ enum MeshIndex{
     CHAIR,
     RUG,
     WINDOW,
-    PILLAR
+    PILLAR,
+    CBOW
 };
 
 class MeshCollection

@@ -141,12 +141,18 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     Matrix4f * transArms=new Matrix4f();
     transArms->translation(0.0,-0.3,-0.2);
 
+    Matrix4f * transWeapon=new Matrix4f();
+    transWeapon->translation(0.0,0.0,0.0);
+
+
     //Arms
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transElbow);
     handRight->add(moveElbowRight);
     handRight->add(transHand);
     handRight->add(meshCollect->getMesh(RHAND));
+    handRight->add(transWeapon);
+    handRight->add(meshCollect->getMesh(CBOW));
 
     NodeSceneGraph * handLeft=new NodeSceneGraph();
     handLeft->add(transElbow);
