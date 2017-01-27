@@ -142,7 +142,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     transArms->translation(0.0,-0.3,-0.2);
 
     Matrix4f * transWeapon=new Matrix4f();
-    transWeapon->translation(0.0,0.0,0.0);
+    transWeapon->translation(0.0,-0.4,0.0);
 
 
     //Arms

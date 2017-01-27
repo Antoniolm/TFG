@@ -1,9 +1,9 @@
 Knight by rougher is licensed under CC Attribution-NonCommercial https://sketchfab.com/models/aa451ea41ecd4e439f199aea4955bad0# -> modified and used in the objs: knightHead, knightArm,knightBody,knightFoot,knightFootInv,knightHand,knightHandShield
-FREE ZOMBIE COMMONER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-zombie-commoner) -> modified and used in the objs: enemyBody,enemyFoot,enemyHand,enemyHead,enemyClub
+FREE ZOMBIE COMMONER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-zombie-commoner) -> modified and used in the objs: enemyBody,enemyFoot,enemyHand,enemyHead,Club
 Great Sword of Frozen Night by ZugZug is licensed under CC Attribution https://skfb.ly/GoHQ -> used in the objs : sword.obj
 Flaming Forge shield by pipclank is licensed under CC Attribution https://skfb.ly/JUrX -> used in the objs: shield.obj
 Crystal by SomjadeChunthavorn is licensed under CC Attribution https://skfb.ly/CssO -> used in the obj: crystal.obj
-SKELETON ARCHER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-skeleton-archer) -> modified and used in the obj: arrow.obj,rangedBody.obj,rangedHead.obj,rangedFoot.obj,rangedHand.obj
+SKELETON ARCHER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-skeleton-archer) -> modified and used in the obj: arrow.obj,rangedBody.obj,rangedHead.obj,rangedFoot.obj,rangedHand.obj,crossBow.obj
 fireplace-1 1150x1465x215mm by Dikart is licensed under CC Attribution https://skfb.ly/KIoz -> modified and use in the objs: firePlace.obj
 Persian Rug by Nicholas Record is licensed under CC Attribution https://skfb.ly/KWsy -> used in the obj: rug.obj
 Imperial Window-frame big by supaluci is licensed under CC Attribution https://skfb.ly/JSXt -> used in the obj: window.obj
@@ -11,4 +11,5 @@ Hyrule Castle Courtyard (Ocarina Of Time 3D) by Dillon is licensed under CC Attr
 Winter Gnome by Brianna Fromont is licensed under CC Attribution https://skfb.ly/WOXp -> used in the obj: ghostButler.obj
 Hand Painted Furniture Set by www.handpaintedtextures.com is licensed(https://unity3d.com/es/legal/as_terms) url(https://www.assetstore.unity3d.com/en/#!/content/6595) -> used in the objs: bed,bedsiteTable,bookShelf,chair,cupBoard,fatTable,smallTable
 furniture #1 by ericdraw is licensed under CC Attribution https://skfb.ly/Io8o
+Table by louvey is licensed under CC Attribution https://skfb.ly/IOH8
 

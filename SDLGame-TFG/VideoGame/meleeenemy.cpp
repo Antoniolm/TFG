@@ -77,14 +77,12 @@ MeleeEnemy::MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
     legLeft->add(transLeg);
-    legLeft->add(materialCollect->getMaterial(mENEMY));
     legLeft->add(meshCollect->getMesh(EFOOT));
 
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
     legRight->add(transLeg);
-    legRight->add(materialCollect->getMaterial(mENEMY));
     legRight->add(meshCollect->getMesh(EFOOT));
 
     //////////////////////////////////////////////////////
@@ -133,13 +131,17 @@ MeleeEnemy::MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     Matrix4f * transArms=new Matrix4f();
     transArms->translation(0.0,-0.3,-0.2);
 
+    Matrix4f * transWeapon=new Matrix4f();
+    transWeapon->translation(0.0,-0.1,0.4);
+
     //Arms
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transElbow);
     handRight->add(moveElbowRight);
     handRight->add(transHand);
-    handRight->add(materialCollect->getMaterial(mENEMY));
     handRight->add(meshCollect->getMesh(EHAND));
+    handRight->add(transWeapon);
+    handRight->add(meshCollect->getMesh(CLUB));
 
     NodeSceneGraph * handLeft=new NodeSceneGraph();
     handLeft->add(transElbow);
@@ -147,7 +149,6 @@ MeleeEnemy::MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     handLeft->add(transHandLeft);
     //handLeft->add(scaleHandInvert);
     handLeft->add(rotateYHand);
-    handLeft->add(materialCollect->getMaterial(mENEMY));
     handLeft->add(meshCollect->getMesh(EHAND));
 
     //Arm left
@@ -194,12 +195,11 @@ MeleeEnemy::MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     transChest->translation(0.0,0.1,-0.3);
 
     NodeSceneGraph * chestNode=new NodeSceneGraph();
-    chestNode->add(materialCollect->getMaterial(mENEMY));
     chestNode->add(meshCollect->getMesh(ECHEST));
 
     NodeSceneGraph * headNode=new NodeSceneGraph();
     headNode->add(transHead);
-    headNode->add(materialCollect->getMaterial(mENEMY));
+
     headNode->add(meshCollect->getMesh(EHEAD));
 
     NodeSceneGraph * chest_ArmsNode=new NodeSceneGraph();
@@ -211,6 +211,7 @@ MeleeEnemy::MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     chest_ArmsNode->add(ArmRight);
 
     root->add(scaleHero);
+    root->add(materialCollect->getMaterial(mENEMY));
     root->add(headNode);
     root->add(chest_ArmsNode);
     root->add(transLegSceneI);

@@ -44,45 +44,75 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
         case FORWARD:
             tenthValue=posHero.x-(int)posHero.x;
             hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.5));
+            if(hasCollision==0)
+                hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y+1.0,posHero.z+0.5));
 
             if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z+0.5));
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x-0.2,posHero.y+1.0,posHero.z+0.5));
             }
             else if(tenthValue>0.6 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z+0.5));
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x+0.2,posHero.y+1.0,posHero.z+0.5));
             }
         break;
         case BACKWARD:
             tenthValue=posHero.x-(int)posHero.x;
             hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.5));
+            if(hasCollision==0)
+                hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y+1.0,posHero.z-0.5));
 
             if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z-0.5));
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x-0.2,posHero.y+1.0,posHero.z-0.5));
             }
             else if(tenthValue>0.6 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z-0.5));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x+0.2,posHero.y+1.0,posHero.z-0.5));
             }
         break;
         case LEFTWARD:
             tenthValue=(int)posHero.z-posHero.z;
             hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z));
+            if(hasCollision==0)
+                hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y+1.0,posHero.z));
 
             if(tenthValue<0.5 && hasCollision==0){                                        //+0.2
                 hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z+0.05));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y+1.0,posHero.z+0.05));
             }
             else if(tenthValue>0.5 && hasCollision==0){                                  //+0.2
                 hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z-0.05));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y+1.0,posHero.z-0.05));
             }
         break;
         case RIGHTWARD:
             tenthValue=(int)posHero.z-posHero.z;
             hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z));
 
+            if(hasCollision==0)
+                hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y+1.0,posHero.z));
+
             if(tenthValue<0.5 && hasCollision==0){                                        //+0.2
                 hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z+0.05));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y+1.0,posHero.z+0.05));
             }
             else if(tenthValue>0.5 && hasCollision==0){                                   //+0.2
                 hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z-0.05));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y+1.0,posHero.z-0.05));
             }
         break;
         case FOR_LEFTWARD:
@@ -90,11 +120,21 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
             tenthValue2=(int)posHero.z-posHero.z;
 
             hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z+0.5));
+
+            if(hasCollision==0)
+                hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y+1.0,posHero.z+0.5));
+
             if(tenthValue2<0.5 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.5));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y+1.0,posHero.z+0.5));
             }
             else if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y+1.0,posHero.z));
             }
         break;
         case FOR_RIGHTWARD:
@@ -103,11 +143,20 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
 
             hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z+0.5));
 
+            if(hasCollision==0)
+                hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y+1.0,posHero.z+0.5));
+
             if(tenthValue2<0.5 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.5));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y+1.0,posHero.z+0.5));
             }
             else if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y+1.0,posHero.z));
             }
         break;
         case BACK_LEFTWARD:
@@ -115,11 +164,21 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
             tenthValue2=(int)posHero.z-posHero.z;
 
             hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z-0.5));
+
+            if(hasCollision==0)
+                hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y+1.0,posHero.z-0.5));
+
             if(tenthValue2<0.5 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.5));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y+1.0,posHero.z-0.5));
             }
             else if(tenthValue<0.5 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y,posHero.z));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x-0.5,posHero.y+1.0,posHero.z));
             }
         break;
         case BACK_RIGHTWARD:
@@ -128,11 +187,22 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
 
             hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z-0.5));
 
+            if(hasCollision==0)
+                hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y+1.0,posHero.z-0.5));
+
+
             if(tenthValue2>0.5 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.5));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y+1.0,posHero.z-0.5));
+
             }
             else if(tenthValue>0.5 && hasCollision==0){
                 hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y,posHero.z));
+
+                if(hasCollision==0)
+                    hasCollision=currentMap->collision(vec3f(posHero.x+0.5,posHero.y+1.0,posHero.z));
             }
         break;
     }
