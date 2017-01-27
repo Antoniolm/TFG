@@ -33,7 +33,7 @@ IAEnemy::~IAEnemy()
 
 //**********************************************************************//
 
-pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
+pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero,EnemyList * enemies){
     pair<avatarDirection,vec3f> result;
     return result;
 }

@@ -21,11 +21,11 @@
 #define IAMELEEENEMY_H
 
 #include "iaenemy.h"
+#include "../VideoGame/enemylist.h"
 
 class IAMeleeEnemy : public IAEnemy
 {
     public:
-
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
@@ -36,11 +36,13 @@ class IAMeleeEnemy : public IAEnemy
         //////////////////////////////////////////////////////////////////////////
         virtual ~IAMeleeEnemy();
 
-        pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero);
+        pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero,EnemyList * enemies);
 
     protected:
 
     private:
+        vector<vec3f> obtainPosEnemies(vector<Enemy *> enemies,vec3f posCurrentEnemy);
+        bool checkCollision(vector<vec3f> & posEnemies,vec3f currentEnemy);
 };
 
 #endif // IAMELEEENEMY_H

@@ -33,7 +33,7 @@ IARangedEnemy::~IARangedEnemy()
 
 //**********************************************************************//
 
-pair<avatarDirection,vec3f> IARangedEnemy::nextPosition(vec3f posEnemy,vec3f posHero){
+pair<avatarDirection,vec3f> IARangedEnemy::nextPosition(vec3f posEnemy,vec3f posHero,EnemyList * enemies){
     vec3f newMovement;
     float distance,maxDistance;
     avatarDirection enemyDir;

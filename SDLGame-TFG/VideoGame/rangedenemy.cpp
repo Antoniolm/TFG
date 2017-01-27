@@ -286,7 +286,7 @@ void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap *
 
     if(enemyActivate){ //If enemy is activated
         if(IADelay<(time-200)){ //Delay IA
-            currentMove=IA->nextPosition(vec3f(position.x,position.y,position.z),posHero);
+            currentMove=IA->nextPosition(vec3f(position.x,position.y,position.z),posHero,rootMap->getEnemyList());
             IADelay=time;
         }
         if((currentMove.second.x!=0.0 || currentMove.second.y!=0.0 || currentMove.second.z!=0.0)&& !isImpacted){ //IA-> is not near of our hero

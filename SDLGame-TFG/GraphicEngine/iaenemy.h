@@ -24,6 +24,7 @@
 #include "avatar.h"
 #include <iostream>
 #include <math.h>
+#include "../VideoGame/enemylist.h"
 
 using namespace std;
 
@@ -41,7 +42,7 @@ class IAEnemy
         //////////////////////////////////////////////////////////////////////////
         virtual ~IAEnemy();
 
-        virtual pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero);
+        virtual pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero,EnemyList * enemies);
 
     protected:
 

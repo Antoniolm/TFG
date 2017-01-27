@@ -18,6 +18,7 @@
 // *********************************************************************
 
 #include "enemy.h"
+#include "../GraphicEngine/iaenemy.h"
 
 Enemy::Enemy(){
 

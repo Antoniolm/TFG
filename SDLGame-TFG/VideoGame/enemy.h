@@ -33,7 +33,6 @@
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/acceleratedmovement.h"
 #include "../GraphicEngine/sound.h"
-#include "../GraphicEngine/iaenemy.h"
 #include "../GraphicEngine/text.h"
 #include <stdlib.h>
 
@@ -42,6 +41,7 @@
 using namespace std;
 class RootMap;
 class Text;
+class IAEnemy;
 class Enemy: public AvatarMove
 {
     public:

@@ -21,6 +21,7 @@
 #define IARANGEDENEMY_H
 
 #include "iaenemy.h"
+#include "../VideoGame/enemylist.h"
 
 class IARangedEnemy : public IAEnemy
 {
@@ -35,7 +36,7 @@ class IARangedEnemy : public IAEnemy
         //////////////////////////////////////////////////////////////////////////
         virtual ~IARangedEnemy();
 
-        pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero);
+        pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero,EnemyList * enemies);
 
     protected:
 
