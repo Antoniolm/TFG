@@ -483,7 +483,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             posEnemy=enemies[i]->getPosition(); //Calculate the distance
             distance=sqrt(pow(position.x-posEnemy.x,2.0)+pow(position.z-posEnemy.z,2.0));
 
-            if(distance<=0.8 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
+            if(distance<=1.0 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
                 enemies[i]->takeDamage(position,direction,-10);
             }
         }

@@ -256,7 +256,7 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     }
 
     if(enemyActivate){ //If enemy is activated
-        if(IADelay<(time-50)){ //Delay IA
+        if(IADelay<(time-100)){ //Delay IA
             currentMove=IA->nextPosition(vec3f(position.x,position.y,position.z),posHero,rootMap->getEnemyList());
             IADelay=time;
         }
@@ -306,10 +306,8 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     else if(isHitting){
         animations.activate(1);
         ScriptLMD * animationHit=animations.getAnimation();
-        if((animationHit->getScriptState(2)==3 || animationHit->getScriptState(3)==1) && hitDelay<(time-700)){
-            hero->takeDamage(position,direction,-10);
-            hitDelay=time;
-        }
+        hero->takeDamage(position,direction,-10);
+        hitDelay=time;
     }
 
     animations.update(time-currentTime);
@@ -318,7 +316,124 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     for(unsigned i=0;i<moveMatrix.size();i++)
         moveMatrix[i]->setMatrix(animatio->readMatrix(i).getMatrix());
 
-
-
     currentTime+=(time-currentTime);
 }
+
+//**********************************************************************//
+//                              PRIVATE                                 //
+//**********************************************************************//
+
+ void MeleeEnemy::initAnimation(){
+
+    /////////////////////////////////
+    // ANIMATION MOVE
+    /////////////////////////////////
+    ///////////////////
+    // LEG
+    //////////////////
+    ScriptLMD * animation=new ScriptLMD();
+    OscillateRotation * oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
+    OscillateRotation * oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
+    MatrixStatic * notMove=new MatrixStatic();
+
+    //Movement to the first leg
+    MatrixScript * LegScriptLeft=new MatrixScript();
+    LegScriptLeft->add(0.5,oscillateLeg);
+    LegScriptLeft->add(0.5,oscillateLegSecond);
+
+
+    //Movement to the second leg
+    MatrixScript * LegScriptRight=new MatrixScript();
+    LegScriptRight->add(0.5,oscillateLegSecond);
+    LegScriptRight->add(0.5,oscillateLeg);
+
+    //Add the script to our animation
+    animation->add(LegScriptRight);
+    animation->add(LegScriptLeft);
+
+    ///////////////////
+    // ARM
+    //////////////////
+    //Matrix4fDinamic
+    OscillateRotation * oscillateShoulder=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),2);
+
+    //Movement to the first arm
+    MatrixScript * ElbowScriptLeft=new MatrixScript();
+    MatrixScript * ArmScriptLeft=new MatrixScript();
+    ElbowScriptLeft->add(0.5,notMove);
+    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,oscillateShoulder);
+    ArmScriptLeft->add(0.5,notMove);
+
+    //Movement to the second arm
+    MatrixScript * ElbowScriptRight=new MatrixScript();
+    MatrixScript * ArmScriptRight=new MatrixScript();
+    ElbowScriptRight->add(0.5,notMove);
+    ElbowScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,oscillateShoulder);
+
+
+    //Add the script to our animation
+    animation->add(ElbowScriptRight);
+    animation->add(ElbowScriptLeft);
+    animation->add(ArmScriptRight);
+    animation->add(ArmScriptLeft);
+
+    animations.add(animation);
+
+    /////////////////////////////////
+    // ANIMATION HIT
+    /////////////////////////////////
+    ///////////////////
+    // LEG
+    //////////////////
+    animation=new ScriptLMD();
+    oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
+    oscillateLegSecond=new OscillateRotation(false,0,-20,1,50,vec3f(1,0,0),1);
+
+    //Movement to the first leg
+    LegScriptLeft=new MatrixScript();
+    LegScriptLeft->add(0.5,notMove);
+    LegScriptLeft->add(0.5,notMove);
+
+
+    //Movement to the second leg
+    LegScriptRight=new MatrixScript();
+    LegScriptRight->add(0.5,notMove);
+    LegScriptRight->add(0.5,notMove);
+
+    //Add the script to our animation
+    animation->add(LegScriptRight);
+    animation->add(LegScriptLeft);
+
+    ///////////////////
+    // ARM
+    //////////////////
+    //Matrix4fDinamic
+    OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,140,500,vec3f(1.0,0.0,0),1);
+    OscillateRotation * shoulderCharge2=new OscillateRotation(false,140,0,140,500,vec3f(0.0,1.0,0),1);
+
+    //Movement to the first arm
+    ElbowScriptLeft=new MatrixScript();
+    ArmScriptLeft=new MatrixScript();
+    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,notMove);
+
+    //Movement to the second arm
+    ElbowScriptRight=new MatrixScript();
+    ArmScriptRight=new MatrixScript();
+
+    ElbowScriptRight->add(0.65,notMove);
+    ArmScriptRight->add(0.25,shoulderCharge);
+    ArmScriptRight->add(0.25,notMove);
+
+
+    //Add the script to our animation
+    animation->add(ElbowScriptRight); //4
+    animation->add(ElbowScriptLeft);  //5
+    animation->add(ArmScriptRight);   //6
+    animation->add(ArmScriptLeft);    //7
+
+    animations.add(animation);
+ }

@@ -157,7 +157,7 @@ vector<vec3f> IAMeleeEnemy::obtainPosEnemies(vector<Enemy *> enemies,vec3f posCu
 
     for(int i=0;i<enemies.size();i++){
         vec3f pos=enemies[i]->getPosition();
-        if(enemies[i]->isActivate()){ //if the enemy is dead
+        if(enemies[i]->isActivate()){ //if the enemy is activate
             posEnemies.push_back(pos);
         }
     }

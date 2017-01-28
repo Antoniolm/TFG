@@ -50,6 +50,8 @@ class MeleeEnemy : public Enemy
     protected:
 
     private:
+        void initAnimation();
+
 };
 
 #endif // MELEEENEMY_H
