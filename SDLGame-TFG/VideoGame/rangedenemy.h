@@ -23,6 +23,7 @@
 #include "enemy.h"
 #include "../lib/rapidjson/document.h"
 #include "../GraphicEngine/iarangedenemy.h"
+#include "../GraphicEngine/iameleeenemy.h"
 #include "projectile.h"
 #include <vector>
 
@@ -70,6 +71,7 @@ class RangedEnemy : public Enemy
         void initAnimation();
         void createProjectile(vec3f posAvatar);
         vector<Projectile *> projectiles;
+        IAEnemy * secondIA;
         Mesh * meshProjectile;
         Material * materialProjectile;
 };
