@@ -109,7 +109,6 @@ class Enemy: public AvatarMove
         void takeDamage(float value);
 
     protected:
-        void initAnimation();
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> enemySound;
         AnimationList animations;
