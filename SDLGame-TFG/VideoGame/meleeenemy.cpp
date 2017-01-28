@@ -306,8 +306,10 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     else if(isHitting){
         animations.activate(1);
         ScriptLMD * animationHit=animations.getAnimation();
-        hero->takeDamage(position,direction,-10);
-        hitDelay=time;
+        if((animationHit->getScriptState(4)==1) && hitDelay<(time-700)){
+            hero->takeDamage(position,direction,-10);
+            hitDelay=time;
+        }
     }
 
     animations.update(time-currentTime);
@@ -315,6 +317,8 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     ScriptLMD * animatio=animations.getAnimation();
     for(unsigned i=0;i<moveMatrix.size();i++)
         moveMatrix[i]->setMatrix(animatio->readMatrix(i).getMatrix());
+
+
 
     currentTime+=(time-currentTime);
 }
@@ -413,6 +417,10 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     //Matrix4fDinamic
     OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,140,500,vec3f(1.0,0.0,0),1);
     OscillateRotation * shoulderCharge2=new OscillateRotation(false,140,0,140,500,vec3f(0.0,1.0,0),1);
+    Matrix4f * rotShoulder=new Matrix4f();
+    rotShoulder->rotation(140,1.0,0.0,0.0);
+
+    MatrixStatic * staticShoulder=new MatrixStatic(*rotShoulder);
 
     //Movement to the first arm
     ElbowScriptLeft=new MatrixScript();
@@ -425,6 +433,7 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     ArmScriptRight=new MatrixScript();
 
     ElbowScriptRight->add(0.65,notMove);
+    ArmScriptRight->add(0.25,staticShoulder);
     ArmScriptRight->add(0.25,shoulderCharge);
     ArmScriptRight->add(0.25,notMove);
 
