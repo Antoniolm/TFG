@@ -610,7 +610,10 @@ bool Hero::isHit(){
      bool canShield=false;
     if(isShielded && detectShield(posAvatar,direction)) canShield=true;
 
-    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) && !canShield){
+    //check Distance
+    float distance=sqrt(pow(position.x-posAvatar.x,2.0)+pow(position.z-posAvatar.z,2.0));
+
+    if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) && !canShield && distance<1.0){
         addLife(value);
         stringstream convert;
         if(activatedTexts[3]){ //if is activate the text ->//Join values
@@ -630,7 +633,7 @@ bool Hero::isHit(){
         heroSound[1]->stop();
         heroSound[1]->play();
     }
-    if(detectHit(posAvatar,dirAvatar) && shieldDelay<(currentTime-700) && canShield){
+    if(detectHit(posAvatar,dirAvatar) && shieldDelay<(currentTime-700) && canShield && distance<1.0){
         heroSound[2]->stop();
         heroSound[2]->play();
         shieldDelay=currentTime;

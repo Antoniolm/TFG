@@ -299,6 +299,7 @@ void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap *
                 activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
             }
+            isHitting=false;
         }
         else {  //If is not near of the target
             //shot arrow
@@ -524,7 +525,7 @@ void RangedEnemy::createProjectile(vec3f posAvatar){
     // ARM
     //////////////////
     //Matrix4fDinamic
-    OscillateRotation * shoulderCharge=new OscillateRotation(true,140,90,90,500,vec3f(1.0,0.0,0),1);
+    OscillateRotation * shoulderCharge=new OscillateRotation(true,160,90,90,500,vec3f(1.0,0.0,0),1);
     Matrix4f * rotShoulder=new Matrix4f();
     rotShoulder->rotation(90,1.0,0.0,0.0);
 

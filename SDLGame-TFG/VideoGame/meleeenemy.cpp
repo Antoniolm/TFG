@@ -260,15 +260,11 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
             currentMove=IA->nextPosition(vec3f(position.x,position.y,position.z),posHero,rootMap->getEnemyList());
             IADelay=time;
         }
-        if((currentMove.second.x!=0.0 || currentMove.second.y!=0.0 || currentMove.second.z!=0.0)&& !isImpacted){ //IA-> is not near of our hero
+        if((currentMove.second.x!=0.0 || currentMove.second.y!=0.0 || currentMove.second.z!=0.0)&& !isImpacted && !isHitting){ //IA-> is not near of our hero
             if(!moveBody(currentMove.second,currentMove.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){ //If not move -> enemy jump
                activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                jumpDelay=time;
             }
-            if(isHitting) //If is hitting
-                animations.resetAnimation(1);
-            isHitting=false;
-
         }
         else{ //IA -> is near of our hero so the enemy doesn't move
             isHitting=true;
@@ -303,12 +299,16 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     if(isMoving && !isFalling && !isJumping && !isHitting){
         animations.activate(0);
     }
-    else if(isHitting){
+    else if(isHitting){  //if enemy is hit
         animations.activate(1);
         ScriptLMD * animationHit=animations.getAnimation();
         if((animationHit->getScriptState(4)==1) && hitDelay<(time-700)){
             hero->takeDamage(position,direction,-10);
             hitDelay=time;
+        }
+        if((animationHit->getScriptState(4)==2)){ //if the hit has finished
+            isHitting=false;
+            animations.resetAnimation(1);
         }
     }
 
@@ -433,7 +433,7 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     ArmScriptRight=new MatrixScript();
 
     ElbowScriptRight->add(0.65,notMove);
-    ArmScriptRight->add(0.25,staticShoulder);
+    ArmScriptRight->add(0.5,staticShoulder);
     ArmScriptRight->add(0.25,shoulderCharge);
     ArmScriptRight->add(0.25,notMove);
 
