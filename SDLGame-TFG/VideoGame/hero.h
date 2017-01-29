@@ -156,7 +156,7 @@ class Hero: public AvatarMove
         vector<Text *> texts;
         vector<bool> activatedTexts;
         Weapon * currentWeapon,* meleeWeapon,* rangedWeapon;
-        float jumpDelay,hitDelay,coinDelay,shieldDelay,swapDelay;
+        float jumpDelay,hitDelay,coinDelay,shieldDelay,swapDelay,shootDelay;
         int currentCoin;
 };
 

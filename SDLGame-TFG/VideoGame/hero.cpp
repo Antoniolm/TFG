@@ -287,6 +287,7 @@ Hero::Hero(vec3f aPos)
     dmgDelay=currentTime;
     shieldDelay=currentTime;
     swapDelay=currentTime;
+    shootDelay=currentTime;
 
     //Init all animations of our hero
     initAnimation();
@@ -451,7 +452,11 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         hitDelay=time;
     }
     else { // If hero is not hitting -> resetAnimation
-        if(hitDelay<(time-250)){
+        if(hitDelay<(time-250) && currentWeapon->getType()==MELEE){
+            hitDelay=time;
+            isHitting=false;
+        }
+        else if(hitDelay<(time-750) && currentWeapon->getType()==RANGED){
             hitDelay=time;
             isHitting=false;
         }
@@ -532,7 +537,8 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
             case RANGED:
                 animations.activate(5);
                 ScriptLMD * animationHit=animations.getAnimation();
-                if(animationHit->getScriptState(6)==1){
+                if(animationHit->getScriptState(6)==1 && shootDelay<(time-700)){
+                    shootDelay=time;
                     createProjectile();
                 }
             break;
@@ -1223,7 +1229,7 @@ bool Hero::isHit(){
 
     ElbowScriptRight->add(0.65,notMove);
     ElbowScriptTRight->add(0.65,notMove);
-    ArmScriptRight->add(0.25,staticShoulder);
+    ArmScriptRight->add(0.5,staticShoulder);
     ArmScriptRight->add(0.25,shoulderCharge);
     ArmScriptRight->add(0.25,staticShoulder);
 
