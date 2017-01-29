@@ -69,3 +69,11 @@ WeaponType Weapon::getType(){
     return type;
 }
 
+//**********************************************************************//
+
+void Weapon::setWeapon(const Weapon & weapon){
+    damage=weapon.damage;
+    type=weapon.type;
+    root=weapon.root;
+}
+

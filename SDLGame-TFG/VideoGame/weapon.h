@@ -68,6 +68,8 @@ class Weapon : public Object3D
         float getDamage();
 
         WeaponType getType();
+
+        void setWeapon(const Weapon & weapon);
     protected:
 
     private:

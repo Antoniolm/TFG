@@ -46,6 +46,8 @@ Hero::Hero(vec3f aPos)
     /////           Initialize weapons               /////
     //////////////////////////////////////////////////////
     currentWeapon=new Weapon(vec3f(0.05,-0.1,0.68),MELEE,-25,SWORD,mSWORD);
+    meleeWeapon=new Weapon(vec3f(0.05,-0.1,0.68),MELEE,-25,SWORD,mSWORD);
+    rangedWeapon=new Weapon(vec3f(0.0,-0.4,0.0),RANGED,-20,CBOW,mARCHENEMY);
 
 
     //////////////////////////////////////////////////////
@@ -282,6 +284,7 @@ Hero::Hero(vec3f aPos)
     hitDelay=currentTime;
     dmgDelay=currentTime;
     shieldDelay=currentTime;
+    swapDelay=currentTime;
 
     //Init all animations of our hero
     initAnimation();
@@ -448,6 +451,22 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     else { //if not
         isShielded=false;
     }
+
+    //Case-> Push Q bottom to swap weapon
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_q)] && !isHitting && swapDelay<(time-500) ){ //If hero is shielding
+        switch(currentWeapon->getType()){
+            case MELEE:
+                currentWeapon->setWeapon((*rangedWeapon));
+            break;
+            case RANGED:
+                currentWeapon->setWeapon((*meleeWeapon));
+            break;
+        }
+        swapDelay=time;
+    }
+
+
+
 
     //Move the body
     if(hasMove && !isImpacted && !isHitting){
