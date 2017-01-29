@@ -42,6 +42,12 @@ class IAEnemy
         //////////////////////////////////////////////////////////////////////////
         virtual ~IAEnemy();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will calculate the next position and direction of our enemy
+        *    \return pair<avatarDirection,vec3f>
+        */
+        //////////////////////////////////////////////////////////////////////////
         virtual pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero,EnemyList * enemies);
 
     protected:

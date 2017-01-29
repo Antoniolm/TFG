@@ -28,9 +28,6 @@
 #include "weapon.h"
 #include <vector>
 
-
-
-
 class RangedEnemy : public Enemy
 {
     public:
@@ -69,8 +66,22 @@ class RangedEnemy : public Enemy
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will initialize the animation of our npc
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void initAnimation();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will create a projectile
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void createProjectile(vec3f posAvatar);
+
         vector<Projectile *> projectiles;
         IAEnemy * secondIA;
 };

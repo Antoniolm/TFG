@@ -72,8 +72,22 @@ class MaterialCollection
             return instance;
         }
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return a material -> parameters MaterialIndex
+        *    \return Material *
+        */
+        //////////////////////////////////////////////////////////////////////////
         Material * getMaterial(MaterialIndex element);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return a material -> parameters string
+        *    \return Material *
+        */
+        //////////////////////////////////////////////////////////////////////////
         Material * getMaterial(string element);
+
     protected:
 
     private:

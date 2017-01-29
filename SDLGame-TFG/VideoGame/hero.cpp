@@ -523,7 +523,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         vector<Enemy *> enemies=rootMap->getEnemyList()->getEnemies();
         vec3f posEnemy;float distance;
         switch(currentWeapon->getType()){
-            case MELEE:
+            case MELEE: //If is the sword
                 animations.activate(1);
                 for(unsigned i=0;i<enemies.size();i++){ //Loop for all the enemies
                     posEnemy=enemies[i]->getPosition(); //Calculate the distance
@@ -534,7 +534,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
                     }
                 }
             break;
-            case RANGED:
+            case RANGED: //if is the crossbow
                 animations.activate(5);
                 ScriptLMD * animationHit=animations.getAnimation();
                 if(animationHit->getScriptState(6)==1 && shootDelay<(time-700)){

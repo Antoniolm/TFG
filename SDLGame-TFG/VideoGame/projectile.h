@@ -74,11 +74,25 @@ class Projectile : public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap );
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return if the projectile is live or not
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
         bool isLive();
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will calculate the head of our projectile because this is needed this position
+        *    to check the hits
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void calculateHead();
+
         vec3f velocity,projectileHead;
         bool live;
         float damage;

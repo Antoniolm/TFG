@@ -81,7 +81,20 @@ class MeshCollection
             return instance;
         }
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return a mesh -> parameters MeshIndex
+        *    \return Mesh *
+        */
+        //////////////////////////////////////////////////////////////////////////
         Mesh * getMesh(MeshIndex element);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return a mesh -> parameters string
+        *    \return Mesh *
+        */
+        //////////////////////////////////////////////////////////////////////////
         Mesh * getMesh(string element);
 
     protected:

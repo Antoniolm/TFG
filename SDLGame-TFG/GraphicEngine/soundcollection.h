@@ -48,8 +48,22 @@ class SoundCollection
             return instance;
         }
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return a sound -> parameters SoundIndex
+        *    \return Sound *
+        */
+        //////////////////////////////////////////////////////////////////////////
         Sound * getSound(SoundIndex element);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return a sound -> parameters string
+        *    \return Sound *
+        */
+        //////////////////////////////////////////////////////////////////////////
         Sound * getSound(string element);
+
     protected:
 
     private:

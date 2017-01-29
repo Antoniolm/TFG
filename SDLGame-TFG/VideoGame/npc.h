@@ -132,7 +132,7 @@ class Npc : public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    IA will check if that npc is in the first state.
+        *    It will check if that npc is in the first state.
         *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
@@ -142,6 +142,12 @@ class Npc : public Avatar
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will initialize the animation of our npc
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void initAnimation();
         IANpc stateMachine;
         Text * currentText;

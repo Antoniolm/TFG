@@ -63,7 +63,12 @@ class Particle : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
-
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the remaining time of our particle
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
         float getRemainingTime();
     protected:
 

@@ -90,8 +90,6 @@
 		<Unit filename="GraphicEngine/matrix4fdynamic.h" />
 		<Unit filename="GraphicEngine/matrixscript.cpp" />
 		<Unit filename="GraphicEngine/matrixscript.h" />
-		<Unit filename="GraphicEngine/matrixscriptloop.cpp" />
-		<Unit filename="GraphicEngine/matrixscriptloop.h" />
 		<Unit filename="GraphicEngine/matrixstack.cpp" />
 		<Unit filename="GraphicEngine/matrixstack.h" />
 		<Unit filename="GraphicEngine/matrixstatic.cpp" />
@@ -171,6 +169,8 @@
 		<Unit filename="VideoGame/projectilesystem.h" />
 		<Unit filename="VideoGame/rangedenemy.cpp" />
 		<Unit filename="VideoGame/rangedenemy.h" />
+		<Unit filename="VideoGame/weapon.cpp" />
+		<Unit filename="VideoGame/weapon.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

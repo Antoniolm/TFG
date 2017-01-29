@@ -36,12 +36,32 @@ class IAMeleeEnemy : public IAEnemy
         //////////////////////////////////////////////////////////////////////////
         virtual ~IAMeleeEnemy();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will calculate the next position and direction of our enemy
+        *    \return pair<avatarDirection,vec3f>
+        */
+        //////////////////////////////////////////////////////////////////////////
         pair<avatarDirection,vec3f> nextPosition(vec3f posEnemy,vec3f posHero,EnemyList * enemies);
 
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will obtain the position of all activated enemies and put his position in
+        *   a vector that will be return
+        *    \return vector<vec3f>
+        */
+        //////////////////////////////////////////////////////////////////////////
         vector<vec3f> obtainPosEnemies(vector<Enemy *> enemies,vec3f posCurrentEnemy);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will check collision between an enemy and the other
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
         bool checkCollision(vector<vec3f> & posEnemies,vec3f currentEnemy);
 };
 

@@ -62,6 +62,12 @@ class Texture
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will create a openGL texture
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void createTexture();
         std::string fileName;
         GLuint texture;

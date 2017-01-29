@@ -51,6 +51,12 @@ class MeleeEnemy : public Enemy
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will initialize the animation of our npc
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void initAnimation();
 
 };
