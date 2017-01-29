@@ -19,7 +19,6 @@
 
 #include "enemy.h"
 #include "../GraphicEngine/iaenemy.h"
-#include "weapon.h"
 
 Enemy::Enemy(){
 

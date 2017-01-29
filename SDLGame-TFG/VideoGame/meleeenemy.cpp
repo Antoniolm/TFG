@@ -42,6 +42,12 @@ MeleeEnemy::MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 
     //Print a message for check
     cout<< "< Game is loading our enemy >"<< endl;
+
+    //////////////////////////////////////////////////////
+    /////           Initialize weapon               /////
+    //////////////////////////////////////////////////////
+    weapon=new Weapon(vec3f(0.0,-0.1,0.4),MELEE,-15,CLUB,mENEMY);
+
     //////////////////////////////////////////////////////
     /////              All the sounds                /////
     //////////////////////////////////////////////////////
@@ -131,17 +137,13 @@ MeleeEnemy::MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     Matrix4f * transArms=new Matrix4f();
     transArms->translation(0.0,-0.3,-0.2);
 
-    Matrix4f * transWeapon=new Matrix4f();
-    transWeapon->translation(0.0,-0.1,0.4);
-
     //Arms
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transElbow);
     handRight->add(moveElbowRight);
     handRight->add(transHand);
     handRight->add(meshCollect->getMesh(EHAND));
-    handRight->add(transWeapon);
-    handRight->add(meshCollect->getMesh(CLUB));
+    handRight->add(weapon);
 
     NodeSceneGraph * handLeft=new NodeSceneGraph();
     handLeft->add(transElbow);
@@ -303,7 +305,7 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
         animations.activate(1);
         ScriptLMD * animationHit=animations.getAnimation();
         if((animationHit->getScriptState(4)==1) && hitDelay<(time-700)){
-            hero->takeDamage(position,direction,-10);
+            hero->takeDamage(position,direction,weapon->getDamage());
             hitDelay=time;
         }
         if((animationHit->getScriptState(4)==2)){ //if the hit has finished

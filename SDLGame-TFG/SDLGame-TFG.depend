@@ -2128,7 +2128,7 @@
 1484426476 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coinlist.cpp
 	"coinlist.h"
 
-1485541517 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
+1485682424 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
 	"projectile.h"
 
 1485682382 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
@@ -2149,7 +2149,7 @@
 	"enemylist.h"
 	<vector>
 
-1485337479 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
+1485682441 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
 	"projectilesystem.h"
 
 1485258428 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.h
@@ -2233,14 +2233,15 @@
 	"weapon.h"
 	<vector>
 
-1485629758 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\rangedenemy.cpp
+1485682471 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\rangedenemy.cpp
 	"rangedenemy.h"
 
-1485607383 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.h
+1485682660 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.h
 	"enemy.h"
 	"../lib/rapidjson/document.h"
 	"../GraphicEngine/iameleeenemy.h"
 	"enemylist.h"
+	"weapon.h"
 
 1485627119 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.cpp
 	"meleeenemy.h"
