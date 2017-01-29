@@ -37,12 +37,14 @@
 #include "../lib/rapidjson/document.h"
 #include <stdlib.h>
 
+
 #include <vector>
 
 using namespace std;
 class RootMap;
 class Text;
 class Weapon;
+class Projectile;
 class Hero: public AvatarMove
 {
     public:
@@ -146,6 +148,8 @@ class Hero: public AvatarMove
 
     private:
         void initAnimation();
+        void createProjectile();
+        vector<Projectile *> projectiles;
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> heroSound;
         AnimationList animations;

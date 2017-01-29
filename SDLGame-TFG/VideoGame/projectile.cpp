@@ -19,13 +19,15 @@
 
 #include "projectile.h"
 
-Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,float aDamage,Mesh * mesh,Material * material)
+Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,float aDamage,string mesh,string material)
 {
     direction=aDir;
     velocity=aVelocity;
     damage=aDamage;
     live=true;
 
+    MeshCollection * meshCollect = MeshCollection::getInstance();
+    MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
 
@@ -47,8 +49,8 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,floa
     root->add(moveAvatar);
     root->add(animationMatrix);
     root->add(transMatrix);
-    root->add(material);
-    root->add(mesh);
+    root->add(materialCollect->getMaterial(material));
+    root->add(meshCollect->getMesh(mesh));
 
     calculateHead();
 

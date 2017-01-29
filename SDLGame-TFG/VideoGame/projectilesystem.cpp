@@ -25,13 +25,10 @@ ProjectileSystem::ProjectileSystem(vec3f aRadio,vec3f aPos,vec3f aVeloc,int aDir
     position=aPos;
     velocity=aVeloc;
 
-    MaterialCollection * materialCollect=MaterialCollection::getInstance();
-    MeshCollection * meshCollect=MeshCollection::getInstance();
-
     direction=(avatarDirection)aDir;
     timeBWprojectile=aDelay;//time between one projectile and another
-    mesh=meshCollect->getMesh(aMesh);
-    material=materialCollect->getMaterial(aMaterial);
+    mesh=aMesh;
+    material=aMaterial;
     currentTime=SDL_GetTicks();
     projectileDelay=currentTime;
 }
@@ -49,8 +46,8 @@ ProjectileSystem::ProjectileSystem(const rapidjson::Value & projectileFeature){
 
     direction=(avatarDirection)projectileFeature["direction"].GetFloat();
     timeBWprojectile=projectileFeature["delay"].GetFloat();//time between one projectile and another
-    mesh=meshCollect->getMesh(projectileFeature["mesh"].GetString());
-    material=materialCollect->getMaterial(projectileFeature["material"].GetString());
+    mesh=projectileFeature["mesh"].GetString();
+    material=projectileFeature["material"].GetString();
     currentTime=SDL_GetTicks();
     projectileDelay=currentTime;
 }

@@ -46,11 +46,6 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
-    //INIT PROJECTILES
-    meshProjectile= meshCollect->getMesh(ARROW);
-    materialProjectile=materialCollect->getMaterial(mARCHENEMY);
-
-
     //Print a message for check
     cout<< "< Game is loading our enemy >"<< endl;
 
@@ -432,7 +427,7 @@ void RangedEnemy::createProjectile(vec3f posAvatar){
 
     }
 
-    projectiles.push_back(new Projectile(posProject,velocityProject,dirProject,weapon->getDamage(),meshProjectile,materialProjectile));
+    projectiles.push_back(new Projectile(posProject,velocityProject,dirProject,weapon->getDamage(),"ARROW","mARCHENEMY"));
 }
 
 

@@ -19,6 +19,7 @@
 
 #include "hero.h"
 #include "weapon.h"
+#include "projectile.h"
 
 Hero::Hero(vec3f aPos)
 {
@@ -35,6 +36,7 @@ Hero::Hero(vec3f aPos)
     life=150;
     position=vec4f(aPos.x,aPos.y,aPos.z,1.0);
     currentCoin=0;
+
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
@@ -312,9 +314,20 @@ Hero::~Hero()
 void Hero::visualization(Context & cv){
     root->visualization(cv);
 
+    ////////////////////////////
+    //DRAW texts
+    ////////////////////////////
     for(unsigned i=0;i<texts.size();i++)
         if(activatedTexts[i])
             texts[i]->visualization(cv);
+
+    ////////////////////////////
+    //DRAW PROJECTILES
+    ////////////////////////////
+    vector<Projectile *>::iterator it;
+    for(it=projectiles.begin();it!=projectiles.end();it++){
+        (*it)->visualization(cv);
+    }
 }
 
 //**********************************************************************//
@@ -433,7 +446,6 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         if(!isHitting)
             animations.resetAnimation(1);
         isHitting=true;
-        animations.activate(1);
         hitDelay=time;
     }
     else { // If hero is not hitting -> resetAnimation
@@ -503,13 +515,22 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     if(isHitting){
         vector<Enemy *> enemies=rootMap->getEnemyList()->getEnemies();
         vec3f posEnemy;float distance;
-        for(unsigned i=0;i<enemies.size();i++){ //Loop for all the enemies
-            posEnemy=enemies[i]->getPosition(); //Calculate the distance
-            distance=sqrt(pow(position.x-posEnemy.x,2.0)+pow(position.z-posEnemy.z,2.0));
+        switch(currentWeapon->getType()){
+            case MELEE:
+                animations.activate(1);
+                for(unsigned i=0;i<enemies.size();i++){ //Loop for all the enemies
+                    posEnemy=enemies[i]->getPosition(); //Calculate the distance
+                    distance=sqrt(pow(position.x-posEnemy.x,2.0)+pow(position.z-posEnemy.z,2.0));
 
-            if(distance<=1.0 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
-                enemies[i]->takeDamage(position,direction,currentWeapon->getDamage()); //Hit enemy
-            }
+                    if(distance<=1.0 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
+                        enemies[i]->takeDamage(position,direction,currentWeapon->getDamage()); //Hit enemy
+                    }
+                }
+            break;
+            case RANGED:
+                animations.activate(1);
+                createProjectile();
+            break;
         }
     }
 
@@ -552,6 +573,21 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     //If hero does not take a coin in the last 300 ms
     if(dmgDelay<time-1200)
         activateDialog(false,3);
+
+    ////////////////////////////
+    //UPDATE PROJECTILES
+    ////////////////////////////
+    vector<Projectile *>::iterator it=projectiles.begin();
+
+    while(it!=projectiles.end()){
+
+        (*it)->updateState(time,currentKeyStates,rootMap);
+        if(!(*it)->isLive()){
+            it=projectiles.erase(it);
+        }
+        else
+            it++;
+    }
 }
 
 //**********************************************************************//
@@ -1128,3 +1164,57 @@ bool Hero::isHit(){
     animations.add(animation);
 
  }
+
+//**********************************************************************//
+
+void Hero::createProjectile(){
+    vec3f posProject;
+    vec3f velocityProject;
+    avatarDirection dirProject=RIGHTWARD;
+
+    switch(direction){
+        case FORWARD:
+                posProject=vec3f(position.x,position.y,position.z+0.5);
+                velocityProject=vec3f(0.0,0.0,2.0);
+                dirProject=FORWARD;
+            break;
+        case BACKWARD:
+                posProject=vec3f(position.x,position.y,position.z-0.5);
+                velocityProject=vec3f(0.0,0.0,-2.0);
+                dirProject=BACKWARD;
+            break;
+        case LEFTWARD:
+                posProject=vec3f(position.x-0.5,position.y,position.z);
+                velocityProject=vec3f(-2.0,0.0,0.0);
+                dirProject=LEFTWARD;
+            break;
+        case RIGHTWARD:
+                posProject=vec3f(position.x+0.5,position.y,position.z);
+                velocityProject=vec3f(2.0,0.0,0.0);
+                dirProject=RIGHTWARD;
+            break;
+        case FOR_LEFTWARD:
+                posProject=vec3f(position.x-0.5,position.y,position.z+0.5);
+                velocityProject=vec3f(-2.0,0.0,2.0);
+                dirProject=FOR_LEFTWARD;
+            break;
+        case FOR_RIGHTWARD:
+                posProject=vec3f(position.x+0.5,position.y,position.z+0.5);
+                velocityProject=vec3f(2.0,0.0,2.0);
+                dirProject=FOR_RIGHTWARD;
+            break;
+        case BACK_LEFTWARD:
+                posProject=vec3f(position.x-0.5,position.y,position.z-0.5);
+                velocityProject=vec3f(-2.0,0.0,-2.0);
+                dirProject=BACK_LEFTWARD;
+            break;
+        case BACK_RIGHTWARD:
+                posProject=vec3f(position.x+0.5,position.y,position.z-0.5);
+                velocityProject=vec3f(2.0,0.0,-2.0);
+                dirProject=BACK_RIGHTWARD;
+
+            break;
+    }
+
+    projectiles.push_back(new Projectile(posProject,velocityProject,dirProject,currentWeapon->getDamage(),"ARROW","mARCHENEMY"));
+}

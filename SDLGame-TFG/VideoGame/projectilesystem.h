@@ -73,8 +73,7 @@ class ProjectileSystem : public Object3D
         avatarDirection direction;
         float projectileDelay; //time delay
         float timeBWprojectile;//time between one projectile and another
-        Mesh * mesh;
-        Material * material;
+        string mesh,material;
 };
 
 #endif // PROJECTILESYSTEM_H

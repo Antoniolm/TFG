@@ -25,6 +25,7 @@
 #include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/material.h"
 #include "../GraphicEngine/meshcollection.h"
+#include "../GraphicEngine/materialcollection.h"
 #include "../GraphicEngine/scriptlmd.h"
 #include "../GraphicEngine/context.h"
 #include "../GraphicEngine/matrixscript.h"
@@ -49,7 +50,7 @@ class Projectile : public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,float aDamage,Mesh * mesh,Material * material);
+        Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,float aDamage,string mesh,string material);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */

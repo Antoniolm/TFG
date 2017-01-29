@@ -73,8 +73,6 @@ class RangedEnemy : public Enemy
         void createProjectile(vec3f posAvatar);
         vector<Projectile *> projectiles;
         IAEnemy * secondIA;
-        Mesh * meshProjectile;
-        Material * materialProjectile;
 };
 
 #endif // RANGEDENEMY_H
