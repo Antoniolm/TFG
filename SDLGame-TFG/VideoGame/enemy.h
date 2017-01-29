@@ -42,6 +42,7 @@ using namespace std;
 class RootMap;
 class Text;
 class IAEnemy;
+class Weapon;
 class Enemy: public AvatarMove
 {
     public:
@@ -111,9 +112,10 @@ class Enemy: public AvatarMove
     protected:
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> enemySound;
-        AnimationList animations;
-        vec3f radioActivity;
         pair<avatarDirection,vec3f> currentMove;
+        AnimationList animations;
+        Weapon * weapon;
+        vec3f radioActivity;
         IAEnemy * IA;
         bool enemyActivate;
         bool activatedDialog;

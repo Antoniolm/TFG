@@ -18,6 +18,7 @@
 // *********************************************************************
 
 #include "hero.h"
+#include "weapon.h"
 
 Hero::Hero(vec3f aPos)
 {
@@ -40,6 +41,12 @@ Hero::Hero(vec3f aPos)
 
     //Print a message for check
     cout<< "< Game is loading our hero >"<< endl;
+
+    //////////////////////////////////////////////////////
+    /////           Initialize weapons               /////
+    //////////////////////////////////////////////////////
+    currentWeapon=new Weapon(vec3f(0.05,-0.1,0.68),MELEE,-25,SWORD,mSWORD);
+
 
     //////////////////////////////////////////////////////
     /////              All the sounds                /////
@@ -173,9 +180,7 @@ Hero::Hero(vec3f aPos)
     handRight->add(moveElbowTRight);
     handRight->add(transHand);
     handRight->add(meshCollect->getMesh(HAND));
-    handRight->add(tranSword);
-    handRight->add(materialCollect->getMaterial(mSWORD));
-    handRight->add(meshCollect->getMesh(SWORD));
+    handRight->add(currentWeapon);
 
     NodeSceneGraph * handLeft=new NodeSceneGraph();
     handLeft->add(transElbow);
@@ -479,12 +484,12 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     if(isHitting){
         vector<Enemy *> enemies=rootMap->getEnemyList()->getEnemies();
         vec3f posEnemy;float distance;
-        for(unsigned i=0;i<enemies.size();i++){
+        for(unsigned i=0;i<enemies.size();i++){ //Loop for all the enemies
             posEnemy=enemies[i]->getPosition(); //Calculate the distance
             distance=sqrt(pow(position.x-posEnemy.x,2.0)+pow(position.z-posEnemy.z,2.0));
 
             if(distance<=1.0 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
-                enemies[i]->takeDamage(position,direction,-10);
+                enemies[i]->takeDamage(position,direction,currentWeapon->getDamage()); //Hit enemy
             }
         }
     }

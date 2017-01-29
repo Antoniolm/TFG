@@ -49,7 +49,7 @@ class Projectile : public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh * mesh,Material * material);
+        Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,float aDamage,Mesh * mesh,Material * material);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -80,6 +80,7 @@ class Projectile : public AvatarMove
         void calculateHead();
         vec3f velocity,projectileHead;
         bool live;
+        float damage;
         Matrix4f * animationMatrix;
         AxisRotation * rotation;
 

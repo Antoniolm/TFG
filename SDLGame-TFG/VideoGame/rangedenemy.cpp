@@ -53,6 +53,12 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 
     //Print a message for check
     cout<< "< Game is loading our enemy >"<< endl;
+
+    //////////////////////////////////////////////////////
+    /////           Initialize weapon               /////
+    //////////////////////////////////////////////////////
+    weapon=new Weapon(vec3f(0.0,-0.4,0.0),RANGED,-25,CBOW,mARCHENEMY);
+
     //////////////////////////////////////////////////////
     /////              All the sounds                /////
     //////////////////////////////////////////////////////
@@ -60,6 +66,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 
     enemySound.push_back(soundCollect->getSound(EMOVE));
     enemySound.push_back(soundCollect->getSound(EHIT));
+
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
@@ -142,18 +149,13 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     Matrix4f * transArms=new Matrix4f();
     transArms->translation(0.0,-0.3,-0.2);
 
-    Matrix4f * transWeapon=new Matrix4f();
-    transWeapon->translation(0.0,-0.4,0.0);
-
-
     //Arms
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transElbow);
     handRight->add(moveElbowRight);
     handRight->add(transHand);
     handRight->add(meshCollect->getMesh(RHAND));
-    handRight->add(transWeapon);
-    handRight->add(meshCollect->getMesh(CBOW));
+    handRight->add(weapon);
 
     NodeSceneGraph * handLeft=new NodeSceneGraph();
     handLeft->add(transElbow);
@@ -430,7 +432,7 @@ void RangedEnemy::createProjectile(vec3f posAvatar){
 
     }
 
-    projectiles.push_back(new Projectile(posProject,velocityProject,dirProject,meshProjectile,materialProjectile));
+    projectiles.push_back(new Projectile(posProject,velocityProject,dirProject,weapon->getDamage(),meshProjectile,materialProjectile));
 }
 
 

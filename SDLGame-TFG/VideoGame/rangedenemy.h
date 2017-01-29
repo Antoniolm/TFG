@@ -25,6 +25,7 @@
 #include "../GraphicEngine/iarangedenemy.h"
 #include "../GraphicEngine/iameleeenemy.h"
 #include "projectile.h"
+#include "weapon.h"
 #include <vector>
 
 

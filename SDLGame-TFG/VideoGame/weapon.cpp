@@ -22,6 +22,7 @@
 Weapon::Weapon(vec3f aPos,WeaponType atype,float aDamage,MeshIndex mesh,MaterialIndex material)
 {
     damage=aDamage;
+    type=atype;
     position=vec4f(aPos.x,aPos.y,aPos.z,1.0);
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
@@ -54,5 +55,17 @@ void Weapon::visualization(Context & cv){
 
 void Weapon::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap ){
 
+}
+
+//**********************************************************************//
+
+float Weapon::getDamage(){
+    return damage;
+}
+
+//**********************************************************************//
+
+WeaponType Weapon::getType(){
+    return type;
 }
 

@@ -42,6 +42,7 @@
 using namespace std;
 class RootMap;
 class Text;
+class Weapon;
 class Hero: public AvatarMove
 {
     public:
@@ -150,6 +151,7 @@ class Hero: public AvatarMove
         AnimationList animations;
         vector<Text *> texts;
         vector<bool> activatedTexts;
+        Weapon * currentWeapon;
         float jumpDelay,hitDelay,coinDelay,shieldDelay;
         int currentCoin;
 };

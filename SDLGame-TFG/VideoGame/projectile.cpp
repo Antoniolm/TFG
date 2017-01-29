@@ -19,10 +19,11 @@
 
 #include "projectile.h"
 
-Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,Mesh * mesh,Material * material)
+Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,float aDamage,Mesh * mesh,Material * material)
 {
     direction=aDir;
     velocity=aVelocity;
+    damage=aDamage;
     live=true;
 
 
@@ -83,7 +84,7 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     float distance=sqrt(pow(posHead.x-posHero.x,2.0)+pow(posHead.z-posHero.z,2.0));
 
     if(distance<=0.3 && live && (position.y>posHero.y-1 && position.y<posHero.y+1)){
-        rootMap->getHero()->takeDamage(position,direction,-20);
+        rootMap->getHero()->takeDamage(position,direction,damage);
         live=false;
     }
 
@@ -96,7 +97,7 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
         distance=sqrt(pow(posHead.x-posEnemy.x,2.0)+pow(posHead.z-posEnemy.z,2.0));
 
         if(distance<=0.3 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
-            enemies[i]->takeDamage(position,direction,-20);
+            enemies[i]->takeDamage(position,direction,damage);
             live=false;
         }
     }

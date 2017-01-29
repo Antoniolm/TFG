@@ -65,6 +65,9 @@ class Weapon : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
 
+        float getDamage();
+
+        WeaponType getType();
     protected:
 
     private:
