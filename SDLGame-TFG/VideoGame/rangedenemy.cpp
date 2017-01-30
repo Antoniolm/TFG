@@ -295,7 +295,10 @@ void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap *
             IADelay=time;
         }
         if((currentMove.second.x!=0.0 || currentMove.second.y!=0.0 || currentMove.second.z!=0.0)&& !isImpacted){ //IA-> is not near of our hero
-            if(!moveBody(currentMove.second,currentMove.first) && !isJumping && !isFalling && jumpDelay<(time-1000)){ //If not move -> enemy jump
+
+            if(!moveBody(currentMove.second,currentMove.first) && !isJumping && !isFalling && jumpDelay<(time-1000)
+                && sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0))>4.0){ //If not move -> enemy jump
+
                 activeJump(vec3f(0.0,12.0,0.0),vec3f(0.0,5.0,0.0));
                 jumpDelay=time;
             }

@@ -26,7 +26,7 @@ MainMenu::MainMenu(vec3f posHero)
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainMenuStart.png");
-    Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
+    Material * materialBack=new Material(vec3f(0.2f, 0.2f, 0.2f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
 
     positionMenu=new Matrix4f();
     positionMenu->translation(posHero.x,posHero.y+5.25,posHero.z+13.0);
@@ -35,9 +35,9 @@ MainMenu::MainMenu(vec3f posHero)
     betweenMenu->translation(0.0,0.0,-0.1);
 
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(0.5,1.6,0.5);
+    scaleMenu->scale(0.4,1.8,0.5);
     Matrix4f * scaleMenuBack=new Matrix4f();
-    scaleMenuBack->scale(4.0,4.0,4.0);
+    scaleMenuBack->scale(2.5,2.5,2.5);
 
     Matrix4f * rotationMenu=new Matrix4f();
     rotationMenu->rotation(20,1.0,0.0,0.0);
@@ -92,7 +92,7 @@ void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
         currentTime=time-50;
 
     if(activateMenu){ //If the menu is activated
-        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)] && menuDelay<(time-300)){ //If the user push the action move on the menu
+        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)] && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption-=1;
             if(currentOption==-1)
                 currentOption=(options.size()-1);
@@ -102,7 +102,7 @@ void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
             moveSound->stop();
             moveSound->play();
         }
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)] && menuDelay<(time-300)){ //If the user push the action move on the menu
+        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption++;
             if((unsigned)currentOption==options.size())
                 currentOption=0;
@@ -113,7 +113,7 @@ void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
             moveSound->stop();
             moveSound->play();
         }
-        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_p)] && menuDelay<(time-300)){ //If the user push the action intro
+        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_e)] && menuDelay<(time-300)){ //If the user push the action intro
             switch(currentOption){
                 case 0:
                     activateMenu=false;

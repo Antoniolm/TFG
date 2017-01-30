@@ -222,7 +222,7 @@ void RootMap::visualization(Context & cv){
     //Draw object
     for(unsigned i=0;i<objs.size();i++){
         position=objs[i]->getPosition();
-        if(position.x>posHero.x-8 && position.x<posHero.x+8)
+        if(position.x>posHero.x-10 && position.x<posHero.x+10)
             objs[i]->visualization(cv);
     }
 
@@ -241,7 +241,7 @@ void RootMap::visualization(Context & cv){
     //Draw decoration object
     for(unsigned i=0;i<decorationObjs.size();i++){
         position=decorationObjs[i]->getPosition();
-        if(position.x>posHero.x-8 && position.x<posHero.x+8)
+        if(position.x>posHero.x-10 && position.x<posHero.x+10)
             decorationObjs[i]->visualization(cv);
     }
 

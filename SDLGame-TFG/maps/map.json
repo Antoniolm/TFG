@@ -74,18 +74,18 @@
             {   "life":40,
                 "position":[5.5,2.0,-6.5],
                 "radioActivity":[2.0,2.0,2.0],
-                "type":"melee"
+                "type":"ranged"
             },
             {   
                 "life":100,
                 "position":[2.5,2.0,-5.5],
-                "radioActivity":[1.0,1.0,1.0],
-                "type":"ranged"
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"melee"
             },   
             {   
                 "life":100,
                 "position":[8.5,2.0,-5.5],
-                "radioActivity":[1.0,1.0,1.0],
+                "radioActivity":[2.0,2.0,2.0],
                 "type":"melee"
             }
     ],
