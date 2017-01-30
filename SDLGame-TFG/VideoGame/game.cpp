@@ -26,7 +26,7 @@ Game* Game::instance = NULL;
 
 Game::Game(){
     window=Window::getInstance();
-    window->setParameters("SDL_Game",1000,800);
+    window->setParameters("SDL_Game",1200,800);
     window->createWindow();
 
     //Create our shader
@@ -89,7 +89,7 @@ void Game::loop(){
     vec3f direction(posHero.x,posHero.y,posHero.z);
     vec3f up(0.0,1.0,0.0);
     Camera camera;
-    camera.setPerspectiveProjection(30.0f,(float)( 1000.0f / 800.0f), 0.1f, 200.0f);
+    camera.setPerspectiveProjection(30.0f,(float)( 1200.0f / 800.0f), 0.1f, 200.0f);
     camera.setOrthographicProjection(-1,1,-1,1,-3,3);
     camera.setCamera(position,direction,up);
     camera.createCamera();
@@ -124,7 +124,9 @@ void Game::loop(){
 
         window->cleanScreen();
 
-        //Update the states
+        ///////////////////
+        // UPDATE STATE
+        ///////////////////
         time=SDL_GetTicks();
 
         if(!mainMenu->isActivate() && !deadMenu->isActivate()) //if  mainMenu and deadMenu is not activate
@@ -151,12 +153,14 @@ void Game::loop(){
 
         //Update the camera, lifeText, coinText
         posHero=hero->getPosition();
-        //camera.update(vec3f(posHero.x,posHero.y+12.0f,posHero.z+15.0f),posHero,currentKeyStates,&context.currentShader);
-        camera.update(vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f),posHero,currentKeyStates,&context.currentShader);
-        //camera.update(vec3f(posHero.x,posHero.y+1.0f,posHero.z+8.0f),posHero,currentKeyStates,&context.currentShader);
+
+        camera.update(currentKeyStates,&context.currentShader,rootMap);
         updateLife(lastLife);
         updateCoin(currentCoin);
 
+        ///////////////////
+        // VISUALIZATION
+        ///////////////////
         camera.activatePerspecProjection(&context.currentShader);
         rootMap->visualization(context);
 

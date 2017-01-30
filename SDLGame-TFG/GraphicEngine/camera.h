@@ -125,7 +125,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void update(vec3f aPos,vec3f aTarget,const Uint8* currentKeyStates,Shader * shader);
+        void update(const Uint8* currentKeyStates,Shader * shader,RootMap * rootMap);
 
         //////////////////////////////////////////////////////////////////////////
         /**

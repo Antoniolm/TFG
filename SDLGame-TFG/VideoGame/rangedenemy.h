@@ -80,7 +80,7 @@ class RangedEnemy : public Enemy
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void createProjectile(vec3f posAvatar);
+        void createProjectile();
 
         vector<Projectile *> projectiles;
         IAEnemy * secondIA;

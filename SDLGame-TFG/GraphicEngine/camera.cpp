@@ -134,10 +134,12 @@ void Camera::activatePerspecProjection(Shader * shader){
 
 //**********************************************************************//
 
-void Camera::update(vec3f pos,vec3f aTarget,const Uint8* currentKeyStates,Shader *shader){
+void Camera::update(const Uint8* currentKeyStates,Shader *shader,RootMap * rootMap){
+    vec3f posHero=rootMap->getHero()->getPosition();
 
-    position=pos;
-    target=aTarget;
+    //position=vec3f(posHero.x,posHero.y+1.0f,posHero.z+8.0f); // position for testing
+    position=vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f);
+    target=posHero;
     createCamera();
 
     GLint viewLocation= glGetUniformLocation(shader->getProgram(),"view");
