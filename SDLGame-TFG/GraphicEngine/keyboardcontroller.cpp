@@ -17,64 +17,61 @@
 // **
 // *********************************************************************
 
-#include "controller.h"
+#include "keyboardcontroller.h"
 
-Controller::Controller()
+KeyboardController::KeyboardController()
 {
     //ctor
 }
 
 //**********************************************************************//
 
-Controller::~Controller()
+KeyboardController::~KeyboardController()
 {
     //dtor
 }
 
 //**********************************************************************//
-void Controller::setButtonUp(bool value){}
-bool Controller::checkButtonUp(){}
+
+bool KeyboardController::checkButtonUp(){}
+
 
 //**********************************************************************//
 
-void Controller::setButtonDown(bool value){}
-bool Controller::checkButtonDown(){}
+bool KeyboardController::checkButtonDown(){}
+
 
 //**********************************************************************//
 
-void Controller::setButtonLeft(bool value){}
-bool Controller::checkButtonLeft(){}
+bool KeyboardController::checkButtonLeft(){}
 
 //**********************************************************************//
 
-void Controller::setButtonRight(bool value){}
-bool Controller::checkButtonRight(){}
+bool KeyboardController::checkButtonRight(){}
+
 
 //**********************************************************************//
 
-void Controller::setButtonInteract(bool value){}
-bool Controller::checkButtonInteract(){}
+bool KeyboardController::checkButtonInteract(){}
+
 
 //**********************************************************************//
 
-void Controller::setButtonJump(bool value){}
-bool Controller::checkButtonJump(){}
+bool KeyboardController::checkButtonJump(){}
+
 
 //**********************************************************************//
 
-void Controller::setButtonAttack(bool value){}
-bool Controller::checkButtonAttack(){}
+bool KeyboardController::checkButtonAttack(){}
 
 //**********************************************************************//
 
-void Controller::setButtonShield(bool value){}
-bool Controller::checkButtonShield(){}
+bool KeyboardController::checkButtonShield(){}
 
 //**********************************************************************//
 
-void Controller::setButtonSwap(bool value){}
-bool Controller::checkButtonSwap(){}
+bool KeyboardController::checkButtonSwap(){}
 
 //**********************************************************************//
 
-void Controller::catchKeyBoardState(const Uint8* currentKeyStates){}
+void KeyboardController::catchKeyBoardState(const Uint8* currentKeyStates){}

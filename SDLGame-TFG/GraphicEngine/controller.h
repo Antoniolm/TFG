@@ -20,6 +20,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include <SDL.H>
 
 class Controller
 {
@@ -60,6 +61,8 @@ class Controller
 
         virtual void setButtonSwap(bool value);
         virtual bool checkButtonSwap();
+
+        virtual void catchKeyBoardState(const Uint8* currentKeyStates);
     protected:
 
     private:

@@ -2280,3 +2280,15 @@
 1485685728 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\weapon.cpp
 	"weapon.h"
 
+1485808086 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\keyboardcontroller.cpp
+	"keyboardcontroller.h"
+
+1485808197 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\keyboardcontroller.h
+	"controller.h"
+
+1485808303 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.h
+	<SDL.H>
+
+1485808308 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.cpp
+	"controller.h"
+
