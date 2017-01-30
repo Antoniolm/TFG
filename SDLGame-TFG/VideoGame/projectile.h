@@ -26,6 +26,7 @@
 #include "../GraphicEngine/material.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/materialcollection.h"
+#include "../GraphicEngine/soundcollection.h"
 #include "../GraphicEngine/scriptlmd.h"
 #include "../GraphicEngine/context.h"
 #include "../GraphicEngine/matrixscript.h"
@@ -93,6 +94,7 @@ class Projectile : public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void calculateHead();
 
+        Sound * soundHit;
         vec3f velocity,projectileHead;
         bool live;
         float damage;

@@ -63,6 +63,7 @@ Hero::Hero(vec3f aPos)
     sound=new Sound("sounds/shield.wav",1,40,6,0);
     heroSound.push_back(sound);
     heroSound.push_back(soundCollect->getSound(SHOOT));
+    heroSound.push_back(soundCollect->getSound(sSWORD));
 
 
     //////////////////////////////////////////////////////
@@ -450,6 +451,8 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         if(!isHitting){
             animations.resetAnimation(1);
             animations.resetAnimation(5);
+            //heroSound[4]->stop();
+            //heroSound[4]->play();
         }
         isHitting=true;
         hitDelay=time;

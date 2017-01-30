@@ -5,3 +5,6 @@ Getting hit - Eeeh 01 (Mouth Fx) man voice by Flying_Deer_Fx  is licensed under 
 Dead Walking by soundmatch24 is licensed under the Creative Commons 0 License. http://www.freesound.org/people/soundmatch24/sounds/186876/ -> used in the sound: backsound.wav
 Shield Hit 1 by Liam Gilchrist is licensed under the Creative Commons http://www.freesound.org/people/CTCollab/sounds/223630/ -> used in the sound: shield.wav
 Bow01.wav by Erdie is licensed under Creative Commons 3 (https://creativecommons.org/licenses/by/3.0/) http://www.freesound.org/people/Erdie/sounds/65733/  -> used in the sound: shoot.wav
+sword_02.wav by dermotte is licensed under Creative Commons 3.0 http://www.freesound.org/people/dermotte/sounds/263011/ -> used in the sound : sword.wav
+Footsteps of soldier on ground.wav by Iberian_Runa is licensed under Creative Commons 3.0 http://www.freesound.org/people/Iberian_Runa/sounds/243794/ -> used in the sound : walking.wav
+arrow_damage.wav by braqoon is licensed under Creative Commons 0.0 http://www.freesound.org/people/braqoon/sounds/161098/ -> used in the sound : arrowHit.wav

@@ -1018,7 +1018,7 @@
 	<stdlib.h>
 	<vector>
 
-1485703384 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1485771495 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -2109,10 +2109,10 @@
 	<map>
 	<string>
 
-1485767837 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
+1485771469 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
 	"soundcollection.h"
 
-1485767846 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.h
+1485771475 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.h
 	"sound.h"
 	<vector>
 	<map>
@@ -2132,13 +2132,14 @@
 1485689228 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
 	"projectile.h"
 
-1485717187 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
+1485771565 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
 	"../GraphicEngine/material.h"
 	"../GraphicEngine/meshcollection.h"
 	"../GraphicEngine/materialcollection.h"
+	"../GraphicEngine/soundcollection.h"
 	"../GraphicEngine/scriptlmd.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/matrixscript.h"

@@ -28,6 +28,9 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,floa
 
     MeshCollection * meshCollect = MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
+    SoundCollection * soundCollect =SoundCollection::getInstance();
+
+    soundHit=soundCollect->getSound(sARROW);
 
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
 
@@ -111,6 +114,13 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     position=moveAvatar->product(vec4f());
     if(position.z>0.0 || position.x<0.0)
         live=false;
+
+
+    //Check if is not live
+    if(!live){
+        soundHit->stop();
+        soundHit->play();
+    }
 
     //Animation
     animationMatrix->setMatrix(rotation->updateState(time-currentTime).getMatrix());
