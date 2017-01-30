@@ -17,28 +17,30 @@
 // **
 // *********************************************************************
 
-#ifndef KEYBOARDCONTROLLER_H
-#define KEYBOARDCONTROLLER_H
+#ifndef GAMEPADCONTROLLER_H
+#define GAMEPADCONTROLLER_H
 
 #include "controller.h"
 
-class KeyboardController : public Controller
+class GamepadController : public Controller
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        KeyboardController();
+        GamepadController();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~KeyboardController();
+        virtual ~GamepadController();
 
-        void catchKeyBoardState(const Uint8* currentKeyStates);
+        void setButton(bool value,Uint8 button);
+
+
     protected:
 
     private:
 };
 
-#endif // KEYBOARDCONTROLLER_H
+#endif // GAMEPADCONTROLLER_H

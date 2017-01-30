@@ -59,7 +59,7 @@ Game::Game(){
     //////////////////////////////////////////////////////
     /////             Initialize controller          /////
     //////////////////////////////////////////////////////
-    controller=new KeyboardController();
+    controller=new GamepadController();
 
 }
 
@@ -125,34 +125,10 @@ void Game::loop(){
                 camera.activateCamera(&context.currentShader);
             }
             if(event.type==SDL_CONTROLLERBUTTONDOWN){
-                cout<<" The game controller is working"<< endl;
-                switch(event.cbutton.button){
-                    case SDL_CONTROLLER_BUTTON_A:
-                        cout<<"Push A"<<endl;
-                    break;
-                    case SDL_CONTROLLER_BUTTON_B:
-                        cout<<"Push B"<<endl;
-                    break;
-                    case SDL_CONTROLLER_BUTTON_Y:
-                        cout<<"Push Y"<<endl;
-                    break;
-                    case SDL_CONTROLLER_BUTTON_X:
-                        cout<<"Push X"<<endl;
-                    break;
-                    case SDL_CONTROLLER_BUTTON_DPAD_UP:
-                        cout<<"Push UP"<<endl;
-                    break;
-                    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-                        cout<<"Push DOWN"<<endl;
-                    break;
-                    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-                        cout<<"Push LEFT"<<endl;
-                    break;
-                    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-                        cout<<"Push RIGHT"<<endl;
-                    break;
-
-                }
+                controller->setButton(true,event.cbutton.button);
+            }
+            if(event.type==SDL_CONTROLLERBUTTONUP){
+                controller->setButton(false,event.cbutton.button);
             }
 
         }

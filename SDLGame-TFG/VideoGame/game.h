@@ -37,6 +37,7 @@
 #include "../GraphicEngine/deadmenu.h"
 #include "../GraphicEngine/controller.h"
 #include "../GraphicEngine/keyboardcontroller.h"
+#include "../GraphicEngine/gamepadcontroller.h"
 #include "projectile.h"
 #include "../lib/rapidjson/document.h"
 #include "../lib/rapidjson/stringbuffer.h"

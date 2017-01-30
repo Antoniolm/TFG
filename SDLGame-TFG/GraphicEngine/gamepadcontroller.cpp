@@ -17,66 +17,63 @@
 // **
 // *********************************************************************
 
-#include "controller.h"
+#include "gamepadcontroller.h"
 
-Controller::Controller()
+GamepadController::GamepadController()
 {
-    //ctor
+    buttonUp=false;
+    buttonDown=false;
+    buttonLeft=false;
+    buttonRight=false;
+    buttonAct=false;
+    buttonJmp=false;
+    buttonAtt=false;
+    buttonShield=false;
+    buttonSwap=false;
+    buttonPause=false;
 }
 
 //**********************************************************************//
 
-Controller::~Controller()
+GamepadController::~GamepadController()
 {
     //dtor
 }
 
 //**********************************************************************//
 
-void Controller::setButton(bool value,Uint8 button){}
-
-//**********************************************************************//
-
-bool Controller::checkButton(ControllerIndex button){
-    bool result=false;
-
+void GamepadController::setButton(bool value,Uint8 button){
     switch(button){
-        case cUP:
-            result=buttonUp;
+    case SDL_CONTROLLER_BUTTON_A:
+        buttonAct=value;
         break;
-        case cDOWN:
-            result=buttonDown;
+    case SDL_CONTROLLER_BUTTON_B:
+        buttonJmp=value;
         break;
-        case cRIGHT:
-            result=buttonRight;
+    case SDL_CONTROLLER_BUTTON_Y:
+        buttonSwap=value;
         break;
-        case cLEFT:
-            result=buttonLeft;
+    case SDL_CONTROLLER_BUTTON_DPAD_UP:
+        buttonUp=value;
         break;
-        case cACTION:
-            result=buttonAct;
+    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+        buttonDown=value;
         break;
-        case cJUMP:
-            result=buttonJmp;
+    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+        buttonLeft=value;
         break;
-        case cATTACK:
-            result=buttonAtt;
+    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+        buttonRight=value;
         break;
-        case cSHIELD:
-            result=buttonShield;
+    case SDL_CONTROLLER_BUTTON_LEFTSHOULDER:
+        buttonShield=value;
         break;
-        case cSWAPWEAPON:
-            result=buttonSwap;
+    case SDL_CONTROLLER_BUTTON_RIGHTSHOULDER:
+        buttonAtt=value;
         break;
-        case cPAUSE:
-            result=buttonPause;
+    case SDL_CONTROLLER_BUTTON_START:
+        buttonPause=value;
         break;
-
     }
+}
 
-
-    return result;}
-
-//**********************************************************************//
-
-void Controller::catchKeyBoardState(const Uint8* currentKeyStates){}

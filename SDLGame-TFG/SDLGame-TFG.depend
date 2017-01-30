@@ -373,7 +373,7 @@
 	<string>
 	"sound.h"
 
-1485812136 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1485815440 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -391,6 +391,7 @@
 	"../GraphicEngine/deadmenu.h"
 	"../GraphicEngine/controller.h"
 	"../GraphicEngine/keyboardcontroller.h"
+	"../GraphicEngine/gamepadcontroller.h"
 	"projectile.h"
 	"../lib/rapidjson/document.h"
 	"../lib/rapidjson/stringbuffer.h"
@@ -403,7 +404,7 @@
 	"window.h"
 	"file_obj.h"
 
-1485813338 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1485815511 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -2287,15 +2288,21 @@
 1485812950 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\weapon.cpp
 	"weapon.h"
 
-1485813138 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\keyboardcontroller.cpp
+1485814772 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\keyboardcontroller.cpp
 	"keyboardcontroller.h"
 
-1485810593 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\keyboardcontroller.h
+1485814774 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\keyboardcontroller.h
 	"controller.h"
 
 1485813092 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.h
 	<SDL.H>
 
-1485810443 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.cpp
+1485814768 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.cpp
 	"controller.h"
+
+1485814790 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.h
+	"controller.h"
+
+1485815367 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.cpp
+	"gamepadcontroller.h"
 
