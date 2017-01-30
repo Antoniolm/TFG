@@ -827,8 +827,14 @@ bool Hero::isHit(){
     //Matrix4fDinamic
     OscillateRotation * oscillateBody=new OscillateRotation(true,5,0,1,25,vec3f(0,1,0),1);
     OscillateRotation * oscillateBodySecond=new OscillateRotation(false,0,-5,1,25,vec3f(0,1,0),1);
-    LinearMovement * transBody=new LinearMovement(vec3f(0,2.0,0));
-    LinearMovement * transBodySecond=new LinearMovement(vec3f(0,-2.0,0));
+
+    Matrix4f * transBody=new Matrix4f();
+    transBody->translation(0,0.05,0);
+    MatrixStatic * staticBody=new MatrixStatic(*transBody);
+
+    Matrix4f * transBodySecond=new Matrix4f();
+    transBodySecond->translation(0,-0.05,0);
+    MatrixStatic * staticBodySecond=new MatrixStatic(*transBodySecond);
 
     //Movement to the first arm
     MatrixScript * bodyScript=new MatrixScript();
@@ -837,10 +843,10 @@ bool Hero::isHit(){
 
     //Movement to the first arm
     MatrixScript * bodyTScript=new MatrixScript();
-    bodyTScript->add(0.15,transBody);
-    bodyTScript->add(0.15,transBodySecond);
-    bodyTScript->add(0.15,transBody);
-    bodyTScript->add(0.15,transBodySecond);
+    bodyTScript->add(0.15,staticBody);
+    bodyTScript->add(0.15,staticBodySecond);
+    bodyTScript->add(0.15,staticBody);
+    bodyTScript->add(0.15,staticBodySecond);
 
     animation->add(bodyScript);
     animation->add(bodyTScript);
@@ -1024,10 +1030,10 @@ bool Hero::isHit(){
 
     //Movement to the first arm
     bodyTScript=new MatrixScript();
-    bodyTScript->add(0.15,transBody);
-    bodyTScript->add(0.15,transBodySecond);
-    bodyTScript->add(0.15,transBody);
-    bodyTScript->add(0.15,transBodySecond);
+    bodyTScript->add(0.15,staticBody);
+    bodyTScript->add(0.15,staticBodySecond);
+    bodyTScript->add(0.15,staticBody);
+    bodyTScript->add(0.15,staticBodySecond);
 
     animation->add(bodyScript);
     animation->add(bodyTScript);

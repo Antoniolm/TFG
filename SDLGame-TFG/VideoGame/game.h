@@ -40,6 +40,7 @@
 #include "../lib/rapidjson/stringbuffer.h"
 #include "../lib/rapidjson/filereadstream.h"
 #include "hero.h"
+#include <SDL_gamecontroller.h>
 #include <sstream>
 
 class Game

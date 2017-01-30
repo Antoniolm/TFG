@@ -360,9 +360,10 @@
 1476032874 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\game.h
 	"GraphicEngine/window.h"
 
-1485717337 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
+1485802787 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
 	<glew.h>
 	<SDL.h>
+	<SDL_gamecontroller.h>
 	<SDL_opengl.h>
 	<SDL_mixer.h>
 	<SDL_TTF.h>
@@ -372,7 +373,7 @@
 	<string>
 	"sound.h"
 
-1484306078 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1485802800 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -393,13 +394,14 @@
 	"../lib/rapidjson/stringbuffer.h"
 	"../lib/rapidjson/filereadstream.h"
 	"hero.h"
+	<SDL_gamecontroller.h>
 	<sstream>
 
-1485773490 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1485804954 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
-1485781661 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1485805683 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1482066210 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1018,7 +1020,7 @@
 	<stdlib.h>
 	<vector>
 
-1485787625 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1485793454 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -2092,7 +2094,7 @@
 	<vector>
 	<string>
 
-1485718503 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
+1485794673 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
 	"material.h"
 	<vector>
 	<map>
@@ -2100,7 +2102,7 @@
 	"collection.cpp"
 	<string>
 
-1485558058 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
+1485794704 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
 	"materialcollection.h"
 
 1482586318 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\enumparser.cpp

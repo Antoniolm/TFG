@@ -30,7 +30,10 @@
 enum SoundIndex{
     sCoin, //0
     EMOVE,
-    EHIT
+    EHIT,
+    SHOOT,
+    sSWORD,
+    sARROW
 };
 
 class SoundCollection

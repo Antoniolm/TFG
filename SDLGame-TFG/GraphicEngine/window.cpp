@@ -54,6 +54,9 @@ void Window::setParameters(const string & aTitle,int aHeight,int aWidth){
 
 bool Window::createWindow(){
     bool salida=true;
+
+    SDL_GameController * controller= NULL;
+
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		printf("SDL_Error: %s\n", SDL_GetError());
 		salida=false;
@@ -86,6 +89,19 @@ bool Window::createWindow(){
         cout << "SDL_ttf could not initialize! SDL_ttf Error:"<< endl;
         salida=false;
     }
+
+    /////////////////////////////////////////////////////////////
+    //Configure the game controller
+
+    for(int i=0;i< SDL_NumJoysticks();i++){
+        if(SDL_IsGameController(i)){
+            controller=SDL_GameControllerOpen(i);
+            cout<< "---Gamepad connected---"<<endl;
+        }
+    }
+
+    /////////////////////////////////////////////////////////////
+
     glewInit();
 
     glEnable(GL_DEPTH_TEST);

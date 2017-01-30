@@ -22,6 +22,7 @@
 
 #include <glew.h>
 #include <SDL.h>
+#include <SDL_gamecontroller.h>
 #include <SDL_opengl.h>
 #include <SDL_mixer.h>
 #include <SDL_TTF.h>

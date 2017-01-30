@@ -33,6 +33,7 @@ enum MaterialIndex{
     mCUBE_GRASS, //0
     mCUBE_BOX,   //3
     mCUBE_DUNG,   //3
+    mCUBE_DUNGB,
     mCUBE_WALL,
     mWATER,      //7
     mDWATER,      //7

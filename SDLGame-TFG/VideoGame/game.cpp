@@ -104,7 +104,7 @@ void Game::loop(){
             if (event.type == SDL_QUIT){
                 quit = true;
             }
-            if( event.window.event==SDL_WINDOWEVENT_RESIZED ){
+            if(event.type==SDL_MOUSEBUTTONDOWN && event.window.event==SDL_WINDOWEVENT_RESIZED ){
                 if(event.window.data2<600)windowH=600; //MinHeight
                 else windowH=event.window.data2;
 
@@ -118,6 +118,10 @@ void Game::loop(){
                     camera.setPerspectiveProjection(30.0f,(float)( windowH / windowW), 0.1f, 200.0f);
                 camera.activateCamera(&context.currentShader);
             }
+            if(event.type==SDL_CONTROLLERBUTTONDOWN){
+                cout<<" The game controller is working"<< endl;
+            }
+
         }
 
         currentKeyStates=SDL_GetKeyboardState(NULL);
