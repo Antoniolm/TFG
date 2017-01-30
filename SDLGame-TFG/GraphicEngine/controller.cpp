@@ -32,48 +32,12 @@ Controller::~Controller()
 }
 
 //**********************************************************************//
-void Controller::setButtonUp(bool value){}
-bool Controller::checkButtonUp(){}
+
+void Controller::setButton(bool value,Uint8 button){}
 
 //**********************************************************************//
 
-void Controller::setButtonDown(bool value){}
-bool Controller::checkButtonDown(){}
-
-//**********************************************************************//
-
-void Controller::setButtonLeft(bool value){}
-bool Controller::checkButtonLeft(){}
-
-//**********************************************************************//
-
-void Controller::setButtonRight(bool value){}
-bool Controller::checkButtonRight(){}
-
-//**********************************************************************//
-
-void Controller::setButtonInteract(bool value){}
-bool Controller::checkButtonInteract(){}
-
-//**********************************************************************//
-
-void Controller::setButtonJump(bool value){}
-bool Controller::checkButtonJump(){}
-
-//**********************************************************************//
-
-void Controller::setButtonAttack(bool value){}
-bool Controller::checkButtonAttack(){}
-
-//**********************************************************************//
-
-void Controller::setButtonShield(bool value){}
-bool Controller::checkButtonShield(){}
-
-//**********************************************************************//
-
-void Controller::setButtonSwap(bool value){}
-bool Controller::checkButtonSwap(){}
+bool Controller::checkButton(ControllerIndex button){return false;}
 
 //**********************************************************************//
 

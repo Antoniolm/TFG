@@ -25,28 +25,17 @@
 class KeyboardController : public Controller
 {
     public:
-        /** Default constructor */
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
         KeyboardController();
-        /** Default destructor */
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
         virtual ~KeyboardController();
 
-        bool checkButtonUp();
-
-        bool checkButtonDown();
-
-        bool checkButtonLeft();
-
-        bool checkButtonRight();
-
-        bool checkButtonInteract();
-
-        bool checkButtonJump();
-
-        bool checkButtonAttack();
-
-        bool checkButtonShield();
-
-        bool checkButtonSwap();
+        bool checkButton(ControllerIndex button);
 
         void catchKeyBoardState(const Uint8* currentKeyStates);
     protected:

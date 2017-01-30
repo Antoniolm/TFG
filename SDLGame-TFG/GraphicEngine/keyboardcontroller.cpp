@@ -33,45 +33,72 @@ KeyboardController::~KeyboardController()
 
 //**********************************************************************//
 
-bool KeyboardController::checkButtonUp(){}
+bool KeyboardController::checkButton(ControllerIndex button){
+    bool result;
 
+    switch(button){
+        case UP:
+            result=buttonUp;
+        break;
+        case DOWN:
+            result=buttonDown;
+        break;
+        case RIGHT:
+            result=buttonRight;
+        break;
+        case LEFT:
+            result=buttonLeft;
+        break;
+        case ACTION:
+            result=buttonAct;
+        break;
+        case JUMP:
+            result=buttonJmp;
+        break;
+        case ATTACK:
+            result=buttonAtt;
+        break;
+        case SHIELD:
+            result=buttonShield;
+        break;
+        case SWAPWEAPON:
+            result=buttonSwap;
+        break;
+
+    }
+
+
+    return result;
+}
 
 //**********************************************************************//
 
-bool KeyboardController::checkButtonDown(){}
+void KeyboardController::catchKeyBoardState(const Uint8* currentKeyStates){
 
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)]) buttonUp=true;
+    else buttonUp=false;
 
-//**********************************************************************//
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)]) buttonDown=true;
+    else buttonDown=false;
 
-bool KeyboardController::checkButtonLeft(){}
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)]) buttonLeft=true;
+    else buttonLeft=false;
 
-//**********************************************************************//
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]) buttonRight=true;
+    else buttonRight=false;
 
-bool KeyboardController::checkButtonRight(){}
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_e)]) buttonAct=true;
+    else buttonAct=false;
 
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_i)]) buttonShield=true;
+    else buttonShield=false;
 
-//**********************************************************************//
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_k)]) buttonJmp=true;
+    else buttonJmp=false;
 
-bool KeyboardController::checkButtonInteract(){}
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_l)]) buttonAtt=true;
+    else buttonAtt=false;
 
-
-//**********************************************************************//
-
-bool KeyboardController::checkButtonJump(){}
-
-
-//**********************************************************************//
-
-bool KeyboardController::checkButtonAttack(){}
-
-//**********************************************************************//
-
-bool KeyboardController::checkButtonShield(){}
-
-//**********************************************************************//
-
-bool KeyboardController::checkButtonSwap(){}
-
-//**********************************************************************//
-
-void KeyboardController::catchKeyBoardState(const Uint8* currentKeyStates){}
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_q)]) buttonSwap=true;
+    else buttonSwap=false;
+}

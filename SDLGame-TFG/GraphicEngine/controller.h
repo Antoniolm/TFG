@@ -22,6 +22,18 @@
 
 #include <SDL.H>
 
+enum ControllerIndex{
+    UP,
+    DOWN,
+    RIGHT,
+    LEFT,
+    ACTION,
+    JUMP,
+    ATTACK,
+    SHIELD,
+    SWAPWEAPON
+};
+
 class Controller
 {
     public:
@@ -35,37 +47,16 @@ class Controller
         //////////////////////////////////////////////////////////////////////////
         virtual ~Controller();
 
-        virtual void setButtonUp(bool value);
-        virtual bool checkButtonUp();
+        virtual void setButton(bool value,Uint8 button);
 
-        virtual void setButtonDown(bool value);
-        virtual bool checkButtonDown();
-
-        virtual void setButtonLeft(bool value);
-        virtual bool checkButtonLeft();
-
-        virtual void setButtonRight(bool value);
-        virtual bool checkButtonRight();
-
-        virtual void setButtonInteract(bool value);
-        virtual bool checkButtonInteract();
-
-        virtual void setButtonJump(bool value);
-        virtual bool checkButtonJump();
-
-        virtual void setButtonAttack(bool value);
-        virtual bool checkButtonAttack();
-
-        virtual void setButtonShield(bool value);
-        virtual bool checkButtonShield();
-
-        virtual void setButtonSwap(bool value);
-        virtual bool checkButtonSwap();
+        virtual bool checkButton(ControllerIndex button);
 
         virtual void catchKeyBoardState(const Uint8* currentKeyStates);
     protected:
-
+        bool buttonUp,buttonDown,buttonLeft,buttonRight;
+        bool buttonAct,buttonJmp,buttonAtt,buttonShield,buttonSwap;
     private:
+
 };
 
 #endif // CONTROLLER_H
