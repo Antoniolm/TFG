@@ -81,7 +81,7 @@ void DeadMenu::visualization(Context & cv){
 
 //**********************************************************************//
 
-void DeadMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void DeadMenu::updateState(float time,Controller * controller,RootMap * rootMap){
     vec3f position;
 
     if(time-currentTime>200)
@@ -90,7 +90,7 @@ void DeadMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
     if(activateMenu){ //If the menu is activated
         position=rootMap->getHero()->getPosition();
         positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
-        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_e)] && menuDelay<(time-300)){ //If the user push the action intro
+        if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             exit(0);
             menuDelay=time;
         }

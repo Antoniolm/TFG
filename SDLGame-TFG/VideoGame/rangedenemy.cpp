@@ -268,7 +268,7 @@ void RangedEnemy::visualization(Context & cv){
 
 //**********************************************************************//
 
-void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void RangedEnemy::updateState(float time,Controller * controller,RootMap * rootMap){
     vec3f aux;
     currentMap=rootMap;
     Hero * hero=rootMap->getHero();
@@ -358,7 +358,7 @@ void RangedEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap *
     ////////////////////////////
     vector<Projectile *>::iterator it=projectiles.begin();
     while(it!=projectiles.end()){
-        (*it)->updateState(time,currentKeyStates,rootMap);
+        (*it)->updateState(time,controller,rootMap);
         if(!(*it)->isLive()){
             it=projectiles.erase(it);
         }

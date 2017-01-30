@@ -81,12 +81,12 @@ void PauseMenu::visualization(Context & cv){
 
 //**********************************************************************//
 
-void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void PauseMenu::updateState(float time,Controller * controller,RootMap * rootMap){
     vec3f position;
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)] && menuDelay<(time-600)){
+    if(controller->checkButton(cPAUSE) && menuDelay<(time-600)){
         activateMenu=!activateMenu;
         menuDelay=time;
         if(activateMenu){
@@ -100,7 +100,7 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
         openSound->play();
     }
     if(activateMenu){ //If the menu is activated
-        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)] && menuDelay<(time-300)){ //If the user push the action move on the menu
+        if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption-=1;
             if(currentOption==-1)
                 currentOption=(options.size()-1);
@@ -110,7 +110,7 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
             moveSound->stop();
             moveSound->play();
         }
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && menuDelay<(time-300)){ //If the user push the action move on the menu
+        else if(controller->checkButton(cDOWN) && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption++;
             if((unsigned)currentOption==options.size())
                 currentOption=0;
@@ -120,7 +120,7 @@ void PauseMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * r
             moveSound->stop();
             moveSound->play();
         }
-        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_e)] && menuDelay<(time-300)){ //If the user push the action intro
+        if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             switch(currentOption){
                 case 0:
                     currentOption=0;

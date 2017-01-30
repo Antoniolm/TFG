@@ -35,6 +35,8 @@
 #include "../GraphicEngine/pausemenu.h"
 #include "../GraphicEngine/mainmenu.h"
 #include "../GraphicEngine/deadmenu.h"
+#include "../GraphicEngine/controller.h"
+#include "../GraphicEngine/keyboardcontroller.h"
 #include "projectile.h"
 #include "../lib/rapidjson/document.h"
 #include "../lib/rapidjson/stringbuffer.h"
@@ -87,6 +89,7 @@ class Game
         MainMenu * mainMenu;
         DeadMenu * deadMenu;
         Text * lifeText,* coinText;
+        Controller * controller;
         Context context;
 };
 

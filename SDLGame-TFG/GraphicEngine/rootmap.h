@@ -47,6 +47,8 @@
 #include "voxel.h"
 #include "voxelgroup.h"
 #include "sound.h"
+#include "controller.h"
+#include "keyboardcontroller.h"
 
 using namespace std;
 
@@ -92,7 +94,7 @@ class RootMap : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
+        void updateState(float time,Controller * controller,RootMap * rootMap);
 
         //////////////////////////////////////////////////////////////////////////
         /**

@@ -98,7 +98,7 @@ class NodeSceneGraph : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap );
+        void updateState(float time,Controller * controller,RootMap * rootMap );
 
         //////////////////////////////////////////////////////////////////////////
         /**

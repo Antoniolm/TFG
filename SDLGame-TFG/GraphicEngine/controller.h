@@ -23,15 +23,16 @@
 #include <SDL.H>
 
 enum ControllerIndex{
-    UP,
-    DOWN,
-    RIGHT,
-    LEFT,
-    ACTION,
-    JUMP,
-    ATTACK,
-    SHIELD,
-    SWAPWEAPON
+    cUP,
+    cDOWN,
+    cRIGHT,
+    cLEFT,
+    cACTION,
+    cJUMP,
+    cATTACK,
+    cSHIELD,
+    cSWAPWEAPON,
+    cPAUSE
 };
 
 class Controller
@@ -54,7 +55,7 @@ class Controller
         virtual void catchKeyBoardState(const Uint8* currentKeyStates);
     protected:
         bool buttonUp,buttonDown,buttonLeft,buttonRight;
-        bool buttonAct,buttonJmp,buttonAtt,buttonShield,buttonSwap;
+        bool buttonAct,buttonJmp,buttonAtt,buttonShield,buttonSwap,buttonPause;
     private:
 
 };

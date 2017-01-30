@@ -101,7 +101,7 @@ void Npc::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Npc::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
+void Npc::updateState(float time,Controller * controller,RootMap * rootMap  ){
     if(time-currentTime>200)
         currentTime=time-50;
 

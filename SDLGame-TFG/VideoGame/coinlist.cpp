@@ -55,10 +55,10 @@ void CoinList::visualization(Context & cv){
 
 //**********************************************************************//
 
-void CoinList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
+void CoinList::updateState(float time,Controller * controller,RootMap * rootMap  ){
     vector<Coin*>::iterator it=coins.begin();
     while(it!=coins.end()){
-        (*it)->updateState(time,currentKeyStates,rootMap);
+        (*it)->updateState(time,controller,rootMap);
         if((*it)->isTake()){
             delete (*it);
             coins.erase(it);

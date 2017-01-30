@@ -77,7 +77,7 @@ void Projectile::visualization(Context & vis){
 
 //**********************************************************************//
 
-void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap ){
+void Projectile::updateState(float time,Controller * controller,RootMap * rootMap ){
     if(time-currentTime>200)
         currentTime=time-50;
 
@@ -110,7 +110,7 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     if(live) //if not collision with something
         live=moveBody(velocity,direction);
 
-    root->updateState(time,currentKeyStates,rootMap);
+    root->updateState(time,controller,rootMap);
     position=moveAvatar->product(vec4f());
     if(position.z>0.0 || position.x<0.0)
         live=false;

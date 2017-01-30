@@ -260,32 +260,32 @@ void RootMap::visualization(Context & cv){
 
 //**********************************************************************//
 
-void RootMap::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void RootMap::updateState(float time,Controller * controller,RootMap * rootMap){
     if(time-currentTime>200)
         currentTime=time-50;
 
     //Update the hero
-    hero->updateState(time,currentKeyStates,rootMap);
+    hero->updateState(time,controller,rootMap);
 
     //Update the Scene
     for(unsigned i=0;i<objs.size();i++)
-        objs[i]->updateState(time,currentKeyStates,rootMap);
+        objs[i]->updateState(time,controller,rootMap);
 
     //Update the Scene
-    coinList->updateState(time,currentKeyStates,rootMap);
+    coinList->updateState(time,controller,rootMap);
 
     //Update particles system
     for(unsigned i=0;i<particleSystem.size();i++){
-        particleSystem[i]->updateState(time,currentKeyStates,rootMap);
+        particleSystem[i]->updateState(time,controller,rootMap);
     }
 
     //Update projectile system
     for(unsigned i=0;i<projectileSystem.size();i++){
-        projectileSystem[i]->updateState(time,currentKeyStates,rootMap);
+        projectileSystem[i]->updateState(time,controller,rootMap);
     }
 
-    npcList->updateState(time,currentKeyStates,rootMap);
-    enemyList->updateState(time,currentKeyStates,rootMap);
+    npcList->updateState(time,controller,rootMap);
+    enemyList->updateState(time,controller,rootMap);
     currentTime+=time-currentTime;
 }
 

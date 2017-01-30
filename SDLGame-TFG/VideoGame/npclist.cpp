@@ -66,7 +66,7 @@ void NpcList::visualization(Context & cv){
 
 //**********************************************************************//
 
-void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap  ){
+void NpcList::updateState(float time,Controller * controller,RootMap * rootMap  ){
 
     //Check if the hero is speaking with a avatar
     bool isActivate=false,isNearNpc=false;vec3f distance,posHero;unsigned currentNpc;
@@ -74,7 +74,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     Hero * hero=rootMap->getHero();
     posHero=hero->getPosition();
     for(unsigned i=0;i<npcs.size() && !isActivate;i++){ //Check if hero is talking now
-        npcs[i]->updateState(time,currentKeyStates,rootMap);
+        npcs[i]->updateState(time,controller,rootMap);
         isActivate=npcs[i]->getActivate();
         currentNpc=i;
 
@@ -100,7 +100,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     }
 
     //User push the button -> J
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_e)] && dialogTime<(time-400.0)){
+    if(controller->checkButton(cACTION) && dialogTime<(time-400.0)){
         if(isActivate){ //If hero is talking -> nextDialog
                 npcs[currentNpc]->nextDialog();
                 //Check the speaker

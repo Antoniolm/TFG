@@ -85,14 +85,14 @@ void MainMenu::visualization(Context & cv){
 
 //**********************************************************************//
 
-void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void MainMenu::updateState(float time,Controller * controller,RootMap * rootMap){
     vec3f position;
 
     if(time-currentTime>200)
         currentTime=time-50;
 
     if(activateMenu){ //If the menu is activated
-        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)] && menuDelay<(time-300)){ //If the user push the action move on the menu
+        if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption-=1;
             if(currentOption==-1)
                 currentOption=(options.size()-1);
@@ -102,7 +102,7 @@ void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
             moveSound->stop();
             moveSound->play();
         }
-        else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && menuDelay<(time-300)){ //If the user push the action move on the menu
+        else if(controller->checkButton(cDOWN) && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption++;
             if((unsigned)currentOption==options.size())
                 currentOption=0;
@@ -113,7 +113,7 @@ void MainMenu::updateState(float time,const Uint8* currentKeyStates,RootMap * ro
             moveSound->stop();
             moveSound->play();
         }
-        if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_e)] && menuDelay<(time-300)){ //If the user push the action intro
+        if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             switch(currentOption){
                 case 0:
                     activateMenu=false;

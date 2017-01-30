@@ -241,7 +241,7 @@ MeleeEnemy::~MeleeEnemy()
 
 //**********************************************************************//
 
-void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void MeleeEnemy::updateState(float time,Controller * controller,RootMap * rootMap){
     vec3f aux;
     currentMap=rootMap;
     Hero * hero=rootMap->getHero();

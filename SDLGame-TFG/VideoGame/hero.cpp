@@ -342,7 +342,7 @@ void Hero::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void Hero::updateState(float time,Controller * controller,RootMap * rootMap){
     bool hasMove=true;
 
     avatarDirection heroDir=direction;
@@ -353,8 +353,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         currentTime=time-50;
 
     //Case-> Push Left bottom
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] && !currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] &&
-    !currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)]){
+    if(controller->checkButton(cLEFT) && !controller->checkButton(cDOWN) && !controller->checkButton(cUP)){
         if(!isJumping && !isFalling){
             moveHero.x=-3.0;moveHero.z=0.0;
         }
@@ -364,8 +363,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         heroDir=LEFTWARD;
     }
     //Case-> Push Right bottom
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] &&
-    !currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)]){
+    else if(controller->checkButton(cRIGHT) && !controller->checkButton(cDOWN) && !controller->checkButton(cUP)){
         if(!isJumping && !isFalling){
             moveHero.x=3.0;moveHero.z=0.0;
         }
@@ -375,8 +373,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         heroDir=RIGHTWARD;
     }
     //Case-> Push Up bottom
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] &&
-    !currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]){
+    else if(controller->checkButton(cUP) && !controller->checkButton(cLEFT) && !controller->checkButton(cRIGHT)){
         if(!isJumping && !isFalling){
             moveHero.x=0.0;moveHero.z=-3.0;
         }
@@ -386,8 +383,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         heroDir=BACKWARD;
     }
     //Case-> Push Down bottom
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)]&& !currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] &&
-    !currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]){
+    else if(controller->checkButton(cDOWN) && !controller->checkButton(cLEFT) && !controller->checkButton(cRIGHT)){
         if(!isJumping && !isFalling){
             moveHero.x=0.0;moveHero.z=3.0;
         }
@@ -397,7 +393,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         heroDir=FORWARD;
     }
     //Case-> Push Dowm-Left bottoms
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] ){
+    else if(controller->checkButton(cDOWN) && controller->checkButton(cLEFT) ){
         if(!isJumping && !isFalling){
             moveHero.x=-2.0;moveHero.z=2.0;
         }
@@ -407,7 +403,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         heroDir=FOR_LEFTWARD;
     }
     //Case-> Push Dowm-Right bottoms
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)] ){
+    else if(controller->checkButton(cDOWN) && controller->checkButton(cRIGHT) ){
         if(!isJumping && !isFalling){
             moveHero.x=2.0;moveHero.z=2.0;
         }
@@ -417,7 +413,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         heroDir=FOR_RIGHTWARD;
     }
     //Case-> Push Up-Left bottoms
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)]){
+    else if(controller->checkButton(cUP) && controller->checkButton(cLEFT)){
         if(!isJumping && !isFalling){
             moveHero.x=-2.0;moveHero.z=-2.0;
         }
@@ -427,7 +423,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
         heroDir=BACK_LEFTWARD;
     }
     //Case-> Push Up-Right bottoms
-    else if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)] && currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)] ){
+    else if(controller->checkButton(cUP) && controller->checkButton(cRIGHT) ){
         if(!isJumping && !isFalling){
             moveHero.x=2.0;moveHero.z=-2.0;
         }
@@ -446,13 +442,13 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
 
     //Case-> Push S bottom to jump
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_k)] && !isJumping && !isFalling && !isImpacted && !isShielded && jumpDelay<(time-600) ){
+    if(controller->checkButton(cJUMP) && !isJumping && !isFalling && !isImpacted && !isShielded && jumpDelay<(time-600) ){
         activeJump(vec3f(velocityHero.x,15.0,velocityHero.y),vec3f(accelerationHero.x,5.0,accelerationHero.z));
         jumpDelay=time;
     }
 
     //Case-> Push L bottom to hit
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_l)] && !isShielded){ //If hero is hitting
+    if(controller->checkButton(cATTACK) && !isShielded){ //If hero is hitting
         if(!isHitting){
             animations.resetAnimation(1);
             animations.resetAnimation(5);
@@ -474,7 +470,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
 
     //Case-> Push W bottom to shield
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_i)] && !isHitting){ //If hero is shielding
+    if(controller->checkButton(cSHIELD) && !isHitting){ //If hero is shielding
         isShielded=true;
         animations.activate(2); //Activate animation
     }
@@ -483,7 +479,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
     }
 
     //Case-> Push Q bottom to swap weapon
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_q)] && !isHitting && swapDelay<(time-500) ){ //If hero is shielding
+    if(controller->checkButton(cSWAPWEAPON) && !isHitting && swapDelay<(time-500) ){ //If hero is shielding
         switch(currentWeapon->getType()){
             case MELEE:
                 currentWeapon->setWeapon((*rangedWeapon));
@@ -611,7 +607,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
 
     while(it!=projectiles.end()){
 
-        (*it)->updateState(time,currentKeyStates,rootMap);
+        (*it)->updateState(time,controller,rootMap);
         if(!(*it)->isLive()){
             it=projectiles.erase(it);
         }

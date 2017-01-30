@@ -38,7 +38,7 @@ void Avatar::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Avatar::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){}
+void Avatar::updateState(float time,Controller * controller,RootMap * rootMap){}
 
 //**********************************************************************//
 

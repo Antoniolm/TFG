@@ -34,35 +34,38 @@ KeyboardController::~KeyboardController()
 //**********************************************************************//
 
 bool KeyboardController::checkButton(ControllerIndex button){
-    bool result;
+    bool result=false;
 
     switch(button){
-        case UP:
+        case cUP:
             result=buttonUp;
         break;
-        case DOWN:
+        case cDOWN:
             result=buttonDown;
         break;
-        case RIGHT:
+        case cRIGHT:
             result=buttonRight;
         break;
-        case LEFT:
+        case cLEFT:
             result=buttonLeft;
         break;
-        case ACTION:
+        case cACTION:
             result=buttonAct;
         break;
-        case JUMP:
+        case cJUMP:
             result=buttonJmp;
         break;
-        case ATTACK:
+        case cATTACK:
             result=buttonAtt;
         break;
-        case SHIELD:
+        case cSHIELD:
             result=buttonShield;
         break;
-        case SWAPWEAPON:
+        case cSWAPWEAPON:
             result=buttonSwap;
+        break;
+        case cPAUSE:
+            result=buttonPause;
         break;
 
     }
@@ -101,4 +104,7 @@ void KeyboardController::catchKeyBoardState(const Uint8* currentKeyStates){
 
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_q)]) buttonSwap=true;
     else buttonSwap=false;
+
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)]) buttonPause=true;
+    else buttonPause=false;
 }

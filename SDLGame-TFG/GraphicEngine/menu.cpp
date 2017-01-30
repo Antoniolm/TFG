@@ -41,7 +41,7 @@ void Menu::visualization(Context & cv){}
 
 //**********************************************************************//
 
-void Menu::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){}
+void Menu::updateState(float time,Controller * controller,RootMap * rootMap){}
 
 //**********************************************************************//
 

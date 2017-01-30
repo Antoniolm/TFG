@@ -86,13 +86,13 @@ void ParticleSystem::visualization(Context & cv){
 
 //**********************************************************************//
 
-void ParticleSystem::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void ParticleSystem::updateState(float time,Controller * controller,RootMap * rootMap){
     if(time-currentTime>200)
         currentTime=time-50;
 
     list<Particle *>::iterator it=particles.begin();
     while(it!=particles.end()){
-        (*it)->updateState(time,currentKeyStates,rootMap);
+        (*it)->updateState(time,controller,rootMap);
         if((*it)->getRemainingTime()<=0.0){
             delete (*it);
             it=particles.erase(it);

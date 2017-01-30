@@ -53,7 +53,7 @@ void Enemy::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Enemy::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap){
+void Enemy::updateState(float time,Controller * controller,RootMap * rootMap){
 
 }
 

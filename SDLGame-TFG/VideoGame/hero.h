@@ -35,6 +35,7 @@
 #include "../GraphicEngine/sound.h"
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/animationlist.h"
+#include "../GraphicEngine/controller.h"
 #include "../lib/rapidjson/document.h"
 #include <stdlib.h>
 
@@ -74,7 +75,7 @@ class Hero: public AvatarMove
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,const Uint8* currentKeyStates,RootMap * rootMap);
+        void updateState(float time,Controller * controller,RootMap * rootMap);
 
 
         //////////////////////////////////////////////////////////////////////////

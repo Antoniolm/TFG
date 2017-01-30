@@ -55,6 +55,12 @@ Game::Game(){
 
     SDL_Color color2= {0,255,0};
     coinText=new Text(mVOID,font,color2,false);
+
+    //////////////////////////////////////////////////////
+    /////             Initialize controller          /////
+    //////////////////////////////////////////////////////
+    controller=new KeyboardController();
+
 }
 
 //**********************************************************************//
@@ -151,7 +157,7 @@ void Game::loop(){
 
         }
 
-        currentKeyStates=SDL_GetKeyboardState(NULL);
+        controller->catchKeyBoardState(SDL_GetKeyboardState(NULL));
 
         window->cleanScreen();
 
@@ -161,17 +167,17 @@ void Game::loop(){
         time=SDL_GetTicks();
 
         if(!mainMenu->isActivate() && !deadMenu->isActivate()) //if  mainMenu and deadMenu is not activate
-            pauseMenu->updateState(time,currentKeyStates,rootMap);
+            pauseMenu->updateState(time,controller,rootMap);
         else{ //If some of that menu are activate
             if(mainMenu->isActivate())
-                mainMenu->updateState(time,currentKeyStates,rootMap);
+                mainMenu->updateState(time,controller,rootMap);
             else
-                deadMenu->updateState(time,currentKeyStates,rootMap);
+                deadMenu->updateState(time,controller,rootMap);
         }
 
 
         if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate()){ //If  menu is not activate
-            rootMap->updateState(time,currentKeyStates,rootMap);
+            rootMap->updateState(time,controller,rootMap);
             if(wasActivatedMenu) //If is the first time that it is not activated
                 rootMap->enableSound(true);
             wasActivatedMenu=false;
