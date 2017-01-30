@@ -82,7 +82,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
         distance=(npcs[i]->getPosition())-(posHero);
         if((distance.x>-1 && distance.x<1)&&(distance.y>-2 && distance.y<2)&&(distance.z>-1 && distance.z<1) && !isActivate){
             hero->activateDialog(true,1);
-            hero->setDialog("J",1);
+            hero->setDialog("E",1);
             isNearNpc=true;
         }
     }
@@ -100,7 +100,7 @@ void NpcList::updateState(float time,const Uint8* currentKeyStates,RootMap * roo
     }
 
     //User push the button -> J
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_j)] && dialogTime<(time-400.0)){
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_e)] && dialogTime<(time-400.0)){
         if(isActivate){ //If hero is talking -> nextDialog
                 npcs[currentNpc]->nextDialog();
                 //Check the speaker

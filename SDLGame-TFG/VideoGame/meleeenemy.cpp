@@ -320,8 +320,6 @@ void MeleeEnemy::updateState(float time,const Uint8* currentKeyStates,RootMap * 
     for(unsigned i=0;i<moveMatrix.size();i++)
         moveMatrix[i]->setMatrix(animatio->readMatrix(i).getMatrix());
 
-
-
     currentTime+=(time-currentTime);
 }
 

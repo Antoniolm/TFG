@@ -102,7 +102,7 @@ void Projectile::updateState(float time,const Uint8* currentKeyStates,RootMap * 
         distance=sqrt(pow(posHead.x-posEnemy.x,2.0)+pow(posHead.z-posEnemy.z,2.0));
 
         if(distance<=0.3 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
-            enemies[i]->takeDamage(position,direction,damage);
+            enemies[i]->takeDamage(position,direction,damage,enemies);
             live=false;
         }
     }

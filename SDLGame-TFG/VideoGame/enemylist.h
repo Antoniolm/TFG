@@ -84,7 +84,7 @@ class EnemyList : public Object3D
         *    \return hero *
         */
         //////////////////////////////////////////////////////////////////////////
-        vector<Enemy *> getEnemies();
+        vector<Enemy *> & getEnemies();
     protected:
 
     private:

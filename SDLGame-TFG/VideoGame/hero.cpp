@@ -312,6 +312,11 @@ Hero::~Hero()
     for(vector<Sound *>::iterator it = heroSound.begin() ; it != heroSound.end(); ++it){
         delete (*it);
     }
+
+    for(vector<Projectile *>::iterator it = projectiles.begin() ; it != projectiles.end(); ++it){
+        delete (*it);
+    }
+
 }
 
 //**********************************************************************//
@@ -536,7 +541,7 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
                     distance=sqrt(pow(position.x-posEnemy.x,2.0)+pow(position.z-posEnemy.z,2.0));
 
                     if(distance<=1.0 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
-                        enemies[i]->takeDamage(position,direction,currentWeapon->getDamage()); //Hit enemy
+                        enemies[i]->takeDamage(position,direction,currentWeapon->getDamage(),enemies); //Hit enemy
                     }
                 }
             break;

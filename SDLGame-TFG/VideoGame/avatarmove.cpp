@@ -19,6 +19,7 @@
 
 #include "avatarmove.h"
 #include "../GraphicEngine/rootmap.h"
+#include "enemy.h"
 
 AvatarMove::AvatarMove(){
 }
@@ -521,6 +522,49 @@ void AvatarMove::activeImpact(avatarDirection dirAvatar){
     isImpacted=true;
 }
 
+
+bool AvatarMove::canImpact(avatarDirection dirAvatar,const vector<Enemy *> & enemies){
+    bool result=true;
+    vec3f newPosition; //will be the next position that will go our enemy when he will be impacted
+    float distance;
+
+    switch(dirAvatar){
+    case FORWARD:
+        newPosition=vec3f(position.x,position.y,position.z+1.0);
+        break;
+    case BACKWARD:
+        newPosition=vec3f(position.x,position.y,position.z-1.0);
+        break;
+    case LEFTWARD:
+        newPosition=vec3f(position.x-1.0,position.y,position.z);
+        break;
+    case RIGHTWARD:
+        newPosition=vec3f(position.x+1.0,position.y,position.z);
+        break;
+    case FOR_LEFTWARD:
+        newPosition=vec3f(position.x-0.5,position.y,position.z+0.5);
+        break;
+    case FOR_RIGHTWARD:
+        newPosition=vec3f(position.x+0.5,position.y,position.z+0.5);
+        break;
+    case BACK_LEFTWARD:
+        newPosition=vec3f(position.x-0.5,position.y,position.z-0.5);
+        break;
+    case BACK_RIGHTWARD:
+        newPosition=vec3f(position.x+0.5,position.y,position.z-0.5);
+        break;
+    }
+
+    for(int i=0;i<enemies.size();i++){
+        vec3f posEnemy=enemies[i]->getPosition();
+        distance=sqrt(pow(newPosition.x-posEnemy.x,2.0)+pow(newPosition.z-posEnemy.z,2.0));
+        if(distance<1.0) result=false;
+    }
+
+    return result;
+
+
+}
 //**********************************************************************//
 
 void AvatarMove::impactMove(float time){

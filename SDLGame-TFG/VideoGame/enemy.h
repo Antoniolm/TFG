@@ -112,7 +112,7 @@ class Enemy: public AvatarMove
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value);
+        void takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value,const vector<Enemy *> & enemies);
 
         //////////////////////////////////////////////////////////////////////////
         /**

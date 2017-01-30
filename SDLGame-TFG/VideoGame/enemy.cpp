@@ -83,9 +83,7 @@ vec3f Enemy::getRadioActivity(){
 
  //**********************************************************************//
 
- void Enemy::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value){
-     //check if the hero is shielding
-
+ void Enemy::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value,const vector<Enemy *> & enemies){
     //check Distance
     float distance=sqrt(pow(position.x-posAvatar.x,2.0)+pow(position.z-posAvatar.z,2.0));
 
@@ -108,7 +106,7 @@ vec3f Enemy::getRadioActivity(){
 
         dmgDelay=currentTime;
 
-        if(!isImpacted)
+        if(!isImpacted && canImpact(dirAvatar,enemies))
             activeImpact(dirAvatar);
         enemySound[1]->stop();
         enemySound[1]->play();

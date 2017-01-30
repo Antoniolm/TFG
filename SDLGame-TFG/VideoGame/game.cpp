@@ -26,7 +26,7 @@ Game* Game::instance = NULL;
 
 Game::Game(){
     window=Window::getInstance();
-    window->setParameters("SDL_Game",1200,800);
+    window->setParameters("NapMare",1200,800);
     window->createWindow();
 
     //Create our shader

@@ -27,6 +27,7 @@
 #include "../GraphicEngine/objectscene.h"
 
 class RootMap;
+class Enemy;
 class AvatarMove: public Avatar
 {
     public:
@@ -133,6 +134,7 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         void activeImpact(avatarDirection dirAvatar);
 
+        bool canImpact(avatarDirection dirAvatar,const vector<Enemy *> & enemies);
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will manage an impactMove that was activated in our avatar
@@ -148,6 +150,7 @@ class AvatarMove: public Avatar
         */
         //////////////////////////////////////////////////////////////////////////
         void changeDirection(avatarDirection aDir);
+
 
     protected:
         RootMap * currentMap;

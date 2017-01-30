@@ -245,7 +245,9 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 
 RangedEnemy::~RangedEnemy()
 {
-    //dtor
+    for(vector<Projectile *>::iterator it = projectiles.begin() ; it != projectiles.end(); ++it){
+        delete (*it);
+    }
 }
 
 //**********************************************************************//

@@ -82,6 +82,6 @@ void EnemyList::updateState(float time,const Uint8* currentKeyStates,RootMap * r
 
 //**********************************************************************//
 
-vector<Enemy *> EnemyList::getEnemies(){
+vector<Enemy *> & EnemyList::getEnemies(){
     return enemies;
 }
