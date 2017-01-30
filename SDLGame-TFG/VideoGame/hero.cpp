@@ -39,6 +39,7 @@ Hero::Hero(vec3f aPos)
 
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
+    SoundCollection * soundCollect =SoundCollection::getInstance();
 
 
     //Print a message for check
@@ -61,6 +62,8 @@ Hero::Hero(vec3f aPos)
     heroSound.push_back(sound);
     sound=new Sound("sounds/shield.wav",1,40,6,0);
     heroSound.push_back(sound);
+    heroSound.push_back(soundCollect->getSound(SHOOT));
+
 
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
@@ -540,6 +543,8 @@ void Hero::updateState(float time,const Uint8* currentKeyStates,RootMap * rootMa
                 if(animationHit->getScriptState(6)==1 && shootDelay<(time-700)){
                     shootDelay=time;
                     createProjectile();
+                    heroSound[3]->stop();
+                    heroSound[3]->play();
                 }
             break;
         }
