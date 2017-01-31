@@ -20,13 +20,13 @@
 #ifndef PARTICLESYSTEM_H
 #define PARTICLESYSTEM_H
 
-#include <object3d.h>
-#include <nodescenegraph.h>
-#include <context.h>
+#include "object3d.h"
+#include "nodescenegraph.h"
+#include "context.h"
 #include "materialcollection.h"
-#include <rootmap.h>
+#include "rootmap.h"
 #include <list>
-#include <particle.h>
+#include "particle.h"
 #include <string>
 #include "../lib/rapidjson/document.h"
 

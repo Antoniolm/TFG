@@ -20,7 +20,7 @@
 #ifndef DEADMENU_H
 #define DEADMENU_H
 
-#include <object3d.h>
+#include "object3d.h"
 #include "rootmap.h"
 #include "context.h"
 #include "mesh.h"

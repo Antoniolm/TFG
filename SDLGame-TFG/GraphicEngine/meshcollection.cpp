@@ -60,26 +60,26 @@ MeshCollection::MeshCollection()
     collection.addElement(element);
 
     //Mesh 11
-    element=new Mesh("geometries/KnightHand.obj");
+    element=new Mesh("geometries/knightHand.obj");
     element->init();
     collection.addElement(element);
 
-    element=new Mesh("geometries/KnightHandShield.obj");
+    element=new Mesh("geometries/knightHandShield.obj");
     element->init();
     collection.addElement(element);
 
     //Mesh 12
-    element=new Mesh("geometries/KnightArm.obj");
+    element=new Mesh("geometries/knightArm.obj");
     element->init();
     collection.addElement(element);
 
     //Mesh 13
-    element=new Mesh("geometries/KnightBody.obj");
+    element=new Mesh("geometries/knightBody.obj");
     element->init();
     collection.addElement(element);
 
     //Mesh 16
-    element=new Mesh("geometries/KnightHead.obj");
+    element=new Mesh("geometries/knightHead.obj");
     element->init();
     collection.addElement(element);
 

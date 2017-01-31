@@ -58,12 +58,16 @@
 		<Unit filename="GraphicEngine/collection.h" />
 		<Unit filename="GraphicEngine/context.cpp" />
 		<Unit filename="GraphicEngine/context.h" />
+		<Unit filename="GraphicEngine/controller.cpp" />
+		<Unit filename="GraphicEngine/controller.h" />
 		<Unit filename="GraphicEngine/deadmenu.cpp" />
 		<Unit filename="GraphicEngine/deadmenu.h" />
 		<Unit filename="GraphicEngine/decorationobject.cpp" />
 		<Unit filename="GraphicEngine/decorationobject.h" />
 		<Unit filename="GraphicEngine/file_obj.cpp" />
 		<Unit filename="GraphicEngine/file_obj.h" />
+		<Unit filename="GraphicEngine/gamepadcontroller.cpp" />
+		<Unit filename="GraphicEngine/gamepadcontroller.h" />
 		<Unit filename="GraphicEngine/iaenemy.cpp" />
 		<Unit filename="GraphicEngine/iaenemy.h" />
 		<Unit filename="GraphicEngine/iameleeenemy.cpp" />
@@ -72,6 +76,8 @@
 		<Unit filename="GraphicEngine/ianpc.h" />
 		<Unit filename="GraphicEngine/iarangedenemy.cpp" />
 		<Unit filename="GraphicEngine/iarangedenemy.h" />
+		<Unit filename="GraphicEngine/keyboardcontroller.cpp" />
+		<Unit filename="GraphicEngine/keyboardcontroller.h" />
 		<Unit filename="GraphicEngine/light.cpp" />
 		<Unit filename="GraphicEngine/light.h" />
 		<Unit filename="GraphicEngine/linearmovement.cpp" />

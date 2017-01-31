@@ -35,6 +35,7 @@ Window::Window(){
 Window::~Window(){
     SDL_GL_DeleteContext(context);
 	SDL_DestroyWindow(window);
+	SDL_GameControllerClose(controller);
 	Mix_Quit();
 	SDL_Quit();
 	TTF_Quit();
@@ -55,7 +56,7 @@ void Window::setParameters(const string & aTitle,int aHeight,int aWidth){
 bool Window::createWindow(){
     bool salida=true;
 
-    SDL_GameController * controller= NULL;
+    controller= NULL;
 
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		printf("SDL_Error: %s\n", SDL_GetError());
