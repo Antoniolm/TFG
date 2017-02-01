@@ -35,33 +35,33 @@ KeyboardController::~KeyboardController()
 
 void KeyboardController::catchKeyBoardState(const Uint8* currentKeyStates){
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)]) buttonUp=true;
-    else buttonUp=false;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)]) buttons[cUP]=true;
+    else buttons[cUP]=false;
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)]) buttonDown=true;
-    else buttonDown=false;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)]) buttons[cDOWN]=true;
+    else buttons[cDOWN]=false;
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)]) buttonLeft=true;
-    else buttonLeft=false;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)]) buttons[cLEFT]=true;
+    else buttons[cLEFT]=false;
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]) buttonRight=true;
-    else buttonRight=false;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]) buttons[cRIGHT]=true;
+    else buttons[cRIGHT]=false;
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_e)]) buttonAct=true;
-    else buttonAct=false;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_e)]) buttons[cACTION]=true;
+    else buttons[cACTION]=false;
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_i)]) buttonShield=true;
-    else buttonShield=false;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_i)]) buttons[cSHIELD]=true;
+    else buttons[cSHIELD]=false;
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_k)]) buttonJmp=true;
-    else buttonJmp=false;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_k)]) buttons[cJUMP]=true;
+    else buttons[cJUMP]=false;
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_l)]) buttonAtt=true;
-    else buttonAtt=false;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_l)]) buttons[cATTACK]=true;
+    else buttons[cATTACK]=false;
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_q)]) buttonSwap=true;
-    else buttonSwap=false;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_q)]) buttons[cSWAPWEAPON]=true;
+    else buttons[cSWAPWEAPON]=false;
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)]) buttonPause=true;
-    else buttonPause=false;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)]) buttons[cPAUSE]=true;
+    else buttons[cPAUSE]=false;
 }

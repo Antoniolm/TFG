@@ -21,16 +21,8 @@
 
 GamepadController::GamepadController()
 {
-    buttonUp=false;
-    buttonDown=false;
-    buttonLeft=false;
-    buttonRight=false;
-    buttonAct=false;
-    buttonJmp=false;
-    buttonAtt=false;
-    buttonShield=false;
-    buttonSwap=false;
-    buttonPause=false;
+    for(int i=0;i<10;i++)
+        buttons[i]=false;
 }
 
 //**********************************************************************//
@@ -45,34 +37,34 @@ GamepadController::~GamepadController()
 void GamepadController::setButton(bool value,Uint8 button){
     switch(button){
     case SDL_CONTROLLER_BUTTON_A:
-        buttonAct=value;
+        buttons[cACTION]=value;
         break;
     case SDL_CONTROLLER_BUTTON_B:
-        buttonJmp=value;
+        buttons[cJUMP]=value;
         break;
     case SDL_CONTROLLER_BUTTON_Y:
-        buttonSwap=value;
+        buttons[cSWAPWEAPON]=value;
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_UP:
-        buttonUp=value;
+        buttons[cUP]=value;
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-        buttonDown=value;
+        buttons[cDOWN]=value;
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-        buttonLeft=value;
+        buttons[cLEFT]=value;
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-        buttonRight=value;
+        buttons[cRIGHT]=value;
         break;
     case SDL_CONTROLLER_BUTTON_LEFTSHOULDER:
-        buttonShield=value;
+        buttons[cSHIELD]=value;
         break;
     case SDL_CONTROLLER_BUTTON_RIGHTSHOULDER:
-        buttonAtt=value;
+        buttons[cATTACK]=value;
         break;
     case SDL_CONTROLLER_BUTTON_START:
-        buttonPause=value;
+        buttons[cPAUSE]=value;
         break;
     }
 }

@@ -38,7 +38,6 @@ IAMeleeEnemy::~IAMeleeEnemy()
 pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posHero,EnemyList * enemies){
     vec3f newMovement;
     float distance,minDistance;
-    avatarDirection enemyDir;
     pair<avatarDirection,vec3f> result;
 
     //If the enemy is near of our hero. The enemy stop the movement

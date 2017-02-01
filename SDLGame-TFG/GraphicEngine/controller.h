@@ -54,8 +54,7 @@ class Controller
 
         virtual void catchKeyBoardState(const Uint8* currentKeyStates);
     protected:
-        bool buttonUp,buttonDown,buttonLeft,buttonRight;
-        bool buttonAct,buttonJmp,buttonAtt,buttonShield,buttonSwap,buttonPause;
+        bool buttons[10];
     private:
 
 };

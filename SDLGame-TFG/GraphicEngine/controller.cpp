@@ -42,34 +42,34 @@ bool Controller::checkButton(ControllerIndex button){
 
     switch(button){
         case cUP:
-            result=buttonUp;
+            result=buttons[cUP];
         break;
         case cDOWN:
-            result=buttonDown;
+            result=buttons[cDOWN];
         break;
         case cRIGHT:
-            result=buttonRight;
+            result=buttons[cRIGHT];
         break;
         case cLEFT:
-            result=buttonLeft;
+            result=buttons[cLEFT];
         break;
         case cACTION:
-            result=buttonAct;
+            result=buttons[cACTION];
         break;
         case cJUMP:
-            result=buttonJmp;
+            result=buttons[cJUMP];
         break;
         case cATTACK:
-            result=buttonAtt;
+            result=buttons[cATTACK];
         break;
         case cSHIELD:
-            result=buttonShield;
+            result=buttons[cSHIELD];
         break;
         case cSWAPWEAPON:
-            result=buttonSwap;
+            result=buttons[cSWAPWEAPON];
         break;
         case cPAUSE:
-            result=buttonPause;
+            result=buttons[cPAUSE];
         break;
 
     }

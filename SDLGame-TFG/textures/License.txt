@@ -15,3 +15,4 @@ Winter Gnome by Brianna Fromont is licensed under CC Attribution https://skfb.ly
 Wooden Box 2D by Alucard is licensedd under CC Attribution 3.0 http://opengameart.org/content/wooden-box-2d -> used in the texture: cubeBox.png
 Table by louvey is licensed under CC Attribution https://skfb.ly/IOH8 -> used in the texture: furnitureText.png
 furniture #1 by ericdraw is licensed under CC Attribution https://skfb.ly/Io8o -> used in the texture : bedTexture.png
+Museum Picture by Neo_minigan is licensed under CC Attribution https://skfb.ly/SKGq
