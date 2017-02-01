@@ -461,7 +461,7 @@
 	"shader.h"
 	<vector>
 
-1485812579 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
+1485966790 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
 1485812570 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
@@ -473,7 +473,7 @@
 	<vector>
 	<SDL.h>
 
-1485898165 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
+1485968710 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
 	<vector>
 	<string>
 	"context.h"
@@ -1641,12 +1641,13 @@
 	"material.h"
 	<vector>
 
-1485812474 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
+1485966810 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
 	"objectscene.h"
 
-1485812483 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
+1485966743 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
 	"object3d.h"
 	"matrix4f.h"
+	"materialcollection.h"
 	"structdata.h"
 
 1483995380 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrixscriptloop.cpp
@@ -1725,7 +1726,7 @@
 	"../lib/rapidjson/document.h"
 	<vector>
 
-1485813718 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
+1485965960 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
 	"npclist.h"
 
 1485812755 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
@@ -2163,7 +2164,7 @@
 	"enemylist.h"
 	<vector>
 
-1485813754 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
+1485965947 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
 	"projectilesystem.h"
 
 1485812920 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.h
@@ -2247,7 +2248,7 @@
 	"weapon.h"
 	<vector>
 
-1485813768 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\rangedenemy.cpp
+1485965935 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\rangedenemy.cpp
 	"rangedenemy.h"
 
 1485812792 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.h

@@ -75,6 +75,14 @@ class Mesh : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will initialize the information for the visualization
+        *    \return void
+        */
+        /////////////////////////////////////////////////////////////////////////
+        void init(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will show the object in our interface
         *    \return void
         */
@@ -102,7 +110,8 @@ class Mesh : public Object3D
     protected:
 
     private:
-        void generateBoundingBox(vector<vec3f> & vertex);
+        void loadMesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord);
+        void generateBoundingBox(const vector<vec3f> & vertex);
         static const unsigned int NUM_BUFFERS = 4;
         GLuint vertexArrayBuffers[NUM_BUFFERS];
         GLuint vertexArrayObject;

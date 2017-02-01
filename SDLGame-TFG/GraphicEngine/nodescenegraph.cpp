@@ -93,6 +93,7 @@ void NodeSceneGraph::visualization(Context & cv){
             }
 
     }
+    cv.currentMaterialIndex=(cv.materialStack.getMaterial().getIndex());
     cv.materialStack.pop(contMaterial);
     cv.materialStack.getMaterial().activate(&cv.currentShader);
 

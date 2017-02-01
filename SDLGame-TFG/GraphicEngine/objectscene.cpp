@@ -118,6 +118,7 @@ void ObjectScene::obtainPosition(Context vis){
 
     matrix=Matrix4f(vis.currentTransf);
     position=matrix.product(vec4f());
+    index=vis.currentMaterialIndex;
     generateBoundingbox();
 }
 

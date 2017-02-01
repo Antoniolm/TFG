@@ -22,6 +22,7 @@
 
 #include "object3d.h"
 #include "matrix4f.h"
+#include "materialcollection.h"
 #include "structdata.h"
 
 class ObjectScene : public Object3D
@@ -94,6 +95,7 @@ class ObjectScene : public Object3D
         vec4f position;
         Object3D * object;
         Matrix4f matrix;
+        MaterialIndex index;
         float damage;
     private:
         //////////////////////////////////////////////////////////////////////////
