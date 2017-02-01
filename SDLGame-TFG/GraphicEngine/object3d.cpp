@@ -38,7 +38,7 @@ void Object3D::visualization(Context & cv){}
 
 //**********************************************************************//
 
-void Object3D::updateState(float time,Controller * controller,RootMap * rootMap  ){}
+void Object3D::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){}
 
 //**********************************************************************//
 

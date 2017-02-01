@@ -34,6 +34,12 @@ ControllerManager::~ControllerManager()
 
 //**********************************************************************//
 
+void ControllerManager::setButton(bool value,Uint8 button){
+    gamepadController.setButton(value,button);
+}
+
+//**********************************************************************//
+
 bool ControllerManager::checkButton(ControllerIndex button){
     bool result=false;
 
@@ -42,4 +48,10 @@ bool ControllerManager::checkButton(ControllerIndex button){
 
     return result;
 
+}
+
+//**********************************************************************//
+
+void ControllerManager::catchKeyBoardState(const Uint8* currentKeyStates){
+    keyboardController.catchKeyBoardState(currentKeyStates);
 }

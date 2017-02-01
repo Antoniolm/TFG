@@ -81,7 +81,7 @@ void PauseMenu::visualization(Context & cv){
 
 //**********************************************************************//
 
-void PauseMenu::updateState(float time,Controller * controller,RootMap * rootMap){
+void PauseMenu::updateState(float time,ControllerManager * controller,RootMap * rootMap){
     vec3f position;
     if(time-currentTime>200)
         currentTime=time-50;

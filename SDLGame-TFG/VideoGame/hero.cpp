@@ -342,7 +342,7 @@ void Hero::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Hero::updateState(float time,Controller * controller,RootMap * rootMap){
+void Hero::updateState(float time,ControllerManager * controller,RootMap * rootMap){
     bool hasMove=true;
 
     avatarDirection heroDir=direction;

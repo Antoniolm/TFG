@@ -63,7 +63,7 @@ void NpcList::visualization(Context & cv){
 
 //**********************************************************************//
 
-void NpcList::updateState(float time,Controller * controller,RootMap * rootMap  ){
+void NpcList::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){
 
     //Check if the hero is speaking with a avatar
     bool isActivate=false,isNearNpc=false;vec3f distance,posHero;unsigned currentNpc;

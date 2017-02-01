@@ -77,7 +77,7 @@ void Projectile::visualization(Context & vis){
 
 //**********************************************************************//
 
-void Projectile::updateState(float time,Controller * controller,RootMap * rootMap ){
+void Projectile::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
     if(time-currentTime>200)
         currentTime=time-50;
 

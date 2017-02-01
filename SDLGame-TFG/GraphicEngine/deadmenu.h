@@ -58,7 +58,7 @@ class DeadMenu : public Menu
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time,Controller * controller,RootMap * rootMap);
+        virtual void updateState(float time,ControllerManager * controller,RootMap * rootMap);
 
         //////////////////////////////////////////////////////////////////////////
         /**

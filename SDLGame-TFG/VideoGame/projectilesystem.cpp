@@ -67,7 +67,7 @@ void ProjectileSystem::visualization(Context & cv){
 
 //**********************************************************************//
 
-void ProjectileSystem::updateState(float time,Controller * controller,RootMap * rootMap){
+void ProjectileSystem::updateState(float time,ControllerManager * controller,RootMap * rootMap){
     if(time-currentTime>200){
         time+=-50;
         projectileDelay=time-(currentTime-projectileDelay);

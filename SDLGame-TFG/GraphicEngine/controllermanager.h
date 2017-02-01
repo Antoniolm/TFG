@@ -38,7 +38,10 @@ class ControllerManager
         //////////////////////////////////////////////////////////////////////////
         virtual ~ControllerManager();
 
+        void setButton(bool value,Uint8 button);
+
         bool checkButton(ControllerIndex button);
+        void catchKeyBoardState(const Uint8* currentKeyStates);
 
     protected:
 

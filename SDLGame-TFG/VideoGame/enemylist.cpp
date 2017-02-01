@@ -68,7 +68,7 @@ void EnemyList::visualization(Context & cv){
 
 //**********************************************************************//
 
-void EnemyList::updateState(float time,Controller * controller,RootMap * rootMap  ){
+void EnemyList::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){
     vector<Enemy*>::iterator it=enemies.begin();
     while(it!=enemies.end()){
         (*it)->updateState(time,controller,rootMap);

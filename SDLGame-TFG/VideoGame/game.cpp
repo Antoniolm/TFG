@@ -59,8 +59,7 @@ Game::Game(){
     //////////////////////////////////////////////////////
     /////             Initialize controller          /////
     //////////////////////////////////////////////////////
-    //controller=new KeyboardController();
-    controller=new GamepadController();
+    controller=new ControllerManager();
 
 }
 

@@ -86,7 +86,7 @@ void ParticleSystem::visualization(Context & cv){
 
 //**********************************************************************//
 
-void ParticleSystem::updateState(float time,Controller * controller,RootMap * rootMap){
+void ParticleSystem::updateState(float time,ControllerManager * controller,RootMap * rootMap){
     if(time-currentTime>200)
         currentTime=time-50;
 

@@ -94,7 +94,7 @@ void Mesh::visualization(Context & vis){
 
 //**********************************************************************//
 
-void Mesh::updateState(float time,Controller * controller,RootMap * rootMap){
+void Mesh::updateState(float time,ControllerManager * controller,RootMap * rootMap){
 }
 
 //**********************************************************************//

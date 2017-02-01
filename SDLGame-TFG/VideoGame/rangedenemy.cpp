@@ -268,7 +268,7 @@ void RangedEnemy::visualization(Context & cv){
 
 //**********************************************************************//
 
-void RangedEnemy::updateState(float time,Controller * controller,RootMap * rootMap){
+void RangedEnemy::updateState(float time,ControllerManager * controller,RootMap * rootMap){
     vec3f aux;
     currentMap=rootMap;
     Hero * hero=rootMap->getHero();

@@ -24,6 +24,7 @@
 #include "structdata.h"
 #include "controller.h"
 #include "keyboardcontroller.h"
+#include "controllermanager.h"
 #include "SDL.h"
 
 class Context;
@@ -72,7 +73,7 @@ class Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float times,Controller * controller,RootMap * rootMap );
+        virtual void updateState(float times,ControllerManager * controller,RootMap * rootMap );
 
         //////////////////////////////////////////////////////////////////////////
         /**

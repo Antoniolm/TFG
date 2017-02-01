@@ -64,7 +64,7 @@ void Particle::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Particle::updateState(float time,Controller * controller,RootMap * rootMap){
+void Particle::updateState(float time,ControllerManager * controller,RootMap * rootMap){
     //update the position
     LinearMovement lineMove(velocity);
     transMatrix->product(lineMove.updateState(time-currentTime).getMatrix());

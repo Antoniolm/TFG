@@ -55,7 +55,7 @@ void CoinList::visualization(Context & cv){
 
 //**********************************************************************//
 
-void CoinList::updateState(float time,Controller * controller,RootMap * rootMap  ){
+void CoinList::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){
     vector<Coin*>::iterator it=coins.begin();
     while(it!=coins.end()){
         (*it)->updateState(time,controller,rootMap);

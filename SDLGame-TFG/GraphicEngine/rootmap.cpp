@@ -273,7 +273,7 @@ void RootMap::visualization(Context & cv){
 
 //**********************************************************************//
 
-void RootMap::updateState(float time,Controller * controller,RootMap * rootMap){
+void RootMap::updateState(float time,ControllerManager * controller,RootMap * rootMap){
     if(time-currentTime>200)
         currentTime=time-50;
 

@@ -85,7 +85,7 @@ void MainMenu::visualization(Context & cv){
 
 //**********************************************************************//
 
-void MainMenu::updateState(float time,Controller * controller,RootMap * rootMap){
+void MainMenu::updateState(float time,ControllerManager * controller,RootMap * rootMap){
     vec3f position;
 
     if(time-currentTime>200)

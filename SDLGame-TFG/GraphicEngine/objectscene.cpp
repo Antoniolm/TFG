@@ -46,7 +46,7 @@ void ObjectScene::visualization(Context & vis){
 
 //**********************************************************************//
 
-void ObjectScene::updateState(float time,Controller * controller,RootMap * rootMap ){
+void ObjectScene::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
     object->updateState(time,controller,rootMap);
 }
 
