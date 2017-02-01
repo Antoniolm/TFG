@@ -473,7 +473,7 @@
 	<vector>
 	<SDL.h>
 
-1485968710 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
+1485971948 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.h
 	<vector>
 	<string>
 	"context.h"
@@ -491,7 +491,7 @@
 	"shader.h"
 	"file_obj.h"
 
-1485813851 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
+1485972001 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh.cpp
 	"mesh.h"
 
 1451805405 c:\sdl2_mixer-2.0.1\x86_64-w64-mingw32\include\sdl2\sdl_mixer.h
@@ -1641,10 +1641,10 @@
 	"material.h"
 	<vector>
 
-1485966810 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
+1485969104 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
 	"objectscene.h"
 
-1485966743 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
+1485969071 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
 	"object3d.h"
 	"matrix4f.h"
 	"materialcollection.h"
@@ -2310,5 +2310,8 @@
 1485962730 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectgroup.cpp
 	"objectgroup.h"
 
-1485962596 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectgroup.h
+1485972112 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectgroup.h
+	"meshcollection.h"
+	"materialcollection.h"
+	"nodescenegraph.h"
 

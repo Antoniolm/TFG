@@ -21,18 +21,35 @@
 #ifndef OBJECTGROUP_H
 #define OBJECTGROUP_H
 
+#include "meshcollection.h"
+#include "materialcollection.h"
+#include "nodescenegraph.h"
 
-class ObjectGroup
+class ObjectGroup : public Object3D
 {
     public:
-        /** Default constructor */
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
         ObjectGroup();
-        /** Default destructor */
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
         virtual ~ObjectGroup();
+
+        void addObject(vec3f position,MeshIndex aMeshIndex,MaterialIndex aMaterialIndex);
 
     protected:
 
     private:
+        vector<vec3f> vertex;
+        vector<GLushort> triangles;
+        vector<vec3f> normals;
+        vector<vec2f> textureCord;
+        MaterialIndex materialIndex;
+        MeshIndex meshIndex;
+        NodeSceneGraph * root;
 };
 
 #endif // OBJECTGROUP_H

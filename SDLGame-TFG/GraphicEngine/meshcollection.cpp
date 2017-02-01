@@ -25,7 +25,7 @@ MeshCollection* MeshCollection::instance = NULL;
 MeshCollection::MeshCollection()
 {
     //Mesh 0
-    Mesh * element=new Mesh("geometries/cube.obj");
+    Mesh * element=new Mesh("geometries/cube.obj",true);
     element->init();
     collection.addElement(element);
 

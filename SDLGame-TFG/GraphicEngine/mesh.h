@@ -58,7 +58,7 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**  Constructor */
         /////////////////////////////////////////////////////////////////////////
-        Mesh(const string & aFile);
+        Mesh(const string & aFile,bool save=false);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -117,6 +117,11 @@ class Mesh : public Object3D
         GLuint vertexArrayObject;
         string objFile;
         int numIndex;
+        bool saveInfo;
+        vector<vec3f> vertex;
+        vector<GLushort> triangles;
+        vector<vec3f> normals;
+        vector<vec2f> textureCord;
 };
 
 #endif // MESH_H

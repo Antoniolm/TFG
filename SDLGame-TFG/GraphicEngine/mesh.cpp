@@ -26,9 +26,10 @@ Mesh::Mesh()
 
 //**********************************************************************//
 
-Mesh::Mesh(const string & aFile){
+Mesh::Mesh(const string & aFile,bool save){
     objFile=aFile;
     numIndex=0;
+    saveInfo=save;
 }
 
 //**********************************************************************//
@@ -45,27 +46,41 @@ Mesh::~Mesh()
 //**********************************************************************//
 
 void Mesh::init(){
-    vector<GLushort> triangles;
-    vector<vec3f> vertex;
-    vector<vec3f> normals;
-    vector<vec2f> textureCord;
+    vector<GLushort> aTriangles;
+    vector<vec3f> aVertex;
+    vector<vec3f> aNormals;
+    vector<vec2f> aTextureCord;
 
     FileObj * obj=FileObj::getInstance();
-    obj->readEverything(objFile.c_str(),vertex,triangles,normals,textureCord,true,true);
-    generateBoundingBox(vertex);
+    obj->readEverything(objFile.c_str(),aVertex,aTriangles,aNormals,aTextureCord,true,true);
+    generateBoundingBox(aVertex);
 
-    numIndex=triangles.size();
+    numIndex=aTriangles.size();
 
-    loadMesh(vertex,triangles,normals,textureCord);
+    loadMesh(aVertex,aTriangles,aNormals,aTextureCord);
+
+    if(saveInfo){
+        vertex=aVertex;
+        triangles=aTriangles;
+        normals=aNormals;
+        textureCord=aTextureCord;
+    }
 }
 
 //**********************************************************************//
 
-void Mesh::init(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord){
-    generateBoundingBox(vertex);
-    numIndex=triangles.size();
+void Mesh::init(const vector<vec3f> & aVertex, const vector<GLushort> & aTriangles,const vector<vec3f> & aNormals,const vector<vec2f> & aTextureCord){
+    generateBoundingBox(aVertex);
+    numIndex=aTriangles.size();
 
-    loadMesh(vertex,triangles,normals,textureCord);
+    loadMesh(aVertex,aTriangles,aNormals,aTextureCord);
+
+    if(saveInfo){
+        vertex=aVertex;
+        triangles=aTriangles;
+        normals=aNormals;
+        textureCord=aTextureCord;
+    }
 }
 
 //**********************************************************************//
