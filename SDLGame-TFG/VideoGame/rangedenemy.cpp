@@ -273,7 +273,6 @@ void RangedEnemy::updateState(float time,Controller * controller,RootMap * rootM
     currentMap=rootMap;
     Hero * hero=rootMap->getHero();
     vec3f posHero=hero->getPosition();
-    avatarDirection dirHero=hero->getDirection();
     vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
 
     if(time-currentTime>200)

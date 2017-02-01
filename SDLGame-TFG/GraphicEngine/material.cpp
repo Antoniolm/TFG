@@ -36,11 +36,12 @@ Material::Material(const Material & aMaterial){
 
 //**********************************************************************//
 
-Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur){
+Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur,MaterialIndex aIndex){
     ambient=anAmbient;
     diffuse=aDiffuse;
     specular=aSpecular;
     shininess=aShini;
+    index=aIndex;
     texture=new Texture(aFileTextur);
 }
 
@@ -135,4 +136,10 @@ float Material::getShininess(){
 
 Texture * Material::getTexture(){
     return texture;
+}
+
+//**********************************************************************//
+
+MaterialIndex Material::getIndex(){
+    return index;
 }

@@ -492,8 +492,6 @@ void Hero::updateState(float time,Controller * controller,RootMap * rootMap){
     }
 
 
-
-
     //Move the body
     if(hasMove && !isImpacted && !isHitting){
         avatarDirection lastDir=direction;

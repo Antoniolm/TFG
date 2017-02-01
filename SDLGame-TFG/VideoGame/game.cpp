@@ -59,7 +59,8 @@ Game::Game(){
     //////////////////////////////////////////////////////
     /////             Initialize controller          /////
     //////////////////////////////////////////////////////
-    controller=new GamepadController();
+    controller=new KeyboardController();
+    //controller=new GamepadController();
 
 }
 
@@ -70,6 +71,9 @@ Game::~Game(){
     delete window;
     delete rootMap;
     delete hero;
+    delete pauseMenu;
+    delete mainMenu;
+    delete deadMenu;
 }
 
 //**********************************************************************//
@@ -124,10 +128,10 @@ void Game::loop(){
                     camera.setPerspectiveProjection(30.0f,(float)( windowH / windowW), 0.1f, 200.0f);
                 camera.activateCamera(&context.currentShader);
             }
-            if(event.type==SDL_CONTROLLERBUTTONDOWN){
+            if(event.type==SDL_CONTROLLERBUTTONDOWN){ // If player push a button of his game controller
                 controller->setButton(true,event.cbutton.button);
             }
-            if(event.type==SDL_CONTROLLERBUTTONUP){
+            if(event.type==SDL_CONTROLLERBUTTONUP){ // If player release a button of his game controller
                 controller->setButton(false,event.cbutton.button);
             }
 

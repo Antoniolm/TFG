@@ -41,9 +41,6 @@ ProjectileSystem::ProjectileSystem(const rapidjson::Value & projectileFeature){
     position=vec3f(projectileFeature["position"][0].GetFloat(), projectileFeature["position"][1].GetFloat(), projectileFeature["position"][2].GetFloat());
     velocity=vec3f(projectileFeature["velocity"][0].GetFloat(), projectileFeature["velocity"][1].GetFloat(), projectileFeature["velocity"][2].GetFloat());
 
-    MaterialCollection * materialCollect=MaterialCollection::getInstance();
-    MeshCollection * meshCollect=MeshCollection::getInstance();
-
     direction=(avatarDirection)projectileFeature["direction"].GetFloat();
     timeBWprojectile=projectileFeature["delay"].GetFloat();//time between one projectile and another
     mesh=projectileFeature["mesh"].GetString();

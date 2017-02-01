@@ -22,6 +22,7 @@
 
 #include "structdata.h"
 #include <string>
+#include "materialcollection.h"
 #include "texture.h"
 #include "shader.h"
 
@@ -44,7 +45,7 @@ class Material
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur);
+        Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur,MaterialIndex aIndex=(MaterialIndex)-1);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -147,6 +148,14 @@ class Material
         //////////////////////////////////////////////////////////////////////////
         Texture * getTexture();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   This method will get the index in our material
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        MaterialIndex getIndex();
+
     protected:
 
     private:
@@ -156,6 +165,7 @@ class Material
         float shininess;
         Texture * texture;
         Shader * shaders;
+        MaterialIndex index;
 };
 
 #endif // MATERIAL_H

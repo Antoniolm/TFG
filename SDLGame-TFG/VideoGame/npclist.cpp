@@ -26,9 +26,6 @@ NpcList::NpcList(){
 
 NpcList::NpcList(const Value & npcsFeatures){
     speakerMessage speaker;
-    MeshCollection * meshCollect= MeshCollection::getInstance();
-    MaterialCollection * materialCollect= MaterialCollection::getInstance();
-
 
     for(unsigned i=0;i<npcsFeatures.Size();i++){
         Npc * currentNpc=new Npc(vec3f(npcsFeatures[i]["position"][0].GetFloat(),npcsFeatures[i]["position"][1].GetFloat(),npcsFeatures[i]["position"][2].GetFloat()));

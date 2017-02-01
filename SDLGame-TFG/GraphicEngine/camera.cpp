@@ -85,7 +85,6 @@ void Camera::createCamera(){
     vec3f zCamera;
     vec3f yCamera;
     vec3f xCamera;
-    float modulo;
 
     //Calculate the z-Axis
     zCamera=position-target;

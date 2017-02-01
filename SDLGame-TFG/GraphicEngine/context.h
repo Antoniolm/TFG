@@ -22,7 +22,7 @@
 
 #include "matrixstack.h"
 #include "structdata.h"
-#include "projection.h"
+#include "materialcollection.h"
 #include "object3d.h"
 #include "materialstack.h"
 #include "light.h"
@@ -51,6 +51,7 @@ class Context
         MaterialStack materialStack;
         Shader currentShader;
         Matrix4f currentTransf;
+        MaterialIndex currentMaterialIndex;
 
 
     protected:

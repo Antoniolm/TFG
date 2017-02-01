@@ -20,7 +20,6 @@
 #ifndef MATERIALCOLLECTION_H
 #define MATERIALCOLLECTION_H
 
-#include "material.h"
 #include <vector>
 #include <map>
 #include "collection.h"
@@ -57,7 +56,7 @@ enum MaterialIndex{
 
 };
 
-
+class Material;
 class MaterialCollection
 {
     public:

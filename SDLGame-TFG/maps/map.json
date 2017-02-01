@@ -126,15 +126,15 @@
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
                 "damage":0.0 },
-            {   "position":[1,4.5,14],
+            {   "position":[2,4.5,14],
                 "YNumber":4,  
-                "XNumber":8,    
+                "XNumber":7,    
                 "ZNumber":1,
                 "materialTop":"mCUBE_WALL",
                 "materialMiddle":"mCUBE_WALL",
                 "mesh":"CUBE", 
                 "damage":0.0  },
-            {   "position":[0,4.5,1],
+            {   "position":[1,4.5,1],
                 "YNumber":4,        
                 "XNumber":1,         
                 "ZNumber":14,         
@@ -458,9 +458,6 @@
                 "mesh":"CUBE", 
                 "damage":0.0}            
             
-
-
-
            
     ],
 
@@ -475,7 +472,7 @@
                 "mesh":"BED",
                 "collision": true
             },
-            {   "position":[1.5,2.6,-4.0],
+            {   "position":[2.5,2.6,-4.0],
                 "transforms":[
                 ],       
                 "material":"mFURNITURE",
