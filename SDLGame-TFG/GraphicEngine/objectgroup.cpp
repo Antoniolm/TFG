@@ -20,9 +20,11 @@
 
 #include "objectgroup.h"
 
-ObjectGroup::ObjectGroup()
-{
-    //ctor
+ObjectGroup::ObjectGroup(MaterialIndex materialIndex){
+    MaterialCollection *materialCollect=MaterialCollection::getInstance();
+    root=new NodeSceneGraph();
+    root->add(materialCollect->getMaterial(materialIndex));
+
 }
 
 //**********************************************************************//
@@ -31,3 +33,46 @@ ObjectGroup::~ObjectGroup()
 {
     //dtor
 }
+
+//**********************************************************************//
+
+void ObjectGroup::addObject(vec3f position,MeshIndex meshIndex){
+    vector<vec3f> currentVertex;
+    vector<GLushort> currentTriangles;
+    vector<vec3f> currentNormals;
+    vector<vec2f> currentTextureCord;
+    MeshCollection * meshCollect =MeshCollection::getInstance();
+    Mesh * mesh=meshCollect->getMesh(meshIndex);
+
+    currentVertex=mesh->getVertex();
+    currentTriangles=mesh->getTriangles();
+    currentNormals=mesh->getNormals();
+    currentTextureCord=mesh->getTextCoord();
+
+    int shift=triangles.size();
+    for(int i=0;i<currentTriangles.size();i++){
+        vertex.push_back(vec3f(currentVertex[i].x+position.x,currentVertex[i].y+position.y,currentVertex[i].z+position.z));
+        normals.push_back(currentNormals[i]);
+        textureCord.push_back(currentTextureCord[i]);
+        triangles.push_back(currentTriangles[i]+shift);
+    }
+}
+
+void ObjectGroup::init(){
+    Mesh * mesh=new Mesh("geometries/sphere.obj");
+    mesh->init(vertex,triangles,normals,textureCord);
+    root->add(mesh);
+}
+
+//**********************************************************************//
+
+void ObjectGroup::visualization(Context & vis){
+    //Draw our object
+    root->visualization(vis);
+}
+
+//**********************************************************************//
+
+void ObjectGroup::updateState(float time,Controller * controller,RootMap * rootMap){
+}
+

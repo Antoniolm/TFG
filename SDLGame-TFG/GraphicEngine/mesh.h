@@ -106,6 +106,11 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         BoundingBox getBoundingBox();
 
+        vector<vec3f> & getVertex();
+        vector<GLushort> & getTriangles();
+        vector<vec3f> & getNormals();
+        vector<vec2f> & getTextCoord();
+
 
     protected:
 

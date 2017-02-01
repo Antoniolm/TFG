@@ -105,6 +105,30 @@ BoundingBox Mesh::getBoundingBox(){
 
 //**********************************************************************//
 
+vector<vec3f> & Mesh::getVertex(){
+    return vertex;
+}
+
+//**********************************************************************//
+
+vector<GLushort> & Mesh::getTriangles(){
+    return triangles;
+}
+
+//**********************************************************************//
+
+vector<vec3f> & Mesh::getNormals(){
+    return normals;
+}
+
+//**********************************************************************//
+
+vector<vec2f> & Mesh::getTextCoord(){
+    return textureCord;
+}
+
+//**********************************************************************//
+
 void Mesh::generateBoundingBox(const vector<vec3f> & vertex){
     float maxX,maxY,maxZ,minX,minY,minZ;
     maxX=vertex[0].x;  maxY=vertex[0].y;  maxZ=vertex[0].z;
@@ -155,7 +179,5 @@ void Mesh::loadMesh(const vector<vec3f> & vertex, const vector<GLushort> & trian
     glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(GLushort)*triangles.size(),&triangles[0],GL_STATIC_DRAW);
 
     glBindVertexArray(0);
-
-
 }
 

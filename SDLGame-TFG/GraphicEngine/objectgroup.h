@@ -21,9 +21,9 @@
 #ifndef OBJECTGROUP_H
 #define OBJECTGROUP_H
 
-#include "meshcollection.h"
 #include "materialcollection.h"
 #include "nodescenegraph.h"
+#include "meshcollection.h"
 
 class ObjectGroup : public Object3D
 {
@@ -31,15 +31,33 @@ class ObjectGroup : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        ObjectGroup();
+        ObjectGroup(MaterialIndex materialIndex);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~ObjectGroup();
 
-        void addObject(vec3f position,MeshIndex aMeshIndex,MaterialIndex aMaterialIndex);
+        void addObject(vec3f position,MeshIndex meshIndex);
 
+        void init();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will show the object in our interface
+        *    \return void
+        */
+        /////////////////////////////////////////////////////////////////////////
+        void visualization(Context & vis);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will update the state of the object. That change need the
+        *    current time in our application
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void updateState(float time,Controller * controller,RootMap * rootMap);
     protected:
 
     private:
@@ -47,8 +65,6 @@ class ObjectGroup : public Object3D
         vector<GLushort> triangles;
         vector<vec3f> normals;
         vector<vec2f> textureCord;
-        MaterialIndex materialIndex;
-        MeshIndex meshIndex;
         NodeSceneGraph * root;
 };
 

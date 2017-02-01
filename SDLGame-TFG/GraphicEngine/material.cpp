@@ -32,6 +32,7 @@ Material::Material(const Material & aMaterial){
     specular=aMaterial.specular;
     shininess=aMaterial.shininess;
     texture=aMaterial.texture;
+    index=aMaterial.index;
 }
 
 //**********************************************************************//
@@ -42,6 +43,7 @@ Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &a
     specular=aSpecular;
     shininess=aShini;
     index=aIndex;
+
     texture=new Texture(aFileTextur);
 }
 
@@ -54,7 +56,6 @@ Material::~Material()
 //**********************************************************************//
 
 void Material::activate(Shader * aShader){
-
     shaders=aShader;
 
     //Set value to uniform about material

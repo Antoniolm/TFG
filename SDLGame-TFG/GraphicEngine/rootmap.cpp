@@ -21,6 +21,7 @@
 #include "../VideoGame/npclist.h"
 #include "../VideoGame/enemylist.h"
 #include "../VideoGame/coinlist.h"
+#include "objectgroup.h"
 #include <stdlib.h>     /* srand, rand */
 RootMap::RootMap(){
 }
@@ -94,9 +95,9 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
 
             if(decoObject[currentDeco]["collision"].GetBool()) //If collision
                 objs.push_back(new DecorationObject(decoObject[currentDeco],posDecoration));
-            else{ //If is a decoration obj
+
                 decorationObjs.push_back(new DecorationObject(decoObject[currentDeco],posDecoration));
-            }
+
         }
     }
 
@@ -138,9 +139,18 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     //Create the indexMap;
 
     Context cv;
+    objectGround=new ObjectGroup(mCUBE_DUNG);
+    objectWall=new ObjectGroup(mCUBE_WALL);
     for(unsigned i=0;i<objs.size();i++){
         objs[i]->obtainPosition(cv);
+        if(objs[i]->getMaterialIndex()==mCUBE_DUNG)
+            objectGround->addObject(objs[i]->getPosition(),CUBE);
+        if(objs[i]->getMaterialIndex()==mCUBE_WALL)
+            objectWall->addObject(objs[i]->getPosition(),CUBE);
     }
+    objectGround->init();
+    objectWall->init();
+
 
     for(unsigned i=0;i<decorationObjs.size();i++){
         decorationObjs[i]->obtainPosition(cv);
@@ -220,11 +230,14 @@ void RootMap::visualization(Context & cv){
     background->visualization(cv);
 
     //Draw object
-    for(unsigned i=0;i<objs.size();i++){
+    /*for(unsigned i=0;i<objs.size();i++){
         position=objs[i]->getPosition();
         if(position.x>posHero.x-10 && position.x<posHero.x+10)
             objs[i]->visualization(cv);
-    }
+    }*/
+
+    objectGround->visualization(cv);
+    objectWall->visualization(cv);
 
     //Draw hero
     hero->visualization(cv);

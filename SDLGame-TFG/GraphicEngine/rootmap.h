@@ -61,6 +61,7 @@ class EnemyList;
 class CoinList;
 class ParticleSystem;
 class ProjectileSystem;
+class ObjectGroup;
 class RootMap : public Object3D
 {
     public:
@@ -142,6 +143,8 @@ class RootMap : public Object3D
     private:
         vector<int> indexMap[100][100];
         vector<ObjectScene *> objs;
+        ObjectGroup * objectGround;
+        ObjectGroup * objectWall;
         vector<ObjectScene *> decorationObjs;
         vector<ParticleSystem *> particleSystem;
         vector<ProjectileSystem *> projectileSystem;
