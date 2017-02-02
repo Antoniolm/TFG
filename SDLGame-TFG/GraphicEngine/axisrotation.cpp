@@ -31,6 +31,7 @@ AxisRotation::AxisRotation(float anAVelocity,float x,float y,float z){
     axis.y=y;
     axis.z=z;
     currentMatrix.identity();
+    currentGrade=0;
 }
 
 //**********************************************************************//
@@ -48,15 +49,13 @@ void AxisRotation::setParameters(float anAVelocity,float x,float y,float z){
     axis.y=y;
     axis.z=z;
     currentMatrix.identity();
+    currentGrade=0;
 }
 
 //**********************************************************************//
 
 Matrix4f & AxisRotation::updateState(float time){
     time=time/1000;
-
-    if(time==0.0)
-        time=0.01;
 
     currentGrade+=angularVelocity*time;
     currentMatrix.rotation(currentGrade,axis.x,axis.y,axis.z);
