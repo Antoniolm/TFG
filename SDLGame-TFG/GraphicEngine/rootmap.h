@@ -141,10 +141,9 @@ class RootMap : public Object3D
     protected:
 
     private:
-        vector<int> indexMap[100][100];
+        vector<int> indexMap[500][500];
         vector<ObjectScene *> objs;
-        ObjectGroup * objectGround;
-        ObjectGroup * objectWall;
+        vector<ObjectGroup *> objectGroup;
         vector<ObjectScene *> decorationObjs;
         vector<ParticleSystem *> particleSystem;
         vector<ProjectileSystem *> projectileSystem;

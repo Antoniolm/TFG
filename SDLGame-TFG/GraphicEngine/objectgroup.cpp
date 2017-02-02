@@ -50,7 +50,7 @@ void ObjectGroup::addObject(vec3f position,MeshIndex meshIndex){
     currentTextureCord=mesh->getTextCoord();
 
     int shift=triangles.size();
-    for(int i=0;i<currentTriangles.size();i++){
+    for(unsigned i=0;i<currentTriangles.size();i++){
         vertex.push_back(vec3f(currentVertex[i].x+position.x,currentVertex[i].y+position.y,currentVertex[i].z+position.z));
         normals.push_back(currentNormals[i]);
         textureCord.push_back(currentTextureCord[i]);

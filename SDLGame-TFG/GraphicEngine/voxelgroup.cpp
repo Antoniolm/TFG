@@ -28,7 +28,6 @@ VoxelGroup::VoxelGroup()
 
 VoxelGroup::VoxelGroup(const rapidjson::Value & voxelGFeature,vector<ObjectScene *> & objs){
     //For each group
-    Matrix4f * transObj;
     int tamX=voxelGFeature["XNumber"].GetInt();
     int tamY=voxelGFeature["YNumber"].GetInt();
     int tamZ=voxelGFeature["ZNumber"].GetInt();

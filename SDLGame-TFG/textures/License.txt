@@ -1,5 +1,5 @@
 swamp location by bocharova is licensed under CC Attribution-NonCommercial https://skfb.ly/FAZH -> used in the texture :cubeGrass.png
-Low Poly Game Scene by Partho Borthakur is licensed under CC Attribution https://skfb.ly/HJEQ -> used in the Texture: menu.png,menuPause.png,menuPauseQuit.png,menuPauseResume.png
+Low Poly Game Scene by Partho Borthakur is licensed under CC Attribution https://skfb.ly/HJEQ -> used in the Texture: menu.png,menuPause.png,menuPauseQuit.png,menuPauseResume.png, cubeTrap.png
 Knight by rougher is licensed under CC Attribution-NonCommercial https://sketchfab.com/models/aa451ea41ecd4e439f199aea4955bad0# -> used in the Texture: heroTexture.jpg														    : mainMenuCont.png,mainMenuControl.png,mainMenuQuit.png,mainMenuStart.png
 Great Sword of Frozen Night by ZugZug is licensed under CC Attribution https://skfb.ly/GoHQ -> used in the texture : swordTexture.png
 Flaming Forge shield by pipclank is licensed under CC Attribution https://skfb.ly/JUrX -> used in the texture : shieldTexture.png
@@ -16,3 +16,4 @@ Wooden Box 2D by Alucard is licensedd under CC Attribution 3.0 http://opengamear
 Table by louvey is licensed under CC Attribution https://skfb.ly/IOH8 -> used in the texture: furnitureText.png
 furniture #1 by ericdraw is licensed under CC Attribution https://skfb.ly/Io8o -> used in the texture : bedTexture.png
 Museum Picture by Neo_minigan is licensed under CC Attribution https://skfb.ly/SKGq
+Chandelier by __ramen__ is licensed under CC Attribution https://skfb.ly/XJv8 -> used in the texture : chandelier.png

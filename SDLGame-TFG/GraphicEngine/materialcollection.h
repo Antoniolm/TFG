@@ -34,6 +34,7 @@ enum MaterialIndex{
     mCUBE_DUNG,   //3
     mCUBE_DUNGB,
     mCUBE_WALL,
+    mCUBE_TRAP,
     mWATER,      //7
     mDWATER,      //7
     mVOID,       //8
@@ -53,7 +54,8 @@ enum MaterialIndex{
     mWINDOW,
     mPILLAR,
     mBED,
-    mTORCH
+    mTORCH,
+    mCHANDELIER
 
 };
 

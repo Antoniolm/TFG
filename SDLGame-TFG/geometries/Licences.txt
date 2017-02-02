@@ -13,4 +13,5 @@ Hand Painted Furniture Set by www.handpaintedtextures.com is licensed(https://un
 furniture #1 by ericdraw is licensed under CC Attribution https://skfb.ly/Io8o -> used in the obj: bed.obj, chair.obj
 Table by louvey is licensed under CC Attribution https://skfb.ly/IOH8 -> used in the obj: bookShelf.obj
 Dungeon by Yuliia Tsukanova is licensed under CC Attribution https://skfb.ly/N6T6 -> used in the obj : torch.obj
+Chandelier by __ramen__ is licensed under CC Attribution https://skfb.ly/XJv8 -> used in the obj: chandelier.obj
 

@@ -39,6 +39,9 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.2f, 0.2f, 0.2f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeWall.png",mCUBE_WALL);
     collection.addElement(material);
 
+    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.2f, 0.2f, 0.2f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/cubeTrap.png",mCUBE_TRAP);
+    collection.addElement(material);
+
     material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/water.png",mWATER);
     collection.addElement(material);
 
@@ -104,6 +107,9 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/torch.png",mTORCH);
     collection.addElement(material);
 
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/chandelier.png",mCHANDELIER);
+    collection.addElement(material);
+
 
     //Create our map
     collection.addIndex("mCUBE_GRASS",mCUBE_GRASS);
@@ -111,6 +117,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mCUBE_DUNG",mCUBE_DUNG);
     collection.addIndex("mCUBE_DUNGB",mCUBE_DUNGB);
     collection.addIndex("mCUBE_WALL",mCUBE_WALL);
+    collection.addIndex("mCUBE_TRAP",mCUBE_TRAP);
     collection.addIndex("mWATER",mWATER);
     collection.addIndex("mDWATER",mDWATER);
     collection.addIndex("mVOID",mVOID);
@@ -131,6 +138,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mPILLAR",mPILLAR);
     collection.addIndex("mBED",mBED);
     collection.addIndex("mTORCH",mTORCH);
+    collection.addIndex("mCHANDELIER",mCHANDELIER);
 
 }
 

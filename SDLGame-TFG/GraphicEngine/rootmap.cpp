@@ -139,17 +139,27 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     //Create the indexMap;
 
     Context cv;
-    objectGround=new ObjectGroup(mCUBE_DUNG);
-    objectWall=new ObjectGroup(mCUBE_WALL);
+    objectGroup.push_back(new ObjectGroup(mCUBE_DUNG));
+    objectGroup.push_back(new ObjectGroup(mCUBE_WALL));
+    objectGroup.push_back(new ObjectGroup(mCUBE_DUNGB));
     for(unsigned i=0;i<objs.size();i++){
         objs[i]->obtainPosition(cv);
-        if(objs[i]->getMaterialIndex()==mCUBE_DUNG)
-            objectGround->addObject(objs[i]->getPosition(),CUBE);
-        if(objs[i]->getMaterialIndex()==mCUBE_WALL)
-            objectWall->addObject(objs[i]->getPosition(),CUBE);
+        switch(objs[i]->getMaterialIndex()){
+            case mCUBE_DUNG:
+                objectGroup[0]->addObject(objs[i]->getPosition(),CUBE);
+            break;
+            case mCUBE_WALL:
+                objectGroup[1]->addObject(objs[i]->getPosition(),CUBE);
+            break;
+            case mCUBE_DUNGB:
+                objectGroup[2]->addObject(objs[i]->getPosition(),CUBE);
+            break;
+        }
+
     }
-    objectGround->init();
-    objectWall->init();
+
+    for(int i=0;i<objectGroup.size();i++)
+        objectGroup[i]->init();
 
 
     for(unsigned i=0;i<decorationObjs.size();i++){
@@ -236,8 +246,8 @@ void RootMap::visualization(Context & cv){
             objs[i]->visualization(cv);
     }*/
 
-    objectGround->visualization(cv);
-    objectWall->visualization(cv);
+    for(int i=0;i<objectGroup.size();i++)
+        objectGroup[i]->visualization(cv);
 
     //Draw hero
     hero->visualization(cv);
@@ -281,8 +291,8 @@ void RootMap::updateState(float time,ControllerManager * controller,RootMap * ro
     hero->updateState(time,controller,rootMap);
 
     //Update the Scene
-    for(unsigned i=0;i<objs.size();i++)
-        objs[i]->updateState(time,controller,rootMap);
+      for(int i=0;i<objectGroup.size();i++)
+        objectGroup[i]->updateState(time,controller,rootMap);
 
     //Update the Scene
     coinList->updateState(time,controller,rootMap);

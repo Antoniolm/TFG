@@ -875,7 +875,7 @@ bool Hero::isHit(){
     // ARM
     //////////////////
     OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,140,500,vec3f(1.0,0.0,0),1);
-    OscillateRotation * shoulderCharge2=new OscillateRotation(false,140,0,140,500,vec3f(0.0,1.0,0),1);
+    //OscillateRotation * shoulderCharge2=new OscillateRotation(false,140,0,140,500,vec3f(0.0,1.0,0),1);
     OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
     Matrix4f * rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(90,1.0,0.0,0.0);

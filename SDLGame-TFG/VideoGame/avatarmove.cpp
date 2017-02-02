@@ -568,8 +568,6 @@ bool AvatarMove::canImpact(avatarDirection dirAvatar,const vector<Enemy *> & ene
 //**********************************************************************//
 
 void AvatarMove::impactMove(float time){
-    vec3f posHero=getPosition();
-
     if(impactTime>(time-150)){
         moveBody(impactMovement,direction);
     }
