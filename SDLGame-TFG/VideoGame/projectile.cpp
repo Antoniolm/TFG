@@ -42,16 +42,11 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,floa
     animationMatrix=new Matrix4f();
     animationMatrix->identity();
 
-
-    Matrix4f * transMatrix=new Matrix4f();
-    transMatrix->translation(0.0,0.08,0.0);
-
     rotation=new AxisRotation(200,0.0,0.0,1.0);
 
     root=new NodeSceneGraph();
     root->add(moveAvatar);
     root->add(animationMatrix);
-    root->add(transMatrix);
     root->add(materialCollect->getMaterial(material));
     root->add(meshCollect->getMesh(mesh));
 

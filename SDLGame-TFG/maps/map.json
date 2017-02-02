@@ -80,7 +80,7 @@
             },
             {   "position":[25.0,5.4,-18.0],
                 "dialog":[{"speaker":0,
-                           "string":"You have to be careful with that water"},
+                           "string":"You have to be careful with the green water"},
                           {"speaker":0,
                            "string":"Can hurt your soul"},
                           {"speaker":0,
@@ -93,23 +93,6 @@
     ],
 
     "enemies":[
-            {   "life":40,
-                "position":[5.5,2.0,-6.5],
-                "radioActivity":[2.0,2.0,2.0],
-                "type":"ranged"
-            },
-            {   
-                "life":100,
-                "position":[2.5,2.0,-5.5],
-                "radioActivity":[2.0,2.0,2.0],
-                "type":"melee"
-            },   
-            {   
-                "life":100,
-                "position":[8.5,2.0,-5.5],
-                "radioActivity":[2.0,2.0,2.0],
-                "type":"melee"
-            }
     ],
 
     "coins":[
