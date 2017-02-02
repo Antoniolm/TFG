@@ -12,4 +12,5 @@ Winter Gnome by Brianna Fromont is licensed under CC Attribution https://skfb.ly
 Hand Painted Furniture Set by www.handpaintedtextures.com is licensed(https://unity3d.com/es/legal/as_terms) url(https://www.assetstore.unity3d.com/en/#!/content/6595) -> used in the objs: bed,bedsiteTable,chair,cupBoard,fatTable,smallTable
 furniture #1 by ericdraw is licensed under CC Attribution https://skfb.ly/Io8o -> used in the obj: bed.obj, chair.obj
 Table by louvey is licensed under CC Attribution https://skfb.ly/IOH8 -> used in the obj: bookShelf.obj
+Dungeon by Yuliia Tsukanova is licensed under CC Attribution https://skfb.ly/N6T6 -> used in the obj : torch.obj
 

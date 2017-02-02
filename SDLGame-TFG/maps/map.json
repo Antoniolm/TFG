@@ -4,7 +4,7 @@
     "bkgdMaterial":"mWATER",
     "sound":"sounds/backsound.wav",
     "volSound":30.0,
-    "heroPosition":[22.5,6.5,-16],
+    "heroPosition":[12.5,3.0,-6],
 
     "light":[
             {   "type":0,
@@ -16,13 +16,13 @@
 
             {   "type":1,
                 "channel":"0",
-                "position":[4.0,2.0,4.0],
+                "position":[10.2,3.5,-6.0],
                 "ambient":[1.0,1.0,1.0],
                 "diffuse":[1.0,1.0,1.0],
                 "specular":[1.0,1.0,1.0],
                 "constant":1.0,
-                "linear":0.09,
-                "quadratic":0.032 },
+                "linear":0.9,
+                "quadratic":0.132 },
 
             {   "type":1,
                 "channel":"1",
@@ -36,12 +36,12 @@
     ],
 
     "particleSystem":[
-        {   "number":2,
+        {   "number":20,
             "material":"mFIRE",
-            "scale":[0.1,0.1,0.1],
-            "minPosition":[15.5,1.0,-12.0],
-            "maxPosition":[16.5,1.0,-13.0],
-            "velocity":[0.0,1.0,0.0],
+            "scale":[0.05,0.05,0.05],
+            "minPosition":[10.35,3.0,-6.0],
+            "maxPosition":[10.15,3.0,-6.0],
+            "velocity":[0.0,0.5,0.0],
             "minLife":500,
             "maxLife":1000
         }
@@ -93,6 +93,23 @@
     ],
 
     "enemies":[
+            {   "life":40,
+                "position":[5.5,2.0,-6.5],
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"ranged"
+            },
+            {   
+                "life":100,
+                "position":[2.5,2.0,-5.5],
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"melee"
+            },   
+            {   
+                "life":100,
+                "position":[8.5,2.0,-5.5],
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"melee"
+            }
     ],
 
     "coins":[
@@ -581,7 +598,17 @@
                 "material":"mPILLAR",
                 "mesh":"PILLAR",
                 "collision": false
-            }         
+            },
+            {   "position":[10.2,3.0,-6],
+                "transforms":[
+                    {   "type":"scale",
+                        "values":[1.0,1.0,1.0]
+                    }
+                ],       
+                "material":"mTORCH",
+                "mesh":"TORCH",
+                "collision": false
+            }        
                
     ]
 

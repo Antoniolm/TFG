@@ -52,7 +52,8 @@ enum MaterialIndex{
     mFIRE,
     mWINDOW,
     mPILLAR,
-    mBED
+    mBED,
+    mTORCH
 
 };
 
