@@ -216,7 +216,7 @@ void Game::updateCoin(int & currentCoin){
     std::stringstream coin;
     coin<< hero->getCoin();
     if(currentCoin!=hero->getCoin()){ //If the life has changed
-        coinText->setMessage("Coins:"+coin.str());
+        coinText->setMessage("Crystal:"+coin.str());
         coinText->init();
         currentCoin=hero->getCoin();
     }

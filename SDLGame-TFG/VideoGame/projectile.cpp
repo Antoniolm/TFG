@@ -44,7 +44,7 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,floa
 
 
     Matrix4f * transMatrix=new Matrix4f();
-    transMatrix->translation(0.0,0.11,0.0);
+    transMatrix->translation(0.0,0.08,0.0);
 
     rotation=new AxisRotation(200,0.0,0.0,1.0);
 
