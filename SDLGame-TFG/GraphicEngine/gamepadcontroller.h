@@ -49,7 +49,7 @@ class GamepadController : public Controller
         void removeGamepad();
         SDL_GameController * controller;
         SDL_Joystick *joy;
-    int instanceID;
+        int instanceID;
 };
 
 #endif // GAMEPADCONTROLLER_H

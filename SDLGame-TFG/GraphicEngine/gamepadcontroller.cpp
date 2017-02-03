@@ -23,8 +23,15 @@ GamepadController::GamepadController()
 {
     for(int i=0;i<10;i++)
         buttons[i]=false;
-
-    addGamepad(0);
+    for(int i=0;i<SDL_NumJoysticks();i++)
+        if(SDL_IsGameController(i)){
+            controller=SDL_GameControllerOpen(i);
+            cout<< "---Gamepad connected---"<<endl;
+            /*if( controller ) {
+                joy = SDL_GameControllerGetJoystick( controller );
+                instanceID = SDL_JoystickInstanceID( joy );
+            }*/
+        }
 }
 
 //**********************************************************************//
@@ -101,10 +108,10 @@ void GamepadController::addGamepad(int id){
     if(SDL_IsGameController(id)){
         controller=SDL_GameControllerOpen(id);
         cout<< "---Gamepad connected---"<<endl;
-        if( controller ) {
-            SDL_Joystick *joy = SDL_GameControllerGetJoystick( controller );
-            int instanceID = SDL_JoystickInstanceID( joy );
-        }
+        /*if( controller ) {
+            joy = SDL_GameControllerGetJoystick( controller );
+            instanceID = SDL_JoystickInstanceID( joy );
+        }*/
     }
 }
 
@@ -113,5 +120,6 @@ void GamepadController::addGamepad(int id){
 void GamepadController::removeGamepad(){
     cout<< "---Gamepad disconnected---"<<endl;
     SDL_GameControllerClose(controller);
-    SDL_JoystickClose(joy);
+    //SDL_JoystickClose(joy);
+    controller=0; joy=0;
 }
