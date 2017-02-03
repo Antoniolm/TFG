@@ -402,7 +402,7 @@
 	"window.h"
 	"file_obj.h"
 
-1486144668 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1486145319 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -2301,7 +2301,7 @@
 1486144663 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.cpp
 	"controller.h"
 
-1486144710 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.h
+1486146425 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.h
 	"controller.h"
 	<iostream>
 
@@ -2321,6 +2321,6 @@
 	"keyboardcontroller.h"
 	"gamepadcontroller.h"
 
-1486144825 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controllermanager.cpp
+1486145455 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controllermanager.cpp
 	"controllermanager.h"
 
