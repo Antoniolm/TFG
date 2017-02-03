@@ -20,6 +20,8 @@
 #include "npclist.h"
 
 NpcList::NpcList(){
+    currentTime=SDL_GetTicks();
+    dialogTime=currentTime;
 }
 
 //**********************************************************************//
@@ -38,6 +40,8 @@ NpcList::NpcList(const Value & npcsFeatures){
         }
         npcs.push_back(currentNpc);
     }
+    currentTime=SDL_GetTicks();
+    dialogTime=currentTime;
 }
 
 //**********************************************************************//

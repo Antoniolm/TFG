@@ -66,6 +66,9 @@ void GamepadController::setButton(bool value,Uint8 button){
     case SDL_CONTROLLER_BUTTON_START:
         buttons[cPAUSE]=value;
         break;
+    case SDL_CONTROLLER_AXIS_RIGHTX:
+        std::cout<<" prueba"<<std::endl;
+        break;
     }
 }
 

@@ -4,7 +4,7 @@
     "bkgdMaterial":"mWATER",
     "sound":"sounds/backsound.wav",
     "volSound":30.0,
-    "heroPosition":[12.5,2.0,-4],
+    "heroPosition":[15.5,2.0,-4],
 
     "light":[
             {   "type":0,
@@ -673,7 +673,7 @@
                 "mesh":"BENCH",
                 "collision": true
             },
-            {   "position":[21.5,3.0,-5.5],
+            {   "position":[19.5,3.0,-5.5],
                 "transforms":[
                     
                 ],       

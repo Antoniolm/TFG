@@ -94,12 +94,16 @@ bool Window::createWindow(){
     /////////////////////////////////////////////////////////////
     //Configure the game controller
 
-    for(int i=0;i< SDL_NumJoysticks();i++){
-        if(SDL_IsGameController(i)){
-            controller=SDL_GameControllerOpen(i);
+    //for(int i=0;i< SDL_NumJoysticks();i++){
+        if(SDL_IsGameController(0)){
+            controller=SDL_GameControllerOpen(0);
             cout<< "---Gamepad connected---"<<endl;
+            if( controller ) {
+                SDL_Joystick *joy = SDL_GameControllerGetJoystick( controller );
+                int instanceID = SDL_JoystickInstanceID( joy );
+            }
         }
-    }
+    //}
 
     /////////////////////////////////////////////////////////////
 

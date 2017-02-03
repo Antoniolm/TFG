@@ -21,6 +21,7 @@
 #define GAMEPADCONTROLLER_H
 
 #include "controller.h"
+#include <iostream>
 
 class GamepadController : public Controller
 {
