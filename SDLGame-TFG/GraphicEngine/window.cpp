@@ -35,7 +35,6 @@ Window::Window(){
 Window::~Window(){
     SDL_GL_DeleteContext(context);
 	SDL_DestroyWindow(window);
-	SDL_GameControllerClose(controller);
 	Mix_Quit();
 	SDL_Quit();
 	TTF_Quit();
@@ -55,8 +54,6 @@ void Window::setParameters(const string & aTitle,int aHeight,int aWidth){
 
 bool Window::createWindow(){
     bool salida=true;
-
-    controller= NULL;
 
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		printf("SDL_Error: %s\n", SDL_GetError());
@@ -90,20 +87,6 @@ bool Window::createWindow(){
         cout << "SDL_ttf could not initialize! SDL_ttf Error:"<< endl;
         salida=false;
     }
-
-    /////////////////////////////////////////////////////////////
-    //Configure the game controller
-
-    //for(int i=0;i< SDL_NumJoysticks();i++){
-        if(SDL_IsGameController(0)){
-            controller=SDL_GameControllerOpen(0);
-            cout<< "---Gamepad connected---"<<endl;
-            if( controller ) {
-                SDL_Joystick *joy = SDL_GameControllerGetJoystick( controller );
-                int instanceID = SDL_JoystickInstanceID( joy );
-            }
-        }
-    //}
 
     /////////////////////////////////////////////////////////////
 

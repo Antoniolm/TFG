@@ -124,7 +124,6 @@ class Window
         static Window* instance;
         SDL_Window * window;
         SDL_GLContext context;
-        SDL_GameController * controller;
         string title;
         int height;
         int width;

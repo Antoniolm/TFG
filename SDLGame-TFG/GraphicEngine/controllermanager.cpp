@@ -34,8 +34,8 @@ ControllerManager::~ControllerManager()
 
 //**********************************************************************//
 
-void ControllerManager::setButton(bool value,Uint8 button){
-    gamepadController.setButton(value,button);
+void ControllerManager::checkEvent(SDL_Event & event){
+    gamepadController.checkEvent(event);
 }
 
 //**********************************************************************//

@@ -23,6 +23,8 @@
 #include "controller.h"
 #include <iostream>
 
+using namespace std;
+
 class GamepadController : public Controller
 {
     public:
@@ -36,12 +38,16 @@ class GamepadController : public Controller
         //////////////////////////////////////////////////////////////////////////
         virtual ~GamepadController();
 
-        void setButton(bool value,Uint8 button);
+        void checkEvent(SDL_Event & event);
 
 
     protected:
 
     private:
+        void setButton(bool value,Uint8 button);
+        SDL_GameController * controller;
+        SDL_Joystick *joy;
+    int instanceID;
 };
 
 #endif // GAMEPADCONTROLLER_H

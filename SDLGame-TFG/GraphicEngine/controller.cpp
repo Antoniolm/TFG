@@ -33,7 +33,7 @@ Controller::~Controller()
 
 //**********************************************************************//
 
-void Controller::setButton(bool value,Uint8 button){}
+void Controller::checkEvent(SDL_Event & event){}
 
 //**********************************************************************//
 

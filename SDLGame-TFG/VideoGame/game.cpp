@@ -127,13 +127,7 @@ void Game::loop(){
                     camera.setPerspectiveProjection(30.0f,(float)( windowH / windowW), 0.1f, 200.0f);
                 camera.activateCamera(&context.currentShader);
             }
-            if(event.type==SDL_CONTROLLERBUTTONDOWN){ // If player push a button of his game controller
-                controller->setButton(true,event.cbutton.button);
-            }
-            if(event.type==SDL_CONTROLLERBUTTONUP){ // If player release a button of his game controller
-                controller->setButton(false,event.cbutton.button);
-            }
-
+           controller->checkEvent(event);
         }
 
         controller->catchKeyBoardState(SDL_GetKeyboardState(NULL));
