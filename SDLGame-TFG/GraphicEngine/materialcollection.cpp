@@ -110,6 +110,12 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/chandelier.png",mCHANDELIER);
     collection.addElement(material);
 
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/flag.png",mFLAG);
+    collection.addElement(material);
+
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/column.png",mCOLUMN);
+    collection.addElement(material);
+
 
     //Create our map
     collection.addIndex("mCUBE_GRASS",mCUBE_GRASS);
@@ -139,6 +145,8 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mBED",mBED);
     collection.addIndex("mTORCH",mTORCH);
     collection.addIndex("mCHANDELIER",mCHANDELIER);
+    collection.addIndex("mFLAG",mFLAG);
+    collection.addIndex("mCOLUMN",mCOLUMN);
 
 }
 

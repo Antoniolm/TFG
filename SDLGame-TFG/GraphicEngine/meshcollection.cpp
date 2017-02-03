@@ -206,6 +206,27 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
+    element=new Mesh("geometries/barrel.obj");
+    element->init();
+    collection.addElement(element);
+
+    element=new Mesh("geometries/candleHolder.obj");
+    element->init();
+    collection.addElement(element);
+
+    element=new Mesh("geometries/flag.obj");
+    element->init();
+    collection.addElement(element);
+
+    element=new Mesh("geometries/bench.obj");
+    element->init();
+    collection.addElement(element);
+
+    element=new Mesh("geometries/column.obj");
+    element->init();
+    collection.addElement(element);
+
+
     //Create our map
     collection.addIndex("CUBE",CUBE);
     collection.addIndex("SPHERE",SPHERE);
@@ -245,6 +266,11 @@ MeshCollection::MeshCollection()
     collection.addIndex("CLUB",CLUB);
     collection.addIndex("TORCH",TORCH);
     collection.addIndex("CHANDELIER",CHANDELIER);
+    collection.addIndex("BARREL",BARREL);
+    collection.addIndex("CHOLDER",CHOLDER);
+    collection.addIndex("FLAG",FLAG);
+    collection.addIndex("BENCH",BENCH);
+    collection.addIndex("COLUMN",COLUMN);
 }
 
 //**********************************************************************//

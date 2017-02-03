@@ -55,7 +55,9 @@ enum MaterialIndex{
     mPILLAR,
     mBED,
     mTORCH,
-    mCHANDELIER
+    mCHANDELIER,
+    mFLAG,
+    mCOLUMN
 
 };
 

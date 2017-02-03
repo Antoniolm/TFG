@@ -65,7 +65,12 @@ enum MeshIndex{
     CBOW,
     CLUB,
     TORCH,
-    CHANDELIER
+    CHANDELIER,
+    BARREL,
+    CHOLDER,
+    FLAG,
+    BENCH,
+    COLUMN
 };
 
 class MeshCollection

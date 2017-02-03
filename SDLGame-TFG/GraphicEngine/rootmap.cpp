@@ -246,7 +246,7 @@ void RootMap::visualization(Context & cv){
             objs[i]->visualization(cv);
     }*/
 
-    for(int i=0;i<objectGroup.size();i++)
+    for(unsigned i=0;i<objectGroup.size();i++)
         objectGroup[i]->visualization(cv);
 
     //Draw hero
@@ -291,7 +291,7 @@ void RootMap::updateState(float time,ControllerManager * controller,RootMap * ro
     hero->updateState(time,controller,rootMap);
 
     //Update the Scene
-      for(int i=0;i<objectGroup.size();i++)
+    for(unsigned i=0;i<objectGroup.size();i++)
         objectGroup[i]->updateState(time,controller,rootMap);
 
     //Update the Scene
