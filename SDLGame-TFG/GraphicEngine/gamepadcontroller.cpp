@@ -23,6 +23,8 @@ GamepadController::GamepadController()
 {
     for(int i=0;i<10;i++)
         buttons[i]=false;
+
+
     for(int i=0;i<SDL_NumJoysticks();i++)
         if(SDL_IsGameController(i)){
             controller=SDL_GameControllerOpen(i);
@@ -60,8 +62,15 @@ void GamepadController::checkEvent(SDL_Event & event){
         case SDL_CONTROLLERDEVICEREMOVED:
             removeGamepad();
             break;
-
     }
+
+    //////////////////////
+    //Check joystick
+    //////////////////////
+    Sint16 x_move = SDL_JoystickGetAxis(joy, 0);
+    Sint16 y_move = SDL_JoystickGetAxis(joy, 1);
+
+    updateJoystickMove(x_move,y_move);
 }
 
 //**********************************************************************//
@@ -100,6 +109,66 @@ void GamepadController::setButton(bool value,Uint8 button){
             break;
     }
 
+}
+
+//**********************************************************************//
+
+void GamepadController::updateJoystickMove(Sint16 x,Sint16 y){
+    if(y<-10000 && ( x>-10000 && x<10000)){
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_UP);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    }
+    else if(y>10000 && ( x>-10000 && x<10000)){
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_UP);
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    }
+    else if(x<-10000 && ( y>-10000 && y<10000)){
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_UP);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    }
+    else if(x>10000 && ( y>-10000 && y<10000)){
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_UP);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    }
+    else if(y<-10000 && x<-10000){
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_UP);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    }
+    else if(y<-10000 && x>10000){
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_UP);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    }
+    else if(y>10000 && x<-10000){
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_UP);
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    }
+    else if(y>10000 && x>10000){
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_UP);
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        setButton(true,SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    }
+    else{
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_UP);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        setButton(false,SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+
+    }
 }
 
 //**********************************************************************//

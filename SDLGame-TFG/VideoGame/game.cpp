@@ -127,7 +127,11 @@ void Game::loop(){
                     camera.setPerspectiveProjection(30.0f,(float)( windowH / windowW), 0.1f, 200.0f);
                 camera.activateCamera(&context.currentShader);
             }
-           controller->checkEvent(event);
+
+           if((event.type==SDL_CONTROLLERBUTTONDOWN || event.type==SDL_CONTROLLERBUTTONUP || event.type==SDL_CONTROLLERDEVICEADDED
+              || event.type==SDL_CONTROLLERDEVICEREMOVED || event.type==SDL_CONTROLLERAXISMOTION)){
+                controller->checkEvent(event);;
+           }
         }
 
         controller->catchKeyBoardState(SDL_GetKeyboardState(NULL));

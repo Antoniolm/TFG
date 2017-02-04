@@ -45,6 +45,7 @@ class GamepadController : public Controller
 
     private:
         void setButton(bool value,Uint8 button);
+        void updateJoystickMove(Sint16 x,Sint16 y);
         void addGamepad(int id);
         void removeGamepad();
         SDL_GameController * controller;
