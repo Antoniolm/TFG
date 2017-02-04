@@ -108,8 +108,13 @@ vec3f Enemy::getRadioActivity(){
 
         if(!isImpacted && canImpact(dirAvatar,enemies))
             activeImpact(dirAvatar);
+
         enemySound[1]->stop();
         enemySound[1]->play();
+
+        //Check if was activated
+        if(!enemyActivate)
+            enemyActivate=true;
     }
  }
 
