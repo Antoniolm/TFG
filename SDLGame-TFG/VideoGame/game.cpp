@@ -113,7 +113,7 @@ void Game::loop(){
             if (event.type == SDL_QUIT){
                 quit = true;
             }
-            if(event.type==SDL_MOUSEBUTTONDOWN && event.window.event==SDL_WINDOWEVENT_RESIZED ){
+            if(event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_RESIZED ){
                 if(event.window.data2<600)windowH=600; //MinHeight
                 else windowH=event.window.data2;
 

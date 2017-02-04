@@ -27,10 +27,10 @@ GamepadController::GamepadController()
         if(SDL_IsGameController(i)){
             controller=SDL_GameControllerOpen(i);
             cout<< "---Gamepad connected---"<<endl;
-            /*if( controller ) {
+            if( controller ) {
                 joy = SDL_GameControllerGetJoystick( controller );
                 instanceID = SDL_JoystickInstanceID( joy );
-            }*/
+            }
         }
 }
 
@@ -108,10 +108,10 @@ void GamepadController::addGamepad(int id){
     if(SDL_IsGameController(id)){
         controller=SDL_GameControllerOpen(id);
         cout<< "---Gamepad connected---"<<endl;
-        /*if( controller ) {
+        if( controller ) {
             joy = SDL_GameControllerGetJoystick( controller );
             instanceID = SDL_JoystickInstanceID( joy );
-        }*/
+        }
     }
 }
 
