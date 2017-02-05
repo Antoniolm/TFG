@@ -134,6 +134,7 @@ void MainMenu::updateState(float time,ControllerManager * controller,RootMap * r
             }
 
             menuDelay=time;
+            controller->setState(false,cACTION);
         }
     }
 

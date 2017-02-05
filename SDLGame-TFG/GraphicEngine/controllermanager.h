@@ -38,6 +38,8 @@ class ControllerManager
         //////////////////////////////////////////////////////////////////////////
         virtual ~ControllerManager();
 
+        void setState(bool value,ControllerIndex button);
+
         void checkEvent(SDL_Event & event);
 
         bool checkButton(ControllerIndex button);

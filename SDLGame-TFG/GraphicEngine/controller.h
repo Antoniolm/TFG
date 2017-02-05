@@ -48,6 +48,8 @@ class Controller
         //////////////////////////////////////////////////////////////////////////
         virtual ~Controller();
 
+        virtual void setState(bool value,ControllerIndex button);
+
         virtual void checkEvent(SDL_Event & event);
 
         virtual bool checkButton(ControllerIndex button);

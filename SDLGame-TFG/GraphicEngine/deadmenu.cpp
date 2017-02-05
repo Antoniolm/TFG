@@ -91,8 +91,9 @@ void DeadMenu::updateState(float time,ControllerManager * controller,RootMap * r
         position=rootMap->getHero()->getPosition();
         positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
         if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
-            exit(0);
             menuDelay=time;
+            controller->setState(false,cACTION);
+            exit(0);
         }
     }
 

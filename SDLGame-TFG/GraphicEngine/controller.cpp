@@ -33,6 +33,12 @@ Controller::~Controller()
 
 //**********************************************************************//
 
+void Controller::setState(bool value,ControllerIndex button){
+    buttons[button]=value;
+}
+
+//**********************************************************************//
+
 void Controller::checkEvent(SDL_Event & event){}
 
 //**********************************************************************//

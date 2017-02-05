@@ -135,6 +135,7 @@ void PauseMenu::updateState(float time,ControllerManager * controller,RootMap * 
             }
 
             menuDelay=time;
+            controller->setState(false,cACTION);
         }
     }
 

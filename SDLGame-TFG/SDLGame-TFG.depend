@@ -1027,7 +1027,7 @@
 	<stdlib.h>
 	<vector>
 
-1486293933 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1486295824 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -2295,13 +2295,13 @@
 1485814774 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\keyboardcontroller.h
 	"controller.h"
 
-1486144658 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.h
+1486306506 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.h
 	<SDL.H>
 
-1486144663 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.cpp
+1486306514 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.cpp
 	"controller.h"
 
-1486232317 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.h
+1486306224 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.h
 	"controller.h"
 	<iostream>
 
@@ -2316,11 +2316,11 @@
 	"nodescenegraph.h"
 	"meshcollection.h"
 
-1486145304 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controllermanager.h
+1486306525 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controllermanager.h
 	"controller.h"
 	"keyboardcontroller.h"
 	"gamepadcontroller.h"
 
-1486145455 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controllermanager.cpp
+1486306523 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controllermanager.cpp
 	"controllermanager.h"
 

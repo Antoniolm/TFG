@@ -34,6 +34,13 @@ ControllerManager::~ControllerManager()
 
 //**********************************************************************//
 
+void ControllerManager::setState(bool value,ControllerIndex button){
+    gamepadController.setState(value,button);
+    keyboardController.setState(value,button);
+}
+
+//**********************************************************************//
+
 void ControllerManager::checkEvent(SDL_Event & event){
     gamepadController.checkEvent(event);
 }
