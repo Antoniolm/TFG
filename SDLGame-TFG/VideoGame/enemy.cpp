@@ -87,7 +87,7 @@ vec3f Enemy::getRadioActivity(){
     //check Distance
     float distance=sqrt(pow(position.x-posAvatar.x,2.0)+pow(position.z-posAvatar.z,2.0));
 
-    if(detectHit(posAvatar,dirAvatar) && dmgDelay<(currentTime-700) && distance<1.0){
+    if(detectHit(posAvatar,dirAvatar) && dmgDelay<(currentTime-250) && distance<1.0){
         addLife(value);
         stringstream convert;
         int lastValue;

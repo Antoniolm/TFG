@@ -532,17 +532,23 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
     if(isHitting){
         vector<Enemy *> enemies=rootMap->getEnemyList()->getEnemies();
         vec3f posEnemy;float distance;
+        int currentIndexAnimation;
         switch(currentWeapon->getType()){
             case MELEE: //If is the sword
                 animations.activate(1);
-                for(unsigned i=0;i<enemies.size();i++){ //Loop for all the enemies
-                    posEnemy=enemies[i]->getPosition(); //Calculate the distance
-                    distance=sqrt(pow(position.x-posEnemy.x,2.0)+pow(position.z-posEnemy.z,2.0));
+                currentIndexAnimation=(animations.getAnimation())->getScriptState(7);
+                if((currentIndexAnimation==0) || (currentIndexAnimation==2 )|| (currentIndexAnimation==4)){
+                    //if the hero is in a hit animation not a rest animation
+                    for(unsigned i=0;i<enemies.size();i++){ //Loop for all the enemies
+                        posEnemy=enemies[i]->getPosition(); //Calculate the distance
+                        distance=sqrt(pow(position.x-posEnemy.x,2.0)+pow(position.z-posEnemy.z,2.0));
 
-                    if(distance<=1.0 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
-                        enemies[i]->takeDamage(position,direction,currentWeapon->getDamage(),enemies); //Hit enemy
+                        if(distance<=1.0 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
+                            enemies[i]->takeDamage(position,direction,currentWeapon->getDamage(),enemies); //Hit enemy
+                        }
                     }
                 }
+
             break;
             case RANGED: //if is the crossbow
                 animations.activate(5);
@@ -703,7 +709,7 @@ bool Hero::isHit(){
     float distance=sqrt(pow(position.x-posAvatar.x,2.0)+pow(position.z-posAvatar.z,2.0));
 
     if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) && !canShield && distance<1.0){
-        addLife(value);
+        //addLife(value);
         stringstream convert;
         if(activatedTexts[3]){ //if is activate the text ->//Join values
             int lastValue;
@@ -717,8 +723,9 @@ bool Hero::isHit(){
         setDialog(convert.str(),3);
 
         activateDialog(true,3);
-        if(!isImpacted) //if hero is not impacted in this moment
-            activeImpact(dirAvatar);
+        //if(!isImpacted) //if hero is not impacted in this moment
+          //  activeImpact(dirAvatar);
+
         heroSound[1]->stop();
         heroSound[1]->play();
     }
@@ -895,7 +902,7 @@ bool Hero::isHit(){
     rotateElbowThirdAttack->rotation(-90,0.0,1.0,0.0);
 
     Matrix4f * rotateBWAttack=new Matrix4f();
-    rotateBWAttack->rotation(-70,0.0,1.0,0.0);
+    rotateBWAttack->rotation(-30,0.0,1.0,0.0);
 
     Matrix4f * transElbow=new Matrix4f();
     transElbow->translation(0.0,-0.5,0.0);
@@ -924,27 +931,27 @@ bool Hero::isHit(){
 
     ElbowScriptRight->add(0.5,notMove);
     ElbowScriptRight->add(0.25,staticTransElbow);
-    ElbowScriptRight->add(0.5,staticTransElbow);
+    ElbowScriptRight->add(0.25,staticTransElbow);
     ElbowScriptRight->add(0.25,staticRotateThirdAttack);
     ElbowScriptRight->add(0.5,notMove);
 
     ElbowScriptTRight->add(0.5,notMove);
     ElbowScriptTRight->add(0.25,staticElbow);
-    ElbowScriptTRight->add(0.5,staticElbow);
+    ElbowScriptTRight->add(0.25,staticElbow);
     ElbowScriptTRight->add(0.25,staticElbow);
     ElbowScriptTRight->add(0.5,notMove);
 
     ArmScriptRight->add(0.25,shoulderCharge);
     ArmScriptRight->add(0.25,notMove);
     ArmScriptRight->add(0.25,shoulderAttack);
-    ArmScriptRight->add(0.5,staticBWAttack);
+    ArmScriptRight->add(0.25,staticBWAttack);
     ArmScriptRight->add(0.25,shoulderAttackInvert);
     ArmScriptRight->add(0.5,notMove);
 
     ArmScriptTRight->add(0.25,notMove);
     ArmScriptTRight->add(0.25,notMove);
     ArmScriptTRight->add(0.25,staticShoulder);
-    ArmScriptTRight->add(0.5,staticShoulder);
+    ArmScriptTRight->add(0.25,staticShoulder);
     ArmScriptTRight->add(0.25,staticShoulder);
     ArmScriptTRight->add(0.5,notMove);
 
@@ -954,8 +961,8 @@ bool Hero::isHit(){
     animation->add(ElbowScriptLeft);   //4
     animation->add(ElbowScriptTLeft);  //5
     animation->add(ArmScriptRight);    //6
-    animation->add(ArmScriptTRight);
-    animation->add(ArmScriptLeft);     //7
+    animation->add(ArmScriptTRight);   //7
+    animation->add(ArmScriptLeft);     //8
 
 
     ///////////////////

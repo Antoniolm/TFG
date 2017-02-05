@@ -93,19 +93,19 @@
     ],
 
     "enemies":[
-            {   "life":40,
+            {   "life":400,
                 "position":[5.5,2.0,-6.5],
                 "radioActivity":[2.0,2.0,2.0],
-                "type":"ranged"
+                "type":"melee"
             },
             {   
-                "life":100,
+                "life":400,
                 "position":[2.5,2.0,-5.5],
                 "radioActivity":[2.0,2.0,2.0],
                 "type":"melee"
             },   
             {   
-                "life":100,
+                "life":400,
                 "position":[8.5,2.0,-5.5],
                 "radioActivity":[2.0,2.0,2.0],
                 "type":"melee"
