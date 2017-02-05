@@ -106,8 +106,8 @@ vec3f Enemy::getRadioActivity(){
 
         dmgDelay=currentTime;
 
-        if(!isImpacted && canImpact(dirAvatar,enemies))
-            activeImpact(dirAvatar);
+        //if(!isImpacted && canImpact(dirAvatar,enemies))
+          //  activeImpact(dirAvatar);
 
         enemySound[1]->stop();
         enemySound[1]->play();

@@ -297,6 +297,7 @@ Hero::Hero(vec3f aPos)
     shieldDelay=currentTime;
     swapDelay=currentTime;
     shootDelay=currentTime;
+    swordDelay=currentTime;
 
     //Init all animations of our hero
     initAnimation();
@@ -457,8 +458,6 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
         if(!isHitting){
             animations.resetAnimation(1);
             animations.resetAnimation(5);
-            //heroSound[4]->stop();
-            //heroSound[4]->play();
         }
         isHitting=true;
         hitDelay=time;
@@ -537,7 +536,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
             case MELEE: //If is the sword
                 animations.activate(1);
                 currentIndexAnimation=(animations.getAnimation())->getScriptState(7);
-                if((currentIndexAnimation==0) || (currentIndexAnimation==2 )|| (currentIndexAnimation==4)){
+                if((currentIndexAnimation==0 || currentIndexAnimation==2 || currentIndexAnimation==4) && swordDelay<(time-250)){
                     //if the hero is in a hit animation not a rest animation
                     for(unsigned i=0;i<enemies.size();i++){ //Loop for all the enemies
                         posEnemy=enemies[i]->getPosition(); //Calculate the distance
@@ -547,6 +546,9 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
                             enemies[i]->takeDamage(position,direction,currentWeapon->getDamage(),enemies); //Hit enemy
                         }
                     }
+                    heroSound[4]->stop();
+                    heroSound[4]->play();
+                    swordDelay=time;
                 }
 
             break;
