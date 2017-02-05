@@ -37,7 +37,7 @@ SoundCollection::SoundCollection()
     sound=new Sound("sounds/shoot.wav",1,50,9,0);
     collection.addElement(sound);
 
-    sound=new Sound("sounds/sword.wav",1,50,10,0);
+    sound=new Sound("sounds/sword.wav",1,1,10,0);
     collection.addElement(sound);
 
     sound=new Sound("sounds/arrowHit.wav",1,50,11,0);

@@ -1037,9 +1037,11 @@ bool Hero::isHit(){
 
     //Movement to the second arm
     ElbowScriptRight=new MatrixScript();
+    ElbowScriptTRight=new MatrixScript();
     ArmScriptRight=new MatrixScript();
     ArmScriptTRight=new MatrixScript();
     ElbowScriptRight->add(0.5,notMove);
+    ElbowScriptTRight->add(0.5,notMove);
     ArmScriptRight->add(0.5,notMove);
     ArmScriptTRight->add(0.5,notMove);
 
