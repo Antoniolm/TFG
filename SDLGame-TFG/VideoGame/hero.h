@@ -177,6 +177,7 @@ class Hero: public AvatarMove
         */
         //////////////////////////////////////////////////////////////////////////
         void createProjectile();
+
         vector<Projectile *> projectiles;
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> heroSound;

@@ -1006,7 +1006,7 @@
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 
-1485987273 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
+1486287531 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -1027,7 +1027,7 @@
 	<stdlib.h>
 	<vector>
 
-1486063843 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1486293933 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
