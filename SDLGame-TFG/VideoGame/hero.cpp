@@ -891,15 +891,22 @@ bool Hero::isHit(){
     Matrix4f * rotateElbow2=new Matrix4f();
     rotateElbow2->rotation(-90,1.0,0.0,0.0);
 
+    Matrix4f * rotateElbowThirdAttack=new Matrix4f();
+    rotateElbowThirdAttack->rotation(-90,0.0,1.0,0.0);
+
+    Matrix4f * rotateBWAttack=new Matrix4f();
+    rotateBWAttack->rotation(-70,0.0,1.0,0.0);
+
     Matrix4f * transElbow=new Matrix4f();
     transElbow->translation(0.0,-0.5,0.0);
 
     //rotateElbow->product(rotateElbow2->getMatrix());
 
-
     MatrixStatic *staticShoulder=new MatrixStatic(*rotateShoulder);
     MatrixStatic *staticElbow=new MatrixStatic(*rotateElbow2);
     MatrixStatic *staticTransElbow=new MatrixStatic(*rotateElbow);
+    MatrixStatic *staticRotateThirdAttack=new MatrixStatic(*rotateElbowThirdAttack);
+    MatrixStatic *staticBWAttack=new MatrixStatic(*rotateBWAttack);
 
     //Movement to the first arm
     ElbowScriptLeft=new MatrixScript();
@@ -917,29 +924,29 @@ bool Hero::isHit(){
 
     ElbowScriptRight->add(0.5,notMove);
     ElbowScriptRight->add(0.25,staticTransElbow);
-    ElbowScriptRight->add(0.25,notMove);
-    ElbowScriptRight->add(0.25,staticTransElbow);
-    ElbowScriptRight->add(0.25,notMove);
+    ElbowScriptRight->add(0.5,staticTransElbow);
+    ElbowScriptRight->add(0.25,staticRotateThirdAttack);
+    ElbowScriptRight->add(0.5,notMove);
 
     ElbowScriptTRight->add(0.5,notMove);
     ElbowScriptTRight->add(0.25,staticElbow);
-    ElbowScriptTRight->add(0.25,notMove);
+    ElbowScriptTRight->add(0.5,staticElbow);
     ElbowScriptTRight->add(0.25,staticElbow);
-    ElbowScriptTRight->add(0.25,notMove);
+    ElbowScriptTRight->add(0.5,notMove);
 
     ArmScriptRight->add(0.25,shoulderCharge);
     ArmScriptRight->add(0.25,notMove);
     ArmScriptRight->add(0.25,shoulderAttack);
-    ArmScriptRight->add(0.25,notMove);
+    ArmScriptRight->add(0.5,staticBWAttack);
     ArmScriptRight->add(0.25,shoulderAttackInvert);
-    ArmScriptRight->add(0.25,notMove);
+    ArmScriptRight->add(0.5,notMove);
 
     ArmScriptTRight->add(0.25,notMove);
     ArmScriptTRight->add(0.25,notMove);
     ArmScriptTRight->add(0.25,staticShoulder);
-    ArmScriptTRight->add(0.25,notMove);
+    ArmScriptTRight->add(0.5,staticShoulder);
     ArmScriptTRight->add(0.25,staticShoulder);
-    ArmScriptTRight->add(0.25,notMove);
+    ArmScriptTRight->add(0.5,notMove);
 
     //Add the script to our animation
     animation->add(ElbowScriptRight);  //2
