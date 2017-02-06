@@ -409,19 +409,19 @@ bool AvatarMove::detectHit(vec3f posAvatar,avatarDirection dirAvatar){
 
     switch(dirAvatar){
         case FORWARD:
-            if(position.z>posAvatar.z && (position.x>=posAvatar.x-0.3 && position.x<=posAvatar.x+0.3))
+            if(position.z>posAvatar.z && (position.x>=posAvatar.x-0.4 && position.x<=posAvatar.x+0.4))
                 result=true;
             break;
         case BACKWARD:
-            if(position.z<posAvatar.z && (position.x>=posAvatar.x-0.3 && position.x<=posAvatar.x+0.3))
+            if(position.z<posAvatar.z && (position.x>=posAvatar.x-0.4 && position.x<=posAvatar.x+0.4))
                 result=true;
             break;
         case LEFTWARD:
-            if(position.x<posAvatar.x && (position.z>=posAvatar.z-0.3 && position.z<=posAvatar.z+0.3))
+            if(position.x<posAvatar.x && (position.z>=posAvatar.z-0.4 && position.z<=posAvatar.z+0.4))
                 result=true;
             break;
         case RIGHTWARD:
-            if(position.x>posAvatar.x && (position.z>=posAvatar.z-0.3 && position.z<=posAvatar.z+0.3))
+            if(position.x>posAvatar.x && (position.z>=posAvatar.z-0.4 && position.z<=posAvatar.z+0.4))
                 result=true;
             break;
         case FOR_LEFTWARD:
@@ -452,19 +452,19 @@ bool AvatarMove::detectShield(vec3f posAvatar,avatarDirection dirAvatar){
 
     switch(dirAvatar){
         case FORWARD:
-            if(position.z<posAvatar.z && (position.x>=posAvatar.x-0.3 && position.x<=posAvatar.x+0.3))
+            if(position.z<posAvatar.z && (position.x>=posAvatar.x-0.4 && position.x<=posAvatar.x+0.4))
                 result=true;
             break;
         case BACKWARD:
-            if(position.z>posAvatar.z && (position.x>=posAvatar.x-0.3 && position.x<=posAvatar.x+0.3))
+            if(position.z>posAvatar.z && (position.x>=posAvatar.x-0.4 && position.x<=posAvatar.x+0.4))
                 result=true;
             break;
         case LEFTWARD:
-            if(position.x>posAvatar.x && (position.z>=posAvatar.z-0.3 && position.z<=posAvatar.z+0.3))
+            if(position.x>posAvatar.x && (position.z>=posAvatar.z-0.4 && position.z<=posAvatar.z+0.4))
                 result=true;
             break;
         case RIGHTWARD:
-            if(position.x<posAvatar.x && (position.z>=posAvatar.z-0.3 && position.z<=posAvatar.z+0.3))
+            if(position.x<posAvatar.x && (position.z>=posAvatar.z-0.4 && position.z<=posAvatar.z+0.4))
                 result=true;
             break;
         case FOR_LEFTWARD:

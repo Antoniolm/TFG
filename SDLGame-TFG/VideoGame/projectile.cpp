@@ -83,7 +83,7 @@ void Projectile::updateState(float time,ControllerManager * controller,RootMap *
     vec3f posHead=vec3f(vec3f(position)+projectileHead);
     float distance=sqrt(pow(posHead.x-posHero.x,2.0)+pow(posHead.z-posHero.z,2.0));
 
-    if(distance<=0.3 && live && (position.y>posHero.y-1 && position.y<posHero.y+1)){
+    if(distance<=0.4 && live && (position.y>posHero.y-1 && position.y<posHero.y+1)){
         rootMap->getHero()->takeDamage(position,direction,damage);
         live=false;
     }
@@ -96,7 +96,7 @@ void Projectile::updateState(float time,ControllerManager * controller,RootMap *
         posEnemy=enemies[i]->getPosition(); //Calculate the distance
         distance=sqrt(pow(posHead.x-posEnemy.x,2.0)+pow(posHead.z-posEnemy.z,2.0));
 
-        if(distance<=0.3 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
+        if(distance<=0.4 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
             enemies[i]->takeDamage(position,direction,damage,enemies);
             live=false;
         }
