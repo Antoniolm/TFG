@@ -21,7 +21,7 @@
 #define COINLIST_H
 
 #include "../GraphicEngine/object3d.h"
-#include "coin.h"
+#include "item.h"
 #include <vector>
 #include "../lib/rapidjson/document.h"
 
@@ -53,7 +53,7 @@ class CoinList : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void add(Coin * coin);
+        void add(Item * coin);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -75,7 +75,7 @@ class CoinList : public Object3D
     protected:
 
     private:
-        vector<Coin *> coins;
+        vector<Item *> coins;
 };
 
 #endif // COINLIST_H

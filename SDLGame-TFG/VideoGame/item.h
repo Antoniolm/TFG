@@ -17,8 +17,8 @@
 // **
 // *********************************************************************
 
-#ifndef COIN_H
-#define COIN_H
+#ifndef ITEM_H
+#define ITEM_H
 
 #include "../GraphicEngine/object3d.h"
 #include "../GraphicEngine/nodescenegraph.h"
@@ -30,18 +30,23 @@
 #include "../GraphicEngine/axisrotation.h"
 #include "../GraphicEngine/sound.h"
 
-class Coin : public Object3D
+enum ItemType{
+    iCOIN,
+    iPOTION
+};
+
+class Item : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Coin(vec3f aPosition,int aValue);
+        Item(vec3f aPosition,int aValue);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~Coin();
+        virtual ~Item();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -87,4 +92,4 @@ class Coin : public Object3D
         bool notTake;
 };
 
-#endif // COIN_H
+#endif // ITEM_H

@@ -16,10 +16,9 @@
 // ** along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // **
 // *********************************************************************
+#include "item.h"
 
-#include "coin.h"
-
-Coin::Coin(vec3f aPosition,int aValue){
+Item::Item(vec3f aPosition,int aValue){
     value=aValue;
     notTake=true;
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
@@ -48,20 +47,20 @@ Coin::Coin(vec3f aPosition,int aValue){
 
 //**********************************************************************//
 
-Coin::~Coin()
+Item::~Item()
 {
 
 }
 
 //**********************************************************************//
 
-void Coin::visualization(Context & cv){
+void Item::visualization(Context & cv){
     root->visualization(cv);
 }
 
 //**********************************************************************//
 
-void Coin::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
+void Item::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
     vec3f posHero=rootMap->getHero()->getPosition();
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.y-posHero.y,2.0)+pow(position.z-posHero.z,2.0));
     if(distance<=0.4){
@@ -78,12 +77,12 @@ void Coin::updateState(float time,ControllerManager * controller,RootMap * rootM
 
 //**********************************************************************//
 
-int Coin::getValue(){
+int Item::getValue(){
     return value;
 }
 
 //**********************************************************************//
 
-bool Coin::isTake(){
+bool Item::isTake(){
     return !notTake;
 }

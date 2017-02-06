@@ -28,7 +28,7 @@ CoinList::CoinList()
 
 CoinList::CoinList(const Value & coinFeatures){
     for(unsigned i=0;i<coinFeatures.Size();i++){
-        coins.push_back(new Coin(vec3f(coinFeatures[i]["position"][0].GetFloat(),coinFeatures[i]["position"][1].GetFloat(),coinFeatures[i]["position"][2].GetFloat()),
+        coins.push_back(new Item(vec3f(coinFeatures[i]["position"][0].GetFloat(),coinFeatures[i]["position"][1].GetFloat(),coinFeatures[i]["position"][2].GetFloat()),
                                  coinFeatures[i]["value"].GetInt()));
     }
 }
@@ -42,7 +42,7 @@ CoinList::~CoinList()
 
 //**********************************************************************//
 
-void CoinList::add(Coin * coin){
+void CoinList::add(Item * coin){
     coins.push_back(coin);
 }
 
@@ -56,7 +56,7 @@ void CoinList::visualization(Context & cv){
 //**********************************************************************//
 
 void CoinList::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){
-    vector<Coin*>::iterator it=coins.begin();
+    vector<Item*>::iterator it=coins.begin();
     while(it!=coins.end()){
         (*it)->updateState(time,controller,rootMap);
         if((*it)->isTake()){
