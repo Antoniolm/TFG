@@ -373,7 +373,7 @@
 	<string>
 	"sound.h"
 
-1485987711 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1486379259 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -390,6 +390,7 @@
 	"../GraphicEngine/mainmenu.h"
 	"../GraphicEngine/deadmenu.h"
 	"../GraphicEngine/controllermanager.h"
+	"../GraphicEngine/profile.h"
 	"projectile.h"
 	"../lib/rapidjson/document.h"
 	"../lib/rapidjson/stringbuffer.h"
@@ -517,7 +518,7 @@
 	<iostream>
 	<unistd.h>
 
-1484155700 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.cpp
+1486377567 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.cpp
 	"sound.h"
 
 1382587623 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\sdl2\include\sdl2\sdl_opengl.h
@@ -1027,7 +1028,7 @@
 	<stdlib.h>
 	<vector>
 
-1486375723 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1486378128 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -1729,7 +1730,7 @@
 1486137776 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.cpp
 	"npclist.h"
 
-1486325755 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
+1486378134 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\enemy.cpp
 	"enemy.h"
 	"../GraphicEngine/iaenemy.h"
 
@@ -2323,4 +2324,11 @@
 
 1486306523 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controllermanager.cpp
 	"controllermanager.h"
+
+1486379128 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\profile.cpp
+	"profile.h"
+
+1486381748 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\profile.h
+	<iostream>
+	<SDL.h>
 

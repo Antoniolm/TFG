@@ -711,7 +711,7 @@ bool Hero::isHit(){
     float distance=sqrt(pow(position.x-posAvatar.x,2.0)+pow(position.z-posAvatar.z,2.0));
 
     if(detectHit(posAvatar,dirAvatar)&& dmgDelay<(currentTime-700) && !canShield && distance<1.0){
-        //addLife(value);
+        addLife(value);
         stringstream convert;
         if(activatedTexts[3]){ //if is activate the text ->//Join values
             int lastValue;
@@ -725,8 +725,8 @@ bool Hero::isHit(){
         setDialog(convert.str(),3);
 
         activateDialog(true,3);
-        //if(!isImpacted) //if hero is not impacted in this moment
-          //  activeImpact(dirAvatar);
+        if(!isImpacted) //if hero is not impacted in this moment
+            activeImpact(dirAvatar);
 
         heroSound[1]->stop();
         heroSound[1]->play();

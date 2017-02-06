@@ -86,6 +86,7 @@ void Game::loop(){
     bool wasActivatedMenu=false;
     int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;
+    Profile profile;
 
     hero=rootMap->getHero();
     posHero=hero->getPosition();
@@ -165,16 +166,21 @@ void Game::loop(){
             wasActivatedMenu=true;
         }
 
-        //Update the camera, lifeText, coinText
+
+        //Update the camera, lifeText, coinText, profile
         posHero=hero->getPosition();
 
         camera.update(currentKeyStates,&context.currentShader,rootMap);
         updateLife(lastLife);
         updateCoin(currentCoin);
 
+        profile.addUpdateTime(SDL_GetTicks()-time);
+
         ///////////////////
         // VISUALIZATION
         ///////////////////
+        time=SDL_GetTicks();
+
         camera.activatePerspecProjection(&context.currentShader);
         rootMap->visualization(context);
 
@@ -185,11 +191,16 @@ void Game::loop(){
         mainMenu->visualization(context);
         deadMenu->visualization(context);
 
+        profile.addVisualTime(SDL_GetTicks()-time);
+        profile.incrementFrames();
+
         window->updateScreen();
 
         if(hero->getLife()<=0.0)
             deadMenu->activate();
     }
+
+    profile.showResult();
 }
 
 //**********************************************************************//
