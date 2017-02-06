@@ -19,6 +19,8 @@
 
 #include "profile.h"
 
+Profile* Profile::instance = NULL;
+
 Profile::Profile()
 {
     totalVisualTime=0;
@@ -55,7 +57,12 @@ void Profile::incrementFrames(){
 //**********************************************************************//
 
 void Profile::showResult(){
-    cout<< "Average update time->"<< totalUpdateTime/nFrame<<endl;
-    cout<< "Average visualization time->"<< totalVisualTime/nFrame<<endl;
-    cout<< "Total time->"<< SDL_GetTicks()<<endl;
+    float totalTime=SDL_GetTicks();
+    totalTime=totalTime/1000; // second
+    cout<< endl<<"-------PROFILE-------"<<endl;
+    cout<< "Average update time-> "<< totalUpdateTime/nFrame<< " miliseconds"<<endl;
+    cout<< "Average visualization time-> "<< totalVisualTime/nFrame<< " miliseconds"<<endl;
+    cout<< "Average fps-> "<< nFrame/totalTime<< " fps"<<endl;
+    cout<< "Total time-> "<< totalTime<< " seconds"<<endl;
+    cout<< "-----END_PROFILE-----"<<endl;
 }

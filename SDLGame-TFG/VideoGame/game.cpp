@@ -86,7 +86,7 @@ void Game::loop(){
     bool wasActivatedMenu=false;
     int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;
-    Profile profile;
+    Profile * profile=Profile::getInstance();
 
     hero=rootMap->getHero();
     posHero=hero->getPosition();
@@ -174,7 +174,7 @@ void Game::loop(){
         updateLife(lastLife);
         updateCoin(currentCoin);
 
-        profile.addUpdateTime(SDL_GetTicks()-time);
+        profile->addUpdateTime(SDL_GetTicks()-time);
 
         ///////////////////
         // VISUALIZATION
@@ -191,8 +191,8 @@ void Game::loop(){
         mainMenu->visualization(context);
         deadMenu->visualization(context);
 
-        profile.addVisualTime(SDL_GetTicks()-time);
-        profile.incrementFrames();
+        profile->addVisualTime(SDL_GetTicks()-time);
+        profile->incrementFrames();
 
         window->updateScreen();
 
@@ -200,7 +200,7 @@ void Game::loop(){
             deadMenu->activate();
     }
 
-    profile.showResult();
+    profile->showResult();
 }
 
 //**********************************************************************//

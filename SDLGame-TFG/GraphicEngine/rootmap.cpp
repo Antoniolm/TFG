@@ -185,7 +185,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     /////////////////////////////////////////
     // Add sound of our map
     backSound=new Sound(document["sound"].GetString(),0,document["volSound"].GetFloat());
-    //backSound->play();
+    backSound->play();
 
     currentTime=SDL_GetTicks();
 }

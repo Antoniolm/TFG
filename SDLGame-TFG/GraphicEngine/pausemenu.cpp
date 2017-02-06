@@ -129,6 +129,7 @@ void PauseMenu::updateState(float time,ControllerManager * controller,RootMap * 
                     openSound->play();
                 break;
                 case 1:
+                    (Profile::getInstance())->showResult();
                     exit(0);
                 break;
 

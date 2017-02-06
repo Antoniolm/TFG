@@ -92,7 +92,7 @@ void DeadMenu::updateState(float time,ControllerManager * controller,RootMap * r
         positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
         if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             menuDelay=time;
-            controller->setState(false,cACTION);
+            (Profile::getInstance())->showResult();
             exit(0);
         }
     }

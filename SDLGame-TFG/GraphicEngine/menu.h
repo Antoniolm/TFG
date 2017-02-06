@@ -27,6 +27,7 @@
 #include "nodescenegraph.h"
 #include "texture.h"
 #include "material.h"
+#include "profile.h"
 #include "sound.h"
 
 class Menu : public Object3D

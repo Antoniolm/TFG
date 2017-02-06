@@ -128,6 +128,7 @@ void MainMenu::updateState(float time,ControllerManager * controller,RootMap * r
                     openSound->play();
                 break;
                 case 3:
+                    (Profile::getInstance())->showResult();
                     exit(0);
                 break;
 

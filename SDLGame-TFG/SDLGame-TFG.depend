@@ -403,7 +403,7 @@
 	"window.h"
 	"file_obj.h"
 
-1486234971 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1486383761 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1778,7 +1778,7 @@
 1485987394 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.cpp
 	"menu.h"
 
-1485987169 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.h
+1486383896 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu.h
 	"object3d.h"
 	"rootmap.h"
 	"context.h"
@@ -1786,6 +1786,7 @@
 	"nodescenegraph.h"
 	"texture.h"
 	"material.h"
+	"profile.h"
 	"sound.h"
 
 1486128346 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.h
@@ -1813,10 +1814,10 @@
 	"sound.h"
 	"menu.h"
 
-1486307233 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
+1486383965 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
 	"pausemenu.h"
 
-1486307222 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
+1486383935 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
 	"mainmenu.h"
 
 1485987158 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.h
@@ -1958,7 +1959,7 @@
 1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\strfunc.h
 	"../stream.h"
 
-1486307248 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\deadmenu.cpp
+1486383957 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\deadmenu.cpp
 	"deadmenu.h"
 
 1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\document.h
@@ -2325,10 +2326,10 @@
 1486306523 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controllermanager.cpp
 	"controllermanager.h"
 
-1486379128 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\profile.cpp
+1486385391 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\profile.cpp
 	"profile.h"
 
-1486381748 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\profile.h
+1486383696 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\profile.h
 	<iostream>
 	<SDL.h>
 

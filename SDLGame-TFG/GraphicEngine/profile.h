@@ -28,10 +28,7 @@ using namespace std;
 class Profile
 {
     public:
-        //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
-        //////////////////////////////////////////////////////////////////////////
-        Profile();
+
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -43,16 +40,28 @@ class Profile
 
         void incrementFrames();
 
-
         void showResult();
 
+        static Profile * getInstance(){
+            if(instance == NULL)
+                instance = new Profile();
+
+            return instance;
+        }
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
+        Profile();
+
         int nFrame;
         float totalVisualTime;
         float totalUpdateTime;
         float fps;
+
+        static Profile* instance;
 };
 
 #endif // PROFILE_H

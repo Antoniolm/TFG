@@ -124,6 +124,8 @@
 		<Unit filename="GraphicEngine/particlesystem.h" />
 		<Unit filename="GraphicEngine/pausemenu.cpp" />
 		<Unit filename="GraphicEngine/pausemenu.h" />
+		<Unit filename="GraphicEngine/profile.cpp" />
+		<Unit filename="GraphicEngine/profile.h" />
 		<Unit filename="GraphicEngine/rootmap.cpp" />
 		<Unit filename="GraphicEngine/rootmap.h" />
 		<Unit filename="GraphicEngine/scriptanimation.cpp" />
