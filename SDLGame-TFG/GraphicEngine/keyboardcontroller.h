@@ -35,7 +35,14 @@ class KeyboardController : public Controller
         //////////////////////////////////////////////////////////////////////////
         virtual ~KeyboardController();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will obtain the current state of our keyboard
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void catchKeyBoardState(const Uint8* currentKeyStates);
+
     protected:
 
     private:
