@@ -847,12 +847,11 @@ bool Hero::isHit(){
     transBodySecond->translation(0,-0.05,0);
     MatrixStatic * staticBodySecond=new MatrixStatic(*transBodySecond);
 
-    //Movement to the first arm
+    //Movement body
     MatrixScript * bodyScript=new MatrixScript();
     bodyScript->add(0.3,oscillateBody);
     bodyScript->add(0.3,oscillateBodySecond);
 
-    //Movement to the first arm
     MatrixScript * bodyTScript=new MatrixScript();
     bodyTScript->add(0.15,staticBody);
     bodyTScript->add(0.15,staticBodySecond);
@@ -970,12 +969,26 @@ bool Hero::isHit(){
     ///////////////////
     // BODY
     //////////////////
-    //Movement to the first arm
+    oscillateBody=new OscillateRotation(true,20,0,0,100,vec3f(0,1,0),1);
+    oscillateBodySecond=new OscillateRotation(false,0,-20,0,100,vec3f(0,1,0),1);
+
+    Matrix4f * rotBody=new Matrix4f();
+    rotBody->rotation(-20,0.0,1.0,0.0);
+
+    //rotateElbow->product(rotateElbow2->getMatrix());
+
+    MatrixStatic *staticRotBody=new MatrixStatic(*rotBody);
+
+    //Move body
     bodyScript=new MatrixScript();
-    bodyScript->add(0.3,notMove);
+    bodyScript->add(0.5,notMove);
+    bodyScript->add(0.25,oscillateBodySecond);
+    bodyScript->add(0.25,staticRotBody);
+    bodyScript->add(0.25,oscillateBody);
+    bodyScript->add(0.5,notMove);
 
     bodyTScript=new MatrixScript();
-    bodyTScript->add(0.3,notMove);
+    bodyTScript->add(0.5,notMove);
 
     animation->add(bodyScript);
     animation->add(bodyTScript);
@@ -1059,14 +1072,14 @@ bool Hero::isHit(){
     ///////////////////
     // BODY
     //////////////////
-    //Matrix4fDinamic
+    oscillateBody=new OscillateRotation(true,5,0,1,25,vec3f(0,1,0),1);
+    oscillateBodySecond=new OscillateRotation(false,0,-5,1,25,vec3f(0,1,0),1);
 
-    //Movement to the first arm
+    //Move body
     bodyScript=new MatrixScript();
     bodyScript->add(0.3,oscillateBody);
     bodyScript->add(0.3,oscillateBodySecond);
 
-    //Movement to the first arm
     bodyTScript=new MatrixScript();
     bodyTScript->add(0.15,staticBody);
     bodyTScript->add(0.15,staticBodySecond);
