@@ -29,7 +29,7 @@ ItemList::ItemList()
 ItemList::ItemList(const Value & coinFeatures){
     for(unsigned i=0;i<coinFeatures.Size();i++){
         items.push_back(new Item(vec3f(coinFeatures[i]["position"][0].GetFloat(),coinFeatures[i]["position"][1].GetFloat(),coinFeatures[i]["position"][2].GetFloat()),
-                                 coinFeatures[i]["value"].GetInt()));
+                                 coinFeatures[i]["value"].GetInt(),iCOIN));
     }
 }
 

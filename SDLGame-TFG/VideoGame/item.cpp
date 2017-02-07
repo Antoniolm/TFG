@@ -18,9 +18,10 @@
 // *********************************************************************
 #include "item.h"
 
-Item::Item(vec3f aPosition,int aValue){
+Item::Item(vec3f aPosition,int aValue,ItemIndex aType){
     value=aValue;
     notTake=true;
+    type=aType;
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
@@ -35,11 +36,26 @@ Item::Item(vec3f aPosition,int aValue){
     Matrix4f * transMatrix=new Matrix4f();
     transMatrix->translation(position.x,position.y,position.z);
 
+    //Check type
+    MaterialIndex materialType;
+    MeshIndex meshType;
+    switch(type){
+        case iCOIN:
+            materialType=mCRYSTAL;
+            meshType=COIN;
+        break;
+        case iPOTION:
+            materialType=mPOTION;
+            meshType=POTION;
+        break;
+    }
+
+
     root=new NodeSceneGraph();
     root->add(transMatrix);
     root->add(animationMatrix);
-    root->add(materialCollect->getMaterial(mCRYSTAL));
-    root->add(meshCollect->getMesh(COIN));
+    root->add(materialCollect->getMaterial(materialType));
+    root->add(meshCollect->getMesh(meshType));
     currentTime=SDL_GetTicks();
 
     soundTake=soundCollect->getSound(sCoin);
@@ -65,9 +81,18 @@ void Item::updateState(float time,ControllerManager * controller,RootMap * rootM
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.y-posHero.y,2.0)+pow(position.z-posHero.z,2.0));
     if(distance<=0.4){
         notTake=false;
-        rootMap->getHero()->addCoin(value);
-        soundTake->stop();
-        soundTake->play();
+
+        //check his type
+        switch(type){
+        case iCOIN:
+            rootMap->getHero()->addCoin(value);
+            soundTake->stop();
+            soundTake->play();
+        break;
+        case iPOTION:
+            rootMap->getHero()->addLife(value);
+        break;
+        }
     }
 
     //Animation

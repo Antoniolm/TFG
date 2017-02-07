@@ -30,7 +30,7 @@
 #include "../GraphicEngine/axisrotation.h"
 #include "../GraphicEngine/sound.h"
 
-enum ItemType{
+enum ItemIndex{
     iCOIN,
     iPOTION
 };
@@ -41,7 +41,7 @@ class Item : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Item(vec3f aPosition,int aValue);
+        Item(vec3f aPosition,int aValue,ItemIndex aType);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -90,6 +90,7 @@ class Item : public Object3D
         AxisRotation * rotation;
         Sound * soundTake;
         bool notTake;
+        ItemIndex type;
 };
 
 #endif // ITEM_H
