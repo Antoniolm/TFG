@@ -544,13 +544,13 @@
                 "mesh":"BEDSIDETABLE",
                 "collision": true
             },
-            {   "position":[11.0,2.4,-12.5,
-                            13.0,2.4,-12.5,
-                            19.0,2.4,-12.5,
-                            21.0,2.4,-12.5],
+            {   "position":[11.0,2.5,-12.5,
+                            13.0,2.5,-12.5,
+                            19.0,2.5,-12.5,
+                            21.0,2.5,-12.5],
                 "transforms":[
                 ],       
-                "material":"mFURNITURE",
+                "material":"mWOOD",
                 "mesh":"BKSHELF",
                 "collision": true
             },
@@ -583,7 +583,7 @@
                         "values":[1.0,0.9,1.0]
                     }
                 ],       
-                "material":"mBED",
+                "material":"mCHAIR",
                 "mesh":"CHAIR",
                 "collision": true
             },
@@ -593,7 +593,7 @@
                         "values":[90,0.0,1.0,0.0]
                     }
                 ],       
-                "material":"mPERUG",
+                "material":"mRUG",
                 "mesh":"RUG",
                 "collision": false
             },
@@ -666,7 +666,7 @@
                 "transforms":[
                     
                 ],       
-                "material":"mFURNITURE",
+                "material":"mWOOD",
                 "mesh":"BENCH",
                 "collision": true
             },

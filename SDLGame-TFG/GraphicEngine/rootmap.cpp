@@ -40,7 +40,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     /////////////////////////////////////////
     hero=new Hero(vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat()));
 
-    mate=new Mate();
+    mate=new Mate(vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat()));
 
     /////////////////////////////////////////
     // Add Light to our map
@@ -298,6 +298,9 @@ void RootMap::updateState(float time,ControllerManager * controller,RootMap * ro
 
     //Update the hero
     hero->updateState(time,controller,rootMap);
+
+    //Update the mate
+    mate->updateState(time,controller,rootMap);
 
     //Update the Scene
     for(unsigned i=0;i<objectGroup.size();i++)

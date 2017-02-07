@@ -89,7 +89,7 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/fpTexture.png",mFIREPLACE);
     collection.addElement(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/persianRug.png",mPERUG);
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/rugTexture.png",mRUG);
     collection.addElement(material);
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/fireTexture.png",mFIRE);
@@ -121,6 +121,12 @@ MaterialCollection::MaterialCollection()
 
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/mateTexture.png",mMATE);
     collection.addElement(material);
+
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/chairTexture.png",mCHAIR);
+    collection.addElement(material);
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"textures/tableTexture.png",mWOOD);
+    collection.addElement(material);
+
     //Create our map
     collection.addIndex("mCUBE_GRASS",mCUBE_GRASS);
     collection.addIndex("mCUBE_BOX",mCUBE_BOX);
@@ -142,7 +148,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mBUTLER",mBUTLER);
     collection.addIndex("mFURNITURE",mFURNITURE);
     collection.addIndex("mFIREPLACE",mFIREPLACE);
-    collection.addIndex("mPERUG",mPERUG);
+    collection.addIndex("mRUG",mRUG);
     collection.addIndex("mFIRE",mFIRE);
     collection.addIndex("mWINDOW",mWINDOW);
     collection.addIndex("mPILLAR",mPILLAR);
@@ -153,6 +159,8 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mCOLUMN",mCOLUMN);
     collection.addIndex("mPOTION",mPOTION);
     collection.addIndex("mMATE",mMATE);
+    collection.addIndex("mCHAIR",mCHAIR);
+    collection.addIndex("mWOOD",mWOOD);
 
 }
 

@@ -49,7 +49,7 @@ enum MaterialIndex{
     mBUTLER,
     mFURNITURE,
     mFIREPLACE,
-    mPERUG,
+    mRUG,
     mFIRE,
     mWINDOW,
     mPILLAR,
@@ -59,7 +59,9 @@ enum MaterialIndex{
     mFLAG,
     mCOLUMN,
     mPOTION,
-    mMATE
+    mMATE,
+    mCHAIR,
+    mWOOD
 
 };
 

@@ -6,7 +6,6 @@ Crystal by SomjadeChunthavorn is licensed under CC Attribution https://skfb.ly/C
 SKELETON ARCHER by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-skeleton-archer) -> modified and used in the obj: arrow.obj,rangedBody.obj,rangedHead.obj,rangedFoot.obj,rangedHand.obj,crossBow.obj
 CUTE MICRO GHOUL GOBROT by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-micro-ghoul-gobrot) -> modified and used in the obj: mateHead.obj, mateHand.obj
 fireplace-1 1150x1465x215mm by Dikart is licensed under CC Attribution https://skfb.ly/KIoz -> modified and use in the objs: firePlace.obj
-Persian Rug by Nicholas Record is licensed under CC Attribution https://skfb.ly/KWsy -> used in the obj: rug.obj
 Imperial Window-frame big by supaluci is licensed under CC Attribution https://skfb.ly/JSXt -> used in the obj: window.obj
 Hyrule Castle Courtyard (Ocarina Of Time 3D) by Dillon is licensed under CC Attribution https://skfb.ly/YFw7 -> used in the objs: pillar.obj
 Winter Gnome by Brianna Fromont is licensed under CC Attribution https://skfb.ly/WOXp -> used in the obj: ghostButler.obj
@@ -18,5 +17,5 @@ Chandelier by __ramen__ is licensed under CC Attribution https://skfb.ly/XJv8 ->
 Low Poly Game Scene by Partho Borthakur is licensed under CC Attribution https://skfb.ly/HJEQ -> used in the obj: flag.obj
 Column by RvBVakama is licensed under CC Attribution https://skfb.ly/UFtE -> used in the obj: column.obj
 Potion Bottle by pixomnia is licensed under CC Attribution https://skfb.ly/FTCM -> used in the obj: potionTexture.obj
-Dinner Table by Evgeniya is licensed under CC Attribution https://skfb.ly/KENA -> used in the obj
+Dinner Table by Evgeniya is licensed under CC Attribution https://skfb.ly/KENA -> used in the obj: chair.obj,rub.obj
 
