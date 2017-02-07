@@ -112,21 +112,18 @@
             }
     ],
 
-    "coins":[
+    "items":[
             {   "position":[8.5,1.5,-3.5],
-                "value":10  },
+                "value":10, 
+                "type":0},
 
             {   "position":[9.5,1.5,-3.5],
-                "value":10  },
+                "value":10, 
+                "type":0},
 
-            {   "position":[10.5,1.5,-3.5],
-                "value":50  },
-
-            {   "position":[11.5,1.5,-3.5],
-                "value":10  },
-
-            {   "position":[12.5,1.5,-3.5],
-                "value":10}
+            {   "position":[13.5,1.5,-6.5],
+                "value":50, 
+                "type":1}
     ],
 
 

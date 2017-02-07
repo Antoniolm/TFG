@@ -118,7 +118,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     /////////////////////////////////////////
     // Add coins to our map
     /////////////////////////////////////////
-    const rapidjson::Value & coinValue=document["coins"];
+    const rapidjson::Value & coinValue=document["items"];
     itemList=new ItemList(coinValue);
 
 
