@@ -21,7 +21,7 @@
 
 Mate::Mate()
 {
-    position=vec4f(3.0,4.0,-3.0,1.0);
+    position=vec4f(15.5,2.0,-4,1.0);
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();

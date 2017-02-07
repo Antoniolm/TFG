@@ -36,6 +36,7 @@
 #include "mesh.h"
 #include "objectscene.h"
 #include "../VideoGame/hero.h"
+#include "../VideoGame/mate.h"
 #include "../VideoGame/npc.h"
 #include "../VideoGame/enemy.h"
 #include "../VideoGame/projectilesystem.h"
@@ -52,6 +53,7 @@
 using namespace std;
 
 class Hero;
+class Mate;
 class Npc;
 class Enemy;
 class NpcList;
@@ -151,6 +153,7 @@ class RootMap : public Object3D
         ItemList *itemList;
         Sound * backSound;
         Hero * hero;
+        Mate * mate;
 };
 
 #endif // ROOTMAP_H

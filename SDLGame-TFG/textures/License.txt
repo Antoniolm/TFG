@@ -22,3 +22,5 @@ Reban's Shield by Jochem van Diepen is licensed under CC Attribution https://skf
 Luigi's Mansion x Resident Evil by glenatron is licensed under CC Attribution-NonCommercial-NoDerivs https://skfb.ly/BSZA
 Column by RvBVakama is licensed under CC Attribution https://skfb.ly/UFtE -> used in the texture : column.png
 Potion Bottle by pixomnia is licensed under CC Attribution https://skfb.ly/FTCM -> used in the texture : potionTexture.png
+Dinner Table by Evgeniya is licensed under CC Attribution https://skfb.ly/KENA -> used in the texture:
+CUTE MICRO GHOUL GOBROT by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-micro-ghoul-gobrot) -> modified and used in the texture : mateTexture.png

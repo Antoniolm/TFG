@@ -323,6 +323,10 @@ Hero::~Hero()
         delete (*it);
     }
 
+    delete currentWeapon;
+    delete meleeWeapon;
+    delete rangedWeapon;
+    delete root;
 }
 
 //**********************************************************************//

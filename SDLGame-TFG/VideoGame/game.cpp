@@ -69,7 +69,6 @@ Game::~Game(){
     delete instance;
     delete window;
     delete rootMap;
-    delete hero;
     delete pauseMenu;
     delete mainMenu;
     delete deadMenu;

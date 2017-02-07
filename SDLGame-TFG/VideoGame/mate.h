@@ -29,6 +29,8 @@
 #include "../GraphicEngine/soundcollection.h"
 #include "../GraphicEngine/axisrotation.h"
 #include "../GraphicEngine/sound.h"
+#include "../GraphicEngine/text.h"
+#include "../GraphicEngine/animationlist.h"
 
 class Mate : public Object3D
 {

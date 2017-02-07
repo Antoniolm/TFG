@@ -36,9 +36,11 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
     /////////////////////////////////////////
-    // Create hero
+    // Create hero and mate
     /////////////////////////////////////////
     hero=new Hero(vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat()));
+
+    mate=new Mate();
 
     /////////////////////////////////////////
     // Add Light to our map
@@ -199,6 +201,8 @@ RootMap::~RootMap()
     delete npcList;
     delete enemyList;
     delete itemList;
+    delete hero;
+    delete mate;
 
     for(unsigned i=0;i<objs.size();i++)
         delete objs[i];
@@ -253,6 +257,9 @@ void RootMap::visualization(Context & cv){
 
     //Draw hero
     hero->visualization(cv);
+
+    //Draw hero
+    mate->visualization(cv);
 
     //Draw ncps
     npcList->visualization(cv);
