@@ -56,8 +56,24 @@ void Mate::visualization(Context & cv){
 void Mate::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
     Hero * hero=rootMap->getHero();
     vec3f posHero=hero->getPosition();
+    vec3f newMovement;
 
     currentMove=nextPosition(posHero);
+
+    //Check Y position
+    newMovement.x=position.x;newMovement.y=position.y;newMovement.z=position.z;
+    float mindistance=sqrt(pow(newMovement.y-posHero.y,2.0));
+
+    newMovement.y=position.y-2.0;
+    float distance=sqrt(pow(newMovement.y-posHero.y,2.0));
+    if(mindistance>distance)
+        currentMove.second.y+=-2.0;
+
+    newMovement.y=position.y+2.0;
+    distance=sqrt(pow(newMovement.y-posHero.y,2.0));
+    if(mindistance>distance)
+        currentMove.second.y+=2.0;
+
     moveMate(time,currentMove.second,currentMove.first);
     position=moveAvatar->product(vec4f());
     currentTime+=time-currentTime;
