@@ -157,9 +157,6 @@
 		<Unit filename="VideoGame/avatar.h" />
 		<Unit filename="VideoGame/avatarmove.cpp" />
 		<Unit filename="VideoGame/avatarmove.h" />
-		<Unit filename="VideoGame/coin.cpp" />
-		<Unit filename="VideoGame/coin.h" />
-		<Unit filename="VideoGame/coinlist.cpp" />
 		<Unit filename="VideoGame/coinlist.h" />
 		<Unit filename="VideoGame/enemy.cpp" />
 		<Unit filename="VideoGame/enemy.h" />
@@ -169,6 +166,10 @@
 		<Unit filename="VideoGame/game.h" />
 		<Unit filename="VideoGame/hero.cpp" />
 		<Unit filename="VideoGame/hero.h" />
+		<Unit filename="VideoGame/item.cpp" />
+		<Unit filename="VideoGame/item.h" />
+		<Unit filename="VideoGame/itemlist.cpp" />
+		<Unit filename="VideoGame/itemlist.h" />
 		<Unit filename="VideoGame/meleeenemy.cpp" />
 		<Unit filename="VideoGame/meleeenemy.h" />
 		<Unit filename="VideoGame/npc.cpp" />

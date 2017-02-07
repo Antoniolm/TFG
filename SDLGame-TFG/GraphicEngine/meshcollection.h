@@ -29,48 +29,49 @@ using namespace std;
 
 enum MeshIndex{
     CUBE,       //0
-    SPHERE,
-    BACKGROUND, //6
-    KNEE,       //7
-    KNEE2,      //7
-    SWORD,      //8
-    SHIELD,     //9
-    HAND,       //10
-    HANDS,
-    TOPARM,     //11
-    CHEST,      //12
-    HEAD,       //15
-    TEXT,       //17
-    COIN,        //18
-    EHEAD,
-    ECHEST,
-    EHAND,
-    EFOOT,
-    RHEAD,
-    RCHEST,
-    RHAND,
-    RFOOT,
-    BUTLER,
-    BED,
-    CUPBOARD,
-    BEDSIDETABLE,
-    ARROW,
-    BKSHELF,
-    FIREPLACE,
-    SMALLTABLE,
-    CHAIR,
-    RUG,
-    WINDOW,
-    PILLAR,
-    CBOW,
-    CLUB,
-    TORCH,
-    CHANDELIER,
-    BARREL,
-    CHOLDER,
-    FLAG,
-    BENCH,
-    COLUMN
+    SPHERE,     //1
+    BACKGROUND, //2
+    KNEE,       //3
+    KNEE2,      //4
+    SWORD,      //5
+    SHIELD,     //6
+    HAND,       //7
+    HANDS,      //8
+    TOPARM,     //9
+    CHEST,      //10
+    HEAD,       //11
+    TEXT,       //12
+    COIN,       //13
+    EHEAD,      //14
+    ECHEST,     //15
+    EHAND,      //16
+    EFOOT,      //17
+    RHEAD,      //18
+    RCHEST,     //19
+    RHAND,      //20
+    RFOOT,      //21
+    BUTLER,     //22
+    BED,        //23
+    CUPBOARD,   //24
+    BEDSIDETABLE,//25
+    ARROW,      //26
+    BKSHELF,    //27
+    FIREPLACE,  //28
+    SMALLTABLE, //29
+    CHAIR,      //30
+    RUG,        //31
+    WINDOW,     //32
+    PILLAR,     //33
+    CBOW,       //34
+    CLUB,       //35
+    TORCH,      //36
+    CHANDELIER, //37
+    BARREL,     //38
+    CHOLDER,    //39
+    FLAG,       //40
+    BENCH,      //41
+    COLUMN,     //42
+    POTION      //43
 };
 
 class MeshCollection

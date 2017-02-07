@@ -21,3 +21,4 @@ warrior sword by koker06 is licensed under CC Attribution https://skfb.ly/FWW8
 Reban's Shield by Jochem van Diepen is licensed under CC Attribution https://skfb.ly/L6YA
 Luigi's Mansion x Resident Evil by glenatron is licensed under CC Attribution-NonCommercial-NoDerivs https://skfb.ly/BSZA
 Column by RvBVakama is licensed under CC Attribution https://skfb.ly/UFtE -> used in the texture : column.png
+Potion Bottle by pixomnia is licensed under CC Attribution https://skfb.ly/FTCM -> used in the texture : potionTexture.png

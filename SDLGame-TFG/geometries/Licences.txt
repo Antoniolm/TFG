@@ -16,4 +16,5 @@ Dungeon by Yuliia Tsukanova is licensed under CC Attribution https://skfb.ly/N6T
 Chandelier by __ramen__ is licensed under CC Attribution https://skfb.ly/XJv8 -> used in the obj: chandelier.obj,candleHolder.obj
 Low Poly Game Scene by Partho Borthakur is licensed under CC Attribution https://skfb.ly/HJEQ -> used in the obj: flag.obj
 Column by RvBVakama is licensed under CC Attribution https://skfb.ly/UFtE -> used in the obj: column.obj
+Potion Bottle by pixomnia is licensed under CC Attribution https://skfb.ly/FTCM -> used in the obj: potionTexture.obj
 
