@@ -20,7 +20,7 @@
 #include "rootmap.h"
 #include "../VideoGame/npclist.h"
 #include "../VideoGame/enemylist.h"
-#include "../VideoGame/coinlist.h"
+#include "../VideoGame/itemlist.h"
 #include "objectgroup.h"
 #include <stdlib.h>     /* srand, rand */
 RootMap::RootMap(){
@@ -74,10 +74,9 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     // Add voxelGroup to our map
     /////////////////////////////////////////
     const rapidjson::Value & voxelGroup=document["voxelGroup"];
-    VoxelGroup * vGroup;
 
     for(unsigned currentGroup=0;currentGroup<voxelGroup.Size();currentGroup++){
-        vGroup=new VoxelGroup(voxelGroup[currentGroup],objs);
+        new VoxelGroup(voxelGroup[currentGroup],objs);
     }
 
     /////////////////////////////////////////
@@ -120,7 +119,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     // Add coins to our map
     /////////////////////////////////////////
     const rapidjson::Value & coinValue=document["coins"];
-    coinList=new CoinList(coinValue);
+    itemList=new ItemList(coinValue);
 
 
     /////////////////////////////////////////
@@ -154,11 +153,13 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
             case mCUBE_DUNGB:
                 objectGroup[2]->addObject(objs[i]->getPosition(),CUBE);
             break;
+            default:
+            break;
         }
 
     }
 
-    for(int i=0;i<objectGroup.size();i++)
+    for(unsigned i=0;i<objectGroup.size();i++)
         objectGroup[i]->init();
 
 
@@ -197,6 +198,7 @@ RootMap::~RootMap()
     delete backSound;
     delete npcList;
     delete enemyList;
+    delete itemList;
 
     for(unsigned i=0;i<objs.size();i++)
         delete objs[i];
@@ -258,8 +260,8 @@ void RootMap::visualization(Context & cv){
     //Draw enemies
     enemyList->visualization(cv);
 
-    //Draw coins
-    coinList->visualization(cv);
+    //Draw items
+    itemList->visualization(cv);
 
     //Draw decoration object
     for(unsigned i=0;i<decorationObjs.size();i++){
@@ -295,7 +297,7 @@ void RootMap::updateState(float time,ControllerManager * controller,RootMap * ro
         objectGroup[i]->updateState(time,controller,rootMap);
 
     //Update the Scene
-    coinList->updateState(time,controller,rootMap);
+    itemList->updateState(time,controller,rootMap);
 
     //Update particles system
     for(unsigned i=0;i<particleSystem.size();i++){

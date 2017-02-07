@@ -133,7 +133,7 @@ void Camera::activatePerspecProjection(Shader * shader){
 
 //**********************************************************************//
 
-void Camera::update(const Uint8* currentKeyStates,Shader *shader,RootMap * rootMap){
+void Camera::update(Shader *shader,RootMap * rootMap){
     vec3f posHero=rootMap->getHero()->getPosition();
 
     //position=vec3f(posHero.x,posHero.y+1.0f,posHero.z+8.0f); // position for testing

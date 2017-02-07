@@ -38,7 +38,6 @@
 #include "../VideoGame/hero.h"
 #include "../VideoGame/npc.h"
 #include "../VideoGame/enemy.h"
-#include "../VideoGame/coin.h"
 #include "../VideoGame/projectilesystem.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
@@ -55,10 +54,9 @@ using namespace std;
 class Hero;
 class Npc;
 class Enemy;
-class Coin;
 class NpcList;
 class EnemyList;
-class CoinList;
+class ItemList;
 class ParticleSystem;
 class ProjectileSystem;
 class ObjectGroup;
@@ -150,7 +148,7 @@ class RootMap : public Object3D
         ObjectScene * background;
         NpcList * npcList;
         EnemyList * enemyList;
-        CoinList *coinList;
+        ItemList *itemList;
         Sound * backSound;
         Hero * hero;
 };

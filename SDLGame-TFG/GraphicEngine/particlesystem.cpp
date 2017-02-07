@@ -104,7 +104,7 @@ void ParticleSystem::updateState(float time,ControllerManager * controller,RootM
 
     //Create new particles if some of them is dead
     int diff=nParticles-currentParticles;
-    for(unsigned i=0;i<diff;i++){
+    for(int i=0;i<diff;i++){
         particles.push_back(new Particle(material,scale,minPos,maxPos,velocity,minTime,maxTime));
         currentParticles++;
     }

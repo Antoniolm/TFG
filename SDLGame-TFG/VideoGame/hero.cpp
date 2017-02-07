@@ -889,7 +889,6 @@ bool Hero::isHit(){
     OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,140,500,vec3f(1.0,0.0,0),1);
     OscillateRotation * shoulderAttack=new OscillateRotation(false,70,-70,70,500,vec3f(0.0,1.0,0),1);
     OscillateRotation * shoulderAttackInvert=new OscillateRotation(true,70,-70,-70,500,vec3f(0.0,1.0,0),1);
-    OscillateRotation * oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
     Matrix4f * rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(90,1.0,0.0,0.0);
 
@@ -1025,7 +1024,6 @@ bool Hero::isHit(){
     //////////////////
     //Matrix4fDinamic
     shoulderCharge=new OscillateRotation(false,0,-40,1,250,vec3f(1.0,0.0,0),1);
-    oscillateElbow=new OscillateRotation(true,60,0,1,250,vec3f(1.0,0.0,0),1);
     rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(90,1.0,0.0,0.0);
 

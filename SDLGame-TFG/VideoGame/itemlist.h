@@ -17,8 +17,8 @@
 // **
 // *********************************************************************
 
-#ifndef COINLIST_H
-#define COINLIST_H
+#ifndef ITEMLIST_H
+#define ITEMLIST_H
 
 #include "../GraphicEngine/object3d.h"
 #include "item.h"
@@ -27,23 +27,23 @@
 
 using namespace rapidjson;
 
-class CoinList : public Object3D
+class ItemList
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        CoinList();
+        ItemList();
 
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        CoinList(const Value & coinFeatures);
+        ItemList(const Value & coinFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~CoinList();
+        virtual ~ItemList();
 
 
         //////////////////////////////////////////////////////////////////////////
@@ -72,10 +72,11 @@ class CoinList : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void updateState(float time,ControllerManager * controller,RootMap * rootMap);
 
+
     protected:
 
     private:
-        vector<Item *> coins;
+        vector<Item *> items;
 };
 
-#endif // COINLIST_H
+#endif // ITEMLIST_H

@@ -17,51 +17,52 @@
 // **
 // *********************************************************************
 
-#include "coinlist.h"
+#include "itemlist.h"
 
-CoinList::CoinList()
+ItemList::ItemList()
 {
     //ctor
 }
 
 //**********************************************************************//
 
-CoinList::CoinList(const Value & coinFeatures){
+ItemList::ItemList(const Value & coinFeatures){
     for(unsigned i=0;i<coinFeatures.Size();i++){
-        coins.push_back(new Item(vec3f(coinFeatures[i]["position"][0].GetFloat(),coinFeatures[i]["position"][1].GetFloat(),coinFeatures[i]["position"][2].GetFloat()),
+        items.push_back(new Item(vec3f(coinFeatures[i]["position"][0].GetFloat(),coinFeatures[i]["position"][1].GetFloat(),coinFeatures[i]["position"][2].GetFloat()),
                                  coinFeatures[i]["value"].GetInt()));
     }
 }
 
 //**********************************************************************//
 
-CoinList::~CoinList()
+ItemList::~ItemList()
 {
-    //dtor
+    for(unsigned i=0;i<items.size();i++)
+        delete items[i];
 }
 
 //**********************************************************************//
 
-void CoinList::add(Item * coin){
-    coins.push_back(coin);
+void ItemList::add(Item * coin){
+    items.push_back(coin);
 }
 
 //**********************************************************************//
 
-void CoinList::visualization(Context & cv){
-    for(unsigned i=0;i<coins.size();i++)
-        coins[i]->visualization(cv);
+void ItemList::visualization(Context & cv){
+    for(unsigned i=0;i<items.size();i++)
+        items[i]->visualization(cv);
 }
 
 //**********************************************************************//
 
-void CoinList::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){
-    vector<Item*>::iterator it=coins.begin();
-    while(it!=coins.end()){
+void ItemList::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){
+    vector<Item*>::iterator it=items.begin();
+    while(it!=items.end()){
         (*it)->updateState(time,controller,rootMap);
         if((*it)->isTake()){
             delete (*it);
-            coins.erase(it);
+            items.erase(it);
         }
         else
             it++;

@@ -154,7 +154,7 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
 vector<vec3f> IAMeleeEnemy::obtainPosEnemies(vector<Enemy *> enemies,vec3f posCurrentEnemy){
     vector<vec3f> posEnemies;
 
-    for(int i=0;i<enemies.size();i++){
+    for(unsigned i=0;i<enemies.size();i++){
         vec3f pos=enemies[i]->getPosition();
         if(enemies[i]->isActivate()){ //if the enemy is activate
             posEnemies.push_back(pos);
@@ -168,7 +168,7 @@ vector<vec3f> IAMeleeEnemy::obtainPosEnemies(vector<Enemy *> enemies,vec3f posCu
 bool IAMeleeEnemy::checkCollision(vector<vec3f> & posEnemies,vec3f currentEnemy){
     bool result=false;
     float distance;
-    for(int i=0;i<posEnemies.size();i++){
+    for(unsigned i=0;i<posEnemies.size();i++){
         distance=sqrt(pow(currentEnemy.x-posEnemies[i].x,2.0)+pow(currentEnemy.z-posEnemies[i].z,2.0));
         if(distance<0.5 && distance>0.2)
             result=true;

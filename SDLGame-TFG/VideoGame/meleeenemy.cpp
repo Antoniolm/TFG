@@ -246,7 +246,6 @@ void MeleeEnemy::updateState(float time,ControllerManager * controller,RootMap *
     currentMap=rootMap;
     Hero * hero=rootMap->getHero();
     vec3f posHero=hero->getPosition();
-    avatarDirection dirHero=hero->getDirection();
     vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
 
     if(time-currentTime>200)
@@ -416,7 +415,6 @@ void MeleeEnemy::updateState(float time,ControllerManager * controller,RootMap *
     //////////////////
     //Matrix4fDinamic
     OscillateRotation * shoulderCharge=new OscillateRotation(false,140,0,140,500,vec3f(1.0,0.0,0),1);
-    OscillateRotation * shoulderCharge2=new OscillateRotation(false,140,0,140,500,vec3f(0.0,1.0,0),1);
     Matrix4f * rotShoulder=new Matrix4f();
     rotShoulder->rotation(140,1.0,0.0,0.0);
 

@@ -103,7 +103,7 @@ void ObjectScene::generateBoundingbox(){
 
     int tam=vertex.size();
 
-    for(unsigned i=1;i<tam;i++){
+    for(int i=1;i<tam;i++){
         if(vertex[i].x >maxX) maxX=vertex[i].x;
         if(vertex[i].y >maxY) maxY=vertex[i].y;
         if(vertex[i].z >maxZ) maxZ=vertex[i].z;

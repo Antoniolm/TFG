@@ -555,7 +555,7 @@ bool AvatarMove::canImpact(avatarDirection dirAvatar,const vector<Enemy *> & ene
         break;
     }
 
-    for(int i=0;i<enemies.size();i++){
+    for(unsigned i=0;i<enemies.size();i++){
         vec3f posEnemy=enemies[i]->getPosition();
         distance=sqrt(pow(newPosition.x-posEnemy.x,2.0)+pow(newPosition.z-posEnemy.z,2.0));
         if(distance<1.0) result=false;

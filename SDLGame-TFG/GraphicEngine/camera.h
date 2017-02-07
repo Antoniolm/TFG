@@ -125,7 +125,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void update(const Uint8* currentKeyStates,Shader * shader,RootMap * rootMap);
+        void update(Shader * shader,RootMap * rootMap);
 
         //////////////////////////////////////////////////////////////////////////
         /**
