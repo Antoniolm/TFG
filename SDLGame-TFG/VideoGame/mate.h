@@ -31,14 +31,15 @@
 #include "../GraphicEngine/sound.h"
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/animationlist.h"
+#include "avatar.h"
 
-class Mate : public Object3D
+class Mate : public Avatar
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Mate();
+        Mate(vec3f aPosition);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -62,13 +63,18 @@ class Mate : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time,ControllerManager * controller,RootMap * rootMap);
 
+
     protected:
 
     private:
+        pair<avatarDirection,vec3f> nextPosition(vec3f posHero);
+        void moveMate(float time,vec3f aMove,avatarDirection aDir);
         vector<Matrix4f *> moveMatrix;
+        pair<avatarDirection,vec3f> currentMove;
+        Matrix4f * moveAvatar;
+        avatarDirection direction;
         AnimationList animations;
         Text * currentText;
-        NodeSceneGraph * root;
 };
 
 #endif // MATE_H
