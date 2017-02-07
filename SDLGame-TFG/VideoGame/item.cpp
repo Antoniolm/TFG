@@ -39,6 +39,7 @@ Item::Item(vec3f aPosition,int aValue,ItemIndex aType){
     //Check type
     MaterialIndex materialType;
     MeshIndex meshType;
+
     switch(type){
         case iCOIN:
             materialType=mCRYSTAL;

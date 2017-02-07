@@ -230,6 +230,10 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
+    element=new Mesh("geometries/mate.obj");
+    element->init();
+    collection.addElement(element);
+
 
     //Create our map
     collection.addIndex("CUBE",CUBE);
@@ -276,6 +280,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("BENCH",BENCH);
     collection.addIndex("COLUMN",COLUMN);
     collection.addIndex("POTION",POTION);
+    collection.addIndex("MATEHEAD",MATEHEAD);
 }
 
 //**********************************************************************//

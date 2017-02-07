@@ -71,7 +71,8 @@ enum MeshIndex{
     FLAG,       //40
     BENCH,      //41
     COLUMN,     //42
-    POTION      //43
+    POTION,     //43
+    MATEHEAD
 };
 
 class MeshCollection
