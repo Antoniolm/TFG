@@ -62,7 +62,7 @@ ParticleSystem::ParticleSystem(const rapidjson::Value & particleFeature){
     currentParticles=0;
     currentTime=SDL_GetTicks();
 
-    vec3f pos=(maxPos-minPos)/2;
+    vec3f pos=minPos+((maxPos-minPos)/2);
     position=vec4f(pos.x,pos.y,pos.z,1.0);
 
 
