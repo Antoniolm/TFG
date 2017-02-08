@@ -349,6 +349,10 @@ void Hero::visualization(Context & cv){
     for(it=projectiles.begin();it!=projectiles.end();it++){
         (*it)->visualization(cv);
     }
+
+    //Update visual range
+    cv.minVisualPosition=vec3f(position.x-8,position.y-8,position.z);
+    cv.maxVisualPosition=vec3f(position.x+8,position.y+8,position.z);
 }
 
 //**********************************************************************//

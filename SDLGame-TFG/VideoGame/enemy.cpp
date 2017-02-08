@@ -43,7 +43,9 @@ Enemy::~Enemy()
 //**********************************************************************//
 
 void Enemy::visualization(Context & cv){
-    root->visualization(cv);
+    if(position.x>cv.minVisualPosition.x && position.x<cv.maxVisualPosition.x
+       && position.y>cv.minVisualPosition.y && position.y<cv.maxVisualPosition.y)
+            root->visualization(cv);
 
     if(activatedDialog){
         currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));

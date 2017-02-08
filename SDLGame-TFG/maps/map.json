@@ -93,6 +93,18 @@
     ],
 
     "enemies":[
+            {   
+                "life":40,
+                "position":[3.5,1.8,-5.5],
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"ranged"
+            },   
+            {   
+                "life":75,
+                "position":[4.5,1.8,-2.5],
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"melee"
+            }
     ],
 
     "items":[
@@ -474,6 +486,14 @@
                 "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE", 
                 "damage":0.0},
+            {   "position":[10,4.5,1],
+                "YNumber":4,        
+                "XNumber":12,         
+                "ZNumber":1,         
+                "materialTop":"mVOID",
+                "materialMiddle":"mVOID", 
+                "mesh":"CUBE", 
+                "damage":0.0 },  
 
 
             {   "//":"ROOM 3 - MIDDLE-ROOM",

@@ -66,7 +66,8 @@ Projectile::~Projectile()
 //**********************************************************************//
 
 void Projectile::visualization(Context & vis){
-    if(live)
+    if(live && position.x>vis.minVisualPosition.x && position.x<vis.maxVisualPosition.x
+       && position.y>vis.minVisualPosition.y && position.y<vis.maxVisualPosition.y)
         root->visualization(vis);
 }
 

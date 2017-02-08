@@ -52,6 +52,7 @@ class Context
         Shader currentShader;
         Matrix4f currentTransf;
         MaterialIndex currentMaterialIndex;
+        vec3f minVisualPosition,maxVisualPosition;
 
 
     protected:
