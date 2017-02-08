@@ -263,8 +263,7 @@ void RootMap::visualization(Context & cv){
     //Draw hero
     hero->visualization(cv);
 
-    //Draw hero
-    mate->visualization(cv);
+
 
     //Draw ncps
     npcList->visualization(cv);
@@ -293,6 +292,9 @@ void RootMap::visualization(Context & cv){
     for(unsigned i=0;i<projectileSystem.size();i++){
             projectileSystem[i]->visualization(cv);
     }
+
+    //Draw mate
+    mate->visualization(cv);
 
     /////////////////////////////////////////////////////
     //Visualization here that component because is a visible wall

@@ -73,7 +73,8 @@ enum MeshIndex{
     COLUMN,     //42
     POTION,     //43
     MATEHEAD,
-    MATEHAND
+    MATEHAND,
+    BOOKS
 };
 
 class MeshCollection

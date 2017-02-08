@@ -238,6 +238,9 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
+    element=new Mesh("geometries/books.obj");
+    element->init();
+    collection.addElement(element);
 
     //Create our map
     collection.addIndex("CUBE",CUBE);
@@ -286,6 +289,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("POTION",POTION);
     collection.addIndex("MATEHEAD",MATEHEAD);
     collection.addIndex("MATEHAND",MATEHAND);
+    collection.addIndex("BOOKS",BOOKS);
 }
 
 //**********************************************************************//
