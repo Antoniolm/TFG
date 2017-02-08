@@ -573,7 +573,7 @@
                         "values":[0.5,0.5,0.5]
                     }
                 ],       
-                "material":"mFURNITURE",
+                "material":"mWOOD",
                 "mesh":"SMALLTABLE",
                 "collision": true
             },

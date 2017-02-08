@@ -230,7 +230,11 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
-    element=new Mesh("geometries/mate.obj");
+    element=new Mesh("geometries/mateHead.obj");
+    element->init();
+    collection.addElement(element);
+
+    element=new Mesh("geometries/mateHand.obj");
     element->init();
     collection.addElement(element);
 
@@ -281,6 +285,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("COLUMN",COLUMN);
     collection.addIndex("POTION",POTION);
     collection.addIndex("MATEHEAD",MATEHEAD);
+    collection.addIndex("MATEHAND",MATEHAND);
 }
 
 //**********************************************************************//

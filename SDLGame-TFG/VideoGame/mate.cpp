@@ -21,17 +21,19 @@
 
 Mate::Mate(vec3f aPosition)
 {
-    position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
+    position=vec4f(aPosition.x,aPosition.y+1.0,aPosition.z-2.0,1.0);
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
     moveAvatar=new Matrix4f();
-    moveAvatar->translation(position.x,position.y+0.8,position.z-4.0);
+    moveAvatar->translation(position.x,position.y,position.z);
 
     root=new NodeSceneGraph();
     root->add(moveAvatar);
     root->add(materialCollect->getMaterial(mMATE));
+    root->add(meshCollect->getMesh(MATEHEAD));
+
     root->add(meshCollect->getMesh(MATEHEAD));
     currentTime=SDL_GetTicks();
 
@@ -58,21 +60,21 @@ void Mate::updateState(float time,ControllerManager * controller,RootMap * rootM
     vec3f posHero=hero->getPosition();
     vec3f newMovement;
 
+    if(time-currentTime>200)
+        currentTime=time-50;
+
+    //Take our new position
     currentMove=nextPosition(posHero);
 
     //Check Y position
-    newMovement.x=position.x;newMovement.y=position.y;newMovement.z=position.z;
-    float mindistance=sqrt(pow(newMovement.y-posHero.y,2.0));
+    posHero.y+=1.0;
 
-    newMovement.y=position.y-2.0;
-    float distance=sqrt(pow(newMovement.y-posHero.y,2.0));
-    if(mindistance>distance)
-        currentMove.second.y+=-2.0;
-
-    newMovement.y=position.y+2.0;
-    distance=sqrt(pow(newMovement.y-posHero.y,2.0));
-    if(mindistance>distance)
-        currentMove.second.y+=2.0;
+    if(position.y>posHero.y+0.1){
+        currentMove.second.y=-2.0;
+    }
+    else if(position.y<posHero.y){
+        currentMove.second.y=+2.0;
+    }
 
     moveMate(time,currentMove.second,currentMove.first);
     position=moveAvatar->product(vec4f());
@@ -83,7 +85,6 @@ void Mate::updateState(float time,ControllerManager * controller,RootMap * rootM
 
 void Mate::moveMate(float time,vec3f aMove,avatarDirection aDir){
     if(direction!=aDir){
-        position=moveAvatar->product(vec4f());
         Matrix4f transHero;
         transHero.translation(position.x,position.y,position.z);
         LinearMovement lineMove(aMove);
