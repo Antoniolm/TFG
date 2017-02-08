@@ -78,7 +78,8 @@ void Item::visualization(Context & cv){
 //**********************************************************************//
 
 void Item::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
-    vec3f posHero=rootMap->getHero()->getPosition();
+    Hero * hero=rootMap->getHero();
+    vec3f posHero=hero->getPosition();
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.y-posHero.y,2.0)+pow(position.z-posHero.z,2.0));
     if(distance<=0.4){
         notTake=false;
@@ -86,12 +87,15 @@ void Item::updateState(float time,ControllerManager * controller,RootMap * rootM
         //check his type
         switch(type){
         case iCOIN:
-            rootMap->getHero()->addCoin(value);
+            hero->addCoin(value);
             soundTake->stop();
             soundTake->play();
         break;
         case iPOTION:
-            rootMap->getHero()->addLife(value);
+            if(hero->getLife()!=hero->getMaxLite())
+                hero->addLife(value);
+            else
+                notTake=true;
         break;
         }
     }

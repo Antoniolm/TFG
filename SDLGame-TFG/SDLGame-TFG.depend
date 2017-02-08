@@ -999,7 +999,7 @@
 1477910501 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\entrancerootmap.cpp
 	"entrancerootmap.h"
 
-1485987495 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.cpp
+1486557623 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.cpp
 	"avatar.h"
 
 1486557337 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.h
@@ -1028,7 +1028,7 @@
 	<stdlib.h>
 	<vector>
 
-1486468964 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1486557420 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -2250,7 +2250,7 @@
 	"weapon.h"
 	<vector>
 
-1485987552 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\rangedenemy.cpp
+1486557490 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\rangedenemy.cpp
 	"rangedenemy.h"
 
 1485987277 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.h
@@ -2260,7 +2260,7 @@
 	"enemylist.h"
 	"weapon.h"
 
-1486426230 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.cpp
+1486557481 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.cpp
 	"meleeenemy.h"
 
 1486424889 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iameleeenemy.cpp
