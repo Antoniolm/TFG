@@ -173,13 +173,15 @@
                 "mesh":"CUBE", 
                 "damage":0.0 },
             {   "position":[1,4.5,0],
-                "YNumber":4,        
+                "YNumber":3,        
                 "XNumber":9,         
                 "ZNumber":1,         
                 "materialTop":"mVOID",
                 "materialMiddle":"mVOID", 
                 "mesh":"CUBE", 
                 "damage":0.0 },
+
+
 
 
 
@@ -257,13 +259,15 @@
                 "mesh":"CUBE", 
                 "damage":0.0 },
             {   "position":[10,4.5,1],
-                "YNumber":4,        
+                "YNumber":3,        
                 "XNumber":12,         
                 "ZNumber":1,         
                 "materialTop":"mVOID",
                 "materialMiddle":"mVOID", 
                 "mesh":"CUBE", 
                 "damage":0.0 },    
+
+
 
 
 
@@ -486,14 +490,24 @@
                 "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE", 
                 "damage":0.0},
-            {   "position":[10,4.5,1],
-                "YNumber":4,        
-                "XNumber":12,         
+            {   "position":[23,4.5,3],
+                "YNumber":3,        
+                "XNumber":4,         
+                "ZNumber":1,         
+                "materialTop":"mVOID",
+                "materialMiddle":"mVOID", 
+                "mesh":"CUBE", 
+                "damage":0.0 },
+            {   "position":[28,8.5,17],
+                "YNumber":5,        
+                "XNumber":17,         
                 "ZNumber":1,         
                 "materialTop":"mVOID",
                 "materialMiddle":"mVOID", 
                 "mesh":"CUBE", 
                 "damage":0.0 },  
+
+
 
 
             {   "//":"ROOM 3 - MIDDLE-ROOM",
