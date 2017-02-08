@@ -900,7 +900,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1486504540 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1486564052 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -2344,7 +2344,7 @@
 	"../GraphicEngine/axisrotation.h"
 	"../GraphicEngine/sound.h"
 
-1486463996 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\item.cpp
+1486558095 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\item.cpp
 	"item.h"
 
 1486423586 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\itemlist.h

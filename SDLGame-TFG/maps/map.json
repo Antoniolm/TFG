@@ -93,23 +93,6 @@
     ],
 
     "enemies":[
-            {   "life":400,
-                "position":[5.5,2.0,-6.5],
-                "radioActivity":[2.0,2.0,2.0],
-                "type":"melee"
-            },
-            {   
-                "life":400,
-                "position":[2.5,2.0,-5.5],
-                "radioActivity":[2.0,2.0,2.0],
-                "type":"melee"
-            },   
-            {   
-                "life":400,
-                "position":[8.5,2.0,-5.5],
-                "radioActivity":[2.0,2.0,2.0],
-                "type":"melee"
-            }
     ],
 
     "items":[
@@ -177,7 +160,14 @@
                 "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE", 
                 "damage":0.0 },
-
+            {   "position":[1,4.5,0],
+                "YNumber":4,        
+                "XNumber":9,         
+                "ZNumber":1,         
+                "materialTop":"mVOID",
+                "materialMiddle":"mVOID", 
+                "mesh":"CUBE", 
+                "damage":0.0 },
 
 
 
@@ -254,10 +244,18 @@
                 "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE", 
                 "damage":0.0 },
+            {   "position":[10,4.5,1],
+                "YNumber":4,        
+                "XNumber":12,         
+                "ZNumber":1,         
+                "materialTop":"mVOID",
+                "materialMiddle":"mVOID", 
+                "mesh":"CUBE", 
+                "damage":0.0 },    
 
 
 
-            {   "//":"ROOM 3 - JUMP+LAVA",
+            {   "//":"ROOM 3 - JUMP+DWATER",
                 "position":[23,0.5,4],
                 "YNumber":4,        
                 "XNumber":4,         

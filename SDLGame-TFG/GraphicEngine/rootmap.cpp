@@ -143,6 +143,8 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     objectGroup.push_back(new ObjectGroup(mCUBE_DUNG));
     objectGroup.push_back(new ObjectGroup(mCUBE_WALL));
     objectGroup.push_back(new ObjectGroup(mCUBE_DUNGB));
+    objectGroup.push_back(new ObjectGroup(mVOID));
+
     for(unsigned i=0;i<objs.size();i++){
         objs[i]->obtainPosition(cv);
         switch(objs[i]->getMaterialIndex()){
@@ -154,6 +156,9 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
             break;
             case mCUBE_DUNGB:
                 objectGroup[2]->addObject(objs[i]->getPosition(),CUBE);
+            break;
+            case mVOID:
+                objectGroup[3]->addObject(objs[i]->getPosition(),CUBE);
             break;
             default:
             break;
@@ -252,7 +257,7 @@ void RootMap::visualization(Context & cv){
             objs[i]->visualization(cv);
     }*/
 
-    for(unsigned i=0;i<objectGroup.size();i++)
+    for(unsigned i=0;i<objectGroup.size()-1;i++)
         objectGroup[i]->visualization(cv);
 
     //Draw hero
@@ -288,6 +293,10 @@ void RootMap::visualization(Context & cv){
     for(unsigned i=0;i<projectileSystem.size();i++){
             projectileSystem[i]->visualization(cv);
     }
+
+    /////////////////////////////////////////////////////
+    //Visualization here that component because is a visible wall
+    objectGroup[objectGroup.size()-1]->visualization(cv);
 }
 
 //**********************************************************************//
