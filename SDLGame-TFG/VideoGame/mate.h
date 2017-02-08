@@ -67,13 +67,15 @@ class Mate : public Avatar
     protected:
 
     private:
+        void initAnimation();
         pair<avatarDirection,vec3f> nextPosition(vec3f posHero);
         void moveMate(float time,vec3f aMove,avatarDirection aDir);
+
         vector<Matrix4f *> moveMatrix;
         pair<avatarDirection,vec3f> currentMove;
         Matrix4f * moveAvatar;
         avatarDirection direction;
-        AnimationList animations;
+        ScriptLMD * animation;
         Text * currentText;
 };
 

@@ -21,6 +21,11 @@
 
 Mate::Mate(vec3f aPosition)
 {
+    //Node for animation
+    Matrix4f * moveHand=new Matrix4f();
+    moveHand->identity();
+    moveMatrix.push_back(moveHand);
+
     position=vec4f(aPosition.x,aPosition.y+1.0,aPosition.z-2.0,1.0);
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
@@ -29,13 +34,24 @@ Mate::Mate(vec3f aPosition)
     moveAvatar=new Matrix4f();
     moveAvatar->translation(position.x,position.y,position.z);
 
+    Matrix4f * transHand=new Matrix4f();
+    transHand->translation(0.4,0.0,0.0);
+
+    Matrix4f * transOtherHand=new Matrix4f();
+    transOtherHand->translation(-0.2,-0.3,0.0);
+
     root=new NodeSceneGraph();
     root->add(moveAvatar);
     root->add(materialCollect->getMaterial(mMATE));
     root->add(meshCollect->getMesh(MATEHEAD));
-
-    root->add(meshCollect->getMesh(MATEHEAD));
+    root->add(transOtherHand);
+    root->add(moveHand); // node for animation
+    root->add(meshCollect->getMesh(MATEHAND));
+    root->add(transHand);
+    root->add(meshCollect->getMesh(MATEHAND));
     currentTime=SDL_GetTicks();
+
+    initAnimation();
 
 }
 
@@ -78,6 +94,23 @@ void Mate::updateState(float time,ControllerManager * controller,RootMap * rootM
 
     moveMate(time,currentMove.second,currentMove.first);
     position=moveAvatar->product(vec4f());
+
+    ////////////////////////////
+    //UPDATE ANIMATION
+    ////////////////////////////
+    if(currentMove.second.x!=0.0 || currentMove.second.y!=0.0 || currentMove.second.z!=0.0){ //if is in movement
+        animation->updateState(time-currentTime);
+
+        for(unsigned i=0;i<moveMatrix.size();i++)
+            moveMatrix[i]->setMatrix(animation->readMatrix(i).getMatrix());
+    }
+    else{ //if is not in movement
+        for(unsigned i=0;i<moveMatrix.size();i++)
+            moveMatrix[i]->identity();
+
+    }
+
+
     currentTime+=time-currentTime;
 }
 
@@ -197,4 +230,20 @@ pair<avatarDirection,vec3f> Mate::nextPosition(vec3f posHero){
     return result;
 }
 
+//**********************************************************************//
 
+void Mate::initAnimation(){
+    animation=new ScriptLMD();
+
+    Matrix4f * rotateHand=new Matrix4f();
+    rotateHand->rotation(-60,1.0,0.0,0.0);
+
+    MatrixStatic * staticRotate=new MatrixStatic(*rotateHand);
+
+    //Movement to the second leg
+    MatrixScript * handScript=new MatrixScript();
+    handScript->add(0.5,staticRotate);
+
+    animation->add(handScript);
+
+}

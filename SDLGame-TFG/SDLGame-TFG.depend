@@ -948,7 +948,7 @@
 1483994270 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1486477641 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1486556190 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 	"rootmap.h"
 
@@ -1789,12 +1789,12 @@
 	"profile.h"
 	"sound.h"
 
-1486467617 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.h
+1486549493 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.h
 	"mesh.h"
 	"collection.h"
 	"collection.cpp"
 
-1486467687 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.cpp
+1486550309 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\meshcollection.cpp
 	"meshcollection.h"
 
 1481823202 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\damageobject.cpp
@@ -2356,7 +2356,7 @@
 1486461933 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\itemlist.cpp
 	"itemlist.h"
 
-1486504318 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\mate.h
+1486554798 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\mate.h
 	"../GraphicEngine/object3d.h"
 	"../GraphicEngine/nodescenegraph.h"
 	"../GraphicEngine/material.h"
@@ -2370,6 +2370,6 @@
 	"../GraphicEngine/animationlist.h"
 	"avatar.h"
 
-1486548101 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\mate.cpp
+1486556446 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\mate.cpp
 	"mate.h"
 
