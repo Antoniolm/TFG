@@ -22,6 +22,7 @@
 MeleeEnemy::MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 {
     life=aLife;
+    maxLife=aLife;
     IA=new IAMeleeEnemy();
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     radioActivity=aRadioActivity;

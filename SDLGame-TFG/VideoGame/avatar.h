@@ -84,6 +84,14 @@ class Avatar: public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will get the maximum life of an avatar
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
+        float getMaxLite();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will add the value to our life
         *    \return void
         */
@@ -92,7 +100,7 @@ class Avatar: public Object3D
 
     protected:
         NodeSceneGraph * root;
-        float life;
+        float life,maxLife;
     private:
 
 };

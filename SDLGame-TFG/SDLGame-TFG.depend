@@ -948,7 +948,7 @@
 1483994270 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1486556190 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1486556506 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 	"rootmap.h"
 
@@ -1002,7 +1002,7 @@
 1485987495 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.cpp
 	"avatar.h"
 
-1485987251 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.h
+1486557337 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatar.h
 	"../GraphicEngine/object3d.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"

@@ -34,6 +34,7 @@ Hero::Hero(vec3f aPos)
     isImpacted=false;
     isShielded=false;
     life=150;
+    maxLife=150;
     position=vec4f(aPos.x,aPos.y,aPos.z,1.0);
     currentCoin=0;
 
