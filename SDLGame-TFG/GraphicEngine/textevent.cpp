@@ -57,17 +57,30 @@ void TextEvent::updateState(float time,RootMap * rootMap){
     if(time-currentTime>200)
         currentTime=time-50;
 
-
-
-    if(position>minArea && position<maxArea)
+    if(position>minArea && position<maxArea && !activated)
         activated=true;
 
     if(activated){
 
-        if(textDelay>(time-timeBWstate)){
-            mate->setDialog("Hello");
-            mate->activateDialog(true);
+        if(textDelay<(time-timeBWstate)){
+            mate->activateDialog(false);
+            hero->activateDialog(false,0);
+
+            if(stateMachine.getCurrentSpeaker()==HERO_DIALOG){
+                hero->setDialog(stateMachine.getCurrentState(),0);
+                hero->activateDialog(true,0);
+            }
+            else{
+                mate->setDialog(stateMachine.getCurrentState());
+                mate->activateDialog(true);
+            }
+
             textDelay=time;
+
+            if(!stateMachine.isLastState()){
+                stateMachine.nextState();
+            }
+            else activated=false;
         }
 
     }
