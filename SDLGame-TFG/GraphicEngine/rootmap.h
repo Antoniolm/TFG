@@ -49,6 +49,7 @@
 #include "sound.h"
 #include "controller.h"
 #include "keyboardcontroller.h"
+#include "textevent.h"
 
 using namespace std;
 
@@ -62,6 +63,7 @@ class ItemList;
 class ParticleSystem;
 class ProjectileSystem;
 class ObjectGroup;
+class TextEvent;
 class RootMap : public Object3D
 {
     public:
@@ -147,6 +149,7 @@ class RootMap : public Object3D
         vector<ObjectScene *> decorationObjs;
         vector<ParticleSystem *> particleSystem;
         vector<ProjectileSystem *> projectileSystem;
+        vector<TextEvent *> events;
         ObjectScene * background;
         NpcList * npcList;
         EnemyList * enemyList;

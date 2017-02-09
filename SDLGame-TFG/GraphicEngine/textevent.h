@@ -23,6 +23,7 @@
 #include "structdata.h"
 #include "SDL.h"
 #include "ianpc.h"
+#include "rootmap.h"
 #include "../lib/rapidjson/document.h"
 
 using namespace rapidjson;
@@ -30,11 +31,6 @@ using namespace rapidjson;
 class TextEvent
 {
     public:
-        //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
-        //////////////////////////////////////////////////////////////////////////
-        TextEvent();
-
         //////////////////////////////////////////////////////////////////////////
         /**Json constructor */
         //////////////////////////////////////////////////////////////////////////
@@ -45,6 +41,7 @@ class TextEvent
         //////////////////////////////////////////////////////////////////////////
         virtual ~TextEvent();
 
+        void updateState(float time,RootMap * rootMap);
     protected:
 
     private:
@@ -53,6 +50,7 @@ class TextEvent
         IANpc stateMachine;
         float timeBWstate;
         float currentTime;
+        bool activated;
 };
 
 #endif // TEXTEVENT_H

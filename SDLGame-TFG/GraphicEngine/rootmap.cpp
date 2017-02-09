@@ -73,6 +73,14 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     }
 
     /////////////////////////////////////////
+    // Add events to our map
+    /////////////////////////////////////////
+    const rapidjson::Value & eventFeature=document["events"];
+    for(unsigned currentEvent=0;currentEvent<eventFeature.Size();currentEvent++){
+        events.push_back(new TextEvent(eventFeature[currentEvent]));
+    }
+
+    /////////////////////////////////////////
     // Add voxelGroup to our map
     /////////////////////////////////////////
     const rapidjson::Value & voxelGroup=document["voxelGroup"];
@@ -328,6 +336,11 @@ void RootMap::updateState(float time,ControllerManager * controller,RootMap * ro
     //Update projectile system
     for(unsigned i=0;i<projectileSystem.size();i++){
         projectileSystem[i]->updateState(time,controller,rootMap);
+    }
+
+    //Update events
+    for(unsigned i=0;i<events.size();i++){
+        events[i]->updateState(time,rootMap);
     }
 
     npcList->updateState(time,controller,rootMap);

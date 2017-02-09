@@ -900,7 +900,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1486571521 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1486664274 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -908,7 +908,7 @@
 	"objectgroup.h"
 	<stdlib.h>
 
-1486468741 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1486662627 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -938,6 +938,7 @@
 	"sound.h"
 	"controller.h"
 	"keyboardcontroller.h"
+	"textevent.h"
 
 1477389087 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.h
 	<glew.h>
@@ -2378,4 +2379,14 @@
 
 1486658012 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\event.h
 	"structdata.h"
+
+1486662079 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textevent.h
+	"structdata.h"
+	"SDL.h"
+	"ianpc.h"
+	"rootmap.h"
+	"../lib/rapidjson/document.h"
+
+1486664713 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textevent.cpp
+	"textevent.h"
 

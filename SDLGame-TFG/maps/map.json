@@ -121,9 +121,9 @@
 
 
     "events":[
-            {   "minPosition":[12.5,2.0,-4.5],
-                "maxPosition":[12.5,2.0,-4.5],
-                "timeBWstate":10,
+            {   "minPosition":[8.5,0.0,-4.5],
+                "maxPosition":[13.5,3.0,-1.5],
+                "timeBWstate":10.0,
                 "dialog":[{"speaker":1,
                            "string":"Oh!! Young warrior, you waked up"},
                           {"speaker":1,
