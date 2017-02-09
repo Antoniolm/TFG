@@ -66,21 +66,22 @@ void TextEvent::updateState(float time,RootMap * rootMap){
             mate->activateDialog(false);
             hero->activateDialog(false,0);
 
-            if(stateMachine.getCurrentSpeaker()==HERO_DIALOG){
-                hero->setDialog(stateMachine.getCurrentState(),0);
-                hero->activateDialog(true,0);
-            }
+            if(stateMachine.isLastState()) //if the talk is over
+                activated=false;
             else{
-                mate->setDialog(stateMachine.getCurrentState());
-                mate->activateDialog(true);
-            }
 
-            textDelay=time;
-
-            if(!stateMachine.isLastState()){
+                if(stateMachine.getCurrentSpeaker()==HERO_DIALOG){
+                    hero->setDialog(stateMachine.getCurrentState(),0);
+                    hero->activateDialog(true,0);
+                }
+                else{
+                    mate->setDialog(stateMachine.getCurrentState());
+                    mate->activateDialog(true);
+                }
                 stateMachine.nextState();
             }
-            else activated=false;
+            textDelay=time;
+
         }
 
     }
