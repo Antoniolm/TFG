@@ -1703,7 +1703,7 @@
 1483995248 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.cpp
 	"ianpc.h"
 
-1482416118 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.h
+1486656703 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ianpc.h
 	<vector>
 	<string>
 
@@ -2372,4 +2372,10 @@
 
 1486556446 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\mate.cpp
 	"mate.h"
+
+1486657443 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\event.cpp
+	"event.h"
+
+1486658012 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\event.h
+	"structdata.h"
 

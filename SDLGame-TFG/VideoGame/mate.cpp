@@ -61,6 +61,12 @@ Mate::~Mate()
 {
     delete root;
     delete moveAvatar;
+    delete animation;
+    delete currentText;
+
+    for(vector<Matrix4f *>::iterator it = moveMatrix.begin() ; it != moveMatrix.end(); ++it){
+        delete (*it);
+    }
 }
 
 //**********************************************************************//

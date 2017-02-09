@@ -27,7 +27,8 @@ using namespace std;
 
 enum speakerMessage{
     NPC_DIALOG,  //0
-    HERO_DIALOG  //1
+    HERO_DIALOG, //1
+    MATE_DIALOG  //2
 };
 
 class IANpc
