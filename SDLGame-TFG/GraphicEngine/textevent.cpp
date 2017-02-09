@@ -37,6 +37,7 @@ TextEvent::TextEvent(const Value & eventFeatures){
 
     activated=false;
     currentTime=SDL_GetTicks();
+    textDelay=currentTime;
 }
 
 //**********************************************************************//
@@ -49,12 +50,27 @@ TextEvent::~TextEvent()
 //**********************************************************************//
 
 void TextEvent::updateState(float time,RootMap * rootMap){
-    Hero *hero =rootMap->getHero();
+    Hero * hero =rootMap->getHero();
+    Mate * mate =rootMap->getMate();
     vec3f position=hero->getPosition();
 
+    if(time-currentTime>200)
+        currentTime=time-50;
+
+
+
     if(position>minArea && position<maxArea)
-        cout<< " in"<<endl;
-    else
-        cout<< " out"<<endl;
+        activated=true;
+
+    if(activated){
+
+        if(textDelay>(time-timeBWstate)){
+            mate->setDialog("Hello");
+            mate->activateDialog(true);
+            textDelay=time;
+        }
+
+    }
+
     currentTime+=time-currentTime;
 }

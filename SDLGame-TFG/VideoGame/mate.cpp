@@ -21,6 +21,14 @@
 
 Mate::Mate(vec3f aPosition)
 {
+    //////////////////////////////////////////////////////
+    /////             Initialize text                /////
+    //////////////////////////////////////////////////////
+    //Dialog for speak
+    TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);
+    currentText=new Text(mDIALOG,font);
+
+
     //Node for animation
     Matrix4f * moveHand=new Matrix4f();
     moveHand->identity();
@@ -53,6 +61,8 @@ Mate::Mate(vec3f aPosition)
 
     initAnimation();
 
+    textActivated=false;
+
 }
 
 //**********************************************************************//
@@ -73,6 +83,9 @@ Mate::~Mate()
 
 void Mate::visualization(Context & cv){
     root->visualization(cv);
+
+    if(textActivated)
+        currentText->visualization(cv);
 }
 
 //**********************************************************************//
@@ -120,6 +133,19 @@ void Mate::updateState(float time,ControllerManager * controller,RootMap * rootM
     currentTime+=time-currentTime;
 }
 
+//**********************************************************************//
+
+void Mate::setDialog(string message){
+    currentText->setPosition(vec3f(position.x,position.y+1.0f,position.z));
+    currentText->setMessage(message);
+    currentText->init();
+}
+
+//**********************************************************************//
+
+void Mate::activateDialog(bool value){
+    textActivated=value;
+}
 //**********************************************************************//
 
 void Mate::moveMate(float time,vec3f aMove,avatarDirection aDir){

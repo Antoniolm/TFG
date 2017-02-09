@@ -49,7 +49,7 @@ class TextEvent
         vec3f maxArea;
         IANpc stateMachine;
         float timeBWstate;
-        float currentTime;
+        float currentTime,textDelay;
         bool activated;
 };
 

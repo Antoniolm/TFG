@@ -63,6 +63,22 @@ class Mate : public Avatar
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(float time,ControllerManager * controller,RootMap * rootMap);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set a new message for our text
+        *    \param message -> it is the new message that our text will show
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setDialog(string message);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will activate the text of our hero
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activateDialog(bool value);
 
     protected:
 
@@ -77,6 +93,7 @@ class Mate : public Avatar
         avatarDirection direction;
         ScriptLMD * animation;
         Text * currentText;
+        bool textActivated;
 };
 
 #endif // MATE_H
