@@ -58,8 +58,6 @@
         }
     ],
 
-
-
     "npcs":[
             {   "position":[12.5,2.0,-4.5],
                 "dialog":[{"speaker":0,
@@ -119,6 +117,29 @@
             {   "position":[13.5,1.5,-6.5],
                 "value":50, 
                 "type":1}
+    ],
+
+
+    "events":[
+            {   "minPosition":[12.5,2.0,-4.5],
+                "maxPosition":[12.5,2.0,-4.5],
+                "timeBWstate":10,
+                "dialog":[{"speaker":1,
+                           "string":"Oh!! Young warrior, you waked up"},
+                          {"speaker":1,
+                           "string":"You have been sleeping for 400 years!"},
+                          {"speaker":1,
+                           "string":"If you don't remember me, I'm Jame the buttler"},
+                          {"speaker":2,
+                           "string":"The castle cursed your soul while you was slepping"},
+                          {"speaker":2,
+                           "string":"But don't be scared"},
+                          {"speaker":2,
+                           "string":"If you obtain all the fragment of cursed crystal"},
+                          {"speaker":2,
+                           "string":"you would purify your soul"}
+                        ]
+            }
     ],
 
 

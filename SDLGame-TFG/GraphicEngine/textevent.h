@@ -22,6 +22,10 @@
 
 #include "structdata.h"
 #include "SDL.h"
+#include "ianpc.h"
+#include "../lib/rapidjson/document.h"
+
+using namespace rapidjson;
 
 class TextEvent
 {
@@ -34,7 +38,7 @@ class TextEvent
         //////////////////////////////////////////////////////////////////////////
         /**Json constructor */
         //////////////////////////////////////////////////////////////////////////
-        TextEvent(const Value & enemiesFeatures);
+        TextEvent(const Value & eventFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -44,9 +48,9 @@ class TextEvent
     protected:
 
     private:
-        vec3f mixArea;
+        vec3f minArea;
         vec3f maxArea;
-        IA_NPC stateMachine;
+        IANpc stateMachine;
         float timeBWstate;
         float currentTime;
 };

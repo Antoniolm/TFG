@@ -26,8 +26,25 @@ TextEvent::TextEvent()
 
 //**********************************************************************//
 
-TextEvent::TextEvent(const Value & enemiesFeatures){
+TextEvent::TextEvent(const Value & eventFeatures){
+    speakerMessage speaker;
 
+    for(unsigned i=0;i<eventFeatures.Size();i++){
+        minArea=vec3f(eventFeatures[i]["minPosition"][0].GetFloat(),eventFeatures[i]["minPosition"][1].GetFloat(),eventFeatures[i]["minPosition"][2].GetFloat());
+        maxArea=vec3f(eventFeatures[i]["maxPosition"][0].GetFloat(),eventFeatures[i]["maxPosition"][1].GetFloat(),eventFeatures[i]["maxPosition"][2].GetFloat());
+        timeBWstate=eventFeatures[i]["timeBWstate"].GetFloat();
+
+
+        const Value & dialogs=eventFeatures[i]["dialog"];
+
+        for(unsigned j=0;j<dialogs.Size();j++){
+            if(dialogs[j]["speaker"].GetInt()==1) speaker=HERO_DIALOG;
+            else speaker=MATE_DIALOG;
+            stateMachine.addState(std::string(dialogs[j]["string"].GetString()),speaker);
+        }
+    }
+
+    currentTime=SDL_GetTicks();
 }
 
 //**********************************************************************//
