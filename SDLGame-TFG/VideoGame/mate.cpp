@@ -129,6 +129,11 @@ void Mate::updateState(float time,ControllerManager * controller,RootMap * rootM
 
     }
 
+    ////////////////////////////
+    //UPDATE TEXT
+    ////////////////////////////
+    if(textActivated)
+        currentText->setPosition(vec3f(position.x,position.y+1.0f,position.z));
 
     currentTime+=time-currentTime;
 }
