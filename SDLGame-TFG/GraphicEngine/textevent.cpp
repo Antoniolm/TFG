@@ -62,19 +62,19 @@ void TextEvent::updateState(float time,RootMap * rootMap){
 
     if(activated){
 
-        if(textDelay<(time-timeBWstate)){
+        if(textDelay<(time-timeBWstate)){ //If the time for the current text is finished
             mate->activateDialog(false);
             hero->activateDialog(false,0);
 
             if(stateMachine.isLastState()) //if the talk is over
                 activated=false;
-            else{
+            else{ //if not our speakers obtains his new dialog
 
-                if(stateMachine.getCurrentSpeaker()==HERO_DIALOG){
+                if(stateMachine.getCurrentSpeaker()==HERO_DIALOG){ //Speaker -> hero
                     hero->setDialog(stateMachine.getCurrentState(),0);
                     hero->activateDialog(true,0);
                 }
-                else{
+                else{ //Speaker -> Mate
                     mate->setDialog(stateMachine.getCurrentState());
                     mate->activateDialog(true);
                 }

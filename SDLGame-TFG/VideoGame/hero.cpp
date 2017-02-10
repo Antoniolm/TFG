@@ -373,7 +373,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
             moveHero.x=-3.0;moveHero.z=0.0;
         }
         else{
-            moveHero.x=-5.0;moveHero.z=0.0;
+            moveHero.x=-4.0;moveHero.z=0.0;
         }
         heroDir=LEFTWARD;
     }
@@ -383,7 +383,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
             moveHero.x=3.0;moveHero.z=0.0;
         }
         else{
-            moveHero.x=5.0;moveHero.z=0.0;
+            moveHero.x=4.0;moveHero.z=0.0;
         }
         heroDir=RIGHTWARD;
     }
@@ -393,7 +393,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
             moveHero.x=0.0;moveHero.z=-3.0;
         }
         else{
-            moveHero.x=0.0;moveHero.z=-5.0;
+            moveHero.x=0.0;moveHero.z=-4.0;
         }
         heroDir=BACKWARD;
     }
@@ -403,7 +403,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
             moveHero.x=0.0;moveHero.z=3.0;
         }
         else{
-            moveHero.x=0.0;moveHero.z=5.0;
+            moveHero.x=0.0;moveHero.z=4.0;
         }
         heroDir=FORWARD;
     }
@@ -413,7 +413,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
             moveHero.x=-2.0;moveHero.z=2.0;
         }
         else{
-            moveHero.x=-4.0;moveHero.z=4.0;
+            moveHero.x=-3.0;moveHero.z=3.0;
         }
         heroDir=FOR_LEFTWARD;
     }
@@ -423,7 +423,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
             moveHero.x=2.0;moveHero.z=2.0;
         }
         else{
-            moveHero.x=4.0;moveHero.z=4.0;
+            moveHero.x=3.0;moveHero.z=3.0;
         }
         heroDir=FOR_RIGHTWARD;
     }
@@ -433,7 +433,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
             moveHero.x=-2.0;moveHero.z=-2.0;
         }
         else{
-            moveHero.x=-4.0;moveHero.z=-4.0;
+            moveHero.x=-3.0;moveHero.z=-3.0;
         }
         heroDir=BACK_LEFTWARD;
     }
@@ -443,7 +443,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
             moveHero.x=2.0;moveHero.z=-2.0;
         }
         else{
-            moveHero.x=4.0;moveHero.z=-4.0;
+            moveHero.x=3.0;moveHero.z=-3.0;
         }
         heroDir=BACK_RIGHTWARD;
     }

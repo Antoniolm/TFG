@@ -145,6 +145,8 @@
 		<Unit filename="GraphicEngine/structdata.h" />
 		<Unit filename="GraphicEngine/text.cpp" />
 		<Unit filename="GraphicEngine/text.h" />
+		<Unit filename="GraphicEngine/textevent.cpp" />
+		<Unit filename="GraphicEngine/textevent.h" />
 		<Unit filename="GraphicEngine/texture.cpp" />
 		<Unit filename="GraphicEngine/texture.h" />
 		<Unit filename="GraphicEngine/voxel.cpp" />
