@@ -583,7 +583,7 @@
                 "mesh":"BOOKS",
                 "collision": false
             },
-            {   "position":[15.5,1.5,-8.5],
+            {   "position":[15.5,1.4,-8.5],
                 "transforms":[
                     {   "type":"scale",
                         "values":[0.5,0.5,0.5]
@@ -603,7 +603,7 @@
                 "mesh":"CHAIR",
                 "collision": true
             },
-            {   "position":[15.5,1.05,-5.5],
+            {   "position":[15.5,1.05,-8.5],
                 "transforms":[
                     {   "type":"rotation",
                         "values":[90,0.0,1.0,0.0]
@@ -662,7 +662,7 @@
                 "mesh":"CHANDELIER",
                 "collision": true
             },
-            {   "position":[11.5,1.4,-3.5],
+            {   "position":[15.5,2.1,-8.5],
                 "transforms":[
                     
                 ],       
