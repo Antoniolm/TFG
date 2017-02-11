@@ -51,7 +51,7 @@ Npc::Npc(vec3f aPosition)
     root->add(npcNode);
 
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);
-    currentText=new Text(mDIALOG,font);
+    currentText=new Text(mBDIALOG,font);
     currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
     currentTime=SDL_GetTicks();
     initAnimation();

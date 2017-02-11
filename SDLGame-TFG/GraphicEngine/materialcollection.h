@@ -29,40 +29,41 @@
 using namespace std;
 
 enum MaterialIndex{
-    mCUBE_GRASS, //0
-    mCUBE_BOX,   //3
-    mCUBE_DUNG,   //3
-    mCUBE_DUNGB,
-    mCUBE_WALL,
-    mCUBE_TRAP,
-    mWATER,      //7
-    mDWATER,      //7
-    mVOID,       //8
-    mCRYSTAL,     //9
-    mHERO,     //11
-    mSWORD,       //12
-    mSHIELD,       //12
-    mENEMY,      //13
-    mARCHENEMY,      //14
-    mDIALOG,     //15
-    mADIALOG,     //16
-    mBUTLER,
-    mFURNITURE,
-    mFIREPLACE,
-    mRUG,
-    mFIRE,
-    mWINDOW,
-    mPILLAR,
-    mBED,
-    mTORCH,
-    mCHANDELIER,
-    mFLAG,
-    mCOLUMN,
-    mPOTION,
-    mMATE,
-    mCHAIR,
-    mWOOD,
-    mBOOKS
+    mCUBE_GRASS,    //0
+    mCUBE_BOX,      //1
+    mCUBE_DUNG,     //2
+    mCUBE_DUNGB,    //3
+    mCUBE_WALL,     //4
+    mCUBE_TRAP,     //5
+    mWATER,         //6
+    mDWATER,        //7
+    mVOID,          //8
+    mCRYSTAL,       //9
+    mHERO,          //10
+    mSWORD,         //11
+    mSHIELD,        //12
+    mENEMY,         //13
+    mARCHENEMY,     //14
+    mDIALOG,        //15
+    mBDIALOG,       //16
+    mADIALOG,       //17
+    mBUTLER,        //18
+    mFURNITURE,     //19
+    mFIREPLACE,     //20
+    mRUG,           //21
+    mFIRE,          //22
+    mWINDOW,        //23
+    mPILLAR,        //24
+    mBED,           //25
+    mTORCH,         //26
+    mCHANDELIER,    //27
+    mFLAG,          //28
+    mCOLUMN,        //29
+    mPOTION,        //30
+    mMATE,          //31
+    mCHAIR,         //32
+    mWOOD,          //33
+    mBOOKS          //34
 
 };
 

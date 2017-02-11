@@ -26,7 +26,7 @@ Mate::Mate(vec3f aPosition)
     //////////////////////////////////////////////////////
     //Dialog for speak
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);
-    currentText=new Text(mDIALOG,font);
+    currentText=new Text(mBDIALOG,font);
 
 
     //Node for animation

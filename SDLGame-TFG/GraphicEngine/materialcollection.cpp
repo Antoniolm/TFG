@@ -75,6 +75,9 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/dialog.png",mDIALOG);
     collection.addElement(material);
 
+    material=new Material(vec3f(0.6f, 0.6f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/dialog.png",mBDIALOG);
+    collection.addElement(material);
+
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/actionDialog.png",mADIALOG);
     collection.addElement(material);
 
@@ -148,6 +151,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mENEMY",mENEMY);
     collection.addIndex("mARCHENEMY",mARCHENEMY);
     collection.addIndex("mDIALOG",mDIALOG);
+    collection.addIndex("mBDIALOG",mBDIALOG);
     collection.addIndex("mADIALOG",mADIALOG);
     collection.addIndex("mBUTLER",mBUTLER);
     collection.addIndex("mFURNITURE",mFURNITURE);
