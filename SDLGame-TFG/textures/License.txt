@@ -24,3 +24,4 @@ Potion Bottle by pixomnia is licensed under CC Attribution https://skfb.ly/FTCM 
 Dinner Table by Evgeniya is licensed under CC Attribution https://skfb.ly/KENA -> used in the texture: chairTexture.png, tableTexture.png,rugTexture.png
 CUTE MICRO GHOUL GOBROT by bitgem  is licensed (https://shop.bitgem3d.com/pages/terms-of-use-license) url(https://shop.bitgem3d.com/collections/free-3d-models/products/low-poly-micro-ghoul-gobrot) -> modified and used in the texture : mateTexture.png
 Book Case by JmPrsh153 is licensed under CC Attribution https://skfb.ly/BqWx -> used in the texture: bookTexture.png
+gamepad by IO-Images is licensed under CC 0 Attribution https://pixabay.com/es/controlador-gamepad-juegos-de-video-1784571/ -> used in the texture: gamepadV.png gamepadX.png

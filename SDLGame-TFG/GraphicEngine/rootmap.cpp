@@ -267,20 +267,12 @@ void RootMap::visualization(Context & cv){
     //Draw background
     background->visualization(cv);
 
-    //Draw object
-    /*for(unsigned i=0;i<objs.size();i++){
-        position=objs[i]->getPosition();
-        if(position.x>posHero.x-10 && position.x<posHero.x+10)
-            objs[i]->visualization(cv);
-    }*/
-
+    //Draw object groups
     for(unsigned i=0;i<objectGroup.size()-1;i++)
         objectGroup[i]->visualization(cv);
 
     //Draw hero
     hero->visualization(cv);
-
-
 
     //Draw ncps
     npcList->visualization(cv);
