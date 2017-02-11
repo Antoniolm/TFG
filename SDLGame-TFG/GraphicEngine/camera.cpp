@@ -34,6 +34,7 @@ Camera::Camera(vec3f eye,vec3f aTarget,vec3f aUp){
 
     createCamera();
     currentTime=SDL_GetTicks();
+    viewDelay=currentTime;
 }
 
 //**********************************************************************//
@@ -138,17 +139,23 @@ void Camera::activatePerspecProjection(Shader * shader){
 void Camera::update(float time,ControllerManager * controller,Shader *shader,RootMap * rootMap,bool activateMenu){
     vec3f posHero=rootMap->getHero()->getPosition();
 
-    //position=vec3f(posHero.x,posHero.y+1.0f,posHero.z+8.0f); // position for testing
-    position=vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f);
-    //position=vec3f(posHero.x,posHero.y+8.0f,posHero.z+13.0f); //test camera
-    target=posHero;
+    if(time-currentTime>200)
+        currentTime=time-50;
 
     if(controller->checkButton(cVIEW) && !activateMenu) viewMode=true;
     else viewMode=false;
 
-    if(viewMode){
-        position.y+=10;
-        position.z+=20;
+    target=posHero;
+    if(viewMode){ //if viewMode
+        if(position.z<posHero.z+35){
+            position.y+=1.0*((time-currentTime)/10);
+            position.z+=2.0*((time-currentTime)/10);
+        }
+    }
+    else { //else normal mode
+        //position=vec3f(posHero.x,posHero.y+1.0f,posHero.z+8.0f); // position for testing
+        position=vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f);
+        //position=vec3f(posHero.x,posHero.y+8.0f,posHero.z+13.0f); //test camera
     }
 
     createCamera();//Create camera
