@@ -126,7 +126,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void update(ControllerManager * controller,Shader * shader,RootMap * rootMap);
+        void update(float time,ControllerManager * controller,Shader * shader,RootMap * rootMap,bool activateMenu);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -179,6 +179,7 @@ class Camera
         vec3f target;
         vec3f up;
         bool viewMode;
+        float currentTime,viewDelay;
 };
 
 #endif // CAMERA_H

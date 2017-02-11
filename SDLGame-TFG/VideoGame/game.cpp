@@ -138,7 +138,7 @@ void Game::loop(){
         ///////////////////
         time=SDL_GetTicks();
 
-        if(!mainMenu->isActivate() && !deadMenu->isActivate()) //if  mainMenu and deadMenu is not activate
+        if(!mainMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()) //if  mainMenu and deadMenu is not activate
             pauseMenu->updateState(time,controller,rootMap);
         else{ //If some of that menu are activate
             if(mainMenu->isActivate())
@@ -164,7 +164,9 @@ void Game::loop(){
         //Update the camera, lifeText, coinText, profile
         posHero=hero->getPosition();
 
-        camera.update(controller,&context.currentShader,rootMap);
+        camera.update(time,controller,&context.currentShader,rootMap,
+                      (pauseMenu->isActivate() || deadMenu->isActivate() || mainMenu->isActivate()));
+
         updateLife(lastLife);
         updateCoin(currentCoin);
 
