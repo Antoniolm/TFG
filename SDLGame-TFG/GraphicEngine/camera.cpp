@@ -21,7 +21,9 @@
 #include "rootmap.h"
 
 Camera::Camera(){
-
+    viewMode=false;
+    currentTime=SDL_GetTicks();
+    viewDelay=currentTime;
 }
 
 //**********************************************************************//
@@ -142,14 +144,20 @@ void Camera::update(float time,ControllerManager * controller,Shader *shader,Roo
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(controller->checkButton(cVIEW) && !activateMenu) viewMode=true;
-    else viewMode=false;
+    if(controller->checkButton(cVIEW) && !activateMenu && viewDelay<(time-600)){
+        viewMode=!viewMode;
+        viewDelay=time;
+    }
 
     target=posHero;
     if(viewMode){ //if viewMode
-        if(position.z<posHero.z+35){
-            position.y+=1.0*((time-currentTime)/10);
-            position.z+=2.0*((time-currentTime)/10);
+        if(position.z<posHero.z+35){ //if is not in the max position
+            position.y+=0.25*((time-currentTime)/10);
+            position.z+=0.5*((time-currentTime)/10);
+        }
+        else if(controller->checkButton(cVIEW)){ //if is in the max position
+                viewMode=!viewMode;              //the user want to quit viewMode
+                viewDelay=time;
         }
     }
     else { //else normal mode
