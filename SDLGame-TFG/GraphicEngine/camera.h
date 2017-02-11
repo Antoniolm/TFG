@@ -25,6 +25,7 @@
 #include "shader.h"
 #include <glew.h>
 #include <SDL.h>
+#include "controllermanager.h"
 
 class RootMap;
 class Camera
@@ -125,7 +126,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void update(Shader * shader,RootMap * rootMap);
+        void update(ControllerManager * controller,Shader * shader,RootMap * rootMap);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -167,6 +168,8 @@ class Camera
         //////////////////////////////////////////////////////////////////////////
         vec3f getUp();
 
+        bool isViewMode();
+
     protected:
 
     private:
@@ -175,6 +178,7 @@ class Camera
         vec3f position;
         vec3f target;
         vec3f up;
+        bool viewMode;
 };
 
 #endif // CAMERA_H

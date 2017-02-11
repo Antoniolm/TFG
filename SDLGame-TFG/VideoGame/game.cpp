@@ -164,7 +164,7 @@ void Game::loop(){
         //Update the camera, lifeText, coinText, profile
         posHero=hero->getPosition();
 
-        camera.update(&context.currentShader,rootMap);
+        camera.update(controller,&context.currentShader,rootMap);
         updateLife(lastLife);
         updateCoin(currentCoin);
 

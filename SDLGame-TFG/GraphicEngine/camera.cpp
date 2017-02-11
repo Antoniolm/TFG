@@ -30,6 +30,7 @@ Camera::Camera(vec3f eye,vec3f aTarget,vec3f aUp){
     position=eye;
     target=aTarget;
     up=aUp;
+    viewMode=false;
 
     createCamera();
 }
@@ -133,14 +134,23 @@ void Camera::activatePerspecProjection(Shader * shader){
 
 //**********************************************************************//
 
-void Camera::update(Shader *shader,RootMap * rootMap){
+void Camera::update(ControllerManager * controller,Shader *shader,RootMap * rootMap){
     vec3f posHero=rootMap->getHero()->getPosition();
 
     //position=vec3f(posHero.x,posHero.y+1.0f,posHero.z+8.0f); // position for testing
     position=vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f);
     //position=vec3f(posHero.x,posHero.y+8.0f,posHero.z+13.0f); //test camera
     target=posHero;
-    createCamera();
+
+    if(controller->checkButton(cVIEW)) viewMode=true;
+    else viewMode=false;
+
+    if(viewMode){
+        position.y+=10;
+        position.z+=20;
+    }
+
+    createCamera();//Create camera
 
     GLint viewLocation= glGetUniformLocation(shader->getProgram(),"view");
     glUniformMatrix4fv(viewLocation,1,GL_FALSE,camera.getMatrix());
@@ -177,4 +187,10 @@ vec3f Camera::getTarget(){
 
 vec3f Camera::getUp(){
     return up;
+}
+
+//**********************************************************************//
+
+bool Camera::isViewMode(){
+    return viewMode;
 }

@@ -77,6 +77,10 @@ bool Controller::checkButton(ControllerIndex button){
         case cPAUSE:
             result=buttons[cPAUSE];
         break;
+        case cVIEW:
+            result=buttons[cVIEW];
+        break;
+
 
     }
 

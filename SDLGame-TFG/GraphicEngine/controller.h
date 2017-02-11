@@ -32,7 +32,8 @@ enum ControllerIndex{
     cATTACK,
     cSHIELD,
     cSWAPWEAPON,
-    cPAUSE
+    cPAUSE,
+    cVIEW
 };
 
 class Controller
@@ -80,7 +81,7 @@ class Controller
         //////////////////////////////////////////////////////////////////////////
         virtual void catchKeyBoardState(const Uint8* currentKeyStates);
     protected:
-        bool buttons[10];
+        bool buttons[11];
     private:
 
 };

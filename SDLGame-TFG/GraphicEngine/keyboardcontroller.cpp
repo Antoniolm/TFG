@@ -64,4 +64,7 @@ void KeyboardController::catchKeyBoardState(const Uint8* currentKeyStates){
 
     if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_ESCAPE)]) buttons[cPAUSE]=true;
     else buttons[cPAUSE]=false;
+
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_v)]) buttons[cVIEW]=true;
+    else buttons[cVIEW]=false;
 }
