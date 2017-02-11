@@ -151,6 +151,7 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     objectGroup.push_back(new ObjectGroup(mCUBE_DUNG));
     objectGroup.push_back(new ObjectGroup(mCUBE_WALL));
     objectGroup.push_back(new ObjectGroup(mCUBE_DUNGB));
+    objectGroup.push_back(new ObjectGroup(mCUBE_TRAP));
     objectGroup.push_back(new ObjectGroup(mVOID));
 
     for(unsigned i=0;i<objs.size();i++){
@@ -165,8 +166,11 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
             case mCUBE_DUNGB:
                 objectGroup[2]->addObject(objs[i]->getPosition(),CUBE);
             break;
-            case mVOID:
+            case mCUBE_TRAP:
                 objectGroup[3]->addObject(objs[i]->getPosition(),CUBE);
+            break;
+            case mVOID:
+                objectGroup[4]->addObject(objs[i]->getPosition(),CUBE);
             break;
             default:
             break;
