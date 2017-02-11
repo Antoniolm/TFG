@@ -21,8 +21,8 @@
                 "diffuse":[1.0,1.0,1.0],
                 "specular":[1.0,1.0,1.0],
                 "constant":1.0,
-                "linear":0.9,
-                "quadratic":0.132 },
+                "linear":0.7,
+                "quadratic":1.8 },
 
             {   "type":1,
                 "channel":"1",
