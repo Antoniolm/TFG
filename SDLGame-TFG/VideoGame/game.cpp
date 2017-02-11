@@ -148,7 +148,7 @@ void Game::loop(){
         }
 
 
-        if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate()){ //If  menu is not activate
+        if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()){ //If  menu is not activate
             rootMap->updateState(time,controller,rootMap);
             if(wasActivatedMenu) //If is the first time that it is not activated
                 rootMap->enableSound(true);
