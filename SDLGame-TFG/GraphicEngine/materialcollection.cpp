@@ -36,22 +36,22 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeonB.png",mCUBE_DUNGB);
     collection.addElement(material);
 
-    material=new Material(vec3f(0.4f, 0.4f, 0.4f),vec3f(0.2f, 0.2f, 0.2f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeWall.png",mCUBE_WALL);
+    material=new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeWall.png",mCUBE_WALL);
     collection.addElement(material);
 
-    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.2f, 0.2f, 0.2f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeTrap.png",mCUBE_TRAP);
+    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeTrap.png",mCUBE_TRAP);
     collection.addElement(material);
 
-    material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/water.png",mWATER);
+    material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/water.png",mWATER);
     collection.addElement(material);
 
     material=new Material(vec3f(0.5f, 1.0f, 0.5f),vec3f(0.5f, 1.0f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/water.png",mDWATER);
     collection.addElement(material);
 
-    material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/void.png",mVOID);
+    material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/void.png",mVOID);
     collection.addElement(material);
 
-    material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/TEX_crystal.png",mCRYSTAL);
+    material=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/TEX_crystal.png",mCRYSTAL);
     collection.addElement(material);
 
     //Hero material
@@ -65,10 +65,10 @@ MaterialCollection::MaterialCollection()
     collection.addElement(material);
 
     //Enemy material
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/enemyTexture.png",mENEMY);
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/enemyTexture.png",mENEMY);
     collection.addElement(material);
 
-    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/archerTexture.png",mARCHENEMY);
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/archerTexture.png",mARCHENEMY);
     collection.addElement(material);
 
     //Text Material

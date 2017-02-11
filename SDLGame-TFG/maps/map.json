@@ -4,7 +4,7 @@
     "bkgdMaterial":"mWATER",
     "sound":"sounds/backsound.wav",
     "volSound":30.0,
-    "heroPosition":[15.5,2.0,-4],
+    "heroPosition":[43,6.0,-18],
 
     "light":[
             {   "type":0,
@@ -499,7 +499,7 @@
 
 
 
-            {   "//":"ROOM 3 - MIDDLE-ROOM",
+            {   "//":"ROOM 4 - MIDDLE-ROOM",
                 "position":[42,4.5,18],
                 "YNumber":4,        
                 "XNumber":4,         
@@ -507,7 +507,7 @@
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
-                "damage":0.0},
+                "damage":0.0}, 
             {   "position":[42,4.5,19],
                 "YNumber":1,        
                 "XNumber":4,         
@@ -519,20 +519,83 @@
             {   "position":[41,8.5,23],
                 "YNumber":4,        
                 "XNumber":1,         
-                "ZNumber":5,         
-                "materialTop":"mCUBE_WALL",
-                "materialMiddle":"mCUBE_WALL", 
-                "mesh":"CUBE", 
-                "damage":0.0},
-            {   "position":[45,8.5,19],
-                "YNumber":4,        
-                "XNumber":1,         
                 "ZNumber":6,         
                 "materialTop":"mCUBE_WALL",
                 "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE", 
+                "damage":0.0},
+            {   "position":[41,8.5,29],
+                "YNumber":4,        
+                "XNumber":7,         
+                "ZNumber":1,         
+                "materialTop":"mCUBE_WALL",
+                "materialMiddle":"mCUBE_WALL", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+            {   "position":[45,8.5,18],
+                "YNumber":4,        
+                "XNumber":1,         
+                "ZNumber":8,         
+                "materialTop":"mCUBE_WALL",
+                "materialMiddle":"mCUBE_WALL", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+
+
+            {   "//":"ROOM 4 - MIDDLE-ROOM",
+                "position":[46,4.5,24],
+                "YNumber":4,        
+                "XNumber":2,         
+                "ZNumber":1,         
+                "materialTop":"mCUBE_DUNG",
+                "materialMiddle":"mCUBE_DUNGB", 
+                "mesh":"CUBE", 
+                "damage":0.0}, 
+            {   "position":[46,4.5,25],
+                "YNumber":1,        
+                "XNumber":2,         
+                "ZNumber":10,         
+                "materialTop":"mCUBE_DUNG",
+                "materialMiddle":"mCUBE_DUNGB", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+            {   "position":[48,2.5,25],
+                "YNumber":1,        
+                "XNumber":8,         
+                "ZNumber":10,         
+                "materialTop":"mCUBE_DUNG",
+                "materialMiddle":"mCUBE_DUNGB", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+
+
+
+            {   "//":"VOXEL IN WATER",
+                "position":[49,4.5,26],
+                "YNumber":2,        
+                "XNumber":1,         
+                "ZNumber":1,         
+                "materialTop":"mCUBE_DUNG",
+                "materialMiddle":"mCUBE_DUNGB", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+            {   "position":[51,4.5,26],
+                "YNumber":2,        
+                "XNumber":1,         
+                "ZNumber":1,         
+                "materialTop":"mCUBE_DUNG",
+                "materialMiddle":"mCUBE_DUNGB", 
+                "mesh":"CUBE", 
+                "damage":0.0}, 
+            {   "position":[53,4.5,26],
+                "YNumber":2,        
+                "XNumber":1,         
+                "ZNumber":1,         
+                "materialTop":"mCUBE_DUNG",
+                "materialMiddle":"mCUBE_DUNGB", 
+                "mesh":"CUBE", 
                 "damage":0.0}
-            
+
            
     ],
 
@@ -670,15 +733,15 @@
                 "mesh":"CHOLDER",
                 "collision": false
             },
-            {   "position":[14.5,1.4,-3.5],
+            {   "position":[42.5,5.5,-28],
                 "transforms":[
                     
                 ],       
                 "material":"mTORCH",
                 "mesh":"BARREL",
-                "collision": false
+                "collision": true
             },
-            {   "position":[17.5,1.3,-4.5],
+            {   "position":[44.5,5.3,-20],
                 "transforms":[
                     
                 ],       
@@ -686,9 +749,10 @@
                 "mesh":"BENCH",
                 "collision": true
             },
-            {   "position":[19.5,3.0,-5.5],
+            {   "position":[52.0,5.0,-29.5],
                 "transforms":[
-                    
+                    {"type":"rotation",
+                    "values":[90,0.0,0.0,1.0]}
                 ],       
                 "material":"mCOLUMN",
                 "mesh":"COLUMN",
