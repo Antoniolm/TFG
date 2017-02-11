@@ -170,14 +170,6 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void initAnimation();
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will create a projectile
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void createProjectile();
-
         vector<Projectile *> projectiles;
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> heroSound;

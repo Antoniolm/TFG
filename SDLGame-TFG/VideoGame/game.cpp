@@ -114,18 +114,13 @@ void Game::loop(){
                 quit = true;
             }
             if(event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_RESIZED ){
-                if(event.window.data2<600)windowH=600; //MinHeight
+                if(event.window.data2<800)windowH=800; //MinHeight
                 else windowH=event.window.data2;
 
-                if(event.window.data1<400) windowW=400; //MinWidth
+                if(event.window.data1<1000) windowW=1000; //MinWidth
                 else windowW=event.window.data1;
 
                 window->resizeWindow(windowH,windowW);
-                if(windowW > windowH)
-                    camera.setPerspectiveProjection(30.0f,(float)( windowW / windowH), 0.1f, 200.0f);
-                else //fix
-                    camera.setPerspectiveProjection(30.0f,(float)( windowH / windowW), 0.1f, 200.0f);
-                camera.activateCamera(&context.currentShader);
             }
 
            if((event.type==SDL_CONTROLLERBUTTONDOWN || event.type==SDL_CONTROLLERBUTTONUP || event.type==SDL_CONTROLLERDEVICEADDED

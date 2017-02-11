@@ -28,6 +28,7 @@
 
 class RootMap;
 class Enemy;
+class Projectile;
 class AvatarMove: public Avatar
 {
     public:
@@ -151,6 +152,13 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         void changeDirection(avatarDirection aDir);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will create a projectile
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        Projectile * createProjectile(float damage);
 
     protected:
         RootMap * currentMap;

@@ -566,7 +566,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
                 ScriptLMD * animationHit=animations.getAnimation();
                 if(animationHit->getScriptState(6)==1 && shootDelay<(time-700)){
                     shootDelay=time;
-                    createProjectile();
+                    projectiles.push_back(createProjectile(currentWeapon->getDamage()));
                     heroSound[3]->stop();
                     heroSound[3]->play();
                 }
@@ -1337,57 +1337,3 @@ bool Hero::isHit(){
 
     animations.add(animation);
  }
-
-//**********************************************************************//
-
-void Hero::createProjectile(){
-    vec3f posProject;
-    vec3f velocityProject;
-    avatarDirection dirProject=RIGHTWARD;
-
-    switch(direction){
-        case FORWARD:
-                posProject=vec3f(position.x,position.y,position.z+0.5);
-                velocityProject=vec3f(0.0,0.0,4.0);
-                dirProject=FORWARD;
-            break;
-        case BACKWARD:
-                posProject=vec3f(position.x,position.y,position.z-0.5);
-                velocityProject=vec3f(0.0,0.0,-4.0);
-                dirProject=BACKWARD;
-            break;
-        case LEFTWARD:
-                posProject=vec3f(position.x-0.5,position.y,position.z);
-                velocityProject=vec3f(-4.0,0.0,0.0);
-                dirProject=LEFTWARD;
-            break;
-        case RIGHTWARD:
-                posProject=vec3f(position.x+0.5,position.y,position.z);
-                velocityProject=vec3f(4.0,0.0,0.0);
-                dirProject=RIGHTWARD;
-            break;
-        case FOR_LEFTWARD:
-                posProject=vec3f(position.x-0.5,position.y,position.z+0.5);
-                velocityProject=vec3f(-3.0,0.0,3.0);
-                dirProject=FOR_LEFTWARD;
-            break;
-        case FOR_RIGHTWARD:
-                posProject=vec3f(position.x+0.5,position.y,position.z+0.5);
-                velocityProject=vec3f(3.0,0.0,3.0);
-                dirProject=FOR_RIGHTWARD;
-            break;
-        case BACK_LEFTWARD:
-                posProject=vec3f(position.x-0.5,position.y,position.z-0.5);
-                velocityProject=vec3f(-3.0,0.0,-3.0);
-                dirProject=BACK_LEFTWARD;
-            break;
-        case BACK_RIGHTWARD:
-                posProject=vec3f(position.x+0.5,position.y,position.z-0.5);
-                velocityProject=vec3f(3.0,0.0,-3.0);
-                dirProject=BACK_RIGHTWARD;
-
-            break;
-    }
-
-    projectiles.push_back(new Projectile(posProject,velocityProject,dirProject,currentWeapon->getDamage(),"ARROW","mARCHENEMY"));
-}

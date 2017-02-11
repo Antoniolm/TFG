@@ -39,7 +39,7 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeWall.png",mCUBE_WALL);
     collection.addElement(material);
 
-    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeTrap.png",mCUBE_TRAP);
+    material=new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeTrap.png",mCUBE_TRAP);
     collection.addElement(material);
 
     material=new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/water.png",mWATER);
@@ -98,7 +98,7 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(0.8f, 0.8f, 0.8f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.0f, 0.0f, 0.0f),16.0f,"textures/windowTex.png",mWINDOW);
     collection.addElement(material);
 
-    material=new Material(vec3f(0.3f, 0.3f, 0.3f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.0f, 0.0f, 0.0f),16.0f,"textures/pillar.png",mPILLAR);
+    material=new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.0f, 0.0f, 0.0f),16.0f,"textures/pillar.png",mPILLAR);
     collection.addElement(material);
 
     material=new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.0f, 0.0f, 0.0f),16.0f,"textures/bedTexture.png",mBED);
