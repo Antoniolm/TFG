@@ -90,6 +90,7 @@ void PauseMenu::updateState(float time,ControllerManager * controller,RootMap * 
         activateMenu=!activateMenu;
         menuDelay=time;
         if(activateMenu){
+            (Profile::getInstance())->showResult();
             position=rootMap->getHero()->getPosition();
             positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
         }
@@ -99,6 +100,8 @@ void PauseMenu::updateState(float time,ControllerManager * controller,RootMap * 
         }
         openSound->play();
     }
+
+
     if(activateMenu){ //If the menu is activated
         if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption-=1;

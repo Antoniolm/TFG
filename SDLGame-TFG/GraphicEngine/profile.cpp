@@ -51,13 +51,15 @@ void Profile::addUpdateTime(float currentUpdateTime){
 //**********************************************************************//
 
 void Profile::incrementFrames(){
+    if(nFrame==0) initialTime=SDL_GetTicks();
+
     nFrame++;
 }
 
 //**********************************************************************//
 
 void Profile::showResult(){
-    float totalTime=SDL_GetTicks();
+    float totalTime=SDL_GetTicks()-initialTime;
     totalTime=totalTime/1000; // second
     cout<< endl<<"-------PROFILE-------"<<endl;
     cout<< "Average update time-> "<< totalUpdateTime/nFrame<< " miliseconds"<<endl;

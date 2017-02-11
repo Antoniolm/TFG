@@ -81,6 +81,7 @@ class Profile
         Profile();
 
         int nFrame;
+        float initialTime;
         float totalVisualTime;
         float totalUpdateTime;
         float fps;
