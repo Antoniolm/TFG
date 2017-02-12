@@ -41,6 +41,13 @@ class TextEvent
         //////////////////////////////////////////////////////////////////////////
         virtual ~TextEvent();
 
+        /////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will update the state of the object. That change need the
+        *    current time in our application
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void updateState(float time,RootMap * rootMap);
     protected:
 

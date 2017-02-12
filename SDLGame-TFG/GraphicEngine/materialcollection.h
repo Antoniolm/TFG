@@ -63,7 +63,8 @@ enum MaterialIndex{
     mMATE,          //31
     mCHAIR,         //32
     mWOOD,          //33
-    mBOOKS          //34
+    mBOOKS,         //34
+    mTRUNK          //35
 
 };
 

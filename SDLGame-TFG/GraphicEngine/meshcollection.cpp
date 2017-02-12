@@ -242,6 +242,10 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
+    element=new Mesh("geometries/trunk.obj");
+    element->init();
+    collection.addElement(element);
+
     //Create our map
     collection.addIndex("CUBE",CUBE);
     collection.addIndex("SPHERE",SPHERE);
@@ -290,6 +294,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("MATEHEAD",MATEHEAD);
     collection.addIndex("MATEHAND",MATEHAND);
     collection.addIndex("BOOKS",BOOKS);
+    collection.addIndex("TRUNK",TRUNK);
 }
 
 //**********************************************************************//

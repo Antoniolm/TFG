@@ -159,7 +159,6 @@
 		<Unit filename="VideoGame/avatar.h" />
 		<Unit filename="VideoGame/avatarmove.cpp" />
 		<Unit filename="VideoGame/avatarmove.h" />
-		<Unit filename="VideoGame/coinlist.h" />
 		<Unit filename="VideoGame/enemy.cpp" />
 		<Unit filename="VideoGame/enemy.h" />
 		<Unit filename="VideoGame/enemylist.cpp" />

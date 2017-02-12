@@ -134,6 +134,9 @@ MaterialCollection::MaterialCollection()
     material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/bookTexture.png",mBOOKS);
     collection.addElement(material);
 
+    material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/trunkTexture.png",mTRUNK);
+    collection.addElement(material);
+
     //Create our map
     collection.addIndex("mCUBE_GRASS",mCUBE_GRASS);
     collection.addIndex("mCUBE_BOX",mCUBE_BOX);
@@ -170,6 +173,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mCHAIR",mCHAIR);
     collection.addIndex("mWOOD",mWOOD);
     collection.addIndex("mBOOKS",mBOOKS);
+    collection.addIndex("mTRUNK",mTRUNK);
 
 }
 

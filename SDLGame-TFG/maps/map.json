@@ -4,7 +4,7 @@
     "bkgdMaterial":"mWATER",
     "sound":"sounds/backsound.wav",
     "volSound":30.0,
-    "heroPosition":[43,6.0,-18],
+    "heroPosition":[12,3.0,-4],
 
     "light":[
             {   "type":0,
@@ -917,13 +917,18 @@
             },
             {   "position":[52.0,3.0,-30.5],
                 "transforms":[
-                    {"type":"rotation",
-                    "values":[90,0.0,0.0,1.0]}
                 ],       
                 "material":"mCOLUMN",
                 "mesh":"COLUMN",
                 "collision": true
-            }         
+            },
+            {   "position":[2.5,1.75,-6.5],
+                "transforms":[
+                ],       
+                "material":"mTRUNK",
+                "mesh":"TRUNK",
+                "collision": true
+            }          
                
     ]
 
