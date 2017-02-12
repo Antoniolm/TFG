@@ -203,7 +203,8 @@ void Game::loop(){
 
 void Game::updateLife(int & lastLife){
     vec3f posHero=hero->getPosition();
-    lifeText->setPosition(vec3f(posHero.x-0.72,posHero.y+5.9,posHero.z+12.6));
+    lifeText->setPosition(vec3f(posHero.x-0.72,posHero.y+7.4,posHero.z+10.6));
+    //lifeText->setPosition(vec3f(posHero.x+0.72,posHero.y+5.9,posHero.z+12.6));
     std::stringstream life;
     life<< hero->getLife();
     if(lastLife!=hero->getLife()){ //If the life has changed
@@ -217,7 +218,8 @@ void Game::updateLife(int & lastLife){
 
 void Game::updateCoin(int & currentCoin){
     vec3f posHero=hero->getPosition();
-    coinText->setPosition(vec3f(posHero.x+0.72,posHero.y+5.9,posHero.z+12.6));
+    coinText->setPosition(vec3f(posHero.x+0.72,posHero.y+7.4,posHero.z+10.6));
+    //coinText->setPosition(vec3f(posHero.x+0.72,posHero.y+5.9,posHero.z+12.6));
     std::stringstream coin;
     coin<< hero->getCoin();
     if(currentCoin!=hero->getCoin()){ //If the life has changed
