@@ -246,6 +246,10 @@ MeshCollection::MeshCollection()
     element->init();
     collection.addElement(element);
 
+    element=new Mesh("geometries/ladder.obj");
+    element->init();
+    collection.addElement(element);
+
     //Create our map
     collection.addIndex("CUBE",CUBE);
     collection.addIndex("SPHERE",SPHERE);
@@ -295,6 +299,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("MATEHAND",MATEHAND);
     collection.addIndex("BOOKS",BOOKS);
     collection.addIndex("TRUNK",TRUNK);
+    collection.addIndex("LADDER",LADDER);
 }
 
 //**********************************************************************//

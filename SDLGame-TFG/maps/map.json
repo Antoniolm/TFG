@@ -4,7 +4,7 @@
     "bkgdMaterial":"mWATER",
     "sound":"sounds/backsound.wav",
     "volSound":30.0,
-    "heroPosition":[12,3.0,-4],
+    "heroPosition":[42,6.0,-20],
 
     "light":[
             {   "type":0,
@@ -92,6 +92,31 @@
             "position":[53.5,5.5,-35.5],
             "velocity":[0.0,0.0,3.0],
             "direction":0,
+            "delay":4000,
+            "material":"mARCHENEMY",
+            "mesh":"ARROW"
+        },
+
+        {   "radioActivity":[10.0,5.0,12.0],
+            "position":[55.5,7.5,-32.5],
+            "velocity":[-3.0,0.0,0.0],
+            "direction":2,
+            "delay":4000,
+            "material":"mARCHENEMY",
+            "mesh":"ARROW"
+        },
+        {   "radioActivity":[10.0,5.0,12.0],
+            "position":[55.5,6.5,-32.5],
+            "velocity":[-3.0,0.0,0.0],
+            "direction":2,
+            "delay":4000,
+            "material":"mARCHENEMY",
+            "mesh":"ARROW"
+        },
+        {   "radioActivity":[10.0,5.0,12.0],
+            "position":[55.5,5.5,-32.5],
+            "velocity":[-3.0,0.0,0.0],
+            "direction":2,
             "delay":4000,
             "material":"mARCHENEMY",
             "mesh":"ARROW"
@@ -801,6 +826,13 @@
                 ],       
                 "material":"mWOOD",
                 "mesh":"BKSHELF",
+                "collision": true
+            },
+            {   "position":[10.5,2.5,-9.5],
+                "transforms":[
+                ],       
+                "material":"mWOOD",
+                "mesh":"LADDER",
                 "collision": true
             },
             {   "position":[12.0,2.3,-12.3,
