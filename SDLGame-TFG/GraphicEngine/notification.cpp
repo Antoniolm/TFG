@@ -23,6 +23,8 @@ Notification::Notification(vec3f aPosition,vec3f aScale,float aVisibleTime,Mater
 {
     position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
     activatedNoti=true;
+    visibleTime=aVisibleTime;
+
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
@@ -48,9 +50,40 @@ Notification::Notification(vec3f aPosition,vec3f aScale,float aVisibleTime,Mater
 
 //**********************************************************************//
 
+Notification::Notification(const Value & notificationFeatures)
+{
+    position=vec4f(notificationFeatures["position"][0].GetFloat(),notificationFeatures["position"][1].GetFloat(),notificationFeatures["position"][2].GetFloat(),1.0);
+    activatedNoti=true;
+    visibleTime=notificationFeatures["visibleTime"].GetFloat();
+
+    MeshCollection * meshCollect =MeshCollection::getInstance();
+    MaterialCollection * materialCollect =MaterialCollection::getInstance();
+
+    transNoti=new Matrix4f();
+    transNoti->identity();
+
+    Matrix4f * scaleMenu=new Matrix4f();
+    scaleMenu->scale(notificationFeatures["position"][0].GetFloat(),notificationFeatures["position"][1].GetFloat(),notificationFeatures["position"][2].GetFloat());
+
+    Matrix4f * rotationMenu=new Matrix4f();
+    rotationMenu->rotation(20,1.0,0.0,0.0);
+
+    root=new NodeSceneGraph(false,true);
+    root->add(transNoti);
+    root->add(rotationMenu);
+    root->add(scaleMenu);
+    root->add(materialCollect->getMaterial(notificationFeatures["materialIndex"].GetString()));
+    root->add(meshCollect->getMesh(TEXT));
+
+    currentTime=SDL_GetTicks();
+    initialTime=currentTime;
+}
+
+//**********************************************************************//
+
 Notification::~Notification()
 {
-    //dtor
+    delete root;
 }
 
 //**********************************************************************//
@@ -65,8 +98,10 @@ void Notification::visualization(Context & cv){
 void Notification::updateState(float time,ControllerManager * controller,RootMap * rootMap){
     vec3f posHero=rootMap->getHero()->getPosition();
 
-    if(time-currentTime>200)
+    if(time-currentTime>200){
+        initialTime+=time-currentTime;
         currentTime=time-50;
+    }
 
     transNoti->translation(position.x+posHero.x,position.y+posHero.y,position.z+posHero.z);
 

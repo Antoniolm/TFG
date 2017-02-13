@@ -57,6 +57,12 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     }
 
     /////////////////////////////////////////
+    // Add title to our map
+    /////////////////////////////////////////
+    const rapidjson::Value & titleFeature=document["title"];
+    title=new Notification(titleFeature);
+
+    /////////////////////////////////////////
     // Add particleSystems to our map
     /////////////////////////////////////////
     const rapidjson::Value & particleFeature=document["particleSystem"];
@@ -220,6 +226,7 @@ RootMap::~RootMap()
     delete itemList;
     delete hero;
     delete mate;
+    delete title;
 
     for(unsigned i=0;i<objs.size();i++)
         delete objs[i];
@@ -305,6 +312,9 @@ void RootMap::visualization(Context & cv){
     //Draw mate
     mate->visualization(cv);
 
+    //Draw title
+    title->visualization(cv);
+
     /////////////////////////////////////////////////////
     //Visualization here that component because is a visible wall
     objectGroup[objectGroup.size()-1]->visualization(cv);
@@ -339,13 +349,20 @@ void RootMap::updateState(float time,ControllerManager * controller,RootMap * ro
         projectileSystem[i]->updateState(time,controller,rootMap);
     }
 
-    //Update events
+
     for(unsigned i=0;i<events.size();i++){
         events[i]->updateState(time,rootMap);
     }
 
+    //Update title
+    title->updateState(time,controller,rootMap);
+
+    //Update npcs
     npcList->updateState(time,controller,rootMap);
+
+    //Update enemies
     enemyList->updateState(time,controller,rootMap);
+
     currentTime+=time-currentTime;
 }
 

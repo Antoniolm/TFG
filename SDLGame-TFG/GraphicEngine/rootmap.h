@@ -50,6 +50,7 @@
 #include "controller.h"
 #include "keyboardcontroller.h"
 #include "textevent.h"
+#include "notification.h"
 
 using namespace std;
 
@@ -64,6 +65,7 @@ class ParticleSystem;
 class ProjectileSystem;
 class ObjectGroup;
 class TextEvent;
+class Notification;
 class RootMap : public Object3D
 {
     public:
@@ -158,6 +160,7 @@ class RootMap : public Object3D
         vector<ParticleSystem *> particleSystem;
         vector<ProjectileSystem *> projectileSystem;
         vector<TextEvent *> events;
+        Notification * title;
         ObjectScene * background;
         NpcList * npcList;
         EnemyList * enemyList;

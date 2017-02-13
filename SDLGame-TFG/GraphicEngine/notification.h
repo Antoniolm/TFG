@@ -25,6 +25,9 @@
 #include "nodescenegraph.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
+#include "../lib/rapidjson/document.h"
+
+using namespace rapidjson;
 
 class Notification : public Object3D
 {
@@ -33,6 +36,11 @@ class Notification : public Object3D
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         Notification(vec3f aPosition,vec3f aScale,float aVisibleTime,MaterialIndex material);
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Json constructor */
+        //////////////////////////////////////////////////////////////////////////
+        Notification(const Value & notificationFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
