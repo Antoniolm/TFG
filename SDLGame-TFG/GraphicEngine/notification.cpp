@@ -63,7 +63,7 @@ Notification::Notification(const Value & notificationFeatures)
     transNoti->identity();
 
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(notificationFeatures["position"][0].GetFloat(),notificationFeatures["position"][1].GetFloat(),notificationFeatures["position"][2].GetFloat());
+    scaleMenu->scale(notificationFeatures["scale"][0].GetFloat(),notificationFeatures["scale"][1].GetFloat(),notificationFeatures["scale"][2].GetFloat());
 
     Matrix4f * rotationMenu=new Matrix4f();
     rotationMenu->rotation(20,1.0,0.0,0.0);
