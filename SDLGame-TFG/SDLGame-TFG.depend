@@ -949,7 +949,7 @@
 1483994270 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1486929676 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1486986638 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 	"rootmap.h"
 
@@ -2294,23 +2294,23 @@
 1485987556 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\weapon.cpp
 	"weapon.h"
 
-1486831523 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\keyboardcontroller.cpp
+1486983180 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\keyboardcontroller.cpp
 	"keyboardcontroller.h"
 
 1486400110 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\keyboardcontroller.h
 	"controller.h"
 
-1486831280 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.h
+1486980567 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.h
 	<SDL.H>
 
-1486831303 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.cpp
+1486983411 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller.cpp
 	"controller.h"
 
 1486400094 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.h
 	"controller.h"
 	<iostream>
 
-1486832929 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.cpp
+1486986098 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.cpp
 	"gamepadcontroller.h"
 
 1486063550 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectgroup.cpp

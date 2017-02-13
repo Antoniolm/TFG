@@ -35,6 +35,8 @@ Controller::~Controller()
 
 void Controller::setState(bool value,ControllerIndex button){
     buttons[button]=value;
+    if(!value)
+        stateButtons[button]=false;
 }
 
 //**********************************************************************//
@@ -45,47 +47,60 @@ void Controller::checkEvent(SDL_Event & event){}
 
 bool Controller::checkButton(ControllerIndex button){
     bool result=false;
+    bool resultState=false;
 
     switch(button){
         case cUP:
             result=buttons[cUP];
+            resultState=stateButtons[cUP];
         break;
         case cDOWN:
             result=buttons[cDOWN];
+            resultState=stateButtons[cDOWN];
         break;
         case cRIGHT:
             result=buttons[cRIGHT];
+            resultState=stateButtons[cRIGHT];
         break;
         case cLEFT:
             result=buttons[cLEFT];
+            resultState=stateButtons[cLEFT];
         break;
         case cACTION:
             result=buttons[cACTION];
+            resultState=stateButtons[cACTION];
         break;
         case cJUMP:
             result=buttons[cJUMP];
+            resultState=stateButtons[cJUMP];
         break;
         case cATTACK:
             result=buttons[cATTACK];
+            resultState=stateButtons[cATTACK];
         break;
         case cSHIELD:
             result=buttons[cSHIELD];
+            resultState=stateButtons[cSHIELD];
         break;
         case cSWAPWEAPON:
             result=buttons[cSWAPWEAPON];
+            resultState=stateButtons[cSWAPWEAPON];
         break;
         case cPAUSE:
             result=buttons[cPAUSE];
+            resultState=stateButtons[cPAUSE];
         break;
         case cVIEW:
             result=buttons[cVIEW];
+            resultState=stateButtons[cVIEW];
         break;
-
 
     }
 
 
-    return result;}
+    return result && resultState;
+
+}
 
 //**********************************************************************//
 

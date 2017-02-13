@@ -82,6 +82,7 @@ class Controller
         virtual void catchKeyBoardState(const Uint8* currentKeyStates);
     protected:
         bool buttons[11];
+        bool stateButtons[11]; //check if the button has been consumed for one object.
     private:
 
 };

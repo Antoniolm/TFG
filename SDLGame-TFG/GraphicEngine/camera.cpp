@@ -147,6 +147,7 @@ void Camera::update(float time,ControllerManager * controller,Shader *shader,Roo
     if(controller->checkButton(cVIEW) && !activateMenu && viewDelay<(time-600)){
         viewMode=!viewMode;
         viewDelay=time;
+        controller->setState(false,cVIEW);
     }
 
     target=posHero;
@@ -158,6 +159,7 @@ void Camera::update(float time,ControllerManager * controller,Shader *shader,Roo
         else if(controller->checkButton(cVIEW)){ //if is in the max position
                 viewMode=!viewMode;              //the user want to quit viewMode
                 viewDelay=time;
+                controller->setState(false,cVIEW);
         }
     }
     else { //else normal mode
