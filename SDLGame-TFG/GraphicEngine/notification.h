@@ -24,7 +24,7 @@
 #include "context.h"
 #include "nodescenegraph.h"
 #include "meshcollection.h"
-#include "materialCollection"
+#include "materialcollection.h"
 
 class Notification : public Object3D
 {
@@ -32,7 +32,7 @@ class Notification : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Notification();
+        Notification(vec3f aPosition,vec3f aScale,float aVisibleTime,MaterialIndex material);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -60,9 +60,10 @@ class Notification : public Object3D
 
     private:
         NodeSceneGraph * root;
-        Matrix4f * transObject;
+        Matrix4f * transNoti;
         float visibleTime; //Time that our notification will be activated
-
+        float initialTime;
+        bool activatedNoti;
 
 };
 

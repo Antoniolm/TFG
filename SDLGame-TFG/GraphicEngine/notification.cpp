@@ -19,9 +19,31 @@
 
 #include "notification.h"
 
-Notification::Notification()
+Notification::Notification(vec3f aPosition,vec3f aScale,float aVisibleTime,MaterialIndex material)
 {
-    //ctor
+    position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
+    activatedNoti=true;
+    MeshCollection * meshCollect =MeshCollection::getInstance();
+    MaterialCollection * materialCollect =MaterialCollection::getInstance();
+
+    transNoti=new Matrix4f();
+    transNoti->identity();
+
+    Matrix4f * scaleMenu=new Matrix4f();
+    scaleMenu->scale(aScale.x,aScale.y,aScale.z);
+
+    Matrix4f * rotationMenu=new Matrix4f();
+    rotationMenu->rotation(20,1.0,0.0,0.0);
+
+    root=new NodeSceneGraph(false,true);
+    root->add(transNoti);
+    root->add(rotationMenu);
+    root->add(scaleMenu);
+    root->add(materialCollect->getMaterial(material));
+    root->add(meshCollect->getMesh(TEXT));
+
+    currentTime=SDL_GetTicks();
+    initialTime=currentTime;
 }
 
 //**********************************************************************//
@@ -34,8 +56,25 @@ Notification::~Notification()
 //**********************************************************************//
 
 void Notification::visualization(Context & cv){
+    if(activatedNoti)
+        root->visualization(cv);
 }
 
 //**********************************************************************//
 
-void Notification::updateState(float time,ControllerManager * controller,RootMap * rootMap){}
+void Notification::updateState(float time,ControllerManager * controller,RootMap * rootMap){
+    vec3f posHero=rootMap->getHero()->getPosition();
+
+    if(time-currentTime>200)
+        currentTime=time-50;
+
+    transNoti->translation(position.x+posHero.x,position.y+posHero.y,position.z+posHero.z);
+
+    if(currentTime-initialTime>visibleTime)
+        activatedNoti=false;
+
+
+    currentTime+=time-currentTime;
+
+
+}
