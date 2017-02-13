@@ -83,7 +83,7 @@ void NpcList::updateState(float time,ControllerManager * controller,RootMap * ro
         distance=(npcs[i]->getPosition())-(posHero);
         if((distance.x>-1 && distance.x<1)&&(distance.y>-2 && distance.y<2)&&(distance.z>-1 && distance.z<1) && !isActivate){
             hero->activateDialog(true,1);
-            hero->setDialog("E",1);
+            hero->setDialog(" ",1);
             isNearNpc=true;
         }
     }

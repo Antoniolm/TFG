@@ -196,7 +196,7 @@ pair<avatarDirection,vec3f> Mate::nextPosition(vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance ){ //If Rightward will be our move -> The distance is smallest between them
         result.first=LEFTWARD;
-        result.second=vec3f(-2.5f,0.0f,0.0f);
+        result.second=vec3f(-2.75f,0.0f,0.0f);
         minDistance=distance;
     }
 
@@ -206,7 +206,7 @@ pair<avatarDirection,vec3f> Mate::nextPosition(vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){ //If Rightward will be our move -> The distance is smallest between them
         result.first=RIGHTWARD;
-        result.second=vec3f(2.5f,0.0f,0.0f);
+        result.second=vec3f(2.75f,0.0f,0.0f);
         minDistance=distance;
     }
 
@@ -215,7 +215,7 @@ pair<avatarDirection,vec3f> Mate::nextPosition(vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){ //If Backward will be our move -> The distance is smallest between them
         result.first=BACKWARD;
-        result.second=vec3f(0.0f,0.0f,-2.5f);
+        result.second=vec3f(0.0f,0.0f,-2.75f);
         minDistance=distance;
     }
 
@@ -224,7 +224,7 @@ pair<avatarDirection,vec3f> Mate::nextPosition(vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){ //If Forward will be our move -> The distance is smallest between them
         result.first=FORWARD;
-        result.second=vec3f(0.0f,0.0f,2.5f);
+        result.second=vec3f(0.0f,0.0f,2.75f);
         minDistance=distance;
     }
 
@@ -233,7 +233,7 @@ pair<avatarDirection,vec3f> Mate::nextPosition(vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){ //If Left-forward will be our move -> The distance is smallest between them
         result.first=FOR_LEFTWARD;
-        result.second=vec3f(-1.5f,0.0f,1.5f);
+        result.second=vec3f(-1.75f,0.0f,1.75f);
         minDistance=distance;
     }
 
@@ -242,7 +242,7 @@ pair<avatarDirection,vec3f> Mate::nextPosition(vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){ //If Right-forward will be our move -> The distance is smallest between them
         result.first=FOR_RIGHTWARD;
-        result.second=vec3f(+1.5f,0.0f,+1.5f);
+        result.second=vec3f(+1.75f,0.0f,+1.75f);
         minDistance=distance;
     }
 
@@ -251,7 +251,7 @@ pair<avatarDirection,vec3f> Mate::nextPosition(vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){ //If Left-backward will be our move -> The distance is smallest between them
         result.first=BACK_LEFTWARD;
-        result.second=vec3f(-1.5f,0.0f,-1.5f);
+        result.second=vec3f(-1.75f,0.0f,-1.75f);
         minDistance=distance;
     }
 
@@ -260,7 +260,7 @@ pair<avatarDirection,vec3f> Mate::nextPosition(vec3f posHero){
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.z-posHero.z,2.0));
     if(minDistance>distance){ //If Right-backward will be our move -> The distance is smallest between them
         result.first=BACK_RIGHTWARD;
-        result.second=vec3f(1.5f,0.0f,-1.5f);
+        result.second=vec3f(1.75f,0.0f,-1.75f);
         minDistance=distance;
     }
 
