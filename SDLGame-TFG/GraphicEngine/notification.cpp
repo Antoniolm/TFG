@@ -98,14 +98,14 @@ void Notification::visualization(Context & cv){
 void Notification::updateState(float time,ControllerManager * controller,RootMap * rootMap){
     vec3f posHero=rootMap->getHero()->getPosition();
 
-    if(time-currentTime>200){
+    if(time-currentTime>200){ //If we have a delay in our time
         initialTime+=time-currentTime;
         currentTime=time-50;
     }
 
     transNoti->translation(position.x+posHero.x,position.y+posHero.y,position.z+posHero.z);
 
-    if(currentTime-initialTime>visibleTime)
+    if(currentTime-initialTime>visibleTime) //if the time of our notification is finished
         activatedNoti=false;
 
 

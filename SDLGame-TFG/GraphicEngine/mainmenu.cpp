@@ -108,7 +108,6 @@ void MainMenu::updateState(float time,ControllerManager * controller,RootMap * r
             if((unsigned)currentOption==options.size())
                 currentOption=0;
 
-
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
             moveSound->stop();

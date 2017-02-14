@@ -390,7 +390,7 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
     vector<int>::iterator endIt=indexMap[(int)indexObj.x][(int)indexObj.z*-1].end();
 
     if(tam!=0 ){
-        for(;it!=endIt && !hasCollision;it++){
+        for(;it!=endIt && !hasCollision;it++){ //if There are object in that position (x,z)
             pos=objs[(*it)]->getPosition();
             box=objs[(*it)]->getBoundingBox();
             if((indexObj.y >= (pos.y)+box.minValue.y && indexObj.y <= (pos.y)+box.maxValue.y)){

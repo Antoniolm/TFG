@@ -110,6 +110,8 @@
 		<Unit filename="GraphicEngine/meshcollection.h" />
 		<Unit filename="GraphicEngine/nodescenegraph.cpp" />
 		<Unit filename="GraphicEngine/nodescenegraph.h" />
+		<Unit filename="GraphicEngine/notification.cpp" />
+		<Unit filename="GraphicEngine/notification.h" />
 		<Unit filename="GraphicEngine/object3d.cpp" />
 		<Unit filename="GraphicEngine/object3d.h" />
 		<Unit filename="GraphicEngine/objectgroup.cpp" />

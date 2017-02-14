@@ -44,7 +44,7 @@ Text::Text(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor,bool ahasDia
     textNode->add(scaleText);
     textNode->add(meshCollect->getMesh(TEXT));
 
-    if(hasDialog){
+    if(hasDialog){ //if has a back texture our Text
         positionBack=new Matrix4f();
         positionBack->identity();
         scaleBack=new Matrix4f();
@@ -112,6 +112,7 @@ void Text::init(){
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, surface->w, surface->h, 0, GL_BGRA,
                  GL_UNSIGNED_BYTE, surface->pixels);
 
+    //Adjust the size of dialog to our text
     float scaleX=surface->w/250.0,scaleY=surface->h/20.0;
     scaleText->scale(scaleX,scaleY*0.3,1.0);
     if(hasDialog)
