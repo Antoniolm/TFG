@@ -102,6 +102,7 @@ void PauseMenu::updateState(float time,ControllerManager * controller,RootMap * 
             position=rootMap->getHero()->getPosition();
             positionMenu->translation(position.x,position.y+6.75,position.z+11.0);
             //positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
+
             //Consume the current events -> User has to push again the buttons
             controller->setState(false,cUP);
             controller->setState(false,cDOWN);
