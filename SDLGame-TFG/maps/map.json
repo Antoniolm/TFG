@@ -8,7 +8,7 @@
         "position":[0.0,5.75,8.0],
         "scale":[1.25,1.25,1.25],
         "visibleTime":2000,
-        "materialIndex":"mWOOD"
+        "texture":"textures/title1.png"
     },
 
     "light":[

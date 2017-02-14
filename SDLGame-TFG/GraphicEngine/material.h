@@ -45,7 +45,7 @@ class Material
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur,MaterialIndex aIndex=mWATER);
+        Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur,MaterialIndex aIndex=mVOID);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */

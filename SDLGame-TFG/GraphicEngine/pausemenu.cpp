@@ -69,7 +69,15 @@ PauseMenu::PauseMenu()
 
 PauseMenu::~PauseMenu()
 {
-    //dtor
+    delete openSound;
+    delete moveSound;
+    delete root;
+
+     for(vector<Texture *>::iterator it = options.begin() ; it != options.end(); ++it){
+        delete (*it);
+    }
+
+    delete currentMaterial;
 }
 
 //**********************************************************************//
