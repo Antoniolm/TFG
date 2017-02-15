@@ -37,7 +37,6 @@ Hero::Hero(vec3f aPos)
     maxLife=150;
     position=vec4f(aPos.x,aPos.y,aPos.z,1.0);
     currentCoin=0;
-
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();

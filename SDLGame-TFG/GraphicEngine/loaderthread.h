@@ -42,7 +42,7 @@ class LoaderThread
 
         void run();
 
-        void initialize();
+        void initialize(RootMap * aRootMap,Document & aDocument,Shader & aShader);
 
     protected:
 

@@ -34,12 +34,12 @@ LoaderThread::~LoaderThread()
 
 //**********************************************************************//
 
-void LoaderThread::initialize(){
-    rootMap->initialize((*document),(*shader));
+void LoaderThread::initialize(RootMap * aRootMap,Document & aDocument,Shader & aShader){
+    //cout<<"el valor es"<<aDocument["heroPosition"][0].GetFloat()<<endl;
+    rootMap->initialize(aDocument,aShader);
 }
 
 //**********************************************************************//
-
 void LoaderThread::run(){
-    loader=std::thread(&LoaderThread::initialize,this);
+    loader=std::thread([this] { this->initialize(rootMap,(*document),(*shader)); });
 }

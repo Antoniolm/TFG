@@ -94,6 +94,7 @@ void RootMap::initialize(const rapidjson::Document & document,Shader & shader){
     /////////////////////////////////////////
     // Create hero and mate
     /////////////////////////////////////////
+    cout<<"el valor es"<<document["heroPosition"][0].GetFloat()<<endl;
     hero=new Hero(vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat()));
 
     mate=new Mate(vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat()));

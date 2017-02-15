@@ -35,14 +35,14 @@ Game::Game(){
     glUseProgram(context.currentShader.getProgram()); //We use the program now
 
     //Create the json document-> We changed that when the game has more maps.
-    FILE* fp = fopen("./maps/map.json", "rb"); // non-Windows use "r"
+    FILE * fp = fopen("./maps/map.json", "rb"); // non-Windows use "r"
     char readBuffer[65536];
     rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
-    rapidjson::Document document;
-    document.ParseStream(is);
+    rapidjson::Document * document=new rapidjson::Document();
+    document->ParseStream(is);
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
-    rootMap=new RootMap(document,context.currentShader);
+    rootMap=new RootMap((*document),context.currentShader);
     fclose(fp);
 
     pauseMenu = new PauseMenu();
@@ -94,10 +94,7 @@ void Game::loop(){
     gameState.rootMap=rootMap;
     gameState.controller=controller;
 
-    hero=rootMap->getHero();
-    posHero=hero->getPosition();
-
-    mainMenu = new MainMenu(posHero);
+    mainMenu = new MainMenu(vec3f(0.0,0.0,0.0));
     mainMenu->activate();
 
     //Create our camera
@@ -145,9 +142,11 @@ void Game::loop(){
 
         if(RootMap::isLoading()){
             //loading screen here
+            cout<< "is loading"<< endl;
             window->cleanScreen();
         }
         else{
+            hero=rootMap->getHero();
             window->cleanScreen();
 
             ///////////////////
