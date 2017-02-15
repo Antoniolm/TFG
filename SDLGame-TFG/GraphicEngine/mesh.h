@@ -61,25 +61,14 @@ class Mesh : public Object3D
         Mesh(const string & aFile,bool save=false);
 
         //////////////////////////////////////////////////////////////////////////
+        /**  Constructor */
+        /////////////////////////////////////////////////////////////////////////
+        Mesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord,bool save=false);
+
+        //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Mesh();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will initialize the information for the visualization
-        *    \return void
-        */
-        /////////////////////////////////////////////////////////////////////////
-        void init();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will initialize the information for the visualization
-        *    \return void
-        */
-        /////////////////////////////////////////////////////////////////////////
-        void init(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -115,8 +104,25 @@ class Mesh : public Object3D
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will initialize the information for the visualization
+        *    \return void
+        */
+        /////////////////////////////////////////////////////////////////////////
+        void init();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will initialize the information for the visualization
+        *    \return void
+        */
+        /////////////////////////////////////////////////////////////////////////
+        void init(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord);
+
         void loadMesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord);
         void generateBoundingBox(const vector<vec3f> & vertex);
+
         static const unsigned int NUM_BUFFERS = 4;
         GLuint vertexArrayBuffers[NUM_BUFFERS];
         GLuint vertexArrayObject;

@@ -33,7 +33,7 @@ class SpikeTrap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        SpikeTrap();
+        SpikeTrap(vec3f aPosition);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -62,6 +62,9 @@ class SpikeTrap : public Object3D
     private:
         NodeSceneGraph * root;
         Matrix4f * transObject;
+        float delayTime;
+        float activatedTime;
+        bool activated;
 };
 
 #endif // SPIKETRAP_H

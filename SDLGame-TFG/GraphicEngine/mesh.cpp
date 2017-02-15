@@ -30,6 +30,13 @@ Mesh::Mesh(const string & aFile,bool save){
     objFile=aFile;
     numIndex=0;
     saveInfo=save;
+    init();
+}
+
+//**********************************************************************//
+
+Mesh::Mesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord,bool save){
+    init(vertex,triangles,normals,textureCord);
 }
 
 //**********************************************************************//

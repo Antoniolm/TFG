@@ -19,14 +19,43 @@
 
 #include "spiketrap.h"
 
-SpikeTrap::SpikeTrap()
+SpikeTrap::SpikeTrap(vec3f aPosition)
 {
-    //ctor
+    position=vec4f(aPosition.x,aPosition.y+1.0,aPosition.z-2.0,1.0);
+
+    MeshCollection * meshCollect= MeshCollection::getInstance();
+    MaterialCollection * materialCollect= MaterialCollection::getInstance();
+
+    transObject=new Matrix4f();
+    transObject->translation(position.x,position.y,position.z);
+
+    root=new NodeSceneGraph();
+    root->add(transObject);
+    root->add(materialCollect->getMaterial(mMATE));
+    root->add(meshCollect->getMesh(MATEHEAD));
+
+    currentTime=SDL_GetTicks();
 }
 
 //**********************************************************************//
 
 SpikeTrap::~SpikeTrap()
 {
-    //dtor
+    delete root;
+}
+
+
+//**********************************************************************//
+
+void SpikeTrap::visualization(Context & cv){
+    root->visualization(cv);
+}
+
+//**********************************************************************//
+
+void SpikeTrap::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
+    if(time-currentTime>200)
+        currentTime=time-50;
+
+    currentTime+=time-currentTime;
 }

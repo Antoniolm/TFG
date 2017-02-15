@@ -61,8 +61,7 @@ void ObjectGroup::addObject(vec3f position,MeshIndex meshIndex){
 //**********************************************************************//
 
 void ObjectGroup::init(){
-    Mesh * mesh=new Mesh("geometries/sphere.obj");
-    mesh->init(vertex,triangles,normals,textureCord);
+    Mesh * mesh=new Mesh(vertex,triangles,normals,textureCord);
     root->add(mesh);
 }
 
