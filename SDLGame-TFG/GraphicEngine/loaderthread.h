@@ -43,6 +43,7 @@ class LoaderThread
         void run();
 
         void initialize();
+
     protected:
 
     private:

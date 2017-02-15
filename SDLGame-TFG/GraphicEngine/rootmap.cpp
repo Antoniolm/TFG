@@ -23,13 +23,20 @@
 #include "../VideoGame/itemlist.h"
 #include "objectgroup.h"
 #include <stdlib.h>     /* srand, rand */
+
+bool RootMap::loading=false;
+
 RootMap::RootMap(){
 }
 
 //**********************************************************************//
 
-RootMap::RootMap(const rapidjson::Document & document,Shader & shader){
-    initialize(document,shader);
+RootMap::RootMap(rapidjson::Document & document,Shader & shader,bool flagThread){
+    if(flagThread){
+        LoaderThread loader(this,document,shader);
+        loader.run();
+    }
+    else initialize(document,shader);
 }
 
 //**********************************************************************//
@@ -79,6 +86,7 @@ RootMap::~RootMap()
 
 void RootMap::initialize(const rapidjson::Document & document,Shader & shader){
     cout<< "< Game is loading our current map >"<< endl;
+    RootMap::loading=true;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
@@ -267,6 +275,8 @@ void RootMap::initialize(const rapidjson::Document & document,Shader & shader){
     //backSound->play();
 
     currentTime=SDL_GetTicks();
+
+    RootMap::loading=false;
 }
 
 //**********************************************************************//
@@ -438,4 +448,10 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
     }
 
     return result;
+}
+
+//**********************************************************************//
+
+bool RootMap::isLoading(){
+    return RootMap::loading;
 }

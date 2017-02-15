@@ -40,6 +40,8 @@ Game::Game(){
     rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
     rapidjson::Document document;
     document.ParseStream(is);
+    MeshCollection * meshCollect= MeshCollection::getInstance();
+    MaterialCollection * materialCollect= MaterialCollection::getInstance();
     rootMap=new RootMap(document,context.currentShader);
     fclose(fp);
 
@@ -99,8 +101,8 @@ void Game::loop(){
     mainMenu->activate();
 
     //Create our camera
-    vec3f position(posHero.x,posHero.y+6.0f,posHero.z+15.0f);
-    vec3f direction(posHero.x,posHero.y,posHero.z);
+    vec3f position(0,6.0f,15.0f);
+    vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
     Camera camera;
     camera.setPerspectiveProjection(30.0f,(float)( 1200.0f / 800.0f), 0.1f, 200.0f);
@@ -141,73 +143,79 @@ void Game::loop(){
 
         controller->catchKeyBoardState(SDL_GetKeyboardState(NULL));
 
-        window->cleanScreen();
-
-        ///////////////////
-        // UPDATE STATE
-        ///////////////////
-        gameState.time=SDL_GetTicks();
-
-        if(!mainMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()) //if  mainMenu and deadMenu is not activate
-            pauseMenu->updateState(gameState);
-        else{ //If some of that menu are activate
-            if(mainMenu->isActivate())
-                mainMenu->updateState(gameState);
-            else
-                deadMenu->updateState(gameState);
+        if(RootMap::isLoading()){
+            //loading screen here
+            window->cleanScreen();
         }
+        else{
+            window->cleanScreen();
+
+            ///////////////////
+            // UPDATE STATE
+            ///////////////////
+            gameState.time=SDL_GetTicks();
+
+            if(!mainMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()) //if  mainMenu and deadMenu is not activate
+                pauseMenu->updateState(gameState);
+            else{ //If some of that menu are activate
+                if(mainMenu->isActivate())
+                    mainMenu->updateState(gameState);
+                else
+                    deadMenu->updateState(gameState);
+            }
 
 
-        if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()){ //If  menu is not activate
-            rootMap->updateState(gameState);
-            if(wasActivatedMenu) //If is the first time that it is not activated
-                rootMap->enableSound(true);
-            wasActivatedMenu=false;
+            if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()){ //If  menu is not activate
+                rootMap->updateState(gameState);
+                if(wasActivatedMenu) //If is the first time that it is not activated
+                    rootMap->enableSound(true);
+                wasActivatedMenu=false;
+            }
+            else{ //Else menu is activated
+                if(!wasActivatedMenu) //If is the first time that it is activated
+                    rootMap->enableSound(false);
+                wasActivatedMenu=true;
+            }
+
+
+            //Update the camera, lifeText, coinText, profile
+            posHero=hero->getPosition();
+
+            camera.update(gameState,&context.currentShader,
+                          (pauseMenu->isActivate() || deadMenu->isActivate() || mainMenu->isActivate()));
+
+            updateLife(lastLife);
+            updateCoin(currentCoin);
+
+            profile->addUpdateTime(SDL_GetTicks()-time);
+
+            notiGamePad->updateState(gameState);
+
+            ///////////////////
+            // VISUALIZATION
+            ///////////////////
+            time=SDL_GetTicks();
+
+            camera.activatePerspecProjection(&context.currentShader);
+            rootMap->visualization(context);
+
+            camera.activateOrthoProjection(&context.currentShader);
+            lifeText->visualization(context);
+            coinText->visualization(context);
+            pauseMenu->visualization(context);
+            mainMenu->visualization(context);
+            deadMenu->visualization(context);
+            notiGamePad->visualization(context);
+
+
+            profile->addVisualTime(SDL_GetTicks()-time);
+            profile->incrementFrames();
+
+            window->updateScreen();
+
+            if(hero->getLife()<=0.0)
+                deadMenu->activate();
         }
-        else{ //Else menu is activated
-            if(!wasActivatedMenu) //If is the first time that it is activated
-                rootMap->enableSound(false);
-            wasActivatedMenu=true;
-        }
-
-
-        //Update the camera, lifeText, coinText, profile
-        posHero=hero->getPosition();
-
-        camera.update(gameState,&context.currentShader,
-                      (pauseMenu->isActivate() || deadMenu->isActivate() || mainMenu->isActivate()));
-
-        updateLife(lastLife);
-        updateCoin(currentCoin);
-
-        profile->addUpdateTime(SDL_GetTicks()-time);
-
-        notiGamePad->updateState(gameState);
-
-        ///////////////////
-        // VISUALIZATION
-        ///////////////////
-        time=SDL_GetTicks();
-
-        camera.activatePerspecProjection(&context.currentShader);
-        rootMap->visualization(context);
-
-        camera.activateOrthoProjection(&context.currentShader);
-        lifeText->visualization(context);
-        coinText->visualization(context);
-        pauseMenu->visualization(context);
-        mainMenu->visualization(context);
-        deadMenu->visualization(context);
-        notiGamePad->visualization(context);
-
-
-        profile->addVisualTime(SDL_GetTicks()-time);
-        profile->incrementFrames();
-
-        window->updateScreen();
-
-        if(hero->getLife()<=0.0)
-            deadMenu->activate();
     }
 
     profile->showResult();

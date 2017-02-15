@@ -18,7 +18,6 @@
 // *********************************************************************
 
 #include "loaderthread.h"
-
 LoaderThread::LoaderThread(RootMap * aRootMap,Document & aDocument,Shader & aShader)
 {
     rootMap=aRootMap;
@@ -30,7 +29,7 @@ LoaderThread::LoaderThread(RootMap * aRootMap,Document & aDocument,Shader & aSha
 
 LoaderThread::~LoaderThread()
 {
-    //dtor
+    loader.detach();
 }
 
 //**********************************************************************//
@@ -42,6 +41,5 @@ void LoaderThread::initialize(){
 //**********************************************************************//
 
 void LoaderThread::run(){
-    //loader=std::thread(initialize);
-
+    loader=std::thread(&LoaderThread::initialize,this);
 }

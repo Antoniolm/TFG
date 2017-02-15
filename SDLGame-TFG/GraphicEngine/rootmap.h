@@ -51,6 +51,7 @@
 #include "keyboardcontroller.h"
 #include "textevent.h"
 #include "notification.h"
+#include "loaderthread.h"
 #include "../VideoGame/spiketrap.h"
 
 using namespace std;
@@ -79,7 +80,7 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        RootMap(const rapidjson::Document & document,Shader & shader);
+        RootMap(rapidjson::Document & document,Shader & shader,bool flagThread=false);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -160,6 +161,8 @@ class RootMap : public Object3D
         */
         //////////////////////////////////////////////////////////////////////////
         EnemyList * getEnemyList();
+
+        static bool isLoading();
     protected:
 
     private:
@@ -179,6 +182,7 @@ class RootMap : public Object3D
         Sound * backSound;
         Hero * hero;
         Mate * mate;
+        static bool loading;
 };
 
 #endif // ROOTMAP_H
