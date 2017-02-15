@@ -65,8 +65,9 @@ enum MaterialIndex{
     mWOOD,          //33
     mBOOKS,         //34
     mTRUNK,         //35
-    mSPIKE
-
+    mSPIKE,         //36
+    mGMPADV,
+    mGMPADX
 };
 
 class Material;

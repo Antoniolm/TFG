@@ -37,6 +37,7 @@
 #include "../GraphicEngine/deadmenu.h"
 #include "../GraphicEngine/controllermanager.h"
 #include "../GraphicEngine/profile.h"
+#include "../GraphicEngine/notification.h"
 #include "projectile.h"
 #include "../lib/rapidjson/document.h"
 #include "../lib/rapidjson/stringbuffer.h"
@@ -90,6 +91,7 @@ class Game
         DeadMenu * deadMenu;
         Text * lifeText,* coinText;
         ControllerManager * controller;
+        Notification * notiGamePad;
         Context context;
 };
 

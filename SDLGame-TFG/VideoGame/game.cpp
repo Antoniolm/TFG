@@ -45,6 +45,7 @@ Game::Game(){
 
     pauseMenu = new PauseMenu();
     deadMenu = new DeadMenu();
+    notiGamePad=new Notification(vec3f(0.0,0.0,0.0),vec3f(0.0,0.0,0.0),0,mVOID);
 
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
@@ -72,6 +73,8 @@ Game::~Game(){
     delete pauseMenu;
     delete mainMenu;
     delete deadMenu;
+
+    delete notiGamePad;
 }
 
 //**********************************************************************//
@@ -79,7 +82,6 @@ Game::~Game(){
 void Game::loop(){
     bool quit = false;
     SDL_Event event;
-    const Uint8* currentKeyStates;
     vec3f posHero;
     float time;
     bool wasActivatedMenu=false;
@@ -123,10 +125,15 @@ void Game::loop(){
                 window->resizeWindow(windowH,windowW);
             }
 
-           if((event.type==SDL_CONTROLLERBUTTONDOWN || event.type==SDL_CONTROLLERBUTTONUP || event.type==SDL_CONTROLLERDEVICEADDED
+            if((event.type==SDL_CONTROLLERBUTTONDOWN || event.type==SDL_CONTROLLERBUTTONUP || event.type==SDL_CONTROLLERDEVICEADDED
               || event.type==SDL_CONTROLLERDEVICEREMOVED || event.type==SDL_CONTROLLERAXISMOTION)){
                 controller->checkEvent(event);;
-           }
+            }
+
+           if(event.type==SDL_CONTROLLERDEVICEADDED) //If the game is connected
+                notiGamePad=new Notification(vec3f(0.3,7.4,10.6),vec3f(0.1,0.35,0.1),2000,mGMPADV);
+            else if(event.type==SDL_CONTROLLERDEVICEREMOVED) //If the game is disconnected
+                notiGamePad=new Notification(vec3f(0.3,7.4,10.6),vec3f(0.1,0.35,0.1),2000,mGMPADX);
         }
 
         controller->catchKeyBoardState(SDL_GetKeyboardState(NULL));
@@ -172,6 +179,8 @@ void Game::loop(){
 
         profile->addUpdateTime(SDL_GetTicks()-time);
 
+        notiGamePad->updateState(time,controller,rootMap);
+
         ///////////////////
         // VISUALIZATION
         ///////////////////
@@ -186,6 +195,8 @@ void Game::loop(){
         pauseMenu->visualization(context);
         mainMenu->visualization(context);
         deadMenu->visualization(context);
+        notiGamePad->visualization(context);
+
 
         profile->addVisualTime(SDL_GetTicks()-time);
         profile->incrementFrames();

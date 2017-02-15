@@ -373,7 +373,7 @@
 	<string>
 	"sound.h"
 
-1486379259 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1487157733 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -391,6 +391,7 @@
 	"../GraphicEngine/deadmenu.h"
 	"../GraphicEngine/controllermanager.h"
 	"../GraphicEngine/profile.h"
+	"../GraphicEngine/notification.h"
 	"projectile.h"
 	"../lib/rapidjson/document.h"
 	"../lib/rapidjson/stringbuffer.h"
@@ -403,7 +404,7 @@
 	"window.h"
 	"file_obj.h"
 
-1487113325 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1487159061 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -900,7 +901,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1487151048 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1487156701 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -2110,14 +2111,14 @@
 	<vector>
 	<string>
 
-1487148441 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
+1487157164 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
 	<vector>
 	<map>
 	"collection.h"
 	"collection.cpp"
 	<string>
 
-1487148532 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
+1487157472 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
 	"materialcollection.h"
 	"material.h"
 
@@ -2394,7 +2395,7 @@
 1486670480 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textevent.cpp
 	"textevent.h"
 
-1487068677 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\notification.cpp
+1487159507 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\notification.cpp
 	"notification.h"
 
 1486999104 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\notification.h

@@ -89,8 +89,9 @@ Notification::~Notification()
 //**********************************************************************//
 
 void Notification::visualization(Context & cv){
-    if(activatedNoti)
+    if(activatedNoti){
         root->visualization(cv);
+    }
 }
 
 //**********************************************************************//
