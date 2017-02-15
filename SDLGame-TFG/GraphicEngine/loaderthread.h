@@ -17,48 +17,39 @@
 // **
 // *********************************************************************
 
-#ifndef MELEEENEMY_H
-#define MELEEENEMY_H
+#ifndef LOADERTHREAD_H
+#define LOADERTHREAD_H
 
-#include "enemy.h"
+#include <thread>
+#include "rootmap.h"
+#include "shader.h"
 #include "../lib/rapidjson/document.h"
-#include "../GraphicEngine/iameleeenemy.h"
-#include "enemylist.h"
-#include "weapon.h"
 
-class MeleeEnemy : public Enemy
+using namespace rapidjson;
+
+class LoaderThread
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity);
+        LoaderThread(RootMap * aRootMap,Document & aDocument,Shader & aShader);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~MeleeEnemy();
+        virtual ~LoaderThread();
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will update the state of the object. That change need the
-        *    current time in our application
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void updateState(GameState & gameState);
+        void run();
 
+        void initialize();
     protected:
 
     private:
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will initialize the animation of our npc
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void initAnimation();
-
+        std::thread loader;
+        RootMap * rootMap;
+        Document * document;
+        Shader * shader;
 };
 
-#endif // MELEEENEMY_H
+#endif // LOADERTHREAD_H

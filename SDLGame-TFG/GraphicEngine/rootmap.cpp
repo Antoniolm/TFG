@@ -28,8 +28,56 @@ RootMap::RootMap(){
 
 //**********************************************************************//
 
-RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
+RootMap::RootMap(const rapidjson::Document & document,Shader & shader){
+    initialize(document,shader);
+}
+
+//**********************************************************************//
+
+RootMap::~RootMap()
 {
+    delete backSound;
+    delete npcList;
+    delete enemyList;
+    delete itemList;
+    delete hero;
+    delete mate;
+    delete title;
+
+    for(unsigned i=0;i<objs.size();i++)
+        delete objs[i];
+
+    for(unsigned i=0;i<decorationObjs.size();i++)
+        delete decorationObjs[i];
+
+    for(unsigned i=0;i<objectGroup.size();i++)
+        delete objectGroup[i];
+
+    for(unsigned i=0;i<particleSystem.size();i++)
+        delete particleSystem[i];
+
+    for(unsigned i=0;i<projectileSystem.size();i++)
+        delete projectileSystem[i];
+
+    for(unsigned i=0;i<events.size();i++)
+        delete events[i];
+
+    for(unsigned i=0;i<spikes.size();i++)
+        delete spikes[i];
+
+    MeshCollection * meshCollect= MeshCollection::getInstance();
+    delete meshCollect;
+
+    MaterialCollection * materialCollect= MaterialCollection::getInstance();
+    delete materialCollect;
+
+    SoundCollection * soundCollect= SoundCollection::getInstance();
+    delete soundCollect;
+}
+
+//**********************************************************************//
+
+void RootMap::initialize(const rapidjson::Document & document,Shader & shader){
     cout<< "< Game is loading our current map >"<< endl;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
@@ -219,49 +267,6 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     //backSound->play();
 
     currentTime=SDL_GetTicks();
-}
-
-//**********************************************************************//
-
-RootMap::~RootMap()
-{
-    delete backSound;
-    delete npcList;
-    delete enemyList;
-    delete itemList;
-    delete hero;
-    delete mate;
-    delete title;
-
-    for(unsigned i=0;i<objs.size();i++)
-        delete objs[i];
-
-    for(unsigned i=0;i<decorationObjs.size();i++)
-        delete decorationObjs[i];
-
-    for(unsigned i=0;i<objectGroup.size();i++)
-        delete objectGroup[i];
-
-    for(unsigned i=0;i<particleSystem.size();i++)
-        delete particleSystem[i];
-
-    for(unsigned i=0;i<projectileSystem.size();i++)
-        delete projectileSystem[i];
-
-    for(unsigned i=0;i<events.size();i++)
-        delete events[i];
-
-    for(unsigned i=0;i<spikes.size();i++)
-        delete spikes[i];
-
-    MeshCollection * meshCollect= MeshCollection::getInstance();
-    delete meshCollect;
-
-    MaterialCollection * materialCollect= MaterialCollection::getInstance();
-    delete materialCollect;
-
-    SoundCollection * soundCollect= SoundCollection::getInstance();
-    delete soundCollect;
 }
 
 //**********************************************************************//

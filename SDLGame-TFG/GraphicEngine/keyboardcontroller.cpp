@@ -36,25 +36,25 @@ KeyboardController::~KeyboardController()
 
 void KeyboardController::catchKeyBoardState(const Uint8* currentKeyStates){
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)]) buttons[cUP]=true;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_w)] || currentKeyStates[SDL_GetScancodeFromKey(SDLK_UP)]) buttons[cUP]=true;
     else{
         buttons[cUP]=false;
         stateButtons[cUP]=true;
     }
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)]) buttons[cDOWN]=true;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_s)] || currentKeyStates[SDL_GetScancodeFromKey(SDLK_DOWN)]) buttons[cDOWN]=true;
     else{
         buttons[cDOWN]=false;
         stateButtons[cDOWN]=true;
     }
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)]) buttons[cLEFT]=true;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_a)] || currentKeyStates[SDL_GetScancodeFromKey(SDLK_LEFT)]) buttons[cLEFT]=true;
     else {
         buttons[cLEFT]=false;
         stateButtons[cLEFT]=true;
     }
 
-    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)]) buttons[cRIGHT]=true;
+    if(currentKeyStates[SDL_GetScancodeFromKey(SDLK_d)] || currentKeyStates[SDL_GetScancodeFromKey(SDLK_RIGHT)]) buttons[cRIGHT]=true;
     else {
         buttons[cRIGHT]=false;
         stateButtons[cRIGHT]=true;
