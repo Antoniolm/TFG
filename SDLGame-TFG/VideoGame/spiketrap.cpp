@@ -53,7 +53,9 @@ void SpikeTrap::visualization(Context & cv){
 
 //**********************************************************************//
 
-void SpikeTrap::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
+void SpikeTrap::updateState(GameState & gameState ){
+    float time=gameState.time;
+
     if(time-currentTime>200)
         currentTime=time-50;
 

@@ -25,6 +25,9 @@
 #include "materialcollection.h"
 #include "structdata.h"
 
+
+class GameState;
+
 class ObjectScene : public Object3D
 {
     public:
@@ -58,7 +61,7 @@ class ObjectScene : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,ControllerManager * controller,RootMap * rootMap );
+        void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**

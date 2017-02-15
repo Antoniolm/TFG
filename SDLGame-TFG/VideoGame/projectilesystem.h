@@ -63,7 +63,7 @@ class ProjectileSystem : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,ControllerManager * controller,RootMap * rootMap);
+        void updateState(GameState & gameState);
 
     protected:
 

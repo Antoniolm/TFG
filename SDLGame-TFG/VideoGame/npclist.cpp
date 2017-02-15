@@ -67,15 +67,19 @@ void NpcList::visualization(Context & cv){
 
 //**********************************************************************//
 
-void NpcList::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){
+void NpcList::updateState(GameState & gameState){
 
     //Check if the hero is speaking with a avatar
     bool isActivate=false,isNearNpc=false;vec3f distance,posHero;unsigned currentNpc;
 
-    Hero * hero=rootMap->getHero();
+    float time=gameState.time;
+    ControllerManager * controller=gameState.controller;
+
+    Hero * hero=gameState.rootMap->getHero();
     posHero=hero->getPosition();
+
     for(unsigned i=0;i<npcs.size() && !isActivate;i++){ //Check if hero is talking now
-        npcs[i]->updateState(time,controller,rootMap);
+        npcs[i]->updateState(gameState);
         isActivate=npcs[i]->getActivate();
         currentNpc=i;
 

@@ -74,6 +74,6 @@ void ObjectGroup::visualization(Context & vis){
 
 //**********************************************************************//
 
-void ObjectGroup::updateState(float time,ControllerManager * controller,RootMap * rootMap){
+void ObjectGroup::updateState(GameState & gameState){
 }
 

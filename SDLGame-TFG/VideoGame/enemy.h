@@ -72,7 +72,7 @@ class Enemy: public AvatarMove
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,ControllerManager * controller,RootMap * rootMap);
+        void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**

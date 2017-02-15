@@ -17,41 +17,14 @@
 // **
 // *********************************************************************
 
-#include "object3d.h"
-#include "rootmap.h"
 #include "gamestate.h"
 
-Object3D::Object3D()
+GameState::GameState()
 {
     //ctor
 }
 
-//**********************************************************************//
-
-Object3D::~Object3D()
+GameState::~GameState()
 {
     //dtor
-}
-
-//**********************************************************************//
-
-void Object3D::visualization(Context & cv){}
-
-//**********************************************************************//
-
-void Object3D::updateState(GameState & gameState){}
-
-//**********************************************************************//
-
-BoundingBox Object3D::getBoundingBox(){
-    BoundingBox result;
-    result.maxValue=vec3f(0.5,0.5,0.5);
-    result.minValue=vec3f(-0.5,-0.5,-0.5);
-    return result;
-}
-
-//**********************************************************************//
-
-vec4f Object3D::getPosition(){
-    return position;
 }

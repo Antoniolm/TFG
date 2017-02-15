@@ -70,6 +70,8 @@
 		<Unit filename="GraphicEngine/file_obj.h" />
 		<Unit filename="GraphicEngine/gamepadcontroller.cpp" />
 		<Unit filename="GraphicEngine/gamepadcontroller.h" />
+		<Unit filename="GraphicEngine/gamestate.cpp" />
+		<Unit filename="GraphicEngine/gamestate.h" />
 		<Unit filename="GraphicEngine/iaenemy.cpp" />
 		<Unit filename="GraphicEngine/iaenemy.h" />
 		<Unit filename="GraphicEngine/iameleeenemy.cpp" />

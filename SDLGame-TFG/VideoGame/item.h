@@ -63,7 +63,7 @@ class Item : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time,ControllerManager * controller,RootMap * rootMap);
+        virtual void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**

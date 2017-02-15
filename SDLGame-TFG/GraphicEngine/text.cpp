@@ -135,6 +135,6 @@ void Text::visualization(Context & vis){
 
 //**********************************************************************//
 
-void Text::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
+void Text::updateState(GameState & gameState){
 
 }

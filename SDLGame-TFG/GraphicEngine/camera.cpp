@@ -138,9 +138,11 @@ void Camera::activatePerspecProjection(Shader * shader){
 
 //**********************************************************************//
 
-void Camera::update(float time,ControllerManager * controller,Shader *shader,RootMap * rootMap,bool activateMenu){
-    vec3f posHero=rootMap->getHero()->getPosition();
+void Camera::update(GameState & gameState,Shader *shader,bool activateMenu){
+    vec3f posHero=gameState.rootMap->getHero()->getPosition();
+    ControllerManager * controller=gameState.controller;
 
+    float time=gameState.time;
     if(time-currentTime>200)
         currentTime=time-50;
 

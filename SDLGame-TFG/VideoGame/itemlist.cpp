@@ -56,10 +56,10 @@ void ItemList::visualization(Context & cv){
 
 //**********************************************************************//
 
-void ItemList::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){
+void ItemList::updateState(GameState & gameState ){
     vector<Item*>::iterator it=items.begin();
-    while(it!=items.end()){
-        (*it)->updateState(time,controller,rootMap);
+    while(it!=items.end()){ //loop items
+        (*it)->updateState(gameState);
         if((*it)->isTake()){
             delete (*it);
             items.erase(it);

@@ -73,13 +73,15 @@ void Projectile::visualization(Context & vis){
 
 //**********************************************************************//
 
-void Projectile::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
+void Projectile::updateState(GameState & gameState){
+    float time=gameState.time;
     if(time-currentTime>200)
         currentTime=time-50;
 
-    currentMap=rootMap;
+    currentMap=gameState.rootMap;
 
     //Checking the hero
+    RootMap * rootMap=gameState.rootMap;
     vec3f posHero=rootMap->getHero()->getPosition();
     vec3f posHead=vec3f(vec3f(position)+projectileHead);
     float distance=sqrt(pow(posHead.x-posHero.x,2.0)+pow(posHead.z-posHero.z,2.0));
@@ -106,7 +108,7 @@ void Projectile::updateState(float time,ControllerManager * controller,RootMap *
     if(live) //if not collision with something
         live=moveBody(velocity,direction);
 
-    root->updateState(time,controller,rootMap);
+    root->updateState(gameState);
     position=moveAvatar->product(vec4f());
     if(position.z>0.0 || position.x<0.0)
         live=false;

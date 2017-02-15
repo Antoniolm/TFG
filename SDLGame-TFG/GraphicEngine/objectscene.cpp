@@ -18,6 +18,7 @@
 // *********************************************************************
 
 #include "objectscene.h"
+#include "gamestate.h"
 
 ObjectScene::ObjectScene()
 {
@@ -46,8 +47,8 @@ void ObjectScene::visualization(Context & vis){
 
 //**********************************************************************//
 
-void ObjectScene::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
-    object->updateState(time,controller,rootMap);
+void ObjectScene::updateState(GameState & gameState){
+    object->updateState(gameState);
 }
 
 //**********************************************************************//.0

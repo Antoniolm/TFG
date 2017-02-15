@@ -68,10 +68,10 @@ void EnemyList::visualization(Context & cv){
 
 //**********************************************************************//
 
-void EnemyList::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){
+void EnemyList::updateState(GameState & gameState){
     vector<Enemy*>::iterator it=enemies.begin();
-    while(it!=enemies.end()){
-        (*it)->updateState(time,controller,rootMap);
+    while(it!=enemies.end()){ //loop for enemies
+        (*it)->updateState(gameState);
         if((*it)->getLife()<=0.0){ //if the enemy is dead
             enemies.erase(it);
         }

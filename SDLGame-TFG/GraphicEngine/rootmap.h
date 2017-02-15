@@ -86,6 +86,8 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual ~RootMap();
 
+
+        void initialize();
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
@@ -101,7 +103,7 @@ class RootMap : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,ControllerManager * controller,RootMap * rootMap);
+        void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**

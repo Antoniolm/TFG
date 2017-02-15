@@ -38,6 +38,7 @@
 #include "../GraphicEngine/controllermanager.h"
 #include "../GraphicEngine/profile.h"
 #include "../GraphicEngine/notification.h"
+#include "../GraphicEngine/gamestate.h"
 #include "projectile.h"
 #include "../lib/rapidjson/document.h"
 #include "../lib/rapidjson/stringbuffer.h"

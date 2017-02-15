@@ -79,10 +79,12 @@ void Item::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Item::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
-    Hero * hero=rootMap->getHero();
+void Item::updateState(GameState & gameState){
+    float time=gameState.time;
+    Hero * hero=gameState.rootMap->getHero();
     vec3f posHero=hero->getPosition();
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.y-posHero.y,2.0)+pow(position.z-posHero.z,2.0));
+
     if(distance<=0.4){
         notTake=false;
 

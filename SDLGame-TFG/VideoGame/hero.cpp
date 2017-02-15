@@ -357,12 +357,16 @@ void Hero::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Hero::updateState(float time,ControllerManager * controller,RootMap * rootMap){
+void Hero::updateState(GameState & gameState){
     bool hasMove=true;
 
     avatarDirection heroDir=direction;
     vec3f moveHero,velocityHero,accelerationHero;
-    currentMap=rootMap;
+    currentMap=gameState.rootMap;
+    ControllerManager * controller=gameState.controller;
+
+    float time=gameState.time;
+    RootMap * rootMap=gameState.rootMap;
 
     if(time-currentTime>200)
         currentTime=time-50;
@@ -627,7 +631,7 @@ void Hero::updateState(float time,ControllerManager * controller,RootMap * rootM
 
     while(it!=projectiles.end()){
 
-        (*it)->updateState(time,controller,rootMap);
+        (*it)->updateState(gameState);
         if(!(*it)->isLive()){
             it=projectiles.erase(it);
         }

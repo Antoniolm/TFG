@@ -80,17 +80,18 @@ void DeadMenu::visualization(Context & cv){
 
 //**********************************************************************//
 
-void DeadMenu::updateState(float time,ControllerManager * controller,RootMap * rootMap){
+void DeadMenu::updateState(GameState & gameState){
     vec3f position;
+    float time=gameState.time;
 
     if(time-currentTime>200)
         currentTime=time-50;
 
     if(activateMenu){ //If the menu is activated
-        position=rootMap->getHero()->getPosition();
+        position=gameState.rootMap->getHero()->getPosition();
         positionMenu->translation(position.x,position.y+6.75,position.z+11.0);
         //positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
-        if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
+        if(gameState.controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             menuDelay=time;
             (Profile::getInstance())->showResult();
             exit(0);

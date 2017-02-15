@@ -109,7 +109,7 @@ class AvatarMove: public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time,Controller * controller,RootMap * rootMap);
+        virtual void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**

@@ -17,59 +17,32 @@
 // **
 // *********************************************************************
 
-#ifndef DEADMENU_H
-#define DEADMENU_H
+#ifndef GAMESTATE_H
+#define GAMESTATE_H
 
-#include "object3d.h"
+#include "controllermanager.h"
 #include "rootmap.h"
-#include "context.h"
-#include "mesh.h"
-#include "nodescenegraph.h"
-#include "texture.h"
-#include "material.h"
-#include "sound.h"
-#include "menu.h"
 
-class DeadMenu : public Menu
+class GameState
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        DeadMenu();
+        GameState();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~DeadMenu();
+        virtual ~GameState();
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will show the object in our interface
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & cv);
+        float time;
+        ControllerManager * controller;
+        RootMap * rootMap;
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will update the state of the object. That change need the
-        *    current time in our application
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(GameState & gameState);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will activate our menu
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void activate();
     protected:
 
     private:
 };
 
-#endif // DEADMENU_H
+#endif // GAMESTATE_H

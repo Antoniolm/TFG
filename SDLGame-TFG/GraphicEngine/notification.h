@@ -26,6 +26,7 @@
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "../lib/rapidjson/document.h"
+#include "gamestate.h"
 
 using namespace rapidjson;
 
@@ -62,7 +63,7 @@ class Notification : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,ControllerManager * controller,RootMap * rootMap );
+        void updateState(GameState & gameState);
 
     protected:
 

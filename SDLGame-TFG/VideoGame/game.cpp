@@ -88,6 +88,9 @@ void Game::loop(){
     int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;
     Profile * profile=Profile::getInstance();
+    GameState gameState;
+    gameState.rootMap=rootMap;
+    gameState.controller=controller;
 
     hero=rootMap->getHero();
     posHero=hero->getPosition();
@@ -143,20 +146,20 @@ void Game::loop(){
         ///////////////////
         // UPDATE STATE
         ///////////////////
-        time=SDL_GetTicks();
+        gameState.time=SDL_GetTicks();
 
         if(!mainMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()) //if  mainMenu and deadMenu is not activate
-            pauseMenu->updateState(time,controller,rootMap);
+            pauseMenu->updateState(gameState);
         else{ //If some of that menu are activate
             if(mainMenu->isActivate())
-                mainMenu->updateState(time,controller,rootMap);
+                mainMenu->updateState(gameState);
             else
-                deadMenu->updateState(time,controller,rootMap);
+                deadMenu->updateState(gameState);
         }
 
 
         if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()){ //If  menu is not activate
-            rootMap->updateState(time,controller,rootMap);
+            rootMap->updateState(gameState);
             if(wasActivatedMenu) //If is the first time that it is not activated
                 rootMap->enableSound(true);
             wasActivatedMenu=false;
@@ -171,7 +174,7 @@ void Game::loop(){
         //Update the camera, lifeText, coinText, profile
         posHero=hero->getPosition();
 
-        camera.update(time,controller,&context.currentShader,rootMap,
+        camera.update(gameState,&context.currentShader,
                       (pauseMenu->isActivate() || deadMenu->isActivate() || mainMenu->isActivate()));
 
         updateLife(lastLife);
@@ -179,7 +182,7 @@ void Game::loop(){
 
         profile->addUpdateTime(SDL_GetTicks()-time);
 
-        notiGamePad->updateState(time,controller,rootMap);
+        notiGamePad->updateState(gameState);
 
         ///////////////////
         // VISUALIZATION

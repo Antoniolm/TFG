@@ -242,9 +242,12 @@ MeleeEnemy::~MeleeEnemy()
 
 //**********************************************************************//
 
-void MeleeEnemy::updateState(float time,ControllerManager * controller,RootMap * rootMap){
+void MeleeEnemy::updateState(GameState & gameState){
     vec3f aux;
-    currentMap=rootMap;
+    currentMap=gameState.rootMap;
+    RootMap * rootMap=gameState.rootMap;
+    float time=gameState.time;
+
     Hero * hero=rootMap->getHero();
     vec3f posHero=hero->getPosition();
     vec3f distance=vec3f(position.x,position.y,position.z)-posHero;

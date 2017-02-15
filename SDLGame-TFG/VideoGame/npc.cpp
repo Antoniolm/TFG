@@ -103,7 +103,9 @@ void Npc::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Npc::updateState(float time,ControllerManager * controller,RootMap * rootMap  ){
+void Npc::updateState(GameState & gameState){
+    float time=gameState.time;
+
     if(time-currentTime>200)
         currentTime=time-50;
 

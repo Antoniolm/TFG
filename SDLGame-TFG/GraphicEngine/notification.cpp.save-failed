@@ -52,18 +52,19 @@ Notification::Notification(vec3f aPosition,vec3f aScale,float aVisibleTime,Mater
 
 Notification::Notification(const Value & notificationFeatures)
 {
+
     position=vec4f(notificationFeatures["position"][0].GetFloat(),notificationFeatures["position"][1].GetFloat(),notificationFeatures["position"][2].GetFloat(),1.0);
     activatedNoti=true;
-    visibleTime=notificationFeatures["visibleTime"].GetFloat();
+    visibleTime=notificationFeatures["position"][0].GetFloat();
 
     MeshCollection * meshCollect =MeshCollection::getInstance();
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,notificationFeatures["texture"].GetString(),mTRUNK);
+    MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
     transNoti=new Matrix4f();
     transNoti->identity();
 
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(notificationFeatures["scale"][0].GetFloat(),notificationFeatures["scale"][1].GetFloat(),notificationFeatures["scale"][2].GetFloat());
+    scaleMenu->scale(notificationFeatures["position"][0].GetFloat(),notificationFeatures["position"][1].GetFloat(),notificationFeatures["position"][2].GetFloat());
 
     Matrix4f * rotationMenu=new Matrix4f();
     rotationMenu->rotation(20,1.0,0.0,0.0);
@@ -72,7 +73,7 @@ Notification::Notification(const Value & notificationFeatures)
     root->add(transNoti);
     root->add(rotationMenu);
     root->add(scaleMenu);
-    root->add(material);
+    root->add(materialCollect->getMaterial(material));
     root->add(meshCollect->getMesh(TEXT));
 
     currentTime=SDL_GetTicks();
@@ -83,31 +84,27 @@ Notification::Notification(const Value & notificationFeatures)
 
 Notification::~Notification()
 {
-    delete root;
+    //dtor
 }
 
 //**********************************************************************//
 
 void Notification::visualization(Context & cv){
-    if(activatedNoti){
+    if(activatedNoti)
         root->visualization(cv);
-    }
 }
 
 //**********************************************************************//
 
-void Notification::updateState(GameState & gameState){
-    vec3f posHero=gameState.rootMap->getHero()->getPosition();
+void Notification::updateState(float time,ControllerManager * controller,RootMap * rootMap){
+    vec3f posHero=rootMap->getHero()->getPosition();
 
-    float time=gameState.time;
-    if(time-currentTime>200){ //If we have a delay in our time
-        initialTime+=time-currentTime;
+    if(time-currentTime>200)
         currentTime=time-50;
-    }
 
     transNoti->translation(position.x+posHero.x,position.y+posHero.y,position.z+posHero.z);
 
-    if(currentTime-initialTime>visibleTime) //if the time of our notification is finished
+    if(currentTime-initialTime>visibleTime)
         activatedNoti=false;
 
 

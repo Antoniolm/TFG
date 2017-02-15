@@ -61,7 +61,7 @@ class RangedEnemy : public Enemy
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,ControllerManager * controller,RootMap * rootMap);
+        void updateState(GameState & gameState);
 
     protected:
 

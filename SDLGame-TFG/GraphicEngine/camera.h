@@ -26,6 +26,7 @@
 #include <glew.h>
 #include <SDL.h>
 #include "controllermanager.h"
+#include "gamestate.h"
 
 class RootMap;
 class Camera
@@ -126,7 +127,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void update(float time,ControllerManager * controller,Shader * shader,RootMap * rootMap,bool activateMenu);
+        void update(GameState & gameState,Shader * shader,bool activateMenu);
 
         //////////////////////////////////////////////////////////////////////////
         /**

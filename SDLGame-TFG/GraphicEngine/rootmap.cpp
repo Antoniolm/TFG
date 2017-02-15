@@ -106,7 +106,6 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     /////////////////////////////////////////
     // Add decorationObject to our map
     /////////////////////////////////////////
-    Matrix4f * transformation;
     const rapidjson::Value & decoObject=document["decorationObject"];
     vec3f posDecoration;
     for(unsigned currentDeco=0;currentDeco<decoObject.Size();currentDeco++){
@@ -348,50 +347,53 @@ void RootMap::visualization(Context & cv){
 
 //**********************************************************************//
 
-void RootMap::updateState(float time,ControllerManager * controller,RootMap * rootMap){
+void RootMap::updateState(GameState & gameState){
+    float time=gameState.time;
+
     if(time-currentTime>200)
         currentTime=time-50;
 
     //Update the hero
-    hero->updateState(time,controller,rootMap);
+    hero->updateState(gameState);
 
     //Update the mate
-    mate->updateState(time,controller,rootMap);
+    mate->updateState(gameState);
 
     //Update the Scene
     for(unsigned i=0;i<objectGroup.size();i++)
-        objectGroup[i]->updateState(time,controller,rootMap);
+        objectGroup[i]->updateState(gameState);
 
     //Update the Scene
-    itemList->updateState(time,controller,rootMap);
+    itemList->updateState(gameState);
 
     //Update particles system
     for(unsigned i=0;i<particleSystem.size();i++){
-        particleSystem[i]->updateState(time,controller,rootMap);
+        particleSystem[i]->updateState(gameState);
     }
 
     //Update projectile system
     for(unsigned i=0;i<projectileSystem.size();i++){
-        projectileSystem[i]->updateState(time,controller,rootMap);
+        projectileSystem[i]->updateState(gameState);
     }
 
-
+    //Update events
     for(unsigned i=0;i<events.size();i++){
-        events[i]->updateState(time,rootMap);
+        events[i]->updateState(gameState.time,gameState.rootMap);
     }
 
+    //Update spikeTraps
     for(unsigned i=0;i<spikes.size();i++){
-        spikes[i]->updateState(time,controller,rootMap);
+        spikes[i]->updateState(gameState);
     }
 
     //Update title
-    title->updateState(time,controller,rootMap);
+    title->updateState(gameState);
 
     //Update npcs
-    npcList->updateState(time,controller,rootMap);
+    npcList->updateState(gameState);
 
     //Update enemies
-    enemyList->updateState(time,controller,rootMap);
+    enemyList->updateState(gameState);
 
     currentTime+=time-currentTime;
 }

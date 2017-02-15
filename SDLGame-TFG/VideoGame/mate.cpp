@@ -90,11 +90,12 @@ void Mate::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Mate::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
-    Hero * hero=rootMap->getHero();
+void Mate::updateState(GameState & gameState){
+    Hero * hero=gameState.rootMap->getHero();
     vec3f posHero=hero->getPosition();
     vec3f newMovement;
 
+    float time=gameState.time;
     if(time-currentTime>200)
         currentTime=time-50;
 

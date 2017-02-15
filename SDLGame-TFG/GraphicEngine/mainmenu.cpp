@@ -86,8 +86,11 @@ void MainMenu::visualization(Context & cv){
 
 //**********************************************************************//
 
-void MainMenu::updateState(float time,ControllerManager * controller,RootMap * rootMap){
+void MainMenu::updateState(GameState & gameState){
     vec3f position;
+
+    float time=gameState.time;
+    ControllerManager * controller=gameState.controller;
 
     if(time-currentTime>200)
         currentTime=time-50;

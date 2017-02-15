@@ -29,6 +29,7 @@
 
 class Context;
 class RootMap;
+class GameState;
 
 struct BoundingBox{
     vec3f maxValue;
@@ -73,7 +74,7 @@ class Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float times,ControllerManager * controller,RootMap * rootMap );
+        virtual void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**

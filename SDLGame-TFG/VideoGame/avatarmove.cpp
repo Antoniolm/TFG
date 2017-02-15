@@ -666,4 +666,4 @@ void AvatarMove::visualization(Context & cv){
 
 //**********************************************************************//
 
-void AvatarMove::updateState(float time,Controller * controller,RootMap * rootMap ){}
+void AvatarMove::updateState(GameState & gameState){}

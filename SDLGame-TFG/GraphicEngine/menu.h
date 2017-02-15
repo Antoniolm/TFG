@@ -29,6 +29,7 @@
 #include "material.h"
 #include "profile.h"
 #include "sound.h"
+#include "gamestate.h"
 
 class Menu : public Object3D
 {
@@ -67,7 +68,7 @@ class Menu : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(float time,ControllerManager * controller,RootMap * rootMap);
+        virtual void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**

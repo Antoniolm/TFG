@@ -88,7 +88,7 @@ class Npc : public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,ControllerManager * controller,RootMap * rootMap);
+        void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**

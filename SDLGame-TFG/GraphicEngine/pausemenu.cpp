@@ -89,8 +89,12 @@ void PauseMenu::visualization(Context & cv){
 
 //**********************************************************************//
 
-void PauseMenu::updateState(float time,ControllerManager * controller,RootMap * rootMap){
+void PauseMenu::updateState(GameState & gameState){
     vec3f position;
+
+    float time=gameState.time;
+    ControllerManager * controller=gameState.controller;
+
     if(time-currentTime>200)
         currentTime=time-50;
 
@@ -99,7 +103,7 @@ void PauseMenu::updateState(float time,ControllerManager * controller,RootMap * 
         menuDelay=time;
         if(activateMenu){
             (Profile::getInstance())->showResult();
-            position=rootMap->getHero()->getPosition();
+            position=gameState.rootMap->getHero()->getPosition();
             positionMenu->translation(position.x,position.y+6.75,position.z+11.0);
             //positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
 

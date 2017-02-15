@@ -55,7 +55,7 @@ void Enemy::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Enemy::updateState(float time,ControllerManager * controller,RootMap * rootMap){
+void Enemy::updateState(GameState & gameState){
 
 }
 
