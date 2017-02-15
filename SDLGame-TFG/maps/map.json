@@ -214,6 +214,11 @@
     ],
 
 
+    "spikes":[
+            {   "position":[50.5,5.5,-26.5]
+            }
+    ],
+
     "voxelGroup":[
             {   "//":"ROOM 1 - Begin",
                 "position":[1,0.5,1],

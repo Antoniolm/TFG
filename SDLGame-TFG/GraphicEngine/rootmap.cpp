@@ -87,6 +87,14 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
     }
 
     /////////////////////////////////////////
+    // Add events to our map
+    /////////////////////////////////////////
+    const rapidjson::Value & spikeFeature=document["spikes"];
+    for(unsigned currentSpike=0;currentSpike<spikeFeature.Size();currentSpike++){
+        spikes.push_back(new SpikeTrap(spikeFeature[currentSpike]));
+    }
+
+    /////////////////////////////////////////
     // Add voxelGroup to our map
     /////////////////////////////////////////
     const rapidjson::Value & voxelGroup=document["voxelGroup"];
@@ -232,6 +240,21 @@ RootMap::~RootMap()
     for(unsigned i=0;i<decorationObjs.size();i++)
         delete decorationObjs[i];
 
+    for(unsigned i=0;i<objectGroup.size();i++)
+        delete objectGroup[i];
+
+    for(unsigned i=0;i<particleSystem.size();i++)
+        delete particleSystem[i];
+
+    for(unsigned i=0;i<projectileSystem.size();i++)
+        delete projectileSystem[i];
+
+    for(unsigned i=0;i<events.size();i++)
+        delete events[i];
+
+    for(unsigned i=0;i<spikes.size();i++)
+        delete spikes[i];
+
     MeshCollection * meshCollect= MeshCollection::getInstance();
     delete meshCollect;
 
@@ -307,6 +330,11 @@ void RootMap::visualization(Context & cv){
             projectileSystem[i]->visualization(cv);
     }
 
+    //Draw spiketrap
+    for(unsigned i=0;i<spikes.size();i++){
+            spikes[i]->visualization(cv);
+    }
+
     //Draw mate
     mate->visualization(cv);
 
@@ -350,6 +378,10 @@ void RootMap::updateState(float time,ControllerManager * controller,RootMap * ro
 
     for(unsigned i=0;i<events.size();i++){
         events[i]->updateState(time,rootMap);
+    }
+
+    for(unsigned i=0;i<spikes.size();i++){
+        spikes[i]->updateState(time,controller,rootMap);
     }
 
     //Update title

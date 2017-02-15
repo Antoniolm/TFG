@@ -19,9 +19,9 @@
 
 #include "spiketrap.h"
 
-SpikeTrap::SpikeTrap(vec3f aPosition)
+SpikeTrap::SpikeTrap(const Value & spikeFeatures)
 {
-    position=vec4f(aPosition.x,aPosition.y+1.0,aPosition.z-2.0,1.0);
+    position=vec4f(spikeFeatures["position"][0].GetFloat(),spikeFeatures["position"][1].GetFloat(),spikeFeatures["position"][2].GetFloat(),1.0);
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
@@ -31,8 +31,8 @@ SpikeTrap::SpikeTrap(vec3f aPosition)
 
     root=new NodeSceneGraph();
     root->add(transObject);
-    root->add(materialCollect->getMaterial(mMATE));
-    root->add(meshCollect->getMesh(MATEHEAD));
+    root->add(materialCollect->getMaterial(mSPIKE));
+    root->add(meshCollect->getMesh(SPIKE));
 
     currentTime=SDL_GetTicks();
 }

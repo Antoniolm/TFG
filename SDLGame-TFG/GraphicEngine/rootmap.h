@@ -51,6 +51,7 @@
 #include "keyboardcontroller.h"
 #include "textevent.h"
 #include "notification.h"
+#include "../VideoGame/spiketrap.h"
 
 using namespace std;
 
@@ -66,6 +67,7 @@ class ProjectileSystem;
 class ObjectGroup;
 class TextEvent;
 class Notification;
+class SpikeTrap;
 class RootMap : public Object3D
 {
     public:
@@ -160,6 +162,7 @@ class RootMap : public Object3D
         vector<ParticleSystem *> particleSystem;
         vector<ProjectileSystem *> projectileSystem;
         vector<TextEvent *> events;
+        vector<SpikeTrap *> spikes;
         Notification * title;
         ObjectScene * background;
         NpcList * npcList;

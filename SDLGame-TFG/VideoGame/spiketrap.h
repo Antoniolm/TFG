@@ -26,6 +26,9 @@
 #include "../GraphicEngine/matrix4fdynamic.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/materialcollection.h"
+#include "../lib/rapidjson/document.h"
+
+using namespace rapidjson;
 
 class SpikeTrap : public Object3D
 {
@@ -33,7 +36,7 @@ class SpikeTrap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        SpikeTrap(vec3f aPosition);
+        SpikeTrap(const Value & spikeFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
