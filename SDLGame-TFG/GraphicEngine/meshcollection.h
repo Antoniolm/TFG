@@ -76,7 +76,8 @@ enum MeshIndex{
     MATEHAND,   //45
     BOOKS,      //46
     TRUNK,      //47
-    LADDER      //48
+    LADDER,     //48
+    SPIKE       //49
 };
 
 class MeshCollection

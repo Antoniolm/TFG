@@ -26,228 +26,182 @@ MeshCollection::MeshCollection()
 {
     //Mesh 0
     Mesh * element=new Mesh("geometries/cube.obj",true);
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/sphere.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 6
     element=new Mesh("geometries/sphereBackground.obj");
-    element->init();
     collection.addElement(element);
 
     //Hero-Enemy mesh
     //Mesh 7
     element=new Mesh("geometries/knightFoot.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 8
     element=new Mesh("geometries/knightFootInv.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 9
     element=new Mesh("geometries/sword.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 10
     element=new Mesh("geometries/shield.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 11
     element=new Mesh("geometries/knightHand.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/knightHandShield.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 12
     element=new Mesh("geometries/knightArm.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 13
     element=new Mesh("geometries/knightBody.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 16
     element=new Mesh("geometries/knightHead.obj");
-    element->init();
     collection.addElement(element);
 
     //Text-menu mesh
     //Mesh 18
     element=new Mesh("geometries/text.obj");
-    element->init();
     collection.addElement(element);
 
     //Coin mesh
     //Mesh 19
     element=new Mesh("geometries/crystal.obj");
-    element->init();
     collection.addElement(element);
 
     //Enemy Melee mesh
     //Mesh 19
     element=new Mesh("geometries/enemyHead.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 19
     element=new Mesh("geometries/enemyBody.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 19
     element=new Mesh("geometries/enemyHand.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 19
     element=new Mesh("geometries/enemyFoot.obj");
-    element->init();
     collection.addElement(element);
 
     //Enemy Ranged mesh
     //Mesh 19
     element=new Mesh("geometries/rangedHead.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 19
     element=new Mesh("geometries/rangedBody.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 19
     element=new Mesh("geometries/rangedHand.obj");
-    element->init();
     collection.addElement(element);
 
     //Mesh 19
     element=new Mesh("geometries/rangedFoot.obj");
-    element->init();
     collection.addElement(element);
 
 
     //NPC mesh
     //Mesh 19
     element=new Mesh("geometries/ghostButler.obj");
-    element->init();
     collection.addElement(element);
 
     //scene mesh
     //Mesh 19
     element=new Mesh("geometries/bed.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/cupBoard.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/bedsideTable.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/arrow.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/bookShelf.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/firePlace.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/smallTable.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/chair.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/rug.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/window.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/pillar.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/crossbow.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/club.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/torch.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/chandelier.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/barrel.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/candleHolder.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/flag.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/bench.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/column.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/potion.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/mateHead.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/mateHand.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/books.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/trunk.obj");
-    element->init();
     collection.addElement(element);
 
     element=new Mesh("geometries/ladder.obj");
-    element->init();
+    collection.addElement(element);
+
+    element=new Mesh("geometries/spikes.obj");
     collection.addElement(element);
 
     //Create our map
@@ -300,6 +254,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("BOOKS",BOOKS);
     collection.addIndex("TRUNK",TRUNK);
     collection.addIndex("LADDER",LADDER);
+    collection.addIndex("SPIKE",SPIKE);
 }
 
 //**********************************************************************//

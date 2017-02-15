@@ -181,12 +181,10 @@ RootMap::RootMap(const rapidjson::Document & document,Shader & shader)
             default:
             break;
         }
-
     }
 
     for(unsigned i=0;i<objectGroup.size();i++)
         objectGroup[i]->init();
-
 
     for(unsigned i=0;i<decorationObjs.size();i++){
         decorationObjs[i]->obtainPosition(cv);
