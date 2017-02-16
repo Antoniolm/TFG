@@ -77,7 +77,7 @@ void SpikeTrap::updateState(GameState & gameState ){
         activated=false;
     }
 
-    if(activated){
+    if(activated){ // if is activated
         transActivate->translation(0.0,1.0,0.0);
         if(distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y) && hitDelay<(time-200)){
             hero->takeDamage(-1);
