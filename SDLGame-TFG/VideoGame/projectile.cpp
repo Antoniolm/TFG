@@ -78,10 +78,9 @@ void Projectile::updateState(GameState & gameState){
     if(time-currentTime>200)
         currentTime=time-50;
 
-    currentMap=gameState.rootMap;
-
     //Checking the hero
     RootMap * rootMap=gameState.rootMap;
+    currentMap=rootMap;
     vec3f posHero=rootMap->getHero()->getPosition();
     vec3f posHead=vec3f(vec3f(position)+projectileHead);
     float distance=sqrt(pow(posHead.x-posHero.x,2.0)+pow(posHead.z-posHero.z,2.0));

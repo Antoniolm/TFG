@@ -26,15 +26,21 @@ SpikeTrap::SpikeTrap(const Value & spikeFeatures)
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
-    transObject=new Matrix4f();
+    Matrix4f * transObject=new Matrix4f();
     transObject->translation(position.x,position.y,position.z);
+
+    transActivate=new Matrix4f();
+    transActivate->identity();
 
     root=new NodeSceneGraph();
     root->add(transObject);
+    root->add(transActivate);
     root->add(materialCollect->getMaterial(mSPIKE));
     root->add(meshCollect->getMesh(SPIKE));
 
     currentTime=SDL_GetTicks();
+    hitDelay=currentTime;
+    activated=false;
 }
 
 //**********************************************************************//
@@ -55,9 +61,30 @@ void SpikeTrap::visualization(Context & cv){
 
 void SpikeTrap::updateState(GameState & gameState ){
     float time=gameState.time;
+    RootMap * rootMap=gameState.rootMap;
+    Hero * hero=rootMap->getHero();
 
-    if(time-currentTime>200)
-        currentTime=time-50;
+    if(time-currentTime>200) currentTime=time-50;
+
+    vec3f posHero=hero->getPosition();
+    float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0));
+
+    if(distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y)){ //if hero is near of a disactivated trap
+        activated=true;
+    }
+
+    if(distance>0.75){ //if hero is far of an activated trap
+        activated=false;
+    }
+
+    if(activated){
+        transActivate->translation(0.0,1.0,0.0);
+        if(distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y) && hitDelay<(time-200)){
+            hero->takeDamage(-1);
+            hitDelay=time;
+        }
+    }
+    else transActivate->identity();
 
     currentTime+=time-currentTime;
 }

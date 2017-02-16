@@ -8,7 +8,7 @@
         "position":[0.0,5.75,8.0],
         "scale":[1.25,1.25,1.25],
         "visibleTime":2000,
-        "texture":"textures/title1.png"
+        "texture":"mTITLE1"
     },
 
     "light":[
@@ -215,7 +215,7 @@
 
 
     "spikes":[
-            {   "position":[50.5,5.5,-26.5]
+            {   "position":[50.5,4.5,-26.5]
             }
     ],
 
@@ -650,7 +650,7 @@
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
-                "damage":-1.0},
+                "damage":0.0},
             {   "position":[57,4.5,25],
                 "YNumber":2,        
                 "XNumber":2,         
