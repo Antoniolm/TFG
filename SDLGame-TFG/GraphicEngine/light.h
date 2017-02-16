@@ -49,12 +49,12 @@ class Light
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular);
+        Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,string nlight="0");
 
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters */
         //////////////////////////////////////////////////////////////////////////
-        Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic);
+        Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic,string nlight="0");
 
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with json */
@@ -72,7 +72,7 @@ class Light
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activate(Shader * shader,string nLight="0");
+        void activate(GLuint shaderID);
 
 
         //////////////////////////////////////////////////////////////////////////
@@ -152,6 +152,7 @@ class Light
         float constant;
         float linear;
         float quadratic;
+        string nLight;
 };
 
 #endif // LIGHT_H

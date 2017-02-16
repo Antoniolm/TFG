@@ -33,7 +33,7 @@ class LoaderThread
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        LoaderThread(RootMap * aRootMap,string aFileMap,Shader & aShader);
+        LoaderThread(RootMap * aRootMap,string aFileMap);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -50,7 +50,6 @@ class LoaderThread
         std::thread loader;
         static RootMap * rootMap;
         static string fileMap;
-        static Shader * shader;
 };
 
 #endif // LOADERTHREAD_H

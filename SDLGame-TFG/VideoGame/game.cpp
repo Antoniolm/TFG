@@ -34,10 +34,10 @@ Game::Game(){
     context.currentShader.createProgram();
     glUseProgram(context.currentShader.getProgram()); //We use the program now
 
-    //Create the json document-> We changed that when the game has more maps.
+    //Create our map
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
-    rootMap=new RootMap("./maps/map.json",context.currentShader,true);
+    rootMap=new RootMap("./maps/map.json",true);
 
     pauseMenu = new PauseMenu();
     deadMenu = new DeadMenu();
@@ -81,6 +81,7 @@ void Game::loop(){
     vec3f posHero;
     float time;
     bool wasActivatedMenu=false;
+    bool firstTime=true;
     int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;
     Profile * profile=Profile::getInstance();
@@ -140,7 +141,12 @@ void Game::loop(){
             window->cleanScreen();
         }
         else{
-            hero=rootMap->getHero();
+            if(firstTime){
+                rootMap->activatedLight(context.currentShader.getProgram());
+                hero=rootMap->getHero();
+                mainMenu->setPosition(hero->getPosition());
+                firstTime=false;
+            }
             window->cleanScreen();
 
             ///////////////////

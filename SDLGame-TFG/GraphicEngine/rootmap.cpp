@@ -31,12 +31,12 @@ RootMap::RootMap(){
 
 //**********************************************************************//
 
-RootMap::RootMap(string fileMap,Shader & shader,bool flagThread){
+RootMap::RootMap(string fileMap,bool flagThread){
     if(flagThread){
-        LoaderThread loader(this,fileMap,shader);
-        loader.run();
+        LoaderThread * loader=new LoaderThread(this,fileMap);
+        loader->run();
     }
-    else initialize(fileMap,shader);
+    else initialize(fileMap);
 }
 
 //**********************************************************************//
@@ -84,7 +84,7 @@ RootMap::~RootMap()
 
 //**********************************************************************//
 
-void RootMap::initialize(string fileMap,Shader & shader){
+void RootMap::initialize(string fileMap){
     cout<< "< Game is loading our current map >"<< endl;
     RootMap::loading=true;
 
@@ -102,7 +102,6 @@ void RootMap::initialize(string fileMap,Shader & shader){
     /////////////////////////////////////////
     // Create hero and mate
     /////////////////////////////////////////
-    cout<<"el valor es"<<document["heroPosition"][0].GetFloat()<<endl;
     hero=new Hero(vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat()));
 
     mate=new Mate(vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat()));
@@ -111,14 +110,9 @@ void RootMap::initialize(string fileMap,Shader & shader){
     // Add Light to our map
     /////////////////////////////////////////
     const rapidjson::Value & lightFeature=document["light"];
-    glUniform1i(glGetUniformLocation(shader.getProgram(), "numActivateLight"), lightFeature.Size()-1);
-    Light * light;
     for(unsigned currentLight=0;currentLight<lightFeature.Size();currentLight++){
         //Create our light
-        light=new Light(lightFeature[currentLight]);
-        //Activate our current Light
-        light->activate(&shader,std::string(lightFeature[currentLight]["channel"].GetString()));
-
+        lights.push_back(new Light(lightFeature[currentLight]));
     }
 
     /////////////////////////////////////////
@@ -463,4 +457,10 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
 
 bool RootMap::isLoading(){
     return RootMap::loading;
+}
+
+void RootMap::activatedLight(GLuint shaderID){
+    glUniform1i(glGetUniformLocation(shaderID, "numActivateLight"), lights.size()-1);
+    for(int i=0;i<lights.size();i++)
+        lights[i]->activate(shaderID);
 }

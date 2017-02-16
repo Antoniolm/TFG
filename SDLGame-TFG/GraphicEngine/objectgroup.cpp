@@ -68,7 +68,7 @@ void ObjectGroup::init(){
 //**********************************************************************//
 
 void ObjectGroup::visualization(Context & vis){
-    //Draw our object
+    //Draw our objects
     root->visualization(vis);
 }
 

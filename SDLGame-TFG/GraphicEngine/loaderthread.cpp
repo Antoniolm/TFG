@@ -21,13 +21,11 @@
 
 RootMap* LoaderThread::rootMap=0;
 string LoaderThread::fileMap="";
-Shader* LoaderThread::shader=0;
 
-LoaderThread::LoaderThread(RootMap * aRootMap,string aFileMap,Shader & aShader)
+LoaderThread::LoaderThread(RootMap * aRootMap,string aFileMap)
 {
     LoaderThread::rootMap=aRootMap;
     LoaderThread::fileMap=aFileMap;
-    LoaderThread::shader=&aShader;
 }
 
 //**********************************************************************//
@@ -40,9 +38,7 @@ LoaderThread::~LoaderThread()
 //**********************************************************************//
 
 void LoaderThread::initialize(){
-    //cout<< "prueba"<< prueba<< endl;
-    //cout<<"el valor es"<<aDocument["heroPosition"][0].GetFloat()<<endl;
-    LoaderThread::rootMap->initialize(LoaderThread::fileMap,(*LoaderThread::shader));
+    LoaderThread::rootMap->initialize(LoaderThread::fileMap);
 }
 
 //**********************************************************************//

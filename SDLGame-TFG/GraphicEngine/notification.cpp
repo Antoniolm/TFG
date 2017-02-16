@@ -57,7 +57,7 @@ Notification::Notification(const Value & notificationFeatures)
     visibleTime=notificationFeatures["visibleTime"].GetFloat();
 
     MeshCollection * meshCollect =MeshCollection::getInstance();
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,notificationFeatures["texture"].GetString(),mTRUNK);
+    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,notificationFeatures["texture"].GetString(),mVOID);
 
     transNoti=new Matrix4f();
     transNoti->identity();

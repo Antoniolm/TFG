@@ -82,7 +82,7 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        RootMap(string fileMap,Shader & shader,bool flagThread=false);
+        RootMap(string fileMap,bool flagThread=false);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -95,7 +95,7 @@ class RootMap : public Object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
-        void initialize(string fileMap,Shader & shader);
+        void initialize(string fileMap);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -164,6 +164,7 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         EnemyList * getEnemyList();
 
+        void activatedLight(GLuint shaderID);
         static bool isLoading();
     protected:
 
@@ -176,6 +177,7 @@ class RootMap : public Object3D
         vector<ProjectileSystem *> projectileSystem;
         vector<TextEvent *> events;
         vector<SpikeTrap *> spikes;
+        vector<Light *> lights;
         Notification * title;
         ObjectScene * background;
         NpcList * npcList;
