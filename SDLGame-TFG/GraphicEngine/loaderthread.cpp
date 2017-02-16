@@ -18,12 +18,16 @@
 // *********************************************************************
 
 #include "loaderthread.h"
-LoaderThread::LoaderThread(RootMap * aRootMap,string aFileMap,Shader & aShader,int prueba)
+
+RootMap* LoaderThread::rootMap=0;
+string LoaderThread::fileMap="";
+Shader* LoaderThread::shader=0;
+
+LoaderThread::LoaderThread(RootMap * aRootMap,string aFileMap,Shader & aShader)
 {
-    rootMap=aRootMap;
-    fileMap=aFileMap;
-    shader=&aShader;
-    prueb=prueba;
+    LoaderThread::rootMap=aRootMap;
+    LoaderThread::fileMap=aFileMap;
+    LoaderThread::shader=&aShader;
 }
 
 //**********************************************************************//
@@ -35,17 +39,13 @@ LoaderThread::~LoaderThread()
 
 //**********************************************************************//
 
-void LoaderThread::initialize(LoaderThread * load,int prueba){
-    cout<< "prueba"<< prueba<< endl;
-    cout<< "prueba"<< (*load).fileMap<< endl;
+void LoaderThread::initialize(){
+    //cout<< "prueba"<< prueba<< endl;
     //cout<<"el valor es"<<aDocument["heroPosition"][0].GetFloat()<<endl;
-    //load.rootMap->initialize(load.fileMap,(*load.shader));
+    LoaderThread::rootMap->initialize(LoaderThread::fileMap,(*LoaderThread::shader));
 }
 
 //**********************************************************************//
 void LoaderThread::run(){
-    //cout<<"el valor es"<<(*document)["heroPosition"][0].GetFloat()<<endl;
-    //cout<< "prueba"<< prueb<< endl;
-    int prueba2=8;
-    loader=std::thread([this] { this->initialize(this,int(prueb)); });
+    loader=std::thread([this] { this->initialize(); });
 }

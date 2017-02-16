@@ -33,7 +33,7 @@ RootMap::RootMap(){
 
 RootMap::RootMap(string fileMap,Shader & shader,bool flagThread){
     if(flagThread){
-        LoaderThread loader(this,fileMap,shader,5);
+        LoaderThread loader(this,fileMap,shader);
         loader.run();
     }
     else initialize(fileMap,shader);

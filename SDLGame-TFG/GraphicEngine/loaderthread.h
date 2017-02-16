@@ -25,13 +25,15 @@
 #include "shader.h"
 #include <string>
 
+using namespace std;
+
 class LoaderThread
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        LoaderThread(RootMap * aRootMap,string aFileMap,Shader & aShader,int prueba);
+        LoaderThread(RootMap * aRootMap,string aFileMap,Shader & aShader);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -40,16 +42,15 @@ class LoaderThread
 
         void run();
 
-        void initialize(LoaderThread * loader,int prueba);
+        void initialize();
 
     protected:
 
     private:
         std::thread loader;
-        RootMap * rootMap;
-        string fileMap;
-        Shader * shader;
-        int prueb;
+        static RootMap * rootMap;
+        static string fileMap;
+        static Shader * shader;
 };
 
 #endif // LOADERTHREAD_H
