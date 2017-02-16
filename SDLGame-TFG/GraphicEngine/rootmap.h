@@ -165,6 +165,7 @@ class RootMap : public Object3D
         EnemyList * getEnemyList();
 
         void activatedLight(GLuint shaderID);
+        void activatedObjectGroup();
         static bool isLoading();
     protected:
 

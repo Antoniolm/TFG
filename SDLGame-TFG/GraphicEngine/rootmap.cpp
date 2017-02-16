@@ -218,7 +218,6 @@ void RootMap::initialize(string fileMap){
 
     ////////////////////////////////////////
     //Create the indexMap;
-
     Context cv;
     objectGroup.push_back(new ObjectGroup(mCUBE_DUNG));
     objectGroup.push_back(new ObjectGroup(mCUBE_WALL));
@@ -248,9 +247,6 @@ void RootMap::initialize(string fileMap){
             break;
         }
     }
-
-    for(unsigned i=0;i<objectGroup.size();i++)
-        objectGroup[i]->init();
 
     for(unsigned i=0;i<decorationObjs.size();i++){
         decorationObjs[i]->obtainPosition(cv);
@@ -344,12 +340,12 @@ void RootMap::visualization(Context & cv){
 
     //Draw projectile system
     for(unsigned i=0;i<projectileSystem.size();i++){
-            projectileSystem[i]->visualization(cv);
+        projectileSystem[i]->visualization(cv);
     }
 
     //Draw spiketrap
     for(unsigned i=0;i<spikes.size();i++){
-            spikes[i]->visualization(cv);
+        spikes[i]->visualization(cv);
     }
 
     //Draw mate
@@ -463,4 +459,9 @@ void RootMap::activatedLight(GLuint shaderID){
     glUniform1i(glGetUniformLocation(shaderID, "numActivateLight"), lights.size()-1);
     for(int i=0;i<lights.size();i++)
         lights[i]->activate(shaderID);
+}
+
+void RootMap::activatedObjectGroup(){
+    for(unsigned i=0;i<objectGroup.size();i++)
+        objectGroup[i]->init();
 }

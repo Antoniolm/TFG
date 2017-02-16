@@ -137,12 +137,14 @@ void Game::loop(){
 
         if(RootMap::isLoading()){
             //loading screen here
-            cout<< "is loading"<< endl;
+            //cout<< "is loading"<< endl;
             window->cleanScreen();
         }
         else{
             if(firstTime){
+                gameState.rootMap=rootMap;
                 rootMap->activatedLight(context.currentShader.getProgram());
+                rootMap->activatedObjectGroup();
                 hero=rootMap->getHero();
                 mainMenu->setPosition(hero->getPosition());
                 firstTime=false;
