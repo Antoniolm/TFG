@@ -373,7 +373,7 @@
 	<string>
 	"sound.h"
 
-1487160950 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1487241261 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -394,9 +394,6 @@
 	"../GraphicEngine/notification.h"
 	"../GraphicEngine/gamestate.h"
 	"projectile.h"
-	"../lib/rapidjson/document.h"
-	"../lib/rapidjson/stringbuffer.h"
-	"../lib/rapidjson/filereadstream.h"
 	"hero.h"
 	<SDL_gamecontroller.h>
 	<sstream>
@@ -405,7 +402,7 @@
 	"window.h"
 	"file_obj.h"
 
-1487197123 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1487241711 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -903,7 +900,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1487197234 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1487241604 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -911,7 +908,7 @@
 	"objectgroup.h"
 	<stdlib.h>
 
-1487197043 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1487241269 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -935,6 +932,8 @@
 	"meshcollection.h"
 	"materialcollection.h"
 	"../lib/rapidjson/document.h"
+	"../lib/rapidjson/stringbuffer.h"
+	"../lib/rapidjson/filereadstream.h"
 	"decorationobject.h"
 	"voxel.h"
 	"voxelgroup.h"
@@ -2432,12 +2431,12 @@
 1487160801 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.cpp
 	"gamestate.h"
 
-1487198260 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loaderthread.cpp
+1487240908 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loaderthread.cpp
 	"loaderthread.h"
 
-1487198274 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loaderthread.h
+1487242086 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loaderthread.h
 	<thread>
 	"rootmap.h"
 	"shader.h"
-	"../lib/rapidjson/document.h"
+	<string>
 

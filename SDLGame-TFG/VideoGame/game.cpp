@@ -35,15 +35,9 @@ Game::Game(){
     glUseProgram(context.currentShader.getProgram()); //We use the program now
 
     //Create the json document-> We changed that when the game has more maps.
-    FILE * fp = fopen("./maps/map.json", "rb"); // non-Windows use "r"
-    char readBuffer[65536];
-    rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
-    rapidjson::Document * document=new rapidjson::Document();
-    document->ParseStream(is);
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
-    rootMap=new RootMap((*document),context.currentShader);
-    fclose(fp);
+    rootMap=new RootMap("./maps/map.json",context.currentShader,true);
 
     pauseMenu = new PauseMenu();
     deadMenu = new DeadMenu();

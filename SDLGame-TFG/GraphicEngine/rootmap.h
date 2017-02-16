@@ -43,6 +43,8 @@
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "../lib/rapidjson/document.h"
+#include "../lib/rapidjson/stringbuffer.h"
+#include "../lib/rapidjson/filereadstream.h"
 #include "decorationobject.h"
 #include "voxel.h"
 #include "voxelgroup.h"
@@ -80,7 +82,7 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        RootMap(rapidjson::Document & document,Shader & shader,bool flagThread=false);
+        RootMap(string fileMap,Shader & shader,bool flagThread=false);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -93,7 +95,7 @@ class RootMap : public Object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
-        void initialize(const rapidjson::Document & document,Shader & shader);
+        void initialize(string fileMap,Shader & shader);
 
         //////////////////////////////////////////////////////////////////////////
         /**

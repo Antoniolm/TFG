@@ -23,9 +23,7 @@
 #include <thread>
 #include "rootmap.h"
 #include "shader.h"
-#include "../lib/rapidjson/document.h"
-
-using namespace rapidjson;
+#include <string>
 
 class LoaderThread
 {
@@ -33,7 +31,7 @@ class LoaderThread
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        LoaderThread(RootMap * aRootMap,Document & aDocument,Shader & aShader);
+        LoaderThread(RootMap * aRootMap,string aFileMap,Shader & aShader,int prueba);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -42,15 +40,16 @@ class LoaderThread
 
         void run();
 
-        void initialize(RootMap * aRootMap,Document & aDocument,Shader & aShader);
+        void initialize(LoaderThread * loader,int prueba);
 
     protected:
 
     private:
         std::thread loader;
         RootMap * rootMap;
-        Document * document;
+        string fileMap;
         Shader * shader;
+        int prueb;
 };
 
 #endif // LOADERTHREAD_H

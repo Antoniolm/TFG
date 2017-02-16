@@ -31,12 +31,12 @@ RootMap::RootMap(){
 
 //**********************************************************************//
 
-RootMap::RootMap(rapidjson::Document & document,Shader & shader,bool flagThread){
+RootMap::RootMap(string fileMap,Shader & shader,bool flagThread){
     if(flagThread){
-        LoaderThread loader(this,document,shader);
+        LoaderThread loader(this,fileMap,shader,5);
         loader.run();
     }
-    else initialize(document,shader);
+    else initialize(fileMap,shader);
 }
 
 //**********************************************************************//
@@ -84,9 +84,17 @@ RootMap::~RootMap()
 
 //**********************************************************************//
 
-void RootMap::initialize(const rapidjson::Document & document,Shader & shader){
+void RootMap::initialize(string fileMap,Shader & shader){
     cout<< "< Game is loading our current map >"<< endl;
     RootMap::loading=true;
+
+    //Open file
+    FILE * fp = fopen(fileMap.c_str(), "rb"); // non-Windows use "r"
+    char readBuffer[65536];
+    rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+    rapidjson::Document document;
+    document.ParseStream(is);
+    fclose(fp);
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
