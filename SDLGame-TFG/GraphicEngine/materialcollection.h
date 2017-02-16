@@ -67,7 +67,8 @@ enum MaterialIndex{
     mTRUNK,         //35
     mSPIKE,         //36
     mGMPADV,
-    mGMPADX
+    mGMPADX,
+    mTITLE1
 };
 
 class Material;

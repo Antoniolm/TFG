@@ -57,7 +57,7 @@ Notification::Notification(const Value & notificationFeatures)
     visibleTime=notificationFeatures["visibleTime"].GetFloat();
 
     MeshCollection * meshCollect =MeshCollection::getInstance();
-    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,notificationFeatures["texture"].GetString(),mVOID);
+    MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
     transNoti=new Matrix4f();
     transNoti->identity();
@@ -72,7 +72,7 @@ Notification::Notification(const Value & notificationFeatures)
     root->add(transNoti);
     root->add(rotationMenu);
     root->add(scaleMenu);
-    root->add(material);
+    root->add(materialCollect->getMaterial(notificationFeatures["texture"].GetString()));
     root->add(meshCollect->getMesh(TEXT));
 
     currentTime=SDL_GetTicks();
