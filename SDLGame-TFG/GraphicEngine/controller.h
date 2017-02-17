@@ -80,6 +80,14 @@ class Controller
         */
         //////////////////////////////////////////////////////////////////////////
         virtual void catchKeyBoardState(const Uint8* currentKeyStates);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will consume all our buttons.(used to change map )
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void consumeButtons();
     protected:
         bool buttons[11];
         bool stateButtons[11]; //check if the button has been consumed for one object.

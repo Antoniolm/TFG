@@ -2,7 +2,7 @@
     "bkgdMaterial":"mWATER",
     "sound":"sounds/backsound.wav",
     "volSound":30.0,
-    "heroPosition":[57.5,6.5,-26],
+    "heroPosition":[57.5,5.5,-26],
 
     "title": {
         "position":[0.0,5.75,8.0],

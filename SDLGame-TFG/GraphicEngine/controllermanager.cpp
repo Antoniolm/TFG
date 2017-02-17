@@ -62,3 +62,10 @@ bool ControllerManager::checkButton(ControllerIndex button){
 void ControllerManager::catchKeyBoardState(const Uint8* currentKeyStates){
     keyboardController.catchKeyBoardState(currentKeyStates);
 }
+
+//**********************************************************************//
+
+void ControllerManager::consumeButtons(){
+    keyboardController.consumeButtons();
+    gamepadController.consumeButtons();
+}

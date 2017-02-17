@@ -105,3 +105,10 @@ bool Controller::checkButton(ControllerIndex button){
 //**********************************************************************//
 
 void Controller::catchKeyBoardState(const Uint8* currentKeyStates){}
+
+//**********************************************************************//
+
+void Controller::consumeButtons(){
+    for(int i=0;i<11;i++)
+        stateButtons[i]=false;
+}

@@ -37,7 +37,7 @@ EndMapRegion::~EndMapRegion()
 //**********************************************************************//
 
 void EndMapRegion::updateState(GameState & gameState){
-    Hero * hero =gameState.rootMap->getHero();
+    Hero * hero=gameState.rootMap->getHero();
     vec3f position=hero->getPosition();
 
     if(position>minArea && position<maxArea && !activated)

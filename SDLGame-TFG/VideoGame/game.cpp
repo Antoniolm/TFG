@@ -37,7 +37,7 @@ Game::Game(){
     //Create our map
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
-    rootMap=new RootMap("./maps/map.json",true);
+    rootMap=new RootMap("./maps/map.json");
 
     pauseMenu = new PauseMenu();
     deadMenu = new DeadMenu();
@@ -143,19 +143,12 @@ void Game::loop(){
         }
         else{
             if(firstTime){
-                cout<< "here1"<<endl;
                 gameState.rootMap=rootMap;
-                cout<< "here2"<<endl;
                 rootMap->activatedLight(context.currentShader.getProgram());
-                cout<< "here3"<<endl;
                 rootMap->activatedObjectGroup();
-                cout<< "here4"<<endl;
                 hero=rootMap->getHero();
-                cout<< "here5"<<endl;
                 mainMenu->setPosition(hero->getPosition());
-                cout<< "here6"<<endl;
                 firstTime=false;
-                cout<< "hereEnd"<<endl;
             }
             window->cleanScreen();
             ///////////////////
@@ -226,6 +219,7 @@ void Game::loop(){
 
             if(rootMap->isFinished()){
                 rootMap=new RootMap("./maps/map.json",true);
+                controller->consumeButtons();
                 firstTime=true;
             }
 
