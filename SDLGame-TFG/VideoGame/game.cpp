@@ -38,6 +38,7 @@ Game::Game(){
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
+    mainMenu=MainMenu::getInstance();
     pauseMenu = new PauseMenu();
     deadMenu = new DeadMenu();
     notiGamePad=new Notification(vec3f(0.0,0.0,0.0),vec3f(0.0,0.0,0.0),0,mVOID);
@@ -87,9 +88,6 @@ void Game::loop(){
     Profile * profile=Profile::getInstance();
     GameState gameState;
     gameState.controller=controller;
-
-    mainMenu = new MainMenu(vec3f(0.0,0.0,0.0));
-    mainMenu->activate();
 
     //Create our camera
     vec3f position(0,8.0f,13.0f);
@@ -148,6 +146,7 @@ void Game::loop(){
         else if(RootMap::isLoading()){
             //loading screen here
             cout<< "is loading"<< endl;
+            firstTime=true;
         }
 
         //CASE -> PLAYING

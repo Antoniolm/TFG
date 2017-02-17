@@ -19,10 +19,12 @@
 
 #include "mainmenu.h"
 
-MainMenu::MainMenu(vec3f posHero)
+MainMenu* MainMenu::instance = NULL;
+
+MainMenu::MainMenu()
 {
     currentOption=0;
-    activateMenu=false;
+    activateMenu=true;
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainMenuStart.png");
@@ -30,7 +32,6 @@ MainMenu::MainMenu(vec3f posHero)
 
     positionMenu=new Matrix4f();
     positionMenu->translation(0.0,6.75,11.0);
-    //positionMenu->translation(posHero.x,posHero.y+5.25,posHero.z+13.0);
 
     Matrix4f * betweenMenu=new Matrix4f();
     betweenMenu->translation(0.0,0.0,-0.1);
