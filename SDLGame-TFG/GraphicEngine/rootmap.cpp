@@ -67,8 +67,8 @@ RootMap::~RootMap()
     for(unsigned i=0;i<projectileSystem.size();i++)
         delete projectileSystem[i];
 
-    for(unsigned i=0;i<events.size();i++)
-        delete events[i];
+    for(unsigned i=0;i<regions.size();i++)
+        delete regions[i];
 
     for(unsigned i=0;i<spikes.size();i++)
         delete spikes[i];
@@ -147,13 +147,13 @@ void RootMap::initialize(string fileMap){
     /////////////////////////////////////////
     // Add events to our map
     /////////////////////////////////////////
-    const rapidjson::Value & eventFeature=document["events"];
-    for(unsigned currentEvent=0;currentEvent<eventFeature.Size();currentEvent++){
-        events.push_back(new TextEvent(eventFeature[currentEvent]));
+    const rapidjson::Value & regionFeature=document["events"];
+    for(unsigned currentRegion=0;currentRegion<regionFeature.Size();currentRegion++){
+        regions.push_back(new TextRegion(regionFeature[currentRegion]));
     }
 
     /////////////////////////////////////////
-    // Add events to our map
+    // Add spikes to our map
     /////////////////////////////////////////
     const rapidjson::Value & spikeFeature=document["spikes"];
     for(unsigned currentSpike=0;currentSpike<spikeFeature.Size();currentSpike++){
@@ -397,9 +397,9 @@ void RootMap::updateState(GameState & gameState){
         projectileSystem[i]->updateState(gameState);
     }
 
-    //Update events
-    for(unsigned i=0;i<events.size();i++){
-        events[i]->updateState(gameState);
+    //Update textregions
+    for(unsigned i=0;i<regions.size();i++){
+        regions[i]->updateState(gameState);
     }
 
     //Update spikeTraps

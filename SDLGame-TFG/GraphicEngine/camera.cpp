@@ -216,3 +216,19 @@ vec3f Camera::getUp(){
 bool Camera::isViewMode(){
     return viewMode;
 }
+
+//**********************************************************************//
+
+void Camera::setPosUp(vec3f aPosition,GLuint shaderID){
+
+    position=vec3f(aPosition.x,aPosition.y+8.0f,aPosition.z+13.0f); //test camera
+    target=aPosition;
+
+    createCamera();//Create camera
+
+    GLint viewLocation= glGetUniformLocation(shaderID,"view");
+    glUniformMatrix4fv(viewLocation,1,GL_FALSE,camera.getMatrix());
+
+    GLint viewPosLoc = glGetUniformLocation(shaderID, "viewPos");
+    glUniform3f(viewPosLoc, position.x, position.y, position.z);
+}

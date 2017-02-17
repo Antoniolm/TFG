@@ -177,6 +177,8 @@ class Camera
         //////////////////////////////////////////////////////////////////////////
         bool isViewMode();
 
+        void setPosUp(vec3f aPosition,GLuint shaderID);
+
     protected:
 
     private:

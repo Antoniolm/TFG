@@ -29,6 +29,7 @@
 #include "material.h"
 #include "sound.h"
 #include "menu.h"
+#include "mainmenu.h"
 
 class DeadMenu : public Menu
 {

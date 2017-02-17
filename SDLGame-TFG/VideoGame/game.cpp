@@ -134,19 +134,20 @@ void Game::loop(){
         window->cleanScreen();
 
         //CASE -> MAINMENU
-        if(mainMenu->isActivate()){ //
+        if(mainMenu->isActivate()){
             gameState.time=SDL_GetTicks();
+            camera.setPosUp(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
             mainMenu->updateState(gameState);
 
             camera.activateOrthoProjection(&context.currentShader);
             mainMenu->visualization(context);
+            firstTime=true;
         }
 
         //CASE -> LOADING
         else if(RootMap::isLoading()){
             //loading screen here
             cout<< "is loading"<< endl;
-            firstTime=true;
         }
 
         //CASE -> PLAYING
@@ -156,7 +157,6 @@ void Game::loop(){
                 rootMap->activatedLight(context.currentShader.getProgram());
                 rootMap->activatedObjectGroup();
                 hero=rootMap->getHero();
-                mainMenu->setPosition(hero->getPosition());
                 firstTime=false;
             }
             ///////////////////
@@ -182,7 +182,6 @@ void Game::loop(){
                     rootMap->enableSound(false);
                 wasActivatedMenu=true;
             }
-
 
             //Update the camera, lifeText, coinText, profile
             posHero=hero->getPosition();

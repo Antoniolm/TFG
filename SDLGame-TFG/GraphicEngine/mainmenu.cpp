@@ -125,11 +125,11 @@ void MainMenu::updateState(GameState & gameState){
                     gameState.rootMap=new RootMap("./maps/map.json");
                 break;
                 case 1:
-                    activateMenu=false;
+                    //activateMenu=false;
                     openSound->play();
                 break;
                 case 2:
-                    activateMenu=false;
+                    //activateMenu=false;
                     openSound->play();
                 break;
                 case 3:

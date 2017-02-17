@@ -17,9 +17,9 @@
 // **
 // *********************************************************************
 
-#include "textevent.h"
+#include "textregion.h"
 
-TextEvent::TextEvent(const Value & eventFeatures){
+TextRegion::TextRegion(const Value & eventFeatures){
     speakerMessage speaker;
 
     minArea=vec3f(eventFeatures["minPosition"][0].GetFloat(),eventFeatures["minPosition"][1].GetFloat(),eventFeatures["minPosition"][2].GetFloat());
@@ -42,14 +42,14 @@ TextEvent::TextEvent(const Value & eventFeatures){
 
 //**********************************************************************//
 
-TextEvent::~TextEvent()
+TextRegion::~TextRegion()
 {
     //dtor
 }
 
 //**********************************************************************//
 
-void TextEvent::updateState(GameState & gameState){
+void TextRegion::updateState(GameState & gameState){
     RootMap * rootMap=gameState.rootMap;
     float time=gameState.time;
 

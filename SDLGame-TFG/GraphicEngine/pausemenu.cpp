@@ -105,7 +105,6 @@ void PauseMenu::updateState(GameState & gameState){
             (Profile::getInstance())->showResult();
             position=gameState.rootMap->getHero()->getPosition();
             positionMenu->translation(position.x,position.y+6.75,position.z+11.0);
-            //positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
 
             //Consume the current events -> User has to push again the buttons
             controller->setState(false,cUP);
@@ -150,8 +149,11 @@ void PauseMenu::updateState(GameState & gameState){
                     openSound->play();
                 break;
                 case 1:
+                    currentOption=0;
+                    currentMaterial->setTexture(options[currentOption]);
                     (Profile::getInstance())->showResult();
-                    exit(0);
+                    MainMenu::getInstance()->activate();
+                    activateMenu=false;
                 break;
 
             }

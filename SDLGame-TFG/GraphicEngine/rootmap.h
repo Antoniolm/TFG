@@ -51,7 +51,7 @@
 #include "sound.h"
 #include "controller.h"
 #include "keyboardcontroller.h"
-#include "textevent.h"
+#include "textregion.h"
 #include "endmapregion.h"
 #include "notification.h"
 #include "loaderthread.h"
@@ -69,7 +69,7 @@ class ItemList;
 class ParticleSystem;
 class ProjectileSystem;
 class ObjectGroup;
-class TextEvent;
+class TextRegion;
 class EndMapRegion;
 class Notification;
 class SpikeTrap;
@@ -179,7 +179,7 @@ class RootMap : public Object3D
         vector<ObjectScene *> decorationObjs;
         vector<ParticleSystem *> particleSystem;
         vector<ProjectileSystem *> projectileSystem;
-        vector<TextEvent *> events;
+        vector<TextRegion *> regions;
         vector<SpikeTrap *> spikes;
         vector<Light *> lights;
         EndMapRegion * endMapRegion;

@@ -94,7 +94,8 @@ void DeadMenu::updateState(GameState & gameState){
         if(gameState.controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             menuDelay=time;
             (Profile::getInstance())->showResult();
-            exit(0);
+            MainMenu::getInstance()->activate();
+            activateMenu=false;
         }
     }
 

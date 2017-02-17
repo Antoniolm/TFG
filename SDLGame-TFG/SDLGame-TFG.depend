@@ -402,7 +402,7 @@
 	"window.h"
 	"file_obj.h"
 
-1487360677 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1487367031 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -900,7 +900,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1487349863 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1487368595 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -908,7 +908,7 @@
 	"objectgroup.h"
 	<stdlib.h>
 
-1487348703 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1487368386 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -940,7 +940,7 @@
 	"sound.h"
 	"controller.h"
 	"keyboardcontroller.h"
-	"textevent.h"
+	"textregion.h"
 	"endmapregion.h"
 	"notification.h"
 	"loaderthread.h"
@@ -955,11 +955,11 @@
 1483994270 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1487167762 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1487366930 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 	"rootmap.h"
 
-1487167792 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
+1487365244 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
 	"structdata.h"
 	"matrix4f.h"
 	"shader.h"
@@ -1827,10 +1827,10 @@
 	"menu.h"
 	"mainmenu.h"
 
-1487360964 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
+1487365816 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
 	"pausemenu.h"
 
-1487360653 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
+1487367095 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
 	"mainmenu.h"
 
 1487360574 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.h
@@ -2451,4 +2451,15 @@
 
 1487350854 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.cpp
 	"endmapregion.h"
+
+1487368200 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.h
+	"structdata.h"
+	"SDL.h"
+	"ianpc.h"
+	"rootmap.h"
+	"gamestate.h"
+	"../lib/rapidjson/document.h"
+
+1487368139 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.cpp
+	"textregion.h"
 

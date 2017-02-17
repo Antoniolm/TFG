@@ -17,8 +17,8 @@
 // **
 // *********************************************************************
 
-#ifndef TEXTEVENT_H
-#define TEXTEVENT_H
+#ifndef TEXTREGION_H
+#define TEXTREGION_H
 
 #include "structdata.h"
 #include "SDL.h"
@@ -29,18 +29,18 @@
 
 using namespace rapidjson;
 
-class TextEvent
+class TextRegion
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /**Json constructor */
         //////////////////////////////////////////////////////////////////////////
-        TextEvent(const Value & eventFeatures);
+        TextRegion(const Value & eventFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~TextEvent();
+        virtual ~TextRegion();
 
         /////////////////////////////////////////////////////////////////////////
         /**
@@ -61,4 +61,4 @@ class TextEvent
         bool activated;
 };
 
-#endif // TEXTEVENT_H
+#endif // TEXTREGION_H
