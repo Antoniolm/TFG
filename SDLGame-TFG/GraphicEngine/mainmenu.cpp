@@ -29,7 +29,7 @@ MainMenu::MainMenu(vec3f posHero)
     Material * materialBack=new Material(vec3f(0.2f, 0.2f, 0.2f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
 
     positionMenu=new Matrix4f();
-    positionMenu->translation(posHero.x,posHero.y+6.75,posHero.z+11.0);
+    positionMenu->translation(0.0,6.75,11.0);
     //positionMenu->translation(posHero.x,posHero.y+5.25,posHero.z+13.0);
 
     Matrix4f * betweenMenu=new Matrix4f();
@@ -121,6 +121,7 @@ void MainMenu::updateState(GameState & gameState){
                 case 0:
                     activateMenu=false;
                     openSound->play();
+                    gameState.rootMap=new RootMap("./maps/map.json");
                 break;
                 case 1:
                     activateMenu=false;

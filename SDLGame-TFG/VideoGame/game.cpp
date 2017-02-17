@@ -34,10 +34,9 @@ Game::Game(){
     context.currentShader.createProgram();
     glUseProgram(context.currentShader.getProgram()); //We use the program now
 
-    //Create our map
+    //Create ours menus
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
-    rootMap=new RootMap("./maps/map.json");
 
     pauseMenu = new PauseMenu();
     deadMenu = new DeadMenu();
@@ -87,14 +86,13 @@ void Game::loop(){
     int lastLife=160,currentCoin=-10;
     Profile * profile=Profile::getInstance();
     GameState gameState;
-    gameState.rootMap=rootMap;
     gameState.controller=controller;
 
     mainMenu = new MainMenu(vec3f(0.0,0.0,0.0));
     mainMenu->activate();
 
     //Create our camera
-    vec3f position(0,6.0f,15.0f);
+    vec3f position(0,8.0f,13.0f);
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
     Camera camera;
@@ -135,38 +133,46 @@ void Game::loop(){
         }
 
         controller->catchKeyBoardState(SDL_GetKeyboardState(NULL));
+        window->cleanScreen();
 
-        if(RootMap::isLoading()){
+        //CASE -> MAINMENU
+        if(mainMenu->isActivate()){ //
+            gameState.time=SDL_GetTicks();
+            mainMenu->updateState(gameState);
+
+            camera.activateOrthoProjection(&context.currentShader);
+            mainMenu->visualization(context);
+        }
+
+        //CASE -> LOADING
+        else if(RootMap::isLoading()){
             //loading screen here
             cout<< "is loading"<< endl;
-            window->cleanScreen();
         }
+
+        //CASE -> PLAYING
         else{
             if(firstTime){
-                gameState.rootMap=rootMap;
+                rootMap=gameState.rootMap;
                 rootMap->activatedLight(context.currentShader.getProgram());
                 rootMap->activatedObjectGroup();
                 hero=rootMap->getHero();
                 mainMenu->setPosition(hero->getPosition());
                 firstTime=false;
             }
-            window->cleanScreen();
             ///////////////////
             // UPDATE STATE
             ///////////////////
             gameState.time=SDL_GetTicks();
 
-            if(!mainMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()) //if  mainMenu and deadMenu is not activate
+            if(!deadMenu->isActivate() && !camera.isViewMode()) //if  mainMenu and deadMenu is not activate
                 pauseMenu->updateState(gameState);
             else{ //If some of that menu are activate
-                if(mainMenu->isActivate())
-                    mainMenu->updateState(gameState);
-                else
-                    deadMenu->updateState(gameState);
+                deadMenu->updateState(gameState);
             }
 
 
-            if(!pauseMenu->isActivate() && !mainMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()){ //If  menu is not activate
+            if(!pauseMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()){ //If  menu is not activate
                 rootMap->updateState(gameState);
                 if(wasActivatedMenu) //If is the first time that it is not activated
                     rootMap->enableSound(true);
@@ -204,7 +210,6 @@ void Game::loop(){
             lifeText->visualization(context);
             coinText->visualization(context);
             pauseMenu->visualization(context);
-            mainMenu->visualization(context);
             deadMenu->visualization(context);
             notiGamePad->visualization(context);
 
@@ -212,18 +217,17 @@ void Game::loop(){
             profile->addVisualTime(SDL_GetTicks()-time);
             profile->incrementFrames();
 
-            window->updateScreen();
-
             if(hero->getLife()<=0.0)
                 deadMenu->activate();
 
             if(rootMap->isFinished()){
-                rootMap=new RootMap("./maps/map.json",true);
+                gameState.rootMap=new RootMap("./maps/map.json",true);
                 controller->consumeButtons();
                 firstTime=true;
             }
 
         }
+        window->updateScreen();
     }
 
     profile->showResult();
