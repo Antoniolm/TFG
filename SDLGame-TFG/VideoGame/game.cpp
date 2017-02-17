@@ -82,6 +82,7 @@ void Game::loop(){
     float time;
     bool wasActivatedMenu=false;
     bool firstTime=true;
+    bool changeMap=false;
     int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;
     Profile * profile=Profile::getInstance();
@@ -137,20 +138,26 @@ void Game::loop(){
 
         if(RootMap::isLoading()){
             //loading screen here
-            //cout<< "is loading"<< endl;
+            cout<< "is loading"<< endl;
             window->cleanScreen();
         }
         else{
             if(firstTime){
+                cout<< "here1"<<endl;
                 gameState.rootMap=rootMap;
+                cout<< "here2"<<endl;
                 rootMap->activatedLight(context.currentShader.getProgram());
+                cout<< "here3"<<endl;
                 rootMap->activatedObjectGroup();
+                cout<< "here4"<<endl;
                 hero=rootMap->getHero();
+                cout<< "here5"<<endl;
                 mainMenu->setPosition(hero->getPosition());
+                cout<< "here6"<<endl;
                 firstTime=false;
+                cout<< "hereEnd"<<endl;
             }
             window->cleanScreen();
-
             ///////////////////
             // UPDATE STATE
             ///////////////////
@@ -216,6 +223,12 @@ void Game::loop(){
 
             if(hero->getLife()<=0.0)
                 deadMenu->activate();
+
+            if(rootMap->isFinished()){
+                rootMap=new RootMap("./maps/map.json",true);
+                firstTime=true;
+            }
+
         }
     }
 

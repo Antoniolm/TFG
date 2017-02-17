@@ -52,6 +52,7 @@
 #include "controller.h"
 #include "keyboardcontroller.h"
 #include "textevent.h"
+#include "endmapregion.h"
 #include "notification.h"
 #include "loaderthread.h"
 #include "../VideoGame/spiketrap.h"
@@ -69,6 +70,7 @@ class ParticleSystem;
 class ProjectileSystem;
 class ObjectGroup;
 class TextEvent;
+class EndMapRegion;
 class Notification;
 class SpikeTrap;
 class RootMap : public Object3D
@@ -167,6 +169,7 @@ class RootMap : public Object3D
         void activatedLight(GLuint shaderID);
         void activatedObjectGroup();
         static bool isLoading();
+        bool isFinished();
     protected:
 
     private:
@@ -179,6 +182,7 @@ class RootMap : public Object3D
         vector<TextEvent *> events;
         vector<SpikeTrap *> spikes;
         vector<Light *> lights;
+        EndMapRegion * endMapRegion;
         Notification * title;
         ObjectScene * background;
         NpcList * npcList;

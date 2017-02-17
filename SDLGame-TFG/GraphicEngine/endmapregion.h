@@ -20,6 +20,11 @@
 #ifndef ENDMAPREGION_H
 #define ENDMAPREGION_H
 
+#include "rootmap.h"
+#include "gamestate.h"
+#include "../lib/rapidjson/document.h"
+
+using namespace rapidjson;
 
 class EndMapRegion
 {
@@ -27,7 +32,7 @@ class EndMapRegion
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        EndMapRegion();
+        EndMapRegion(const Value & regionFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -41,7 +46,7 @@ class EndMapRegion
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,RootMap * rootMap);
+        void updateState(GameState & gameState);
 
         /////////////////////////////////////////////////////////////////////////
         /**

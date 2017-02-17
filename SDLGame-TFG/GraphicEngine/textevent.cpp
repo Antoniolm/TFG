@@ -49,7 +49,10 @@ TextEvent::~TextEvent()
 
 //**********************************************************************//
 
-void TextEvent::updateState(float time,RootMap * rootMap){
+void TextEvent::updateState(GameState & gameState){
+    RootMap * rootMap=gameState.rootMap;
+    float time=gameState.time;
+
     Hero * hero =rootMap->getHero();
     Mate * mate =rootMap->getMate();
     vec3f position=hero->getPosition();

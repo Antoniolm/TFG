@@ -24,6 +24,7 @@
 #include "SDL.h"
 #include "ianpc.h"
 #include "rootmap.h"
+#include "gamestate.h"
 #include "../lib/rapidjson/document.h"
 
 using namespace rapidjson;
@@ -48,7 +49,7 @@ class TextEvent
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,RootMap * rootMap);
+        void updateState(GameState & gameState);
     protected:
 
     private:

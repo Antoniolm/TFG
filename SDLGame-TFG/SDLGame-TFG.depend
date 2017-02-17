@@ -402,7 +402,7 @@
 	"window.h"
 	"file_obj.h"
 
-1487268262 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1487349667 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -900,7 +900,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1487261384 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1487349090 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -908,7 +908,7 @@
 	"objectgroup.h"
 	<stdlib.h>
 
-1487261345 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1487348703 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -941,6 +941,7 @@
 	"controller.h"
 	"keyboardcontroller.h"
 	"textevent.h"
+	"endmapregion.h"
 	"notification.h"
 	"loaderthread.h"
 	"../VideoGame/spiketrap.h"
@@ -2390,14 +2391,15 @@
 1486658012 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\event.h
 	"structdata.h"
 
-1486912989 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textevent.h
+1487349177 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textevent.h
 	"structdata.h"
 	"SDL.h"
 	"ianpc.h"
 	"rootmap.h"
+	"gamestate.h"
 	"../lib/rapidjson/document.h"
 
-1486670480 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textevent.cpp
+1487349134 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textevent.cpp
 	"textevent.h"
 
 1487267670 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\notification.cpp
@@ -2412,7 +2414,7 @@
 	"../lib/rapidjson/document.h"
 	"gamestate.h"
 
-1487271797 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\spiketrap.cpp
+1487346153 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\spiketrap.cpp
 	"spiketrap.h"
 
 1487270429 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\spiketrap.h
@@ -2439,4 +2441,12 @@
 	"rootmap.h"
 	"shader.h"
 	<string>
+
+1487349172 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.h
+	"rootmap.h"
+	"gamestate.h"
+	"../lib/rapidjson/document.h"
+
+1487349164 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.cpp
+	"endmapregion.h"
 

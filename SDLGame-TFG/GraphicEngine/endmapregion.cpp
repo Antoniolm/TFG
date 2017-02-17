@@ -19,9 +19,12 @@
 
 #include "endmapregion.h"
 
-EndMapRegion::EndMapRegion()
-{
-    //ctor
+EndMapRegion::EndMapRegion(const Value & regionFeatures){
+
+    minArea=vec3f(regionFeatures["minPosition"][0].GetFloat(),regionFeatures["minPosition"][1].GetFloat(),regionFeatures["minPosition"][2].GetFloat());
+    maxArea=vec3f(regionFeatures["maxPosition"][0].GetFloat(),regionFeatures["maxPosition"][1].GetFloat(),regionFeatures["maxPosition"][2].GetFloat());
+
+    activated=false;
 }
 
 //**********************************************************************//
@@ -33,15 +36,16 @@ EndMapRegion::~EndMapRegion()
 
 //**********************************************************************//
 
-void EndMapRegion::updateState(float time,RootMap * rootMap){
-    Hero * hero =rootMap->getHero();
+void EndMapRegion::updateState(GameState & gameState){
+    Hero * hero =gameState.rootMap->getHero();
     vec3f position=hero->getPosition();
-
-    if(time-currentTime>200)
-        currentTime=time-50;
 
     if(position>minArea && position<maxArea && !activated)
         activated=true;
+}
 
-    currentTime+=time-currentTime;
+//**********************************************************************//
+
+bool EndMapRegion::isActivated(){
+    return activated;
 }

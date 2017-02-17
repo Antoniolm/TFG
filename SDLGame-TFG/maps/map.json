@@ -11,6 +11,11 @@
         "texture":"mTITLE1"
     },
 
+    "endMapRegion":{
+        "minPosition":[8.5,0.0,-4.5],
+        "maxPosition":[13.5,3.0,-1.5]
+    },
+
     "light":[
             {   "type":0,
                 "channel":"0",

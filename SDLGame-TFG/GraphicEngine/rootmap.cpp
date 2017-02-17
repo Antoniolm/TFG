@@ -50,6 +50,7 @@ RootMap::~RootMap()
     delete hero;
     delete mate;
     delete title;
+    delete endMapRegion;
 
     for(unsigned i=0;i<objs.size();i++)
         delete objs[i];
@@ -120,6 +121,12 @@ void RootMap::initialize(string fileMap){
     /////////////////////////////////////////
     const rapidjson::Value & titleFeature=document["title"];
     title=new Notification(titleFeature);
+
+    /////////////////////////////////////////
+    // Add endMap region to our map
+    /////////////////////////////////////////
+    const rapidjson::Value & endRegionFeature=document["endMapRegion"];
+    endMapRegion=new EndMapRegion(endRegionFeature);
 
     /////////////////////////////////////////
     // Add particleSystems to our map
@@ -392,7 +399,7 @@ void RootMap::updateState(GameState & gameState){
 
     //Update events
     for(unsigned i=0;i<events.size();i++){
-        events[i]->updateState(gameState.time,gameState.rootMap);
+        events[i]->updateState(gameState);
     }
 
     //Update spikeTraps
@@ -408,6 +415,9 @@ void RootMap::updateState(GameState & gameState){
 
     //Update enemies
     enemyList->updateState(gameState);
+
+    //Update endMapRegion
+    endMapRegion->updateState(gameState);
 
     currentTime+=time-currentTime;
 }
@@ -455,11 +465,25 @@ bool RootMap::isLoading(){
     return RootMap::loading;
 }
 
+//**********************************************************************//
+
+bool RootMap::isFinished(){
+    bool result=endMapRegion->isActivated();
+    if(result)
+        RootMap::loading=true;
+
+    return result;
+}
+
+//**********************************************************************//
+
 void RootMap::activatedLight(GLuint shaderID){
     glUniform1i(glGetUniformLocation(shaderID, "numActivateLight"), lights.size()-1);
     for(int i=0;i<lights.size();i++)
         lights[i]->activate(shaderID);
 }
+
+//**********************************************************************//
 
 void RootMap::activatedObjectGroup(){
     for(unsigned i=0;i<objectGroup.size();i++)
