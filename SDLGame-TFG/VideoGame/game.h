@@ -35,6 +35,7 @@
 #include "../GraphicEngine/pausemenu.h"
 #include "../GraphicEngine/mainmenu.h"
 #include "../GraphicEngine/deadmenu.h"
+#include "../GraphicEngine/loadingscreen.h"
 #include "../GraphicEngine/controllermanager.h"
 #include "../GraphicEngine/profile.h"
 #include "../GraphicEngine/notification.h"
@@ -87,6 +88,7 @@ class Game
         PauseMenu * pauseMenu;
         MainMenu * mainMenu;
         DeadMenu * deadMenu;
+        LoadingScreen * loadScreen;
         Text * lifeText,* coinText;
         ControllerManager * controller;
         Notification * notiGamePad;

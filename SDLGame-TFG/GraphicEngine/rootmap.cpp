@@ -280,6 +280,7 @@ void RootMap::initialize(string fileMap){
     backSound=new Sound(document["sound"].GetString(),0,document["volSound"].GetFloat());
     //backSound->play();
 
+    SDL_Delay(5000);
     currentTime=SDL_GetTicks();
 
     RootMap::loading=false;

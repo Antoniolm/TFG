@@ -90,7 +90,7 @@ void DeadMenu::updateState(GameState & gameState){
     if(activateMenu){ //If the menu is activated
         position=gameState.rootMap->getHero()->getPosition();
         positionMenu->translation(position.x,position.y+6.75,position.z+11.0);
-        //positionMenu->translation(position.x,position.y+5.25,position.z+13.0);
+
         if(gameState.controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             menuDelay=time;
             (Profile::getInstance())->showResult();

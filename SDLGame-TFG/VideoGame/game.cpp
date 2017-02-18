@@ -157,8 +157,6 @@ void Game::loop(){
                 rootMap->activatedLight(context.currentShader.getProgram());
                 rootMap->activatedObjectGroup();
                 hero=rootMap->getHero();
-                //hero->addLife(150);
-                cout<< "yep->"<<hero->getLife()<<endl;
                 firstTime=false;
             }
             ///////////////////
