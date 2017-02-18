@@ -90,6 +90,8 @@
 		<Unit filename="GraphicEngine/linearmovement.h" />
 		<Unit filename="GraphicEngine/loaderthread.cpp" />
 		<Unit filename="GraphicEngine/loaderthread.h" />
+		<Unit filename="GraphicEngine/loadingscreen.cpp" />
+		<Unit filename="GraphicEngine/loadingscreen.h" />
 		<Unit filename="GraphicEngine/mainmenu.cpp" />
 		<Unit filename="GraphicEngine/mainmenu.h" />
 		<Unit filename="GraphicEngine/material.cpp" />

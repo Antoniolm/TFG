@@ -35,8 +35,8 @@ Game::Game(){
     glUseProgram(context.currentShader.getProgram()); //We use the program now
 
     //Create ours menus
-    MeshCollection * meshCollect= MeshCollection::getInstance();
-    MaterialCollection * materialCollect= MaterialCollection::getInstance();
+    MeshCollection::getInstance();
+    MaterialCollection::getInstance();
 
     mainMenu=MainMenu::getInstance();
     pauseMenu = new PauseMenu();
@@ -72,8 +72,20 @@ Game::~Game(){
     delete mainMenu;
     delete deadMenu;
     delete loadScreen;
+    delete lifeText;
+    delete coinText;
+    delete controller;
 
     delete notiGamePad;
+
+    MeshCollection * meshCollect= MeshCollection::getInstance();
+    delete meshCollect;
+
+    MaterialCollection * materialCollect= MaterialCollection::getInstance();
+    delete materialCollect;
+
+    SoundCollection * soundCollect= SoundCollection::getInstance();
+    delete soundCollect;
 }
 
 //**********************************************************************//
@@ -85,7 +97,6 @@ void Game::loop(){
     float time;
     bool wasActivatedMenu=false;
     bool firstTime=true;
-    bool changeMap=false;
     int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;
     Profile * profile=Profile::getInstance();
@@ -139,7 +150,7 @@ void Game::loop(){
         //CASE -> MAINMENU
         if(mainMenu->isActivate()){
             gameState.time=SDL_GetTicks();
-            camera.setPosUp(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
+            camera.setPosition(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
             mainMenu->updateState(gameState);
 
             camera.activateOrthoProjection(&context.currentShader);
@@ -151,7 +162,7 @@ void Game::loop(){
         else if(RootMap::isLoading()){
             //loading screen here
             gameState.time=SDL_GetTicks();
-            camera.setPosUp(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
+            camera.setPosition(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
             loadScreen->updateState(gameState);
 
             camera.activateOrthoProjection(&context.currentShader);
@@ -205,7 +216,7 @@ void Game::loop(){
             updateLife(lastLife);
             updateCoin(currentCoin);
 
-            profile->addUpdateTime(SDL_GetTicks()-time);
+            profile->addUpdateTime(SDL_GetTicks()-gameState.time);
 
             notiGamePad->updateState(gameState);
 
@@ -229,6 +240,7 @@ void Game::loop(){
             profile->incrementFrames();
 
             if(rootMap->isFinished()){
+                //delete gameState.rootMap;
                 gameState.rootMap=new RootMap("./maps/map.json",true);
                 controller->consumeButtons();
                 firstTime=true;

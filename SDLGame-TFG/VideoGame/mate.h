@@ -83,8 +83,28 @@ class Mate : public Avatar
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will initialize the animation of our mate
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void initAnimation();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will give to our mate his next direction and position
+        *    \return pair<avatarDirection,vec3f>
+        */
+        //////////////////////////////////////////////////////////////////////////
         pair<avatarDirection,vec3f> nextPosition(vec3f posHero);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will move our mate
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void moveMate(float time,vec3f aMove,avatarDirection aDir);
 
         vector<Matrix4f *> moveMatrix;

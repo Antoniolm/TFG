@@ -177,7 +177,13 @@ class Camera
         //////////////////////////////////////////////////////////////////////////
         bool isViewMode();
 
-        void setPosUp(vec3f aPosition,GLuint shaderID);
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will set the position and direction of our camera
+        *   \return void
+         */
+        //////////////////////////////////////////////////////////////////////////
+        void setPosition(vec3f aPosition,GLuint shaderID);
 
     protected:
 

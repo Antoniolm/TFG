@@ -95,9 +95,36 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         BoundingBox getBoundingBox();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will obtain the vertex of the object.
+        *    \return vector<vec3f> &
+        */
+        //////////////////////////////////////////////////////////////////////////
         vector<vec3f> & getVertex();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will obtain the triangles of the object
+        *    \return vector<GLushort> &
+        */
+        //////////////////////////////////////////////////////////////////////////
         vector<GLushort> & getTriangles();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will obtain the normals of the object
+        *    \return vector<vec3f> &
+        */
+        //////////////////////////////////////////////////////////////////////////
         vector<vec3f> & getNormals();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will obtain the texture coordinates of the object
+        *    \return vector<vec2f> &
+        */
+        //////////////////////////////////////////////////////////////////////////
         vector<vec2f> & getTextCoord();
 
 
@@ -120,7 +147,20 @@ class Mesh : public Object3D
         /////////////////////////////////////////////////////////////////////////
         void init(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will load our current mesh
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void loadMesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will generate the boundingbox of our mesh
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void generateBoundingBox(const vector<vec3f> & vertex);
 
         static const unsigned int NUM_BUFFERS = 4;

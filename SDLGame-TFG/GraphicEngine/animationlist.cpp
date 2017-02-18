@@ -28,7 +28,8 @@ AnimationList::AnimationList()
 
 AnimationList::~AnimationList()
 {
-    //dtor
+    for(unsigned i=0;i<animations.size();i++)
+        delete animations[i];
 }
 
 //**********************************************************************//

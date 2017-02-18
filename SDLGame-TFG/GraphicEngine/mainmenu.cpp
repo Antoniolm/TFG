@@ -71,10 +71,14 @@ MainMenu::MainMenu()
 
 MainMenu::~MainMenu()
 {
+    delete openSound;
+    delete moveSound;
     delete root;
 
     for(unsigned i=0;i<options.size();i++)
         delete options[i];
+
+    delete currentMaterial;
 
 
 }
@@ -124,6 +128,7 @@ void MainMenu::updateState(GameState & gameState){
                     activateMenu=false;
                     openSound->play();
                     RootMap::loading=true;
+                    //delete gameState.rootMap;
                     gameState.rootMap=new RootMap("./maps/map.json",true);
                 break;
                 case 1:

@@ -149,6 +149,7 @@ class Npc : public Avatar
         */
         //////////////////////////////////////////////////////////////////////////
         void initAnimation();
+
         IANpc stateMachine;
         Text * currentText;
         ScriptLMD animation;

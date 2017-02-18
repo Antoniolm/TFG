@@ -68,7 +68,7 @@ class RangedEnemy : public Enemy
     private:
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will initialize the animation of our npc
+        *    It will initialize the animation of our ranged enemy
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

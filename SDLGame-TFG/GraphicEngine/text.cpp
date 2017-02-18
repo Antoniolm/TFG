@@ -64,7 +64,7 @@ Text::Text(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor,bool ahasDia
 Text::~Text()
 {
     glDeleteTextures(1, &textureText);
-    SDL_FreeSurface(surface);
+    delete surface;
     delete positionBack;
     delete positionText;
     delete scaleText;

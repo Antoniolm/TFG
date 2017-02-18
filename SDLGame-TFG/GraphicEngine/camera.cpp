@@ -219,7 +219,7 @@ bool Camera::isViewMode(){
 
 //**********************************************************************//
 
-void Camera::setPosUp(vec3f aPosition,GLuint shaderID){
+void Camera::setPosition(vec3f aPosition,GLuint shaderID){
 
     position=vec3f(aPosition.x,aPosition.y+8.0f,aPosition.z+13.0f); //test camera
     target=aPosition;

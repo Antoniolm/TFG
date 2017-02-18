@@ -77,7 +77,6 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
-
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will enable the sound of our hero.That will use when the game
@@ -164,7 +163,7 @@ class Hero: public AvatarMove
     private:
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will initialize the animation of our npc
+        *    It will initialize the animation of our hero
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

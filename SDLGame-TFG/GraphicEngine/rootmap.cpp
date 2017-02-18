@@ -73,14 +73,8 @@ RootMap::~RootMap()
     for(unsigned i=0;i<spikes.size();i++)
         delete spikes[i];
 
-    MeshCollection * meshCollect= MeshCollection::getInstance();
-    delete meshCollect;
-
-    MaterialCollection * materialCollect= MaterialCollection::getInstance();
-    delete materialCollect;
-
-    SoundCollection * soundCollect= SoundCollection::getInstance();
-    delete soundCollect;
+    for(unsigned i=0;i<lights.size();i++)
+        delete lights[i];
 }
 
 //**********************************************************************//
@@ -481,7 +475,7 @@ bool RootMap::isFinished(){
 
 void RootMap::activatedLight(GLuint shaderID){
     glUniform1i(glGetUniformLocation(shaderID, "numActivateLight"), lights.size()-1);
-    for(int i=0;i<lights.size();i++)
+    for(unsigned i=0;i<lights.size();i++)
         lights[i]->activate(shaderID);
 }
 
