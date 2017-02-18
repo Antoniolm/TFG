@@ -42,7 +42,7 @@ class MaterialStack
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void push(Material & aMaterial);
+        void push(Material * aMaterial);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -59,12 +59,12 @@ class MaterialStack
         *    \return The material in the top of the stack
         */
         //////////////////////////////////////////////////////////////////////////
-        Material & getMaterial();
+        Material * getMaterial();
 
     protected:
 
     private:
-        std::vector<Material> mainStack;
+        std::vector<Material*> mainStack;
 };
 
 #endif // MATERIALSTACK_H

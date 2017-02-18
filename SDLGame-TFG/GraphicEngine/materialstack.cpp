@@ -33,7 +33,7 @@ MaterialStack::~MaterialStack()
 
 //**********************************************************************//
 
-void MaterialStack::push(Material & aMaterial){
+void MaterialStack::push(Material * aMaterial){
     mainStack.push_back(aMaterial);
 }
 
@@ -49,6 +49,6 @@ void MaterialStack::pop(int cont){
 }
 
 //**********************************************************************//
-Material & MaterialStack::getMaterial(){
+Material * MaterialStack::getMaterial(){
     return mainStack[mainStack.size()-1];
 }

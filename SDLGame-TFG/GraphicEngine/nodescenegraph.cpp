@@ -86,16 +86,16 @@ void NodeSceneGraph::visualization(Context & cv){
                 contMatrix++;
                 break;
             case 2: //Material
-                cv.materialStack.push((*(*it).material));
+                cv.materialStack.push((*it).material);
                 (*it).material->activate(&cv.currentShader);
                 contMaterial++;
                 break;
             }
 
     }
-    cv.currentMaterialIndex=(cv.materialStack.getMaterial().getIndex());
+    cv.currentMaterialIndex=(cv.materialStack.getMaterial()->getIndex());
     cv.materialStack.pop(contMaterial);
-    cv.materialStack.getMaterial().activate(&cv.currentShader);
+    cv.materialStack.getMaterial()->activate(&cv.currentShader);
 
     cv.currentTransf.setMatrix(cv.matrixStack.getMatrix().getMatrix());
     cv.matrixStack.pop(contMatrix);
