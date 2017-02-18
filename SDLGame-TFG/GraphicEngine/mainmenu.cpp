@@ -61,14 +61,10 @@ MainMenu::MainMenu()
     moveSound=new Sound("sounds/coin.wav",1,40,4,0);
 
     //Add the options
-    Texture * option=new Texture("./textures/mainMenuStart.png");
-    addOption(option);
-    option=new Texture("./textures/mainMenuCont.png");
-    addOption(option);
-    option=new Texture("./textures/mainMenuControl.png");
-    addOption(option);
-    option=new Texture("./textures/mainMenuQuit.png");
-    addOption(option);
+    addOption(new Texture("./textures/mainMenuStart.png"));
+    addOption(new Texture("./textures/mainMenuCont.png"));
+    addOption(new Texture("./textures/mainMenuControl.png"));
+    addOption(new Texture("./textures/mainMenuQuit.png"));
 }
 
 //**********************************************************************//

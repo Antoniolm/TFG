@@ -66,6 +66,8 @@
 		<Unit filename="GraphicEngine/deadmenu.h" />
 		<Unit filename="GraphicEngine/decorationobject.cpp" />
 		<Unit filename="GraphicEngine/decorationobject.h" />
+		<Unit filename="GraphicEngine/endmapregion.cpp" />
+		<Unit filename="GraphicEngine/endmapregion.h" />
 		<Unit filename="GraphicEngine/file_obj.cpp" />
 		<Unit filename="GraphicEngine/file_obj.h" />
 		<Unit filename="GraphicEngine/gamepadcontroller.cpp" />
@@ -151,8 +153,8 @@
 		<Unit filename="GraphicEngine/structdata.h" />
 		<Unit filename="GraphicEngine/text.cpp" />
 		<Unit filename="GraphicEngine/text.h" />
-		<Unit filename="GraphicEngine/textevent.cpp" />
-		<Unit filename="GraphicEngine/textevent.h" />
+		<Unit filename="GraphicEngine/textregion.cpp" />
+		<Unit filename="GraphicEngine/textregion.h" />
 		<Unit filename="GraphicEngine/texture.cpp" />
 		<Unit filename="GraphicEngine/texture.h" />
 		<Unit filename="GraphicEngine/voxel.cpp" />
