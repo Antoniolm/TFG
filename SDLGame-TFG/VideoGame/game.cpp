@@ -41,6 +41,8 @@ Game::Game(){
     mainMenu=MainMenu::getInstance();
     pauseMenu = new PauseMenu();
     deadMenu = new DeadMenu();
+    loadScreen=new LoadingScreen();
+
     notiGamePad=new Notification(vec3f(0.0,0.0,0.0),vec3f(0.0,0.0,0.0),0,mVOID);
 
     //////////////////////////////////////////////////////
@@ -69,6 +71,7 @@ Game::~Game(){
     delete pauseMenu;
     delete mainMenu;
     delete deadMenu;
+    delete loadScreen;
 
     delete notiGamePad;
 }
@@ -147,7 +150,13 @@ void Game::loop(){
         //CASE -> LOADING
         else if(RootMap::isLoading()){
             //loading screen here
-            cout<< "is loading"<< endl;
+            gameState.time=SDL_GetTicks();
+            camera.setPosUp(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
+            loadScreen->updateState(gameState);
+
+            camera.activateOrthoProjection(&context.currentShader);
+            loadScreen->visualization(context);
+            firstTime=true;
         }
 
         //CASE -> PLAYING

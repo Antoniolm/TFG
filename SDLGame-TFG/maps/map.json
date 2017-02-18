@@ -12,8 +12,8 @@
     },
 
     "endMapRegion":{
-        "minPosition":[6.5,0.0,-4.5],
-        "maxPosition":[9.5,3.0,-1.5]
+        "minPosition":[53.5,0.0,-28.5],
+        "maxPosition":[56.5,8.0,-20.5]
     },
 
     "light":[
