@@ -41,7 +41,7 @@ Game::Game(){
     mainMenu=MainMenu::getInstance();
     pauseMenu = new PauseMenu();
     deadMenu = new DeadMenu();
-    loadScreen=new LoadingScreen();
+    loadScreen=new LoadingScreen(250);
 
     notiGamePad=new Notification(vec3f(0.0,0.0,0.0),vec3f(0.0,0.0,0.0),0,mVOID);
 

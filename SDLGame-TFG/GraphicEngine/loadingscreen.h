@@ -39,7 +39,7 @@ class LoadingScreen : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        LoadingScreen();
+        LoadingScreen(float delay);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -70,7 +70,7 @@ class LoadingScreen : public Object3D
         vector<Texture *> options;
         int currentOption;
         Material * currentMaterial;
-        float menuDelay;
+        float animationDelay,loadDelay;
 };
 
 #endif // LOADINGSCREEN_H

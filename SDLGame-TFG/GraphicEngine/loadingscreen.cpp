@@ -19,9 +19,10 @@
 
 #include "loadingscreen.h"
 
-LoadingScreen::LoadingScreen()
+LoadingScreen::LoadingScreen(float delay)
 {
     currentOption=0;
+    animationDelay=delay;
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/loading1.png");
@@ -48,7 +49,7 @@ LoadingScreen::LoadingScreen()
     options.push_back(new Texture("./textures/loading3.png"));
 
     currentTime=SDL_GetTicks();
-    menuDelay=currentTime;
+    loadDelay=currentTime;
 }
 
 //**********************************************************************//
@@ -74,6 +75,15 @@ void LoadingScreen::updateState(GameState & gameState){
 
     if(time-currentTime>200)
         currentTime=time-50;
+
+    if(loadDelay<(time-animationDelay)){
+        currentOption++;
+        if((unsigned)currentOption==options.size())
+            currentOption=0;
+
+        currentMaterial->setTexture(options[currentOption]);
+        loadDelay=time;
+    }
 
     currentTime+=time-currentTime;
 }
