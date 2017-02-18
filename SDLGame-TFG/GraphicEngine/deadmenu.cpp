@@ -96,6 +96,7 @@ void DeadMenu::updateState(GameState & gameState){
             (Profile::getInstance())->showResult();
             MainMenu::getInstance()->activate();
             activateMenu=false;
+            gameState.controller->consumeButtons();
         }
     }
 

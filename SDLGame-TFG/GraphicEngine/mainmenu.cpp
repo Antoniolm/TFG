@@ -71,7 +71,12 @@ MainMenu::MainMenu()
 
 MainMenu::~MainMenu()
 {
-    //dtor
+    delete root;
+
+    for(unsigned i=0;i<options.size();i++)
+        delete options[i];
+
+
 }
 
 //**********************************************************************//

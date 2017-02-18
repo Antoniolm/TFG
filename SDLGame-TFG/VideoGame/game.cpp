@@ -157,12 +157,18 @@ void Game::loop(){
                 rootMap->activatedLight(context.currentShader.getProgram());
                 rootMap->activatedObjectGroup();
                 hero=rootMap->getHero();
+                //hero->addLife(150);
+                cout<< "yep->"<<hero->getLife()<<endl;
                 firstTime=false;
             }
             ///////////////////
             // UPDATE STATE
             ///////////////////
             gameState.time=SDL_GetTicks();
+
+            if(hero->getLife()<=0.0){ //check if the hero is dead
+                deadMenu->activate();
+            }
 
             if(!deadMenu->isActivate() && !camera.isViewMode()) //if  mainMenu and deadMenu is not activate
                 pauseMenu->updateState(gameState);
@@ -214,9 +220,6 @@ void Game::loop(){
 
             profile->addVisualTime(SDL_GetTicks()-time);
             profile->incrementFrames();
-
-            if(hero->getLife()<=0.0)
-                deadMenu->activate();
 
             if(rootMap->isFinished()){
                 gameState.rootMap=new RootMap("./maps/map.json",true);
