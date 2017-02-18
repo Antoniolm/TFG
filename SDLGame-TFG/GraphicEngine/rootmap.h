@@ -170,6 +170,7 @@ class RootMap : public Object3D
         void activatedObjectGroup();
         static bool isLoading();
         bool isFinished();
+        static bool loading;
     protected:
 
     private:
@@ -191,7 +192,6 @@ class RootMap : public Object3D
         Sound * backSound;
         Hero * hero;
         Mate * mate;
-        static bool loading;
 };
 
 #endif // ROOTMAP_H

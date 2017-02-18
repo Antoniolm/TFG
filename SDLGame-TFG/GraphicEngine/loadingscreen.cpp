@@ -76,8 +76,8 @@ void LoadingScreen::updateState(GameState & gameState){
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(loadDelay<(time-animationDelay)){
-        currentOption++;
+    if(loadDelay<(time-animationDelay)){//if the time of our currentTexture is finished
+        currentOption++;                //Change texture
         if((unsigned)currentOption==options.size())
             currentOption=0;
 
