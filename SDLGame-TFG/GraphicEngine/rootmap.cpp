@@ -189,7 +189,7 @@ void RootMap::initialize(string fileMap){
     transObj->translation(0.0f,0.0f,0.0f);
 
     Matrix4f *scaleBack =new Matrix4f();
-    scaleBack->scale(5.0,5.0,5.0);
+    scaleBack->scale(10.0,5.0,10.0);
 
     NodeSceneGraph * objNode=new NodeSceneGraph();
     objNode->add(transObj);
