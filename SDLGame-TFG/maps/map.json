@@ -12,8 +12,8 @@
     },
 
     "endMapRegion":{
-        "minPosition":[53.5,0.0,-28.5],
-        "maxPosition":[56.5,8.0,-20.5]
+        "minPosition":[83.5,0.0,-28.5],
+        "maxPosition":[86.5,8.0,-20.5]
     },
 
     "light":[
@@ -105,33 +105,7 @@
             "delay":4000,
             "material":"mARCHENEMY",
             "mesh":"ARROW"
-        },
-
-        {   "radioActivity":[10.0,5.0,12.0],
-            "position":[55.5,7.5,-32.5],
-            "velocity":[-3.0,0.0,0.0],
-            "direction":2,
-            "delay":4000,
-            "material":"mARCHENEMY",
-            "mesh":"ARROW"
-        },
-        {   "radioActivity":[10.0,5.0,12.0],
-            "position":[55.5,6.5,-32.5],
-            "velocity":[-3.0,0.0,0.0],
-            "direction":2,
-            "delay":4000,
-            "material":"mARCHENEMY",
-            "mesh":"ARROW"
-        },
-        {   "radioActivity":[10.0,5.0,12.0],
-            "position":[55.5,5.5,-32.5],
-            "velocity":[-3.0,0.0,0.0],
-            "direction":2,
-            "delay":4000,
-            "material":"mARCHENEMY",
-            "mesh":"ARROW"
         }
-
     ],
 
     "npcs":[
@@ -632,7 +606,7 @@
 
 
             {   "//":"ROOM 5 - WATER+ARROW",
-                "position":[46,4.5,24],
+                "position":[46,4.5,25],
                 "YNumber":4,        
                 "XNumber":2,         
                 "ZNumber":1,         
@@ -648,20 +622,28 @@
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
                 "damage":0.0},
-            {   "position":[46,2.5,25],
+            {   "position":[48,2.5,25],
                 "YNumber":1,        
-                "XNumber":13,         
+                "XNumber":9,         
                 "ZNumber":11,         
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
-                "damage":0.0},
+                "damage":-4.0},
             {   "position":[57,4.5,25],
-                "YNumber":2,        
+                "YNumber":3,        
                 "XNumber":2,         
                 "ZNumber":10,         
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+            {   "position":[46,8.5,24],
+                "YNumber":5,        
+                "XNumber":13,         
+                "ZNumber":1,         
+                "materialTop":"mVOID",
+                "materialMiddle":"mVOID", 
                 "mesh":"CUBE", 
                 "damage":0.0},
 
@@ -729,15 +711,7 @@
                 "position":[59,8.5,25],
                 "YNumber":6,        
                 "XNumber":1,         
-                "ZNumber":9,         
-                "materialTop":"mCUBE_WALL",
-                "materialMiddle":"mCUBE_WALL", 
-                "mesh":"CUBE", 
-                "damage":0.0},
-            {   "position":[60,8.5,35],
-                "YNumber":4,        
-                "XNumber":10,         
-                "ZNumber":1,         
+                "ZNumber":7,         
                 "materialTop":"mCUBE_WALL",
                 "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE", 
@@ -766,10 +740,10 @@
                 "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE", 
                 "damage":0.0},
-            {   "position":[45,8.5,31],
+            {   "position":[45,8.5,30],
                 "YNumber":6,        
                 "XNumber":1,         
-                "ZNumber":5,         
+                "ZNumber":6,         
                 "materialTop":"mCUBE_WALL",
                 "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE",
@@ -901,7 +875,7 @@
             {   "position":[52.5,3.5,-30.45],
                 "transforms":[
                     {   "type":"scale",
-                        "values":[13.0,1.0,11.0]
+                        "values":[9.0,1.0,11.0]
                     }
                 ],       
                 "material":"mDWATER",
@@ -989,14 +963,14 @@
                 "mesh":"TRUNK",
                 "collision": true
             },
-            {   "position":[58,6.5,-32.5],
+            {   "position":[58,7.0,-32.5],
                 "transforms":[
                 ],       
                 "material":"mINVICUBE_WALL",
                 "mesh":"IWALLRIGHT",
                 "collision": true
             },
-            {   "position":[50,6.5,-26.5],
+            {   "position":[47,7.0,-29.5],
                 "transforms":[
                 ],       
                 "material":"mINVICUBE_WALL",
