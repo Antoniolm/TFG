@@ -58,7 +58,7 @@ Game::Game(){
     //////////////////////////////////////////////////////
     /////             Initialize controller          /////
     //////////////////////////////////////////////////////
-    controller=new ControllerManager();
+    gameState.controller=new ControllerManager();
 
 }
 
@@ -67,14 +67,14 @@ Game::Game(){
 Game::~Game(){
     delete instance;
     delete window;
-    delete rootMap;
+    delete gameState.rootMap;
     delete pauseMenu;
     delete mainMenu;
     delete deadMenu;
     delete loadScreen;
     delete lifeText;
     delete coinText;
-    delete controller;
+    delete gameState.controller;
 
     delete notiGamePad;
 
@@ -100,8 +100,6 @@ void Game::loop(){
     int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;
     Profile * profile=Profile::getInstance();
-    GameState gameState;
-    gameState.controller=controller;
 
     //Create our camera
     vec3f position(0,8.0f,13.0f);
@@ -135,7 +133,7 @@ void Game::loop(){
 
             if((event.type==SDL_CONTROLLERBUTTONDOWN || event.type==SDL_CONTROLLERBUTTONUP || event.type==SDL_CONTROLLERDEVICEADDED
               || event.type==SDL_CONTROLLERDEVICEREMOVED || event.type==SDL_CONTROLLERAXISMOTION)){
-                controller->checkEvent(event);;
+                gameState.controller->checkEvent(event);;
             }
 
            if(event.type==SDL_CONTROLLERDEVICEADDED) //If the game is connected
@@ -144,7 +142,7 @@ void Game::loop(){
                 notiGamePad=new Notification(vec3f(0.3,7.4,10.6),vec3f(0.1,0.35,0.1),2000,mGMPADX);
         }
 
-        controller->catchKeyBoardState(SDL_GetKeyboardState(NULL));
+        gameState.controller->catchKeyBoardState(SDL_GetKeyboardState(NULL));
         window->cleanScreen();
 
         //CASE -> MAINMENU
@@ -173,10 +171,9 @@ void Game::loop(){
         //CASE -> PLAYING
         else{
             if(firstTime){
-                rootMap=gameState.rootMap;
-                rootMap->activatedLight(context.currentShader.getProgram());
-                rootMap->activatedObjectGroup();
-                hero=rootMap->getHero();
+                gameState.rootMap->activatedLight(context.currentShader.getProgram());
+                gameState.rootMap->activatedObjectGroup();
+                hero=gameState.rootMap->getHero();
                 firstTime=false;
             }
             ///////////////////
@@ -196,14 +193,14 @@ void Game::loop(){
 
 
             if(!pauseMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()){ //If  menu is not activate
-                rootMap->updateState(gameState);
+                gameState.rootMap->updateState(gameState);
                 if(wasActivatedMenu) //If is the first time that it is not activated
-                    rootMap->enableSound(true);
+                    gameState.rootMap->enableSound(true);
                 wasActivatedMenu=false;
             }
             else{ //Else menu is activated
                 if(!wasActivatedMenu) //If is the first time that it is activated
-                    rootMap->enableSound(false);
+                    gameState.rootMap->enableSound(false);
                 wasActivatedMenu=true;
             }
 
@@ -226,7 +223,7 @@ void Game::loop(){
             time=SDL_GetTicks();
 
             camera.activatePerspecProjection(context.currentShader.getProgram());
-            rootMap->visualization(context);
+            gameState.rootMap->visualization(context);
 
             camera.activateOrthoProjection(context.currentShader.getProgram());
             lifeText->visualization(context);
@@ -239,11 +236,11 @@ void Game::loop(){
             profile->addVisualTime(SDL_GetTicks()-time);
             profile->incrementFrames();
 
-            if(rootMap->isFinished()){
+            if(gameState.rootMap->isFinished()){
                 //delete gameState.rootMap;
                 gameState.rootMap=new RootMap("./maps/map.json",true);
 
-                controller->consumeButtons();
+                gameState.controller->consumeButtons();
                 firstTime=true;
             }
 

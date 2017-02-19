@@ -97,14 +97,13 @@ class Game
 
         static Game* instance;
         Window * window;
-        RootMap * rootMap;
+        GameState gameState;
         Hero * hero;
         PauseMenu * pauseMenu;
         MainMenu * mainMenu;
         DeadMenu * deadMenu;
         LoadingScreen * loadScreen;
         Text * lifeText,* coinText;
-        ControllerManager * controller;
         Notification * notiGamePad;
         Context context;
 };

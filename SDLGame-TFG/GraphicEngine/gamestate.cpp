@@ -24,7 +24,5 @@ GameState::GameState()
     //ctor
 }
 
-GameState::~GameState()
-{
-    //dtor
+GameState::~GameState(){
 }
