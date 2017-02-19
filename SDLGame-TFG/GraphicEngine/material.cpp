@@ -56,22 +56,15 @@ Material::~Material()
 
 //**********************************************************************//
 
-void Material::activate(Shader * aShader){
-    shaders=aShader;
-
-    //Set value to uniform about material
-    GLint matAmbientLoc  = glGetUniformLocation(shaders->getProgram(), "material.ambient");
-    GLint matDiffuseLoc  = glGetUniformLocation(shaders->getProgram(), "material.diffuse");
-    GLint matSpecularLoc = glGetUniformLocation(shaders->getProgram(), "material.specular");
-    GLint matShineLoc    = glGetUniformLocation(shaders->getProgram(), "material.shininess");
-
+void Material::activate(GLuint shaderID){
     //Bind the texture
     texture->bindTexture();
 
-    glUniform3f(matAmbientLoc,  ambient.x,  ambient.y, ambient.z);
-    glUniform3f(matDiffuseLoc,  diffuse.x,  diffuse.y, diffuse.z);
-    glUniform3f(matSpecularLoc, specular.x,  specular.y, specular.z);
-    glUniform1f(matShineLoc,    shininess);
+    //Set value to uniform about material
+    glUniform3f(glGetUniformLocation(shaderID, "material.ambient"),  ambient.x,  ambient.y, ambient.z);
+    glUniform3f(glGetUniformLocation(shaderID, "material.diffuse"),  diffuse.x,  diffuse.y, diffuse.z);
+    glUniform3f(glGetUniformLocation(shaderID, "material.specular"), specular.x,  specular.y, specular.z);
+    glUniform1f(glGetUniformLocation(shaderID, "material.shininess"),    shininess);
 }
 
 //**********************************************************************//

@@ -103,7 +103,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activateCamera(Shader * shader);
+        void activateCamera(GLuint shaderID);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -111,7 +111,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activateOrthoProjection(Shader * shader);
+        void activateOrthoProjection(GLuint shaderID);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -119,7 +119,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activatePerspecProjection(Shader * shader);
+        void activatePerspecProjection(GLuint shaderID);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -127,7 +127,7 @@ class Camera
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void update(GameState & gameState,Shader * shader,bool activateMenu);
+        void update(GameState & gameState,GLuint shaderID,bool activateMenu);
 
         //////////////////////////////////////////////////////////////////////////
         /**

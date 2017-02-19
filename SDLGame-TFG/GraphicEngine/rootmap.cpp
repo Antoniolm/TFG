@@ -465,8 +465,10 @@ bool RootMap::isLoading(){
 
 bool RootMap::isFinished(){
     bool result=endMapRegion->isActivated();
-    if(result)
+    if(result){
         RootMap::loading=true;
+        enableSound(false);
+    }
 
     return result;
 }

@@ -112,8 +112,8 @@ void Game::loop(){
     camera.setOrthographicProjection(-1,1,-1,1,-3,3);
     camera.setCamera(position,direction,up);
     camera.createCamera();
-    camera.activateCamera(&context.currentShader);
-    camera.activateOrthoProjection(&context.currentShader);
+    camera.activateCamera(context.currentShader.getProgram());
+    camera.activateOrthoProjection(context.currentShader.getProgram());
 
     //Show our window.
     window->showScreen();
@@ -153,7 +153,7 @@ void Game::loop(){
             camera.setPosition(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
             mainMenu->updateState(gameState);
 
-            camera.activateOrthoProjection(&context.currentShader);
+            camera.activateOrthoProjection(context.currentShader.getProgram());
             mainMenu->visualization(context);
             firstTime=true;
         }
@@ -165,7 +165,7 @@ void Game::loop(){
             camera.setPosition(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
             loadScreen->updateState(gameState);
 
-            camera.activateOrthoProjection(&context.currentShader);
+            camera.activateOrthoProjection(context.currentShader.getProgram());
             loadScreen->visualization(context);
             firstTime=true;
         }
@@ -210,7 +210,7 @@ void Game::loop(){
             //Update the camera, lifeText, coinText, profile
             posHero=hero->getPosition();
 
-            camera.update(gameState,&context.currentShader,
+            camera.update(gameState,context.currentShader.getProgram(),
                           (pauseMenu->isActivate() || deadMenu->isActivate() || mainMenu->isActivate()));
 
             updateLife(lastLife);
@@ -225,10 +225,10 @@ void Game::loop(){
             ///////////////////
             time=SDL_GetTicks();
 
-            camera.activatePerspecProjection(&context.currentShader);
+            camera.activatePerspecProjection(context.currentShader.getProgram());
             rootMap->visualization(context);
 
-            camera.activateOrthoProjection(&context.currentShader);
+            camera.activateOrthoProjection(context.currentShader.getProgram());
             lifeText->visualization(context);
             coinText->visualization(context);
             pauseMenu->visualization(context);
@@ -242,6 +242,7 @@ void Game::loop(){
             if(rootMap->isFinished()){
                 //delete gameState.rootMap;
                 gameState.rootMap=new RootMap("./maps/map.json",true);
+
                 controller->consumeButtons();
                 firstTime=true;
             }
@@ -258,7 +259,7 @@ void Game::loop(){
 void Game::updateLife(int & lastLife){
     vec3f posHero=hero->getPosition();
     lifeText->setPosition(vec3f(posHero.x-0.72,posHero.y+7.4,posHero.z+10.6));
-    //lifeText->setPosition(vec3f(posHero.x+0.72,posHero.y+5.9,posHero.z+12.6));
+
     std::stringstream life;
     life<< hero->getLife();
     if(lastLife!=hero->getLife()){ //If the life has changed
@@ -273,7 +274,7 @@ void Game::updateLife(int & lastLife){
 void Game::updateCoin(int & currentCoin){
     vec3f posHero=hero->getPosition();
     coinText->setPosition(vec3f(posHero.x+0.72,posHero.y+7.4,posHero.z+10.6));
-    //coinText->setPosition(vec3f(posHero.x+0.72,posHero.y+5.9,posHero.z+12.6));
+
     std::stringstream coin;
     coin<< hero->getCoin();
     if(currentCoin!=hero->getCoin()){ //If the life has changed

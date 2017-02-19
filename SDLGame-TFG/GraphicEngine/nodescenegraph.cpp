@@ -78,7 +78,7 @@ void NodeSceneGraph::visualization(Context & cv){
     for(it=entrance.begin();it!=entrance.end();it++){
             switch((*it).type){
             case 0: //Object3d
-                cv.matrixStack.activate(&cv.currentShader);
+                cv.matrixStack.activate(cv.currentShader.getProgram());
                 (*it).obj->visualization(cv);
                 break;
             case 1: //Matrix4f
@@ -87,7 +87,7 @@ void NodeSceneGraph::visualization(Context & cv){
                 break;
             case 2: //Material
                 cv.materialStack.push((*it).material);
-                (*it).material->activate(&cv.currentShader);
+                (*it).material->activate(cv.currentShader.getProgram());
                 contMaterial++;
                 break;
             }
@@ -95,11 +95,11 @@ void NodeSceneGraph::visualization(Context & cv){
     }
     cv.currentMaterialIndex=(cv.materialStack.getMaterial()->getIndex());
     cv.materialStack.pop(contMaterial);
-    cv.materialStack.getMaterial()->activate(&cv.currentShader);
+    cv.materialStack.getMaterial()->activate(cv.currentShader.getProgram());
 
     cv.currentTransf.setMatrix(cv.matrixStack.getMatrix().getMatrix());
     cv.matrixStack.pop(contMatrix);
-    cv.matrixStack.activate(&cv.currentShader);
+    cv.matrixStack.activate(cv.currentShader.getProgram());
 }
 
 //**********************************************************************//

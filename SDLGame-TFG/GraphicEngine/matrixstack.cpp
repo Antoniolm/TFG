@@ -52,9 +52,8 @@ void MatrixStack::pop(int cont){
 
 //**********************************************************************//
 
-void MatrixStack::activate(Shader * shader){
-    GLint transformaLocation= glGetUniformLocation(shader->getProgram(),"transform");
-    glUniformMatrix4fv(transformaLocation,1,GL_FALSE,getMatrix().getMatrix());
+void MatrixStack::activate(GLuint shaderID){
+    glUniformMatrix4fv(glGetUniformLocation(shaderID,"transform"),1,GL_FALSE,getMatrix().getMatrix());
 }
 
 //**********************************************************************//

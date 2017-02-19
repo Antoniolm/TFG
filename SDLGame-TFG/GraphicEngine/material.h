@@ -58,7 +58,7 @@ class Material
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activate(Shader * aShader);
+        void activate(GLuint shaderID);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -164,7 +164,6 @@ class Material
         vec3f specular;
         float shininess;
         Texture * texture;
-        Shader * shaders;
         MaterialIndex index;
 };
 

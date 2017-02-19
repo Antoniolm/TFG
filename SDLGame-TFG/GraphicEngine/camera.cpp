@@ -114,31 +114,26 @@ void Camera::createCamera(){
 
 //**********************************************************************//
 
-void Camera::activateCamera(Shader * shader){
-    GLint viewLocation= glGetUniformLocation(shader->getProgram(),"view");
-    glUniformMatrix4fv(viewLocation,1,GL_FALSE,camera.getMatrix());
-
-    GLint viewPosLoc = glGetUniformLocation(shader->getProgram(), "viewPos");
-    glUniform3f(viewPosLoc, position.x, position.y, position.z);
+void Camera::activateCamera(GLuint shaderID){
+    glUniformMatrix4fv(glGetUniformLocation(shaderID,"view"),1,GL_FALSE,camera.getMatrix());
+    glUniform3f(glGetUniformLocation(shaderID, "viewPos"), position.x, position.y, position.z);
 }
 
 //**********************************************************************//
 
-void Camera::activateOrthoProjection(Shader * shader){
-    GLint projectionLocation= glGetUniformLocation(shader->getProgram(),"projection");
-    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,orthoProjection.getMatrix());
+void Camera::activateOrthoProjection(GLuint shaderID){
+    glUniformMatrix4fv(glGetUniformLocation(shaderID,"projection"),1,GL_FALSE,orthoProjection.getMatrix());
 }
 
 //**********************************************************************//
 
-void Camera::activatePerspecProjection(Shader * shader){
-    GLint projectionLocation= glGetUniformLocation(shader->getProgram(),"projection");
-    glUniformMatrix4fv(projectionLocation,1,GL_FALSE,perspecProjection.getMatrix());
+void Camera::activatePerspecProjection(GLuint shaderID){
+    glUniformMatrix4fv(glGetUniformLocation(shaderID,"projection"),1,GL_FALSE,perspecProjection.getMatrix());
 }
 
 //**********************************************************************//
 
-void Camera::update(GameState & gameState,Shader *shader,bool activateMenu){
+void Camera::update(GameState & gameState,GLuint shaderID,bool activateMenu){
     vec3f posHero=gameState.rootMap->getHero()->getPosition();
     ControllerManager * controller=gameState.controller;
 
@@ -172,11 +167,8 @@ void Camera::update(GameState & gameState,Shader *shader,bool activateMenu){
 
     createCamera();//Create camera
 
-    GLint viewLocation= glGetUniformLocation(shader->getProgram(),"view");
-    glUniformMatrix4fv(viewLocation,1,GL_FALSE,camera.getMatrix());
-
-    GLint viewPosLoc = glGetUniformLocation(shader->getProgram(), "viewPos");
-    glUniform3f(viewPosLoc, position.x, position.y, position.z);
+    glUniformMatrix4fv(glGetUniformLocation(shaderID,"view"),1,GL_FALSE,camera.getMatrix());
+    glUniform3f(glGetUniformLocation(shaderID, "viewPos"), position.x, position.y, position.z);
 
     currentTime+=time-currentTime;
 }
@@ -226,9 +218,6 @@ void Camera::setPosition(vec3f aPosition,GLuint shaderID){
 
     createCamera();//Create camera
 
-    GLint viewLocation= glGetUniformLocation(shaderID,"view");
-    glUniformMatrix4fv(viewLocation,1,GL_FALSE,camera.getMatrix());
-
-    GLint viewPosLoc = glGetUniformLocation(shaderID, "viewPos");
-    glUniform3f(viewPosLoc, position.x, position.y, position.z);
+    glUniformMatrix4fv(glGetUniformLocation(shaderID,"view"),1,GL_FALSE,camera.getMatrix());
+    glUniform3f(glGetUniformLocation(shaderID, "viewPos"), position.x, position.y, position.z);
 }
