@@ -643,7 +643,7 @@
             {   "position":[46,4.5,25],
                 "YNumber":2,        
                 "XNumber":2,         
-                "ZNumber":4,         
+                "ZNumber":10,         
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
@@ -659,23 +659,7 @@
             {   "position":[57,4.5,25],
                 "YNumber":2,        
                 "XNumber":2,         
-                "ZNumber":3,         
-                "materialTop":"mCUBE_DUNG",
-                "materialMiddle":"mCUBE_DUNGB", 
-                "mesh":"CUBE", 
-                "damage":0.0},
-            {   "position":[57,4.5,29],
-                "YNumber":2,        
-                "XNumber":2,         
-                "ZNumber":2,         
-                "materialTop":"mCUBE_DUNG",
-                "materialMiddle":"mCUBE_DUNGB", 
-                "mesh":"CUBE", 
-                "damage":0.0},
-            {   "position":[57,4.5,34],
-                "YNumber":2,        
-                "XNumber":2,         
-                "ZNumber":1,         
+                "ZNumber":10,         
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
@@ -1004,7 +988,22 @@
                 "material":"mTRUNK",
                 "mesh":"TRUNK",
                 "collision": true
-            }          
+            },
+            {   "position":[58,6.5,-32.5],
+                "transforms":[
+                ],       
+                "material":"mINVICUBE_WALL",
+                "mesh":"IWALLRIGHT",
+                "collision": true
+            },
+            {   "position":[50,6.5,-26.5],
+                "transforms":[
+                ],       
+                "material":"mINVICUBE_WALL",
+                "mesh":"IWALLEFT",
+                "collision": true
+            } 
+
                
     ]
 

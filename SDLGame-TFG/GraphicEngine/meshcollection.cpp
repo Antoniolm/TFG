@@ -204,6 +204,12 @@ MeshCollection::MeshCollection()
     element=new Mesh("geometries/spikes.obj");
     collection.addElement(element);
 
+    element=new Mesh("geometries/invisibleWallRight.obj");
+    collection.addElement(element);
+
+    element=new Mesh("geometries/invisibleWallLeft.obj");
+    collection.addElement(element);
+
     //Create our map
     collection.addIndex("CUBE",CUBE);
     collection.addIndex("SPHERE",SPHERE);
@@ -255,6 +261,8 @@ MeshCollection::MeshCollection()
     collection.addIndex("TRUNK",TRUNK);
     collection.addIndex("LADDER",LADDER);
     collection.addIndex("SPIKE",SPIKE);
+    collection.addIndex("IWALLRIGHT",IWALLRIGHT);
+    collection.addIndex("IWALLEFT",IWALLEFT);
 }
 
 //**********************************************************************//

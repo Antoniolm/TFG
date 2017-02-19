@@ -77,7 +77,9 @@ enum MeshIndex{
     BOOKS,      //46
     TRUNK,      //47
     LADDER,     //48
-    SPIKE       //49
+    SPIKE,      //49
+    IWALLRIGHT,
+    IWALLEFT
 };
 
 class MeshCollection
