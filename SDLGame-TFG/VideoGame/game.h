@@ -40,6 +40,7 @@
 #include "../GraphicEngine/profile.h"
 #include "../GraphicEngine/notification.h"
 #include "../GraphicEngine/gamestate.h"
+#include "../GraphicEngine/savedmanager.h"
 #include "projectile.h"
 #include "hero.h"
 #include <SDL_gamecontroller.h>

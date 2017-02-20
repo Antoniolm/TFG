@@ -240,6 +240,7 @@ void Game::loop(){
             if(gameState.rootMap->isFinished()){
                 //delete gameState.rootMap;
                 fileMap=gameState.rootMap->getNextMap();
+                SavedManager::getInstance()->save(fileMap);
                 gameState.rootMap=new RootMap(fileMap,true);
 
                 gameState.controller->consumeButtons();
