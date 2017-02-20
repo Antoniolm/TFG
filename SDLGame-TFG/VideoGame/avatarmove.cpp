@@ -257,7 +257,7 @@ ObjectScene * AvatarMove::gravity(float time){
     float tenthValueX,tenthValueZ;
 
     if(!isJumping){
-    GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
+        GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
 
     vec3f posHero=getPosition();
     posHero.y-=0.5;
@@ -309,7 +309,7 @@ ObjectScene * AvatarMove::gravity(float time){
         if(isFalling){
             vec3f positionObs=hasCollision->getPosition();
             BoundingBox box=hasCollision->getBoundingBox();
-            if((positionObs.y+box.maxValue.y)-(posHero.y)>0.1){
+            if((positionObs.y+box.maxValue.y)-(posHero.y)>0.1 && (positionObs.y+box.maxValue.y)-(posHero.y)<0.5){
                 Matrix4f trans;
                 trans.translation(0.0,(positionObs.y+box.maxValue.y)-(posHero.y),0.0);
                 moveAvatar->product(trans.getMatrix());

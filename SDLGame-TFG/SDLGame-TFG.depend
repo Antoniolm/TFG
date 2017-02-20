@@ -404,7 +404,7 @@
 	"window.h"
 	"file_obj.h"
 
-1487592829 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1487597331 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -2466,7 +2466,7 @@
 1487368139 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.cpp
 	"textregion.h"
 
-1487430899 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loadingscreen.cpp
+1487599942 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loadingscreen.cpp
 	"loadingscreen.h"
 
 1487426127 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loadingscreen.h
@@ -2490,6 +2490,6 @@
 	<string>
 	<fstream>
 
-1487593098 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\savedmanager.cpp
+1487595353 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\savedmanager.cpp
 	"savedmanager.h"
 
