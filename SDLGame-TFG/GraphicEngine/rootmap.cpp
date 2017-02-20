@@ -94,6 +94,9 @@ void RootMap::initialize(string fileMap){
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
+    //Take the file of our next map
+    nextMapFile=document["nextMap"].GetString();
+
     /////////////////////////////////////////
     // Create hero and mate
     /////////////////////////////////////////
@@ -471,6 +474,12 @@ bool RootMap::isFinished(){
     }
 
     return result;
+}
+
+//**********************************************************************//
+
+string RootMap::getNextMap(){
+    return nextMapFile;
 }
 
 //**********************************************************************//

@@ -95,6 +95,7 @@ void Game::loop(){
     SDL_Event event;
     vec3f posHero;
     float time;
+    string fileMap;
     bool wasActivatedMenu=false;
     bool firstTime=true;
     int windowH=800,windowW=600;
@@ -238,7 +239,8 @@ void Game::loop(){
 
             if(gameState.rootMap->isFinished()){
                 //delete gameState.rootMap;
-                gameState.rootMap=new RootMap("./maps/map.json",true);
+                fileMap=gameState.rootMap->getNextMap();
+                gameState.rootMap=new RootMap(fileMap,true);
 
                 gameState.controller->consumeButtons();
                 firstTime=true;

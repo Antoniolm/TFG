@@ -198,7 +198,16 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         bool isFinished();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the file of next map
+        *    \return string
+        */
+        //////////////////////////////////////////////////////////////////////////
+        string getNextMap();
+
         static bool loading;
+
     protected:
 
     private:
@@ -220,6 +229,7 @@ class RootMap : public Object3D
         Sound * backSound;
         Hero * hero;
         Mate * mate;
+        string nextMapFile;
 };
 
 #endif // ROOTMAP_H

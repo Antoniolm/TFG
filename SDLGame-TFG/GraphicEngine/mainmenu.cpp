@@ -129,7 +129,7 @@ void MainMenu::updateState(GameState & gameState){
                     openSound->play();
                     RootMap::loading=true;
                     //delete gameState.rootMap;
-                    gameState.rootMap=new RootMap("./maps/map.json",true);
+                    gameState.rootMap=new RootMap("./maps/map00.json",true);
                 break;
                 case 1:
                     openSound->play();
