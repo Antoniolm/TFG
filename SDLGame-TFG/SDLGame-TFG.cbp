@@ -138,6 +138,8 @@
 		<Unit filename="GraphicEngine/profile.h" />
 		<Unit filename="GraphicEngine/rootmap.cpp" />
 		<Unit filename="GraphicEngine/rootmap.h" />
+		<Unit filename="GraphicEngine/savedmanager.cpp" />
+		<Unit filename="GraphicEngine/savedmanager.h" />
 		<Unit filename="GraphicEngine/scriptanimation.cpp" />
 		<Unit filename="GraphicEngine/scriptanimation.h" />
 		<Unit filename="GraphicEngine/scriptlmd.cpp" />

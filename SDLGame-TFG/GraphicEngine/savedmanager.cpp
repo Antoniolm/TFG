@@ -33,8 +33,8 @@ SavedManager::~SavedManager()
 
 //**********************************************************************//
 
-string SavedManager::load(){
-    string currentMap;
+std::string SavedManager::load(){
+    std::string currentMap;
 
     //Open file
     FILE * fp = fopen("./save/save.json", "rb"); // non-Windows use "r"
@@ -50,6 +50,9 @@ string SavedManager::load(){
 
 //**********************************************************************//
 
-void SavedManager::save(string fileMap){
-
+void SavedManager::save(std::string fileMap){
+    std::ofstream savedFile;
+    savedFile.open ("./save/save.json");
+    savedFile << "{ \"currentMap\":\""+fileMap+"\" }\n";
+    savedFile.close();
 }

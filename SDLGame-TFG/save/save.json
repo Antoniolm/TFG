@@ -1,3 +1,1 @@
-{
-    "currentMap":"map01.json"
-}
+{ "currentMap":"./maps/map01.json" }

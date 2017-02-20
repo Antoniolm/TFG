@@ -24,6 +24,7 @@
 #include "../lib/rapidjson/stringbuffer.h"
 #include "../lib/rapidjson/filereadstream.h"
 #include <string>
+#include <fstream>
 
 using namespace rapidjson;
 
@@ -38,9 +39,9 @@ class SavedManager
         //////////////////////////////////////////////////////////////////////////
         virtual ~SavedManager();
 
-        string load();
+        std::string load();
 
-        void save(string fileMap);
+        void save(std::string fileMap);
 
         static SavedManager * getInstance(){
             if(instance == NULL)

@@ -126,12 +126,16 @@ void MainMenu::updateState(GameState & gameState){
             switch(currentOption){
                 case 0:
                     activateMenu=false;
-                    openSound->play();
                     RootMap::loading=true;
                     //delete gameState.rootMap;
                     gameState.rootMap=new RootMap("./maps/map00.json",true);
+                    openSound->play();
                 break;
                 case 1:
+                    //Catch the saved progress and load the map
+                    activateMenu=false;
+                    RootMap::loading=true;
+                    gameState.rootMap=new RootMap(SavedManager::getInstance()->load(),true);
                     openSound->play();
                 break;
                 case 2:

@@ -239,7 +239,10 @@ void Game::loop(){
 
             if(gameState.rootMap->isFinished()){
                 //delete gameState.rootMap;
+                //Get the next Map
                 fileMap=gameState.rootMap->getNextMap();
+
+                //Save the progress and create the new map
                 SavedManager::getInstance()->save(fileMap);
                 gameState.rootMap=new RootMap(fileMap,true);
 

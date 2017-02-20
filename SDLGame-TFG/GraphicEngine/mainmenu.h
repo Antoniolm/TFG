@@ -27,6 +27,7 @@
 #include "nodescenegraph.h"
 #include "texture.h"
 #include "material.h"
+#include "savedmanager.h"
 #include "sound.h"
 #include "menu.h"
 
