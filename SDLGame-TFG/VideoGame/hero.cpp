@@ -315,10 +315,6 @@ Hero::~Hero()
         delete (*it);
     }
 
-    for(vector<Sound *>::iterator it = heroSound.begin() ; it != heroSound.end(); ++it){
-        delete (*it);
-    }
-
     for(vector<Projectile *>::iterator it = projectiles.begin() ; it != projectiles.end(); ++it){
         delete (*it);
     }

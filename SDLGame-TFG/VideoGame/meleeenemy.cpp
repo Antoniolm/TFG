@@ -237,7 +237,13 @@ MeleeEnemy::MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 
 MeleeEnemy::~MeleeEnemy()
 {
-    //dtor
+    delete root;
+    delete currentText;
+    delete weapon;
+    delete moveAvatar;
+
+    for(vector<Matrix4f *>::iterator it = moveMatrix.begin() ; it != moveMatrix.end(); ++it)
+        delete (*it);
 }
 
 //**********************************************************************//

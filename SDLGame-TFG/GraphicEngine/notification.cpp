@@ -84,6 +84,7 @@ Notification::Notification(const Value & notificationFeatures)
 Notification::~Notification()
 {
     delete root;
+    delete transNoti;
 }
 
 //**********************************************************************//

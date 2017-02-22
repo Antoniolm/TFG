@@ -43,15 +43,14 @@ RootMap::RootMap(string fileMap,bool flagThread){
 
 RootMap::~RootMap()
 {
-    cout<< "hello I am the rootMap delete"<<endl;
     delete loader;
     delete backSound;
     delete npcList;
-    //delete enemyList;
+    delete enemyList;
     delete itemList;
     //delete hero;
-    delete mate;   //fix
-    delete title; //fix
+    delete mate;
+    delete title;
     delete endMapRegion;
 
     for(unsigned i=0;i<objs.size();i++)

@@ -28,8 +28,6 @@ AvatarMove::AvatarMove(){
 //**********************************************************************//
 
 AvatarMove::~AvatarMove(){
-    delete acceleratedMove;
-    delete moveAvatar;
 }
 
 //**********************************************************************//
