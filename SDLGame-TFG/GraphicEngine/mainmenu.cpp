@@ -94,6 +94,7 @@ void MainMenu::visualization(Context & cv){
 
 void MainMenu::updateState(GameState & gameState){
     vec3f position;
+     string fileLoad;
 
     float time=gameState.time;
     ControllerManager * controller=gameState.controller;
@@ -128,15 +129,19 @@ void MainMenu::updateState(GameState & gameState){
                     activateMenu=false;
                     RootMap::loading=true;
                     //delete gameState.rootMap;
+                    SavedManager::getInstance()->save("");
                     gameState.rootMap=new RootMap("./maps/map00.json",true);
                     openSound->play();
                 break;
                 case 1:
                     //Catch the saved progress and load the map
-                    activateMenu=false;
-                    RootMap::loading=true;
-                    gameState.rootMap=new RootMap(SavedManager::getInstance()->load(),true);
-                    openSound->play();
+                    fileLoad=SavedManager::getInstance()->load();
+                    if(fileLoad!=""){
+                        activateMenu=false;
+                        RootMap::loading=true;
+                        gameState.rootMap=new RootMap(fileLoad,true);
+                        openSound->play();
+                    }
                 break;
                 case 2:
                     openSound->play();
