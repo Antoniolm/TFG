@@ -28,7 +28,7 @@
 #include "../GraphicEngine/linearmovement.h"
 #include "../GraphicEngine/axisrotation.h"
 #include "../GraphicEngine/rootmap.h"
-#include "../GraphicEngine/Camera.h"
+#include "../GraphicEngine/camera.h"
 #include "../GraphicEngine/structdata.h"
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/menu.h"

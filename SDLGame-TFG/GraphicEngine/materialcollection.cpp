@@ -111,6 +111,8 @@ MaterialCollection::MaterialCollection()
 
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/title1.png",mTITLE1));
 
+    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/potTexture.png",mPOT));
+
     //Create our map
     collection.addIndex("mCUBE_GRASS",mCUBE_GRASS);
     collection.addIndex("mCUBE_BOX",mCUBE_BOX);
@@ -153,6 +155,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mGMPADV",mGMPADV);
     collection.addIndex("mGMPADX",mGMPADX);
     collection.addIndex("mTITLE1",mTITLE1);
+    collection.addIndex("mPOT",mPOT);
 
 }
 

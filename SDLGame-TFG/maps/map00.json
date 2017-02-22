@@ -143,14 +143,20 @@
 
     "enemies":[
             {   
-                "life":40,
-                "position":[3.5,1.8,-5.5],
+                "life":75,
+                "position":[75.5,5.5,-40.5],
                 "radioActivity":[2.0,2.0,2.0],
-                "type":"ranged"
+                "type":"melee"
             },   
             {   
                 "life":75,
-                "position":[4.5,1.8,-2.5],
+                "position":[76.5,5.5,-43.5],
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"melee"
+            },
+            {   
+                "life":75,
+                "position":[77.5,5.5,-40.5],
                 "radioActivity":[2.0,2.0,2.0],
                 "type":"melee"
             }
@@ -836,7 +842,7 @@
 
 
 
-            {   "//":"ROOM 7 - MIDDLE-ROOM",
+            {   "//":"ROOM 7 - ZOMBIES-ROOM",
                 "position":[66,4.5,30],
                 "YNumber":1,        
                 "XNumber":4,         
@@ -847,10 +853,53 @@
                 "damage":0.0},
             {   "position":[70,4.5,30],
                 "YNumber":1,        
-                "XNumber":11,         
-                "ZNumber":15,         
+                "XNumber":13,         
+                "ZNumber":18,         
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+            {   "position":[66,8.5,29],
+                "YNumber":4,        
+                "XNumber":17,         
+                "ZNumber":1,         
+                "materialTop":"mVOID",
+                "materialMiddle":"mVOID", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+            {   "position":[65,8.5,29],
+                "YNumber":4,        
+                "XNumber":1,         
+                "ZNumber":4,         
+                "materialTop":"mVOID",
+                "materialMiddle":"mVOID", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+
+
+            {   "//":"ROOM 7 - WALL",
+                "position":[70,8.5,47],
+                "YNumber":4,        
+                "XNumber":13,         
+                "ZNumber":1,         
+                "materialTop":"mCUBE_WALL",
+                "materialMiddle":"mCUBE_WALL", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+            {   "position":[69,8.5,40],
+                "YNumber":4,        
+                "XNumber":1,         
+                "ZNumber":8,         
+                "materialTop":"mCUBE_WALL",
+                "materialMiddle":"mCUBE_WALL", 
+                "mesh":"CUBE", 
+                "damage":0.0},
+            {   "position":[83,8.5,30],
+                "YNumber":4,        
+                "XNumber":1,         
+                "ZNumber":18,         
+                "materialTop":"mCUBE_WALL",
+                "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE", 
                 "damage":0.0}
 
@@ -1013,18 +1062,27 @@
             },
             {   "position":[44.5,5.3,-20],
                 "transforms":[
-                    
                 ],       
                 "material":"mWOOD",
                 "mesh":"BENCH",
                 "collision": true
             },
-            {   "position":[48.0,5.0,-25.5,
-                            48.0,5.0,-29.5,
-                            48.0,5.0,-33.5,
-                            54.0,5.0,-25.5,
-                            54.0,5.0,-29.5,
-                            54.0,5.0,-33.5],
+            {   "position":[63.5,5.3,-33.5],
+                "transforms":[
+                    {   "type":"rotation",
+                        "values":[90,0.0,1.0,0.0]
+                    }
+                ],       
+                "material":"mWOOD",
+                "mesh":"BENCH",
+                "collision": true
+            },
+            {   "position":[72.5,7.0,-34.5,
+                            72.5,7.0,-38.5,
+                            72.5,7.0,-42.5,
+                            80.5,7.0,-34.5,
+                            80.5,7.0,-38.5,
+                            80.5,7.0,-42.5],
                 "transforms":[
                 ],       
                 "material":"mCOLUMN",
@@ -1051,7 +1109,22 @@
                 "material":"mINVICUBE_WALL",
                 "mesh":"IWALLEFT",
                 "collision": true
-            } 
+            },
+            {   "position":[63.5,5.7,-35.5],
+                "transforms":[
+                ],       
+                "material":"mPOT",
+                "mesh":"POT",
+                "collision": true
+            },
+            {   "position":[66.5,5.5,-35.5],
+                "transforms":[
+                ],       
+                "material":"mPOT",
+                "mesh":"POT2",
+                "collision": true
+            }
+
 
                
     ]

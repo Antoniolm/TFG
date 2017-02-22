@@ -78,8 +78,10 @@ enum MeshIndex{
     TRUNK,      //47
     LADDER,     //48
     SPIKE,      //49
-    IWALLRIGHT,
-    IWALLEFT
+    IWALLRIGHT, //50
+    IWALLEFT,   //52
+    POT,
+    POT2
 };
 
 class MeshCollection
