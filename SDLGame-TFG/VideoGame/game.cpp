@@ -138,9 +138,9 @@ void Game::loop(){
             }
 
            if(event.type==SDL_CONTROLLERDEVICEADDED) //If the game is connected
-                notiGamePad=new Notification(vec3f(0.3,7.4,10.6),vec3f(0.1,0.35,0.1),2000,mGMPADV);
+                notiGamePad=new Notification(vec3f(0.4,7.4,10.6),vec3f(0.05,0.175,0.05),2000,mGMPADV);
             else if(event.type==SDL_CONTROLLERDEVICEREMOVED) //If the game is disconnected
-                notiGamePad=new Notification(vec3f(0.3,7.4,10.6),vec3f(0.1,0.35,0.1),2000,mGMPADX);
+                notiGamePad=new Notification(vec3f(0.4,7.4,10.6),vec3f(0.05,0.175,0.05),2000,mGMPADX);
         }
 
         gameState.controller->catchKeyBoardState(SDL_GetKeyboardState(NULL));

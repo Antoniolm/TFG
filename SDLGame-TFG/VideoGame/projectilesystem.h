@@ -23,8 +23,8 @@
 #include "projectile.h"
 #include "../GraphicEngine/nodescenegraph.h"
 #include <string>
-#include <../GraphicEngine/nodescenegraph.h>
-#include <../GraphicEngine/rootmap.h>
+#include "../GraphicEngine/nodescenegraph.h"
+#include "../GraphicEngine/rootmap.h"
 #include <list>
 #include "../lib/rapidjson/document.h"
 

@@ -21,7 +21,6 @@
 #define IAENEMY_H
 
 #include "structdata.h"
-#include "avatar.h"
 #include <iostream>
 #include <math.h>
 #include "../VideoGame/enemylist.h"

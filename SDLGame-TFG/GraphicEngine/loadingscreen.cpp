@@ -25,7 +25,7 @@ LoadingScreen::LoadingScreen(float delay)
     animationDelay=delay;
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
-    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/loading1.png");
+    currentMaterial=new Material(vec3f(1.0,1.0,1.0),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/loading1.png");
 
     Matrix4f * positionMenu=new Matrix4f();
     positionMenu->translation(0.0,6.77,11.0);

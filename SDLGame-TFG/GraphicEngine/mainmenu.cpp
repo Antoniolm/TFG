@@ -28,18 +28,18 @@ MainMenu::MainMenu()
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainMenuStart.png");
-    Material * materialBack=new Material(vec3f(0.2f, 0.2f, 0.2f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
+    Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainBackMenu.png");
 
     positionMenu=new Matrix4f();
-    positionMenu->translation(0.0,6.75,11.0);
+    positionMenu->translation(0.0,6.752,11.0);
 
     Matrix4f * betweenMenu=new Matrix4f();
-    betweenMenu->translation(0.0,0.0,-0.1);
+    betweenMenu->translation(0.0,0.0,-0.2);
 
     Matrix4f * scaleMenu=new Matrix4f();
     scaleMenu->scale(0.4,1.8,0.5);
     Matrix4f * scaleMenuBack=new Matrix4f();
-    scaleMenuBack->scale(2.5,2.5,2.5);
+    scaleMenuBack->scale(2.5,2.275,2.5);
 
     Matrix4f * rotationMenu=new Matrix4f();
     rotationMenu->rotation(20,1.0,0.0,0.0);

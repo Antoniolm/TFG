@@ -32,7 +32,6 @@ LoaderThread::LoaderThread(RootMap * aRootMap,string aFileMap)
 
 LoaderThread::~LoaderThread()
 {
-    loader.detach();
 }
 
 //**********************************************************************//
