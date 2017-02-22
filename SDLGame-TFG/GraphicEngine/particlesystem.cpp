@@ -72,7 +72,8 @@ ParticleSystem::ParticleSystem(const rapidjson::Value & particleFeature){
 
 ParticleSystem::~ParticleSystem()
 {
-    //dtor
+    for(list<Particle *>::iterator it = particles.begin() ; it != particles.end(); ++it)
+        delete (*it);
 }
 
 //**********************************************************************//

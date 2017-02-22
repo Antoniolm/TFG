@@ -60,7 +60,9 @@ Projectile::Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,floa
 
 Projectile::~Projectile()
 {
-    //dtor
+    delete animationMatrix;
+    delete rotation;
+    delete root;
 }
 
 //**********************************************************************//

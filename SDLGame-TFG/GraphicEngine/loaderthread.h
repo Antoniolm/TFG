@@ -59,7 +59,7 @@ class LoaderThread
     protected:
 
     private:
-        std::thread loader;
+        std::thread * loader;
         static RootMap * rootMap;
         static string fileMap;
 };

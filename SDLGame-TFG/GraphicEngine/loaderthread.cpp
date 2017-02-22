@@ -19,7 +19,7 @@
 
 #include "loaderthread.h"
 
-RootMap* LoaderThread::rootMap=0;
+RootMap* LoaderThread::rootMap;
 string LoaderThread::fileMap="";
 
 LoaderThread::LoaderThread(RootMap * aRootMap,string aFileMap)
@@ -32,6 +32,8 @@ LoaderThread::LoaderThread(RootMap * aRootMap,string aFileMap)
 
 LoaderThread::~LoaderThread()
 {
+     loader->join();
+     delete loader;
 }
 
 //**********************************************************************//
@@ -42,5 +44,5 @@ void LoaderThread::initialize(){
 
 //**********************************************************************//
 void LoaderThread::run(){
-    loader=std::thread([this] { this->initialize(); });
+    loader=new std::thread([this] { this->initialize(); });
 }

@@ -73,6 +73,7 @@ class TextRegion;
 class EndMapRegion;
 class Notification;
 class SpikeTrap;
+class LoaderThread;
 class RootMap : public Object3D
 {
     public:
@@ -238,6 +239,7 @@ class RootMap : public Object3D
         Hero * hero;
         Mate * mate;
         string nextMapFile;
+        LoaderThread * loader;
 };
 
 #endif // ROOTMAP_H

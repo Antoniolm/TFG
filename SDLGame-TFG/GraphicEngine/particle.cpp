@@ -53,7 +53,8 @@ Particle::Particle(Material * material,vec3f aScale,vec3f minPos,vec3f maxPos,ve
 
 Particle::~Particle()
 {
-    //dtor
+    delete root;
+    delete transMatrix;
 }
 
 //**********************************************************************//

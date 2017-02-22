@@ -127,8 +127,10 @@ void MainMenu::updateState(GameState & gameState){
             switch(currentOption){
                 case 0: //Start Game
                     activateMenu=false;
+                    if(gameState.rootMap!=0)
+                        delete gameState.rootMap;
+
                     RootMap::loading=true;
-                    //delete gameState.rootMap;
                     SavedManager::getInstance()->save("");
                     gameState.rootMap=new RootMap("./maps/map00.json",true);
                     openSound->play();
@@ -138,6 +140,9 @@ void MainMenu::updateState(GameState & gameState){
                     fileLoad=SavedManager::getInstance()->load();
                     if(fileLoad!=""){
                         activateMenu=false;
+                        if(gameState.rootMap)
+                            delete gameState.rootMap;
+
                         RootMap::loading=true;
                         gameState.rootMap=new RootMap(fileLoad,true);
                         openSound->play();

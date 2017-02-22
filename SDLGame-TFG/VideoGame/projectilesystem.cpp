@@ -53,7 +53,8 @@ ProjectileSystem::ProjectileSystem(const rapidjson::Value & projectileFeature){
 
 ProjectileSystem::~ProjectileSystem()
 {
-    //dtor
+    for(list<Projectile *>::iterator it = projectiles.begin() ; it != projectiles.end(); ++it)
+        delete (*it);
 }
 
 //**********************************************************************//

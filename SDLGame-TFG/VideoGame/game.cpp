@@ -238,9 +238,11 @@ void Game::loop(){
             profile->incrementFrames();
 
             if(gameState.rootMap->isFinished()){
-                //delete gameState.rootMap;
                 //Get the next Map
                 fileMap=gameState.rootMap->getNextMap();
+
+                //Delete the currentMap
+                delete gameState.rootMap;
 
                 //Save the progress and create the new map
                 SavedManager::getInstance()->save(fileMap);

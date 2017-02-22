@@ -48,6 +48,7 @@ SpikeTrap::SpikeTrap(const Value & spikeFeatures)
 SpikeTrap::~SpikeTrap()
 {
     delete root;
+    delete transActivate;
 }
 
 

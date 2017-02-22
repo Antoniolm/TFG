@@ -21,7 +21,7 @@
 
 GameState::GameState()
 {
-    //ctor
+    rootMap=0;
 }
 
 GameState::~GameState(){
