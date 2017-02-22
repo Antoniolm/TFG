@@ -32,6 +32,7 @@ RootMap::RootMap(){
 //**********************************************************************//
 
 RootMap::RootMap(string fileMap,bool flagThread){
+    RootMap::loading=true;
     if(flagThread){
         loader=new LoaderThread(this,fileMap);
         loader->run();
@@ -46,9 +47,9 @@ RootMap::~RootMap()
     delete loader;
     delete backSound;
     delete npcList;
-    delete enemyList;
+    /*delete enemyList;
     delete itemList;
-    //delete hero;
+    delete hero;*/
     delete mate;
     delete title;
     delete endMapRegion;
@@ -68,11 +69,11 @@ RootMap::~RootMap()
     for(unsigned i=0;i<projectileSystem.size();i++)
         delete projectileSystem[i];
 
-    for(unsigned i=0;i<regions.size();i++)
+   for(unsigned i=0;i<regions.size();i++)
         delete regions[i];
 
-    for(unsigned i=0;i<spikes.size();i++)
-        delete spikes[i];
+    /*for(unsigned i=0;i<spikes.size();i++)
+        delete spikes[i];*/
 
     for(unsigned i=0;i<lights.size();i++)
         delete lights[i];
@@ -83,7 +84,6 @@ RootMap::~RootMap()
 
 void RootMap::initialize(string fileMap){
     cout<< "< Game is loading our current map >"<< endl;
-    RootMap::loading=true;
 
     //Open file
     FILE * fp = fopen(fileMap.c_str(), "rb"); // non-Windows use "r"

@@ -181,6 +181,8 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     //Movement for our hero
     moveAvatar= new Matrix4f();
     moveAvatar->translation(position.x,position.y,position.z);
+
+    root=new NodeSceneGraph();
     root->add(moveAvatar);
 
     Matrix4f *transLegScene=new Matrix4f();

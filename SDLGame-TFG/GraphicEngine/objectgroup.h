@@ -78,6 +78,7 @@ class ObjectGroup : public Object3D
         vector<vec3f> normals;
         vector<vec2f> textureCord;
         NodeSceneGraph * root;
+        Mesh * mesh;
 };
 
 #endif // OBJECTGROUP_H

@@ -48,6 +48,8 @@ Npc::Npc(vec3f aPosition)
     npcNode->add(scaleNPC);
     npcNode->add(materialCollect->getMaterial(mBUTLER));
     npcNode->add(meshCollect->getMesh(BUTLER));
+
+    root=new NodeSceneGraph();
     root->add(npcNode);
 
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);

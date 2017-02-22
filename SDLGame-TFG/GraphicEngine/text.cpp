@@ -30,6 +30,8 @@ Text::Text(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor,bool ahasDia
     font=aFont;
     hasDialog=ahasDialog;
     color=aColor;
+    surface=0;
+    textureText=0;
 
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection *materialCollect=MaterialCollection::getInstance();
@@ -63,8 +65,13 @@ Text::Text(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor,bool ahasDia
 
 Text::~Text()
 {
-    glDeleteTextures(1, &textureText);
-    delete surface;
+
+    if(textureText!=0)
+        glDeleteTextures(1, &textureText); //fix
+
+    if(surface!=0)
+        delete surface; //fix
+
     delete positionBack;
     delete positionText;
     delete scaleText;
@@ -104,6 +111,9 @@ void Text::setPosition(vec3f position){
 void Text::init(){
     glGenTextures(1, &textureText);
     glBindTexture(GL_TEXTURE_2D, textureText);
+
+    if(surface!=0)
+        delete surface;
 
     surface = TTF_RenderText_Blended(font, message.c_str(),color);
 

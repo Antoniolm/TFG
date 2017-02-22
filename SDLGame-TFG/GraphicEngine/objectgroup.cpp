@@ -31,7 +31,8 @@ ObjectGroup::ObjectGroup(MaterialIndex materialIndex){
 
 ObjectGroup::~ObjectGroup()
 {
-    //dtor
+    delete mesh;
+    delete root;
 }
 
 //**********************************************************************//
@@ -61,7 +62,7 @@ void ObjectGroup::addObject(vec3f position,MeshIndex meshIndex){
 //**********************************************************************//
 
 void ObjectGroup::init(){
-    Mesh * mesh=new Mesh(vertex,triangles,normals,textureCord);
+    mesh=new Mesh(vertex,triangles,normals,textureCord);
     root->add(mesh);
 }
 

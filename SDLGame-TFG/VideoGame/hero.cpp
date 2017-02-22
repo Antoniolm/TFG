@@ -245,6 +245,8 @@ Hero::Hero(vec3f aPos)
     //Movement for our hero
     moveAvatar= new Matrix4f();
     moveAvatar->translation(position.x,position.y,position.z);
+
+    root=new NodeSceneGraph();
     root->add(moveAvatar);
 
     Matrix4f *transLegScene=new Matrix4f();
