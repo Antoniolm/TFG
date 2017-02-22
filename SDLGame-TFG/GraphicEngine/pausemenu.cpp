@@ -142,13 +142,13 @@ void PauseMenu::updateState(GameState & gameState){
         }
         if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             switch(currentOption){
-                case 0:
+                case 0: //Resume
                     currentOption=0;
                      currentMaterial->setTexture(options[currentOption]);
                     activateMenu=false;
                     openSound->play();
                 break;
-                case 1:
+                case 1: //Exit
                     currentOption=0;
                     currentMaterial->setTexture(options[currentOption]);
                     (Profile::getInstance())->showResult();

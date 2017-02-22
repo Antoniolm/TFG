@@ -367,6 +367,8 @@ void Hero::updateState(GameState & gameState){
     float time=gameState.time;
     RootMap * rootMap=gameState.rootMap;
 
+    checkNearCollision();
+
     if(time-currentTime>200)
         currentTime=time-50;
 
@@ -506,7 +508,6 @@ void Hero::updateState(GameState & gameState){
         }
         swapDelay=time;
     }
-
 
     //Move the body
     if(hasMove && !isImpacted && !isHitting){

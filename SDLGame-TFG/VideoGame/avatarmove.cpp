@@ -253,68 +253,38 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
 //**********************************************************************//
 
 ObjectScene * AvatarMove::gravity(float time){
-    ObjectScene * hasCollision;
+    ObjectScene * hasCollision=0;
     float tenthValueX,tenthValueZ;
+
+    vec3f posHero=getPosition();
 
     if(!isJumping){
         GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
 
-    vec3f posHero=getPosition();
-    posHero.y-=0.5;
-
-    //Get the tenth of our position
-    tenthValueX=posHero.x-(int)posHero.x;
-    tenthValueZ=(int)posHero.z-posHero.z;
-
-    //Check the collision in the center
-    hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z));
-
-    //Check the collision in the area
-    if(tenthValueX>0.5 && hasCollision==0){ //Case tenth in x >0.5
-        if( tenthValueZ<0.5){ //case Tenth in x >0.5 and tenth in z <0.5
-            hasCollision=currentMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z));
-            if(hasCollision==0)
-                hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.2));
-            if(hasCollision==0)
-                hasCollision=currentMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z-0.2));
-        }else{  //case Tenth in x >0.5 and tenth in z >= 0.5
-            hasCollision=currentMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z));
-            if(hasCollision==0)
-                hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.2));
-            if(hasCollision==0)
-                hasCollision=currentMap->collision(vec3f(posHero.x+0.2,posHero.y,posHero.z+0.2));
-        }
-    }
-    else if(tenthValueX<0.5 && hasCollision==0){ //Case tenth in x <0.5
-        if( tenthValueZ<0.5){ //case Tenth in x <0.5 and tenth in z <0.5
-            hasCollision=currentMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
-            if(hasCollision==0)
-                hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z-0.2));
-            if(hasCollision==0)
-                hasCollision=currentMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z-0.2));
-        }else{ //case Tenth in x <0.5 and tenth in z >= 0.5
-            hasCollision=currentMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z));
-            if(hasCollision==0)
-                hasCollision=currentMap->collision(vec3f(posHero.x,posHero.y,posHero.z+0.2));
-            if(hasCollision==0)
-            hasCollision=currentMap->collision(vec3f(posHero.x-0.2,posHero.y,posHero.z+0.2));
-        }
+    if(currentObject==0){
+        return hasCollision;
     }
 
-    if(hasCollision==0){ //if not collision
+    vec3f positionObs=currentObject->getPosition();
+    BoundingBox box=currentObject->getBoundingBox();
+
+    float distance=posHero.y-((positionObs.y+0.5)+box.maxValue.y);
+
+    if(distance>=0.0){ //if not collision
         moveAvatar->product(moveGravity);
         isFalling=true;
     }
+
     else {
         if(isFalling){
-            vec3f positionObs=hasCollision->getPosition();
-            BoundingBox box=hasCollision->getBoundingBox();
+            posHero.y+=-0.5;
             if((positionObs.y+box.maxValue.y)-(posHero.y)>0.1 && (positionObs.y+box.maxValue.y)-(posHero.y)<0.5){
                 Matrix4f trans;
                 trans.translation(0.0,(positionObs.y+box.maxValue.y)-(posHero.y),0.0);
                 moveAvatar->product(trans.getMatrix());
             }
         }
+        hasCollision=currentObject;
         isFalling=false;
         acceleratedMove->resetState();
 
@@ -322,6 +292,82 @@ ObjectScene * AvatarMove::gravity(float time){
     }
 
     return hasCollision;
+}
+
+//**********************************************************************//
+
+void AvatarMove::checkNearCollision(){
+    float tenthValueX,tenthValueZ;
+    pair<ObjectScene *,float> minObject,otherObject;
+
+    vec3f posHero=getPosition();
+    posHero.y+=0.5;
+
+    //Get the tenth of our position
+    tenthValueX=posHero.x-(int)posHero.x;
+    tenthValueZ=(int)posHero.z-posHero.z;
+
+    //Check the collision in the center
+    minObject=currentMap->detectNearObject(vec3f(posHero.x,posHero.y,posHero.z));
+
+    //Check the collision in the area
+    if(tenthValueX>0.5){ //Case tenth in x >0.5
+        if( tenthValueZ<0.5){ //case Tenth in x >0.5 and tenth in z <0.5
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x+0.2,posHero.y,posHero.z));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x,posHero.y,posHero.z-0.2));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x+0.2,posHero.y,posHero.z-0.2));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+        }else{  //case Tenth in x >0.5 and tenth in z >= 0.5
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x+0.2,posHero.y,posHero.z));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x,posHero.y,posHero.z+0.2));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x+0.2,posHero.y,posHero.z+0.2));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+        }
+    }
+    else if(tenthValueX<0.5){ //Case tenth in x <0.5
+        if( tenthValueZ<0.5){ //case Tenth in x <0.5 and tenth in z <0.5
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x-0.2,posHero.y,posHero.z));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x,posHero.y,posHero.z-0.2));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x-0.2,posHero.y,posHero.z-0.2));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+
+        }else{ //case Tenth in x <0.5 and tenth in z >= 0.5
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x-0.2,posHero.y,posHero.z));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x,posHero.y,posHero.z+0.2));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+
+            otherObject=currentMap->detectNearObject(vec3f(posHero.x-0.2,posHero.y,posHero.z+0.2));
+            if(minObject.second>otherObject.second)
+                minObject=otherObject;
+        }
+    }
+
+    currentObject=minObject.first;
 }
 
 //**********************************************************************//
@@ -339,7 +385,6 @@ bool AvatarMove::jump(float time){
     float tenthValueX,tenthValueZ;
 
     GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
-
     vec3f posHero=getPosition();
     posHero.y+=0.5;
 

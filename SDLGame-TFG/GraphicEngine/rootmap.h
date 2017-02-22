@@ -127,12 +127,20 @@ class RootMap : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will update the state of the object. That change need the
-        *    current time in our application
-        *    \return void
+        *    The method will check if the position (indexObj) is collision with
+        *    a objectScene
+        *    \return ObjectScene *
         */
         //////////////////////////////////////////////////////////////////////////
         ObjectScene * collision(const vec3f & indexObj);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return the objectScene nearest of the posObj
+        *    \return ObjectScene *
+        */
+        //////////////////////////////////////////////////////////////////////////
+        pair<ObjectScene *,float> detectNearObject(const vec3f & posObj);
 
         //////////////////////////////////////////////////////////////////////////
         /**

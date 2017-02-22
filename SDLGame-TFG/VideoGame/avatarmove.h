@@ -135,7 +135,14 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         void activeImpact(avatarDirection dirAvatar);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will manage the activated of an impact movement
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
         bool canImpact(avatarDirection dirAvatar,const vector<Enemy *> & enemies);
+
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will manage an impactMove that was activated in our avatar
@@ -161,7 +168,9 @@ class AvatarMove: public Avatar
         Projectile * createProjectile(float damage);
 
     protected:
+        void checkNearCollision();
         RootMap * currentMap;
+        ObjectScene * currentObject;
         Matrix4f * moveAvatar;
         avatarDirection direction;
         AcceleratedMovement * acceleratedMove;

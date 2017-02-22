@@ -208,17 +208,9 @@
     "voxelGroup":[
             {   "//":"ROOM 1 - Begin",
                 "position":[1,0.5,1],
-                "YNumber":5,        
-                "XNumber":9,         
-                "ZNumber":1,         
-                "materialTop":"mCUBE_DUNG",
-                "materialMiddle":"mCUBE_DUNGB", 
-                "mesh":"CUBE", 
-                "damage":0.0},
-            {   "position":[1,0.5,2],
                 "YNumber":1,        
                 "XNumber":9,         
-                "ZNumber":13,         
+                "ZNumber":14,         
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
@@ -270,19 +262,11 @@
 
 
 
-            {   "//":"ROOM 2 - First contact",
+            {   "//":"ROOM 2 - First contact",                
                 "position":[10,0.5,2],
-                "YNumber":4,        
-                "XNumber":12,         
-                "ZNumber":1,         
-                "materialTop":"mCUBE_DUNG",
-                "materialMiddle":"mCUBE_DUNGB", 
-                "mesh":"CUBE", 
-                "damage":0.0},
-            {   "position":[10,0.5,3],
                 "YNumber":1,        
                 "XNumber":13,         
-                "ZNumber":10,         
+                "ZNumber":11,         
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
@@ -327,17 +311,9 @@
 
             {   "//":"ROOM 3 - JUMP+DWATER",
                 "position":[23,0.5,4],
-                "YNumber":4,        
-                "XNumber":4,         
-                "ZNumber":1,         
-                "materialTop":"mCUBE_DUNG",
-                "materialMiddle":"mCUBE_DUNGB", 
-                "mesh":"CUBE", 
-                "damage":0.0},
-            {   "position":[23,0.5,5],
                 "YNumber":1,        
                 "XNumber":4,         
-                "ZNumber":6,         
+                "ZNumber":7,         
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
@@ -1096,6 +1072,16 @@
                 "mesh":"TRUNK",
                 "collision": true
             },
+            {   "position":[63.5,5.5,-38.5],
+                "transforms":[
+                    {   "type":"rotation",
+                        "values":[90,0.0,1.0,0.0]
+                    }
+                ],       
+                "material":"mTRUNK",
+                "mesh":"TRUNK",
+                "collision": true
+            },
             {   "position":[58,7.0,-32.5],
                 "transforms":[
                 ],       
@@ -1110,14 +1096,15 @@
                 "mesh":"IWALLEFT",
                 "collision": true
             },
-            {   "position":[63.5,5.7,-35.5],
+            {   "position":[68.5,5.7,-38.5,
+                            67.5,5.7,-38.5],
                 "transforms":[
                 ],       
                 "material":"mPOT",
                 "mesh":"POT",
                 "collision": true
             },
-            {   "position":[66.5,5.5,-35.5],
+            {   "position":[68.5,5.5,-37.5],
                 "transforms":[
                 ],       
                 "material":"mPOT",
