@@ -59,10 +59,8 @@ PauseMenu::PauseMenu()
     moveSound=new Sound("sounds/coin.wav",1,40,4,0);
 
     //Add the options
-    Texture * option=new Texture("./textures/menuPauseResume.png");
-    addOption(option);
-    option=new Texture("./textures/menuPauseQuit.png");
-    addOption(option);
+    addOption(new Texture("./textures/menuPauseResume.png"));
+    addOption(new Texture("./textures/menuPauseQuit.png"));
 }
 
 //**********************************************************************//

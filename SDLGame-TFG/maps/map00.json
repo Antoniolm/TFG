@@ -13,8 +13,8 @@
     },
 
     "movie": [
-        {"texture":""},
-        {"texture":""}
+        {"texture":"./textures/loading1.png"},
+        {"texture":"./textures/loading2.png"}
     ],
 
     "endMapRegion":{

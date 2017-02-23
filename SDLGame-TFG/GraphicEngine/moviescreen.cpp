@@ -22,32 +22,36 @@
 MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
 {
     currentOption=0;
-    activated=true;
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
-    currentMaterial=new Material(vec3f(1.0,1.0,1.0),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/loading1.png");
+    if(movieFeatures.Size()==0){
+        activated=false;
+        root=0;
+    }
+    else{
+        activated=true;
+        currentMaterial=new Material(vec3f(1.0,1.0,1.0),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,movieFeatures[0]["texture"].GetString());
 
-    Matrix4f * positionMenu=new Matrix4f();
-    positionMenu->translation(pos.x,pos.y+6.77,pos.z+11.0);
+        for(unsigned i=0;i<movieFeatures.Size();i++){
+            options.push_back(new Texture(movieFeatures[i]["texture"].GetString()));
+        }
 
-    Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(1.0,4.1,0.5);
+        Matrix4f * positionMenu=new Matrix4f();
+        positionMenu->translation(pos.x,pos.y+6.77,pos.z+11.0);
 
-    Matrix4f * rotationMenu=new Matrix4f();
-    rotationMenu->rotation(20,1.0,0.0,0.0);
+        Matrix4f * scaleMenu=new Matrix4f();
+        scaleMenu->scale(1.0,4.1,0.5);
 
-    root=new NodeSceneGraph(false,true);
-    root->add(positionMenu);
-    root->add(rotationMenu);
-    root->add(scaleMenu);
-    root->add(currentMaterial);
-    root->add(meshCollect->getMesh(TEXT));
+        Matrix4f * rotationMenu=new Matrix4f();
+        rotationMenu->rotation(20,1.0,0.0,0.0);
 
-    //Add the options
-    options.push_back(new Texture("./textures/loading1.png"));
-    options.push_back(new Texture("./textures/loading2.png"));
-    options.push_back(new Texture("./textures/loading3.png"));
-
+        root=new NodeSceneGraph(false,true);
+        root->add(positionMenu);
+        root->add(rotationMenu);
+        root->add(scaleMenu);
+        root->add(currentMaterial);
+        root->add(meshCollect->getMesh(TEXT));
+    }
     currentTime=SDL_GetTicks();
     loadDelay=currentTime;
 }
@@ -56,7 +60,8 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
 
 MovieScreen::~MovieScreen()
 {
-    delete root;
+    if(root!=0)
+        delete root;
 }
 
 //**********************************************************************//
