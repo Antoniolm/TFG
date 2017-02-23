@@ -65,19 +65,16 @@ Text::Text(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor,bool ahasDia
 
 Text::~Text()
 {
-
     if(textureText!=0)
         glDeleteTextures(1, &textureText); //fix
 
     if(surface!=0)
         delete surface; //fix
 
-    delete positionBack;
-    delete positionText;
-    delete scaleText;
-    delete scaleBack;
     delete textNode;
-    delete backNode;
+
+    if(hasDialog)
+        delete backNode;
 }
 
 //**********************************************************************//

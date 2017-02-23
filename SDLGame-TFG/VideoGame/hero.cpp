@@ -309,7 +309,7 @@ Hero::Hero(vec3f aPos)
 
 Hero::~Hero()
 {
-    for(vector<Text *>::iterator it = texts.begin() ; it != texts.end(); ++it){
+    /*for(vector<Text *>::iterator it = texts.begin() ; it != texts.end(); ++it){
         delete (*it);
     }
 
@@ -321,10 +321,9 @@ Hero::~Hero()
         delete (*it);
     }
 
-    delete currentWeapon;
     delete meleeWeapon;
     delete rangedWeapon;
-    delete root;
+    delete root;*/
 }
 
 //**********************************************************************//

@@ -34,7 +34,7 @@
 #include "material.h"
 
 using namespace std;
-
+class NodeSceneGraph;
 class Text : public Object3D
 {
     public:

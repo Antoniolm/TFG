@@ -33,6 +33,7 @@ RootMap::RootMap(){
 
 RootMap::RootMap(string fileMap,bool flagThread){
     RootMap::loading=true;
+    hero=0;
     if(flagThread){
         loader=new LoaderThread(this,fileMap);
         loader->run();
@@ -47,9 +48,9 @@ RootMap::~RootMap()
     delete loader;
     delete backSound;
     delete npcList;
-    /*delete enemyList;
+    delete enemyList;
     delete itemList;
-    delete hero;*/
+    delete hero;
     delete mate;
     delete title;
     delete endMapRegion;
@@ -72,8 +73,8 @@ RootMap::~RootMap()
    for(unsigned i=0;i<regions.size();i++)
         delete regions[i];
 
-    /*for(unsigned i=0;i<spikes.size();i++)
-        delete spikes[i];*/
+    for(unsigned i=0;i<spikes.size();i++)
+        delete spikes[i];
 
     for(unsigned i=0;i<lights.size();i++)
         delete lights[i];

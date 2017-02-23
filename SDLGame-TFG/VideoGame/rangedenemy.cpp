@@ -250,11 +250,6 @@ RangedEnemy::~RangedEnemy()
 {
     delete root;
     delete currentText;
-    delete weapon;
-    delete moveAvatar;
-
-    for(vector<Matrix4f *>::iterator it = moveMatrix.begin() ; it != moveMatrix.end(); ++it)
-        delete (*it);
 
     for(vector<Projectile *>::iterator it = projectiles.begin() ; it != projectiles.end(); ++it){
         delete (*it);

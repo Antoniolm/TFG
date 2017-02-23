@@ -21,13 +21,14 @@
 #define PARTICLE_H
 
 #include "object3d.h"
+#include "mesh.h"
 #include "context.h"
 #include "rootmap.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include <stdlib.h>
 
-
+class NodeSceneGraph;
 class Particle : public Object3D
 {
     public:
