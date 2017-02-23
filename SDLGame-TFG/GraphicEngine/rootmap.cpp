@@ -104,9 +104,10 @@ void RootMap::initialize(string fileMap){
     /////////////////////////////////////////
     // Create hero and mate
     /////////////////////////////////////////
-    hero=new Hero(vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat()));
+    vec3f positionHero=vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat());
+    hero=new Hero(positionHero);
 
-    mate=new Mate(vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat()));
+    mate=new Mate(positionHero);
 
     /////////////////////////////////////////
     // Add Light to our map
@@ -121,7 +122,7 @@ void RootMap::initialize(string fileMap){
     // Add movie to our map
     /////////////////////////////////////////
     const rapidjson::Value & movieFeature=document["movie"];
-    movie=new MovieScreen(movieFeature);
+    movie=new MovieScreen(positionHero,movieFeature);
 
     /////////////////////////////////////////
     // Add title to our map
@@ -517,6 +518,12 @@ bool RootMap::isFinished(){
 
 string RootMap::getNextMap(){
     return nextMapFile;
+}
+
+//**********************************************************************//
+
+MovieScreen * RootMap::getMovie(){
+    return movie;
 }
 
 //**********************************************************************//

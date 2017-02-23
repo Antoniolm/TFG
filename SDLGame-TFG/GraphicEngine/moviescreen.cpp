@@ -19,16 +19,16 @@
 
 #include "moviescreen.h"
 
-MovieScreen::MovieScreen(const Value & movieFeatures)
+MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
 {
     currentOption=0;
-    activated=false;
+    activated=true;
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
     currentMaterial=new Material(vec3f(1.0,1.0,1.0),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/loading1.png");
 
     Matrix4f * positionMenu=new Matrix4f();
-    positionMenu->translation(0.0,6.77,11.0);
+    positionMenu->translation(pos.x,pos.y+6.77,pos.z+11.0);
 
     Matrix4f * scaleMenu=new Matrix4f();
     scaleMenu->scale(1.0,4.1,0.5);
@@ -84,6 +84,7 @@ void MovieScreen::updateState(GameState & gameState){
             currentMaterial->setTexture(options[currentOption]);
             loadDelay=time;
 
+            gameState.controller->consumeButtons();
         }
     }
 

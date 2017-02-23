@@ -100,6 +100,7 @@ void Game::loop(){
     bool firstTime=true;
     int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;
+    MovieScreen * movie;
     Profile * profile=Profile::getInstance();
 
     //Create our camera
@@ -178,6 +179,7 @@ void Game::loop(){
                 gameState.rootMap->activatedLight(context.currentShader.getProgram());
                 gameState.rootMap->activatedObjectGroup();
                 hero=gameState.rootMap->getHero();
+                movie=gameState.rootMap->getMovie();
                 firstTime=false;
             }
             ///////////////////
@@ -189,14 +191,17 @@ void Game::loop(){
                 deadMenu->activate();
             }
 
-            if(!deadMenu->isActivate() && !camera.isViewMode()) //if  mainMenu and deadMenu is not activate
+            if(movie->isActivated()){
+                movie->updateState(gameState);
+            }
+
+            if(!movie->isActivated() && !deadMenu->isActivate() && !camera.isViewMode()) //if  mainMenu and deadMenu is not activate
                 pauseMenu->updateState(gameState);
             else{ //If some of that menu are activate
                 deadMenu->updateState(gameState);
             }
 
-
-            if(!pauseMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()){ //If  menu is not activate
+            if(!movie->isActivated() && !pauseMenu->isActivate() && !deadMenu->isActivate() && !camera.isViewMode()){ //If  menu is not activate
                 gameState.rootMap->updateState(gameState);
                 if(wasActivatedMenu) //If is the first time that it is not activated
                     gameState.rootMap->enableSound(true);
@@ -234,6 +239,7 @@ void Game::loop(){
             coinText->visualization(context);
             pauseMenu->visualization(context);
             deadMenu->visualization(context);
+            movie->visualization(context);
             notiGamePad->visualization(context);
 
 

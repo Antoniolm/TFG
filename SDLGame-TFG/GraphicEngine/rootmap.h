@@ -217,6 +217,8 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         string getNextMap();
 
+        MovieScreen * getMovie();
+
         static bool loading;
 
     protected:
