@@ -32,6 +32,9 @@
 #include "gamestate.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
+#include "../lib/rapidjson/document.h"
+
+using namespace rapidjson;
 
 class MovieScreen : public Object3D
 {
@@ -62,6 +65,8 @@ class MovieScreen : public Object3D
         */
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
+
+        void isActivated();
 
     protected:
 

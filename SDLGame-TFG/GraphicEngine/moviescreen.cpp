@@ -62,7 +62,8 @@ MovieScreen::~MovieScreen()
 //**********************************************************************//
 
 void MovieScreen::visualization(Context & cv){
-    root->visualization(cv);
+    if(activated)
+        root->visualization(cv);
 }
 
 //**********************************************************************//
@@ -87,5 +88,11 @@ void MovieScreen::updateState(GameState & gameState){
     }
 
     currentTime+=time-currentTime;
+}
+
+//**********************************************************************//
+
+void MovieScreen::isActivated(){
+    return activated;
 }
 
