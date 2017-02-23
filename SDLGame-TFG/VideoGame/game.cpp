@@ -167,6 +167,9 @@ void Game::loop(){
             camera.activateOrthoProjection(context.currentShader.getProgram());
             loadScreen->visualization(context);
             firstTime=true;
+
+            //Consume events
+            gameState.controller->consumeButtons();
         }
 
         //CASE -> PLAYING
