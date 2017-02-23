@@ -70,7 +70,8 @@ class MovieScreen : public Object3D
         vector<Texture *> options;
         int currentOption;
         Material * currentMaterial;
-        float animationDelay,loadDelay;
+        bool activated;
+        float loadDelay;
 };
 
 #endif // MOVIESCREEN_H

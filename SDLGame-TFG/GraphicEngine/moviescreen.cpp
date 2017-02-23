@@ -22,7 +22,7 @@
 MovieScreen::MovieScreen()
 {
     currentOption=0;
-    animationDelay=delay;
+    activated=false;
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
     currentMaterial=new Material(vec3f(1.0,1.0,1.0),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/loading1.png");
@@ -73,13 +73,17 @@ void MovieScreen::updateState(GameState & gameState){
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(loadDelay<(time-animationDelay)){//if the time of our currentTexture is finished
-        currentOption++;                //Change texture
-        if((unsigned)currentOption==options.size())
-            currentOption=0;
+    if(activated){
+        if(gameState.controller->checkButton(cACTION) && loadDelay<(time-500)){ //If the user push the action intro
+            currentOption++;
 
-        currentMaterial->setTexture(options[currentOption]);
-        loadDelay=time;
+            if((unsigned)currentOption==options.size())
+                activated=false;
+
+            currentMaterial->setTexture(options[currentOption]);
+            loadDelay=time;
+
+        }
     }
 
     currentTime+=time-currentTime;
