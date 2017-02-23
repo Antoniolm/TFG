@@ -55,6 +55,7 @@
 #include "endmapregion.h"
 #include "notification.h"
 #include "loaderthread.h"
+#include "moviescreen.h"
 #include "../VideoGame/spiketrap.h"
 
 using namespace std;
@@ -74,6 +75,7 @@ class EndMapRegion;
 class Notification;
 class SpikeTrap;
 class LoaderThread;
+class MovieScreen;
 class RootMap : public Object3D
 {
     public:
@@ -238,6 +240,7 @@ class RootMap : public Object3D
         Sound * backSound;
         Hero * hero;
         Mate * mate;
+        MovieScreen * movie;
         string nextMapFile;
         LoaderThread * loader;
 };

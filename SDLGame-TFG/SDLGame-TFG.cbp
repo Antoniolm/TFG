@@ -116,6 +116,8 @@
 		<Unit filename="GraphicEngine/mesh.h" />
 		<Unit filename="GraphicEngine/meshcollection.cpp" />
 		<Unit filename="GraphicEngine/meshcollection.h" />
+		<Unit filename="GraphicEngine/moviescreen.cpp" />
+		<Unit filename="GraphicEngine/moviescreen.h" />
 		<Unit filename="GraphicEngine/nodescenegraph.cpp" />
 		<Unit filename="GraphicEngine/nodescenegraph.h" />
 		<Unit filename="GraphicEngine/notification.cpp" />

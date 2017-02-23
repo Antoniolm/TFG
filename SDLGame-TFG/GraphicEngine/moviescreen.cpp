@@ -19,7 +19,7 @@
 
 #include "moviescreen.h"
 
-MovieScreen::MovieScreen()
+MovieScreen::MovieScreen(const Value & movieFeatures)
 {
     currentOption=0;
     activated=false;
@@ -56,7 +56,7 @@ MovieScreen::MovieScreen()
 
 MovieScreen::~MovieScreen()
 {
-    //dtor
+    delete root;
 }
 
 //**********************************************************************//
@@ -92,7 +92,13 @@ void MovieScreen::updateState(GameState & gameState){
 
 //**********************************************************************//
 
-void MovieScreen::isActivated(){
+void MovieScreen::setActivate(bool value){
+    activated=value;
+}
+
+//**********************************************************************//
+
+bool MovieScreen::isActivated(){
     return activated;
 }
 

@@ -902,7 +902,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1487852126 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1487862052 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -910,7 +910,7 @@
 	"objectgroup.h"
 	<stdlib.h>
 
-1487764892 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1487861869 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -946,6 +946,7 @@
 	"endmapregion.h"
 	"notification.h"
 	"loaderthread.h"
+	"moviescreen.h"
 	"../VideoGame/spiketrap.h"
 
 1477389087 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.h
@@ -2492,4 +2493,22 @@
 
 1487595353 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\savedmanager.cpp
 	"savedmanager.h"
+
+1487862457 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.h
+	"object3d.h"
+	"rootmap.h"
+	"context.h"
+	"mesh.h"
+	"nodescenegraph.h"
+	"texture.h"
+	"material.h"
+	"profile.h"
+	"sound.h"
+	"gamestate.h"
+	"meshcollection.h"
+	"materialcollection.h"
+	"../lib/rapidjson/document.h"
+
+1487862452 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.cpp
+	"moviescreen.h"
 

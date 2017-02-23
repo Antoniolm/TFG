@@ -12,6 +12,11 @@
         "texture":"mTITLE1"
     },
 
+    "movie": [
+        {"texture":""},
+        {"texture":""}
+    ],
+
     "endMapRegion":{
         "minPosition":[53.5,0.0,-28.5],
         "maxPosition":[56.5,8.0,-20.5]

@@ -42,7 +42,7 @@ class MovieScreen : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        MovieScreen();
+        MovieScreen(const Value & movieFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -66,7 +66,8 @@ class MovieScreen : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
-        void isActivated();
+        void setActivate(bool value);
+        bool isActivated();
 
     protected:
 

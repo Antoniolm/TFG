@@ -50,10 +50,11 @@ RootMap::~RootMap()
     delete npcList;
     delete enemyList;
     delete itemList;
-    delete hero;
+    //delete hero;
     delete mate;
     delete title;
     delete endMapRegion;
+    delete movie;
 
     for(unsigned i=0;i<objs.size();i++)
         delete objs[i];
@@ -115,6 +116,12 @@ void RootMap::initialize(string fileMap){
         //Create our light
         lights.push_back(new Light(lightFeature[currentLight]));
     }
+
+    /////////////////////////////////////////
+    // Add movie to our map
+    /////////////////////////////////////////
+    const rapidjson::Value & movieFeature=document["movie"];
+    movie=new MovieScreen(movieFeature);
 
     /////////////////////////////////////////
     // Add title to our map
