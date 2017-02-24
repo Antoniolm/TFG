@@ -21,8 +21,8 @@
 
 EndMapRegion::EndMapRegion(const Value & regionFeatures){
 
-    minArea=vec3f(regionFeatures["minPosition"][0].GetFloat(),regionFeatures["minPosition"][1].GetFloat(),regionFeatures["minPosition"][2].GetFloat());
-    maxArea=vec3f(regionFeatures["maxPosition"][0].GetFloat(),regionFeatures["maxPosition"][1].GetFloat(),regionFeatures["maxPosition"][2].GetFloat());
+    position=vec3f(regionFeatures["position"][0].GetFloat(),regionFeatures["position"][1].GetFloat(),regionFeatures["position"][2].GetFloat());
+    radioActivity=vec3f(regionFeatures["radioActivity"][0].GetFloat(),regionFeatures["radioActivity"][1].GetFloat(),regionFeatures["radioActivity"][2].GetFloat());
 
     activated=false;
 }
@@ -37,11 +37,17 @@ EndMapRegion::~EndMapRegion()
 //**********************************************************************//
 
 void EndMapRegion::updateState(GameState & gameState){
-    Hero * hero=gameState.rootMap->getHero();
-    vec3f position=hero->getPosition();
 
-    if(position>minArea && position<maxArea && !activated)
+    vec3f posHero=gameState.rootMap->getHero()->getPosition();
+    vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
+
+    //check if the enemy will be activated in this frame
+    if((distance.x>-radioActivity.x && distance.x<radioActivity.x)&&
+       (distance.y>-radioActivity.y && distance.y<radioActivity.y)&&
+       (distance.z>-radioActivity.z && distance.z<radioActivity.z)){
         activated=true;
+    }
+
 }
 
 //**********************************************************************//

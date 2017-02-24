@@ -17,8 +17,8 @@
     ],
 
     "endMapRegion":{
-        "minPosition":[83.5,0.0,-28.5],
-        "maxPosition":[86.5,8.0,-20.5]
+        "position":[53.5,5.0,-28.5],
+        "radioActivity":[2.0,3.0,2.0]
     },
 
     "light":[

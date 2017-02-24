@@ -59,8 +59,8 @@ class EndMapRegion
     protected:
 
     private:
-        vec3f minArea;
-        vec3f maxArea;
+        vec3f position;
+        vec3f radioActivity;
         bool activated;
 };
 

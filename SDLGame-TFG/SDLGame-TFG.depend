@@ -902,7 +902,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1487931135 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1487939161 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -2448,12 +2448,12 @@
 	"shader.h"
 	<string>
 
-1487349172 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.h
+1487938287 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.h
 	"rootmap.h"
 	"gamestate.h"
 	"../lib/rapidjson/document.h"
 
-1487350854 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.cpp
+1487938659 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.cpp
 	"endmapregion.h"
 
 1487368200 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.h
@@ -2494,7 +2494,7 @@
 1487595353 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\savedmanager.cpp
 	"savedmanager.h"
 
-1487889840 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.h
+1487935912 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.h
 	"object3d.h"
 	"rootmap.h"
 	"context.h"
@@ -2511,4 +2511,9 @@
 
 1487931284 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.cpp
 	"moviescreen.h"
+
+1487938171 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moveregion.cpp
+	"moveregion.h"
+
+1487938167 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moveregion.h
 
