@@ -20,10 +20,10 @@
 #ifndef LOADINGSCREEN_H
 #define LOADINGSCREEN_H
 
-#include "object3d.h"
 #include "rootmap.h"
 #include "context.h"
 #include "mesh.h"
+#include "menu.h"
 #include "nodescenegraph.h"
 #include "texture.h"
 #include "material.h"
@@ -33,7 +33,7 @@
 #include "meshcollection.h"
 #include "materialcollection.h"
 
-class LoadingScreen : public Object3D
+class LoadingScreen : public Menu
 {
     public:
         //////////////////////////////////////////////////////////////////////////
@@ -66,11 +66,7 @@ class LoadingScreen : public Object3D
     protected:
 
     private:
-        NodeSceneGraph * root;
-        vector<Texture *> options;
-        int currentOption;
-        Material * currentMaterial;
-        float animationDelay,loadDelay;
+        float animationDelay;
 };
 
 #endif // LOADINGSCREEN_H

@@ -64,6 +64,7 @@ class PauseMenu : public Menu
     protected:
 
     private:
+        Sound * openSound,* moveSound;
 };
 
 #endif // PAUSEMENU_H

@@ -25,12 +25,12 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
     if(movieFeatures.Size()==0){
-        activated=false;
+        activateMenu=false;
         root=0;
         currentMaterial=0;
     }
     else{
-        activated=true;
+        activateMenu=true;
         currentMaterial=new Material();
 
         for(unsigned i=0;i<movieFeatures.Size();i++){
@@ -54,7 +54,7 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
         root->add(meshCollect->getMesh(TEXT));
     }
     currentTime=SDL_GetTicks();
-    loadDelay=currentTime;
+    menuDelay=currentTime;
 }
 
 //**********************************************************************//
@@ -71,7 +71,7 @@ MovieScreen::~MovieScreen()
 //**********************************************************************//
 
 void MovieScreen::visualization(Context & cv){
-    if(activated)
+    if(activateMenu)
         root->visualization(cv);
 }
 
@@ -83,17 +83,17 @@ void MovieScreen::updateState(GameState & gameState){
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(activated){
-        if(gameState.controller->checkButton(cACTION) && loadDelay<(time-500)){ //If the user push the action intro
+    if(activateMenu){
+        if(gameState.controller->checkButton(cACTION) && menuDelay<(time-500)){ //If the user push the action intro
             currentOption++;
 
             if((unsigned)currentOption==options.size()){
-                activated=false;
+                activateMenu=false;
                 currentOption=0;
             }
 
             currentMaterial->setTexture(options[currentOption]);
-            loadDelay=time;
+            menuDelay=time;
 
             gameState.controller->consumeButtons();
         }
@@ -105,13 +105,13 @@ void MovieScreen::updateState(GameState & gameState){
 //**********************************************************************//
 
 void MovieScreen::setActivate(bool value){
-    activated=value;
+    activateMenu=value;
 }
 
 //**********************************************************************//
 
 bool MovieScreen::isActivated(){
-    return activated;
+    return activateMenu;
 }
 
 //**********************************************************************//

@@ -80,7 +80,7 @@ class Menu : public Object3D
 
 
     protected:
-        Sound * openSound,* moveSound;
+
         NodeSceneGraph * root;
         Matrix4f * positionMenu;
         bool activateMenu;

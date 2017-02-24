@@ -32,7 +32,7 @@ ObjectGroup::ObjectGroup(MaterialIndex materialIndex){
 ObjectGroup::~ObjectGroup()
 {
     delete mesh;
-    delete root;
+    //delete root;
 }
 
 //**********************************************************************//

@@ -49,7 +49,7 @@ LoadingScreen::LoadingScreen(float delay)
     options.push_back(new Texture("./textures/loading3.png"));
 
     currentTime=SDL_GetTicks();
-    loadDelay=currentTime;
+    menuDelay=currentTime;
 }
 
 //**********************************************************************//
@@ -76,13 +76,13 @@ void LoadingScreen::updateState(GameState & gameState){
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(loadDelay<(time-animationDelay)){//if the time of our currentTexture is finished
+    if(menuDelay<(time-animationDelay)){//if the time of our currentTexture is finished
         currentOption++;                //Change texture
         if((unsigned)currentOption==options.size())
             currentOption=0;
 
         currentMaterial->setTexture(options[currentOption]);
-        loadDelay=time;
+        menuDelay=time;
     }
 
     currentTime+=time-currentTime;

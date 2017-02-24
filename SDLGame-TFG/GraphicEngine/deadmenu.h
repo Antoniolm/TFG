@@ -71,6 +71,7 @@ class DeadMenu : public Menu
     protected:
 
     private:
+        Sound * openSound,* moveSound;
 };
 
 #endif // DEADMENU_H

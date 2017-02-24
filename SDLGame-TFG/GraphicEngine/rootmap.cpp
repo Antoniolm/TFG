@@ -45,16 +45,16 @@ RootMap::RootMap(string fileMap,bool flagThread){
 
 RootMap::~RootMap()
 {
-    delete loader;
+    /*delete loader;
     delete backSound;
     delete npcList;
     delete enemyList;
     delete itemList;
-    //delete hero;
-    delete mate;
-    delete title;
-    delete endMapRegion;
-    delete movie;
+    //delete hero;*/
+    //delete mate;
+    //delete title;
+    //delete endMapRegion;
+    //delete movie;
 
     for(unsigned i=0;i<objs.size();i++)
         delete objs[i];

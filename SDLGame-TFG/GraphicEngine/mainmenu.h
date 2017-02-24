@@ -81,6 +81,7 @@ class MainMenu : public Menu
         MainMenu();
 
         static MainMenu* instance;
+        Sound * openSound,* moveSound;
 };
 
 #endif // MAINMENU_H
