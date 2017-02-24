@@ -27,10 +27,11 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
     if(movieFeatures.Size()==0){
         activated=false;
         root=0;
+        currentMaterial=0;
     }
     else{
         activated=true;
-        currentMaterial=new Material(vec3f(1.0,1.0,1.0),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,movieFeatures[0]["texture"].GetString());
+        currentMaterial=new Material();
 
         for(unsigned i=0;i<movieFeatures.Size();i++){
             textures.push_back(movieFeatures[i]["texture"].GetString());
@@ -60,8 +61,8 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
 
 MovieScreen::~MovieScreen()
 {
-    if(root!=0)
-        delete root;
+    //if(root!=0)
+      //  delete root;
 
     for(unsigned i=0;i<options.size();i++)
         delete options[i];
@@ -121,6 +122,10 @@ void MovieScreen::activateAllTexture(){
             options.push_back(new Texture(textures[i]));
 
         //Set the first texture
+        currentMaterial->setAmbient(vec3f(1.0,1.0,1.0));
+        currentMaterial->setDiffuse(vec3f(1.0f, 0.5f, 0.5f));
+        currentMaterial->setSpecular(vec3f(0.5f, 0.5f, 0.5f));
+        currentMaterial->setShininess(32.0f);
         currentMaterial->setTexture(options[0]);
     }
 }

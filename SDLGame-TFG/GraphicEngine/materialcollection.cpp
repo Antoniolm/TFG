@@ -24,10 +24,6 @@ MaterialCollection* MaterialCollection::instance = NULL;
 
 MaterialCollection::MaterialCollection()
 {
-    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 1.0f, 1.0f),vec3f(0.0f, 0.0f, 0.0f),16.0f,"./textures/cubeGrass.png",mCUBE_GRASS));
-
-    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeBox.png",mCUBE_BOX));
-
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeon.png",mCUBE_DUNG));
 
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeonB.png",mCUBE_DUNGB));
@@ -37,8 +33,6 @@ MaterialCollection::MaterialCollection()
     collection.addElement(new Material(vec3f(0.7f, 0.7f, 0.7f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/invisiblecubeWall.png",mINVICUBE_WALL));
 
     collection.addElement(new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeTrap.png",mCUBE_TRAP));
-
-    collection.addElement(new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/water.png",mWATER));
 
     collection.addElement(new Material(vec3f(0.5f, 1.0f, 0.5f),vec3f(0.5f, 1.0f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/water.png",mDWATER));
 
@@ -70,8 +64,6 @@ MaterialCollection::MaterialCollection()
 
     //Scene Material
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/furnitureText.png",mFURNITURE));
-
-    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/fpTexture.png",mFIREPLACE));
 
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/rugTexture.png",mRUG));
 
@@ -114,14 +106,11 @@ MaterialCollection::MaterialCollection()
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/potTexture.png",mPOT));
 
     //Create our map
-    collection.addIndex("mCUBE_GRASS",mCUBE_GRASS);
-    collection.addIndex("mCUBE_BOX",mCUBE_BOX);
     collection.addIndex("mCUBE_DUNG",mCUBE_DUNG);
     collection.addIndex("mCUBE_DUNGB",mCUBE_DUNGB);
     collection.addIndex("mCUBE_WALL",mCUBE_WALL);
     collection.addIndex("mINVICUBE_WALL",mINVICUBE_WALL);
     collection.addIndex("mCUBE_TRAP",mCUBE_TRAP);
-    collection.addIndex("mWATER",mWATER);
     collection.addIndex("mDWATER",mDWATER);
     collection.addIndex("mVOID",mVOID);
     collection.addIndex("mCRYSTAL",mCRYSTAL);
@@ -135,7 +124,6 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mADIALOG",mADIALOG);
     collection.addIndex("mBUTLER",mBUTLER);
     collection.addIndex("mFURNITURE",mFURNITURE);
-    collection.addIndex("mFIREPLACE",mFIREPLACE);
     collection.addIndex("mRUG",mRUG);
     collection.addIndex("mFIRE",mFIRE);
     collection.addIndex("mWINDOW",mWINDOW);

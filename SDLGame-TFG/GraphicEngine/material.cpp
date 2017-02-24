@@ -21,7 +21,7 @@
 
 Material::Material()
 {
-    //ctor
+    texture=0;
 }
 
 //**********************************************************************//
@@ -51,7 +51,8 @@ Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &a
 
 Material::~Material()
 {
-    delete texture;
+    if(texture!=0)
+        delete texture;
 }
 
 //**********************************************************************//

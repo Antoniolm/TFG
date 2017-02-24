@@ -404,7 +404,7 @@
 	"window.h"
 	"file_obj.h"
 
-1487930889 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1487951052 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -902,7 +902,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1487940489 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1487950938 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -992,7 +992,7 @@
 1478956556 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\scriptanimation.h
 	"matrix4f.h"
 
-1487940721 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\scriptlmd.cpp
+1487941062 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\scriptlmd.cpp
 	"scriptlmd.h"
 
 1485717453 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\scriptlmd.h
@@ -1040,7 +1040,7 @@
 	<stdlib.h>
 	<vector>
 
-1487843596 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1487941093 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -1605,7 +1605,7 @@
 1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\type_ptr.inl
 	<cstring>
 
-1487462497 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.cpp
+1487950680 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.cpp
 	"material.h"
 
 1487462524 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.h
@@ -2123,14 +2123,14 @@
 	<vector>
 	<string>
 
-1487753223 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
+1487942321 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.h
 	<vector>
 	<map>
 	"collection.h"
 	"collection.cpp"
 	<string>
 
-1487753028 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
+1487942333 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
 	"materialcollection.h"
 	"material.h"
 
@@ -2509,11 +2509,15 @@
 	"materialcollection.h"
 	"../lib/rapidjson/document.h"
 
-1487939380 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.cpp
+1487950750 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.cpp
 	"moviescreen.h"
 
 1487938171 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moveregion.cpp
 	"moveregion.h"
 
-1487938167 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moveregion.h
+1487950511 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moveregion.h
+	"structdata.h"
+	"rootmap.h"
+	"gamestate.h"
+	"../lib/rapidjson/document.h"
 
