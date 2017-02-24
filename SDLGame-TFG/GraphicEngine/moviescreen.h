@@ -69,11 +69,14 @@ class MovieScreen : public Object3D
         void setActivate(bool value);
         bool isActivated();
 
+        void activateAllTexture();
+
     protected:
 
     private:
         NodeSceneGraph * root;
         vector<Texture *> options;
+        vector<string> textures;
         int currentOption;
         Material * currentMaterial;
         bool activated;

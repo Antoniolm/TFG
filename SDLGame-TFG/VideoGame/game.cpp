@@ -180,6 +180,7 @@ void Game::loop(){
                 gameState.rootMap->activatedObjectGroup();
                 hero=gameState.rootMap->getHero();
                 movie=gameState.rootMap->getMovie();
+                movie->activateAllTexture();
                 firstTime=false;
             }
             ///////////////////

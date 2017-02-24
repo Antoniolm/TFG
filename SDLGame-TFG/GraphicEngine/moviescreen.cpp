@@ -33,7 +33,7 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
         currentMaterial=new Material(vec3f(1.0,1.0,1.0),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,movieFeatures[0]["texture"].GetString());
 
         for(unsigned i=0;i<movieFeatures.Size();i++){
-            options.push_back(new Texture(movieFeatures[i]["texture"].GetString()));
+            textures.push_back(movieFeatures[i]["texture"].GetString());
         }
 
         Matrix4f * positionMenu=new Matrix4f();
@@ -83,8 +83,10 @@ void MovieScreen::updateState(GameState & gameState){
         if(gameState.controller->checkButton(cACTION) && loadDelay<(time-500)){ //If the user push the action intro
             currentOption++;
 
-            if((unsigned)currentOption==options.size())
+            if((unsigned)currentOption==options.size()){
                 activated=false;
+                currentOption=0;
+            }
 
             currentMaterial->setTexture(options[currentOption]);
             loadDelay=time;
@@ -106,5 +108,17 @@ void MovieScreen::setActivate(bool value){
 
 bool MovieScreen::isActivated(){
     return activated;
+}
+
+//**********************************************************************//
+
+void MovieScreen::activateAllTexture(){
+    if(textures.size()!=0){
+        for(unsigned i=0;i<textures.size();i++)
+            options.push_back(new Texture(textures[i]));
+
+        //Set the first texture
+        currentMaterial->setTexture(options[0]);
+    }
 }
 
