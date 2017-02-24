@@ -29,9 +29,8 @@ MatrixScript::MatrixScript()
 
 MatrixScript::~MatrixScript()
 {
-    for(vector<pair<float,Matrix4fDynamic *> >::iterator it = script.begin() ; it != script.end(); ++it){
-        delete (*it).second;
-    }
+    for(unsigned i=0;i<script.size();i++)
+        delete script[i].second;
 }
 
 //**********************************************************************//

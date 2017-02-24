@@ -50,7 +50,7 @@ RootMap::~RootMap()
     delete npcList;
     delete enemyList;
     delete itemList;
-    //delete hero;
+    delete hero;
     delete mate;
     delete title;
     delete endMapRegion;

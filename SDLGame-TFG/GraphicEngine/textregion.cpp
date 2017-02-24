@@ -19,15 +19,15 @@
 
 #include "textregion.h"
 
-TextRegion::TextRegion(const Value & eventFeatures){
+TextRegion::TextRegion(const Value & regionFeatures){
     speakerMessage speaker;
 
-    minArea=vec3f(eventFeatures["minPosition"][0].GetFloat(),eventFeatures["minPosition"][1].GetFloat(),eventFeatures["minPosition"][2].GetFloat());
-    maxArea=vec3f(eventFeatures["maxPosition"][0].GetFloat(),eventFeatures["maxPosition"][1].GetFloat(),eventFeatures["maxPosition"][2].GetFloat());
-    timeBWstate=eventFeatures["timeBWstate"].GetFloat();
+    position=vec3f(regionFeatures["position"][0].GetFloat(),regionFeatures["position"][1].GetFloat(),regionFeatures["position"][2].GetFloat());
+    radioActivity=vec3f(regionFeatures["radioActivity"][0].GetFloat(),regionFeatures["radioActivity"][1].GetFloat(),regionFeatures["radioActivity"][2].GetFloat());
+    timeBWstate=regionFeatures["timeBWstate"].GetFloat();
 
 
-    const Value & dialogs=eventFeatures["dialog"];
+    const Value & dialogs=regionFeatures["dialog"];
 
     for(unsigned j=0;j<dialogs.Size();j++){
         if(dialogs[j]["speaker"].GetInt()==1) speaker=HERO_DIALOG;
@@ -55,13 +55,19 @@ void TextRegion::updateState(GameState & gameState){
 
     Hero * hero =rootMap->getHero();
     Mate * mate =rootMap->getMate();
-    vec3f position=hero->getPosition();
+
+    vec3f posHero=hero->getPosition();
+    vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
 
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(position>minArea && position<maxArea && !activated)
-        activated=true;
+    //check if the region will be activated in this frame
+    if((distance.x>-radioActivity.x && distance.x<radioActivity.x)&&
+       (distance.y>-radioActivity.y && distance.y<radioActivity.y)&&
+       (distance.z>-radioActivity.z && distance.z<radioActivity.z)){
+            activated=true;
+    }
 
     if(activated){
 

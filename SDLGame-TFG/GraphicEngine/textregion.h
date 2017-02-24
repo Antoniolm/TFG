@@ -35,7 +35,7 @@ class TextRegion
         //////////////////////////////////////////////////////////////////////////
         /**Json constructor */
         //////////////////////////////////////////////////////////////////////////
-        TextRegion(const Value & eventFeatures);
+        TextRegion(const Value & regionFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -53,8 +53,8 @@ class TextRegion
     protected:
 
     private:
-        vec3f minArea;
-        vec3f maxArea;
+        vec3f position;
+        vec3f radioActivity;
         IANpc stateMachine;
         float timeBWstate;
         float currentTime,textDelay;
