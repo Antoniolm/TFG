@@ -155,7 +155,7 @@ void RootMap::initialize(string fileMap){
     /////////////////////////////////////////
     // Add events to our map
     /////////////////////////////////////////
-    const rapidjson::Value & regionFeature=document["events"];
+    const rapidjson::Value & regionFeature=document["textRegion"];
     for(unsigned currentRegion=0;currentRegion<regionFeature.Size();currentRegion++){
         regions.push_back(new TextRegion(regionFeature[currentRegion]));
     }

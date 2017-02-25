@@ -183,7 +183,7 @@
     ],
 
 
-    "events":[
+    "textRegion":[
             {   "position":[8.5,0.0,-4.5],
                 "radioActivity":[3.0,3.0,3.0],
                 "timeBWstate":1000.0,
