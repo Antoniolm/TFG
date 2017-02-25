@@ -2448,15 +2448,16 @@
 	"shader.h"
 	<string>
 
-1487938287 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.h
-	"rootmap.h"
+1488039662 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.h
+	"region.h"
 	"gamestate.h"
 	"../lib/rapidjson/document.h"
 
-1487940006 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.cpp
+1488039681 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.cpp
 	"endmapregion.h"
 
-1487940184 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.h
+1488039855 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.h
+	"region.h"
 	"structdata.h"
 	"SDL.h"
 	"ianpc.h"
@@ -2494,7 +2495,7 @@
 1487595353 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\savedmanager.cpp
 	"savedmanager.h"
 
-1487955826 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.h
+1488041377 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.h
 	"menu.h"
 	"rootmap.h"
 	"context.h"
@@ -2520,4 +2521,11 @@
 	"rootmap.h"
 	"gamestate.h"
 	"../lib/rapidjson/document.h"
+
+1488039645 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\region.h
+	"structdata.h"
+
+1488039648 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\region.cpp
+	"region.h"
+	"gamestate.h"
 

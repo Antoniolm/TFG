@@ -17,27 +17,24 @@
 // **
 // *********************************************************************
 
-#ifndef ENDMAPREGION_H
-#define ENDMAPREGION_H
+#ifndef REGION_H
+#define REGION_H
 
-#include "region.h"
-#include "gamestate.h"
-#include "../lib/rapidjson/document.h"
+#include "structdata.h"
 
-using namespace rapidjson;
-
-class EndMapRegion : public Region
+class GameState;
+class Region
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        EndMapRegion(const Value & regionFeatures);
+        Region();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~EndMapRegion();
+        virtual ~Region();
 
         /////////////////////////////////////////////////////////////////////////
         /**
@@ -48,9 +45,21 @@ class EndMapRegion : public Region
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
+        /////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return if our hero was in the region or not
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isActivated();
+
     protected:
+        vec3f position;
+        vec3f radioActivity;
+        bool activated;
 
     private:
+
 };
 
-#endif // ENDMAPREGION_H
+#endif // REGION_H

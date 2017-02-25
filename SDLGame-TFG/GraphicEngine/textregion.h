@@ -20,6 +20,7 @@
 #ifndef TEXTREGION_H
 #define TEXTREGION_H
 
+#include "region.h"
 #include "structdata.h"
 #include "SDL.h"
 #include "ianpc.h"
@@ -29,7 +30,7 @@
 
 using namespace rapidjson;
 
-class TextRegion
+class TextRegion : public Region
 {
     public:
         //////////////////////////////////////////////////////////////////////////
@@ -53,12 +54,9 @@ class TextRegion
     protected:
 
     private:
-        vec3f position;
-        vec3f radioActivity;
         IANpc stateMachine;
         float timeBWstate;
         float currentTime,textDelay;
-        bool activated;
 };
 
 #endif // TEXTREGION_H

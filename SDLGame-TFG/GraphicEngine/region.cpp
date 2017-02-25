@@ -17,35 +17,27 @@
 // **
 // *********************************************************************
 
-#include "endmapregion.h"
+#include "region.h"
+#include "gamestate.h"
 
-EndMapRegion::EndMapRegion(const Value & regionFeatures){
-
-    position=vec3f(regionFeatures["position"][0].GetFloat(),regionFeatures["position"][1].GetFloat(),regionFeatures["position"][2].GetFloat());
-    radioActivity=vec3f(regionFeatures["radioActivity"][0].GetFloat(),regionFeatures["radioActivity"][1].GetFloat(),regionFeatures["radioActivity"][2].GetFloat());
-
-    activated=false;
+Region::Region()
+{
+    //ctor
 }
 
 //**********************************************************************//
 
-EndMapRegion::~EndMapRegion()
+Region::~Region()
 {
     //dtor
 }
 
 //**********************************************************************//
 
-void EndMapRegion::updateState(GameState & gameState){
+void Region::updateState(GameState & gameState){}
 
-    vec3f posHero=gameState.rootMap->getHero()->getPosition();
-    vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
+//**********************************************************************//
 
-    //check if the region will be activated in this frame
-    if((distance.x>-radioActivity.x && distance.x<radioActivity.x)&&
-       (distance.y>-radioActivity.y && distance.y<radioActivity.y)&&
-       (distance.z>-radioActivity.z && distance.z<radioActivity.z)){
-        activated=true;
-    }
-
+bool Region::isActivated(){
+    return activated;
 }
