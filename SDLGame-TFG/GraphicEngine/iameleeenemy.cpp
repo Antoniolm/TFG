@@ -65,7 +65,7 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
     }
 
     //Else
-    vector<vec3f> posEnemies=obtainPosEnemies(enemies->getEnemies(),posEnemy);
+    vector<vec3f> posEnemies=obtainPosEnemies(enemies->getEnemies());
 
     //Case -> Default
     newMovement.x=posEnemy.x;newMovement.y=posEnemy.y;newMovement.z=posEnemy.z;
@@ -144,34 +144,6 @@ pair<avatarDirection,vec3f> IAMeleeEnemy::nextPosition(vec3f posEnemy,vec3f posH
         result.first=BACK_RIGHTWARD;
         result.second=vec3f(1.0f,0.0f,-1.0f);
         minDistance=distance;
-    }
-
-    return result;
-}
-
-//**********************************************************************//
-
-vector<vec3f> IAMeleeEnemy::obtainPosEnemies(vector<Enemy *> enemies,vec3f posCurrentEnemy){
-    vector<vec3f> posEnemies;
-
-    for(unsigned i=0;i<enemies.size();i++){
-        vec3f pos=enemies[i]->getPosition();
-        if(enemies[i]->isActivate()){ //if the enemy is activate
-            posEnemies.push_back(pos);
-        }
-    }
-    return posEnemies;
-}
-
-//**********************************************************************//
-
-bool IAMeleeEnemy::checkCollision(vector<vec3f> & posEnemies,vec3f currentEnemy){
-    bool result=false;
-    float distance;
-    for(unsigned i=0;i<posEnemies.size();i++){
-        distance=sqrt(pow(currentEnemy.x-posEnemies[i].x,2.0)+pow(currentEnemy.z-posEnemies[i].z,2.0));
-        if(distance<0.5 && distance>0.2)
-            result=true;
     }
 
     return result;

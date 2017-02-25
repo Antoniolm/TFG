@@ -902,7 +902,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1487954011 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1488033261 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -1040,7 +1040,7 @@
 	<stdlib.h>
 	<vector>
 
-1487941093 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1488034763 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -1779,10 +1779,10 @@
 	"rangedenemy.h"
 	"meleeenemy.h"
 
-1485533684 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.cpp
+1488034921 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.cpp
 	"iaenemy.h"
 
-1487633378 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.h
+1488034972 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iaenemy.h
 	"structdata.h"
 	<iostream>
 	<math.h>
@@ -2281,14 +2281,14 @@
 1487849485 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\meleeenemy.cpp
 	"meleeenemy.h"
 
-1486424889 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iameleeenemy.cpp
+1488035029 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iameleeenemy.cpp
 	"iameleeenemy.h"
 
-1485717680 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iameleeenemy.h
+1488034175 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iameleeenemy.h
 	"iaenemy.h"
 	"../VideoGame/enemylist.h"
 
-1485533672 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iarangedenemy.cpp
+1488036315 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iarangedenemy.cpp
 	"iarangedenemy.h"
 
 1485717588 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\iarangedenemy.h

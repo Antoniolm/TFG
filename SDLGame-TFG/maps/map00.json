@@ -150,21 +150,39 @@
     "enemies":[
             {   
                 "life":75,
+                "position":[76.5,5.5,-40.5],
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"ranged"
+            },  
+            {   
+                "life":75,
                 "position":[75.5,5.5,-40.5],
                 "radioActivity":[2.0,2.0,2.0],
                 "type":"ranged"
             },   
             {   
                 "life":75,
+                "position":[75.5,5.5,-43.5],
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"ranged"
+            },
+            {   
+                "life":75,
                 "position":[76.5,5.5,-43.5],
                 "radioActivity":[2.0,2.0,2.0],
-                "type":"melee"
+                "type":"ranged"
+            },
+            {   
+                "life":75,
+                "position":[77.5,5.5,-43.5],
+                "radioActivity":[2.0,2.0,2.0],
+                "type":"ranged"
             },
             {   
                 "life":75,
                 "position":[77.5,5.5,-40.5],
                 "radioActivity":[2.0,2.0,2.0],
-                "type":"melee"
+                "type":"ranged"
             }
     ],
 

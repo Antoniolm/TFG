@@ -64,79 +64,84 @@ pair<avatarDirection,vec3f> IARangedEnemy::nextPosition(vec3f posEnemy,vec3f pos
     }
 
     //Else
+    vector<vec3f> posEnemies=obtainPosEnemies(enemies->getEnemies());
+
+
+    //Case -> Default
+    newMovement.x=posEnemy.x;newMovement.y=posEnemy.y;newMovement.z=posEnemy.z;
+    result.first=FORWARD;
+    result.second=vec3f(0.0f,0.0f,0.0f);
+    maxDistance=0.0;
+
     //Case -> Leftward will be the movement of our enemy
-    newMovement.x=posEnemy.x-2.0;newMovement.y=posEnemy.y;newMovement.z=posEnemy.z;
-    enemyDir=LEFTWARD;
-    result.first=enemyDir;
-    result.second=vec3f(-2.0f,0.0f,0.0f);
-    maxDistance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
+    newMovement.x=posEnemy.x-2.0;newMovement.z=posEnemy.z;
+    distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
+    if(maxDistance<distance && !checkCollision(posEnemies,vec3f(posEnemy.x-0.2,posEnemy.y,posEnemy.z))){ //If Rightward will be our move -> The distance is smallest between them
+        result.first=LEFTWARD;
+        result.second=vec3f(2.0f,0.0f,0.0f);
+        maxDistance=distance;
+    }
+
 
     //Case -> Rightward
     newMovement.x=posEnemy.x+2.0;newMovement.z=posEnemy.z;
-    enemyDir=RIGHTWARD;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(maxDistance<distance){ //If Rightward will be our move -> The distance is smallest between them
-        result.first=enemyDir;
+    if(maxDistance<distance && !checkCollision(posEnemies,vec3f(posEnemy.x+0.2,posEnemy.y,posEnemy.z))){ //If Rightward will be our move -> The distance is smallest between them
+        result.first=RIGHTWARD;
         result.second=vec3f(2.0f,0.0f,0.0f);
         maxDistance=distance;
     }
 
     //Case -> Backward
     newMovement.x=posEnemy.x;newMovement.z=posEnemy.z-2.0;
-    enemyDir=BACKWARD;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(maxDistance<distance){ //If Backward will be our move -> The distance is smallest between them
-        result.first=enemyDir;
+    if(maxDistance<distance && !checkCollision(posEnemies,vec3f(posEnemy.x,posEnemy.y,posEnemy.z-0.2))){ //If Backward will be our move -> The distance is smallest between them
+        result.first=BACKWARD;
         result.second=vec3f(0.0f,0.0f,-2.0f);
         maxDistance=distance;
     }
 
     //Case -> Forward
     newMovement.x=posEnemy.x;newMovement.z=posEnemy.z+2.0;
-    enemyDir=FORWARD;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(maxDistance<distance){ //If Forward will be our move -> The distance is smallest between them
-        result.first=enemyDir;
+    if(maxDistance<distance && !checkCollision(posEnemies,vec3f(posEnemy.x,posEnemy.y,posEnemy.z+0.2))){ //If Forward will be our move -> The distance is smallest between them
+        result.first=FORWARD;
         result.second=vec3f(0.0f,0.0f,2.0f);
         maxDistance=distance;
     }
 
     //Case -> Left-forward
     newMovement.x=posEnemy.x-1.0;newMovement.z=posEnemy.z+1.0;
-    enemyDir=FOR_LEFTWARD;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(maxDistance<distance){ //If Left-forward will be our move -> The distance is smallest between them
-        result.first=enemyDir;
+    if(maxDistance<distance && !checkCollision(posEnemies,vec3f(posEnemy.x-0.1,posEnemy.y,posEnemy.z+0.1))){ //If Left-forward will be our move -> The distance is smallest between them
+        result.first=FOR_LEFTWARD;
         result.second=vec3f(-1.0f,0.0f,1.0f);
         maxDistance=distance;
     }
 
     //Case -> Right-forward
     newMovement.x=posEnemy.x+1.0;newMovement.z=posEnemy.z+1.0;
-    enemyDir=FOR_RIGHTWARD;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(maxDistance<distance){ //If Right-forward will be our move -> The distance is smallest between them
-        result.first=enemyDir;;
+    if(maxDistance<distance && !checkCollision(posEnemies,vec3f(posEnemy.x+0.1,posEnemy.y,posEnemy.z+0.1))){ //If Right-forward will be our move -> The distance is smallest between them
+        result.first=FOR_RIGHTWARD;
         result.second=vec3f(+1.0f,0.0f,+1.0f);
         maxDistance=distance;
     }
 
     //Case -> Left-backward
     newMovement.x=posEnemy.x-1.0;newMovement.z=posEnemy.z-1.0;
-    enemyDir=BACK_LEFTWARD;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(maxDistance<distance){ //If Left-backward will be our move -> The distance is smallest between them
-        result.first=enemyDir;
+    if(maxDistance<distance && !checkCollision(posEnemies,vec3f(posEnemy.x-0.1,posEnemy.y,posEnemy.z-0.1))){ //If Left-backward will be our move -> The distance is smallest between them
+        result.first=BACK_LEFTWARD;
         result.second=vec3f(-1.0f,0.0f,-1.0f);
         maxDistance=distance;
     }
 
     //Case -> Right-backward
     newMovement.x=posEnemy.x+1.0;newMovement.z=posEnemy.z-1.0;
-    enemyDir=BACK_RIGHTWARD;
     distance=sqrt(pow(newMovement.x-posHero.x,2.0)+pow(newMovement.y-posHero.y,2.0)+pow(newMovement.z-posHero.z,2.0));
-    if(maxDistance<distance){ //If Right-backward will be our move -> The distance is smallest between them
-        result.first=enemyDir;
+    if(maxDistance<distance && !checkCollision(posEnemies,vec3f(posEnemy.x+0.1,posEnemy.y,posEnemy.z-0.1))){ //If Right-backward will be our move -> The distance is smallest between them
+        result.first=BACK_RIGHTWARD;
         result.second=vec3f(1.0f,0.0f,-1.0f);
         maxDistance=distance;
     }

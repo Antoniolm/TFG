@@ -37,3 +37,32 @@ pair<avatarDirection,vec3f> IAEnemy::nextPosition(vec3f posEnemy,vec3f posHero,E
     pair<avatarDirection,vec3f> result;
     return result;
 }
+
+//**********************************************************************//
+
+vector<vec3f> IAEnemy::obtainPosEnemies(vector<Enemy *> enemies){
+    vector<vec3f> posEnemies;
+
+    for(unsigned i=0;i<enemies.size();i++){
+        vec3f pos=enemies[i]->getPosition();
+        if(enemies[i]->isActivate()){ //if the enemy is activate
+            posEnemies.push_back(pos);
+        }
+    }
+    return posEnemies;
+}
+
+//**********************************************************************//
+
+bool IAEnemy::checkCollision(vector<vec3f> & posEnemies,vec3f currentEnemy){
+    bool result=false;
+    float distance;
+    for(unsigned i=0;i<posEnemies.size();i++){
+        distance=sqrt(pow(currentEnemy.x-posEnemies[i].x,2.0)+pow(currentEnemy.z-posEnemies[i].z,2.0));
+        if(distance<0.5 && distance>0.2)
+            result=true;
+    }
+
+    return result;
+}
+
