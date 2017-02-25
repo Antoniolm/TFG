@@ -23,6 +23,8 @@ SavedManager* SavedManager::instance = NULL;
 
 SavedManager::SavedManager()
 {
+    coins=0;
+    currentMap="";
 }
 
 //**********************************************************************//
@@ -33,26 +35,43 @@ SavedManager::~SavedManager()
 
 //**********************************************************************//
 
-std::string SavedManager::load(){
-    std::string currentMap;
-
+void SavedManager::load(){
     //Open file
     FILE * fp = fopen("./save/save.json", "rb"); // non-Windows use "r"
     char readBuffer[65536];
     rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
     rapidjson::Document document;
     document.ParseStream(is);
-    currentMap=document["currentMap"].GetString();
-    fclose(fp);
 
+    currentMap=document["currentMap"].GetString();
+    coins=document["coin"].GetFloat();
+
+    fclose(fp);
+}
+
+//**********************************************************************//
+
+std::string SavedManager::getMap(){
     return currentMap;
 }
 
 //**********************************************************************//
 
-void SavedManager::save(std::string fileMap){
+int SavedManager::getCoin(){
+    return coins;
+}
+
+//**********************************************************************//
+
+void SavedManager::save(std::string fileMap, int coin){
+    currentMap=fileMap;
+    coins=coin;
+    std::ostringstream stringCoin ;
+    stringCoin << coin ;
+
     std::ofstream savedFile;
     savedFile.open ("./save/save.json");
-    savedFile << "{ \"currentMap\":\""+fileMap+"\" }\n";
+    savedFile << "{ \"currentMap\":\""+fileMap+"\" ,"+
+                 +"  \"coin\":"+stringCoin.str()+"}\n";
     savedFile.close();
 }

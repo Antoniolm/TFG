@@ -25,6 +25,7 @@
 #include "../lib/rapidjson/filereadstream.h"
 #include <string>
 #include <fstream>
+#include <sstream>
 
 using namespace rapidjson;
 
@@ -32,16 +33,42 @@ class SavedManager
 {
     public:
 
-
-
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~SavedManager();
 
-        std::string load();
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will load the current save
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void load();
 
-        void save(std::string fileMap);
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the loaded map
+        *    \return string
+        */
+        //////////////////////////////////////////////////////////////////////////
+        std::string getMap();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the loaded coins
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
+        int getCoin();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will save the currentMap in the user save
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void save(std::string fileMap,int coin);
 
         static SavedManager * getInstance(){
             if(instance == NULL)
@@ -58,6 +85,9 @@ class SavedManager
         SavedManager();
 
         static SavedManager* instance;
+        std::string currentMap;
+        int coins;
+
 };
 
 #endif // SAVEDMANAGER_H

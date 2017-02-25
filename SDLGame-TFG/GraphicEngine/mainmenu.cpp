@@ -124,19 +124,23 @@ void MainMenu::updateState(GameState & gameState){
             moveSound->play();
         }
         if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
+            SavedManager * saveManager;
             switch(currentOption){
                 case 0: //Start Game
                     activateMenu=false;
                     if(gameState.rootMap!=0)
                         delete gameState.rootMap;
 
-                    SavedManager::getInstance()->save("");
+                    SavedManager::getInstance()->save("",0);
                     gameState.rootMap=new RootMap("./maps/map00.json",true);
                     openSound->play();
                 break;
                 case 1: //Continue
                     //Catch the saved progress and load the map
-                    fileLoad=SavedManager::getInstance()->load();
+                    saveManager=SavedManager::getInstance();
+                    saveManager->load();
+                    fileLoad=saveManager->getMap();
+
                     if(fileLoad!=""){
                         activateMenu=false;
                         if(gameState.rootMap!=0)

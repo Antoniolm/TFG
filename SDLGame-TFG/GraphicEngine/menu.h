@@ -29,8 +29,8 @@
 #include "material.h"
 #include "profile.h"
 #include "sound.h"
-#include "gamestate.h"
 
+class GameState;
 class Menu : public Object3D
 {
     public:

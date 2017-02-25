@@ -33,7 +33,7 @@ Hero::Hero(vec3f aPos)
     isHitting=false;
     isImpacted=false;
     isShielded=false;
-    life=1500;
+    life=150;
     maxLife=150;
     position=vec4f(aPos.x,aPos.y,aPos.z,1.0);
     currentCoin=0;
@@ -656,6 +656,12 @@ void Hero::setDialog(string message,int index){
 
 void Hero::activateDialog(bool value,int index){
     activatedTexts[index]=value;
+}
+
+//**********************************************************************//
+
+void Hero::setCoin(int value){
+    currentCoin=value;
 }
 
 //**********************************************************************//

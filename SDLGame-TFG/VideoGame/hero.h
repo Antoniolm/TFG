@@ -105,6 +105,14 @@ class Hero: public AvatarMove
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will set the coins of our hero
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setCoin(int value);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will reset animations because the hero isn't in movement
         *    \return void
         */

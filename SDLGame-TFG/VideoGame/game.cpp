@@ -178,7 +178,10 @@ void Game::loop(){
             if(firstTime){
                 gameState.rootMap->activatedLight(context.currentShader.getProgram());
                 gameState.rootMap->activatedObjectGroup();
+
                 hero=gameState.rootMap->getHero();
+                hero->setCoin(SavedManager::getInstance()->getCoin());
+
                 movie=gameState.rootMap->getMovie();
                 movie->activateAllTexture();
                 firstTime=false;
@@ -248,14 +251,15 @@ void Game::loop(){
             profile->incrementFrames();
 
             if(gameState.rootMap->isFinished()){
-                //Get the next Map
+                //Get the next Map and save the match
                 fileMap=gameState.rootMap->getNextMap();
+                SavedManager::getInstance()->save(fileMap,hero->getCoin());
 
                 //Delete the currentMap
                 delete gameState.rootMap;
 
                 //Save the progress and create the new map
-                SavedManager::getInstance()->save(fileMap);
+                SavedManager::getInstance()->save(fileMap,hero->getCoin());
                 gameState.rootMap=new RootMap(fileMap,true);
 
                 gameState.controller->consumeButtons();

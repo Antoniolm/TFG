@@ -20,16 +20,7 @@
 #ifndef LOADINGSCREEN_H
 #define LOADINGSCREEN_H
 
-#include "rootmap.h"
-#include "context.h"
-#include "mesh.h"
 #include "menu.h"
-#include "nodescenegraph.h"
-#include "texture.h"
-#include "material.h"
-#include "profile.h"
-#include "sound.h"
-#include "gamestate.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
 
