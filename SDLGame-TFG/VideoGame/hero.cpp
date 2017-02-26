@@ -462,7 +462,7 @@ void Hero::updateState(GameState & gameState){
     }
 
     //Case-> Push L bottom to hit
-    if(controller->checkButton(cATTACK) && !isShielded){ //If hero is hitting
+    if(controller->checkButton(cATTACK) && !isShielded && !hasSoul){ //If hero is hitting
         if(!isHitting){
             animations.resetAnimation(1);
             animations.resetAnimation(5);
@@ -482,7 +482,7 @@ void Hero::updateState(GameState & gameState){
     }
 
     //Case-> Push W bottom to shield
-    if(controller->checkButton(cSHIELD) && !isHitting){ //If hero is shielding
+    if(controller->checkButton(cSHIELD) && !isHitting && !hasSoul){ //If hero is shielding
         isShielded=true;
         animations.activate(2); //Activate animation
     }
