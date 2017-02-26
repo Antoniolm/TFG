@@ -902,7 +902,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1488102540 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1488120597 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -1021,7 +1021,7 @@
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 
-1488105228 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
+1488121624 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -1039,10 +1039,11 @@
 	"../GraphicEngine/animationlist.h"
 	"../GraphicEngine/controller.h"
 	"../lib/rapidjson/document.h"
+	"soul.h"
 	<stdlib.h>
 	<vector>
 
-1488109569 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1488121520 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -2524,7 +2525,7 @@
 	"../GraphicEngine/materialcollection.h"
 	"../lib/rapidjson/document.h"
 
-1488106528 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\soul.cpp
+1488121751 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\soul.cpp
 	"soul.h"
 
 1488119470 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\soulcarrier.h

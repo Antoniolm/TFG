@@ -26,7 +26,7 @@ Hero::Hero(vec3f aPos)
     acceleratedMove=new AcceleratedMovement();
     acceleratedMove->resetState();
     direction=FORWARD;
-    hasSoul=false;
+    soul=0;
     isMoving=false;
     isMoveCollision=false;
     isFalling=false;
@@ -462,7 +462,7 @@ void Hero::updateState(GameState & gameState){
     }
 
     //Case-> Push L bottom to hit
-    if(controller->checkButton(cATTACK) && !isShielded && !hasSoul){ //If hero is hitting
+    if(controller->checkButton(cATTACK) && !isShielded && soul==0){ //If hero is hitting
         if(!isHitting){
             animations.resetAnimation(1);
             animations.resetAnimation(5);
@@ -482,7 +482,7 @@ void Hero::updateState(GameState & gameState){
     }
 
     //Case-> Push W bottom to shield
-    if(controller->checkButton(cSHIELD) && !isHitting && !hasSoul){ //If hero is shielding
+    if(controller->checkButton(cSHIELD) && !isHitting && soul==0){ //If hero is shielding
         isShielded=true;
         animations.activate(2); //Activate animation
     }
@@ -667,8 +667,8 @@ void Hero::setCoin(int value){
 
 //**********************************************************************//
 
-void Hero::setHasSoul(bool value){
-    hasSoul=value;
+void Hero::setSoul(Soul * aSoul){
+    soul=aSoul;
 }
 
 //**********************************************************************//
@@ -701,8 +701,8 @@ bool Hero::isHit(){
 
 //**********************************************************************//
 
- bool Hero::getHasSoul(){
-    return hasSoul;
+Soul * Hero::getSoul(){
+    return soul;
  }
 //**********************************************************************//
 

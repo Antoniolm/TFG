@@ -37,6 +37,7 @@
 #include "../GraphicEngine/animationlist.h"
 #include "../GraphicEngine/controller.h"
 #include "../lib/rapidjson/document.h"
+#include "soul.h"
 #include <stdlib.h>
 
 
@@ -46,6 +47,7 @@ using namespace std;
 class RootMap;
 class Text;
 class Weapon;
+class Soul;
 class Projectile;
 class Hero: public AvatarMove
 {
@@ -117,7 +119,7 @@ class Hero: public AvatarMove
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setHasSoul(bool value);
+        void setSoul(Soul * aSoul);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -157,7 +159,7 @@ class Hero: public AvatarMove
         *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
-        bool getHasSoul();
+        Soul * getSoul();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -199,10 +201,10 @@ class Hero: public AvatarMove
         AnimationList animations;
         vector<Text *> texts;
         vector<bool> activatedTexts;
+        Soul * soul;
         Weapon * currentWeapon,* meleeWeapon,* rangedWeapon;
         float jumpDelay,hitDelay,coinDelay,shieldDelay,swapDelay,shootDelay,swordDelay;
         int currentCoin;
-        bool hasSoul;
 };
 
 #endif // HERO_H

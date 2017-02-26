@@ -444,14 +444,14 @@ void RootMap::updateState(GameState & gameState){
         regions[i]->updateState(gameState);
     }
 
-    //Update souls
-    for(unsigned i=0;i<souls.size();i++){
-        souls[i]->updateState(gameState);
-    }
-
     //Update soulCarriers
     for(unsigned i=0;i<soulCarriers.size();i++){
         soulCarriers[i]->updateState(gameState);
+    }
+
+    //Update souls
+    for(unsigned i=0;i<souls.size();i++){
+        souls[i]->updateState(gameState);
     }
 
     //Update spikeTraps

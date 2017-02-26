@@ -62,9 +62,9 @@ void SoulCarrier::updateState(GameState & gameState ){
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0));
 
     //if hero is near of a soul and he push E -> Hero catch the soul in his arms
-    if(gameState.controller->checkButton(cACTION) && distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y+1)){
+    if(hero->getSoul()!=0 && gameState.controller->checkButton(cACTION) && distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y+1)){
         activated=true;
-        gameState.controller->consumeButtons();
+        //gameState.controller->consumeButtons();
     }
 
     if(activated){ //if hero caught a soul in his arms
