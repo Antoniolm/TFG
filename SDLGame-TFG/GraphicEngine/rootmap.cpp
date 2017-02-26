@@ -374,13 +374,6 @@ void RootMap::visualization(Context & cv){
     //Draw items
     itemList->visualization(cv);
 
-    //Draw decoration object
-    for(unsigned i=0;i<decorationObjs.size();i++){
-        position=decorationObjs[i]->getPosition();
-        if(position.x>posHero.x-11 && position.x<posHero.x+11)
-            decorationObjs[i]->visualization(cv);
-    }
-
     //Draw particles system
     for(unsigned i=0;i<particleSystem.size();i++){
         position=vec3f(particleSystem[i]->getPosition());
@@ -411,6 +404,13 @@ void RootMap::visualization(Context & cv){
     //Draw spiketrap
     for(unsigned i=0;i<spikes.size();i++){
         spikes[i]->visualization(cv);
+    }
+
+    //Draw decoration object
+    for(unsigned i=0;i<decorationObjs.size();i++){
+        position=decorationObjs[i]->getPosition();
+        if(position.x>posHero.x-11 && position.x<posHero.x+11)
+            decorationObjs[i]->visualization(cv);
     }
 
     //Draw mate

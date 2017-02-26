@@ -26,6 +26,7 @@
 #include "../GraphicEngine/matrix4fdynamic.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/materialcollection.h"
+#include "../GraphicEngine/axisrotation.h"
 #include "../lib/rapidjson/document.h"
 
 using namespace rapidjson;
@@ -76,7 +77,8 @@ class Soul : public Object3D
         void calculatePosition(vec3f posHero,avatarDirection direction);
 
         NodeSceneGraph * root;
-        Matrix4f * transMatrix;
+        Matrix4f * transMatrix,* animationMatrix;
+        AxisRotation * rotation;
         float delayTime;
         bool activated;
         bool inCarrier;

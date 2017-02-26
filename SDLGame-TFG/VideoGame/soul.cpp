@@ -31,8 +31,14 @@ Soul::Soul(const Value & soulFeatures)
     transMatrix=new Matrix4f();
     transMatrix->translation(position.x,position.y,position.z);
 
+    animationMatrix=new Matrix4f();
+    animationMatrix->identity();
+
+    rotation=new AxisRotation(100,0.0,1.0,0.0);
+
     root=new NodeSceneGraph();
     root->add(transMatrix);
+    root->add(animationMatrix);
     root->add(materialCollect->getMaterial(mCRYSTAL));
     root->add(meshCollect->getMesh(COIN));
     currentTime=SDL_GetTicks();
@@ -81,6 +87,10 @@ void Soul::updateState(GameState & gameState ){
 
     if(activated && !inCarrier){ //if hero caught a soul in his arms
         calculatePosition(posHero,hero->getDirection());
+    }
+
+    if(inCarrier){
+        animationMatrix->setMatrix(rotation->updateState(time-currentTime).getMatrix());
     }
 
     position=transMatrix->product(vec4f());

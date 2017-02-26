@@ -97,8 +97,11 @@ void Item::updateState(GameState & gameState){
             soundTake->play();
         break;
         case iPOTION:
-            if(hero->getLife()!=hero->getMaxLite())
+            if(hero->getLife()!=hero->getMaxLite()){
                 hero->addLife(value);
+                soundTake->stop();
+                soundTake->play();
+            }
             else
                 notTake=true;
         break;
