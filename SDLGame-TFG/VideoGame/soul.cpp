@@ -62,20 +62,22 @@ void Soul::updateState(GameState & gameState ){
     vec3f posHero=hero->getPosition();
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0));
 
-    if(activated && gameState.controller->checkButton(cACTION)){
+    if(activated && gameState.controller->checkButton(cACTION)){ //If is activated and hero push E -> Drop the soul in the scene.
         activated=false;
         transMatrix->translation(posHero.x,posHero.y,posHero.z);
         gameState.controller->consumeButtons();
     }
 
-    if(!activated && gameState.controller->checkButton(cACTION) && distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y)){ //if hero is near of a soul
+    //if hero is near of a soul and he push E -> Hero catch the soul in his arms
+    if(!activated && gameState.controller->checkButton(cACTION) && distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y+1)){
         activated=true;
         gameState.controller->consumeButtons();
     }
 
-    if(activated){ //if hero catch a soul in his arms
+    if(activated){ //if hero caught a soul in his arms
         transMatrix->translation(posHero.x,posHero.y+2.0,posHero.z);
     }
 
+    position=transMatrix->product(vec4f());
     currentTime+=time-currentTime;
 }
