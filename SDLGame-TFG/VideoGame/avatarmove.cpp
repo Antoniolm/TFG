@@ -252,7 +252,6 @@ bool AvatarMove::moveBody(vec3f aMove,avatarDirection aDir){
 
 ObjectScene * AvatarMove::gravity(float time){
     ObjectScene * hasCollision=0;
-    float tenthValueX,tenthValueZ;
 
     vec3f posHero=getPosition();
 

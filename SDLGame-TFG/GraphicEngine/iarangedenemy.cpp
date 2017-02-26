@@ -36,7 +36,6 @@ IARangedEnemy::~IARangedEnemy()
 pair<avatarDirection,vec3f> IARangedEnemy::nextPosition(vec3f posEnemy,vec3f posHero,EnemyList * enemies){
     vec3f newMovement;
     float distance,maxDistance;
-    avatarDirection enemyDir;
     pair<avatarDirection,vec3f> result;
 
     //If the enemy is far of our hero. The enemy stop the movement
