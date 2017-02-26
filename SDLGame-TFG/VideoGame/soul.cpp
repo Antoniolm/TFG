@@ -79,9 +79,42 @@ void Soul::updateState(GameState & gameState ){
     }
 
     if(activated){ //if hero caught a soul in his arms
-        transMatrix->translation(posHero.x,posHero.y+2.0,posHero.z);
+        calculatePosition(posHero,hero->getDirection());
     }
 
     position=transMatrix->product(vec4f());
     currentTime+=time-currentTime;
+}
+
+//**********************************************************************//
+//                              PRIVATE                                 //
+//**********************************************************************//
+
+void Soul::calculatePosition(vec3f posHero,avatarDirection direction){
+    switch(direction){
+            case FORWARD:
+                transMatrix->translation(posHero.x,posHero.y,posHero.z+0.5);
+            break;
+            case BACKWARD:
+                transMatrix->translation(posHero.x,posHero.y,posHero.z-0.5);
+            break;
+            case LEFTWARD:
+                transMatrix->translation(posHero.x-0.5,posHero.y,posHero.z);
+            break;
+            case RIGHTWARD:
+                transMatrix->translation(posHero.x+0.5,posHero.y,posHero.z);
+            break;
+            case FOR_LEFTWARD:
+                transMatrix->translation(posHero.x-0.4,posHero.y,posHero.z+0.4);
+            break;
+            case FOR_RIGHTWARD:
+                transMatrix->translation(posHero.x+0.4,posHero.y,posHero.z+0.4);
+            break;
+            case BACK_LEFTWARD:
+                transMatrix->translation(posHero.x-0.4,posHero.y,posHero.z-0.4);
+            break;
+            case BACK_RIGHTWARD:
+                transMatrix->translation(posHero.x+0.4,posHero.y,posHero.z-0.4);
+            break;
+    }
 }

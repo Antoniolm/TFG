@@ -63,6 +63,14 @@ class Soul : public Object3D
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will calculate the position of our soul when is taken for a hero
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void calculatePosition(vec3f posHero,avatarDirection direction);
+
         NodeSceneGraph * root;
         Matrix4f * transMatrix;
         float delayTime;
