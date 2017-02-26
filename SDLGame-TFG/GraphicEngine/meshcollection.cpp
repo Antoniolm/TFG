@@ -216,6 +216,9 @@ MeshCollection::MeshCollection()
     element=new Mesh("geometries/pot2.obj");
     collection.addElement(element);
 
+    element=new Mesh("geometries/door.obj");
+    collection.addElement(element);
+
     //Create our map
     collection.addIndex("CUBE",CUBE);
     collection.addIndex("SPHERE",SPHERE);
@@ -271,6 +274,7 @@ MeshCollection::MeshCollection()
     collection.addIndex("IWALLEFT",IWALLEFT);
     collection.addIndex("POT",POT);
     collection.addIndex("POT2",POT2);
+    collection.addIndex("DOOR",DOOR);
 }
 
 //**********************************************************************//
