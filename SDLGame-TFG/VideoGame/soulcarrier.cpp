@@ -32,8 +32,8 @@ SoulCarrier::SoulCarrier(const Value & soulFeatures)
 
     root=new NodeSceneGraph();
     root->add(transMatrix);
-    root->add(materialCollect->getMaterial(mCRYSTAL));
-    root->add(meshCollect->getMesh(CUBE));
+    root->add(materialCollect->getMaterial(mGLYPH));
+    root->add(meshCollect->getMesh(GLYPH));
     currentTime=SDL_GetTicks();
 }
 

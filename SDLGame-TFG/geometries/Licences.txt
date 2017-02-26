@@ -22,3 +22,4 @@ Book Case by JmPrsh153 is licensed under CC Attribution https://skfb.ly/BqWx -> 
 Chest by pepedrago is licensed under CC Attribution https://skfb.ly/KDJz -> used in the obj: trunk.obj
 Tiki Treasure! by glenatron is licensed under CC Attribution https://skfb.ly/VLRo -> used in the obj: pot.obj, pot2.obj
 Medieval Door by Josh997 is licensed under CC Attribution https://skfb.ly/ERMs -> used in the obj : door.obj
+Spell Glyph by amdragg is licensed under CC Attribution https://skfb.ly/NRVr -> used in the obj: glyph.obj

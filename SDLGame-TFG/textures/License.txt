@@ -28,3 +28,4 @@ gamepad by IO-Images is licensed under CC 0 Attribution https://pixabay.com/es/c
 Chest by pepedrago is licensed under CC Attribution https://skfb.ly/KDJz -> used in the texture: trunkTexture.png
 Tiki Treasure! by glenatron is licensed under CC Attribution https://skfb.ly/VLRo -> used in the texture : potTexture.png
 Medieval Door by Josh997 is licensed under CC Attribution https://skfb.ly/ERMs -> used in the texture: doorTexture.png
+Spell Glyph by amdragg is licensed under CC Attribution https://skfb.ly/NRVr -> used in the texture: glyphTexture.png

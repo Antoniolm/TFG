@@ -82,7 +82,8 @@ enum MeshIndex{
     IWALLEFT,   //52
     POT,
     POT2,
-    DOOR
+    DOOR,
+    GLYPH
 };
 
 class MeshCollection
