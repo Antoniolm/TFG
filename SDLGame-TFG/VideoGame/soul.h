@@ -60,6 +60,10 @@ class Soul : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(GameState & gameState);
 
+        void setPosition(vec3f value);
+
+        void setInCarrier(bool value);
+
     protected:
 
     private:
@@ -75,6 +79,7 @@ class Soul : public Object3D
         Matrix4f * transMatrix;
         float delayTime;
         bool activated;
+        bool inCarrier;
 };
 
 #endif // SOUL_H

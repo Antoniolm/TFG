@@ -27,6 +27,7 @@
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/materialcollection.h"
 #include "../lib/rapidjson/document.h"
+#include "soul.h"
 
 using namespace rapidjson;
 

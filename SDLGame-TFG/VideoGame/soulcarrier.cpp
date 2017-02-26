@@ -55,6 +55,7 @@ void SoulCarrier::visualization(Context & cv){
 void SoulCarrier::updateState(GameState & gameState ){
     float time=gameState.time;
     Hero * hero=gameState.rootMap->getHero();
+    Soul * soul=hero->getSoul();
 
     if(time-currentTime>200) currentTime=time-50;
 
@@ -62,8 +63,11 @@ void SoulCarrier::updateState(GameState & gameState ){
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0));
 
     //if hero is near of a soul and he push E -> Hero catch the soul in his arms
-    if(hero->getSoul()!=0 && gameState.controller->checkButton(cACTION) && distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y+1)){
+    if(soul!=0 && !activated && gameState.controller->checkButton(cACTION) && distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y+1)){
         activated=true;
+        soul->setPosition(vec3f(position.x,position.y+1.0,position.z));
+        soul->setInCarrier(true);
+        hero->setSoul(0);
         //gameState.controller->consumeButtons();
     }
 

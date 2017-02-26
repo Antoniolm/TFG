@@ -23,6 +23,7 @@ Soul::Soul(const Value & soulFeatures)
 {
     position=vec4f(soulFeatures["position"][0].GetFloat(),soulFeatures["position"][1].GetFloat(),soulFeatures["position"][2].GetFloat(),1.0);
     activated=false;
+    inCarrier=false;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
@@ -62,7 +63,7 @@ void Soul::updateState(GameState & gameState ){
     vec3f posHero=hero->getPosition();
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0));
 
-    if(activated && gameState.controller->checkButton(cACTION)){ //If is activated and hero push E -> Drop the soul in the scene.
+    if(activated && !inCarrier && gameState.controller->checkButton(cACTION)){ //If is activated and hero push E -> Drop the soul in the scene.
         activated=false;
         hero->setSoul(0);
 
@@ -71,19 +72,31 @@ void Soul::updateState(GameState & gameState ){
     }
 
     //if hero is near of a soul and he push E -> Hero catch the soul in his arms
-    if(!activated && hero->getSoul()==0 && gameState.controller->checkButton(cACTION) && distance<=0.75 &&
+    if(!activated && hero->getSoul()==0 && !inCarrier && gameState.controller->checkButton(cACTION) && distance<=0.75 &&
        (position.y>posHero.y-1 && position.y<posHero.y+1)){
         activated=true;
         gameState.controller->consumeButtons();
         hero->setSoul(this);
     }
 
-    if(activated){ //if hero caught a soul in his arms
+    if(activated && !inCarrier){ //if hero caught a soul in his arms
         calculatePosition(posHero,hero->getDirection());
     }
 
     position=transMatrix->product(vec4f());
     currentTime+=time-currentTime;
+}
+
+//**********************************************************************//
+
+void Soul::setPosition(vec3f value){
+    transMatrix->translation(value.x,value.y,value.z);
+}
+
+//**********************************************************************//
+
+void Soul::setInCarrier(bool value){
+    inCarrier=value;
 }
 
 //**********************************************************************//
