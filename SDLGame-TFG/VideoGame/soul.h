@@ -17,19 +17,31 @@
 // **
 // *********************************************************************
 
-#ifndef MAINMENU_H
-#define MAINMENU_H
+#ifndef SOUL_H
+#define SOUL_H
 
-#include "savedmanager.h"
-#include "menu.h"
+#include "../GraphicEngine/object3d.h"
+#include "../GraphicEngine/nodescenegraph.h"
+#include "../GraphicEngine/matrix4f.h"
+#include "../GraphicEngine/matrix4fdynamic.h"
+#include "../GraphicEngine/meshcollection.h"
+#include "../GraphicEngine/materialcollection.h"
+#include "../lib/rapidjson/document.h"
 
-class MainMenu : public Menu
+using namespace rapidjson;
+
+class Soul : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
+        /** Constructor */
+        //////////////////////////////////////////////////////////////////////////
+        Soul(const Value & soulFeatures);
+
+        //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~MainMenu();
+        virtual ~Soul();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -48,32 +60,13 @@ class MainMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(GameState & gameState);
 
-        void setPosition(vec3f aPosition);
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will activate our menu
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void activate();
-
-        static MainMenu * getInstance(){
-            if(instance == NULL)
-                instance = new MainMenu();
-
-            return instance;
-        }
-
     protected:
 
     private:
-        //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
-        //////////////////////////////////////////////////////////////////////////
-        MainMenu();
-
-        static MainMenu* instance;
-        Sound * openSound,* moveSound;
+        NodeSceneGraph * root;
+        Matrix4f * transMatrix;
+        float delayTime;
+        bool activated;
 };
 
-#endif // MAINMENU_H
+#endif // SOUL_H

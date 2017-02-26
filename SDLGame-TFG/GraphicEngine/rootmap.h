@@ -40,6 +40,7 @@
 #include "../VideoGame/npc.h"
 #include "../VideoGame/enemy.h"
 #include "../VideoGame/projectilesystem.h"
+#include "../VideoGame/soul.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "../lib/rapidjson/document.h"
@@ -69,6 +70,7 @@ class EnemyList;
 class ItemList;
 class ParticleSystem;
 class ProjectileSystem;
+class Soul;
 class ObjectGroup;
 class TextRegion;
 class EndMapRegion;
@@ -217,6 +219,12 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         string getNextMap();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the movie of next map
+        *    \return MovieScreen
+        */
+        //////////////////////////////////////////////////////////////////////////
         MovieScreen * getMovie();
 
         static bool loading;
@@ -232,6 +240,7 @@ class RootMap : public Object3D
         vector<ProjectileSystem *> projectileSystem;
         vector<TextRegion *> regions;
         vector<SpikeTrap *> spikes;
+        vector<Soul *> souls;
         vector<Light *> lights;
         EndMapRegion * endMapRegion;
         Notification * title;

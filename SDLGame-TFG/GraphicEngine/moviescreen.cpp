@@ -18,6 +18,7 @@
 // *********************************************************************
 
 #include "moviescreen.h"
+#include "gamestate.h"
 
 MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
 {

@@ -116,8 +116,6 @@
 		<Unit filename="GraphicEngine/mesh.h" />
 		<Unit filename="GraphicEngine/meshcollection.cpp" />
 		<Unit filename="GraphicEngine/meshcollection.h" />
-		<Unit filename="GraphicEngine/moveregion.cpp" />
-		<Unit filename="GraphicEngine/moveregion.h" />
 		<Unit filename="GraphicEngine/moviescreen.cpp" />
 		<Unit filename="GraphicEngine/moviescreen.h" />
 		<Unit filename="GraphicEngine/nodescenegraph.cpp" />
@@ -140,6 +138,8 @@
 		<Unit filename="GraphicEngine/pausemenu.h" />
 		<Unit filename="GraphicEngine/profile.cpp" />
 		<Unit filename="GraphicEngine/profile.h" />
+		<Unit filename="GraphicEngine/region.cpp" />
+		<Unit filename="GraphicEngine/region.h" />
 		<Unit filename="GraphicEngine/rootmap.cpp" />
 		<Unit filename="GraphicEngine/rootmap.h" />
 		<Unit filename="GraphicEngine/savedmanager.cpp" />

@@ -21,7 +21,6 @@
 #define MENU_H
 
 #include "object3d.h"
-#include "rootmap.h"
 #include "context.h"
 #include "mesh.h"
 #include "nodescenegraph.h"
@@ -80,7 +79,6 @@ class Menu : public Object3D
 
 
     protected:
-
         NodeSceneGraph * root;
         Matrix4f * positionMenu;
         bool activateMenu;

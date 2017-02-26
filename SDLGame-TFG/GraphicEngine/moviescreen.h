@@ -20,7 +20,7 @@
 #ifndef MOVIESCREEN_H
 #define MOVIESCREEN_H
 
-#include "menu.h"
+#include "object3d.h"
 #include "rootmap.h"
 #include "context.h"
 #include "mesh.h"
@@ -36,7 +36,7 @@
 
 using namespace rapidjson;
 
-class MovieScreen : public Menu
+class MovieScreen : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
@@ -94,6 +94,13 @@ class MovieScreen : public Menu
     protected:
 
     private:
+        NodeSceneGraph * root;
+        Matrix4f * positionMenu;
+        bool activateMenu;
+        vector<Texture *> options;
+        int currentOption;
+        Material * currentMaterial;
+        float menuDelay;
         vector<string> textures;
 };
 

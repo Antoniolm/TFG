@@ -77,6 +77,9 @@ RootMap::~RootMap()
     for(unsigned i=0;i<spikes.size();i++)
         delete spikes[i];
 
+    for(unsigned i=0;i<souls.size();i++)
+        delete souls[i];
+
     for(unsigned i=0;i<lights.size();i++)
         delete lights[i];
 
@@ -158,6 +161,14 @@ void RootMap::initialize(string fileMap){
     const rapidjson::Value & regionFeature=document["textRegion"];
     for(unsigned currentRegion=0;currentRegion<regionFeature.Size();currentRegion++){
         regions.push_back(new TextRegion(regionFeature[currentRegion]));
+    }
+
+    /////////////////////////////////////////
+    // Add souls to our map
+    /////////////////////////////////////////
+    const rapidjson::Value & soulFeature=document["souls"];
+    for(unsigned currentSoul=0;currentSoul<soulFeature.Size();currentSoul++){
+        souls.push_back(new Soul(soulFeature[currentSoul]));
     }
 
     /////////////////////////////////////////
@@ -360,6 +371,11 @@ void RootMap::visualization(Context & cv){
         projectileSystem[i]->visualization(cv);
     }
 
+    //Draw souls
+    for(unsigned i=0;i<souls.size();i++){
+        souls[i]->visualization(cv);
+    }
+
     //Draw spiketrap
     for(unsigned i=0;i<spikes.size();i++){
         spikes[i]->visualization(cv);
@@ -410,6 +426,11 @@ void RootMap::updateState(GameState & gameState){
     //Update textregions
     for(unsigned i=0;i<regions.size();i++){
         regions[i]->updateState(gameState);
+    }
+
+    //Update souls
+    for(unsigned i=0;i<souls.size();i++){
+        souls[i]->updateState(gameState);
     }
 
     //Update spikeTraps
