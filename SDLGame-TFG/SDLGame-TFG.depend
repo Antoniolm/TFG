@@ -902,7 +902,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1488132713 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1488136811 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
@@ -2529,7 +2529,7 @@
 1488123336 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\soul.cpp
 	"soul.h"
 
-1488122712 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\soulcarrier.h
+1488136477 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\soulcarrier.h
 	"../GraphicEngine/object3d.h"
 	"../GraphicEngine/nodescenegraph.h"
 	"../GraphicEngine/matrix4f.h"
@@ -2539,18 +2539,19 @@
 	"../lib/rapidjson/document.h"
 	"soul.h"
 
-1488132813 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\soulcarrier.cpp
+1488137463 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\soulcarrier.cpp
 	"soulcarrier.h"
 
-1488132735 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\door.h
+1488139800 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\door.h
 	"../GraphicEngine/object3d.h"
 	"../GraphicEngine/nodescenegraph.h"
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/matrix4fdynamic.h"
 	"../GraphicEngine/meshcollection.h"
 	"../GraphicEngine/materialcollection.h"
+	"soulcarrier.h"
 	"../lib/rapidjson/document.h"
 
-1488132806 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\door.cpp
+1488140223 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\door.cpp
 	"door.h"
 

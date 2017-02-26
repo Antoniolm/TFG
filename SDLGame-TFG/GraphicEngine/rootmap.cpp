@@ -190,7 +190,7 @@ void RootMap::initialize(string fileMap){
     /////////////////////////////////////////
     const rapidjson::Value & doorFeature=document["door"];
     for(unsigned currentDoor=0;currentDoor<doorFeature.Size();currentDoor++){
-        doors.push_back(new Door(doorFeature[currentDoor]));
+        doors.push_back(new Door(doorFeature[currentDoor],soulCarriers));
     }
 
     /////////////////////////////////////////

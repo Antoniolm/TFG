@@ -31,6 +31,14 @@
 
 using namespace rapidjson;
 
+enum doorDirection{
+    dForward,
+    dSideWays
+};
+
+
+
+class SoulCarrier;
 class Door : public Object3D
 {
     public:
@@ -65,9 +73,10 @@ class Door : public Object3D
     private:
         NodeSceneGraph * root;
         SoulCarrier * sCarrier;
-        Matrix4f * transMatrix;
+        Matrix4f * rotateDoor,* moveDoor;
         float delayTime;
         bool activated;
+        int doorType;
 };
 
 #endif // DOOR_H

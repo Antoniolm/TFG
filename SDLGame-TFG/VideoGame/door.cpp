@@ -23,16 +23,24 @@ Door::Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers)
 {
     position=vec4f(doorFeatures["position"][0].GetFloat(),doorFeatures["position"][1].GetFloat(),doorFeatures["position"][2].GetFloat(),1.0);
     sCarrier=soulCarriers[doorFeatures["soulCarrier"].GetFloat()];
+    doorType=doorFeatures["direction"].GetFloat();
     activated=false;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
-    transMatrix=new Matrix4f();
-    transMatrix->translation(position.x,position.y,position.z);
+    moveDoor=new Matrix4f();
+    moveDoor->translation(position.x,position.y,position.z);
+
+    rotateDoor=new Matrix4f();
+    rotateDoor->identity();
+
+    if(doorType==1)
+        rotateDoor->rotation(90,0.0,1.0,0.0);
 
     root=new NodeSceneGraph();
-    root->add(transMatrix);
+    root->add(moveDoor);
+    root->add(rotateDoor);
     root->add(materialCollect->getMaterial(mDOOR));
     root->add(meshCollect->getMesh(DOOR));
     currentTime=SDL_GetTicks();
@@ -58,8 +66,22 @@ void Door::updateState(GameState & gameState ){
 
     if(time-currentTime>200) currentTime=time-50;
 
-    //if hero is near of a soulCarrier and he push E -> SoulCarrier catch the soul in his arms
-    if(sCarrier.){
+    //if hero put a soul in our soulCarrier this is activated and our door is opened
+    if(sCarrier->isActivated()){
+
+        if(!activated){
+            switch(doorType){
+                case 0:
+                    rotateDoor->rotation(90,0.0,1.0,0.0);
+                    moveDoor->translation(position.x-1.0,position.y,position.z+0.5);
+                    break;
+                case 1:
+                    rotateDoor->rotation(180,0.0,1.0,0.0);
+                    moveDoor->translation(position.x-1.0,position.y,position.z-1.0);
+                    break;
+
+            }
+        }
         activated=true;
     }
 

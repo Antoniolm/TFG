@@ -68,7 +68,6 @@ void SoulCarrier::updateState(GameState & gameState ){
         soul->setPosition(vec3f(position.x,position.y+1.0,position.z));
         soul->setInCarrier(true);
         hero->setSoul(0);
-        //gameState.controller->consumeButtons();
     }
 
     currentTime+=time-currentTime;
@@ -76,6 +75,6 @@ void SoulCarrier::updateState(GameState & gameState ){
 
 //**********************************************************************//
 
-bool SoulCarrier:isActivated(){
+bool SoulCarrier::isActivated(){
     return activated;
 }
