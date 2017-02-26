@@ -61,6 +61,8 @@ class SoulCarrier : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(GameState & gameState);
 
+        bool isActivated();
+
     protected:
 
     private:

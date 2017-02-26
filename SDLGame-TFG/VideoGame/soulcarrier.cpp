@@ -41,7 +41,7 @@ SoulCarrier::SoulCarrier(const Value & soulFeatures)
 
 SoulCarrier::~SoulCarrier()
 {
-    //dtor
+    delete root;
 }
 
 //**********************************************************************//
@@ -71,9 +71,11 @@ void SoulCarrier::updateState(GameState & gameState ){
         //gameState.controller->consumeButtons();
     }
 
-    if(activated){ //if hero caught a soul in his arms
-
-    }
-
     currentTime+=time-currentTime;
+}
+
+//**********************************************************************//
+
+bool SoulCarrier:isActivated(){
+    return activated;
 }

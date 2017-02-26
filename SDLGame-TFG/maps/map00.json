@@ -184,9 +184,14 @@
     ],
 
     "soulCarrier":[
-            {   "position":[47.5,5.5,-28.5] }
+            {   "position":[47.5,5.5,-25.5] }
     ],
 
+    "door":[
+            {   "position":[47.0,6.5,-28.5],
+                "soulCarrier":0
+             }
+    ],
 
     "textRegion":[
             {   "position":[8.5,0.0,-4.5],

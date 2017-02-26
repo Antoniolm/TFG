@@ -26,6 +26,7 @@
 #include "../GraphicEngine/matrix4fdynamic.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/materialcollection.h"
+#include "soulcarrier.h"
 #include "../lib/rapidjson/document.h"
 
 using namespace rapidjson;
@@ -36,7 +37,7 @@ class Door : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Door();
+        Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -63,6 +64,7 @@ class Door : public Object3D
 
     private:
         NodeSceneGraph * root;
+        SoulCarrier * sCarrier;
         Matrix4f * transMatrix;
         float delayTime;
         bool activated;

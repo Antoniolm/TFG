@@ -83,6 +83,9 @@ RootMap::~RootMap()
     for(unsigned i=0;i<soulCarriers.size();i++)
         delete soulCarriers[i];
 
+    for(unsigned i=0;i<doors.size();i++)
+        delete doors[i];
+
     for(unsigned i=0;i<lights.size();i++)
         delete lights[i];
 
@@ -180,6 +183,14 @@ void RootMap::initialize(string fileMap){
     const rapidjson::Value & soulCarrierFeature=document["soulCarrier"];
     for(unsigned currentSoulC=0;currentSoulC<soulCarrierFeature.Size();currentSoulC++){
         soulCarriers.push_back(new SoulCarrier(soulCarrierFeature[currentSoulC]));
+    }
+
+    /////////////////////////////////////////
+    // Add doors to our map
+    /////////////////////////////////////////
+    const rapidjson::Value & doorFeature=document["door"];
+    for(unsigned currentDoor=0;currentDoor<doorFeature.Size();currentDoor++){
+        doors.push_back(new Door(doorFeature[currentDoor]));
     }
 
     /////////////////////////////////////////
@@ -392,6 +403,11 @@ void RootMap::visualization(Context & cv){
         soulCarriers[i]->visualization(cv);
     }
 
+    //Draw doors
+    for(unsigned i=0;i<doors.size();i++){
+        doors[i]->visualization(cv);
+    }
+
     //Draw spiketrap
     for(unsigned i=0;i<spikes.size();i++){
         spikes[i]->visualization(cv);
@@ -447,6 +463,11 @@ void RootMap::updateState(GameState & gameState){
     //Update soulCarriers
     for(unsigned i=0;i<soulCarriers.size();i++){
         soulCarriers[i]->updateState(gameState);
+    }
+
+    //Update doors
+    for(unsigned i=0;i<doors.size();i++){
+        doors[i]->updateState(gameState);
     }
 
     //Update souls

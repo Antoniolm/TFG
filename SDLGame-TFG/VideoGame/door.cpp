@@ -19,16 +19,30 @@
 
 #include "door.h"
 
-Door::Door()
+Door::Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers)
 {
-    //ctor
+    position=vec4f(doorFeatures["position"][0].GetFloat(),doorFeatures["position"][1].GetFloat(),doorFeatures["position"][2].GetFloat(),1.0);
+    sCarrier=soulCarriers[doorFeatures["soulCarrier"].GetFloat()];
+    activated=false;
+
+    MeshCollection * meshCollect= MeshCollection::getInstance();
+    MaterialCollection * materialCollect= MaterialCollection::getInstance();
+
+    transMatrix=new Matrix4f();
+    transMatrix->translation(position.x,position.y,position.z);
+
+    root=new NodeSceneGraph();
+    root->add(transMatrix);
+    root->add(materialCollect->getMaterial(mDOOR));
+    root->add(meshCollect->getMesh(DOOR));
+    currentTime=SDL_GetTicks();
 }
 
 //**********************************************************************//
 
 Door::~Door()
 {
-    //dtor
+    delete root;
 }
 
 //**********************************************************************//
@@ -41,25 +55,12 @@ void Door::visualization(Context & cv){
 
 void Door::updateState(GameState & gameState ){
     float time=gameState.time;
-    Hero * hero=gameState.rootMap->getHero();
-    Soul * soul=hero->getSoul();
 
     if(time-currentTime>200) currentTime=time-50;
 
-    vec3f posHero=hero->getPosition();
-    float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0));
-
     //if hero is near of a soulCarrier and he push E -> SoulCarrier catch the soul in his arms
-    if(soul!=0 && !activated && gameState.controller->checkButton(cACTION) && distance<=1.5 && (position.y>posHero.y-1 && position.y<posHero.y+1)){
+    if(sCarrier.){
         activated=true;
-        soul->setPosition(vec3f(position.x,position.y+1.0,position.z));
-        soul->setInCarrier(true);
-        hero->setSoul(0);
-        //gameState.controller->consumeButtons();
-    }
-
-    if(activated){ //if hero caught a soul in his arms
-
     }
 
     currentTime+=time-currentTime;

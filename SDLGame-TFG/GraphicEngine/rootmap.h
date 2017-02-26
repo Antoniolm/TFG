@@ -42,6 +42,7 @@
 #include "../VideoGame/projectilesystem.h"
 #include "../VideoGame/soul.h"
 #include "../VideoGame/soulcarrier.h"
+#include "../VideoGame/door.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "../lib/rapidjson/document.h"
@@ -73,6 +74,7 @@ class ParticleSystem;
 class ProjectileSystem;
 class Soul;
 class SoulCarrier;
+class Door;
 class ObjectGroup;
 class TextRegion;
 class EndMapRegion;
@@ -244,6 +246,7 @@ class RootMap : public Object3D
         vector<SpikeTrap *> spikes;
         vector<Soul *> souls;
         vector<SoulCarrier *> soulCarriers;
+        vector<Door *> doors;
         vector<Light *> lights;
         EndMapRegion * endMapRegion;
         Notification * title;
