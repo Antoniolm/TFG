@@ -26,6 +26,7 @@ Hero::Hero(vec3f aPos)
     acceleratedMove=new AcceleratedMovement();
     acceleratedMove->resetState();
     direction=FORWARD;
+    hasSoul=false;
     isMoving=false;
     isMoveCollision=false;
     isFalling=false;
@@ -666,6 +667,12 @@ void Hero::setCoin(int value){
 
 //**********************************************************************//
 
+void Hero::setHasSoul(bool value){
+    hasSoul=value;
+}
+
+//**********************************************************************//
+
 void Hero::noMove(){
     animations.resetAnimation(0);
     for(unsigned i=0;i<moveMatrix.size();i++)
@@ -686,13 +693,18 @@ bool Hero::isHit(){
     return life;
  }
 
- //**********************************************************************//
+//**********************************************************************//
 
  int Hero::getCoin(){
     return currentCoin;
  }
 
- //**********************************************************************//
+//**********************************************************************//
+
+ bool Hero::getHasSoul(){
+    return hasSoul;
+ }
+//**********************************************************************//
 
  void Hero::addCoin(int value){
     currentCoin+=value;

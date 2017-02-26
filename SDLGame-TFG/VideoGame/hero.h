@@ -113,6 +113,14 @@ class Hero: public AvatarMove
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will set if the hero take a soul in his arm
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setHasSoul(bool value);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will reset animations because the hero isn't in movement
         *    \return void
         */
@@ -142,6 +150,14 @@ class Hero: public AvatarMove
         */
         //////////////////////////////////////////////////////////////////////////
         int getCoin();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get if the hero take a soul in his arm
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool getHasSoul();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -186,6 +202,7 @@ class Hero: public AvatarMove
         Weapon * currentWeapon,* meleeWeapon,* rangedWeapon;
         float jumpDelay,hitDelay,coinDelay,shieldDelay,swapDelay,shootDelay,swordDelay;
         int currentCoin;
+        bool hasSoul;
 };
 
 #endif // HERO_H

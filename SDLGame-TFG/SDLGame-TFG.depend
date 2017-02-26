@@ -1020,7 +1020,7 @@
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
 
-1488048119 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
+1488105228 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.h
 	"avatar.h"
 	"avatarmove.h"
 	"../GraphicEngine/mesh.h"
@@ -2523,6 +2523,6 @@
 	"../GraphicEngine/materialcollection.h"
 	"../lib/rapidjson/document.h"
 
-1488103214 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\soul.cpp
+1488105305 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\soul.cpp
 	"soul.h"
 

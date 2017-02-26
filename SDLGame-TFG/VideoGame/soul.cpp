@@ -64,14 +64,18 @@ void Soul::updateState(GameState & gameState ){
 
     if(activated && gameState.controller->checkButton(cACTION)){ //If is activated and hero push E -> Drop the soul in the scene.
         activated=false;
+        hero->setHasSoul(false);
+
         transMatrix->translation(posHero.x,posHero.y,posHero.z);
         gameState.controller->consumeButtons();
     }
 
     //if hero is near of a soul and he push E -> Hero catch the soul in his arms
-    if(!activated && gameState.controller->checkButton(cACTION) && distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y+1)){
+    if(!activated && !hero->getHasSoul() && gameState.controller->checkButton(cACTION) && distance<=0.75 &&
+       (position.y>posHero.y-1 && position.y<posHero.y+1)){
         activated=true;
         gameState.controller->consumeButtons();
+        hero->setHasSoul(true);
     }
 
     if(activated){ //if hero caught a soul in his arms
