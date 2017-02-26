@@ -201,6 +201,10 @@
 		<Unit filename="VideoGame/projectilesystem.h" />
 		<Unit filename="VideoGame/rangedenemy.cpp" />
 		<Unit filename="VideoGame/rangedenemy.h" />
+		<Unit filename="VideoGame/soul.cpp" />
+		<Unit filename="VideoGame/soul.h" />
+		<Unit filename="VideoGame/soulcarrier.cpp" />
+		<Unit filename="VideoGame/soulcarrier.h" />
 		<Unit filename="VideoGame/spiketrap.cpp" />
 		<Unit filename="VideoGame/spiketrap.h" />
 		<Unit filename="VideoGame/weapon.cpp" />

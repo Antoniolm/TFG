@@ -115,6 +115,9 @@
     "souls":[
     ],
 
+    "soulCarrier":[
+    ],
+
     "spikes":[
             {   "position":[50.5,4.5,-26.5]
             }
