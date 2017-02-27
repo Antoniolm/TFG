@@ -157,7 +157,8 @@ class Npc : public Avatar
         Text * currentText;
         ScriptLMD animation;
         vector<Matrix4f *> moveMatrix;
-        bool npcActivate;
+        bool npcActivate,heroActivate;
+        float dialogTime;
 };
 
 #endif // NPC_H

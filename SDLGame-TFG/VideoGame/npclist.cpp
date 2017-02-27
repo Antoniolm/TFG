@@ -60,78 +60,7 @@ void NpcList::visualization(Context & cv){
 void NpcList::updateState(GameState & gameState){
 
     //Check if the hero is speaking with a avatar
-    bool isActivate=false,isNearNpc=false;vec3f distance,posHero;unsigned currentNpc;
-
-    float time=gameState.time;
-    ControllerManager * controller=gameState.controller;
-
-    Hero * hero=gameState.rootMap->getHero();
-    posHero=hero->getPosition();
-
-    for(unsigned i=0;i<npcs.size() && !isActivate;i++){ //Check if hero is talking now
+    for(unsigned i=0;i<npcs.size();i++){ //Check if hero is talking now
         npcs[i]->updateState(gameState);
-        isActivate=npcs[i]->getActivate();
-        currentNpc=i;
-
-        //Check if the hero is near to a npc
-        distance=(npcs[i]->getPosition())-(posHero);
-        if((distance.x>-1 && distance.x<1)&&(distance.y>-2 && distance.y<2)&&(distance.z>-1 && distance.z<1) && !isActivate){
-            hero->activateDialog(true,1);
-            hero->setDialog(" ",1);
-            isNearNpc=true;
-        }
     }
-
-    if(isActivate){ //If hero is talking and he is a good distance
-        distance=(npcs[currentNpc]->getPosition())-(posHero);
-        if((distance.x<-2 || distance.x>2)||(distance.y<-2 || distance.y>2)||(distance.z<-2 || distance.z>2)){
-            npcs[currentNpc]->activateNpc(false);
-            hero->activateDialog(false,0);
-        }
-    }
-    else{
-        if(!isNearNpc) //If the hero is not near to a npc them the hero doesn't show the dialog "Pulsa A"
-            hero->activateDialog(false,1);
-    }
-
-    //User push the button -> J
-    if(controller->checkButton(cACTION) && dialogTime<(time-400.0)){
-        if(isActivate){ //If hero is talking -> nextDialog
-                npcs[currentNpc]->nextDialog();
-                //Check the speaker
-                if(npcs[currentNpc]->getSpeaker()==NPC_DIALOG){ //speaker -> Npc
-                    npcs[currentNpc]->currentDialog();
-                    hero->activateDialog(false,0);
-                }
-                else { //speaker -> Hero
-                    if(!npcs[currentNpc]->isInitialState()){
-                        hero->activateDialog(true,0);
-                        hero->setDialog(npcs[currentNpc]->getMessage(),0);
-                    }
-                    else{
-                        hero->activateDialog(false,0);
-                    }
-                }
-        }
-        else { //Else Check if hero will start a new conversation.
-            for(unsigned j=0;j<npcs.size();j++){
-                distance=(npcs[j]->getPosition())-(posHero);
-                if((distance.x>-1 && distance.x<1)&&(distance.y>-2 && distance.y<2)&&(distance.z>-1 && distance.z<1)){
-                    npcs[j]->activateNpc(true);
-                    hero->activateDialog(false,1);
-                    //Check the speaker
-                    if(npcs[j]->getSpeaker()==NPC_DIALOG){ //speaker -> Npc
-                        npcs[j]->currentDialog();
-                        hero->activateDialog(false,0);
-                    }
-                    else {//speaker -> Hero
-                        hero->activateDialog(true,0);
-                        hero->setDialog(npcs[j]->getMessage(),0);
-                    }
-                }
-            }
-        }
-        dialogTime=currentTime;
-    }
-    currentTime+=time-currentTime;
 }

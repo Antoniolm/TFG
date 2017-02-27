@@ -37,6 +37,7 @@ Npc::Npc(const Value & npcFeatures)
     }
 
     npcActivate=false;
+    heroActivate=false;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
@@ -66,6 +67,7 @@ Npc::Npc(const Value & npcFeatures)
     currentText=new Text(mBDIALOG,font);
     currentText->setPosition(vec3f(position.x,position.y+1.5f,position.z));
     currentTime=SDL_GetTicks();
+    dialogTime=currentTime;
     initAnimation();
 
 }
@@ -120,10 +122,72 @@ void Npc::visualization(Context & cv){
 //**********************************************************************//
 
 void Npc::updateState(GameState & gameState){
+    Hero * hero=gameState.rootMap->getHero();
+    vec3f posHero=hero->getPosition();
     float time=gameState.time;
 
     if(time-currentTime>200)
         currentTime=time-50;
+
+    //Check if the hero is near to a npc
+    vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
+    if(!npcActivate && (distance.x>-1 && distance.x<1)&&(distance.y>-2 && distance.y<2)&&(distance.z>-1 && distance.z<1)){
+        hero->activateDialog(true,1);
+        hero->setDialog(" ",1);
+        heroActivate=true;
+    }
+
+    if(heroActivate && ((distance.x<-2 || distance.x>2)||(distance.y<-2 || distance.y>2)||(distance.z<-2 || distance.z>2))){
+        cout<<" stop "<< endl;
+        heroActivate=false;
+        hero->activateDialog(false,1);
+    }
+
+    if(npcActivate){ //If hero is talking and he is a good distance
+        hero->activateDialog(false,1);
+        if((distance.x<-2 || distance.x>2)||(distance.y<-2 || distance.y>2)||(distance.z<-2 || distance.z>2)){
+            activateNpc(false);
+            hero->activateDialog(false,0);
+        }
+    }
+
+    //User push the button -> J
+    if(gameState.controller->checkButton(cACTION) && dialogTime<(time-400.0)){
+
+        if(npcActivate){ //If hero is talking -> nextDialog
+                nextDialog();
+                //Check the speaker
+                if(getSpeaker()==NPC_DIALOG){ //speaker -> Npc
+                    currentDialog();
+                    hero->activateDialog(false,0);
+                }
+                else { //speaker -> Hero
+                    if(!isInitialState()){
+                        hero->activateDialog(true,0);
+                        hero->setDialog(getMessage(),0);
+                    }
+                    else{
+                        hero->activateDialog(false,0);
+                    }
+                }
+        }
+        else { //Else Check if hero will start a new conversation.
+                if((distance.x>-1 && distance.x<1)&&(distance.y>-2 && distance.y<2)&&(distance.z>-1 && distance.z<1)){
+                    activateNpc(true);
+                    hero->activateDialog(false,1);
+                    //Check the speaker
+                    if(getSpeaker()==NPC_DIALOG){ //speaker -> Npc
+                        currentDialog();
+                        hero->activateDialog(false,0);
+                    }
+                    else {//speaker -> Hero
+                        hero->activateDialog(true,0);
+                        hero->setDialog(getMessage(),0);
+                    }
+                }
+        }
+        dialogTime=currentTime;
+    }
 
     animation.updateState(time-currentTime);
     moveMatrix[0]->product(animation.readMatrix(0).getMatrix());
