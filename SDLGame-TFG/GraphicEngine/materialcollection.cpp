@@ -34,6 +34,8 @@ MaterialCollection::MaterialCollection()
 
     collection.addElement(new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeTrap.png",mCUBE_TRAP));
 
+    collection.addElement(new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeonTrap.png",mCUBE_SPIKE));
+
     collection.addElement(new Material(vec3f(0.5f, 1.0f, 0.5f),vec3f(0.5f, 1.0f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/water.png",mDWATER));
 
     collection.addElement(new Material(vec3f(0.5f, 0.5f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/void.png",mVOID));
@@ -115,6 +117,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mCUBE_WALL",mCUBE_WALL);
     collection.addIndex("mINVICUBE_WALL",mINVICUBE_WALL);
     collection.addIndex("mCUBE_TRAP",mCUBE_TRAP);
+    collection.addIndex("mCUBE_SPIKE",mCUBE_SPIKE);
     collection.addIndex("mDWATER",mDWATER);
     collection.addIndex("mVOID",mVOID);
     collection.addIndex("mCRYSTAL",mCRYSTAL);
