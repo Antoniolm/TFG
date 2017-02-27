@@ -113,12 +113,24 @@
 
 
     "souls":[
+            {   "position":[3.5,1.5,-2.5] },
+            {   "position":[4.5,1.5,-2.5] }
     ],
 
     "soulCarrier":[
+            {   "position":[3.5,1.1,-5.5] },
+            {   "position":[4.5,1.1,-5.5] }
     ],
 
     "door":[
+            {   "position":[6.0,2.5,-6.5],
+                "soulCarrier":0,
+                "direction":0
+            },
+            {   "position":[9.5,2.5,-4.0],
+                "soulCarrier":1,
+                "direction":1
+            }
     ],
 
     "spikes":[

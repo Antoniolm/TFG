@@ -19,11 +19,12 @@
 
 #include "door.h"
 
-Door::Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers)
+Door::Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers,int ID)
 {
     position=vec4f(doorFeatures["position"][0].GetFloat(),doorFeatures["position"][1].GetFloat(),doorFeatures["position"][2].GetFloat(),1.0);
     sCarrier=soulCarriers[doorFeatures["soulCarrier"].GetFloat()];
     doorType=doorFeatures["direction"].GetFloat();
+    doorID=ID;
     activated=false;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
@@ -77,10 +78,14 @@ void Door::updateState(GameState & gameState ){
                 case 0:
                     rotateDoor->rotation(90,0.0,1.0,0.0);
                     moveDoor->translation(position.x-1.0,position.y,position.z+0.5);
+                    gameState.rootMap->removeCollision(vec2f(position.x,position.z),doorID);
+                    gameState.rootMap->removeCollision(vec2f(position.x-1.0,position.z),doorID);
                     break;
                 case 1:
                     rotateDoor->rotation(180,0.0,1.0,0.0);
                     moveDoor->translation(position.x-1.0,position.y,position.z-1.0);
+                    gameState.rootMap->removeCollision(vec2f(position.x,position.z),doorID);
+                    gameState.rootMap->removeCollision(vec2f(position.x,position.z+1.0),doorID);
                     break;
 
             }

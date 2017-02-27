@@ -45,7 +45,7 @@ class Door : public ObjectScene
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers);
+        Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers,int ID);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -76,6 +76,7 @@ class Door : public ObjectScene
         float delayTime;
         bool activated;
         int doorType;
+        int doorID;
 };
 
 #endif // DOOR_H
