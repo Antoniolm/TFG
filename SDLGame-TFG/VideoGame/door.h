@@ -20,7 +20,7 @@
 #ifndef DOOR_H
 #define DOOR_H
 
-#include "../GraphicEngine/object3d.h"
+#include "../GraphicEngine/objectscene.h"
 #include "../GraphicEngine/nodescenegraph.h"
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/matrix4fdynamic.h"
@@ -39,7 +39,7 @@ enum doorDirection{
 
 
 class SoulCarrier;
-class Door : public Object3D
+class Door : public ObjectScene
 {
     public:
         //////////////////////////////////////////////////////////////////////////
@@ -71,7 +71,6 @@ class Door : public Object3D
     protected:
 
     private:
-        NodeSceneGraph * root;
         SoulCarrier * sCarrier;
         Matrix4f * rotateDoor,* moveDoor;
         float delayTime;

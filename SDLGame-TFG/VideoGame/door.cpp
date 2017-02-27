@@ -38,11 +38,14 @@ Door::Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers)
     if(doorType==1)
         rotateDoor->rotation(90,0.0,1.0,0.0);
 
-    root=new NodeSceneGraph();
+    NodeSceneGraph * root=new NodeSceneGraph();
     root->add(moveDoor);
     root->add(rotateDoor);
     root->add(materialCollect->getMaterial(mDOOR));
     root->add(meshCollect->getMesh(DOOR));
+
+    object=root;
+    damage=0.0;
     currentTime=SDL_GetTicks();
 }
 
@@ -50,13 +53,13 @@ Door::Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers)
 
 Door::~Door()
 {
-    delete root;
+    delete object;
 }
 
 //**********************************************************************//
 
 void Door::visualization(Context & cv){
-    root->visualization(cv);
+    object->visualization(cv);
 }
 
 //**********************************************************************//

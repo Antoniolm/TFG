@@ -30,8 +30,14 @@ SoulCarrier::SoulCarrier(const Value & soulFeatures)
     transMatrix=new Matrix4f();
     transMatrix->translation(position.x,position.y,position.z);
 
+    animationMatrix=new Matrix4f();
+    animationMatrix->identity();
+
+    rotation=new AxisRotation(100,0.0,1.0,0.0);
+
     root=new NodeSceneGraph();
     root->add(transMatrix);
+    root->add(animationMatrix);
     root->add(materialCollect->getMaterial(mGLYPH));
     root->add(meshCollect->getMesh(GLYPH));
     currentTime=SDL_GetTicks();
@@ -69,6 +75,9 @@ void SoulCarrier::updateState(GameState & gameState ){
         soul->setInCarrier(true);
         hero->setSoul(0);
     }
+
+    //Animation
+    animationMatrix->setMatrix(rotation->updateState(time-currentTime).getMatrix());
 
     currentTime+=time-currentTime;
 }

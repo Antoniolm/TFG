@@ -153,6 +153,14 @@ class RootMap : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will remove the collision of an object
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void removeCollision(vec2f voxelPosition,int objID);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will set the hero to our map
         *    \return void
         */

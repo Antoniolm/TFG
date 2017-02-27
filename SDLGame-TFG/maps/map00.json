@@ -184,16 +184,16 @@
     ],
 
     "soulCarrier":[
-            {   "position":[47.5,5.5,-25.5] },
-            {   "position":[46.5,5.5,-25.5] }
+            {   "position":[47.5,5.1,-25.5] },
+            {   "position":[46.5,5.1,-25.5] }
     ],
 
     "door":[
-            {   "position":[47.0,6.5,-25.5],
+            {   "position":[45.0,6.5,-25.5],
                 "soulCarrier":0,
                 "direction":0
             },
-            {   "position":[47.5,6.5,-28.0],
+            {   "position":[50.5,6.5,-27.5],
                 "soulCarrier":1,
                 "direction":1
             }

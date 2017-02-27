@@ -26,6 +26,7 @@
 #include "../GraphicEngine/matrix4fdynamic.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/materialcollection.h"
+#include "../GraphicEngine/axisrotation.h"
 #include "../lib/rapidjson/document.h"
 #include "soul.h"
 
@@ -67,7 +68,8 @@ class SoulCarrier : public Object3D
 
     private:
         NodeSceneGraph * root;
-        Matrix4f * transMatrix;
+        Matrix4f * transMatrix,* animationMatrix;
+        AxisRotation * rotation;
         float delayTime;
         bool activated;
 };

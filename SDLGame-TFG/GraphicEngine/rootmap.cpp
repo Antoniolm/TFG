@@ -191,6 +191,7 @@ void RootMap::initialize(string fileMap){
     const rapidjson::Value & doorFeature=document["door"];
     for(unsigned currentDoor=0;currentDoor<doorFeature.Size();currentDoor++){
         doors.push_back(new Door(doorFeature[currentDoor],soulCarriers));
+        objs.push_back(new Door(doorFeature[currentDoor],soulCarriers));
     }
 
     /////////////////////////////////////////
@@ -557,6 +558,24 @@ pair<ObjectScene *,float> RootMap::detectNearObject(const vec3f & posObj){
     }
 
     return pair<ObjectScene *,float> (result,minDistance);
+}
+
+//**********************************************************************//
+
+void RootMap::removeCollision(vec2f voxelPosition,int objID){
+    int tam=indexMap[(int)voxelPosition.x][(int)voxelPosition.y*-1].size();
+
+    vector<int>::iterator it=indexMap[(int)voxelPosition.x][(int)voxelPosition.y*-1].begin();
+    vector<int>::iterator endIt=indexMap[(int)voxelPosition.x][(int)voxelPosition.y*-1].end();
+
+    if(tam!=0 ){
+        while(it!=endIt){ //if There are object in that position (x,z)
+            if((*it)==objID)
+                indexMap[(int)voxelPosition.x][(int)voxelPosition.y*-1].erase(it);
+            else
+                it++;
+        }
+    }
 }
 
 //**********************************************************************//
