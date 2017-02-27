@@ -39,8 +39,8 @@ Soul::Soul(const Value & soulFeatures)
     root=new NodeSceneGraph();
     root->add(transMatrix);
     root->add(animationMatrix);
-    root->add(materialCollect->getMaterial(mCRYSTAL));
-    root->add(meshCollect->getMesh(COIN));
+    root->add(materialCollect->getMaterial(mSOUL));
+    root->add(meshCollect->getMesh(SOUL));
     currentTime=SDL_GetTicks();
 
 }

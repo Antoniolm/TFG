@@ -83,7 +83,8 @@ enum MeshIndex{
     POT,
     POT2,
     DOOR,
-    GLYPH
+    GLYPH,
+    SOUL
 };
 
 class MeshCollection

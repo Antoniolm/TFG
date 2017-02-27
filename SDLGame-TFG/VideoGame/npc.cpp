@@ -138,7 +138,6 @@ void Npc::updateState(GameState & gameState){
     }
 
     if(heroActivate && ((distance.x<-2 || distance.x>2)||(distance.y<-2 || distance.y>2)||(distance.z<-2 || distance.z>2))){
-        cout<<" stop "<< endl;
         heroActivate=false;
         hero->activateDialog(false,1);
     }
