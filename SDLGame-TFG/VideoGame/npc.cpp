@@ -23,9 +23,19 @@ Npc::Npc(){}
 
 //**********************************************************************//
 
-Npc::Npc(vec3f aPosition)
+Npc::Npc(const Value & npcFeatures)
 {
-    position=vec4f(aPosition.x,aPosition.y,aPosition.z,1.0);
+    position=vec4f(npcFeatures["position"][0].GetFloat(),npcFeatures["position"][1].GetFloat(),npcFeatures["position"][2].GetFloat(),1.0);
+    speakerMessage speaker;
+
+    const Value & dialogs=npcFeatures["dialog"];
+
+    for(unsigned j=0;j<dialogs.Size();j++){
+        if(dialogs[j]["speaker"].GetInt()==0) speaker=NPC_DIALOG;
+        else speaker=HERO_DIALOG;
+        addDialog(std::string(dialogs[j]["string"].GetString()),speaker);
+    }
+
     npcActivate=false;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();

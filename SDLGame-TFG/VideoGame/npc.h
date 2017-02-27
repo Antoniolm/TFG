@@ -27,7 +27,10 @@
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/structdata.h"
 #include "../GraphicEngine/scriptlmd.h"
+#include "../lib/rapidjson/document.h"
 #include <SDL_TTF.h>
+
+using namespace rapidjson;
 
 class Text;
 class Npc : public Avatar
@@ -41,7 +44,7 @@ class Npc : public Avatar
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        Npc(vec3f aPosition);
+        Npc(const Value & npcFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */

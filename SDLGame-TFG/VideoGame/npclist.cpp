@@ -27,18 +27,8 @@ NpcList::NpcList(){
 //**********************************************************************//
 
 NpcList::NpcList(const Value & npcsFeatures){
-    speakerMessage speaker;
-
     for(unsigned i=0;i<npcsFeatures.Size();i++){
-        Npc * currentNpc=new Npc(vec3f(npcsFeatures[i]["position"][0].GetFloat(),npcsFeatures[i]["position"][1].GetFloat(),npcsFeatures[i]["position"][2].GetFloat()));
-        const Value & dialogs=npcsFeatures[i]["dialog"];
-
-        for(unsigned j=0;j<dialogs.Size();j++){
-            if(dialogs[j]["speaker"].GetInt()==0) speaker=NPC_DIALOG;
-            else speaker=HERO_DIALOG;
-            currentNpc->addDialog(std::string(dialogs[j]["string"].GetString()),speaker);
-        }
-        npcs.push_back(currentNpc);
+        npcs.push_back(new Npc(npcsFeatures[i]));
     }
     currentTime=SDL_GetTicks();
     dialogTime=currentTime;

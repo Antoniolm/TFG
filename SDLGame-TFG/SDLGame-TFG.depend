@@ -1728,7 +1728,7 @@
 1487805310 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
-1487449579 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
+1488228043 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
 	"../GraphicEngine/ianpc.h"
 	"avatar.h"
 	"../GraphicEngine/mesh.h"
@@ -1736,6 +1736,7 @@
 	"../GraphicEngine/text.h"
 	"../GraphicEngine/structdata.h"
 	"../GraphicEngine/scriptlmd.h"
+	"../lib/rapidjson/document.h"
 	<SDL_TTF.h>
 
 1487166232 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npclist.h
@@ -2125,7 +2126,7 @@
 	"collection.cpp"
 	<string>
 
-1488150968 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
+1488223436 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
 	"materialcollection.h"
 	"material.h"
 
