@@ -21,15 +21,22 @@
 #define MENU_H
 
 #include "object3d.h"
+/*#include "gamestate.h"
 #include "context.h"
 #include "mesh.h"
 #include "nodescenegraph.h"
 #include "texture.h"
 #include "material.h"
-#include "profile.h"
-#include "sound.h"
 
+#include "sound.h"*/
+
+class NodeSceneGraph;
+class Mesh;
 class GameState;
+class Context;
+class Texture;
+class Material;
+class Sound;
 class Menu : public Object3D
 {
     public:

@@ -21,7 +21,20 @@
 #define MAINMENU_H
 
 #include "savedmanager.h"
+#include "object3d.h"
+#include "rootmap.h"
+#include "context.h"
+#include "mesh.h"
+#include "nodescenegraph.h"
+#include "texture.h"
+#include "material.h"
+#include "sound.h"
 #include "menu.h"
+#include "profile.h"
+#include "mainmenu.h"
+#include "meshcollection.h"
+#include "materialcollection.h"
+
 
 class MainMenu : public Menu
 {

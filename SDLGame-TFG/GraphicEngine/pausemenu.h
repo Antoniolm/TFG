@@ -29,7 +29,10 @@
 #include "material.h"
 #include "sound.h"
 #include "menu.h"
+#include "profile.h"
 #include "mainmenu.h"
+#include "meshcollection.h"
+#include "materialcollection.h"
 
 class PauseMenu : public Menu
 {
