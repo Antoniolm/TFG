@@ -18,7 +18,6 @@
 // *********************************************************************
 
 #include "rootmap.h"
-#include "../VideoGame/npclist.h"
 #include "../VideoGame/enemylist.h"
 #include "../VideoGame/itemlist.h"
 #include "objectgroup.h"
@@ -47,7 +46,6 @@ RootMap::~RootMap()
 {
     /*delete loader;
     delete backSound;
-    delete npcList;
     delete enemyList;
     delete itemList;
     //delete hero;*/
@@ -64,6 +62,9 @@ RootMap::~RootMap()
 
     for(unsigned i=0;i<objectGroup.size();i++)
         delete objectGroup[i];
+
+    //for(unsigned i=0;i<npcList.size();i++)
+        //delete npcList[i];
 
     for(unsigned i=0;i<particleSystem.size();i++)
         delete particleSystem[i];
@@ -256,8 +257,10 @@ void RootMap::initialize(string fileMap){
     /////////////////////////////////////////
     // Add npcs of our map
     /////////////////////////////////////////
-    const rapidjson::Value & npcsValue=document["npcs"];
-    npcList=new NpcList(npcsValue);
+    const rapidjson::Value & npcValue=document["npcs"];
+    for(unsigned currentNpc=0;currentNpc<npcValue.Size();currentNpc++){
+        npcList.push_back(new Npc(npcValue[currentNpc]));
+    }
 
     /////////////////////////////////////////
     // Add enemy of our map
@@ -272,7 +275,6 @@ void RootMap::initialize(string fileMap){
     objectGroup.push_back(new ObjectGroup(mCUBE_WALL));
     objectGroup.push_back(new ObjectGroup(mCUBE_DUNGB));
     objectGroup.push_back(new ObjectGroup(mCUBE_TRAP));
-    objectGroup.push_back(new ObjectGroup(mVOID));
 
     for(unsigned i=0;i<objs.size();i++){
         objs[i]->obtainPosition(cv);
@@ -288,9 +290,6 @@ void RootMap::initialize(string fileMap){
             break;
             case mCUBE_TRAP:
                 objectGroup[3]->addObject(objs[i]->getPosition(),CUBE);
-            break;
-            case mVOID:
-                objectGroup[4]->addObject(objs[i]->getPosition(),CUBE);
             break;
             default:
             break;
@@ -360,14 +359,15 @@ void RootMap::visualization(Context & cv){
     background->visualization(cv);
 
     //Draw object groups
-    for(unsigned i=0;i<objectGroup.size()-1;i++)
+    for(unsigned i=0;i<objectGroup.size();i++)
         objectGroup[i]->visualization(cv);
 
     //Draw hero
     hero->visualization(cv);
 
     //Draw ncps
-    npcList->visualization(cv);
+    for(unsigned i=0;i<npcList.size();i++)
+        npcList[i]->visualization(cv);
 
     //Draw enemies
     enemyList->visualization(cv);
@@ -419,10 +419,6 @@ void RootMap::visualization(Context & cv){
 
     //Draw title
     title->visualization(cv);
-
-    /////////////////////////////////////////////////////
-    //Visualization here that component because is a visible wall
-    objectGroup[objectGroup.size()-1]->visualization(cv);
 }
 
 //**********************************************************************//
@@ -485,7 +481,9 @@ void RootMap::updateState(GameState & gameState){
     title->updateState(gameState);
 
     //Update npcs
-    npcList->updateState(gameState);
+    for(unsigned i=0;i<npcList.size();i++){
+        npcList[i]->updateState(gameState);
+    }
 
     //Update enemies
     enemyList->updateState(gameState);

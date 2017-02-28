@@ -195,8 +195,6 @@
 		<Unit filename="VideoGame/meleeenemy.h" />
 		<Unit filename="VideoGame/npc.cpp" />
 		<Unit filename="VideoGame/npc.h" />
-		<Unit filename="VideoGame/npclist.cpp" />
-		<Unit filename="VideoGame/npclist.h" />
 		<Unit filename="VideoGame/projectile.cpp" />
 		<Unit filename="VideoGame/projectile.h" />
 		<Unit filename="VideoGame/projectilesystem.cpp" />

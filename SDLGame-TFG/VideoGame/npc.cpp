@@ -50,18 +50,11 @@ Npc::Npc(const Value & npcFeatures)
     Matrix4f * transNPC=new Matrix4f();
     transNPC->translation(position.x,position.y,position.z);
 
-    Matrix4f * scaleNPC=new Matrix4f();
-    scaleNPC->scale(1.5,1.5,1.5);
-
-    NodeSceneGraph * npcNode=new NodeSceneGraph();
-    npcNode->add(transNPC);
-    npcNode->add(moveMatrix[0]);
-    npcNode->add(scaleNPC);
-    npcNode->add(materialCollect->getMaterial(mBUTLER));
-    npcNode->add(meshCollect->getMesh(BUTLER));
-
     root=new NodeSceneGraph();
-    root->add(npcNode);
+    root->add(transNPC);
+    root->add(moveMatrix[0]);
+    root->add(materialCollect->getMaterial(mBUTLER));
+    root->add(meshCollect->getMesh(BUTLER));
 
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);
     currentText=new Text(mBDIALOG,font);
@@ -154,21 +147,22 @@ void Npc::updateState(GameState & gameState){
     if(gameState.controller->checkButton(cACTION) && dialogTime<(time-400.0)){
 
         if(npcActivate){ //If hero is talking -> nextDialog
-                nextDialog();
-                //Check the speaker
-                if(getSpeaker()==NPC_DIALOG){ //speaker -> Npc
-                    currentDialog();
+            nextDialog();
+            //Check the speaker
+            if(getSpeaker()==NPC_DIALOG){ //speaker -> Npc
+                currentDialog();
+                hero->activateDialog(false,0);
+            }
+            else { //speaker -> Hero
+                if(!isInitialState()){
+                    hero->activateDialog(true,0);
+                    hero->setDialog(getMessage(),0);
+                }
+                else{
                     hero->activateDialog(false,0);
                 }
-                else { //speaker -> Hero
-                    if(!isInitialState()){
-                        hero->activateDialog(true,0);
-                        hero->setDialog(getMessage(),0);
-                    }
-                    else{
-                        hero->activateDialog(false,0);
-                    }
-                }
+            }
+            gameState.controller->setState(false,cACTION);
         }
         else { //Else Check if hero will start a new conversation.
                 if((distance.x>-1 && distance.x<1)&&(distance.y>-2 && distance.y<2)&&(distance.z>-1 && distance.z<1)){
@@ -183,9 +177,10 @@ void Npc::updateState(GameState & gameState){
                         hero->activateDialog(true,0);
                         hero->setDialog(getMessage(),0);
                     }
+                    gameState.controller->setState(false,cACTION);
                 }
         }
-        dialogTime=currentTime;
+        dialogTime=time;
     }
 
     animation.updateState(time-currentTime);

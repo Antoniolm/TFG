@@ -902,15 +902,14 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1488219077 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1488277038 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
-	"../VideoGame/npclist.h"
 	"../VideoGame/enemylist.h"
 	"../VideoGame/itemlist.h"
 	"objectgroup.h"
 	<stdlib.h>
 
-1488215294 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1488276859 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -1725,7 +1724,7 @@
 	<vector>
 	<string>
 
-1488234871 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
+1488237062 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
 1488232292 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h

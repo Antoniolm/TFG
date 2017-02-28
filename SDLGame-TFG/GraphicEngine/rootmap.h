@@ -67,7 +67,6 @@ class Hero;
 class Mate;
 class Npc;
 class Enemy;
-class NpcList;
 class EnemyList;
 class ItemList;
 class ParticleSystem;
@@ -248,6 +247,7 @@ class RootMap : public Object3D
         vector<ObjectScene *> objs;
         vector<ObjectGroup *> objectGroup;
         vector<ObjectScene *> decorationObjs;
+        vector<Npc *> npcList;
         vector<ParticleSystem *> particleSystem;
         vector<ProjectileSystem *> projectileSystem;
         vector<TextRegion *> regions;
@@ -259,7 +259,6 @@ class RootMap : public Object3D
         EndMapRegion * endMapRegion;
         Notification * title;
         ObjectScene * background;
-        NpcList * npcList;
         EnemyList * enemyList;
         ItemList *itemList;
         Sound * backSound;
