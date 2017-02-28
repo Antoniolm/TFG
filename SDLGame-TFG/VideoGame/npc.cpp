@@ -149,14 +149,14 @@ void Npc::updateState(GameState & gameState){
         if(npcActivate){ //If hero is talking -> nextDialog
             nextDialog();
             //Check the speaker
-            if(getSpeaker()==NPC_DIALOG){ //speaker -> Npc
+            if(stateMachine.getCurrentSpeaker()==NPC_DIALOG){ //speaker -> Npc
                 currentDialog();
                 hero->activateDialog(false,0);
             }
             else { //speaker -> Hero
                 if(!isInitialState()){
                     hero->activateDialog(true,0);
-                    hero->setDialog(getMessage(),0);
+                    hero->setDialog(stateMachine.getCurrentState(),0);
                 }
                 else{
                     hero->activateDialog(false,0);
@@ -169,13 +169,13 @@ void Npc::updateState(GameState & gameState){
                     activateNpc(true);
                     hero->activateDialog(false,1);
                     //Check the speaker
-                    if(getSpeaker()==NPC_DIALOG){ //speaker -> Npc
+                    if(stateMachine.getCurrentSpeaker()==NPC_DIALOG){ //speaker -> Npc
                         currentDialog();
                         hero->activateDialog(false,0);
                     }
                     else {//speaker -> Hero
                         hero->activateDialog(true,0);
-                        hero->setDialog(getMessage(),0);
+                        hero->setDialog(stateMachine.getCurrentState(),0);
                     }
                     gameState.controller->setState(false,cACTION);
                 }
@@ -201,18 +201,6 @@ void Npc::activateNpc(bool value){
 
 bool Npc::getActivate(){
     return npcActivate;
-}
-
-//**********************************************************************//
-
-speakerMessage Npc::getSpeaker(){
-    return stateMachine.getCurrentSpeaker();
-}
-
-//**********************************************************************//
-
-string & Npc::getMessage(){
-    return stateMachine.getCurrentState();
 }
 
 //**********************************************************************//
