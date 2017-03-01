@@ -159,7 +159,7 @@ void Game::loop(){
         }
 
         //CASE -> LOADING
-        else if(RootMap::isLoading()){
+        else if(gameState.rootMap->isLoading()){
             //loading screen here
             gameState.time=SDL_GetTicks();
             camera.setPosition(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());

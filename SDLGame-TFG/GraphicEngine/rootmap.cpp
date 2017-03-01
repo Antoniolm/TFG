@@ -23,8 +23,6 @@
 #include "objectgroup.h"
 #include <stdlib.h>     /* srand, rand */
 
-bool RootMap::loading=false;
-
 RootMap::RootMap(){
 }
 
@@ -325,7 +323,7 @@ void RootMap::initialize(string fileMap){
 
     currentTime=SDL_GetTicks();
 
-    RootMap::loading=false;
+    loading=false;
 }
 
 //**********************************************************************//
@@ -579,7 +577,7 @@ void RootMap::removeCollision(vec2f voxelPosition,int objID){
 //**********************************************************************//
 
 bool RootMap::isLoading(){
-    return RootMap::loading;
+    return loading;
 }
 
 //**********************************************************************//
@@ -587,7 +585,6 @@ bool RootMap::isLoading(){
 bool RootMap::isFinished(){
     bool result=endMapRegion->isActivated();
     if(result){
-        RootMap::loading=true;
         enableSound(false);
     }
 

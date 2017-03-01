@@ -212,7 +212,7 @@ class RootMap : public Object3D
         *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
-        static bool isLoading();
+        bool isLoading();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -237,8 +237,6 @@ class RootMap : public Object3D
         */
         //////////////////////////////////////////////////////////////////////////
         MovieScreen * getMovie();
-
-        static bool loading;
 
     protected:
 
@@ -267,6 +265,7 @@ class RootMap : public Object3D
         MovieScreen * movie;
         string nextMapFile;
         LoaderThread * loader;
+        bool loading;
 };
 
 #endif // ROOTMAP_H
