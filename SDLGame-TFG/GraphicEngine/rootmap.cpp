@@ -427,69 +427,75 @@ void RootMap::updateState(GameState & gameState){
     if(time-currentTime>200)
         currentTime=time-50;
 
-    //Update the hero
-    hero->updateState(gameState);
+    if(!gameState.movie->isActivated() && !gameState.pauseMenu->isActivate() && !gameState.deadMenu->isActivate() && !gameState.camera->isViewMode()){
+        //Update the hero
+        hero->updateState(gameState);
 
-    //Update the mate
-    mate->updateState(gameState);
+        //Update the mate
+        mate->updateState(gameState);
 
-    //Update the Scene
-    for(unsigned i=0;i<objectGroup.size();i++)
-        objectGroup[i]->updateState(gameState);
+        //Update the Scene
+        for(unsigned i=0;i<objectGroup.size();i++)
+            objectGroup[i]->updateState(gameState);
 
-    //Update the Scene
-    itemList->updateState(gameState);
+        //Update the Scene
+        itemList->updateState(gameState);
 
-    //Update particles system
-    for(unsigned i=0;i<particleSystem.size();i++){
-        particleSystem[i]->updateState(gameState);
+        //Update particles system
+        for(unsigned i=0;i<particleSystem.size();i++){
+            particleSystem[i]->updateState(gameState);
+        }
+
+        //Update projectile system
+        for(unsigned i=0;i<projectileSystem.size();i++){
+            projectileSystem[i]->updateState(gameState);
+        }
+
+        //Update textregions
+        for(unsigned i=0;i<regions.size();i++){
+            regions[i]->updateState(gameState);
+        }
+
+        //Update soulCarriers
+        for(unsigned i=0;i<soulCarriers.size();i++){
+            soulCarriers[i]->updateState(gameState);
+        }
+
+        //Update doors
+        for(unsigned i=0;i<doors.size();i++){
+            doors[i]->updateState(gameState);
+        }
+
+        //Update souls
+        for(unsigned i=0;i<souls.size();i++){
+            souls[i]->updateState(gameState);
+        }
+
+        //Update spikeTraps
+        for(unsigned i=0;i<spikes.size();i++){
+            spikes[i]->updateState(gameState);
+        }
+
+        //Update title
+        title->updateState(gameState);
+
+        //Update npcs
+        for(unsigned i=0;i<npcList.size();i++){
+            npcList[i]->updateState(gameState);
+        }
+
+        //Update enemies
+        enemyList->updateState(gameState);
+
+        //Update endMapRegion
+        endMapRegion->updateState(gameState);
+
+        currentTime+=time-currentTime;
+        gameState.rootMap->enableSound(true);
     }
-
-    //Update projectile system
-    for(unsigned i=0;i<projectileSystem.size();i++){
-        projectileSystem[i]->updateState(gameState);
+    else{
+        gameState.rootMap->enableSound(false);
     }
-
-    //Update textregions
-    for(unsigned i=0;i<regions.size();i++){
-        regions[i]->updateState(gameState);
-    }
-
-    //Update soulCarriers
-    for(unsigned i=0;i<soulCarriers.size();i++){
-        soulCarriers[i]->updateState(gameState);
-    }
-
-    //Update doors
-    for(unsigned i=0;i<doors.size();i++){
-        doors[i]->updateState(gameState);
-    }
-
-    //Update souls
-    for(unsigned i=0;i<souls.size();i++){
-        souls[i]->updateState(gameState);
-    }
-
-    //Update spikeTraps
-    for(unsigned i=0;i<spikes.size();i++){
-        spikes[i]->updateState(gameState);
-    }
-
-    //Update title
-    title->updateState(gameState);
-
-    //Update npcs
-    for(unsigned i=0;i<npcList.size();i++){
-        npcList[i]->updateState(gameState);
-    }
-
-    //Update enemies
-    enemyList->updateState(gameState);
-
-    //Update endMapRegion
-    endMapRegion->updateState(gameState);
-
-    currentTime+=time-currentTime;
 }
 
 //**********************************************************************//

@@ -21,8 +21,21 @@
 #define GAMESTATE_H
 
 #include "controllermanager.h"
+#include "menu.h"
+#include "pausemenu.h"
+#include "mainmenu.h"
+#include "deadmenu.h"
+#include "loadingscreen.h"
+#include "moviescreen.h"
 #include "rootmap.h"
+#include "camera.h"
 
+class DeadMenu;
+class LoadingScreen;
+class MainMenu;
+class PauseMenu;
+class MovieScreen;
+class Camera;
 class GameState
 {
     public:
@@ -39,6 +52,12 @@ class GameState
         float time;
         ControllerManager * controller;
         RootMap * rootMap;
+        PauseMenu * pauseMenu;
+        MainMenu * mainMenu;
+        DeadMenu * deadMenu;
+        LoadingScreen * loadScreen;
+        MovieScreen * movie;
+        Camera * camera;
 
     protected:
 

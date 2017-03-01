@@ -373,7 +373,7 @@
 	<string>
 	"sound.h"
 
-1487633410 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1488369350 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -385,11 +385,6 @@
 	"../GraphicEngine/camera.h"
 	"../GraphicEngine/structdata.h"
 	"../GraphicEngine/text.h"
-	"../GraphicEngine/menu.h"
-	"../GraphicEngine/pausemenu.h"
-	"../GraphicEngine/mainmenu.h"
-	"../GraphicEngine/deadmenu.h"
-	"../GraphicEngine/loadingscreen.h"
 	"../GraphicEngine/controllermanager.h"
 	"../GraphicEngine/profile.h"
 	"../GraphicEngine/notification.h"
@@ -404,7 +399,7 @@
 	"window.h"
 	"file_obj.h"
 
-1488049539 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1488370205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -902,7 +897,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1488361481 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1488368087 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/enemylist.h"
 	"../VideoGame/itemlist.h"
@@ -1841,7 +1836,7 @@
 	"meshcollection.h"
 	"materialcollection.h"
 
-1487883251 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
+1488375752 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
 	"pausemenu.h"
 
 1488047867 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
@@ -2451,9 +2446,16 @@
 	"../GraphicEngine/materialcollection.h"
 	"../lib/rapidjson/document.h"
 
-1487160906 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.h
+1488371593 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.h
 	"controllermanager.h"
+	"menu.h"
+	"pausemenu.h"
+	"mainmenu.h"
+	"deadmenu.h"
+	"loadingscreen.h"
+	"moviescreen.h"
 	"rootmap.h"
+	"camera.h"
 
 1487766902 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.cpp
 	"gamestate.h"

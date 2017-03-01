@@ -31,11 +31,6 @@
 #include "../GraphicEngine/camera.h"
 #include "../GraphicEngine/structdata.h"
 #include "../GraphicEngine/text.h"
-#include "../GraphicEngine/menu.h"
-#include "../GraphicEngine/pausemenu.h"
-#include "../GraphicEngine/mainmenu.h"
-#include "../GraphicEngine/deadmenu.h"
-#include "../GraphicEngine/loadingscreen.h"
 #include "../GraphicEngine/controllermanager.h"
 #include "../GraphicEngine/profile.h"
 #include "../GraphicEngine/notification.h"
@@ -100,10 +95,6 @@ class Game
         Window * window;
         GameState gameState;
         Hero * hero;
-        PauseMenu * pauseMenu;
-        MainMenu * mainMenu;
-        DeadMenu * deadMenu;
-        LoadingScreen * loadScreen;
         Text * lifeText,* coinText;
         Notification * notiGamePad;
         Context context;

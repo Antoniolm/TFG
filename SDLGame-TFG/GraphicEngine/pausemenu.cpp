@@ -90,76 +90,78 @@ void PauseMenu::visualization(Context & cv){
 void PauseMenu::updateState(GameState & gameState){
     vec3f position;
 
-    float time=gameState.time;
-    ControllerManager * controller=gameState.controller;
+    if(!gameState.movie->isActivated() && !gameState.deadMenu->isActivate() && !gameState.camera->isViewMode()){
+        float time=gameState.time;
+        ControllerManager * controller=gameState.controller;
 
-    if(time-currentTime>200)
-        currentTime=time-50;
+        if(time-currentTime>200)
+            currentTime=time-50;
 
-    if(controller->checkButton(cPAUSE) && menuDelay<(time-600)){
-        activateMenu=!activateMenu;
-        menuDelay=time;
-        if(activateMenu){
-            (Profile::getInstance())->showResult();
-            position=gameState.rootMap->getHero()->getPosition();
-            positionMenu->translation(position.x,position.y+6.75,position.z+11.0);
-
-            //Consume the current events -> User has to push again the buttons
-            controller->setState(false,cUP);
-            controller->setState(false,cDOWN);
-            controller->setState(false,cACTION);
-        }
-        else {
-            currentOption=0;
-            currentMaterial->setTexture(options[currentOption]);
-        }
-        openSound->play();
-    }
-
-
-    if(activateMenu){ //If the menu is activated
-        if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the action move on the menu
-            currentOption-=1;
-            if(currentOption==-1)
-                currentOption=(options.size()-1);
-
-            currentMaterial->setTexture(options[currentOption]);
+        if(controller->checkButton(cPAUSE) && menuDelay<(time-600)){
+            activateMenu=!activateMenu;
             menuDelay=time;
-            moveSound->stop();
-            moveSound->play();
-        }
-        else if(controller->checkButton(cDOWN) && menuDelay<(time-300)){ //If the user push the action move on the menu
-            currentOption++;
-            if((unsigned)currentOption==options.size())
-                currentOption=0;
+            if(activateMenu){
+                (Profile::getInstance())->showResult();
+                position=gameState.rootMap->getHero()->getPosition();
+                positionMenu->translation(position.x,position.y+6.75,position.z+11.0);
 
-            currentMaterial->setTexture(options[currentOption]);
-            menuDelay=time;
-            moveSound->stop();
-            moveSound->play();
-        }
-        if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
-            switch(currentOption){
-                case 0: //Resume
-                    currentOption=0;
-                     currentMaterial->setTexture(options[currentOption]);
-                    activateMenu=false;
-                    openSound->play();
-                break;
-                case 1: //Exit
-                    currentOption=0;
-                    currentMaterial->setTexture(options[currentOption]);
-                    (Profile::getInstance())->showResult();
-                    MainMenu::getInstance()->activate();
-                    activateMenu=false;
-                break;
-
+                //Consume the current events -> User has to push again the buttons
+                controller->setState(false,cUP);
+                controller->setState(false,cDOWN);
+                controller->setState(false,cACTION);
             }
-
-            menuDelay=time;
-            controller->setState(false,cACTION);
+            else {
+                currentOption=0;
+                currentMaterial->setTexture(options[currentOption]);
+            }
+            openSound->play();
         }
-    }
 
-    currentTime+=time-currentTime;
+
+        if(activateMenu){ //If the menu is activated
+            if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the action move on the menu
+                currentOption-=1;
+                if(currentOption==-1)
+                    currentOption=(options.size()-1);
+
+                currentMaterial->setTexture(options[currentOption]);
+                menuDelay=time;
+                moveSound->stop();
+                moveSound->play();
+            }
+            else if(controller->checkButton(cDOWN) && menuDelay<(time-300)){ //If the user push the action move on the menu
+                currentOption++;
+                if((unsigned)currentOption==options.size())
+                    currentOption=0;
+
+                currentMaterial->setTexture(options[currentOption]);
+                menuDelay=time;
+                moveSound->stop();
+                moveSound->play();
+            }
+            if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
+                switch(currentOption){
+                    case 0: //Resume
+                        currentOption=0;
+                         currentMaterial->setTexture(options[currentOption]);
+                        activateMenu=false;
+                        openSound->play();
+                    break;
+                    case 1: //Exit
+                        currentOption=0;
+                        currentMaterial->setTexture(options[currentOption]);
+                        (Profile::getInstance())->showResult();
+                        MainMenu::getInstance()->activate();
+                        activateMenu=false;
+                    break;
+
+                }
+
+                menuDelay=time;
+                controller->setState(false,cACTION);
+            }
+        }
+
+        currentTime+=time-currentTime;
+    }
 }
