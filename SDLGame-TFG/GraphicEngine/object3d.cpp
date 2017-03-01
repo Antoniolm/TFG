@@ -52,6 +52,11 @@ BoundingBox Object3D::getBoundingBox(){
 
 //**********************************************************************//
 
+void Object3D::obtainPosition(Context & cv){
+}
+
+//**********************************************************************//
+
 vec4f Object3D::getPosition(){
     return position;
 }

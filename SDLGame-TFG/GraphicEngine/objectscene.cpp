@@ -121,7 +121,7 @@ void ObjectScene::generateBoundingbox(){
 //**********************************************************************//
 
 void ObjectScene::obtainPosition(Context vis){
-    object->visualization(vis);
+    object->obtainPosition(vis);
 
     matrix=Matrix4f(vis.currentTransf);
     position=matrix.product(vec4f());

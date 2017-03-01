@@ -110,6 +110,14 @@ class NodeSceneGraph : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will obtain the boundingBox of the object.
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void obtainPosition(Context & cv);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will add a new element in our NodeSceneGraph
         *    \return void
         */

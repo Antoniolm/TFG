@@ -156,3 +156,34 @@ BoundingBox NodeSceneGraph::getBoundingBox(){
     return boundingBox;
 }
 
+//**********************************************************************//
+
+void NodeSceneGraph::obtainPosition(Context & cv){
+    int contMatrix=1;
+    int contMaterial=0;
+    vec4f pos;
+    cv.matrixStack.push();
+    vector<EntryNGE>::iterator it;
+    for(it=entrance.begin();it!=entrance.end();it++){
+            switch((*it).type){
+            case 0: //Object3d
+                (*it).obj->obtainPosition(cv);
+                break;
+            case 1: //Matrix4f
+                cv.matrixStack.cMatrix((*(*it).matrix));
+                contMatrix++;
+                break;
+            case 2: //Material
+                cv.materialStack.push((*it).material);
+                contMaterial++;
+                break;
+            }
+
+    }
+    cv.currentMaterialIndex=(cv.materialStack.getMaterial()->getIndex());
+    cv.materialStack.pop(contMaterial);
+
+    cv.currentTransf.setMatrix(cv.matrixStack.getMatrix().getMatrix());
+    cv.matrixStack.pop(contMatrix);
+}
+
