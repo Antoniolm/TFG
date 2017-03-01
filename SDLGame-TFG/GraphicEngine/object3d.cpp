@@ -23,7 +23,7 @@
 
 Object3D::Object3D()
 {
-    //ctor
+    countLink=0;
 }
 
 //**********************************************************************//
@@ -59,4 +59,22 @@ void Object3D::obtainPosition(Context & cv){
 
 vec4f Object3D::getPosition(){
     return position;
+}
+
+//**********************************************************************//
+
+void Object3D::removeLink(){
+    countLink--;
+}
+
+//**********************************************************************//
+
+void Object3D::addLink(){
+    countLink++;
+}
+
+//**********************************************************************//
+
+int Object3D::getCountLink(){
+    return countLink;
 }

@@ -99,9 +99,16 @@ class Object3D
         //////////////////////////////////////////////////////////////////////////
         vec4f getPosition();
 
+        void removeLink();
+
+        void addLink();
+
+        int getCountLink();
+
     protected:
         float currentTime;
         vec4f position;
+        int countLink;
         BoundingBox boundingBox;
 
     private:

@@ -46,7 +46,11 @@ NodeSceneGraph::~NodeSceneGraph()
     for(it=entrance.begin();it!=entrance.end();it++){
         switch((*it).type){
             case 0: //Object3d
-                //delete (*it).obj; //testing
+                (*it).obj->removeLink();
+                if((*it).obj->getCountLink()==0){
+                    cout<< "delete"<<endl;
+                    delete (*it).obj; //testing
+                }
                 break;
             case 1: //Matrix4f
                 delete (*it).matrix;

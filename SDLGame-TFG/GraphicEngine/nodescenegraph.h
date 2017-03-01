@@ -50,6 +50,7 @@ struct EntryNGE
 
 	EntryNGE(Object3D * aObject){
         obj=aObject;
+        obj->addLink();
         type=0;
 	}
 	EntryNGE(Matrix4f * pMatrix){
