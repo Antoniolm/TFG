@@ -28,8 +28,18 @@ Sound::Sound()
 
 Sound::~Sound()
 {
-    Mix_FreeMusic(music);
-    Mix_FreeChunk(effect);
+
+  switch(type){
+        case 0: //Background music
+            Mix_FreeMusic(music);
+        break;
+
+        case 1: //Effect
+            Mix_FreeChunk(effect);
+        break;
+    }
+
+
 }
 
 //**********************************************************************//

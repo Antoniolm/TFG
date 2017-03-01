@@ -62,11 +62,11 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
 
 MovieScreen::~MovieScreen()
 {
-    //if(root!=0)
-      //  delete root;
+    if(root!=0)
+        delete root;
 
-    for(unsigned i=0;i<options.size();i++)
-        delete options[i];
+    //for(unsigned i=0;i<options.size();i++)
+      //delete options[i];
 }
 
 //**********************************************************************//

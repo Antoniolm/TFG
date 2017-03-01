@@ -66,7 +66,6 @@ Item::Item(vec3f aPosition,int aValue,ItemIndex aType){
 
 Item::~Item(){
     delete root;
-    delete animationMatrix;
     delete rotation;
 }
 

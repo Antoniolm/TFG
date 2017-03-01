@@ -43,7 +43,7 @@ Weapon::Weapon(vec3f aPos,WeaponType atype,float aDamage,MeshIndex mesh,Material
 
 Weapon::~Weapon()
 {
-    //dtor
+    delete root;
 }
 //**********************************************************************//
 

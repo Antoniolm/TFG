@@ -44,15 +44,15 @@ RootMap::RootMap(string fileMap,bool flagThread){
 
 RootMap::~RootMap()
 {
-    /*delete loader;
+    /*delete loader;*/
     delete backSound;
     delete enemyList;
     delete itemList;
-    //delete hero;*/
-    //delete mate;
-    //delete title;
-    //delete endMapRegion;
-    //delete movie;
+    delete hero;
+    delete mate;
+    delete title;
+    delete endMapRegion;
+    delete movie;
 
     for(unsigned i=0;i<objs.size();i++)
         delete objs[i];
@@ -63,8 +63,8 @@ RootMap::~RootMap()
     for(unsigned i=0;i<objectGroup.size();i++)
         delete objectGroup[i];
 
-    //for(unsigned i=0;i<npcList.size();i++)
-        //delete npcList[i];
+    for(unsigned i=0;i<npcList.size();i++)
+        delete npcList[i];
 
     for(unsigned i=0;i<particleSystem.size();i++)
         delete particleSystem[i];

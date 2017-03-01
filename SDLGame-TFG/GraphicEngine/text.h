@@ -122,7 +122,6 @@ class Text : public Object3D
         string fileTexture;
         string message;
         GLuint textureText;
-        Texture textureBack;
         TTF_Font* font;
         SDL_Color color;
         NodeSceneGraph * textNode,* backNode;

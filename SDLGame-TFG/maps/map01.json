@@ -119,7 +119,7 @@
 
     "soulCarrier":[
             {   "position":[3.5,1.1,-5.5] },
-            {   "position":[4.5,1.1,-5.5] }
+            {   "position":[6.5,1.1,-3.5] }
     ],
 
     "door":[
@@ -127,7 +127,7 @@
                 "soulCarrier":0,
                 "direction":0
             },
-            {   "position":[9.5,2.5,-4.0],
+            {   "position":[9.1,2.5,-4.0],
                 "soulCarrier":1,
                 "direction":1
             }
@@ -197,6 +197,16 @@
                 "mesh":"CUBE", 
                 "damage":0.0 },
 
+
+            {   "//":"ROOM 2 - Begin",
+                "position":[10,0.5,1],
+                "YNumber":1,        
+                "XNumber":9,         
+                "ZNumber":9,         
+                "materialTop":"mCUBE_DUNG",
+                "materialMiddle":"mCUBE_DUNGB", 
+                "mesh":"CUBE", 
+                "damage":0.0},
 
             {   "//":"TRAPS",
                 "position":[51,8.5,36],
