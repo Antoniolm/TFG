@@ -57,11 +57,11 @@ Hero::Hero(vec3f aPos)
     //////////////////////////////////////////////////////
     /////              All the sounds                /////
     //////////////////////////////////////////////////////
-    Sound * sound=new Sound("sounds/walking.wav",1,40,3,-1);
+    Sound * sound=new Sound("sounds/walking.wav",1,40,-1,-1);
     heroSound.push_back(sound);
-    sound=new Sound("sounds/heroHit.wav",1,20,5,0);
+    sound=new Sound("sounds/heroHit.wav",1,20,-1,0);
     heroSound.push_back(sound);
-    sound=new Sound("sounds/shield.wav",1,40,6,0);
+    sound=new Sound("sounds/shield.wav",1,40,-1,0);
     heroSound.push_back(sound);
     heroSound.push_back(soundCollect->getSound(SHOOT));
     heroSound.push_back(soundCollect->getSound(sSWORD));
