@@ -171,8 +171,15 @@ void Sound::resume(){
         break;
 
         case 1: //Effect
-            if(Mix_Paused(channel)==1)
+            if(channel!=-1 && Mix_Paused(channel)==1){
                 Mix_Resume(channel);
+            }
+            else if(channel==-1){
+                for(int i=0;i<16;i++){
+                    if(Mix_GetChunk(i)==effect)
+                        Mix_Resume(i);
+                }
+            }
 
         break;
     }
@@ -195,7 +202,7 @@ bool Sound::isPlaying(){
             }
             else if(channel==-1){
                 for(int i=0;i<16;i++){
-                    if(Mix_Playing(i)==1)
+                    if(Mix_Playing(i)==1 && Mix_GetChunk(i)==effect)
                         result=true;
                 }
             }
@@ -218,9 +225,15 @@ bool Sound::isPause(){
         break;
 
         case 1: //Effect
-            if(Mix_Paused(channel)==1)
+            if(channel!=-1 && Mix_Paused(channel)==1){
                 result=true;
-
+            }
+            else if(channel==-1){
+                for(int i=0;i<16;i++){
+                    if(Mix_Paused(channel)==1 && Mix_GetChunk(i)==effect)
+                        result=true;
+                }
+            }
         break;
     }
     return result;

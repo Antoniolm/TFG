@@ -318,8 +318,15 @@ Hero::~Hero()
         delete (*it);
     }
 
-    delete meleeWeapon;
-    delete rangedWeapon;
+    switch(currentWeapon->getType()){
+        case RANGED:
+            delete meleeWeapon;
+        break;
+        case MELEE:
+            delete rangedWeapon;
+        break;
+    }
+
     delete root;
 }
 
