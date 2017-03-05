@@ -100,10 +100,10 @@ void Sound::play(){
         break;
 
         case 1: //Effect
-            if(Mix_Playing(channel)==0){
+            //if(Mix_Playing(channel)==0){
                 Mix_PlayChannel(channel,effect,loop);
                 Mix_Volume(channel,volume);
-            }
+            //}
 
         break;
     }
@@ -119,8 +119,15 @@ void Sound::stop(){
         break;
 
         case 1: //Effect
-            if(Mix_Playing(channel)==1)
+            if(channel!=-1 && Mix_Playing(channel)==1){
                 Mix_HaltChannel(channel);
+            }
+            else if(channel==-1){
+                for(int i=0;i<16;i++){
+                    if(Mix_GetChunk(i)==effect)
+                        Mix_HaltChannel(i);
+                }
+            }
 
         break;
     }
@@ -172,8 +179,16 @@ bool Sound::isPlaying(){
         break;
 
         case 1: //Effect
-            if(Mix_Playing(channel)==1)
+            if(channel!=-1 && Mix_Playing(channel)==1){
                 result=true;
+            }
+            else if(channel==-1){
+                for(int i=0;i<16;i++){
+                    if(Mix_Playing(i)==1)
+                        result=true;
+                }
+            }
+
         break;
     }
 

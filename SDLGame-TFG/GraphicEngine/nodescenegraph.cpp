@@ -48,7 +48,6 @@ NodeSceneGraph::~NodeSceneGraph()
             case 0: //Object3d
                 (*it).obj->removeLink();
                 if((*it).obj->getCountLink()==0){
-                    cout<< "delete"<<endl;
                     delete (*it).obj; //testing
                 }
                 break;

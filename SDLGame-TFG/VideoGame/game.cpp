@@ -68,15 +68,8 @@ Game::Game(){
 Game::~Game(){
     delete instance;
     delete window;
-    delete gameState.rootMap;
-    delete gameState.pauseMenu;
-    delete gameState.mainMenu;
-    delete gameState.deadMenu;
-    delete gameState.loadScreen;
     delete lifeText;
     delete coinText;
-    delete gameState.controller;
-
     delete notiGamePad;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();

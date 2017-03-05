@@ -42,7 +42,7 @@ RootMap::RootMap(string fileMap,bool flagThread){
 
 RootMap::~RootMap()
 {
-    /*delete loader;*/
+    delete loader;
     delete backSound;
     delete enemyList;
     delete itemList;
@@ -52,8 +52,8 @@ RootMap::~RootMap()
     delete endMapRegion;
     delete movie;
 
-    for(unsigned i=0;i<objs.size();i++)
-        delete objs[i];
+    for(unsigned i=doors.size();i<objs.size();i++)
+        deleteObject3d(objs[i]);
 
     for(unsigned i=0;i<decorationObjs.size();i++)
         delete decorationObjs[i];
@@ -83,7 +83,7 @@ RootMap::~RootMap()
         delete soulCarriers[i];
 
     for(unsigned i=0;i<doors.size();i++)
-        delete doors[i];
+        deleteObject3d(doors[i]);
 
     for(unsigned i=0;i<lights.size();i++)
         delete lights[i];
@@ -137,6 +137,7 @@ void RootMap::initialize(string fileMap){
     /////////////////////////////////////////
     const rapidjson::Value & titleFeature=document["title"];
     title=new Notification(titleFeature);
+    title->addLink();
 
     /////////////////////////////////////////
     // Add endMap region to our map
@@ -189,8 +190,10 @@ void RootMap::initialize(string fileMap){
     /////////////////////////////////////////
     const rapidjson::Value & doorFeature=document["door"];
     for(unsigned currentDoor=0;currentDoor<doorFeature.Size();currentDoor++){
-        doors.push_back(new Door(doorFeature[currentDoor],soulCarriers,currentDoor));
-        objs.push_back(new Door(doorFeature[currentDoor],soulCarriers,currentDoor));
+        Door * door=new Door(doorFeature[currentDoor],soulCarriers,currentDoor);
+        door->addLink();door->addLink();
+        doors.push_back(door);
+        objs.push_back(door);
     }
 
     /////////////////////////////////////////
@@ -225,7 +228,7 @@ void RootMap::initialize(string fileMap){
             if(decoObject[currentDeco]["collision"].GetBool()) //If collision
                 objs.push_back(new DecorationObject(decoObject[currentDeco],posDecoration));
 
-                decorationObjs.push_back(new DecorationObject(decoObject[currentDeco],posDecoration));
+            decorationObjs.push_back(new DecorationObject(decoObject[currentDeco],posDecoration));
 
         }
     }
@@ -622,4 +625,13 @@ void RootMap::activatedLight(GLuint shaderID){
 void RootMap::activatedObjectGroup(){
     for(unsigned i=0;i<objectGroup.size();i++)
         objectGroup[i]->init();
+}
+
+//**********************************************************************//
+
+void RootMap::deleteObject3d(Object3D * obj){
+    obj->removeLink();
+    if(obj->getCountLink()==0){
+        delete obj; //testing
+    }
 }

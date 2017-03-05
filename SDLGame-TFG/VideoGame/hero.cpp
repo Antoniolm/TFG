@@ -507,7 +507,8 @@ void Hero::updateState(GameState & gameState){
     if(hasMove && !isImpacted && !isHitting){
         avatarDirection lastDir=direction;
         moveBody(moveHero,heroDir);
-        heroSound[0]->play();
+        if(!heroSound[0]->isPlaying())
+            heroSound[0]->play();
         if(isShielded)
             changeDirection(lastDir);
     }
@@ -553,7 +554,6 @@ void Hero::updateState(GameState & gameState){
                             enemies[i]->takeDamage(position,direction,currentWeapon->getDamage(),enemies); //Hit enemy
                         }
                     }
-                    heroSound[4]->stop();
                     heroSound[4]->play();
                     swordDelay=time;
                 }
@@ -565,7 +565,6 @@ void Hero::updateState(GameState & gameState){
                 if(animationHit->getScriptState(6)==1 && shootDelay<(time-700)){
                     shootDelay=time;
                     projectiles.push_back(createProjectile(currentWeapon->getDamage()));
-                    heroSound[3]->stop();
                     heroSound[3]->play();
                 }
             break;
@@ -755,11 +754,9 @@ Soul * Hero::getSoul(){
         if(!isImpacted) //if hero is not impacted in this moment
             activeImpact(dirAvatar);
 
-        heroSound[1]->stop();
         heroSound[1]->play();
     }
     if(detectHit(posAvatar,dirAvatar) && shieldDelay<(currentTime-700) && canShield && distance<1.0){
-        heroSound[2]->stop();
         heroSound[2]->play();
         shieldDelay=currentTime;
     }
@@ -784,7 +781,6 @@ Soul * Hero::getSoul(){
 
     activateDialog(true,3);
 
-    heroSound[1]->stop();
     heroSound[1]->play();
  }
 

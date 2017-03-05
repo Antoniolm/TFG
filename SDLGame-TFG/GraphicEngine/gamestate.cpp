@@ -25,4 +25,12 @@ GameState::GameState()
 }
 
 GameState::~GameState(){
+    delete controller;
+    delete rootMap;
+    delete pauseMenu;
+    delete mainMenu;
+    delete deadMenu;
+    delete loadScreen;
+    delete movie;
+    delete camera;
 }

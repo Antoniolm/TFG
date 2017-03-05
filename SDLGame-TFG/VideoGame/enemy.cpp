@@ -107,7 +107,6 @@ vec3f Enemy::getRadioActivity(){
         if(!isImpacted && canImpact(dirAvatar,enemies))
             activeImpact(dirAvatar);
 
-        enemySound[1]->stop();
         enemySound[1]->play();
 
         //Check if was activated
@@ -137,7 +136,6 @@ void Enemy::takeDamage(float value){
     currentText->setMessage(convert.str());
     currentText->init();
 
-    enemySound[1]->stop();
     enemySound[1]->play();
  }
 

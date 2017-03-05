@@ -92,13 +92,11 @@ void Item::updateState(GameState & gameState){
         switch(type){
         case iCOIN:
             hero->addCoin(value);
-            soundTake->stop();
             soundTake->play();
         break;
         case iPOTION:
             if(hero->getLife()!=hero->getMaxLite()){
                 hero->addLife(value);
-                soundTake->stop();
                 soundTake->play();
             }
             else

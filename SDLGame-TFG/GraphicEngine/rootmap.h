@@ -241,6 +241,7 @@ class RootMap : public Object3D
     protected:
 
     private:
+        void deleteObject3d(Object3D * obj);
         vector<int> indexMap[500][500];
         vector<ObjectScene *> objs;
         vector<ObjectGroup *> objectGroup;

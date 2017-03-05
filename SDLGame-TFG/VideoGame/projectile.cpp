@@ -117,7 +117,6 @@ void Projectile::updateState(GameState & gameState){
 
     //Check if is not live
     if(!live){
-        soundHit->stop();
         soundHit->play();
     }
 

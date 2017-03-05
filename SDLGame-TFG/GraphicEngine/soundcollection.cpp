@@ -25,23 +25,17 @@ SoundCollection* SoundCollection::instance = NULL;
 
 SoundCollection::SoundCollection()
 {
-    Sound * sound=new Sound("sounds/coin.wav",1,30,4,0);
-    collection.addElement(sound);
+    collection.addElement(new Sound("sounds/coin.wav",1,30,-1,0));
 
-    sound=new Sound("sounds/walking.wav",1,40,8,-1);
-    collection.addElement(sound);
+    collection.addElement(new Sound("sounds/walking.wav",1,40,-1,-1));
 
-    sound=new Sound("sounds/enemyHit.wav",1,50,7,0);
-    collection.addElement(sound);
+    collection.addElement(new Sound("sounds/enemyHit.wav",1,50,-1,0));
 
-    sound=new Sound("sounds/shoot.wav",1,50,9,0);
-    collection.addElement(sound);
+    collection.addElement(new Sound("sounds/shoot.wav",1,50,-1,0));
 
-    sound=new Sound("sounds/sword.wav",1,1,10,0);
-    collection.addElement(sound);
+    collection.addElement(new Sound("sounds/sword.wav",1,1,-1,0));
 
-    sound=new Sound("sounds/arrowHit.wav",1,50,11,0);
-    collection.addElement(sound);
+    collection.addElement(new Sound("sounds/arrowHit.wav",1,50,-1,0));
 
     //Create our map
     collection.addIndex("sCoin",sCoin);
