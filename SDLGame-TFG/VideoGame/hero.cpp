@@ -66,6 +66,8 @@ Hero::Hero(vec3f aPos)
     heroSound.push_back(soundCollect->getSound(SHOOT));
     heroSound.push_back(soundCollect->getSound(sSWORD));
 
+    for(int i=0;i<heroSound.size();i++)
+        channelSound.push_back(-1);
 
     //////////////////////////////////////////////////////
     /////             Initialize text                /////

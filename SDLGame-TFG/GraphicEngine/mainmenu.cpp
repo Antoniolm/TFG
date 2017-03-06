@@ -110,7 +110,6 @@ void MainMenu::updateState(GameState & gameState){
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
-            moveSound->stop();
             moveSound->play();
         }
         else if(controller->checkButton(cDOWN) && menuDelay<(time-300)){ //If the user push the action move on the menu
@@ -120,7 +119,6 @@ void MainMenu::updateState(GameState & gameState){
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
-            moveSound->stop();
             moveSound->play();
         }
         if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro

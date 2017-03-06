@@ -48,7 +48,6 @@ Sound::Sound(const Sound & aSound){
     file=aSound.file;
     type=aSound.type;
     channel=aSound.channel;
-    currentChannel=0;
     loop=aSound.loop;
     volume=aSound.volume;
 
@@ -90,7 +89,8 @@ Sound::Sound(const string & aFile,unsigned int aType,int aVolume,int aChannel,in
 
 //**********************************************************************//
 
-void Sound::play(){
+int Sound::play(){
+    int currentChannel=channel;
     switch(type){
         case 0: //Background music
             if(Mix_PlayingMusic()==0){
@@ -100,29 +100,23 @@ void Sound::play(){
         break;
 
         case 1: //Effect
-            currentChannel=-1;
             if(channel!=-1){ //if have a channel
                 Mix_PlayChannel(channel,effect,loop);
                 Mix_Volume(channel,volume);
             }
             else{ //if sound has channel -1 ->take the first free channel
-                for(int i=0;i<MAX_CHANNEl && currentChannel==-1;i++){
-                    if(Mix_Playing(i)==0){
-                        currentChannel=i;
-                    }
-                }
-
-                Mix_PlayChannel(currentChannel,effect,loop);
+                currentChannel=Mix_PlayChannel(-1,effect,loop);
                 Mix_Volume(currentChannel,volume);
             }
 
         break;
     }
+    return currentChannel;
 }
 
 //**********************************************************************//
 
-void Sound::stop(){
+void Sound::stop(int currentChannel){
     switch(type){
         case 0: //Background music
             if(Mix_PlayingMusic()==1)
@@ -133,12 +127,8 @@ void Sound::stop(){
             if(channel!=-1 && Mix_Playing(channel)==1){
                 Mix_HaltChannel(channel);
             }
-            else if(channel==-1){
-                for(int i=0;i<MAX_CHANNEl;i++){
-                    if(Mix_GetChunk(i)==effect)
-                        Mix_HaltChannel(i);
-                }
-            }
+            else if(channel==-1)
+                Mix_HaltChannel(currentChannel);
 
         break;
     }
@@ -146,7 +136,7 @@ void Sound::stop(){
 
 //**********************************************************************//
 
-void Sound::pause(){
+void Sound::pause(int currentChannel){
     switch(type){
         case 0: //Background music
             if(Mix_PausedMusic()==0)
@@ -157,12 +147,8 @@ void Sound::pause(){
             if(channel!=-1 && Mix_Paused(channel)==0){
                 Mix_Pause(channel);
             }
-            else if(channel==-1){
-                for(int i=0;i<MAX_CHANNEl;i++){
-                    if(Mix_GetChunk(i)==effect)
-                        Mix_Pause(i);
-                }
-            }
+            else if(channel==-1)
+                    Mix_Pause(currentChannel);
 
         break;
     }
@@ -170,7 +156,7 @@ void Sound::pause(){
 
 //**********************************************************************//
 
-void Sound::resume(){
+void Sound::resume(int currentChannel){
     switch(type){
         case 0: //Background music
             if(Mix_PausedMusic()==1)
@@ -181,12 +167,8 @@ void Sound::resume(){
             if(channel!=-1 && Mix_Paused(channel)==1){
                 Mix_Resume(channel);
             }
-            else if(channel==-1){
-                for(int i=0;i<MAX_CHANNEl;i++){
-                    if(Mix_GetChunk(i)==effect)
-                        Mix_Resume(i);
-                }
-            }
+            else if(channel==-1)
+                Mix_Resume(currentChannel);
 
         break;
     }

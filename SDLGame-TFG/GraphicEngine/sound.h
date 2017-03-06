@@ -66,11 +66,12 @@ class Sound
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will play the loaded sound
-        *    \return void
+        *    The method will play the loaded sound and return the channel
+        *    where is played
+        *    \return int
         */
         //////////////////////////////////////////////////////////////////////////
-        void play();
+        int play();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -78,7 +79,7 @@ class Sound
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void stop();
+        void stop(int currentChannel=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -86,7 +87,7 @@ class Sound
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void pause();
+        void pause(int currentChannel=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -94,7 +95,7 @@ class Sound
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void resume();
+        void resume(int currentChannel=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -135,7 +136,6 @@ class Sound
     private:
         unsigned int type;   //0=background music, 1=effect
         int channel; //Variable for effect
-        int currentChannel;
         int loop; //Variable for all type of sound. -> Number of loop in a reproduction
         int volume;
         union{

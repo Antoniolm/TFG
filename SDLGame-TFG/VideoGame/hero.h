@@ -198,6 +198,7 @@ class Hero: public AvatarMove
         vector<Projectile *> projectiles;
         vector<Matrix4f *> moveMatrix;
         vector<Sound *> heroSound;
+        vector<int> channelSound;
         AnimationList animations;
         vector<Text *> texts;
         vector<bool> activatedTexts;
