@@ -71,7 +71,7 @@ class Sound
         *    \return int
         */
         //////////////////////////////////////////////////////////////////////////
-        int play();
+        int play(float distance=0);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -134,6 +134,15 @@ class Sound
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will calculate the volume of our sound and that
+        *    depends of the distance with the hero
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
+        int calculateVolume(float distance);
+
         unsigned int type;   //0=background music, 1=effect
         int channel; //Variable for effect
         int loop; //Variable for all type of sound. -> Number of loop in a reproduction

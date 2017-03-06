@@ -37,7 +37,7 @@ SoundCollection::SoundCollection()
 
     collection.addElement(new Sound("sounds/sword.wav",1,1,-1,0));
 
-    collection.addElement(new Sound("sounds/arrowHit.wav",1,50,-1,0));
+    collection.addElement(new Sound("sounds/arrowHit.wav",1,20,-1,0));
 
     //Create our map
     collection.addIndex("sCoin",sCoin);

@@ -89,7 +89,7 @@ Sound::Sound(const string & aFile,unsigned int aType,int aVolume,int aChannel,in
 
 //**********************************************************************//
 
-int Sound::play(){
+int Sound::play(float distance){
     int currentChannel=channel;
     switch(type){
         case 0: //Background music
@@ -106,7 +106,7 @@ int Sound::play(){
             }
             else{ //if sound has channel -1 ->take the first free channel
                 currentChannel=Mix_PlayChannel(-1,effect,loop);
-                Mix_Volume(currentChannel,volume);
+                Mix_Volume(currentChannel,calculateVolume(distance));
             }
 
         break;
@@ -260,4 +260,25 @@ bool Sound::loadSound(const string & aFile,unsigned int aType,int aVolume,int aC
 
 string & Sound::getFile(){
     return file;
+}
+
+
+//**********************************************************************//
+//                              PRIVATE                                 //
+//**********************************************************************//
+
+int Sound::calculateVolume(float distance){
+    int currentVolumen;
+    float distFactor=0.0;
+
+    if(distance>=10.0) //if is far of 10 is not sound
+        currentVolumen=0;
+    else if(distance <=3.0) //if is near of 3 is 100% sound
+        currentVolumen=volume;
+    else{ //if is between 3 and 10 is a x% sound
+        distFactor=1.0-((distance-3.0)/7.0);
+        currentVolumen=volume*distFactor;
+    }
+
+    return currentVolumen;
 }

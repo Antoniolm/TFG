@@ -96,11 +96,12 @@ void Projectile::updateState(GameState & gameState){
     //Checking the enemies
     vector<Enemy *> enemies=rootMap->getEnemyList()->getEnemies();
     vec3f posEnemy;
+    float enemyDistance;
     for(unsigned i=0;i<enemies.size() && live;i++){
         posEnemy=enemies[i]->getPosition(); //Calculate the distance
-        distance=sqrt(pow(posHead.x-posEnemy.x,2.0)+pow(posHead.z-posEnemy.z,2.0));
+        enemyDistance=sqrt(pow(posHead.x-posEnemy.x,2.0)+pow(posHead.z-posEnemy.z,2.0));
 
-        if(distance<=0.4 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
+        if(enemyDistance<=0.4 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
             enemies[i]->takeDamage(position,direction,damage,enemies);
             live=false;
         }
@@ -117,7 +118,7 @@ void Projectile::updateState(GameState & gameState){
 
     //Check if is not live
     if(!live){
-        soundHit->play();
+        soundHit->play(distance);
     }
 
     //Animation
