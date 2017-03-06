@@ -48,6 +48,7 @@ Sound::Sound(const Sound & aSound){
     file=aSound.file;
     type=aSound.type;
     channel=aSound.channel;
+    currentChannel=0;
     loop=aSound.loop;
     volume=aSound.volume;
 
@@ -90,7 +91,6 @@ Sound::Sound(const string & aFile,unsigned int aType,int aVolume,int aChannel,in
 //**********************************************************************//
 
 void Sound::play(){
-
     switch(type){
         case 0: //Background music
             if(Mix_PlayingMusic()==0){
@@ -100,14 +100,21 @@ void Sound::play(){
         break;
 
         case 1: //Effect
-            //if(Mix_Playing(channel)==0){
+            currentChannel=-1;
+            if(channel!=-1){ //if have a channel
                 Mix_PlayChannel(channel,effect,loop);
-                for(int i=0;i<16;i++){
-                    if(Mix_GetChunk(i)==effect)
-                        Mix_Volume(i,volume);
+                Mix_Volume(channel,volume);
+            }
+            else{ //if sound has channel -1 ->take the first free channel
+                for(int i=0;i<MAX_CHANNEl && currentChannel==-1;i++){
+                    if(Mix_Playing(i)==0){
+                        currentChannel=i;
+                    }
                 }
 
-            //}
+                Mix_PlayChannel(currentChannel,effect,loop);
+                Mix_Volume(currentChannel,volume);
+            }
 
         break;
     }
@@ -127,7 +134,7 @@ void Sound::stop(){
                 Mix_HaltChannel(channel);
             }
             else if(channel==-1){
-                for(int i=0;i<16;i++){
+                for(int i=0;i<MAX_CHANNEl;i++){
                     if(Mix_GetChunk(i)==effect)
                         Mix_HaltChannel(i);
                 }
@@ -151,7 +158,7 @@ void Sound::pause(){
                 Mix_Pause(channel);
             }
             else if(channel==-1){
-                for(int i=0;i<16;i++){
+                for(int i=0;i<MAX_CHANNEl;i++){
                     if(Mix_GetChunk(i)==effect)
                         Mix_Pause(i);
                 }
@@ -175,7 +182,7 @@ void Sound::resume(){
                 Mix_Resume(channel);
             }
             else if(channel==-1){
-                for(int i=0;i<16;i++){
+                for(int i=0;i<MAX_CHANNEl;i++){
                     if(Mix_GetChunk(i)==effect)
                         Mix_Resume(i);
                 }
@@ -201,7 +208,7 @@ bool Sound::isPlaying(){
                 result=true;
             }
             else if(channel==-1){
-                for(int i=0;i<16;i++){
+                for(int i=0;i<MAX_CHANNEl;i++){
                     if(Mix_Playing(i)==1 && Mix_GetChunk(i)==effect)
                         result=true;
                 }
@@ -229,7 +236,7 @@ bool Sound::isPause(){
                 result=true;
             }
             else if(channel==-1){
-                for(int i=0;i<16;i++){
+                for(int i=0;i<MAX_CHANNEl;i++){
                     if(Mix_Paused(channel)==1 && Mix_GetChunk(i)==effect)
                         result=true;
                 }

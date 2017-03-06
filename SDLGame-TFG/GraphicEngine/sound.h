@@ -25,6 +25,7 @@
 #include <iostream>
 #include <unistd.h>
 
+#define MAX_CHANNEl 16
 using namespace std;
 
 class Sound
@@ -134,6 +135,7 @@ class Sound
     private:
         unsigned int type;   //0=background music, 1=effect
         int channel; //Variable for effect
+        int currentChannel;
         int loop; //Variable for all type of sound. -> Number of loop in a reproduction
         int volume;
         union{

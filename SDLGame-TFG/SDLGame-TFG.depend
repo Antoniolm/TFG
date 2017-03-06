@@ -395,7 +395,7 @@
 	<SDL_gamecontroller.h>
 	<sstream>
 
-1486144109 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1488748892 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
@@ -509,13 +509,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1480844634 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.h
+1488811529 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.h
 	<SDL_mixer.h>
 	<string>
 	<iostream>
 	<unistd.h>
 
-1488732250 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.cpp
+1488811352 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.cpp
 	"sound.h"
 
 1382587623 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\sdl2\include\sdl2\sdl_opengl.h
@@ -1038,7 +1038,7 @@
 	<stdlib.h>
 	<vector>
 
-1488730927 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1488733699 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
