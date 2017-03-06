@@ -34,6 +34,7 @@
 #include "mainmenu.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
+#include "soundcollection.h"
 
 
 class MainMenu : public Menu

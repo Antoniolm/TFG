@@ -24,6 +24,7 @@ PauseMenu::PauseMenu()
     currentOption=0;
     activateMenu=false;
     MeshCollection * meshCollect =MeshCollection::getInstance();
+    SoundCollection * soundCollect =SoundCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
@@ -55,8 +56,8 @@ PauseMenu::PauseMenu()
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
 
-    openSound=new Sound("sounds/openSound.wav",1,40,4,0);
-    moveSound=new Sound("sounds/coin.wav",1,40,4,0);
+    openSound=soundCollect->getSound(sOpen);
+    moveSound=soundCollect->getSound(sCoin);
 
     //Add the options
     addOption(new Texture("./textures/menuPauseResume.png"));
@@ -67,8 +68,6 @@ PauseMenu::PauseMenu()
 
 PauseMenu::~PauseMenu()
 {
-    delete openSound;
-    delete moveSound;
     delete root;
 
      for(vector<Texture *>::iterator it = options.begin() ; it != options.end(); ++it){

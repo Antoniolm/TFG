@@ -460,8 +460,8 @@ void Hero::updateState(GameState & gameState){
         if(!isJumping && !isFalling){
             noMove();
         }
-        if(heroSound[0]->isPlaying())
-            heroSound[0]->stop();
+        heroSound[0]->stop(channelSound[0]);
+        channelSound[0]=-1;
     }
 
     //Case-> Push S bottom to jump
@@ -516,8 +516,8 @@ void Hero::updateState(GameState & gameState){
     if(hasMove && !isImpacted && !isHitting){
         avatarDirection lastDir=direction;
         moveBody(moveHero,heroDir);
-        if(!heroSound[0]->isPlaying())
-            heroSound[0]->play();
+        if(!heroSound[0]->isPlaying(channelSound[0]))
+            channelSound[0]=heroSound[0]->play();
         if(isShielded)
             changeDirection(lastDir);
     }
@@ -525,8 +525,8 @@ void Hero::updateState(GameState & gameState){
     if(isJumping){
         jump(time);
         animations.activate(3);
-        if(heroSound[0]->isPlaying())
-            heroSound[0]->stop();
+        heroSound[0]->stop(channelSound[0]);
+        channelSound[0]=-1;
     }
     //If the jump is not activate
     else {
@@ -563,7 +563,7 @@ void Hero::updateState(GameState & gameState){
                             enemies[i]->takeDamage(position,direction,currentWeapon->getDamage(),enemies); //Hit enemy
                         }
                     }
-                    heroSound[4]->play();
+                    channelSound[4]=heroSound[4]->play();
                     swordDelay=time;
                 }
 
@@ -574,7 +574,7 @@ void Hero::updateState(GameState & gameState){
                 if(animationHit->getScriptState(6)==1 && shootDelay<(time-700)){
                     shootDelay=time;
                     projectiles.push_back(createProjectile(currentWeapon->getDamage()));
-                    heroSound[3]->play();
+                    channelSound[3]=heroSound[3]->play();
                 }
             break;
         }
@@ -649,11 +649,10 @@ void Hero::updateState(GameState & gameState){
 
 void Hero::enableSound(bool value){
     for(unsigned i=0;i<heroSound.size();i++)
-    if(value)
-        heroSound[i]->resume();
-    else{
-        heroSound[i]->pause();
-    }
+        if(value && channelSound[i]!=-1  && heroSound[i]->isPause(channelSound[i]))
+            heroSound[i]->resume(channelSound[i]);
+        else if(!value && channelSound[i]!=-1 && heroSound[i]->isPlaying(channelSound[i]))
+            heroSound[i]->pause(channelSound[i]);
 }
 
 //**********************************************************************//
@@ -763,10 +762,10 @@ Soul * Hero::getSoul(){
         if(!isImpacted) //if hero is not impacted in this moment
             activeImpact(dirAvatar);
 
-        heroSound[1]->play();
+        channelSound[1]=heroSound[1]->play();
     }
     if(detectHit(posAvatar,dirAvatar) && shieldDelay<(currentTime-700) && canShield && distance<1.0){
-        heroSound[2]->play();
+        channelSound[2]=heroSound[2]->play();
         shieldDelay=currentTime;
     }
  }
@@ -790,7 +789,7 @@ Soul * Hero::getSoul(){
 
     activateDialog(true,3);
 
-    heroSound[1]->play();
+    channelSound[1]=heroSound[1]->play();
  }
 
 //**********************************************************************//

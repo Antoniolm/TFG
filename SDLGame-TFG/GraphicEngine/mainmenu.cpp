@@ -26,6 +26,7 @@ MainMenu::MainMenu()
     currentOption=0;
     activateMenu=true;
     MeshCollection * meshCollect =MeshCollection::getInstance();
+    SoundCollection * soundCollect =SoundCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainMenuStart.png");
     Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainBackMenu.png");
@@ -57,8 +58,8 @@ MainMenu::MainMenu()
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
 
-    openSound=new Sound("sounds/openSound.wav",0,120,1,1);
-    moveSound=new Sound("sounds/coin.wav",1,40,4,0);
+    openSound=soundCollect->getSound(sOpen);
+    moveSound=soundCollect->getSound(sCoin);
 
     //Add the options
     addOption(new Texture("./textures/mainMenuStart.png"));
@@ -71,8 +72,6 @@ MainMenu::MainMenu()
 
 MainMenu::~MainMenu()
 {
-    delete openSound;
-    delete moveSound;
     delete root;
 
     for(unsigned i=0;i<options.size();i++)

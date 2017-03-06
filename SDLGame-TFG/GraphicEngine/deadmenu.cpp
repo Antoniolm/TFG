@@ -24,6 +24,7 @@ DeadMenu::DeadMenu()
     currentOption=0;
     activateMenu=false;
     MeshCollection * meshCollect =MeshCollection::getInstance();
+    SoundCollection * soundCollect =SoundCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
@@ -55,8 +56,7 @@ DeadMenu::DeadMenu()
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
 
-    openSound=new Sound("sounds/openSound.wav",0,120,1,1);
-    //moveSound=new Sound("sounds/moveMenu.wav",1,40);
+    openSound=soundCollect->getSound(sOpen);
 
     //Add the options
     Texture * option=new Texture("./textures/menuPauseResume.png");

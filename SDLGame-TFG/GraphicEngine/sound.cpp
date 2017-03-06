@@ -127,7 +127,7 @@ void Sound::stop(int currentChannel){
             if(channel!=-1 && Mix_Playing(channel)==1){
                 Mix_HaltChannel(channel);
             }
-            else if(channel==-1)
+            else if(channel==-1 && currentChannel!=-1)
                 Mix_HaltChannel(currentChannel);
 
         break;
@@ -147,7 +147,7 @@ void Sound::pause(int currentChannel){
             if(channel!=-1 && Mix_Paused(channel)==0){
                 Mix_Pause(channel);
             }
-            else if(channel==-1)
+            else if(channel==-1 && currentChannel!=-1)
                     Mix_Pause(currentChannel);
 
         break;
@@ -167,7 +167,7 @@ void Sound::resume(int currentChannel){
             if(channel!=-1 && Mix_Paused(channel)==1){
                 Mix_Resume(channel);
             }
-            else if(channel==-1)
+            else if(channel==-1 && currentChannel!=-1)
                 Mix_Resume(currentChannel);
 
         break;
@@ -177,7 +177,7 @@ void Sound::resume(int currentChannel){
 
 //**********************************************************************//
 
-bool Sound::isPlaying(){
+bool Sound::isPlaying(int currentChannel){
     bool result=false;
     switch(type){
         case 0: //Background music
@@ -189,11 +189,9 @@ bool Sound::isPlaying(){
             if(channel!=-1 && Mix_Playing(channel)==1){
                 result=true;
             }
-            else if(channel==-1){
-                for(int i=0;i<MAX_CHANNEl;i++){
-                    if(Mix_Playing(i)==1 && Mix_GetChunk(i)==effect)
-                        result=true;
-                }
+            else if(channel==-1 && currentChannel!=-1){
+                if(Mix_Playing(currentChannel)==1)
+                    result=true;
             }
 
         break;
@@ -204,7 +202,7 @@ bool Sound::isPlaying(){
 
 //**********************************************************************//
 
-bool Sound::isPause(){
+bool Sound::isPause(int currentChannel){
     bool result=false;
 
     switch(type){
@@ -217,11 +215,9 @@ bool Sound::isPause(){
             if(channel!=-1 && Mix_Paused(channel)==1){
                 result=true;
             }
-            else if(channel==-1){
-                for(int i=0;i<MAX_CHANNEl;i++){
-                    if(Mix_Paused(channel)==1 && Mix_GetChunk(i)==effect)
-                        result=true;
-                }
+            else if(channel==-1 && currentChannel!=-1){
+                if(Mix_Paused(currentChannel)==1)
+                    result=true;
             }
         break;
     }

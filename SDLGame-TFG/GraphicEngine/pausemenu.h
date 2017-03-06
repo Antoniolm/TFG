@@ -33,6 +33,7 @@
 #include "mainmenu.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
+#include "soundcollection.h"
 
 class PauseMenu : public Menu
 {
@@ -68,6 +69,7 @@ class PauseMenu : public Menu
 
     private:
         Sound * openSound,* moveSound;
+        int channelOpen,channelMove;
 };
 
 #endif // PAUSEMENU_H

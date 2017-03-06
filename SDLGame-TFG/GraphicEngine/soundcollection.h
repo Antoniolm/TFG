@@ -29,6 +29,7 @@
 
 enum SoundIndex{
     sCoin, //0
+    sOpen,
     EMOVE,
     EHIT,
     SHOOT,
