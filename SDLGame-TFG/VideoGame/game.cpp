@@ -90,7 +90,6 @@ void Game::loop(){
     vec3f posHero;
     float time;
     string fileMap;
-    bool wasActivatedMenu=false;
     bool firstTime=true;
     int windowH=800,windowW=600;
     int lastLife=160,currentCoin=-10;

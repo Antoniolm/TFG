@@ -45,6 +45,8 @@ SpikeTrap::SpikeTrap(const Value & spikeFeatures)
     activated=false;
     delayActivated=false;
 
+    initAnimation();
+
 }
 
 //**********************************************************************//
@@ -78,6 +80,9 @@ void SpikeTrap::updateState(GameState & gameState ){
         delayActivated=true;
         delayTime=time;
         desactivatedDelay=time;
+        animationUp->resetState();
+        animationDown->resetState();
+        transActivate->identity();
     }
 
     if(activated && desactivatedDelay<(time-1500) && distance>0.75){ //if hero is far of an activated trap
@@ -87,7 +92,6 @@ void SpikeTrap::updateState(GameState & gameState ){
 
     if(activated){ // if is activated
         if(!delayActivated){ //If is not in delayTime
-            transActivate->translation(0.0,1.0,0.0);
             if(distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y) && hitDelay<(time-200)){
                 hero->takeDamage(-1);
                 hitDelay=time;
@@ -98,7 +102,50 @@ void SpikeTrap::updateState(GameState & gameState ){
                 delayActivated=false;
         }
     }
-    else transActivate->identity();
+
+    ////////////////////////////////
+    // Updated animation
+    if(activated && !delayActivated && animationUp->getScriptState(0)!=1){
+        animationUp->updateState(time-currentTime);
+        transActivate->product(animationUp->readMatrix(0).getMatrix());
+    }
+    else if(!activated && animationDown->getScriptState(0)!=1){
+        animationDown->updateState(time-currentTime);
+        transActivate->product(animationDown->readMatrix(0).getMatrix());
+    }
+
 
     currentTime+=time-currentTime;
+}
+
+//**********************************************************************//
+
+void SpikeTrap::initAnimation(){
+    //////////////////////////////////////
+    //Animation up
+    animationUp=new ScriptLMD();
+
+    LinearMovement * movementUp=new LinearMovement(0.0,5.0,0.0);
+    MatrixStatic * notMove=new MatrixStatic();
+
+    MatrixScript * scriptUp=new MatrixScript();
+
+    scriptUp->add(0.20,movementUp);
+    scriptUp->add(0.5,notMove);
+
+    animationUp->add(scriptUp);
+
+
+    /////////////////////////////
+    //Animation down
+    animationDown=new ScriptLMD();
+
+    LinearMovement * movementDown=new LinearMovement(0.0,-5.0,0.0);
+
+    MatrixScript * scriptDown=new MatrixScript();
+
+    scriptDown->add(0.20,movementDown);
+    scriptDown->add(0.5,notMove);
+
+    animationDown->add(scriptDown);
 }

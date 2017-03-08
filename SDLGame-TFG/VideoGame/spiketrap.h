@@ -63,8 +63,10 @@ class SpikeTrap : public Object3D
     protected:
 
     private:
+        void initAnimation();
         NodeSceneGraph * root;
         Matrix4f * transActivate;
+        ScriptLMD * animationUp, * animationDown;
         float delayTime,hitDelay,desactivatedDelay;
         float activatedTime;
         bool activated,delayActivated;
