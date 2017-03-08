@@ -81,15 +81,11 @@ void Door::updateState(GameState & gameState ){
     if(sCarrier->isActivated()){
         if(!activated){
             switch(doorType){
-                case 0:
-                    //rotateDoor->rotation(90,0.0,1.0,0.0);
-                    //moveDoor->translation(position.x-1.0,position.y,position.z+0.5);
+                case 0: //Remove in front side
                     gameState.rootMap->removeCollision(vec2f(position.x,position.z),doorID);
                     gameState.rootMap->removeCollision(vec2f(position.x-1.0,position.z),doorID);
                     break;
-                case 1:
-                    //rotateDoor->rotation(180,0.0,1.0,0.0);
-                    //moveDoor->translation(position.x-1.0,position.y,position.z-1.0);
+                case 1: //Remove in sideAway
                     gameState.rootMap->removeCollision(vec2f(position.x,position.z),doorID);
                     gameState.rootMap->removeCollision(vec2f(position.x,position.z+1.0),doorID);
                     break;
@@ -99,13 +95,13 @@ void Door::updateState(GameState & gameState ){
         activated=true;
     }
 
-    //if is activate && not finish the rotate animation
+    //if is activate && not finish the rotate animation use the animation
     if(activated && animation->getScriptState(0)!=1 && animation->getScriptState(1)!=1){
         animation->updateState(time-currentTime);
-        if(animation->getScriptState(0)!=1 && doorType==0){
+        if(animation->getScriptState(0)!=1 && doorType==0){ //DoorType 0 use script 0
             rotateDoor->setMatrix(animation->readMatrix(0).getMatrix());
         }
-        else if(animation->getScriptState(1)!=1 && doorType==1)
+        else if(animation->getScriptState(1)!=1 && doorType==1) //Doortype 1 use script 1
             rotateDoor->setMatrix(animation->readMatrix(1).getMatrix());
     }
 

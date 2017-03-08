@@ -40,7 +40,9 @@ SpikeTrap::SpikeTrap(const Value & spikeFeatures)
 
     currentTime=SDL_GetTicks();
     hitDelay=currentTime;
+    delayTime=currentTime;
     activated=false;
+    delayActivated=false;
 }
 
 //**********************************************************************//
@@ -68,19 +70,28 @@ void SpikeTrap::updateState(GameState & gameState ){
     vec3f posHero=hero->getPosition();
     float distance=sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0));
 
-    if(distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y)){ //if hero is near of a disactivated trap
+    if(!activated && distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y)){ //if hero is near of a disactivated trap
         activated=true;
+        delayTime=time;
+        delayActivated=true;
     }
 
     if(distance>0.75){ //if hero is far of an activated trap
         activated=false;
+        delayActivated=false;
     }
 
     if(activated){ // if is activated
-        transActivate->translation(0.0,1.0,0.0);
-        if(distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y) && hitDelay<(time-200)){
-            hero->takeDamage(-1);
-            hitDelay=time;
+        if(!delayActivated){
+            transActivate->translation(0.0,1.0,0.0);
+            if(distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y) && hitDelay<(time-200)){
+                hero->takeDamage(-1);
+                hitDelay=time;
+            }
+        }
+        else {
+            if(delayTime<(time-500))
+                delayActivated=false;
         }
     }
     else transActivate->identity();

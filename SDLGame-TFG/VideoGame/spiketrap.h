@@ -67,7 +67,7 @@ class SpikeTrap : public Object3D
         Matrix4f * transActivate;
         float delayTime,hitDelay;
         float activatedTime;
-        bool activated;
+        bool activated,delayActivated;
 };
 
 #endif // SPIKETRAP_H
