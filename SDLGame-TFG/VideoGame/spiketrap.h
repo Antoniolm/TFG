@@ -65,7 +65,7 @@ class SpikeTrap : public Object3D
     private:
         NodeSceneGraph * root;
         Matrix4f * transActivate;
-        float delayTime,hitDelay;
+        float delayTime,hitDelay,desactivatedDelay;
         float activatedTime;
         bool activated,delayActivated;
 };
