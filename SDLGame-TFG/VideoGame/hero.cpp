@@ -521,6 +521,7 @@ void Hero::updateState(GameState & gameState){
         if(isShielded)
             changeDirection(lastDir);
     }
+    //heroSound[0]->updateVolume(channelSound[0],2.0);
     //If the jump is activate
     if(isJumping){
         jump(time);

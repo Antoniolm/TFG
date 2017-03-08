@@ -31,23 +31,30 @@ Door::Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers,
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
 
     moveDoor=new Matrix4f();
-    moveDoor->translation(position.x,position.y,position.z);
+    Matrix4f *transDoor=new Matrix4f();
 
     rotateDoor=new Matrix4f();
     rotateDoor->identity();
 
+    transDoor->translation(1.0,0.0,0.0);
+    moveDoor->translation(position.x-1.0,position.y,position.z);
+
     if(doorType==1)
         rotateDoor->rotation(90,0.0,1.0,0.0);
+
 
     NodeSceneGraph * root=new NodeSceneGraph();
     root->add(moveDoor);
     root->add(rotateDoor);
+    root->add(transDoor);
     root->add(materialCollect->getMaterial(mDOOR));
     root->add(meshCollect->getMesh(DOOR));
 
     object=root;
     damage=0.0;
     currentTime=SDL_GetTicks();
+
+    initAnimation();
 }
 
 //**********************************************************************//
@@ -72,18 +79,17 @@ void Door::updateState(GameState & gameState ){
 
     //if hero put a soul in our soulCarrier this is activated and our door is opened
     if(sCarrier->isActivated()){
-
         if(!activated){
             switch(doorType){
                 case 0:
-                    rotateDoor->rotation(90,0.0,1.0,0.0);
-                    moveDoor->translation(position.x-1.0,position.y,position.z+0.5);
+                    //rotateDoor->rotation(90,0.0,1.0,0.0);
+                    //moveDoor->translation(position.x-1.0,position.y,position.z+0.5);
                     gameState.rootMap->removeCollision(vec2f(position.x,position.z),doorID);
                     gameState.rootMap->removeCollision(vec2f(position.x-1.0,position.z),doorID);
                     break;
                 case 1:
-                    rotateDoor->rotation(180,0.0,1.0,0.0);
-                    moveDoor->translation(position.x-1.0,position.y,position.z-1.0);
+                    //rotateDoor->rotation(180,0.0,1.0,0.0);
+                    //moveDoor->translation(position.x-1.0,position.y,position.z-1.0);
                     gameState.rootMap->removeCollision(vec2f(position.x,position.z),doorID);
                     gameState.rootMap->removeCollision(vec2f(position.x,position.z+1.0),doorID);
                     break;
@@ -93,6 +99,37 @@ void Door::updateState(GameState & gameState ){
         activated=true;
     }
 
+    //if is activate && not finish the rotate animation
+    if(activated && animation->getScriptState(0)!=1 && animation->getScriptState(1)!=1){
+        animation->updateState(time-currentTime);
+        if(animation->getScriptState(0)!=1 && doorType==0){
+            rotateDoor->setMatrix(animation->readMatrix(0).getMatrix());
+        }
+        else if(animation->getScriptState(1)!=1 && doorType==1)
+            rotateDoor->setMatrix(animation->readMatrix(1).getMatrix());
+    }
+
     currentTime+=time-currentTime;
 }
 
+//**********************************************************************//
+
+void Door::initAnimation(){
+    animation=new ScriptLMD();
+
+    OscillateRotation * oscltDoorFront=new OscillateRotation(true,90,0,1,300,vec3f(0,1,0),1);
+    OscillateRotation * oscltDoorSide=new OscillateRotation(true,180,90,91,300,vec3f(0,1,0),1);
+    MatrixStatic * notMove=new MatrixStatic();
+
+    MatrixScript * scriptFront=new MatrixScript();
+    MatrixScript * scriptSide=new MatrixScript();
+
+    scriptFront->add(0.3,oscltDoorFront);
+    scriptFront->add(0.5,notMove);
+
+    scriptSide->add(0.3,oscltDoorSide);
+    scriptSide->add(0.5,notMove);
+
+    animation->add(scriptFront);
+    animation->add(scriptSide);
+}

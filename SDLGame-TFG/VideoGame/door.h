@@ -24,6 +24,7 @@
 #include "../GraphicEngine/nodescenegraph.h"
 #include "../GraphicEngine/matrix4f.h"
 #include "../GraphicEngine/matrix4fdynamic.h"
+#include "../GraphicEngine/scriptlmd.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/materialcollection.h"
 #include "soulcarrier.h"
@@ -71,8 +72,10 @@ class Door : public ObjectScene
     protected:
 
     private:
+        void initAnimation();
         SoulCarrier * sCarrier;
         Matrix4f * rotateDoor,* moveDoor;
+        ScriptLMD * animation;
         float delayTime;
         bool activated;
         int doorType;
