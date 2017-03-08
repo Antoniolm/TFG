@@ -131,6 +131,8 @@ class Sound
         //////////////////////////////////////////////////////////////////////////
         string & getFile();
 
+        void updateVolume(int currentChannel,float distance);
+
     protected:
 
     private:

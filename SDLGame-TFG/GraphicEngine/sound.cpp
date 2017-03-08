@@ -262,6 +262,14 @@ string & Sound::getFile(){
     return file;
 }
 
+//**********************************************************************//
+
+void Sound::updateVolume(int currentChannel,float distance){
+    if(type==1 && currentChannel!=-1){
+        Mix_Volume(currentChannel,calculateVolume(distance));
+    }
+}
+
 
 //**********************************************************************//
 //                              PRIVATE                                 //
