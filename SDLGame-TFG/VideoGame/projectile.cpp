@@ -102,7 +102,7 @@ void Projectile::updateState(GameState & gameState){
         enemyDistance=sqrt(pow(posHead.x-posEnemy.x,2.0)+pow(posHead.z-posEnemy.z,2.0));
 
         if(enemyDistance<=0.4 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
-            enemies[i]->takeDamage(position,direction,damage,enemies);
+            enemies[i]->takeDamage(position,direction,posHero,damage,enemies);
             live=false;
         }
     }

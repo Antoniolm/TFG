@@ -561,7 +561,7 @@ void Hero::updateState(GameState & gameState){
                         distance=sqrt(pow(position.x-posEnemy.x,2.0)+pow(position.z-posEnemy.z,2.0));
 
                         if(distance<=1.0 && (position.y>posEnemy.y-1 && position.y<posEnemy.y+1)){//If is near
-                            enemies[i]->takeDamage(position,direction,currentWeapon->getDamage(),enemies); //Hit enemy
+                            enemies[i]->takeDamage(position,direction,position,currentWeapon->getDamage(),enemies); //Hit enemy
                         }
                     }
                     channelSound[4]=heroSound[4]->play();

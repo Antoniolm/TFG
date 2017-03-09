@@ -81,7 +81,7 @@ vec3f Enemy::getRadioActivity(){
 
  //**********************************************************************//
 
- void Enemy::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,float value,const vector<Enemy *> & enemies){
+ void Enemy::takeDamage(vec3f posAvatar,avatarDirection dirAvatar,vec3f posHero,float value,const vector<Enemy *> & enemies){
     //check Distance
     float distance=sqrt(pow(position.x-posAvatar.x,2.0)+pow(position.z-posAvatar.z,2.0));
 
@@ -107,7 +107,7 @@ vec3f Enemy::getRadioActivity(){
         if(!isImpacted && canImpact(dirAvatar,enemies))
             activeImpact(dirAvatar);
 
-        enemySound[1]->play();
+        enemySound[1]->play(sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0)));
 
         //Check if was activated
         if(!enemyActivate)
