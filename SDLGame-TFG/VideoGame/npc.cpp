@@ -126,7 +126,6 @@ void Npc::updateState(GameState & gameState){
     vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
     if(!npcActivate && (distance.x>-1 && distance.x<1)&&(distance.y>-2 && distance.y<2)&&(distance.z>-1 && distance.z<1)){
         hero->activateDialog(true,1);
-        hero->setDialog(" ",1);
         heroActivate=true;
     }
 

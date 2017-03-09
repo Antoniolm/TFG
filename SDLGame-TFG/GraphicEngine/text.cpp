@@ -39,7 +39,7 @@ Text::Text(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor,bool ahasDia
     positionText=new Matrix4f();
     positionText->identity();
     scaleText=new Matrix4f();
-    scaleText->scale(1.0,0.3,1.0);
+    scaleText->identity();
 
     textNode=new NodeSceneGraph(false,true);
     textNode->add(positionText);
@@ -50,7 +50,7 @@ Text::Text(MaterialIndex material,TTF_Font * aFont,SDL_Color aColor,bool ahasDia
         positionBack=new Matrix4f();
         positionBack->identity();
         scaleBack=new Matrix4f();
-        scaleBack->scale(1.2,1.1,1.0);
+        scaleBack->identity();
 
         backNode=new NodeSceneGraph(false,true);
         backNode->add(positionBack);
@@ -144,4 +144,16 @@ void Text::visualization(Context & vis){
 
 void Text::updateState(GameState & gameState){
 
+}
+
+//**********************************************************************//
+
+void Text::setScaleDialog(vec3f value){
+    scaleBack->scale(value.x,value.y,value.z);
+}
+
+//**********************************************************************//
+
+void Text::setScaleText(vec3f value){
+    scaleText->scale(value.x,value.y,value.z);
 }

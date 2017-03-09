@@ -57,7 +57,8 @@ Hero::Hero(vec3f aPos)
     //////////////////////////////////////////////////////
     /////              All the sounds                /////
     //////////////////////////////////////////////////////
-    heroSound.push_back(soundCollect->getSound(sWALK)));
+    heroSound.push_back(soundCollect->getSound(sWALK));
+    heroSound.push_back(soundCollect->getSound(HHIT));
     heroSound.push_back(soundCollect->getSound(sSHIELD));
     heroSound.push_back(soundCollect->getSound(SHOOT));
     heroSound.push_back(soundCollect->getSound(sSWORD));
@@ -70,24 +71,23 @@ Hero::Hero(vec3f aPos)
     //////////////////////////////////////////////////////
     //Dialog for speak
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 20);
-    Text * currentText=new Text(mDIALOG,font);
-    texts.push_back(currentText);
+    texts.push_back(new Text(mDIALOG,font));
     activatedTexts.push_back(false);
 
     //Dialog for actions
-    currentText=new Text(mADIALOG,font);
-    texts.push_back(currentText);
+    font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 40);
+    texts.push_back(new Text(mADIALOG,font));
+    setDialog(" ",1);
+    texts[1]->setScaleDialog(vec3f(0.25,0.9,0.5));
+    texts[1]->setScaleText(vec3f(0.0,0.0,0.0));
     activatedTexts.push_back(false);
 
     //Coin Text
-    font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 40);
-    currentText=new Text(mVOID,font,SDL_Color{0,255,0},false);
-    texts.push_back(currentText);
+    texts.push_back(new Text(mVOID,font,SDL_Color{0,255,0},false));
     activatedTexts.push_back(false);
 
     //Damage text
-    currentText=new Text(mVOID,font,SDL_Color{255,0,0},false);
-    texts.push_back(currentText);
+    texts.push_back(new Text(mVOID,font,SDL_Color{255,0,0},false));
     activatedTexts.push_back(false);
 
     //////////////////////////////////////////////////////

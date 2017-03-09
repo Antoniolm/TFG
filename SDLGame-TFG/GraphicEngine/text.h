@@ -112,6 +112,8 @@ class Text : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
+        void setScaleDialog(vec3f value);
+        void setScaleText(vec3f value);
     protected:
 
     private:
