@@ -22,6 +22,7 @@
 SpikeTrap::SpikeTrap(const Value & spikeFeatures)
 {
     position=vec4f(spikeFeatures["position"][0].GetFloat(),spikeFeatures["position"][1].GetFloat(),spikeFeatures["position"][2].GetFloat(),1.0);
+    damage=spikeFeatures["damage"].GetFloat();
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
@@ -92,8 +93,8 @@ void SpikeTrap::updateState(GameState & gameState ){
 
     if(activated){ // if is activated
         if(!delayActivated){ //If is not in delayTime
-            if(distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y) && hitDelay<(time-200)){
-                hero->takeDamage(-1);
+            if(distance<=0.75 && (position.y>posHero.y-1 && position.y<posHero.y) && hitDelay<(time-400)){
+                hero->takeDamage(damage);
                 hitDelay=time;
             }
         }
@@ -113,6 +114,9 @@ void SpikeTrap::updateState(GameState & gameState ){
         animationDown->updateState(time-currentTime);
         transActivate->product(animationDown->readMatrix(0).getMatrix());
     }
+    else if(animationDown->getScriptState(0)==1){
+        transActivate->identity();
+    }
 
 
     currentTime+=time-currentTime;
@@ -125,12 +129,12 @@ void SpikeTrap::initAnimation(){
     //Animation up
     animationUp=new ScriptLMD();
 
-    LinearMovement * movementUp=new LinearMovement(0.0,5.0,0.0);
+    LinearMovement * movementUp=new LinearMovement(0.0,10.0,0.0);
     MatrixStatic * notMove=new MatrixStatic();
 
     MatrixScript * scriptUp=new MatrixScript();
 
-    scriptUp->add(0.20,movementUp);
+    scriptUp->add(0.10,movementUp);
     scriptUp->add(0.5,notMove);
 
     animationUp->add(scriptUp);
@@ -140,11 +144,11 @@ void SpikeTrap::initAnimation(){
     //Animation down
     animationDown=new ScriptLMD();
 
-    LinearMovement * movementDown=new LinearMovement(0.0,-5.0,0.0);
+    LinearMovement * movementDown=new LinearMovement(0.0,-10.0,0.0);
 
     MatrixScript * scriptDown=new MatrixScript();
 
-    scriptDown->add(0.20,movementDown);
+    scriptDown->add(0.10,movementDown);
     scriptDown->add(0.5,notMove);
 
     animationDown->add(scriptDown);

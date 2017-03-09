@@ -42,7 +42,6 @@ Game::Game(){
     gameState.pauseMenu = new PauseMenu();
     gameState.deadMenu = new DeadMenu();
     gameState.loadScreen=new LoadingScreen(250);
-    gameState.camera=new Camera();
 
     notiGamePad=new Notification(vec3f(0.0,0.0,0.0),vec3f(0.0,0.0,0.0),0,mVOID);
 
@@ -100,11 +99,10 @@ void Game::loop(){
     vec3f direction(0.0,0.0,0.0);
     vec3f up(0.0,1.0,0.0);
 
+    gameState.camera=new Camera(position,direction,up);
+    gameState.camera->activateCamera(context.currentShader.getProgram());
     gameState.camera->setPerspectiveProjection(30.0f,(float)( 1200.0f / 800.0f), 0.1f, 200.0f);
     gameState.camera->setOrthographicProjection(-1,1,-1,1,-3,3);
-    gameState.camera->setCamera(position,direction,up);
-    gameState.camera->createCamera();
-    gameState.camera->activateCamera(context.currentShader.getProgram());
     gameState.camera->activateOrthoProjection(context.currentShader.getProgram());
 
     //Show our window.

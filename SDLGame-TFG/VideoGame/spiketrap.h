@@ -69,6 +69,7 @@ class SpikeTrap : public Object3D
         ScriptLMD * animationUp, * animationDown;
         float delayTime,hitDelay,desactivatedDelay;
         float activatedTime;
+        float damage;
         bool activated,delayActivated;
 };
 
