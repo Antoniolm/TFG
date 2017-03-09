@@ -39,6 +39,10 @@ SoundCollection::SoundCollection()
 
     collection.addElement(new Sound("sounds/arrowHit.wav",1,20,-1,0));
 
+    collection.addElement(new Sound("sounds/shield.wav",1,40,-1,0););
+    collection.addElement(new Sound("sounds/heroHit.wav",1,20,-1,0););
+    collection.addElement(new Sound("sounds/walking.wav",1,40,-1,-1));
+
     //Create our map
     collection.addIndex("sCoin",sCoin);
     collection.addIndex("sOpen",sOpen);
@@ -47,6 +51,9 @@ SoundCollection::SoundCollection()
     collection.addIndex("SHOOT",SHOOT);
     collection.addIndex("sSWORD",sSWORD);
     collection.addIndex("sARROW",sARROW);
+    collection.addIndex("sSHIELD",sSHIELD);
+    collection.addIndex("HHIT",HHIT);
+    collection.addIndex("sWALK",sWALK);
 }
 
 //**********************************************************************//

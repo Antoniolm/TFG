@@ -87,13 +87,14 @@ void Projectile::updateState(GameState & gameState){
     vec3f posHead=vec3f(vec3f(position)+projectileHead);
     float distance=sqrt(pow(posHead.x-posHero.x,2.0)+pow(posHead.z-posHero.z,2.0));
 
+    //Check if the projectile has hit with our hero
     if(distance<=0.4 && live && (position.y>posHero.y-1 && position.y<posHero.y+1)){
         rootMap->getHero()->takeDamage(position,direction,damage);
         live=false;
     }
 
 
-    //Checking the enemies
+    //Check if the projectile has hit with some enemy
     vector<Enemy *> enemies=rootMap->getEnemyList()->getEnemies();
     vec3f posEnemy;
     float enemyDistance;
