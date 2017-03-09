@@ -62,6 +62,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 
     enemySound.push_back(soundCollect->getSound(EMOVE));
     enemySound.push_back(soundCollect->getSound(EHIT));
+    enemySound.push_back(soundCollect->getSound(SHOOT));
 
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
@@ -353,9 +354,10 @@ void RangedEnemy::updateState(GameState & gameState){
     else if(isHitting){
         animations.activate(1);
         ScriptLMD * animationHit=animations.getAnimation();
-        if(animationHit->getScriptState(4)==1 && hitDelay<(time-700)){
+        if(animationHit->getScriptState(4)==1 && hitDelay<(time-700)){ //Hit an arrow
             projectiles.push_back(createProjectile(weapon->getDamage()));
             hitDelay=time;
+            enemySound[2]->play(sqrt(pow(position.x-posHero.x,2.0)+pow(position.z-posHero.z,2.0)));
         }
     }
 
