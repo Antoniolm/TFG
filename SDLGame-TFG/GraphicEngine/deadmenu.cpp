@@ -26,7 +26,7 @@ DeadMenu::DeadMenu()
     MeshCollection * meshCollect =MeshCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
-    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
+    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/dieMenu.png");
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
 
     positionMenu=new Matrix4f();
@@ -57,17 +57,13 @@ DeadMenu::DeadMenu()
     menuDelay=currentTime;
 
     openSound=soundCollect->getSound(sOpen);
-
-    //Add the options
-    Texture * option=new Texture("./textures/menuPauseResume.png");
-    addOption(option);
 }
 
 //**********************************************************************//
 
 DeadMenu::~DeadMenu()
 {
-    //dtor
+    delete root;
 }
 
 //**********************************************************************//

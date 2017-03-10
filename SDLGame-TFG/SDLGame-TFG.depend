@@ -395,7 +395,7 @@
 	<SDL_gamecontroller.h>
 	<sstream>
 
-1488748892 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1489138196 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
@@ -1038,7 +1038,7 @@
 	<stdlib.h>
 	<vector>
 
-1489079356 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1489098086 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -1695,10 +1695,10 @@
 	"begin_code.h"
 	"close_code.h"
 
-1488361416 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
+1489097278 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
 	"text.h"
 
-1488358845 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
+1489095367 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
 	"object3d.h"
 	"structdata.h"
 	"shader.h"
@@ -1719,7 +1719,7 @@
 	<vector>
 	<string>
 
-1488358235 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
+1489097449 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
 1488301500 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
@@ -2158,7 +2158,7 @@
 	<map>
 	<string>
 
-1488835575 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
+1489080422 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
 	"soundcollection.h"
 
 1489080132 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.h
@@ -2178,7 +2178,7 @@
 1486421150 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coinlist.cpp
 	"coinlist.h"
 
-1488835240 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
+1489079837 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
 	"projectile.h"
 
 1487166402 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
@@ -2577,4 +2577,23 @@
 
 1488972611 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\door.cpp
 	"door.h"
+
+1489136446 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmenu.cpp
+	"optionmenu.h"
+
+1489136550 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmenu.h
+	"object3d.h"
+	"rootmap.h"
+	"context.h"
+	"mesh.h"
+	"nodescenegraph.h"
+	"texture.h"
+	"material.h"
+	"sound.h"
+	"menu.h"
+	"profile.h"
+	"mainmenu.h"
+	"meshcollection.h"
+	"materialcollection.h"
+	"soundcollection.h"
 
