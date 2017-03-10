@@ -42,6 +42,7 @@ Game::Game(){
     gameState.pauseMenu = new PauseMenu();
     gameState.deadMenu = new DeadMenu();
     gameState.loadScreen=new LoadingScreen(250);
+    gameState.optionMenu=new OptionMenu();
 
     notiGamePad=new Notification(vec3f(0.0,0.0,0.0),vec3f(0.0,0.0,0.0),0,mVOID);
 
@@ -142,9 +143,12 @@ void Game::loop(){
             gameState.time=SDL_GetTicks();
             gameState.camera->setPosition(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
             gameState.mainMenu->updateState(gameState);
+            gameState.optionMenu->updateState(gameState);
 
             gameState.camera->activateOrthoProjection(context.currentShader.getProgram());
-            gameState.mainMenu->visualization(context);
+            if(!gameState.optionMenu->isActivate())
+                gameState.mainMenu->visualization(context);
+            gameState.optionMenu->visualization(context);
             firstTime=true;
         }
 

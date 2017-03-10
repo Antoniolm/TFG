@@ -101,7 +101,7 @@ void MainMenu::updateState(GameState & gameState){
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(activateMenu){ //If the menu is activated
+    if(activateMenu && !gameState.optionMenu->isActivate()){ //If the menu is activated
         if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption-=1;
             if(currentOption==-1)
@@ -148,6 +148,7 @@ void MainMenu::updateState(GameState & gameState){
                     }
                 break;
                 case 2: //Controls
+                    gameState.optionMenu->activate();
                     openSound->play();
                 break;
                 case 3: //Exit
@@ -176,6 +177,7 @@ void MainMenu::setPosition(vec3f aPosition){
 
 void MainMenu::activate(){
     activateMenu=true;
+    currentOption=0;
 }
 
 

@@ -22,11 +22,11 @@
 OptionMenu::OptionMenu()
 {
     currentOption=0;
-    activateMenu=true;
+    activateMenu=false;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
-    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainMenuStart.png");
+    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/optionResol.png");
     Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainBackMenu.png");
 
     positionMenu=new Matrix4f();
@@ -60,10 +60,11 @@ OptionMenu::OptionMenu()
     moveSound=soundCollect->getSound(sCoin);
 
     //Add the options
-    addOption(new Texture("./textures/mainMenuStart.png"));
-    addOption(new Texture("./textures/mainMenuCont.png"));
-    addOption(new Texture("./textures/mainMenuControl.png"));
-    addOption(new Texture("./textures/mainMenuQuit.png"));
+    addOption(new Texture("./textures/optionResol.png"));
+    addOption(new Texture("./textures/optionWindow.png"));
+    addOption(new Texture("./textures/optionVolume.png"));
+    addOption(new Texture("./textures/optionSave.png"));
+    addOption(new Texture("./textures/optionQuit.png"));
 }
 
 //**********************************************************************//
@@ -128,9 +129,11 @@ void OptionMenu::updateState(GameState & gameState){
                     openSound->play();
                 break;
                 case 3: //Exit
-                    exit(0);
+                    activateMenu=false;
                 break;
-
+                case 4: //Exit
+                    activateMenu=false;
+                break;
             }
 
             menuDelay=time;
@@ -152,4 +155,5 @@ void OptionMenu::setPosition(vec3f aPosition){
 
 void OptionMenu::activate(){
     activateMenu=true;
+    currentOption=0;
 }

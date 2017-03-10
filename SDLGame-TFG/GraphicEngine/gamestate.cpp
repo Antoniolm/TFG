@@ -32,5 +32,6 @@ GameState::~GameState(){
     delete deadMenu;
     delete loadScreen;
     delete movie;
+    delete optionMenu;
     delete camera;
 }

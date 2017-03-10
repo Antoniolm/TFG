@@ -25,6 +25,7 @@
 #include "pausemenu.h"
 #include "mainmenu.h"
 #include "deadmenu.h"
+#include "optionmenu.h"
 #include "loadingscreen.h"
 #include "moviescreen.h"
 #include "rootmap.h"
@@ -34,6 +35,7 @@ class DeadMenu;
 class LoadingScreen;
 class MainMenu;
 class PauseMenu;
+class OptionMenu;
 class MovieScreen;
 class Camera;
 class GameState
@@ -55,6 +57,7 @@ class GameState
         PauseMenu * pauseMenu;
         MainMenu * mainMenu;
         DeadMenu * deadMenu;
+        OptionMenu * optionMenu;
         LoadingScreen * loadScreen;
         MovieScreen * movie;
         Camera * camera;
