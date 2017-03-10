@@ -77,7 +77,7 @@ class SoundCollection
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateVolume(int percentage);
+        void updateVolume(float percentage);
 
     protected:
 
