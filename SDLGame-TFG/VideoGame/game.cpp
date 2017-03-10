@@ -25,9 +25,18 @@ Game* Game::instance = NULL;
 //**********************************************************************//
 
 Game::Game(){
+    //Load the options of our user
+    options=OptionManager::getInstance();
+    options->load();
+
+    pair<int,int> resolution=options->getResolution();
     window=Window::getInstance();
     window->setParameters("NapMare",1200,800);
     window->createWindow();
+    window->fullScreen(!options->getWindow());
+
+    //Set the setting of our user
+    SoundCollection::getInstance()->updateVolume((float)options->getVolume()/100.0);
 
     //Create our shader
     context.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
@@ -102,7 +111,9 @@ void Game::loop(){
 
     gameState.camera=new Camera(position,direction,up);
     gameState.camera->activateCamera(context.currentShader.getProgram());
-    gameState.camera->setPerspectiveProjection(30.0f,(float)( 1200.0f / 800.0f), 0.1f, 200.0f);
+
+    pair<int,int> resolution=options->getResolution();
+    gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution.first / (float) resolution.second), 0.1f, 200.0f);
     gameState.camera->setOrthographicProjection(-1,1,-1,1,-3,3);
     gameState.camera->activateOrthoProjection(context.currentShader.getProgram());
 
@@ -115,10 +126,10 @@ void Game::loop(){
                 quit = true;
             }
             if(event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_RESIZED ){
-                if(event.window.data2<800)windowH=800; //MinHeight
+                if(event.window.data2<600)windowH=600; //MinHeight
                 else windowH=event.window.data2;
 
-                if(event.window.data1<1000) windowW=1000; //MinWidth
+                if(event.window.data1<800) windowW=800; //MinWidth
                 else windowW=event.window.data1;
 
                 window->resizeWindow(windowH,windowW);

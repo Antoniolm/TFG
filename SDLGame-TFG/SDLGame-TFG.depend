@@ -373,7 +373,7 @@
 	<string>
 	"sound.h"
 
-1488369350 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1489172916 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -390,6 +390,7 @@
 	"../GraphicEngine/notification.h"
 	"../GraphicEngine/gamestate.h"
 	"../GraphicEngine/savedmanager.h"
+	"../GraphicEngine/optionmanager.h"
 	"projectile.h"
 	"hero.h"
 	<SDL_gamecontroller.h>
@@ -399,7 +400,7 @@
 	"window.h"
 	"file_obj.h"
 
-1489144375 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1489174132 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -2437,7 +2438,7 @@
 	"../lib/rapidjson/document.h"
 	"gamestate.h"
 
-1489075771 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\spiketrap.cpp
+1489172532 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\spiketrap.cpp
 	"spiketrap.h"
 
 1489074792 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\spiketrap.h

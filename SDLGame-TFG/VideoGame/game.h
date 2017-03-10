@@ -36,6 +36,7 @@
 #include "../GraphicEngine/notification.h"
 #include "../GraphicEngine/gamestate.h"
 #include "../GraphicEngine/savedmanager.h"
+#include "../GraphicEngine/optionmanager.h"
 #include "projectile.h"
 #include "hero.h"
 #include <SDL_gamecontroller.h>
@@ -93,6 +94,7 @@ class Game
 
         static Game* instance;
         Window * window;
+        OptionManager * options;
         GameState gameState;
         Hero * hero;
         Text * lifeText,* coinText;
