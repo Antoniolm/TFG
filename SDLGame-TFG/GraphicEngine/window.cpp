@@ -138,3 +138,12 @@ void Window::resizeWindow(int windowH,int windowW){
     SDL_SetWindowSize(window,width,height);
     glViewport(0,0,width,height);
 }
+
+//**********************************************************************//
+
+void Window::fullScreen(bool value){
+    if(value)
+        SDL_SetWindowFullscreen(window,SDL_TRUE);
+    else
+        SDL_SetWindowFullscreen(window,SDL_FALSE);
+}

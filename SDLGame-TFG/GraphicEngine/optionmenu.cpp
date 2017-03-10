@@ -237,6 +237,10 @@ void OptionMenu::updateState(GameState & gameState){
             switch(currentOption){
                 case 3: //Save the new options and quit
                     OptionManager::getInstance()->save(resolution[indexResolution],window,volume);
+                    gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution[indexResolution].first / (float)resolution[indexResolution].second)
+                                                               , 0.1f, 200.0f);
+                    SoundCollection::getInstance()->updateVolume((float)volume/100.0);
+                    Window::getInstance()->fullScreen(!window);
                     activateMenu=false;
                 break;
                 case 4: //Quit without save the options

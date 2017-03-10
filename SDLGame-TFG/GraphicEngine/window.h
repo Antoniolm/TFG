@@ -113,6 +113,7 @@ class Window
             return instance;
         }
 
+        void fullScreen(bool value);
     protected:
 
     private:
