@@ -36,18 +36,14 @@ OptionMenu::OptionMenu()
     windText=new Text(mVOID,font);
     volText=new Text(mVOID,font);
 
-    updateOption(0,"1400x1900");
-    updateOption(1,"Window");
-    updateOption(2,"100");
 
     //Initialize options
     resolution.push_back(pair<int,int> (800,600));
     resolution.push_back(pair<int,int> (1200,800));
     resolution.push_back(pair<int,int> (1400,800));
-    indexResolution=0;
 
-    window=true;
-    volume=100;
+    //Setting the current setting
+    initOptions();
 
     //Transformation
     positionMenu=new Matrix4f();
@@ -114,8 +110,9 @@ void OptionMenu::visualization(Context & cv){
 
 void OptionMenu::updateState(GameState & gameState){
     vec3f position;
-     string newOptionStr;
-     stringstream sStream;
+    string newOptionStr;
+    stringstream sStream;
+
 
     float time=gameState.time;
     ControllerManager * controller=gameState.controller;
@@ -237,6 +234,7 @@ void OptionMenu::updateState(GameState & gameState){
             switch(currentOption){
                 case 3: //Save the new options and quit
                     OptionManager::getInstance()->save(resolution[indexResolution],window,volume);
+                    //Update our setting
                     gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution[indexResolution].first / (float)resolution[indexResolution].second)
                                                                , 0.1f, 200.0f);
                     SoundCollection::getInstance()->updateVolume((float)volume/100.0);
@@ -297,4 +295,36 @@ void OptionMenu::updateOption(int option,string value){
             volText->setPosition(vec3f(0.15,6.83,11.3));
         break;
     }
+}
+
+//**********************************************************************//
+
+void OptionMenu::initOptions(){
+    OptionManager * options=OptionManager::getInstance();
+    pair<int,int> currentResolution=options->getResolution();
+    int currentPosResol;
+    window=options->getWindow();
+    volume=options->getVolume();
+
+    //ResolutionOption
+    for(int i=0;i<resolution.size();i++)
+        if(currentResolution==resolution[i])
+            indexResolution=i;
+
+    stringstream strResolution;
+    strResolution<< resolution[indexResolution].first<< "x"<< resolution[indexResolution].second;
+
+
+    //WindowOption
+    string strWindow = "FullScreen";
+    if(window)
+        strWindow = "Window";
+
+    //VolumeOption
+    stringstream strVolume;
+    strVolume << volume;
+
+    updateOption(0,strResolution.str());
+    updateOption(1,strWindow);
+    updateOption(2,strVolume.str());
 }

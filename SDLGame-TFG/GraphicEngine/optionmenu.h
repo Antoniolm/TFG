@@ -83,6 +83,7 @@ class OptionMenu : public Menu
 
     private:
         void updateOption(int option,string value);
+        void initOptions();
         vector<pair<int,int> > resolution;
         int indexResolution;
         bool window; //False -> Fullscreen

@@ -128,6 +128,10 @@
 		<Unit filename="GraphicEngine/objectgroup.h" />
 		<Unit filename="GraphicEngine/objectscene.cpp" />
 		<Unit filename="GraphicEngine/objectscene.h" />
+		<Unit filename="GraphicEngine/optionmanager.cpp" />
+		<Unit filename="GraphicEngine/optionmanager.h" />
+		<Unit filename="GraphicEngine/optionmenu.cpp" />
+		<Unit filename="GraphicEngine/optionmenu.h" />
 		<Unit filename="GraphicEngine/oscillaterotation.cpp" />
 		<Unit filename="GraphicEngine/oscillaterotation.h" />
 		<Unit filename="GraphicEngine/particle.cpp" />
