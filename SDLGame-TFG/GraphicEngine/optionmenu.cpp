@@ -36,19 +36,19 @@ OptionMenu::OptionMenu()
     resolText->init();
     resolText->setScaleDialog(vec3f(0.1,0.2,0.5));
     resolText->setScaleText(vec3f(0.1,0.2,0.5));
-    resolText->setPosition(vec3f(0.4,7.05,11.1));
+    resolText->setPosition(vec3f(0.15,7.07,11.1));
     windText=new Text(mVOID,font);
     windText->setMessage("Window");
     windText->init();
     windText->setScaleDialog(vec3f(0.1,0.2,0.5));
     windText->setScaleText(vec3f(0.1,0.2,0.5));
-    windText->setPosition(vec3f(0.2,6.95,11.2));
+    windText->setPosition(vec3f(0.15,6.95,11.2));
     volText=new Text(mVOID,font);
     volText->setMessage("100");
     volText->init();
     volText->setScaleDialog(vec3f(0.05,0.2,0.5));
     volText->setScaleText(vec3f(0.05,0.2,0.5));
-    volText->setPosition(vec3f(0.5,6.75,11.3));
+    volText->setPosition(vec3f(0.15,6.83,11.3));
 
     //Transformation
     positionMenu=new Matrix4f();
