@@ -29,6 +29,28 @@ OptionMenu::OptionMenu()
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/optionResol.png");
     Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainBackMenu.png");
 
+    //Initialize text
+    TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 15);
+    resolText=new Text(mVOID,font);
+    resolText->setMessage("1408x1900");
+    resolText->init();
+    resolText->setScaleDialog(vec3f(0.1,0.2,0.5));
+    resolText->setScaleText(vec3f(0.1,0.2,0.5));
+    resolText->setPosition(vec3f(0.4,7.05,11.1));
+    windText=new Text(mVOID,font);
+    windText->setMessage("Window");
+    windText->init();
+    windText->setScaleDialog(vec3f(0.1,0.2,0.5));
+    windText->setScaleText(vec3f(0.1,0.2,0.5));
+    windText->setPosition(vec3f(0.2,6.95,11.2));
+    volText=new Text(mVOID,font);
+    volText->setMessage("100");
+    volText->init();
+    volText->setScaleDialog(vec3f(0.05,0.2,0.5));
+    volText->setScaleText(vec3f(0.05,0.2,0.5));
+    volText->setPosition(vec3f(0.5,6.75,11.3));
+
+    //Transformation
     positionMenu=new Matrix4f();
     positionMenu->translation(0.0,6.752,11.0);
 
@@ -80,8 +102,13 @@ OptionMenu::~OptionMenu()
 //**********************************************************************//
 
 void OptionMenu::visualization(Context & cv){
-    if(activateMenu)
+    if(activateMenu){
         root->visualization(cv);
+
+        resolText->visualization(cv);
+        windText->visualization(cv);
+        volText->visualization(cv);
+    }
 }
 
 //**********************************************************************//
@@ -115,19 +142,42 @@ void OptionMenu::updateState(GameState & gameState){
             menuDelay=time;
             moveSound->play();
         }
+        if(controller->checkButton(cLEFT) && menuDelay<(time-300)){ //If the user push the action move on the menu
+            switch(currentOption){
+                case 0: //Exit
+                    //activateMenu=false;
+                break;
+                case 1: //Exit
+                    //activateMenu=false;
+                break;
+                case 2: //Exit
+                    //activateMenu=false;
+                break;
+            }
+            menuDelay=time;
+            moveSound->play();
+        }
+
+        if(controller->checkButton(cRIGHT) && menuDelay<(time-300)){ //If the user push the action move on the menu
+            switch(currentOption){
+                case 0: //Exit
+                    //activateMenu=false;
+                break;
+                case 1: //Exit
+                    //activateMenu=false;
+                break;
+                case 2: //Exit
+                    //activateMenu=false;
+                break;
+            }
+            menuDelay=time;
+            moveSound->play();
+        }
+
+
         if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             SavedManager * saveManager;
             switch(currentOption){
-                case 0: //Start Game
-
-                    openSound->play();
-                break;
-                case 1: //Continue
-                    openSound->play();
-                break;
-                case 2: //Controls
-                    openSound->play();
-                break;
                 case 3: //Exit
                     activateMenu=false;
                 break;
