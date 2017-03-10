@@ -178,6 +178,7 @@ void MainMenu::setPosition(vec3f aPosition){
 void MainMenu::activate(){
     activateMenu=true;
     currentOption=0;
+    currentMaterial->setTexture(options[currentOption]);
 }
 
 

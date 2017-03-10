@@ -77,6 +77,10 @@ class OptionMenu : public Menu
     protected:
 
     private:
+        vector<pair<int,int> > resolution;
+        bool window; //False -> Fullscreen
+        int volume;
+        Text * resolText,* windText,* volText;
         Sound * openSound,* moveSound;
 };
 
