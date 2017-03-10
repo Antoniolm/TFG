@@ -77,6 +77,7 @@ class OptionMenu : public Menu
     protected:
 
     private:
+        void updateOption(int option,string value);
         vector<pair<int,int> > resolution;
         bool window; //False -> Fullscreen
         int volume;

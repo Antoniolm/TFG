@@ -31,24 +31,14 @@ OptionMenu::OptionMenu()
 
     //Initialize text
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 15);
+
     resolText=new Text(mVOID,font);
-    resolText->setMessage("1408x1900");
-    resolText->init();
-    resolText->setScaleDialog(vec3f(0.1,0.2,0.5));
-    resolText->setScaleText(vec3f(0.1,0.2,0.5));
-    resolText->setPosition(vec3f(0.15,7.07,11.1));
     windText=new Text(mVOID,font);
-    windText->setMessage("Window");
-    windText->init();
-    windText->setScaleDialog(vec3f(0.1,0.2,0.5));
-    windText->setScaleText(vec3f(0.1,0.2,0.5));
-    windText->setPosition(vec3f(0.15,6.95,11.2));
     volText=new Text(mVOID,font);
-    volText->setMessage("100");
-    volText->init();
-    volText->setScaleDialog(vec3f(0.05,0.2,0.5));
-    volText->setScaleText(vec3f(0.05,0.2,0.5));
-    volText->setPosition(vec3f(0.15,6.83,11.3));
+
+    updateOption(0,"1400x1900");
+    updateOption(1,"Window");
+    updateOption(2,"100");
 
     //Transformation
     positionMenu=new Matrix4f();
@@ -154,8 +144,11 @@ void OptionMenu::updateState(GameState & gameState){
                     //activateMenu=false;
                 break;
             }
-            menuDelay=time;
-            moveSound->play();
+
+            if(currentOption<3){
+                menuDelay=time;
+                moveSound->play();
+            }
         }
 
         if(controller->checkButton(cRIGHT) && menuDelay<(time-300)){ //If the user push the action move on the menu
@@ -170,8 +163,11 @@ void OptionMenu::updateState(GameState & gameState){
                     //activateMenu=false;
                 break;
             }
-            menuDelay=time;
-            moveSound->play();
+
+            if(currentOption<3){
+                menuDelay=time;
+                moveSound->play();
+            }
         }
 
 
@@ -207,4 +203,32 @@ void OptionMenu::activate(){
     activateMenu=true;
     currentOption=0;
     currentMaterial->setTexture(options[currentOption]);
+}
+
+//**********************************************************************//
+
+void OptionMenu::updateOption(int option,string value){
+    switch(option){
+        case 0: //Exit
+            resolText->setMessage(value);
+            resolText->init();
+            resolText->setScaleDialog(vec3f(0.1,0.2,0.5));
+            resolText->setScaleText(vec3f(0.1,0.2,0.5));
+            resolText->setPosition(vec3f(0.15,7.07,11.1));
+        break;
+        case 1: //Exit
+            windText->setMessage(value);
+            windText->init();
+            windText->setScaleDialog(vec3f(0.1,0.2,0.5));
+            windText->setScaleText(vec3f(0.1,0.2,0.5));
+            windText->setPosition(vec3f(0.15,6.95,11.2));
+        break;
+        case 2: //Exit
+            volText->setMessage(value);
+            volText->init();
+            volText->setScaleDialog(vec3f(0.05,0.2,0.5));
+            volText->setScaleText(vec3f(0.05,0.2,0.5));
+            volText->setPosition(vec3f(0.15,6.83,11.3));
+        break;
+    }
 }
