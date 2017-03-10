@@ -73,3 +73,11 @@ Sound* SoundCollection::getSound(SoundIndex element){
 Sound* SoundCollection::getSound(string element){
     return collection.getElement(element);
 }
+
+//**********************************************************************//
+
+void SoundCollection::updateVolume(int percentage){
+    int tam=collection.getSize();
+    for(int i=0;i<tam;i++)
+        collection.getElement(element)->updateVolume(percentage);
+}

@@ -65,4 +65,11 @@ T * Collection<T,T2>::getElement(string index){
     return collection[(enumMap.find(index))->second];
 }
 
+//**********************************************************************//
+
+template <class T,class T2>
+int Collection<T,T2>::getSize(){
+    return collection.size();
+}
+
 #endif // COLLECTION_CPP
