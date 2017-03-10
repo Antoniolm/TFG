@@ -34,6 +34,7 @@
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "soundcollection.h"
+#include "optionmanager.h"
 #include <cstdlib>
 
 using namespace std;

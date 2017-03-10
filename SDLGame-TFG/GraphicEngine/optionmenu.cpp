@@ -234,9 +234,9 @@ void OptionMenu::updateState(GameState & gameState){
         ////////////////////////////////
         //PUSH -> cACTION
         if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
-            SavedManager * saveManager;
             switch(currentOption){
                 case 3: //Save the new options and quit
+                    OptionManager::getInstance()->save(resolution[indexResolution],window,volume);
                     activateMenu=false;
                 break;
                 case 4: //Quit without save the options

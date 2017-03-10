@@ -37,7 +37,7 @@ OptionManager::~OptionManager()
 
 void OptionManager::load(){
     //Open file
-    FILE * fp = fopen("./option/option.json", "rb"); // non-Windows use "r"
+    FILE * fp = fopen("./option/options.json", "rb"); // non-Windows use "r"
     char readBuffer[65536];
     rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
     rapidjson::Document document;
@@ -71,32 +71,28 @@ int OptionManager::getVolume(){
 //**********************************************************************//
 
 void OptionManager::save(std::pair<int,int>aResolution,bool wind,int aVolume){
-    resolution=aResolution;
-    window=wind;
-    volume=aVolume;
-
     //Resolution transformation
     std::ostringstream stringWidth ;
-    stringWidth << volume;
+    stringWidth << aResolution.first;
 
     std::ostringstream stringHeight ;
-    stringHeight << volume;
+    stringHeight << aResolution.second;
 
     //Window transformation
     std::string stringWindow="false";
-    if(window)
+    if(wind)
         stringWindow="true";
 
     //Volume Transformation
     std::ostringstream stringVolume;
-    stringVolume << volume;
+    stringVolume << aVolume;
 
     std::ofstream savedFile;
-    savedFile.open ("./option/option.json");
+    savedFile.open ("./option/options.json");
     savedFile << "{ \"resolWidth\":"+stringWidth.str()+","+
-                 +"  \"resolHeight\":"+stringHeight.str()+","+
-                 +"  \"window\":"+stringWindow+",";
-                 +"  \"volume\":"+stringVolume.str()+"}\n";
+                 +" \"resolHeight\":"+stringHeight.str()+","+
+                 +" \"window\":"+stringWindow+","+
+                 +" \"volume\":"+stringVolume.str()+"}\n";
     savedFile.close();
 }
 

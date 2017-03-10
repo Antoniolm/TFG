@@ -2579,10 +2579,10 @@
 1488972611 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\door.cpp
 	"door.h"
 
-1489152559 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmenu.cpp
+1489162876 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmenu.cpp
 	"optionmenu.h"
 
-1489158733 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmenu.h
+1489162784 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmenu.h
 	"object3d.h"
 	"rootmap.h"
 	"context.h"
@@ -2597,6 +2597,7 @@
 	"meshcollection.h"
 	"materialcollection.h"
 	"soundcollection.h"
+	"optionmanager.h"
 	<cstdlib>
 
 1489162540 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmanager.cpp
