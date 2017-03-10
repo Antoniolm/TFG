@@ -87,6 +87,7 @@ void OptionManager::save(std::pair<int,int>aResolution,bool wind,int aVolume){
     std::ostringstream stringVolume;
     stringVolume << aVolume;
 
+    //Save information in the file
     std::ofstream savedFile;
     savedFile.open ("./option/options.json");
     savedFile << "{ \"resolWidth\":"+stringWidth.str()+","+

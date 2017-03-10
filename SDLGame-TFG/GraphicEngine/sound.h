@@ -133,6 +133,8 @@ class Sound
 
         void updateVolume(int currentChannel,float distance);
 
+        void changeVolume(float percentage);
+
     protected:
 
     private:
@@ -148,7 +150,7 @@ class Sound
         unsigned int type;   //0=background music, 1=effect
         int channel; //Variable for effect
         int loop; //Variable for all type of sound. -> Number of loop in a reproduction
-        int volume;
+        int volume,currentVolume;
         union{
             Mix_Music * music;
             Mix_Chunk * effect;
