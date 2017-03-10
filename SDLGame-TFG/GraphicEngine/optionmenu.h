@@ -34,6 +34,9 @@
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "soundcollection.h"
+#include <cstdlib>
+
+using namespace std;
 
 class OptionMenu : public Menu
 {
@@ -79,6 +82,7 @@ class OptionMenu : public Menu
     private:
         void updateOption(int option,string value);
         vector<pair<int,int> > resolution;
+        int indexResolution;
         bool window; //False -> Fullscreen
         int volume;
         Text * resolText,* windText,* volText;

@@ -40,6 +40,15 @@ OptionMenu::OptionMenu()
     updateOption(1,"Window");
     updateOption(2,"100");
 
+    //Initialize options
+    resolution.push_back(pair<int,int> (800,600));
+    resolution.push_back(pair<int,int> (1200,800));
+    resolution.push_back(pair<int,int> (1400,800));
+    indexResolution=0;
+
+    window=true;
+    volume=100;
+
     //Transformation
     positionMenu=new Matrix4f();
     positionMenu->translation(0.0,6.752,11.0);
@@ -105,7 +114,8 @@ void OptionMenu::visualization(Context & cv){
 
 void OptionMenu::updateState(GameState & gameState){
     vec3f position;
-     string fileLoad;
+     string newOptionStr;
+     stringstream sStream;
 
     float time=gameState.time;
     ControllerManager * controller=gameState.controller;
@@ -114,6 +124,9 @@ void OptionMenu::updateState(GameState & gameState){
         currentTime=time-50;
 
     if(activateMenu){ //If the menu is activated
+
+        ////////////////////////////////
+        //PUSH -> cUP
         if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption-=1;
             if(currentOption==-1)
@@ -123,6 +136,9 @@ void OptionMenu::updateState(GameState & gameState){
             menuDelay=time;
             moveSound->play();
         }
+
+        ////////////////////////////////
+        //PUSH -> cDOWN
         else if(controller->checkButton(cDOWN) && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption++;
             if((unsigned)currentOption==options.size())
@@ -132,45 +148,91 @@ void OptionMenu::updateState(GameState & gameState){
             menuDelay=time;
             moveSound->play();
         }
+
+
+        ////////////////////////////////
+        //PUSH -> cLEFT
         if(controller->checkButton(cLEFT) && menuDelay<(time-300)){ //If the user push the action move on the menu
+
+            //Update the current option
             switch(currentOption){
                 case 0: //Exit
-                    //activateMenu=false;
+                    indexResolution--;
+                    if(indexResolution==-1){
+                        indexResolution=resolution.size()-1;
+                    }
+
+                    sStream << resolution[indexResolution].first<< "x"<< resolution[indexResolution].second;
+                    newOptionStr = sStream.str();
                 break;
                 case 1: //Exit
-                    //activateMenu=false;
+                    newOptionStr = "FullScreen";
+                    window=!window;
+                    if(window)
+                        newOptionStr = "Window";
                 break;
-                case 2: //Exit
+                case 2: //VolumeOption
+                    volume-=10;
+                    if(volume==0)
+                        volume=100;
+
+                    sStream << volume;
+                    newOptionStr = sStream.str();
+
                     //activateMenu=false;
                 break;
             }
+
+            //Update the value of our currentOption
+            updateOption(currentOption,newOptionStr);
 
             if(currentOption<3){
                 menuDelay=time;
-                moveSound->play();
+                moveSound->play(9);
             }
         }
 
+        ////////////////////////////////
+        //PUSH -> cRIGHT
         if(controller->checkButton(cRIGHT) && menuDelay<(time-300)){ //If the user push the action move on the menu
+
+            //Update the current option
             switch(currentOption){
-                case 0: //Exit
-                    //activateMenu=false;
+                case 0: //ResolutionOption
+                    indexResolution++;
+                    if(indexResolution==resolution.size()){
+                        indexResolution=0;
+                    }
+                    sStream << resolution[indexResolution].first<< "x"<< resolution[indexResolution].second;
+                    newOptionStr = sStream.str();
                 break;
-                case 1: //Exit
-                    //activateMenu=false;
+                case 1: //WindowOption
+                    newOptionStr = "FullScreen";
+                    window=!window;
+                    if(window)
+                        newOptionStr = "Window";
                 break;
-                case 2: //Exit
-                    //activateMenu=false;
+                case 2: //VolumeOption
+                    volume+=10;
+                    if(volume==110)
+                        volume=0;
+
+                    sStream << volume;
+                    newOptionStr = sStream.str();
                 break;
             }
+
+            //Update the value of our currentOption
+            updateOption(currentOption,newOptionStr);
 
             if(currentOption<3){
                 menuDelay=time;
-                moveSound->play();
+                moveSound->play(9);
             }
         }
 
-
+        ////////////////////////////////
+        //PUSH -> cACTION
         if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             SavedManager * saveManager;
             switch(currentOption){
