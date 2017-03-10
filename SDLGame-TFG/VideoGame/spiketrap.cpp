@@ -129,12 +129,12 @@ void SpikeTrap::initAnimation(){
     //Animation up
     animationUp=new ScriptLMD();
 
-    LinearMovement * movementUp=new LinearMovement(0.0,10.0,0.0);
+    LinearMovement * movementUp=new LinearMovement(0.0,7.0,0.0);
     MatrixStatic * notMove=new MatrixStatic();
 
     MatrixScript * scriptUp=new MatrixScript();
 
-    scriptUp->add(0.10,movementUp);
+    scriptUp->add(0.15,movementUp);
     scriptUp->add(0.5,notMove);
 
     animationUp->add(scriptUp);
@@ -144,11 +144,11 @@ void SpikeTrap::initAnimation(){
     //Animation down
     animationDown=new ScriptLMD();
 
-    LinearMovement * movementDown=new LinearMovement(0.0,-10.0,0.0);
+    LinearMovement * movementDown=new LinearMovement(0.0,-7.0,0.0);
 
     MatrixScript * scriptDown=new MatrixScript();
 
-    scriptDown->add(0.10,movementDown);
+    scriptDown->add(0.15,movementDown);
     scriptDown->add(0.5,notMove);
 
     animationDown->add(scriptDown);
