@@ -201,7 +201,7 @@ void OptionMenu::updateState(GameState & gameState){
                 case 0: //ResolutionOption
                     indexResolution++;
                     if(indexResolution==resolution.size()){
-                        indexResolution=0;
+                        indexResolution=10;
                     }
                     sStream << resolution[indexResolution].first<< "x"<< resolution[indexResolution].second;
                     newOptionStr = sStream.str();
@@ -236,10 +236,10 @@ void OptionMenu::updateState(GameState & gameState){
         if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             SavedManager * saveManager;
             switch(currentOption){
-                case 3: //Exit
+                case 3: //Save the new options and quit
                     activateMenu=false;
                 break;
-                case 4: //Exit
+                case 4: //Quit without save the options
                     activateMenu=false;
                 break;
             }
