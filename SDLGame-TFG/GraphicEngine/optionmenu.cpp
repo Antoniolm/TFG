@@ -201,7 +201,7 @@ void OptionMenu::updateState(GameState & gameState){
                 case 0: //ResolutionOption
                     indexResolution++;
                     if(indexResolution==resolution.size()){
-                        indexResolution=10;
+                        indexResolution=0;
                     }
                     sStream << resolution[indexResolution].first<< "x"<< resolution[indexResolution].second;
                     newOptionStr = sStream.str();
@@ -215,7 +215,7 @@ void OptionMenu::updateState(GameState & gameState){
                 case 2: //VolumeOption
                     volume+=10;
                     if(volume==110)
-                        volume=0;
+                        volume=10;
 
                     sStream << volume;
                     newOptionStr = sStream.str();

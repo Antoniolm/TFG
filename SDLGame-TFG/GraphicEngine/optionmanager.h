@@ -52,7 +52,7 @@ class OptionManager
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void save(pair<int,int>aResolution,bool wind,int aVolume);
+        void save(std::pair<int,int>aResolution,bool wind,int aVolume);
 
         static OptionManager * getInstance(){
             if(instance == NULL)
@@ -61,6 +61,9 @@ class OptionManager
             return instance;
         }
 
+        std::pair<int,int> getResolution();
+        bool getWindow();
+        int getVolume();
     protected:
 
     private:
@@ -70,7 +73,7 @@ class OptionManager
         OptionManager();
 
         static OptionManager* instance;
-        pair<int,int> resolution;
+        std::pair<int,int> resolution;
         bool window;
         int volume;
 };

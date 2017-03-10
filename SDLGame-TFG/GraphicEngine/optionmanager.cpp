@@ -32,3 +32,71 @@ OptionManager::~OptionManager()
 {
     //dtor
 }
+
+//**********************************************************************//
+
+void OptionManager::load(){
+    //Open file
+    FILE * fp = fopen("./option/option.json", "rb"); // non-Windows use "r"
+    char readBuffer[65536];
+    rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+    rapidjson::Document document;
+    document.ParseStream(is);
+
+    resolution.first=document["resolWidth"].GetFloat();
+    resolution.second=document["resolHeight"].GetFloat();
+    window=document["window"].GetBool();
+    volume=document["volume"].GetFloat();
+
+    fclose(fp);
+}
+
+//**********************************************************************//
+
+std::pair<int,int> OptionManager::getResolution(){
+    return resolution;
+}
+//**********************************************************************//
+
+bool OptionManager::getWindow(){
+    return window;
+}
+
+//**********************************************************************//
+
+int OptionManager::getVolume(){
+    return volume;
+}
+
+//**********************************************************************//
+
+void OptionManager::save(std::pair<int,int>aResolution,bool wind,int aVolume){
+    resolution=aResolution;
+    window=wind;
+    volume=aVolume;
+
+    //Resolution transformation
+    std::ostringstream stringWidth ;
+    stringWidth << volume;
+
+    std::ostringstream stringHeight ;
+    stringHeight << volume;
+
+    //Window transformation
+    std::string stringWindow="false";
+    if(window)
+        stringWindow="true";
+
+    //Volume Transformation
+    std::ostringstream stringVolume;
+    stringVolume << volume;
+
+    std::ofstream savedFile;
+    savedFile.open ("./option/option.json");
+    savedFile << "{ \"resolWidth\":"+stringWidth.str()+","+
+                 +"  \"resolHeight\":"+stringHeight.str()+","+
+                 +"  \"window\":"+stringWindow+",";
+                 +"  \"volume\":"+stringVolume.str()+"}\n";
+    savedFile.close();
+}
+

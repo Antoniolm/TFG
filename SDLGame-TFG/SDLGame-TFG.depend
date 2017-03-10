@@ -2599,3 +2599,14 @@
 	"soundcollection.h"
 	<cstdlib>
 
+1489162540 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmanager.cpp
+	"optionmanager.h"
+
+1489161974 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmanager.h
+	"../lib/rapidjson/document.h"
+	"../lib/rapidjson/stringbuffer.h"
+	"../lib/rapidjson/filereadstream.h"
+	<string>
+	<fstream>
+	<sstream>
+
