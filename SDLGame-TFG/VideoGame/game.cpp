@@ -39,9 +39,10 @@ Game::Game(){
     SoundCollection::getInstance()->updateVolume((float)options->getVolume()/100.0);
 
     //Create our shader
-    context.currentShader.setFiles("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    context.currentShader.createProgram();
-    glUseProgram(context.currentShader.getProgram()); //We use the program now
+    normalShader=new Shader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    shadowShader=new Shader("shaders/depthShader.vs","shaders/depthShader.fs");
+    context.currentShader=normalShader;
+    glUseProgram(context.currentShader->getProgram()); //We use the program now
 
     //Create ours menus
     MeshCollection::getInstance();
@@ -110,12 +111,12 @@ void Game::loop(){
     vec3f up(0.0,1.0,0.0);
 
     gameState.camera=new Camera(position,direction,up);
-    gameState.camera->activateCamera(context.currentShader.getProgram());
+    gameState.camera->activateCamera(context.currentShader->getProgram());
 
     pair<int,int> resolution=options->getResolution();
     gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution.first / (float) resolution.second), 0.1f, 200.0f);
     gameState.camera->setOrthographicProjection(-1,1,-1,1,-3,3);
-    gameState.camera->activateOrthoProjection(context.currentShader.getProgram());
+    gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
 
     //Show our window.
     window->showScreen();
@@ -152,11 +153,11 @@ void Game::loop(){
         //CASE -> MAINMENU
         if(gameState.mainMenu->isActivate()){
             gameState.time=SDL_GetTicks();
-            gameState.camera->setPosition(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
+            gameState.camera->setPosition(vec3f(0.0,0.0,0.0),context.currentShader->getProgram());
             gameState.mainMenu->updateState(gameState);
             gameState.optionMenu->updateState(gameState);
 
-            gameState.camera->activateOrthoProjection(context.currentShader.getProgram());
+            gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
             if(!gameState.optionMenu->isActivate())
                 gameState.mainMenu->visualization(context);
             gameState.optionMenu->visualization(context);
@@ -167,10 +168,10 @@ void Game::loop(){
         else if(gameState.rootMap->isLoading()){
             //loading screen here
             gameState.time=SDL_GetTicks();
-            gameState.camera->setPosition(vec3f(0.0,0.0,0.0),context.currentShader.getProgram());
+            gameState.camera->setPosition(vec3f(0.0,0.0,0.0),context.currentShader->getProgram());
             gameState.loadScreen->updateState(gameState);
 
-            gameState.camera->activateOrthoProjection(context.currentShader.getProgram());
+            gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
             gameState.loadScreen->visualization(context);
             firstTime=true;
 
@@ -181,7 +182,7 @@ void Game::loop(){
         //CASE -> PLAYING
         else{
             if(firstTime){
-                gameState.rootMap->activatedLight(context.currentShader.getProgram());
+                gameState.rootMap->activatedLight(context.currentShader->getProgram());
                 gameState.rootMap->activatedObjectGroup();
 
                 hero=gameState.rootMap->getHero();
@@ -208,7 +209,7 @@ void Game::loop(){
             //Update the camera, lifeText, coinText, profile
             posHero=hero->getPosition();
 
-            gameState.camera->update(gameState,context.currentShader.getProgram(),
+            gameState.camera->update(gameState,context.currentShader->getProgram(),
                           (gameState.pauseMenu->isActivate() || gameState.deadMenu->isActivate() || gameState.mainMenu->isActivate()));
 
             updateLife(lastLife);
@@ -223,10 +224,10 @@ void Game::loop(){
             ///////////////////
             time=SDL_GetTicks();
 
-            gameState.camera->activatePerspecProjection(context.currentShader.getProgram());
+            gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
             gameState.rootMap->visualization(context);
 
-            gameState.camera->activateOrthoProjection(context.currentShader.getProgram());
+            gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
             lifeText->visualization(context);
             coinText->visualization(context);
             gameState.pauseMenu->visualization(context);

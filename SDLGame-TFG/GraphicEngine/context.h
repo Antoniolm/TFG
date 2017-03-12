@@ -49,7 +49,7 @@ class Context
         unsigned camera_mode;
         MatrixStack matrixStack;
         MaterialStack materialStack;
-        Shader currentShader;
+        Shader * currentShader;
         Matrix4f currentTransf;
         MaterialIndex currentMaterialIndex;
         vec3f minVisualPosition,maxVisualPosition;

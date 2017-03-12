@@ -71,6 +71,7 @@ class OptionMenu : public Menu
         virtual void updateState(GameState & gameState);
 
         void setPosition(vec3f aPosition);
+
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will activate our menu

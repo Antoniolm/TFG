@@ -99,6 +99,7 @@ class Game
         Hero * hero;
         Text * lifeText,* coinText;
         Notification * notiGamePad;
+        Shader * shadowShader,* normalShader;
         Context context;
 };
 

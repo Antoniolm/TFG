@@ -29,6 +29,7 @@ Shader::Shader()
 Shader::Shader(const string & aVertexfile,const string  & aFragmentfile){
     vertexfile=aVertexfile;
     fragmentfile=aFragmentfile;
+    createProgram();
 }
 
 //**********************************************************************//

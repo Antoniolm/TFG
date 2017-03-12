@@ -314,7 +314,6 @@ void OptionMenu::initOptions(){
     stringstream strResolution;
     strResolution<< resolution[indexResolution].first<< "x"<< resolution[indexResolution].second;
 
-
     //WindowOption
     string strWindow = "FullScreen";
     if(window)
