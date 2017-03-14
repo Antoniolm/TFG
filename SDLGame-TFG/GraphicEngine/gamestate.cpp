@@ -22,26 +22,16 @@
 GameState::GameState()
 {
     rootMap=0;
+    movie=0;
 }
 
 GameState::~GameState(){
-    cout<< "test1"<< endl;
     delete controller;
-    cout<< "test2"<< endl;
     delete rootMap;
-    cout<< "test3"<< endl;
     delete pauseMenu;
-    cout<< "test4"<< endl;
     delete mainMenu;
-    cout<< "test5"<< endl;
     delete deadMenu;
-    cout<< "test6"<< endl;
     delete loadScreen;
-    cout<< "test7"<< endl;
-    delete movie;
-    cout<< "test8"<< endl;
     delete optionMenu;
-    cout<< "test9"<< endl;
     delete camera;
-    cout<< "test10"<< endl;
 }
