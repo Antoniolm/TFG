@@ -348,7 +348,7 @@
 	<stdint.h>
 	<inttypes.h>
 
-1481205684 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\main.cpp
+1489527791 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\main.cpp
 	<stdio.h>
 	"VideoGame/game.h"
 	<iostream>
@@ -396,11 +396,11 @@
 	<SDL_gamecontroller.h>
 	<sstream>
 
-1489171607 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1489528077 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
-1489181088 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1489528446 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -427,7 +427,7 @@
 	<iostream>
 	"structdata.h"
 
-1483995276 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4f.cpp
+1489327550 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4f.cpp
 	"matrix4f.h"
 
 1477656480 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix4fdinamic.cpp
@@ -459,7 +459,7 @@
 	"shader.h"
 	<vector>
 
-1489323350 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
+1489346554 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
 1488381956 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
@@ -956,11 +956,11 @@
 1489323407 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1487678781 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1489326120 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 	"rootmap.h"
 
-1487502392 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
+1489326137 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
 	"structdata.h"
 	"matrix4f.h"
 	"shader.h"
@@ -2148,7 +2148,7 @@
 	"collection.cpp"
 	<string>
 
-1488235066 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
+1489490122 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
 	"materialcollection.h"
 	"material.h"
 
@@ -2343,7 +2343,7 @@
 	"controller.h"
 	<iostream>
 
-1486986098 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.cpp
+1489528862 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamepadcontroller.cpp
 	"gamepadcontroller.h"
 
 1487952193 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectgroup.cpp
@@ -2462,7 +2462,7 @@
 	"rootmap.h"
 	"camera.h"
 
-1489143823 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.cpp
+1489528487 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.cpp
 	"gamestate.h"
 
 1487766137 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loaderthread.cpp

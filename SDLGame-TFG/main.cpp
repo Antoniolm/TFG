@@ -26,5 +26,7 @@ int main(int argc, char* args[])
 {
     Game * game=Game::getInstance();
     game->loop();
+    delete game;
+    cout<< "finish"<<endl;
 	return 0;
 }

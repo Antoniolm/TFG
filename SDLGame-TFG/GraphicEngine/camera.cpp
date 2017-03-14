@@ -187,6 +187,12 @@ GLfloat * Camera::getView(){
 
 //**********************************************************************//
 
+Matrix4f & Camera::getOrthoProyection(){
+    return orthoProjection;
+}
+
+//**********************************************************************//
+
 vec3f Camera::getPosition(){
     return position;
 }
