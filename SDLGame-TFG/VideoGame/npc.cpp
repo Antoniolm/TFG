@@ -71,9 +71,6 @@ Npc::~Npc()
 {
     delete currentText;
     delete root;
-
-    for(vector<Matrix4f *>::iterator it = moveMatrix.begin() ; it != moveMatrix.end(); ++it)
-        delete (*it);
 }
 
 //**********************************************************************//
