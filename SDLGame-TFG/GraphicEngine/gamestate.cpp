@@ -35,6 +35,6 @@ GameState::~GameState(){
     delete deadMenu;
     delete loadScreen;
     delete optionMenu;
-    delete controlMenu
+    delete controlMenu;
     delete camera;
 }

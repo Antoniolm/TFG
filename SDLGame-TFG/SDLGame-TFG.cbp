@@ -62,6 +62,8 @@
 		<Unit filename="GraphicEngine/controller.h" />
 		<Unit filename="GraphicEngine/controllermanager.cpp" />
 		<Unit filename="GraphicEngine/controllermanager.h" />
+		<Unit filename="GraphicEngine/controlmenu.cpp" />
+		<Unit filename="GraphicEngine/controlmenu.h" />
 		<Unit filename="GraphicEngine/deadmenu.cpp" />
 		<Unit filename="GraphicEngine/deadmenu.h" />
 		<Unit filename="GraphicEngine/decorationobject.cpp" />

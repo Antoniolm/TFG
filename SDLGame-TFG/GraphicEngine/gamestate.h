@@ -37,6 +37,7 @@ class LoadingScreen;
 class MainMenu;
 class PauseMenu;
 class OptionMenu;
+class ControlMenu;
 class MovieScreen;
 class Camera;
 class GameState

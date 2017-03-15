@@ -27,10 +27,10 @@ ControlMenu::ControlMenu()
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/dieMenu.png");
-    Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
+    Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainBackMenu.png");
 
     positionMenu=new Matrix4f();
-    positionMenu->identity();
+    positionMenu->translation(0.0,6.752,11.0);
 
     Matrix4f * betweenMenu=new Matrix4f();
     betweenMenu->translation(0.0,0.0,-0.1);
@@ -84,9 +84,6 @@ void ControlMenu::updateState(GameState & gameState){
         currentTime=time-50;
 
     if(activateMenu){ //If the menu is activated
-        position=gameState.rootMap->getHero()->getPosition();
-        positionMenu->translation(position.x,position.y+6.75,position.z+11.0);
-
         if(gameState.controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             menuDelay=time;
             activateMenu=false;

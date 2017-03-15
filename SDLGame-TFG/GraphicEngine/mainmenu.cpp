@@ -66,6 +66,7 @@ MainMenu::MainMenu()
     addOption(new Texture("./textures/mainMenuStart.png"));
     addOption(new Texture("./textures/mainMenuCont.png"));
     addOption(new Texture("./textures/mainMenuControl.png"));
+    addOption(new Texture("./textures/mainMenuControl.png"));
     addOption(new Texture("./textures/mainMenuQuit.png"));
 }
 
@@ -102,7 +103,7 @@ void MainMenu::updateState(GameState & gameState){
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(activateMenu && !gameState.optionMenu->isActivate()){ //If the menu is activated
+    if(activateMenu && !gameState.optionMenu->isActivate() && !gameState.controlMenu->isActivate()){ //If the menu is activated
         if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the action move on the menu
             currentOption-=1;
             if(currentOption==-1)
@@ -149,10 +150,14 @@ void MainMenu::updateState(GameState & gameState){
                     }
                 break;
                 case 2: //Controls
+                    gameState.controlMenu->activate();
+                    openSound->play();
+                break;
+                case 3: //Option
                     gameState.optionMenu->activate();
                     openSound->play();
                 break;
-                case 3: //Exit
+                case 4: //Exit
                     (Profile::getInstance())->showResult();
                     Game::getInstance()->setClose(true);
                 break;
