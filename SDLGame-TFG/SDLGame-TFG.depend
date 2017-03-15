@@ -400,7 +400,7 @@
 	"window.h"
 	"file_obj.h"
 
-1489569124 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1489587207 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1720,7 +1720,7 @@
 	<vector>
 	<string>
 
-1489097449 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
+1489586482 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.cpp
 	"npc.h"
 
 1488301500 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\npc.h
@@ -2180,7 +2180,7 @@
 1486421150 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\coinlist.cpp
 	"coinlist.h"
 
-1489079837 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
+1489586496 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.cpp
 	"projectile.h"
 
 1487166402 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectile.h
@@ -2407,7 +2407,7 @@
 	"../GraphicEngine/animationlist.h"
 	"avatar.h"
 
-1488358224 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\mate.cpp
+1489586458 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\mate.cpp
 	"mate.h"
 
 1486657443 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\event.cpp
@@ -2451,13 +2451,14 @@
 	"../GraphicEngine/materialcollection.h"
 	"../lib/rapidjson/document.h"
 
-1489143814 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.h
+1489592947 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.h
 	"controllermanager.h"
 	"menu.h"
 	"pausemenu.h"
 	"mainmenu.h"
 	"deadmenu.h"
 	"optionmenu.h"
+	"controlmenu.h"
 	"loadingscreen.h"
 	"moviescreen.h"
 	"rootmap.h"
@@ -2613,4 +2614,23 @@
 	<string>
 	<fstream>
 	<sstream>
+
+1489592432 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controlmenu.h
+	"object3d.h"
+	"rootmap.h"
+	"context.h"
+	"mesh.h"
+	"nodescenegraph.h"
+	"texture.h"
+	"material.h"
+	"sound.h"
+	"menu.h"
+	"profile.h"
+	"mainmenu.h"
+	"meshcollection.h"
+	"materialcollection.h"
+	"soundcollection.h"
+
+1489592314 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controlmenu.cpp
+	"controlmenu.h"
 

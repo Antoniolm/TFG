@@ -26,6 +26,7 @@
 #include "mainmenu.h"
 #include "deadmenu.h"
 #include "optionmenu.h"
+#include "controlmenu.h"
 #include "loadingscreen.h"
 #include "moviescreen.h"
 #include "rootmap.h"
@@ -58,6 +59,7 @@ class GameState
         MainMenu * mainMenu;
         DeadMenu * deadMenu;
         OptionMenu * optionMenu;
+        ControlMenu * controlMenu;
         LoadingScreen * loadScreen;
         MovieScreen * movie;
         Camera * camera;

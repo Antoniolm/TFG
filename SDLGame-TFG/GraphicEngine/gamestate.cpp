@@ -25,6 +25,8 @@ GameState::GameState()
     movie=0;
 }
 
+//**********************************************************************//
+
 GameState::~GameState(){
     delete controller;
     delete rootMap;
@@ -33,5 +35,6 @@ GameState::~GameState(){
     delete deadMenu;
     delete loadScreen;
     delete optionMenu;
+    delete controlMenu
     delete camera;
 }
