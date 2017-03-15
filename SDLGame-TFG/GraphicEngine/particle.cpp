@@ -40,12 +40,10 @@ Particle::Particle(Material * material,vec3f aScale,vec3f minPos,vec3f maxPos,ve
     scaleParticle->scale(aScale.x,aScale.y,aScale.z);
 
     root=new NodeSceneGraph();
-    NodeSceneGraph * cubeNode=new NodeSceneGraph();
-    cubeNode->add(transMatrix);
-    cubeNode->add(scaleParticle);
-    cubeNode->add(material);
-    cubeNode->add(meshCollect->getMesh(SPHERE));
-    root->add(cubeNode);
+    root->add(transMatrix);
+    root->add(scaleParticle);
+    root->add(material);
+    root->add(meshCollect->getMesh(SPHERE));
     currentTime=SDL_GetTicks();
 }
 
@@ -54,7 +52,6 @@ Particle::Particle(Material * material,vec3f aScale,vec3f minPos,vec3f maxPos,ve
 Particle::~Particle()
 {
     delete root;
-    delete transMatrix;
 }
 
 //**********************************************************************//
