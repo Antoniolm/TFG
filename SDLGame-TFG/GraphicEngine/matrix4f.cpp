@@ -86,7 +86,7 @@ void Matrix4f::product(const GLfloat * aMatrix){
                 newMatrix[j+k]=(matrix[j]*aMatrix[k])+(matrix[j+1]*aMatrix[k+4])+(matrix[j+2]*aMatrix[k+8])+(matrix[j+3]*aMatrix[k+12]);
             }
         }
-        delete [] matrix;
+        //delete [] matrix;
         matrix=newMatrix;
 }
 

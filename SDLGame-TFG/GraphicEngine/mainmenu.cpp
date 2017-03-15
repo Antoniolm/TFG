@@ -18,6 +18,7 @@
 // *********************************************************************
 
 #include "mainmenu.h"
+#include "game.h"
 
 MainMenu* MainMenu::instance = NULL;
 
@@ -153,7 +154,7 @@ void MainMenu::updateState(GameState & gameState){
                 break;
                 case 3: //Exit
                     (Profile::getInstance())->showResult();
-                    exit(0);
+                    Game::getInstance()->setClose(true);
                 break;
 
             }

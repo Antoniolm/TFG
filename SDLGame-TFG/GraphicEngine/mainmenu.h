@@ -36,7 +36,6 @@
 #include "materialcollection.h"
 #include "soundcollection.h"
 
-
 class MainMenu : public Menu
 {
     public:
