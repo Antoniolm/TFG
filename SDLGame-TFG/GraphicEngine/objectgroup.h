@@ -77,6 +77,8 @@ class ObjectGroup : public Object3D
         vector<GLushort> triangles;
         vector<vec3f> normals;
         vector<vec2f> textureCord;
+        vector<vec3f> tangent;
+        vector<vec3f> biTangent;
         NodeSceneGraph * root;
         Mesh * mesh;
 };

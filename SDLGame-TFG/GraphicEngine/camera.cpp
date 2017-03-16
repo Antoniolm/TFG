@@ -117,6 +117,7 @@ void Camera::createCamera(){
 void Camera::activateCamera(GLuint shaderID){
     glUniformMatrix4fv(glGetUniformLocation(shaderID,"view"),1,GL_FALSE,camera.getMatrix());
     glUniform3f(glGetUniformLocation(shaderID, "viewPos"), position.x, position.y, position.z);
+    glUniform3f(glGetUniformLocation(shaderID, "viewPosVertex"), position.x, position.y, position.z);
 }
 
 //**********************************************************************//
@@ -169,6 +170,7 @@ void Camera::update(GameState & gameState,GLuint shaderID,bool activateMenu){
 
     glUniformMatrix4fv(glGetUniformLocation(shaderID,"view"),1,GL_FALSE,camera.getMatrix());
     glUniform3f(glGetUniformLocation(shaderID, "viewPos"), position.x, position.y, position.z);
+    glUniform3f(glGetUniformLocation(shaderID, "viewPosVertex"), position.x, position.y, position.z);
 
     currentTime+=time-currentTime;
 }

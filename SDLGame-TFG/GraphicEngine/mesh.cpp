@@ -35,8 +35,9 @@ Mesh::Mesh(const string & aFile,bool save){
 
 //**********************************************************************//
 
-Mesh::Mesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord,bool save){
-    init(vertex,triangles,normals,textureCord);
+Mesh::Mesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord,
+           const vector<vec3f> & tangent,const vector<vec3f> & biTangent,bool save){
+    init(vertex,triangles,normals,textureCord,tangent,biTangent);
 }
 
 //**********************************************************************//
@@ -48,6 +49,8 @@ Mesh::~Mesh()
     glDeleteBuffers(1,&vertexArrayBuffers[NORMAL_VB]);
     glDeleteBuffers(1,&vertexArrayBuffers[TEXCOORD_VB]);
     glDeleteBuffers(1,&vertexArrayBuffers[INDEX_VB]);
+    glDeleteBuffers(1,&vertexArrayBuffers[TANGENT_VB]);
+    glDeleteBuffers(1,&vertexArrayBuffers[BITANGENT_VB]);
 }
 
 //**********************************************************************//
@@ -57,38 +60,43 @@ void Mesh::init(){
     vector<vec3f> aVertex;
     vector<vec3f> aNormals;
     vector<vec2f> aTextureCord;
-    vector<vec3f> tangent;
-    vector<vec3f> biTangent;
+    vector<vec3f> aTangent;
+    vector<vec3f> aBiTangent;
 
     FileObj * obj=FileObj::getInstance();
-    obj->readEverything(objFile.c_str(),aVertex,aTriangles,aNormals,aTextureCord,tangent,biTangent,true,true);
+    obj->readEverything(objFile.c_str(),aVertex,aTriangles,aNormals,aTextureCord,aTangent,aBiTangent,true,true);
     generateBoundingBox(aVertex);
 
     numIndex=aTriangles.size();
 
-    loadMesh(aVertex,aTriangles,aNormals,aTextureCord,tangent,biTangent);
+    loadMesh(aVertex,aTriangles,aNormals,aTextureCord,aTangent,aBiTangent);
 
     if(saveInfo){
         vertex=aVertex;
         triangles=aTriangles;
         normals=aNormals;
         textureCord=aTextureCord;
+        tangent=aTangent;
+        bitTangent=aBiTangent;
     }
 }
 
 //**********************************************************************//
 
-void Mesh::init(const vector<vec3f> & aVertex, const vector<GLushort> & aTriangles,const vector<vec3f> & aNormals,const vector<vec2f> & aTextureCord){
+void Mesh::init(const vector<vec3f> & aVertex, const vector<GLushort> & aTriangles,const vector<vec3f> & aNormals,const vector<vec2f> & aTextureCord
+                ,const vector<vec3f> & aTangent,const vector<vec3f> & aBiTangent){
     generateBoundingBox(aVertex);
     numIndex=aTriangles.size();
 
-    loadMesh(aVertex,aTriangles,aNormals,aTextureCord);
+    loadMesh(aVertex,aTriangles,aNormals,aTextureCord,aTangent,aBiTangent);
 
     if(saveInfo){
         vertex=aVertex;
         triangles=aTriangles;
         normals=aNormals;
         textureCord=aTextureCord;
+        tangent=aTangent;
+        bitTangent=aBiTangent;
     }
 }
 
@@ -134,6 +142,18 @@ vector<vec3f> & Mesh::getNormals(){
 
 vector<vec2f> & Mesh::getTextCoord(){
     return textureCord;
+}
+
+//**********************************************************************//
+
+vector<vec3f> & Mesh::getTangent(){
+    return tangent;
+}
+
+//**********************************************************************//
+
+vector<vec3f> & Mesh::getBitTangent(){
+    return bitTangent;
 }
 
 //**********************************************************************//

@@ -65,7 +65,8 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**  Constructor */
         /////////////////////////////////////////////////////////////////////////
-        Mesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord,bool save=false);
+        Mesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals
+             ,const vector<vec2f> & textureCord,const vector<vec3f> & tangent,const vector<vec3f> & biTangent,bool save=false);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -129,6 +130,22 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         vector<vec2f> & getTextCoord();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will obtain the tangent of the object
+        *    \return vector<vec3f> &
+        */
+        //////////////////////////////////////////////////////////////////////////
+        vector<vec3f> & getTangent();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will obtain the biTangent of the object
+        *    \return vector<vec3f> &
+        */
+        //////////////////////////////////////////////////////////////////////////
+        vector<vec3f> & getBitTangent();
+
 
     protected:
 
@@ -147,7 +164,8 @@ class Mesh : public Object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
-        void init(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord);
+        void init(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord
+                ,const vector<vec3f> & tangent,const vector<vec3f> & biTangent);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -176,6 +194,8 @@ class Mesh : public Object3D
         vector<GLushort> triangles;
         vector<vec3f> normals;
         vector<vec2f> textureCord;
+        vector<vec3f> bitTangent;
+        vector<vec3f> tangent;
 };
 
 #endif // MESH_H

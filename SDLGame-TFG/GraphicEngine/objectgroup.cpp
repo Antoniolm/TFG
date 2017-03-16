@@ -42,6 +42,8 @@ void ObjectGroup::addObject(vec3f position,MeshIndex meshIndex){
     vector<GLushort> currentTriangles;
     vector<vec3f> currentNormals;
     vector<vec2f> currentTextureCord;
+    vector<vec3f> currentTangent;
+    vector<vec3f> currentBitTangent;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     Mesh * mesh=meshCollect->getMesh(meshIndex);
 
@@ -49,6 +51,8 @@ void ObjectGroup::addObject(vec3f position,MeshIndex meshIndex){
     currentTriangles=mesh->getTriangles();
     currentNormals=mesh->getNormals();
     currentTextureCord=mesh->getTextCoord();
+    currentTangent=mesh->getTangent();
+    currentBitTangent=mesh->getBitTangent();
 
     int shift=triangles.size();
     for(unsigned i=0;i<currentTriangles.size();i++){
@@ -56,13 +60,17 @@ void ObjectGroup::addObject(vec3f position,MeshIndex meshIndex){
         normals.push_back(currentNormals[i]);
         textureCord.push_back(currentTextureCord[i]);
         triangles.push_back(currentTriangles[i]+shift);
+        tangent.push_back(currentTangent[i]);
+        biTangent.push_back(currentBitTangent[i]);
     }
 }
 
 //**********************************************************************//
 
 void ObjectGroup::init(){
-    mesh=new Mesh(vertex,triangles,normals,textureCord);
+    //vector<vec3f> tangent,biTangent;
+    //FileObj::getInstance()->calculate_bump(vertex,triangles,textureCord,tangent,biTangent);
+    mesh=new Mesh(vertex,triangles,normals,textureCord,tangent,biTangent);
     root->add(mesh);
 }
 
