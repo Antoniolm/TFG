@@ -32,6 +32,7 @@ enum MaterialIndex{
     mCUBE_DUNG,     //2
     mCUBE_DUNGB,    //3
     mCUBE_WALL,     //4
+    mbCUBE_WALL,
     mINVICUBE_WALL, //5
     mCUBE_TRAP,     //6
     mCUBE_SPIKE,    //7

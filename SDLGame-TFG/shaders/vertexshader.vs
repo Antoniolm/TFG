@@ -7,10 +7,12 @@
 	out vec3 FragPos;
 	out vec3 Normal;
 	out vec2 TextCoord;
+	//out vec4 FragPosLightSpace;
 
 	uniform mat4 transform;
 	uniform mat4 view;
 	uniform mat4 projection;
+	//uniform mat4 lightSpaceMatrix;
 
 	void main(void)
 	{
@@ -19,4 +21,5 @@
 		FragPos = vec3(transform * vec4(position, 1.0f));
 		Normal= mat3(transpose(inverse(transform))) * normal;
 		TextCoord=textCoord;
+		//FragPosLightSpace= lightSpaceMatrix * vec4(FragPos,1.0);
 	}

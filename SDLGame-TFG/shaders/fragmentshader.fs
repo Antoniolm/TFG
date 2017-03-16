@@ -1,4 +1,4 @@
-#version 150 core
+#version 330 core
 out vec4 color;
 
 struct Material {
@@ -22,7 +22,7 @@ struct PointLight {
     float constant;
     float linear;
     float quadratic;
-	
+    
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
@@ -43,8 +43,10 @@ uniform int invertNormal;
 uniform int noLight;
 uniform int numActivateLight;
 uniform PointLight pointLights[numLight];
+uniform bool normalMapping;
 
 uniform sampler2D ourTexture;
+uniform sampler2D normalMap; 
 
 //Definition of functions
 vec3 calculateDirLight(DirLight light,vec3 normal,vec3 viewDir);
@@ -52,11 +54,17 @@ vec3 calculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewD
 
 void main()
 { 
- vec3 norm;
  vec3 result;
  /*if(invertNormal==1) norm = normalize(Normal);
  else norm = normalize(Normal);*/
- norm = normalize(Normal);
+ vec3 norm = normalize(Normal);
+
+if(normalMapping){
+    // Obtain normal from normal map in range [0,1]
+    norm = texture(normalMap, TextCoord).rgb;
+    // Transform normal vector to range [-1,1]
+    norm = normalize(norm * 2.0 - 1.0);   
+}
 
  //Calculate color of our texture
  vec4 texColor = texture(ourTexture,TextCoord);
@@ -81,7 +89,7 @@ void main()
 }
 
 vec3 calculateDirLight(DirLight light,vec3 normal,vec3 viewDir){
-	vec3 lightDir = normalize(-light.direction);
+    vec3 lightDir = normalize(-light.direction);
 
     // Diffuse shading
     float diff = max(dot(normal, lightDir), 0.0);

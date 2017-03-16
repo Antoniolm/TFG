@@ -53,6 +53,8 @@ Game::Game(){
     gameState.deadMenu = new DeadMenu();
     gameState.loadScreen=new LoadingScreen(250);
     gameState.optionMenu=new OptionMenu();
+    gameState.controlMenu=new ControlMenu();
+    isClosing=false;
 
     notiGamePad=new Notification(vec3f(0.0,0.0,0.0),vec3f(0.0,0.0,0.0),0,mVOID);
 
@@ -76,11 +78,13 @@ Game::Game(){
 //**********************************************************************//
 
 Game::~Game(){
-    delete instance;
     delete window;
     delete lifeText;
     delete coinText;
     delete notiGamePad;
+    delete shadowShader;
+    delete normalShader;
+    delete options;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
     delete meshCollect;
@@ -94,14 +98,18 @@ Game::~Game(){
 
 //**********************************************************************//
 
+void Game::setClose(bool value){
+    isClosing=value;
+}
+
+//**********************************************************************//
+
 void Game::loop(){
-    bool quit = false;
     SDL_Event event;
-    vec3f posHero;
     float time;
     string fileMap;
     bool firstTime=true;
-    int windowH=800,windowW=600;
+    int windowH=800,windowW=1200;
     int lastLife=160,currentCoin=-10;
     Profile * profile=Profile::getInstance();
 
@@ -118,13 +126,40 @@ void Game::loop(){
     gameState.camera->setOrthographicProjection(-1,1,-1,1,-3,3);
     gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
 
+    ////////////////////////////////////////
+    // Configure depth map FBO
+    ////////////////////////////////////////
+    /*const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
+    GLuint depthMapFBO;
+    glGenFramebuffers(1, &depthMapFBO);
+
+    // - Create depth texture
+    GLuint depthMap;
+    glGenTextures(1, &depthMap);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
+    glDrawBuffer(GL_NONE);
+    glReadBuffer(GL_NONE);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);*/
+
+
     //Show our window.
     window->showScreen();
-    while (!quit)
+    while (!isClosing)
     {
         while (SDL_PollEvent(&event)){
             if (event.type == SDL_QUIT){
-                quit = true;
+                isClosing = true;
             }
             if(event.type==SDL_WINDOWEVENT && event.window.event==SDL_WINDOWEVENT_RESIZED ){
                 if(event.window.data2<600)windowH=600; //MinHeight
@@ -156,11 +191,14 @@ void Game::loop(){
             gameState.camera->setPosition(vec3f(0.0,0.0,0.0),context.currentShader->getProgram());
             gameState.mainMenu->updateState(gameState);
             gameState.optionMenu->updateState(gameState);
+            gameState.controlMenu->updateState(gameState);
 
             gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
-            if(!gameState.optionMenu->isActivate())
+            if(!gameState.optionMenu->isActivate() && !gameState.controlMenu->isActivate())
                 gameState.mainMenu->visualization(context);
+
             gameState.optionMenu->visualization(context);
+            gameState.controlMenu->visualization(context);
             firstTime=true;
         }
 
@@ -207,8 +245,6 @@ void Game::loop(){
             gameState.rootMap->updateState(gameState);
 
             //Update the camera, lifeText, coinText, profile
-            posHero=hero->getPosition();
-
             gameState.camera->update(gameState,context.currentShader->getProgram(),
                           (gameState.pauseMenu->isActivate() || gameState.deadMenu->isActivate() || gameState.mainMenu->isActivate()));
 
@@ -224,7 +260,41 @@ void Game::loop(){
             ///////////////////
             time=SDL_GetTicks();
 
+            //1- Render of our deph map for shadow mapping
+            /*Camera lightCamera(vec3f(1.0,1.0,-1.0),vec3f(0.0,0.0,0.0),vec3f(0.0,1.0,0.0));
+            lightCamera.setOrthographicProjection(-10.0,10.0,-10.0,10.0,-10.0,10.0);
+            Matrix4f lightSpaceMatrix;
+            lightSpaceMatrix=lightCamera.getOrthoProyection();
+            lightSpaceMatrix.product(lightCamera.getView());
+
+            context.currentShader=shadowShader;
+            glUseProgram(context.currentShader->getProgram()); //We use the program now
+            lightCamera.activateCamera(context.currentShader->getProgram());
+            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix.getMatrix());
+
+            glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
+            glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
+            glClear(GL_DEPTH_BUFFER_BIT);
+            gameState.rootMap->visualization(context);
+            glBindFramebuffer(GL_FRAMEBUFFER, 0);
+            */
+
+            //2- Normal render of our scene
+            //glViewport(0, 0, windowW, windowH);
+            //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            //context.currentShader=normalShader;
+            //glUseProgram(context.currentShader->getProgram()); //We use the program now
+            //gameState.camera->activateCamera(context.currentShader->getProgram());
+            //gameState.rootMap->activatedLight(context.currentShader->getProgram());
+            glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "ourTexture"), 0);
+            glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "normalMap"), 1);
+            glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "normalMapping"), true);
             gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
+            //glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix.getMatrix());
+
+            glActiveTexture(GL_TEXTURE1);
+            GL_TEXTURE_2D, MaterialCollection::getInstance()->getMaterial(mbCUBE_WALL)->getTexture()->bindTexture();
+            glActiveTexture(GL_TEXTURE0);
             gameState.rootMap->visualization(context);
 
             gameState.camera->activateOrthoProjection(context.currentShader->getProgram());

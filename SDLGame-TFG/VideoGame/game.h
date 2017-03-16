@@ -60,6 +60,8 @@ class Game
         //////////////////////////////////////////////////////////////////////////
         void loop();
 
+        void setClose(bool value);
+
         static Game * getInstance(){
             if(instance == NULL)
                 instance = new Game();
@@ -101,6 +103,7 @@ class Game
         Notification * notiGamePad;
         Shader * shadowShader,* normalShader;
         Context context;
+        bool isClosing;
 };
 
 #endif // GAME_H
