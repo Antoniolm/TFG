@@ -44,7 +44,9 @@ enum MeshBufferPositions
 	POSITION_VB,
 	TEXCOORD_VB,
 	NORMAL_VB,
-	INDEX_VB
+	INDEX_VB,
+	TANGENT_VB,
+	BITANGENT_VB
 };
 
 class Mesh : public Object3D
@@ -153,7 +155,8 @@ class Mesh : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void loadMesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord);
+        void loadMesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord,
+                      const vector<vec3f> & tangent=vector<vec3f>(),const vector<vec3f> & bitTangent=vector<vec3f>());
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -163,7 +166,7 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void generateBoundingBox(const vector<vec3f> & vertex);
 
-        static const unsigned int NUM_BUFFERS = 4;
+        static const unsigned int NUM_BUFFERS = 6;
         GLuint vertexArrayBuffers[NUM_BUFFERS];
         GLuint vertexArrayObject;
         string objFile;

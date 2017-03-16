@@ -57,14 +57,16 @@ void Mesh::init(){
     vector<vec3f> aVertex;
     vector<vec3f> aNormals;
     vector<vec2f> aTextureCord;
+    vector<vec3f> tangent;
+    vector<vec3f> biTangent;
 
     FileObj * obj=FileObj::getInstance();
-    obj->readEverything(objFile.c_str(),aVertex,aTriangles,aNormals,aTextureCord,true,true);
+    obj->readEverything(objFile.c_str(),aVertex,aTriangles,aNormals,aTextureCord,tangent,biTangent,true,true);
     generateBoundingBox(aVertex);
 
     numIndex=aTriangles.size();
 
-    loadMesh(aVertex,aTriangles,aNormals,aTextureCord);
+    loadMesh(aVertex,aTriangles,aNormals,aTextureCord,tangent,biTangent);
 
     if(saveInfo){
         vertex=aVertex;
@@ -158,7 +160,8 @@ void Mesh::generateBoundingBox(const vector<vec3f> & vertex){
 
 //**********************************************************************//
 
-void Mesh::loadMesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord){
+void Mesh::loadMesh(const vector<vec3f> & vertex, const vector<GLushort> & triangles,const vector<vec3f> & normals,const vector<vec2f> & textureCord
+                    ,const vector<vec3f> & tangent,const vector<vec3f> & bitTangent){
     glGenVertexArrays(1, &vertexArrayObject);
 	glBindVertexArray(vertexArrayObject);
 
@@ -180,6 +183,20 @@ void Mesh::loadMesh(const vector<vec3f> & vertex, const vector<GLushort> & trian
     glBufferData(GL_ARRAY_BUFFER, sizeof(vec2f) * textureCord.size(), &textureCord[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(2);
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
+
+    //Tangent buffer
+    glGenBuffers(NUM_BUFFERS, vertexArrayBuffers);
+    glBindBuffer(GL_ARRAY_BUFFER,vertexArrayBuffers[TANGENT_VB]);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(vec3f)*tangent.size(),&tangent[0],GL_STATIC_DRAW);
+    glEnableVertexAttribArray(3);
+    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, 0 , 0);
+
+    //Bitangent buffer
+    glGenBuffers(NUM_BUFFERS, vertexArrayBuffers);
+    glBindBuffer(GL_ARRAY_BUFFER,vertexArrayBuffers[BITANGENT_VB]);
+    glBufferData(GL_ARRAY_BUFFER,sizeof(vec3f)*bitTangent.size(),&bitTangent[0],GL_STATIC_DRAW);
+    glEnableVertexAttribArray(4);
+    glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, 0 , 0);
 
     //Triangles buffer
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,vertexArrayBuffers[INDEX_VB]);

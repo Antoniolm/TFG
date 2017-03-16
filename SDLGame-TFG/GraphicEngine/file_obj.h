@@ -51,7 +51,9 @@ class FileObj{
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,bool flagNormal,bool flagOrigin);
+        void readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,
+                            std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,std::vector<vec3f> & tangent,std::vector<vec3f> & biTangent,
+                            bool flagNormal,bool flagOrigin);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -68,6 +70,9 @@ class FileObj{
         */
         //////////////////////////////////////////////////////////////////////////
         vec3f calculate_origin(std::vector<vec3f> & vertex);
+
+
+        void calculate_bump(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec2f> & textCoord,std::vector<vec3f> & tangent,std::vector<vec3f> & bitTangent);
 
         static FileObj * getInstance(){
             if(instance == NULL)

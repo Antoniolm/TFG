@@ -64,7 +64,8 @@ void FileObj::readMesh(const char * fileName,std::vector<vec3f> & vertex,std::ve
 
 //**********************************************************************//
 
-void FileObj::readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals,std::vector<vec2f> & textureCord,bool flagNormal,bool flagOrigin){
+void FileObj::readEverything(const char * fileName,std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec3f> & normals
+                             ,std::vector<vec2f> & textureCord,std::vector<vec3f> & tangent,std::vector<vec3f> & biTangent,bool flagNormal,bool flagOrigin){
     int value;
     char charValue;
     float x,y,z;
@@ -151,6 +152,7 @@ void FileObj::readEverything(const char * fileName,std::vector<vec3f> & vertex,s
         textureCord.push_back(textureVertex[textureFaces[i]]);
         triangles.push_back(i);
     }
+    calculate_bump(vertex,triangles,textureCord,tangent,biTangent);
 }
 
 //**********************************************************************//
@@ -210,5 +212,44 @@ vec3f FileObj::calculate_origin(std::vector<vec3f> & vertex){
 
     return result;
 }
+
+//**********************************************************************//
+
+void FileObj::calculate_bump(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,
+                             std::vector<vec2f> & textCoord,std::vector<vec3f> & tangent,std::vector<vec3f> & bitTangent){
+    //Calculate edges and UV
+    vec3f edge1,edge2;
+    vec2f deltaUV1,deltaUV2;
+    vec3f tangentEle,bitTangentEle;
+    vec3f triangle;
+
+    for(unsigned i=0;i<triangles.size();i=i+3){
+        triangle.x = triangles[i];
+        triangle.y = triangles[i + 1];
+        triangle.z = triangles[i + 2];
+
+        edge1=vertex[triangle.y]-vertex[triangle.x];
+        edge2=vertex[triangle.z]-vertex[triangle.x];
+
+        deltaUV1=textCoord[triangle.y]-textCoord[triangle.x];
+        deltaUV2=textCoord[triangle.z]-textCoord[triangle.x];
+
+
+        GLfloat f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
+
+        tangentEle.x = f * (deltaUV2.y * edge1.x - deltaUV1.y * edge2.x);
+        tangentEle.y = f * (deltaUV2.y * edge1.y - deltaUV1.y * edge2.y);
+        tangentEle.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
+        tangentEle.normalize();
+        tangent.push_back(tangentEle);
+
+        bitTangentEle.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
+        bitTangentEle.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
+        bitTangentEle.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
+        bitTangentEle.normalize();
+        bitTangent.push_back(bitTangentEle);
+	}
+}
+
 
 

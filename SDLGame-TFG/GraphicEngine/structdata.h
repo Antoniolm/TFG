@@ -240,6 +240,29 @@ struct vec2f{
 
         return *this;
     }
+    vec2f operator-(vec2f aVec){
+        vec2f result;
+        result.x=x-aVec.x;
+        result.y=y-aVec.y;
+
+        return result;
+    }
+    vec2f operator*(float value){
+        vec2f result;
+
+        result.x=x*value;
+        result.y=y*value;
+
+        return result;
+    }
+    vec2f operator*(vec2f aVec){
+        vec2f result;
+
+        result.x=x*aVec.x;
+        result.y=y*aVec.y;
+
+        return result;
+    }
 };
 
 #endif
