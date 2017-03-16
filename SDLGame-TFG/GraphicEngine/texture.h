@@ -57,7 +57,7 @@ class Texture
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-    	void bindTexture();
+    	void bindTexture(int ch=0);
 
     protected:
 

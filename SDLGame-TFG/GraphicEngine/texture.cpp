@@ -47,7 +47,12 @@ void Texture::setFile(const std::string& aFileName){
 
 //**********************************************************************//
 
-void Texture::bindTexture(){
+void Texture::bindTexture(int ch){
+    if(ch==0)
+        glActiveTexture(GL_TEXTURE0);
+    else
+        glActiveTexture(GL_TEXTURE1);
+
     glBindTexture(GL_TEXTURE_2D, texture);
 }
 

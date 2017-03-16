@@ -29,7 +29,6 @@ Game::Game(){
     options=OptionManager::getInstance();
     options->load();
 
-    pair<int,int> resolution=options->getResolution();
     window=Window::getInstance();
     window->setParameters("NapMare",1200,800);
     window->createWindow();
@@ -288,13 +287,13 @@ void Game::loop(){
             //gameState.rootMap->activatedLight(context.currentShader->getProgram());
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "ourTexture"), 0);
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "normalMap"), 1);
-            glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "normalMapping"), true);
+            //glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "normalMapping"), true);
             gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
             //glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix.getMatrix());
 
-            glActiveTexture(GL_TEXTURE1);
-            GL_TEXTURE_2D, MaterialCollection::getInstance()->getMaterial(mbCUBE_WALL)->getTexture()->bindTexture();
-            glActiveTexture(GL_TEXTURE0);
+            //glActiveTexture(GL_TEXTURE1);
+            //MaterialCollection::getInstance()->getMaterial(mbCUBE_WALL)->getTexture()->bindTexture();
+            //glActiveTexture(GL_TEXTURE0);
             gameState.rootMap->visualization(context);
 
             gameState.camera->activateOrthoProjection(context.currentShader->getProgram());

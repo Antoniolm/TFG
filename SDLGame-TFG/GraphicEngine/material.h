@@ -45,7 +45,7 @@ class Material
         //////////////////////////////////////////////////////////////////////////
         /** Constructor with parameters*/
         //////////////////////////////////////////////////////////////////////////
-        Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur,MaterialIndex aIndex=mVOID);
+        Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur,const string & aFileBumpTextur="",MaterialIndex aIndex=mVOID);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -110,6 +110,14 @@ class Material
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *   This method will set the texture in ourmaterial
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setBumpTexture(Texture * aBTexture);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *   This method will get the ambient in our material
         *   \return void
         */
@@ -150,6 +158,14 @@ class Material
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *   This method will get the bump texture in our material
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        Texture * getBumpTexture();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *   This method will get the index in our material
         *   \return void
         */
@@ -164,6 +180,7 @@ class Material
         vec3f specular;
         float shininess;
         Texture * texture;
+        Texture * bumpTexture;
         MaterialIndex index;
 };
 

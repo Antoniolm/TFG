@@ -32,17 +32,22 @@ Material::Material(const Material & aMaterial){
     specular=aMaterial.specular;
     shininess=aMaterial.shininess;
     texture=aMaterial.texture;
+    bumpTexture=aMaterial.bumpTexture;
     index=aMaterial.index;
 }
 
 //**********************************************************************//
 
-Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur,MaterialIndex aIndex){
+Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aShini,const string & aFileTextur,const string & aFileBumpTextur,MaterialIndex aIndex){
     ambient=anAmbient;
     diffuse=aDiffuse;
     specular=aSpecular;
     shininess=aShini;
     index=aIndex;
+
+    bumpTexture=0;
+    if(aFileBumpTextur!="")
+        bumpTexture=new Texture(aFileBumpTextur);
 
     texture=new Texture(aFileTextur);
 }
@@ -66,6 +71,12 @@ void Material::activate(GLuint shaderID){
     glUniform3f(glGetUniformLocation(shaderID, "material.diffuse"),  diffuse.x,  diffuse.y, diffuse.z);
     glUniform3f(glGetUniformLocation(shaderID, "material.specular"), specular.x,  specular.y, specular.z);
     glUniform1f(glGetUniformLocation(shaderID, "material.shininess"),    shininess);
+
+    glUniform1i(glGetUniformLocation(shaderID, "normalMapping"), false);
+    if(bumpTexture!=0){
+        glUniform1i(glGetUniformLocation(shaderID, "normalMapping"), true);
+        bumpTexture->bindTexture(1);
+    }
 }
 
 //**********************************************************************//
@@ -106,6 +117,12 @@ void Material::setTexture(Texture * aTexture){
 
 //**********************************************************************//
 
+void Material::setBumpTexture(Texture * aBTexture){
+    bumpTexture=aBTexture;
+}
+
+//**********************************************************************//
+
 vec3f Material::getAmbient(){
     return ambient;
 }
@@ -132,6 +149,12 @@ float Material::getShininess(){
 
 Texture * Material::getTexture(){
     return texture;
+}
+
+//**********************************************************************//
+
+Texture * Material::getBumpTexture(){
+    return bumpTexture;
 }
 
 //**********************************************************************//
