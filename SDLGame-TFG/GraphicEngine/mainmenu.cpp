@@ -34,7 +34,7 @@ MainMenu::MainMenu()
     Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainBackMenu.png");
 
     positionMenu=new Matrix4f();
-    positionMenu->translation(0.0,6.752,11.0);
+    positionMenu->translation(0.0,6.70,11.0);
 
     Matrix4f * betweenMenu=new Matrix4f();
     betweenMenu->translation(0.0,0.0,-0.2);
@@ -59,7 +59,7 @@ MainMenu::MainMenu()
     ///////////////////////
     //Back
     Matrix4f * scaleMenuBack=new Matrix4f();
-    scaleMenuBack->scale(1.0,4.0,1.0);
+    scaleMenuBack->scale(1.0,4.2,1.0);
 
     NodeSceneGraph * nodeBack=new NodeSceneGraph(false,true);
     nodeBack->add(scaleMenuBack);

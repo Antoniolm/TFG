@@ -26,7 +26,7 @@ OptionMenu::OptionMenu()
     MeshCollection * meshCollect =MeshCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
-    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/optionResol.png");
+    currentMaterial=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/optionResol.png");
     Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainBackMenu.png");
 
     //Initialize text
@@ -47,29 +47,44 @@ OptionMenu::OptionMenu()
 
     //Transformation
     positionMenu=new Matrix4f();
-    positionMenu->translation(0.0,6.752,11.0);
+    positionMenu->translation(0.0,6.70,11.0);
 
     Matrix4f * betweenMenu=new Matrix4f();
     betweenMenu->translation(0.0,0.0,-0.2);
 
-    Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(0.4,1.8,0.5);
-    Matrix4f * scaleMenuBack=new Matrix4f();
-    scaleMenuBack->scale(2.5,2.275,2.5);
-
     Matrix4f * rotationMenu=new Matrix4f();
     rotationMenu->rotation(20,1.0,0.0,0.0);
+
+    ///////////////////////
+    //Text
+    Matrix4f * positionText=new Matrix4f();
+    positionText->translation(0.0,0.0,0.2);
+
+    Matrix4f * scaleMenu=new Matrix4f();
+    scaleMenu->scale(0.35,1.8,0.5);
+
+    NodeSceneGraph * nodeText=new NodeSceneGraph(false,true);
+    nodeText->add(positionText);
+    nodeText->add(scaleMenu);
+    nodeText->add(currentMaterial);
+    nodeText->add(meshCollect->getMesh(TEXT));
+
+    ///////////////////////
+    //Back
+    Matrix4f * scaleMenuBack=new Matrix4f();
+    scaleMenuBack->scale(1.0,4.2,1.0);
+
+    NodeSceneGraph * nodeBack=new NodeSceneGraph(false,true);
+    nodeBack->add(scaleMenuBack);
+    nodeBack->add(materialBack);
+    nodeBack->add(meshCollect->getMesh(TEXT));
 
     root=new NodeSceneGraph(false,true);
     root->add(positionMenu);
     root->add(rotationMenu);
-    root->add(scaleMenu);
-    root->add(currentMaterial);
-    root->add(meshCollect->getMesh(TEXT));
     root->add(betweenMenu);
-    root->add(scaleMenuBack);
-    root->add(materialBack);
-    root->add(meshCollect->getMesh(TEXT));
+    root->add(nodeBack);
+    root->add(nodeText);
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
 
@@ -99,7 +114,6 @@ OptionMenu::~OptionMenu()
 void OptionMenu::visualization(Context & cv){
     if(activateMenu){
         root->visualization(cv);
-
         resolText->visualization(cv);
         windText->visualization(cv);
         volText->visualization(cv);
@@ -278,21 +292,21 @@ void OptionMenu::updateOption(int option,string value){
             resolText->init();
             resolText->setScaleDialog(vec3f(0.1,0.2,0.5));
             resolText->setScaleText(vec3f(0.1,0.2,0.5));
-            resolText->setPosition(vec3f(0.15,7.07,11.1));
+            resolText->setPosition(vec3f(0.10,6.95,11.1));
         break;
         case 1: //Exit
             windText->setMessage(value);
             windText->init();
             windText->setScaleDialog(vec3f(0.1,0.2,0.5));
             windText->setScaleText(vec3f(0.1,0.2,0.5));
-            windText->setPosition(vec3f(0.15,6.95,11.2));
+            windText->setPosition(vec3f(0.10,6.85,11.2));
         break;
         case 2: //Exit
             volText->setMessage(value);
             volText->init();
             volText->setScaleDialog(vec3f(0.05,0.2,0.5));
             volText->setScaleText(vec3f(0.05,0.2,0.5));
-            volText->setPosition(vec3f(0.15,6.83,11.3));
+            volText->setPosition(vec3f(0.10,6.75,11.3));
         break;
     }
 }
