@@ -237,7 +237,6 @@ void Game::loop(){
             if(hero->getLife()<=0.0){ //check if the hero is dead
                 gameState.deadMenu->activate();
             }
-
             gameState.movie->updateState(gameState);
             gameState.pauseMenu->updateState(gameState);
             gameState.deadMenu->updateState(gameState);
@@ -252,7 +251,6 @@ void Game::loop(){
             notiGamePad->updateState(gameState);
 
             profile->addUpdateTime(SDL_GetTicks()-gameState.time);
-
 
             ///////////////////
             // VISUALIZATION
@@ -288,8 +286,7 @@ void Game::loop(){
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "ourTexture"), 0);
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "normalMap"), 1);
             vec3f pos=hero->getPosition();
-            glUniform3f(glGetUniformLocation(context.currentShader->getProgram(), "lightPosVertex"), pos.x,pos.y,pos.z);
-            //glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "normalMapping"), true);
+            glUniform3f(glGetUniformLocation(context.currentShader->getProgram(), "lightPosVertex"), pos.x,pos.y+3,pos.z);
             gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
             //glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix.getMatrix());
 
@@ -305,7 +302,6 @@ void Game::loop(){
             gameState.deadMenu->visualization(context);
             gameState.movie->visualization(context);
             notiGamePad->visualization(context);
-
 
             profile->addVisualTime(SDL_GetTicks()-time);
             profile->incrementFrames();

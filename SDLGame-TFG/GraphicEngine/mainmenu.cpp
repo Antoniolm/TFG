@@ -27,6 +27,7 @@ MainMenu::MainMenu()
     currentOption=0;
     activateMenu=true;
     MeshCollection * meshCollect =MeshCollection::getInstance();
+    MaterialCollection * materialCollect =MaterialCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainMenuStart.png");
@@ -46,9 +47,24 @@ MainMenu::MainMenu()
     Matrix4f * rotationMenu=new Matrix4f();
     rotationMenu->rotation(20,1.0,0.0,0.0);
 
+    ///////////////////////
+    //MainTitle
+    Matrix4f * scaleMainTitle=new Matrix4f();
+    scaleMainTitle->scale(0.4,0.8,0.5);
+    Matrix4f * posMainTitle=new Matrix4f();
+    posMainTitle->translation(0.0,0.75,0.0);
+
+    NodeSceneGraph * nodeMainTitle=new NodeSceneGraph(false,true);
+    nodeMainTitle->add(posMainTitle);
+    nodeMainTitle->add(scaleMainTitle);
+    nodeMainTitle->add(materialCollect->getMaterial(mMAINTITLE));
+    nodeMainTitle->add(meshCollect->getMesh(TEXT)),
+
+
     root=new NodeSceneGraph(false,true);
     root->add(positionMenu);
     root->add(rotationMenu);
+    root->add(nodeMainTitle);
     root->add(scaleMenu);
     root->add(currentMaterial);
     root->add(meshCollect->getMesh(TEXT));

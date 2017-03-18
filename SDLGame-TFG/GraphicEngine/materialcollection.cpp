@@ -113,6 +113,8 @@ MaterialCollection::MaterialCollection()
 
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/soulTexture.png","",mSOUL));
 
+    collection.addElement(new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/mainTitle.png","",mMAINTITLE));
+
     //Create our map
     collection.addIndex("mCUBE_DUNG",mCUBE_DUNG);
     collection.addIndex("mCUBE_DUNGB",mCUBE_DUNGB);
@@ -156,6 +158,7 @@ MaterialCollection::MaterialCollection()
     collection.addIndex("mDOOR",mDOOR);
     collection.addIndex("mGLYPH",mGLYPH);
     collection.addIndex("mSOUL",mSOUL);
+    collection.addIndex("mMAINTITLE",mMAINTITLE);
 
 }
 

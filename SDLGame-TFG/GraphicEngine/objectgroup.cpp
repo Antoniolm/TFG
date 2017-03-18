@@ -68,10 +68,15 @@ void ObjectGroup::addObject(vec3f position,MeshIndex meshIndex){
 //**********************************************************************//
 
 void ObjectGroup::init(){
-    //vector<vec3f> tangent,biTangent;
-    //FileObj::getInstance()->calculate_bump(vertex,triangles,textureCord,tangent,biTangent);
     mesh=new Mesh(vertex,triangles,normals,textureCord,tangent,biTangent);
     root->add(mesh);
+
+    vertex.clear();
+    normals.clear();
+    textureCord.clear();
+    triangles.clear();
+    tangent.clear();
+    biTangent.clear();
 }
 
 //**********************************************************************//

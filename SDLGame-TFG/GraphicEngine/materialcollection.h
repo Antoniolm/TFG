@@ -70,7 +70,8 @@ enum MaterialIndex{
     mPOT,
     mDOOR,
     mGLYPH,
-    mSOUL
+    mSOUL,
+    mMAINTITLE
 };
 
 class Material;
