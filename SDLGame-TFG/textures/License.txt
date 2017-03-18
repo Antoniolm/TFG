@@ -28,6 +28,10 @@ CUTE MICRO GHOUL GOBROT by bitgem  is licensed (https://shop.bitgem3d.com/pages/
 Book Case by JmPrsh153 is licensed under CC Attribution https://skfb.ly/BqWx -> used in the texture: bookTexture.png
 gamepad by IO-Images is licensed under CC 0 Attribution https://pixabay.com/es/controlador-gamepad-juegos-de-video-1784571/ -> used in the texture: gamepadV.png gamepadX.png
 Chest by pepedrago is licensed under CC Attribution https://skfb.ly/KDJz -> used in the texture: trunkTexture.png
-Tiki Treasure! by glenatron is licensed under CC Attribution https://skfb.ly/VLRo -> used in the texture : potTexture.png
+Tiki Treasure! by glenatron is licensed under CC Attribution https://skfb.ly/VLRo -> used in the texture : potTexture.png, mainMenuBack.png
 Medieval Door by Josh997 is licensed under CC Attribution https://skfb.ly/ERMs -> used in the texture: doorTexture.png
 Spell Glyph by amdragg is licensed under CC Attribution https://skfb.ly/NRVr -> used in the texture: glyphTexture.png
+libro by 3dman_eu is licensed under CC0 public domain https://pixabay.com/es/examinar-p%C3%A1gina-despl%C3%A1cese-hasta-1019877/ ->used in the texture : movieScreen*.png
+Pergament by Niedec is licensed under CC0 public domain https://pixabay.com/es/documento-medieval-p%C3%A1gina-pergament-481243/ ->used in the texture : movieScreen*.png
+castillo by Merio is licensed under CC0 public domain https://pixabay.com/es/bandera-aislados-torre-castillo-988860/ ->used in the texture : mainMenuBack.png
+castillo by 95C is licensed under CC0 public domain https://pixabay.com/es/castillo-silueta-dibujo-2084599/ ->used in the texture : mainMenuBack.png

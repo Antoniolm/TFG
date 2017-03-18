@@ -39,39 +39,39 @@ MainMenu::MainMenu()
     Matrix4f * betweenMenu=new Matrix4f();
     betweenMenu->translation(0.0,0.0,-0.2);
 
-    Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(0.4,1.8,0.5);
-    Matrix4f * scaleMenuBack=new Matrix4f();
-    scaleMenuBack->scale(2.5,2.275,2.5);
-
     Matrix4f * rotationMenu=new Matrix4f();
     rotationMenu->rotation(20,1.0,0.0,0.0);
 
     ///////////////////////
-    //MainTitle
-    Matrix4f * scaleMainTitle=new Matrix4f();
-    scaleMainTitle->scale(0.4,0.8,0.5);
-    Matrix4f * posMainTitle=new Matrix4f();
-    posMainTitle->translation(0.0,0.75,0.1);
+    //Text
+    Matrix4f * positionText=new Matrix4f();
+    positionText->translation(0.725,0.5,0.8);
 
-    NodeSceneGraph * nodeMainTitle=new NodeSceneGraph(false,true);
-    nodeMainTitle->add(posMainTitle);
-    nodeMainTitle->add(scaleMainTitle);
-    nodeMainTitle->add(materialCollect->getMaterial(mMAINTITLE));
-    nodeMainTitle->add(meshCollect->getMesh(TEXT)),
+    Matrix4f * scaleMenu=new Matrix4f();
+    scaleMenu->scale(0.35,1.8,0.5);
 
+    NodeSceneGraph * nodeText=new NodeSceneGraph(false,true);
+    nodeText->add(positionText);
+    nodeText->add(scaleMenu);
+    nodeText->add(currentMaterial);
+    nodeText->add(meshCollect->getMesh(TEXT));
+
+    ///////////////////////
+    //Back
+    Matrix4f * scaleMenuBack=new Matrix4f();
+    scaleMenuBack->scale(1.0,4.0,1.0);
+
+    NodeSceneGraph * nodeBack=new NodeSceneGraph(false,true);
+    nodeBack->add(scaleMenuBack);
+    nodeBack->add(materialBack);
+    nodeBack->add(meshCollect->getMesh(TEXT));
 
     root=new NodeSceneGraph(false,true);
     root->add(positionMenu);
     root->add(rotationMenu);
-    root->add(nodeMainTitle);
-    root->add(scaleMenu);
-    root->add(currentMaterial);
-    root->add(meshCollect->getMesh(TEXT));
     root->add(betweenMenu);
-    root->add(scaleMenuBack);
-    root->add(materialBack);
-    root->add(meshCollect->getMesh(TEXT));
+    root->add(nodeBack);
+    root->add(nodeText);
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
 
@@ -82,7 +82,7 @@ MainMenu::MainMenu()
     addOption(new Texture("./textures/mainMenuStart.png"));
     addOption(new Texture("./textures/mainMenuCont.png"));
     addOption(new Texture("./textures/mainMenuControl.png"));
-    addOption(new Texture("./textures/mainMenuControl.png"));
+    addOption(new Texture("./textures/mainMenuOption.png"));
     addOption(new Texture("./textures/mainMenuQuit.png"));
 }
 
