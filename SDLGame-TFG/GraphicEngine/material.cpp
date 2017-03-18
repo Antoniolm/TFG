@@ -22,6 +22,12 @@
 Material::Material()
 {
     texture=0;
+    ambient=0;
+    diffuse=0;
+    specular=0;
+    shininess=0;
+    bumpTexture=0;
+    index=0;
 }
 
 //**********************************************************************//

@@ -24,6 +24,7 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
 {
     currentOption=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();
+    MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
     if(movieFeatures.Size()==0){
         activateMenu=false;
@@ -32,7 +33,7 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
     }
     else{
         activateMenu=true;
-        currentMaterial=new Material();
+        currentMaterial=materialCollect->getMaterial(mVOID);
 
         for(unsigned i=0;i<movieFeatures.Size();i++){
             textures.push_back(movieFeatures[i]["texture"].GetString());
@@ -71,8 +72,12 @@ MovieScreen::~MovieScreen()
 //**********************************************************************//
 
 void MovieScreen::visualization(Context & cv){
-    if(activateMenu)
+    cout<<"---Testing bug---"<<endl;
+    if(activateMenu && root!=0){
+        cout<<"---Testing bug 1 Step---"<<endl;
         root->visualization(cv);
+    }
+    cout<<"---Testing bug End---"<<endl;
 }
 
 //**********************************************************************//

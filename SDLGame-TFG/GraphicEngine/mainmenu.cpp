@@ -52,7 +52,7 @@ MainMenu::MainMenu()
     Matrix4f * scaleMainTitle=new Matrix4f();
     scaleMainTitle->scale(0.4,0.8,0.5);
     Matrix4f * posMainTitle=new Matrix4f();
-    posMainTitle->translation(0.0,0.75,0.0);
+    posMainTitle->translation(0.0,0.75,0.1);
 
     NodeSceneGraph * nodeMainTitle=new NodeSceneGraph(false,true);
     nodeMainTitle->add(posMainTitle);

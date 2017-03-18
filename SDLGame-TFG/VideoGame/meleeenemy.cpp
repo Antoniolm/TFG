@@ -47,7 +47,7 @@ MeleeEnemy::MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     //////////////////////////////////////////////////////
     /////           Initialize weapon               /////
     //////////////////////////////////////////////////////
-    weapon=new Weapon(vec3f(0.0,-0.1,0.4),MELEE,-15,CLUB,mENEMY);
+    weapon=new Weapon(vec3f(0.0,-0.1,0.4),MELEE,-25,CLUB,mENEMY);
 
     //////////////////////////////////////////////////////
     /////              All the sounds                /////
