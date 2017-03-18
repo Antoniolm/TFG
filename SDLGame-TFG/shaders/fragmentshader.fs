@@ -83,7 +83,7 @@ if(normalMapping){
     float spec = pow(max(dot(norm, halfwayDir), 0.0), 32.0);
     vec3 specular = vec3(0.2) * spec;
     
-    color = vec4(ambient + diffuse + specular, 1.0f);   
+    color = vec4(ambient * dirLight.ambient * material.ambient + diffuse * dirLight.diffuse * material.diffuse + specular * dirLight.specular * material.specular, 1.0f);   
 }
 else {
 

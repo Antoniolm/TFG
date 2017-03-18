@@ -72,12 +72,9 @@ MovieScreen::~MovieScreen()
 //**********************************************************************//
 
 void MovieScreen::visualization(Context & cv){
-    cout<<"---Testing bug---"<<endl;
-    if(activateMenu && root!=0){
-        cout<<"---Testing bug 1 Step---"<<endl;
+    if(activateMenu){
         root->visualization(cv);
     }
-    cout<<"---Testing bug End---"<<endl;
 }
 
 //**********************************************************************//
