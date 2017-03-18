@@ -286,7 +286,7 @@ void Game::loop(){
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "ourTexture"), 0);
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "normalMap"), 1);
             vec3f pos=hero->getPosition();
-            glUniform3f(glGetUniformLocation(context.currentShader->getProgram(), "lightPosVertex"), pos.x,pos.y+3,pos.z);
+            glUniform3f(glGetUniformLocation(context.currentShader->getProgram(), "lightPosVertex"), 1.0,10.0,1.0);//pos.x,pos.y+3,pos.z);
             gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
             //glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix.getMatrix());
 

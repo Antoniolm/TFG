@@ -22,12 +22,12 @@
 Material::Material()
 {
     texture=0;
-    ambient=0;
-    diffuse=0;
-    specular=0;
+    ambient=vec3f();
+    diffuse=vec3f();
+    specular=vec3f();
     shininess=0;
     bumpTexture=0;
-    index=0;
+    index=mVOID;
 }
 
 //**********************************************************************//

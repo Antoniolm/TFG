@@ -242,11 +242,15 @@ void FileObj::calculate_bump(std::vector<vec3f> & vertex,std::vector<GLushort> &
         tangentEle.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
         tangentEle.normalize();
         tangent.push_back(tangentEle);
+        tangent.push_back(tangentEle);
+        tangent.push_back(tangentEle);
 
         bitTangentEle.x = f * (-deltaUV2.x * edge1.x + deltaUV1.x * edge2.x);
         bitTangentEle.y = f * (-deltaUV2.x * edge1.y + deltaUV1.x * edge2.y);
         bitTangentEle.z = f * (-deltaUV2.x * edge1.z + deltaUV1.x * edge2.z);
         bitTangentEle.normalize();
+        bitTangent.push_back(bitTangentEle);
+        bitTangent.push_back(bitTangentEle);
         bitTangent.push_back(bitTangentEle);
 	}
 }
