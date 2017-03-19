@@ -1041,7 +1041,7 @@
 	<stdlib.h>
 	<vector>
 
-1489098086 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1489927116 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -2636,7 +2636,7 @@
 1489918854 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controlmenu.cpp
 	"controlmenu.h"
 
-1489925596 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\herostate.cpp
+1489926983 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\herostate.cpp
 	"herostate.h"
 
 1489925644 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\herostate.h

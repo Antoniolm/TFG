@@ -34,8 +34,8 @@ Hero::Hero(vec3f aPos)
     isHitting=false;
     isImpacted=false;
     isShielded=false;
-    life=150;
-    maxLife=150;
+    life=100;
+    maxLife=100;
     position=vec4f(aPos.x,aPos.y,aPos.z,1.0);
     currentCoin=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();

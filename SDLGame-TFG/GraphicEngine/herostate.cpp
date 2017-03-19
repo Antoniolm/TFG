@@ -36,23 +36,27 @@ HeroState::HeroState(){
     ///////////////////////
     //Life Node
     Matrix4f * positionText=new Matrix4f();
-    positionText->translation(0.725,0.5,0.8);
+    positionText->translation(-0.65,0.0,0.0);
 
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(0.35,1.8,0.5);
+    scaleMenu->scale(0.3,0.4,1.0);
 
     NodeSceneGraph * nodeLife=new NodeSceneGraph(false,true);
-    //nodeLife->add(positionText);
+    nodeLife->add(positionText);
     nodeLife->add(scaleMenu);
     nodeLife->add(currentMaterial);
     nodeLife->add(meshCollect->getMesh(TEXT));
 
     ///////////////////////
     //Coin Node
+    Matrix4f * positionCoin=new Matrix4f();
+    positionCoin->translation(+0.65,0.0,0.0);
+
     Matrix4f * scaleCoin=new Matrix4f();
-    scaleCoin->scale(1.0,4.2,1.0);
+    scaleCoin->scale(0.03,0.3,1.0);
 
     NodeSceneGraph * nodeCrystal=new NodeSceneGraph(false,true);
+    nodeCrystal->add(positionCoin);
     nodeCrystal->add(scaleCoin);
     nodeCrystal->add(materialCollect->getMaterial(mCRYSDRAW));
     nodeCrystal->add(meshCollect->getMesh(TEXT));
@@ -82,5 +86,5 @@ void HeroState::visualization(Context & cv){
 
 void HeroState::updateState(GameState & gameState){
     vec3f posHero=gameState.rootMap->getHero()->getPosition();
-    positionState->translation(posHero.x-0.72,posHero.y+7.4,posHero.z+10.6);
+    positionState->translation(posHero.x,posHero.y+7.4,posHero.z+10.6);
 }
