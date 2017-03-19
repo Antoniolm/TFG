@@ -21,7 +21,7 @@
 
 HeroState::HeroState(){
     currentCoin=-10;
-    currentLife=100;
+    currentLife=110;
 
     //////////////////////////////////////////////////////
     /////             Initialize text                /////
@@ -34,7 +34,7 @@ HeroState::HeroState(){
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
-    currentMaterialLife=materialCollect->getMaterial(mLIFE100);
+    currentMaterialLife=materialCollect->getMaterial(mVOID);
 
     position=vec4f(0.0,6.70,11.0,1.0);
 

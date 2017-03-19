@@ -55,7 +55,6 @@ class HeroState : public Object3D
         */
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
-
     protected:
 
     private:

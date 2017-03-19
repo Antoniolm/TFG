@@ -60,7 +60,7 @@ Game::Game(){
     notiGamePad=new Notification(vec3f(0.0,0.0,0.0),vec3f(0.0,0.0,0.0),0,mVOID);
 
     //////////////////////////////////////////////////////
-    /////             Initialize text                /////
+    /////               Initialize text              /////
     //////////////////////////////////////////////////////
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 10);
     SDL_Color color= {255,0,0};
@@ -70,7 +70,7 @@ Game::Game(){
     coinText=new Text(mVOID,font,color2,false);
 
     //////////////////////////////////////////////////////
-    /////             Initialize controller          /////
+    /////         Initialize controller              /////
     //////////////////////////////////////////////////////
     gameState.controller=new ControllerManager();
 

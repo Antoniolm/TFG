@@ -759,7 +759,8 @@ Soul * Hero::getSoul(){
         if(!isImpacted) //if hero is not impacted in this moment
             activeImpact(dirAvatar);
 
-        channelSound[1]=heroSound[1]->play();
+        if(life>=0)
+            channelSound[1]=heroSound[1]->play();
     }
     if(detectHit(posAvatar,dirAvatar) && shieldDelay<(currentTime-700) && canShield && distance<1.0){
         channelSound[2]=heroSound[2]->play();
@@ -786,6 +787,7 @@ Soul * Hero::getSoul(){
 
     activateDialog(true,3);
 
+    if(life>=0)
     channelSound[1]=heroSound[1]->play();
  }
 

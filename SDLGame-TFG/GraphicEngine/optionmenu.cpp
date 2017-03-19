@@ -61,7 +61,7 @@ OptionMenu::OptionMenu()
     positionText->translation(0.0,0.0,0.2);
 
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(0.35,1.8,0.5);
+    scaleMenu->scale(0.5,2.0,0.5);
 
     NodeSceneGraph * nodeText=new NodeSceneGraph(false,true);
     nodeText->add(positionText);
@@ -79,12 +79,30 @@ OptionMenu::OptionMenu()
     nodeBack->add(materialBack);
     nodeBack->add(meshCollect->getMesh(TEXT));
 
+    //////////////////////
+    // MainMenuBack
+    Matrix4f * positionMainBack=new Matrix4f();
+    positionMainBack->translation(0.725,0.5,0.8);
+
+    Matrix4f * scaleMain=new Matrix4f();
+    scaleMain->scale(0.35,1.8,0.5);
+
+    Material * material=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainMenuOption.png");
+
+    NodeSceneGraph * nodeMainBack=new NodeSceneGraph(false,true);
+    nodeMainBack->add(positionMainBack);
+    nodeMainBack->add(scaleMain);
+    nodeMainBack->add(material);
+    nodeMainBack->add(meshCollect->getMesh(TEXT));
+
+
     root=new NodeSceneGraph(false,true);
     root->add(positionMenu);
     root->add(rotationMenu);
     root->add(betweenMenu);
     root->add(nodeBack);
     root->add(nodeText);
+    root->add(nodeMainBack);
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
 
