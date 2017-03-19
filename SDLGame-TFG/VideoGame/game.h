@@ -37,6 +37,7 @@
 #include "../GraphicEngine/gamestate.h"
 #include "../GraphicEngine/savedmanager.h"
 #include "../GraphicEngine/optionmanager.h"
+#include "../GraphicEngine/herostate.h"
 #include "projectile.h"
 #include "hero.h"
 #include <SDL_gamecontroller.h>
@@ -99,6 +100,7 @@ class Game
         OptionManager * options;
         GameState gameState;
         Hero * hero;
+        HeroState * heroState;
         Text * lifeText,* coinText;
         Notification * notiGamePad;
         Shader * shadowShader,* normalShader;

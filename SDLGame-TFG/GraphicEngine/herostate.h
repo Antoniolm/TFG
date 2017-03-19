@@ -24,6 +24,7 @@
 #include "text.h"
 #include "materialcollection.h"
 #include "meshcollection.h"
+#include <sstream>
 
 class HeroState : public Object3D
 {
@@ -60,8 +61,9 @@ class HeroState : public Object3D
     private:
         NodeSceneGraph * root;
         Text * coinText;
-        Material * currentMaterial;
+        Material * currentMaterialLife;
         Matrix4f * positionState;
+        int currentLife,currentCoin;
 };
 
 #endif // HEROSTATE_H

@@ -20,10 +20,12 @@
 #include "herostate.h"
 
 HeroState::HeroState(){
+    currentCoin=0;
+    currentLife=100;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
-    currentMaterial=materialCollect->getMaterial(mLIFE100);
+    currentMaterialLife=materialCollect->getMaterial(mLIFE100);
 
     position=vec4f(0.0,6.70,11.0,1.0);
 
@@ -44,7 +46,7 @@ HeroState::HeroState(){
     NodeSceneGraph * nodeLife=new NodeSceneGraph(false,true);
     nodeLife->add(positionText);
     nodeLife->add(scaleMenu);
-    nodeLife->add(currentMaterial);
+    nodeLife->add(currentMaterialLife);
     nodeLife->add(meshCollect->getMesh(TEXT));
 
     ///////////////////////
@@ -85,6 +87,22 @@ void HeroState::visualization(Context & cv){
 //**********************************************************************//
 
 void HeroState::updateState(GameState & gameState){
-    vec3f posHero=gameState.rootMap->getHero()->getPosition();
+    Hero * hero=gameState.rootMap->getHero();
+    vec3f posHero=hero->getPosition();
     positionState->translation(posHero.x,posHero.y+7.4,posHero.z+10.6);
+    int heroLife=hero->getLife();
+    int heroCoin=hero->getCoin();
+
+
+    if(currentLife!=heroLife && heroLife>=0){
+        std::stringstream life;
+        life<<  "mLIFE" << heroLife;
+        currentMaterialLife->setTexture(MaterialCollection::getInstance()->getMaterial(life.str())->getTexture());
+    }
+    if(currentCoin!=heroCoin){
+
+    }
+
+    currentLife=heroLife;
+    currentCoin=heroCoin;
 }
