@@ -27,14 +27,14 @@ HeroState::HeroState(){
     /////             Initialize text                /////
     //////////////////////////////////////////////////////
     TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 10);
-    SDL_Color color2= {0,255,0};
-    coinText=new Text(mVOID,font,color2,false);
+    SDL_Color color= {0,255,0};
+    coinText=new Text(mVOID,font,color,false);
 
 
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
-    currentMaterialLife=materialCollect->getMaterial(mVOID);
+    currentMaterialLife=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/void.png");
 
     position=vec4f(0.0,6.70,11.0,1.0);
 

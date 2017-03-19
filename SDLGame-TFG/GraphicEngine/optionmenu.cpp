@@ -26,7 +26,7 @@ OptionMenu::OptionMenu()
     MeshCollection * meshCollect =MeshCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
-    currentMaterial=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/optionResol.png");
+    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/optionResol.png");
     Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainBackMenu.png");
 
     //Initialize text
@@ -229,7 +229,7 @@ void OptionMenu::updateState(GameState & gameState){
             switch(currentOption){
                 case 0: //ResolutionOption
                     indexResolution++;
-                    if(indexResolution==resolution.size()){
+                    if((unsigned)indexResolution==resolution.size()){
                         indexResolution=0;
                     }
                     sStream << resolution[indexResolution].first<< "x"<< resolution[indexResolution].second;
@@ -334,12 +334,11 @@ void OptionMenu::updateOption(int option,string value){
 void OptionMenu::initOptions(){
     OptionManager * options=OptionManager::getInstance();
     pair<int,int> currentResolution=options->getResolution();
-    int currentPosResol;
     window=options->getWindow();
     volume=options->getVolume();
 
     //ResolutionOption
-    for(int i=0;i<resolution.size();i++)
+    for(unsigned i=0;i<resolution.size();i++)
         if(currentResolution==resolution[i])
             indexResolution=i;
 

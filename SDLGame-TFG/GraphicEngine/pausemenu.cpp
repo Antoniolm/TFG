@@ -26,7 +26,7 @@ PauseMenu::PauseMenu()
     MeshCollection * meshCollect =MeshCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
-    currentMaterial=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
+    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
 
     positionMenu=new Matrix4f();
@@ -36,9 +36,9 @@ PauseMenu::PauseMenu()
     betweenMenu->translation(0.0,0.0,-0.1);
 
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(0.4,1.5,0.4);
+    scaleMenu->scale(0.2,1.5,0.4);
     Matrix4f * scaleMenuBack=new Matrix4f();
-    scaleMenuBack->scale(4.0,4.0,4.0);
+    scaleMenuBack->scale(5.0,4.0,4.0);
 
     Matrix4f * rotationMenu=new Matrix4f();
     rotationMenu->rotation(20,1.0,0.0,0.0);
