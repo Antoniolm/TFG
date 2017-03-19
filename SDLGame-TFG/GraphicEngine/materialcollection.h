@@ -71,7 +71,13 @@ enum MaterialIndex{
     mDOOR,
     mGLYPH,
     mSOUL,
-    mMAINTITLE
+    mLIFE0,
+    mLIFE25,
+    mLIFE50,
+    mLIFE75,
+    mLIFE100,
+    mCRYSDRAW
+
 };
 
 class Material;
