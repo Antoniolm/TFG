@@ -20,8 +20,17 @@
 #include "herostate.h"
 
 HeroState::HeroState(){
-    currentCoin=0;
+    currentCoin=-10;
     currentLife=100;
+
+    //////////////////////////////////////////////////////
+    /////             Initialize text                /////
+    //////////////////////////////////////////////////////
+    TTF_Font *font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 10);
+    SDL_Color color2= {0,255,0};
+    coinText=new Text(mVOID,font,color2,false);
+
+
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
@@ -82,6 +91,7 @@ HeroState::~HeroState()
 
 void HeroState::visualization(Context & cv){
     root->visualization(cv);
+    coinText->visualization(cv);
 }
 
 //**********************************************************************//
@@ -90,17 +100,24 @@ void HeroState::updateState(GameState & gameState){
     Hero * hero=gameState.rootMap->getHero();
     vec3f posHero=hero->getPosition();
     positionState->translation(posHero.x,posHero.y+7.4,posHero.z+10.6);
+    coinText->setPosition(vec3f(posHero.x+0.74,posHero.y+7.4,posHero.z+10.6));
     int heroLife=hero->getLife();
     int heroCoin=hero->getCoin();
 
 
+    //if the life was changed
     if(currentLife!=heroLife && heroLife>=0){
         std::stringstream life;
         life<<  "mLIFE" << heroLife;
         currentMaterialLife->setTexture(MaterialCollection::getInstance()->getMaterial(life.str())->getTexture());
     }
-    if(currentCoin!=heroCoin){
 
+    //if the value of coin was changed
+    if(currentCoin!=heroCoin){
+        std::stringstream coin;
+        coin<< heroCoin;
+        coinText->setMessage(coin.str());
+        coinText->init();
     }
 
     currentLife=heroLife;
