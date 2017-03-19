@@ -26,33 +26,48 @@ ControlMenu::ControlMenu()
     MeshCollection * meshCollect =MeshCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
-    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/dieMenu.png");
+    currentMaterial=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/controlScreen.png");
     Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainBackMenu.png");
 
     positionMenu=new Matrix4f();
-    positionMenu->translation(0.0,6.752,11.0);
+    positionMenu->translation(0.0,6.70,11.0);
 
     Matrix4f * betweenMenu=new Matrix4f();
-    betweenMenu->translation(0.0,0.0,-0.1);
-
-    Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(0.4,1.5,0.4);
-    Matrix4f * scaleMenuBack=new Matrix4f();
-    scaleMenuBack->scale(4.0,4.0,4.0);
+    betweenMenu->translation(0.0,0.0,-0.2);
 
     Matrix4f * rotationMenu=new Matrix4f();
     rotationMenu->rotation(20,1.0,0.0,0.0);
 
+    ///////////////////////
+    //Text
+    Matrix4f * positionText=new Matrix4f();
+    positionText->translation(0.0,0.2,0.8);
+
+    Matrix4f * scaleMenu=new Matrix4f();
+    scaleMenu->scale(0.35,1.8,0.5);
+
+    NodeSceneGraph * nodeText=new NodeSceneGraph(false,true);
+    nodeText->add(positionText);
+    nodeText->add(scaleMenu);
+    nodeText->add(currentMaterial);
+    nodeText->add(meshCollect->getMesh(TEXT));
+
+    ///////////////////////
+    //Back
+    Matrix4f * scaleMenuBack=new Matrix4f();
+    scaleMenuBack->scale(1.0,4.2,1.0);
+
+    NodeSceneGraph * nodeBack=new NodeSceneGraph(false,true);
+    nodeBack->add(scaleMenuBack);
+    nodeBack->add(materialBack);
+    nodeBack->add(meshCollect->getMesh(TEXT));
+
     root=new NodeSceneGraph(false,true);
     root->add(positionMenu);
     root->add(rotationMenu);
-    root->add(scaleMenu);
-    root->add(currentMaterial);
-    root->add(meshCollect->getMesh(TEXT));
     root->add(betweenMenu);
-    root->add(scaleMenuBack);
-    root->add(materialBack);
-    root->add(meshCollect->getMesh(TEXT));
+    root->add(nodeBack);
+    root->add(nodeText);
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
 

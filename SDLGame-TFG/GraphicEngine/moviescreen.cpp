@@ -33,7 +33,7 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
     }
     else{
         activateMenu=true;
-        currentMaterial=materialCollect->getMaterial(mVOID);
+        currentMaterial=new Material();
 
         for(unsigned i=0;i<movieFeatures.Size();i++){
             textures.push_back(movieFeatures[i]["texture"].GetString());
