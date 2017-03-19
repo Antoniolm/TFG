@@ -61,6 +61,7 @@ class HeroState : public Object3D
         NodeSceneGraph * root;
         Text * coinText;
         Material * currentMaterial;
+        Matrix4f * positionState;
 };
 
 #endif // HEROSTATE_H

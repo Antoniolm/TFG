@@ -27,7 +27,7 @@ HeroState::HeroState(){
 
     position=vec4f(0.0,6.70,11.0,1.0);
 
-    Matrix4f * positionState=new Matrix4f();
+    positionState=new Matrix4f();
     positionState->translation(position.x,position.y,position.z);
 
     Matrix4f * rotationMenu=new Matrix4f();
@@ -42,7 +42,7 @@ HeroState::HeroState(){
     scaleMenu->scale(0.35,1.8,0.5);
 
     NodeSceneGraph * nodeLife=new NodeSceneGraph(false,true);
-    nodeLife->add(positionText);
+    //nodeLife->add(positionText);
     nodeLife->add(scaleMenu);
     nodeLife->add(currentMaterial);
     nodeLife->add(meshCollect->getMesh(TEXT));
@@ -81,5 +81,6 @@ void HeroState::visualization(Context & cv){
 //**********************************************************************//
 
 void HeroState::updateState(GameState & gameState){
-
+    vec3f posHero=gameState.rootMap->getHero()->getPosition();
+    positionState->translation(posHero.x-0.72,posHero.y+7.4,posHero.z+10.6);
 }

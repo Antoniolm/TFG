@@ -53,6 +53,8 @@ Game::Game(){
     gameState.loadScreen=new LoadingScreen(250);
     gameState.optionMenu=new OptionMenu();
     gameState.controlMenu=new ControlMenu();
+    heroState=new HeroState();
+
     isClosing=false;
 
     notiGamePad=new Notification(vec3f(0.0,0.0,0.0),vec3f(0.0,0.0,0.0),0,mVOID);
@@ -241,6 +243,7 @@ void Game::loop(){
             gameState.pauseMenu->updateState(gameState);
             gameState.deadMenu->updateState(gameState);
             gameState.rootMap->updateState(gameState);
+            heroState->updateState(gameState);
 
             //Update the camera, lifeText, coinText, profile
             gameState.camera->update(gameState,context.currentShader->getProgram(),
@@ -296,8 +299,9 @@ void Game::loop(){
             gameState.rootMap->visualization(context);
 
             gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
-            lifeText->visualization(context);
-            coinText->visualization(context);
+            //lifeText->visualization(context);
+            //coinText->visualization(context);
+            heroState->visualization(context);
             gameState.pauseMenu->visualization(context);
             gameState.deadMenu->visualization(context);
             gameState.movie->visualization(context);
