@@ -79,29 +79,12 @@ class Game
         //////////////////////////////////////////////////////////////////////////
         Game();
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It  will update the life of our user interface
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void updateLife(int &lastLife);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It  will update the crystals of our user interface
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void updateCoin(int & currentCoin);
-
         static Game* instance;
         Window * window;
         OptionManager * options;
         GameState gameState;
         Hero * hero;
         HeroState * heroState;
-        Text * lifeText,* coinText;
         Notification * notiGamePad;
         Shader * shadowShader,* normalShader;
         Context context;

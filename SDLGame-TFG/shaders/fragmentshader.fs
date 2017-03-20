@@ -37,6 +37,7 @@ in vec3 FragPos;
 in vec3 TangentLightPos;
 in vec3 TangentViewPos;
 in vec3 TangentFragPos;
+in vec4 FragPosLightSpace;
 
 // Uniform
 uniform DirLight dirLight;
@@ -50,16 +51,16 @@ uniform bool normalMapping;
 
 uniform sampler2D ourTexture;
 uniform sampler2D normalMap; 
+uniform sampler2D shadowMap; 
 
 //Definition of functions
 vec3 calculateDirLight(DirLight light,vec3 normal,vec3 viewDir);
 vec3 calculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
+float ShadowCalculation(vec4 fragPosLightSpace,vec3 normal, vec3 lightDir);
 
 void main()
 { 
  vec3 result;
- /*if(invertNormal==1) norm = normalize(Normal);
- else norm = normalize(Normal);*/
  vec3 norm = normalize(Normal);
 
 if(normalMapping){
@@ -102,6 +103,26 @@ else {
             result += calculatePointLight(pointLights[i], norm, FragPos, viewDir);  
            
         color =texColor * vec4(result, 1.0f);
+        /*vec3 color2 = texture(ourTexture, TextCoord).rgb;
+        vec3 normal = normalize(Normal);
+        vec3 lightColor = vec3(1.0);
+        // Ambient
+        vec3 ambient = 0.15 * color2;
+        // Diffuse
+        vec3 lightDir = normalize(dirLight.direction - FragPos);
+        float diff = max(dot(lightDir, normal), 0.0);
+        vec3 diffuse = diff * lightColor;
+        // Specular
+        vec3 viewDir = normalize(viewPos - FragPos);
+        float spec = 0.0;
+        vec3 halfwayDir = normalize(lightDir + viewDir);  
+        spec = pow(max(dot(normal, halfwayDir), 0.0), 64.0);
+        vec3 specular = spec * lightColor;    
+        // Calculate shadow
+        float shadow = ShadowCalculation(FragPosLightSpace,normal,lightDir);       
+        vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular)) * color2; 
+        
+        color = vec4(lighting, 1.0f);*/
      }
      //If is a menu or text in the scene
      if(noLight==1)
@@ -157,4 +178,21 @@ vec3 calculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewD
     specular *= attenuation;
 
     return (ambient + diffuse + specular);
+}
+
+float ShadowCalculation(vec4 fragPosLightSpace,vec3 normal, vec3 lightDir)
+{
+    // perform perspective divide
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    // Transform to [0,1] range
+    projCoords = projCoords * 0.5 + 0.5;
+    // Get closest depth value from light's perspective (using [0,1] range fragPosLight as coords)
+    float closestDepth = texture(shadowMap, projCoords.xy).r; 
+    // Get depth of current fragment from light's perspective
+    float currentDepth = projCoords.z;
+    // Check whether current frag pos is in shadow
+    float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);  
+    float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;  
+        
+    return shadow;
 }

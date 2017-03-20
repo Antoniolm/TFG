@@ -374,7 +374,7 @@
 	<string>
 	"sound.h"
 
-1489925796 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1490009354 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -402,7 +402,7 @@
 	"window.h"
 	"file_obj.h"
 
-1489946974 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1490008296 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486056205 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1041,7 +1041,7 @@
 	<stdlib.h>
 	<vector>
 
-1489944925 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1489956757 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -1606,7 +1606,7 @@
 1474760808 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\gtc\type_ptr.inl
 	<cstring>
 
-1489857092 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.cpp
+1489957094 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.cpp
 	"material.h"
 
 1489656435 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material.h
@@ -1840,7 +1840,7 @@
 	"materialcollection.h"
 	"soundcollection.h"
 
-1489918867 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
+1489997184 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
 	"pausemenu.h"
 
 1489874032 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
@@ -2151,7 +2151,7 @@
 	"collection.cpp"
 	<string>
 
-1489927179 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
+1490008489 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\materialcollection.cpp
 	"materialcollection.h"
 	"material.h"
 
@@ -2205,7 +2205,7 @@
 	"enemylist.h"
 	<vector>
 
-1487773841 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
+1489997219 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
 	"projectilesystem.h"
 
 1487633398 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.h
@@ -2584,7 +2584,7 @@
 1488972611 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\door.cpp
 	"door.h"
 
-1489937186 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmenu.cpp
+1489956754 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmenu.cpp
 	"optionmenu.h"
 
 1489226618 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmenu.h
@@ -2633,10 +2633,10 @@
 	"materialcollection.h"
 	"soundcollection.h"
 
-1489937138 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controlmenu.cpp
+1489954072 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controlmenu.cpp
 	"controlmenu.h"
 
-1489946947 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\herostate.cpp
+1489957513 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\herostate.cpp
 	"herostate.h"
 
 1489946951 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\herostate.h

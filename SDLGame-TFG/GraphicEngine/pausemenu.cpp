@@ -36,7 +36,7 @@ PauseMenu::PauseMenu()
     betweenMenu->translation(0.0,0.0,-0.1);
 
     Matrix4f * scaleMenu=new Matrix4f();
-    scaleMenu->scale(0.2,1.5,0.4);
+    scaleMenu->scale(0.3,1.5,0.4);
     Matrix4f * scaleMenuBack=new Matrix4f();
     scaleMenuBack->scale(5.0,4.0,4.0);
 
