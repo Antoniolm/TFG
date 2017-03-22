@@ -182,7 +182,7 @@ void FileObj::calculate_normals(std::vector<vec3f> & vertex,std::vector<GLushort
         normals[i2]=normals[i2] + normalFace;
 	}
 
-    for(unsigned k=0;k<normals.size();k++){
+    for(unsigned k=0;k<vertex.size();k++){
         normals[k].normalize();
 	}
 

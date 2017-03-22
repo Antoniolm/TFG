@@ -56,12 +56,17 @@ uniform sampler2D shadowMap;
 //Definition of functions
 vec3 calculateDirLight(DirLight light,vec3 normal,vec3 viewDir);
 vec3 calculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
-float ShadowCalculation(vec4 fragPosLightSpace,vec3 normal, vec3 lightDir);
+float calculateShadow(vec4 fragPosLightSpace,vec3 normal, vec3 lightDir);
 
 void main()
 { 
  vec3 result;
  vec3 norm = normalize(Normal);
+
+//Calculate color of our texture
+ vec4 texColor = texture(ourTexture,TextCoord);
+ if(texColor.a < 0.1)
+    discard;
 
 if(normalMapping){
     // Obtain normal from normal map in range [0,1]
@@ -87,12 +92,6 @@ if(normalMapping){
     color = vec4(ambient * dirLight.ambient * material.ambient + diffuse * dirLight.diffuse * material.diffuse + specular * dirLight.specular * material.specular, 1.0f);   
 }
 else {
-
-     //Calculate color of our texture
-     vec4 texColor = texture(ourTexture,TextCoord);
-     if(texColor.a < 0.1)
-            discard;
-
     //If is a object in the scene
      if(noLight==0){   
         vec3 viewDir = normalize(viewPos - FragPos);
