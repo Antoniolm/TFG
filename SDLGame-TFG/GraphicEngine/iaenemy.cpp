@@ -59,7 +59,7 @@ bool IAEnemy::checkCollision(vector<vec3f> & posEnemies,vec3f currentEnemy){
     float distance;
     for(unsigned i=0;i<posEnemies.size();i++){
         distance=sqrt(pow(currentEnemy.x-posEnemies[i].x,2.0)+pow(currentEnemy.z-posEnemies[i].z,2.0));
-        if(distance<0.5 && distance>0.2)
+        if(distance<0.5 && distance>0.21)
             result=true;
     }
 

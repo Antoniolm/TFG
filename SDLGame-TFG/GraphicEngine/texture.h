@@ -60,7 +60,8 @@ class Texture
     	void bindTexture(int ch=0);
 
     protected:
-
+        std::string fileName;
+        GLuint texture;
     private:
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -69,8 +70,7 @@ class Texture
         */
         //////////////////////////////////////////////////////////////////////////
         void createTexture();
-        std::string fileName;
-        GLuint texture;
+
 };
 
 #endif // TEXTURE_H

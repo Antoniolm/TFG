@@ -24,11 +24,11 @@ MaterialCollection* MaterialCollection::instance = NULL;
 
 MaterialCollection::MaterialCollection()
 {
-    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeon.png","./textures/cubeDungeonBump.png",mCUBE_DUNG));
+    collection.addElement(new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeon.png","./textures/cubeDungeonBump.png",mCUBE_DUNG));
 
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeonB.png","",mCUBE_DUNGB));
 
-    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeWall.png","./textures/cubeWallBump.png",mCUBE_WALL));
+    collection.addElement(new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeWall.png","./textures/cubeWallBump.png",mCUBE_WALL));
 
     collection.addElement(new Material(vec3f(0.7f, 0.7f, 0.7f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/invisiblecubeWall.png","",mINVICUBE_WALL));
 
@@ -50,9 +50,9 @@ MaterialCollection::MaterialCollection()
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/shieldTexture.png","",mSHIELD));
 
     //Enemy material
-    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/enemyTexture.png","",mENEMY));
+    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/enemyTexture.png","./textures/enemyTextureBump.png",mENEMY));
 
-    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/archerTexture.png","",mARCHENEMY));
+    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/archerTexture.png","./textures/archerTextureBump.png",mARCHENEMY));
 
     //Text Material
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"textures/dialog.png","",mDIALOG));
