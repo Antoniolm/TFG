@@ -489,7 +489,10 @@ void Hero::updateState(GameState & gameState){
     //Case-> Push W bottom to shield
     if(controller->checkButton(cSHIELD) && !isHitting && soul==0){ //If hero is shielding
         isShielded=true;
-        animations.activate(2); //Activate animation
+        if(hasMove)
+            animations.activate(3); //Activate animation
+        else
+            animations.activate(2); //Activate animation
     }
     else { //if not
         isShielded=false;
@@ -521,15 +524,16 @@ void Hero::updateState(GameState & gameState){
     //If the jump is activate
     if(isJumping){
         jump(time);
-        animations.activate(3);
+        animations.activate(4);
         heroSound[0]->stop(channelSound[0]);
         channelSound[0]=-1;
     }
     //If the jump is not activate
     else {
         ObjectScene * object=gravity(time);
-        if(!isShielded)
-            animations.activate(4);
+        if(!isShielded){
+            animations.activate(5);
+        }
         if(object!=0 && object->getDamage()!=0.0 && dmgDelay<(time-200)){ //If the object do damage
             takeDamage(object->getDamage());
             dmgDelay=time;
@@ -566,7 +570,7 @@ void Hero::updateState(GameState & gameState){
 
             break;
             case RANGED: //if is the crossbow
-                animations.activate(5);
+                animations.activate(6);
                 ScriptLMD * animationHit=animations.getAnimation();
                 if(animationHit->getScriptState(6)==1 && shootDelay<(time-700)){
                     shootDelay=time;
@@ -594,12 +598,15 @@ void Hero::updateState(GameState & gameState){
         switch(currentWeapon->getType()){
             case MELEE: animations.activate(1);
             break;
-            case RANGED: animations.activate(5);
+            case RANGED: animations.activate(6);
             break;
         }
     }
     if(soul!=0){
-        animations.activate(6);
+        if(hasMove)
+            animations.activate(8);
+        else
+            animations.activate(7);
     }
 
     if(animations.getState()!=-1){
@@ -798,7 +805,7 @@ Soul * Hero::getSoul(){
  void Hero::initAnimation(){
 
     //////////////////////////////////
-    // Move Animation
+    // 0- Move Animation
     /////////////////////////////////
     ScriptLMD * animation=new ScriptLMD();
     ///////////////////
@@ -894,7 +901,7 @@ Soul * Hero::getSoul(){
     animations.add(animation);
 
     /////////////////////////////////
-    // ANIMATION HIT
+    // 1- ANIMATION HIT
     /////////////////////////////////
     animation=new ScriptLMD();
 
@@ -1025,25 +1032,21 @@ Soul * Hero::getSoul(){
     animations.add(animation);
 
     /////////////////////////////////
-    // ANIMATION SHIELD
+    // 2- ANIMATION SHIELD - NO WALK
     /////////////////////////////////
     animation=new ScriptLMD();
     ///////////////////
     // LEG
     //////////////////
-    oscillateLeg=new OscillateRotation(true,30,0,1,150,vec3f(1,0,0),2);
-    oscillateLegSecond=new OscillateRotation(false,0,-30,1,150,vec3f(1,0,0),1);
-
     //Movement to the first leg
     LegScriptLeft=new MatrixScript();
-    LegScriptLeft->add(0.3,oscillateLeg);
-    LegScriptLeft->add(0.3,oscillateLegSecond);
-
+    LegScriptLeft->add(0.3,notMove);
+    LegScriptLeft->add(0.3,notMove);
 
     //Movement to the second leg
     LegScriptRight=new MatrixScript();
-    LegScriptRight->add(0.3,oscillateLegSecond);
-    LegScriptRight->add(0.3,oscillateLeg);
+    LegScriptRight->add(0.3,notMove);
+    LegScriptRight->add(0.3,notMove);
 
     //Add the script to our animation
     animation->add(LegScriptRight);
@@ -1105,6 +1108,97 @@ Soul * Hero::getSoul(){
 
     //Move body
     bodyScript=new MatrixScript();
+    bodyScript->add(0.3,notMove);
+
+    bodyTScript=new MatrixScript();
+    bodyTScript->add(0.3,notMove);
+
+    animation->add(bodyScript);
+    animation->add(bodyTScript);
+
+    animations.add(animation);
+
+    /////////////////////////////////
+    // 3- ANIMATION SHIELD - WALK
+    /////////////////////////////////
+    animation=new ScriptLMD();
+    ///////////////////
+    // LEG
+    //////////////////
+    oscillateLeg=new OscillateRotation(true,30,0,1,150,vec3f(1,0,0),2);
+    oscillateLegSecond=new OscillateRotation(false,0,-30,1,150,vec3f(1,0,0),1);
+
+    //Movement to the first leg
+    LegScriptLeft=new MatrixScript();
+    LegScriptLeft->add(0.3,oscillateLeg);
+    LegScriptLeft->add(0.3,oscillateLegSecond);
+
+
+    //Movement to the second leg
+    LegScriptRight=new MatrixScript();
+    LegScriptRight->add(0.3,oscillateLegSecond);
+    LegScriptRight->add(0.3,oscillateLeg);
+
+    //Add the script to our animation
+    animation->add(LegScriptRight);
+    animation->add(LegScriptLeft);
+
+    ///////////////////
+    // ARM
+    //////////////////
+    //Matrix4fDinamic
+    shoulderCharge=new OscillateRotation(false,0,-40,1,250,vec3f(1.0,0.0,0),1);
+    rotateShoulder=new Matrix4f();
+    rotateShoulder->rotation(90,1.0,0.0,0.0);
+
+    rotateElbow=new Matrix4f();
+    rotateElbow->rotation(60,0.0,0.0,1.0);
+
+    TransElbow=new Matrix4f();
+    TransElbow->translation(-0.5,-0.3,-0.3);
+
+    staticShoulder=new MatrixStatic(*rotateShoulder);
+    staticElbow=new MatrixStatic(*rotateElbow);
+    staticTrans=new MatrixStatic(*TransElbow);
+
+    //Movement to the first arm
+    ElbowScriptLeft=new MatrixScript();
+    ArmScriptLeft=new MatrixScript();
+    ElbowScriptTLeft=new MatrixScript();
+
+    ElbowScriptLeft->add(0.5,staticElbow);
+    ArmScriptLeft->add(0.5,staticShoulder);
+    ElbowScriptTLeft->add(0.5,staticTrans);
+
+    //Movement to the second arm
+    ElbowScriptRight=new MatrixScript();
+    ElbowScriptTRight=new MatrixScript();
+    ArmScriptRight=new MatrixScript();
+    ArmScriptTRight=new MatrixScript();
+    ElbowScriptRight->add(0.5,notMove);
+    ElbowScriptTRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,notMove);
+    ArmScriptTRight->add(0.5,notMove);
+
+
+    //Add the script to our animation
+    animation->add(ElbowScriptRight);  //4
+    animation->add(ElbowScriptTRight); //7
+    animation->add(ElbowScriptLeft);   //5
+    animation->add(ElbowScriptTLeft);  //7
+    animation->add(ArmScriptRight);
+    animation->add(ArmScriptTRight);
+    animation->add(ArmScriptLeft);     //7
+
+
+    ///////////////////
+    // BODY
+    //////////////////
+    oscillateBody=new OscillateRotation(true,5,0,1,25,vec3f(0,1,0),1);
+    oscillateBodySecond=new OscillateRotation(false,0,-5,1,25,vec3f(0,1,0),1);
+
+    //Move body
+    bodyScript=new MatrixScript();
     bodyScript->add(0.3,oscillateBody);
     bodyScript->add(0.3,oscillateBodySecond);
 
@@ -1120,7 +1214,7 @@ Soul * Hero::getSoul(){
     animations.add(animation);
 
     /////////////////////////////////
-    // ANIMATION JUMP
+    // 4- ANIMATION JUMP
     /////////////////////////////////
     animation=new ScriptLMD();
     ///////////////////
@@ -1199,7 +1293,7 @@ Soul * Hero::getSoul(){
 
 
     /////////////////////////////////
-    // ANIMATION GRAVITY
+    // 5- ANIMATION GRAVITY
     /////////////////////////////////
     animation=new ScriptLMD();
     ///////////////////
@@ -1282,7 +1376,7 @@ Soul * Hero::getSoul(){
 
 
     /////////////////////////////////
-    // ANIMATION HIT-RANGED
+    // 6- ANIMATION HIT-RANGED
     /////////////////////////////////
     animation=new ScriptLMD();
     oscillateLeg=new OscillateRotation(true,40,0,1,150,vec3f(1,0,0),2);
@@ -1360,7 +1454,93 @@ Soul * Hero::getSoul(){
 
 
     /////////////////////////////////
-    // ANIMATION SOUL IN ARMS
+    // 7- ANIMATION SOUL IN ARMS - NO WALK
+    /////////////////////////////////
+    animation=new ScriptLMD();
+    ///////////////////
+    // LEG
+    //////////////////
+    oscillateLeg=new OscillateRotation(true,30,0,1,150,vec3f(1,0,0),2);
+    oscillateLegSecond=new OscillateRotation(false,0,-30,1,150,vec3f(1,0,0),1);
+
+    //Movement to the first leg
+    LegScriptLeft=new MatrixScript();
+    LegScriptLeft->add(0.3,notMove);
+
+
+    //Movement to the second leg
+    LegScriptRight=new MatrixScript();
+    LegScriptRight->add(0.3,notMove);
+
+    //Add the script to our animation
+    animation->add(LegScriptRight);
+    animation->add(LegScriptLeft);
+
+    ///////////////////
+    // ARM
+    //////////////////
+    //Matrix4fDinamic
+    rotateShoulder=new Matrix4f();
+    rotateShoulder->rotation(70,1.0,0.0,0.0);
+
+    Matrix4f * rotateShoulderYLeft=new Matrix4f();
+    rotateShoulderYLeft->rotation(20,0.0,0.0,1.0);
+    rotateShoulderYLeft->product(rotateShoulder->getMatrix());
+
+    Matrix4f * rotateShoulderYRight=new Matrix4f();
+    rotateShoulderYRight->rotation(-20,0.0,0.0,1.0);
+    rotateShoulderYRight->product(rotateShoulder->getMatrix());
+
+    MatrixStatic * staticShoulderLeft=new MatrixStatic(*rotateShoulderYLeft);
+    MatrixStatic * staticShoulderRight=new MatrixStatic(*rotateShoulderYRight);
+
+    //Movement to the first arm
+    ElbowScriptLeft=new MatrixScript();
+    ArmScriptLeft=new MatrixScript();
+    ElbowScriptTLeft=new MatrixScript();
+    ElbowScriptLeft->add(0.5,notMove);
+    ArmScriptLeft->add(0.5,staticShoulderLeft);
+    ElbowScriptTLeft->add(0.5,notMove);
+
+    //Movement to the second arm
+    ElbowScriptRight=new MatrixScript();
+    ArmScriptRight=new MatrixScript();
+    ArmScriptTRight=new MatrixScript();
+    ElbowScriptTRight=new MatrixScript();
+    ElbowScriptRight->add(0.5,notMove);
+    ArmScriptRight->add(0.5,staticShoulderRight);
+    ArmScriptTRight->add(0.5,notMove);
+    ElbowScriptTRight->add(0.5,notMove);
+
+
+    //Add the script to our animation
+    animation->add(ElbowScriptRight);
+    animation->add(ElbowScriptTRight);
+    animation->add(ElbowScriptLeft);
+    animation->add(ElbowScriptTLeft);
+    animation->add(ArmScriptRight);
+    animation->add(ArmScriptTRight);
+    animation->add(ArmScriptLeft);
+
+
+    ///////////////////
+    // BODY
+    //////////////////
+    //Movement body
+    bodyScript=new MatrixScript();
+    bodyScript->add(0.3,notMove);
+
+    bodyTScript=new MatrixScript();
+    bodyTScript->add(0.3,notMove);
+
+    animation->add(bodyScript);
+    animation->add(bodyTScript);
+
+    animations.add(animation);
+
+
+    /////////////////////////////////
+    // 8- ANIMATION SOUL IN ARMS - WALK
     /////////////////////////////////
     animation=new ScriptLMD();
     ///////////////////
@@ -1391,16 +1571,16 @@ Soul * Hero::getSoul(){
     rotateShoulder=new Matrix4f();
     rotateShoulder->rotation(70,1.0,0.0,0.0);
 
-    Matrix4f * rotateShoulderYLeft=new Matrix4f();
+    rotateShoulderYLeft=new Matrix4f();
     rotateShoulderYLeft->rotation(20,0.0,0.0,1.0);
     rotateShoulderYLeft->product(rotateShoulder->getMatrix());
 
-    Matrix4f * rotateShoulderYRight=new Matrix4f();
+    rotateShoulderYRight=new Matrix4f();
     rotateShoulderYRight->rotation(-20,0.0,0.0,1.0);
     rotateShoulderYRight->product(rotateShoulder->getMatrix());
 
-    MatrixStatic * staticShoulderLeft=new MatrixStatic(*rotateShoulderYLeft);
-    MatrixStatic * staticShoulderRight=new MatrixStatic(*rotateShoulderYRight);
+    staticShoulderLeft=new MatrixStatic(*rotateShoulderYLeft);
+    staticShoulderRight=new MatrixStatic(*rotateShoulderYRight);
 
     //Movement to the first arm
     ElbowScriptLeft=new MatrixScript();
