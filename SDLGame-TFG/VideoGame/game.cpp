@@ -39,6 +39,7 @@ Game::Game(){
 
     //Create our shader
     normalShader=new Shader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
+    //normalShader=new Shader("shaders/vertexshader.vs","shaders/fragmentShadow.fs");
     shadowShader=new Shader("shaders/depthShader.vs","shaders/depthShader.fs");
     context.currentShader=normalShader;
     glUseProgram(context.currentShader->getProgram()); //We use the program now
@@ -113,31 +114,8 @@ void Game::loop(){
     gameState.camera->setOrthographicProjection(-1,1,-1,1,-3,3);
     gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
 
-    ////////////////////////////////////////
     // Configure depth map FBO
-    ////////////////////////////////////////
-    const GLuint SHADOW_WIDTH = 1024, SHADOW_HEIGHT = 1024;
-    GLuint depthMapFBO;
-    glGenFramebuffers(1, &depthMapFBO);
-
-    // - Create depth texture
-    GLuint depthMap;
-    glGenTextures(1, &depthMap);
-    glBindTexture(GL_TEXTURE_2D, depthMap);
-
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-    glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
-    glDrawBuffer(GL_NONE);
-    glReadBuffer(GL_NONE);
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
-    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    ShadowTexture * depthTexture=new ShadowTexture();
 
     //Show our window.
     window->showScreen();
@@ -245,24 +223,26 @@ void Game::loop(){
             vec3f pos=hero->getPosition();
 
             //1- Render of our deph map for shadow mapping
-            Camera lightCamera(vec3f(1.0,1.0,1.0),vec3f(pos.x,pos.y,pos.z),vec3f(0.0,1.0,0.0));
-            lightCamera.setOrthographicProjection(-10.0,10.0,-10.0,10.0,-10.0,10.0);
+            GLfloat near_plane = -1.0f, far_plane = 10.0f;
+            glm::mat4 lightProjection, lightView;
+            glm::mat4 lightSpaceMatrix;
+            lightProjection=glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, near_plane, far_plane);
+            lightView = glm::lookAt(glm::vec3(pos.x-1.0, pos.y+5.0f,-2.0), glm::vec3(pos.x,0.0,-5.0), glm::vec3(0.0, 1.0, 0.0));
+            lightSpaceMatrix = lightProjection * lightView;
+            /*Camera lightCamera(vec3f(0.0,10,0.0),vec3f(pos.x,pos.y,pos.z),vec3f(0.0,1.0,0.0));
+            lightCamera.setOrthographicProjection(-20.0,20.0,-20.0,20.0,-20.0,30.0);
             Matrix4f * lightSpaceMatrix;
             lightSpaceMatrix=&lightCamera.getOrthoProyection();
-            lightSpaceMatrix->product(lightCamera.getView());
+            lightSpaceMatrix->product(lightCamera.getView());*/
 
             context.currentShader=shadowShader;
             glUseProgram(context.currentShader->getProgram()); //We use the program now
-            lightCamera.activateCamera(context.currentShader->getProgram());
-            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix->getMatrix());
+            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, glm::value_ptr(lightSpaceMatrix));
+            //glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix->getMatrix());
 
-            glViewport(0, 0, SHADOW_WIDTH, SHADOW_HEIGHT);
-            glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
-            glClear(GL_DEPTH_BUFFER_BIT);
-            glCullFace(GL_FRONT);
+            depthTexture->setShadowBuffer(true);
             gameState.rootMap->visualization(context);
-            glCullFace(GL_BACK);
-            glBindFramebuffer(GL_FRAMEBUFFER, 0);
+            depthTexture->setShadowBuffer(false);
 
 
             //2- Normal render of our scene
@@ -274,15 +254,16 @@ void Game::loop(){
             gameState.rootMap->activatedLight(context.currentShader->getProgram());
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "ourTexture"), 0);
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "normalMap"), 1);
-            glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), " "), 2);
+            glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "shadowMap"), 2);
             glUniform3f(glGetUniformLocation(context.currentShader->getProgram(), "lightPosVertex"), pos.x,pos.y+10,pos.z+2.0);
             gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
-            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix->getMatrix());
+            //glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix->getMatrix());
+            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, glm::value_ptr(lightSpaceMatrix));
 
             glActiveTexture(GL_TEXTURE2);
-            glBindTexture(GL_TEXTURE_2D,depthMapFBO);
-
+            depthTexture->bindTexture();
             gameState.rootMap->visualization(context);
+
 
             gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
             heroState->visualization(context);
@@ -290,9 +271,6 @@ void Game::loop(){
             gameState.deadMenu->visualization(context);
             gameState.movie->visualization(context);
             notiGamePad->visualization(context);
-
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D,depthMapFBO);
 
             profile->addVisualTime(SDL_GetTicks()-time);
             profile->incrementFrames();

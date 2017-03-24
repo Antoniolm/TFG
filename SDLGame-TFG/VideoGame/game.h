@@ -38,10 +38,15 @@
 #include "../GraphicEngine/savedmanager.h"
 #include "../GraphicEngine/optionmanager.h"
 #include "../GraphicEngine/herostate.h"
+#include "../GraphicEngine/shadowtexture.h"
 #include "projectile.h"
 #include "hero.h"
 #include <SDL_gamecontroller.h>
 #include <sstream>
+
+#include "../lib/glm/glm/glm.hpp"
+#include "../lib/glm/glm/gtc/matrix_transform.hpp"
+#include "../lib/glm/glm/gtc/type_ptr.hpp"
 
 class Game
 {

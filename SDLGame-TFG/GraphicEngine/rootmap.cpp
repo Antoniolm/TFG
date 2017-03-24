@@ -357,11 +357,12 @@ EnemyList * RootMap::getEnemyList(){
 void RootMap::visualization(Context & cv){
     vec3f position,posHero=hero->getPosition();
     //Draw background
-    background->visualization(cv);
+    //background->visualization(cv);
 
     //Draw object groups
-    for(unsigned i=0;i<objectGroup.size();i++)
+    for(unsigned i=0;i<objectGroup.size();i++){
         objectGroup[i]->visualization(cv);
+    }
 
     //Draw hero
     hero->visualization(cv);
@@ -440,7 +441,6 @@ void RootMap::updateState(GameState & gameState){
         //Update the Scene
         for(unsigned i=0;i<objectGroup.size();i++)
             objectGroup[i]->updateState(gameState);
-
         //Update the Scene
         itemList->updateState(gameState);
 

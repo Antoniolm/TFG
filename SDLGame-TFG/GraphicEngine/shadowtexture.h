@@ -41,7 +41,7 @@ class ShadowTexture : public Texture
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-    	//void bindTexture();
+    	void bindTexture();
 
         void setShadowBuffer(bool value);
         GLuint getFrameBuffer();
@@ -56,7 +56,7 @@ class ShadowTexture : public Texture
         */
         //////////////////////////////////////////////////////////////////////////
         void createTexture();
-        GLuint depthMapFBO;
+        GLuint depthMapFBO,depthMap;
         GLuint shadowHeight,shadowWidth;
 };
 
