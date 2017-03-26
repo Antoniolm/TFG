@@ -78,7 +78,7 @@ void Camera::setOrthographicProjection(float left,float right,float bottom,float
     GLfloat * projec=new GLfloat[16];
     projec[0]=2.0f/(right-left);        projec[1]=0;                        projec[2]=0;                 projec[3]=((right+left)/(right-left));
 	projec[4]=0;                        projec[5]=2.0f/(top-bottom);        projec[6]=0;                 projec[7]=((top+bottom)/(top-bottom));
-	projec[8]=0;                        projec[9]=0;                        projec[10]=-2.0f/(farPro-nearPro); projec[11]=(farPro+nearPro)/(farPro-nearPro);
+	projec[8]=0;                        projec[9]=0;                        projec[10]=-2.0f/(farPro-nearPro); projec[11]=-(farPro+nearPro)/(farPro-nearPro);
 	projec[12]=0;                       projec[13]=0;                       projec[14]=0;                projec[15]=1;
 
 	orthoProjection.setMatrix(projec);

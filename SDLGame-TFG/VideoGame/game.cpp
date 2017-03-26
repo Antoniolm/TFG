@@ -224,21 +224,14 @@ void Game::loop(){
 
             //1- Render of our deph map for shadow mapping
             GLfloat near_plane = -1.0f, far_plane = 10.0f;
-            glm::mat4 lightProjection, lightView;
-            glm::mat4 lightSpaceMatrix;
-            lightProjection=glm::ortho(-20.0f, 20.0f, -20.0f, 20.0f, near_plane, far_plane);
-            lightView = glm::lookAt(glm::vec3(pos.x-1.0, pos.y+5.0f,-2.0), glm::vec3(pos.x,0.0,-5.0), glm::vec3(0.0, 1.0, 0.0));
-            lightSpaceMatrix = lightProjection * lightView;
-            /*Camera lightCamera(vec3f(0.0,10,0.0),vec3f(pos.x,pos.y,pos.z),vec3f(0.0,1.0,0.0));
-            lightCamera.setOrthographicProjection(-20.0,20.0,-20.0,20.0,-20.0,30.0);
-            Matrix4f * lightSpaceMatrix;
-            lightSpaceMatrix=&lightCamera.getOrthoProyection();
-            lightSpaceMatrix->product(lightCamera.getView());*/
+            LightCamera lightCamera;
+            lightCamera.setCamera(vec3f(pos.x-1.0, pos.y+5.0f,-2.0),vec3f(pos.x,0.0,-5.0),vec3f(0.0,1.0,0.0));
+            lightCamera.setOrthoProyection(-20.0,20.0,-20.0,20.0,near_plane,far_plane);
+            lightCamera.createLightSpace();
 
             context.currentShader=shadowShader;
             glUseProgram(context.currentShader->getProgram()); //We use the program now
-            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, glm::value_ptr(lightSpaceMatrix));
-            //glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix->getMatrix());
+            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightCamera.getLightSpace().getMatrix());
 
             depthTexture->setShadowBuffer(true);
             gameState.rootMap->visualization(context);
@@ -257,8 +250,7 @@ void Game::loop(){
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "shadowMap"), 2);
             glUniform3f(glGetUniformLocation(context.currentShader->getProgram(), "lightPosVertex"), pos.x,pos.y+10,pos.z+2.0);
             gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
-            //glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpaceMatrix->getMatrix());
-            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, glm::value_ptr(lightSpaceMatrix));
+            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightCamera.getLightSpace().getMatrix());
 
             glActiveTexture(GL_TEXTURE2);
             depthTexture->bindTexture();

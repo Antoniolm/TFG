@@ -29,6 +29,7 @@
 #include "../GraphicEngine/axisrotation.h"
 #include "../GraphicEngine/rootmap.h"
 #include "../GraphicEngine/camera.h"
+#include "../GraphicEngine/lightcamera.h"
 #include "../GraphicEngine/structdata.h"
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/controllermanager.h"
@@ -43,11 +44,6 @@
 #include "hero.h"
 #include <SDL_gamecontroller.h>
 #include <sstream>
-
-#include "../lib/glm/glm/glm.hpp"
-#include "../lib/glm/glm/gtc/matrix_transform.hpp"
-#include "../lib/glm/glm/gtc/type_ptr.hpp"
-
 class Game
 {
     public:
