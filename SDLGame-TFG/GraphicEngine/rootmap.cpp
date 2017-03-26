@@ -357,7 +357,7 @@ EnemyList * RootMap::getEnemyList(){
 void RootMap::visualization(Context & cv){
     vec3f position,posHero=hero->getPosition();
     //Draw background
-    //background->visualization(cv);
+    background->visualization(cv);
 
     //Draw object groups
     for(unsigned i=0;i<objectGroup.size();i++){
