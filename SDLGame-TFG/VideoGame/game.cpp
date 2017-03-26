@@ -39,7 +39,6 @@ Game::Game(){
 
     //Create our shader
     normalShader=new Shader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    //normalShader=new Shader("shaders/vertexshader.vs","shaders/fragmentShadow.fs");
     shadowShader=new Shader("shaders/depthShader.vs","shaders/depthShader.fs");
     context.currentShader=normalShader;
     glUseProgram(context.currentShader->getProgram()); //We use the program now
