@@ -224,8 +224,8 @@ void Game::loop(){
             //1- Render of our deph map for shadow mapping
             GLfloat near_plane = -1.0f, far_plane = 10.0f;
             LightCamera lightCamera;
-            lightCamera.setCamera(vec3f(pos.x-1.0, pos.y+5.0f,-2.0),vec3f(pos.x,0.0,-5.0),vec3f(0.0,1.0,0.0));
-            lightCamera.setOrthoProyection(-20.0,20.0,-20.0,20.0,near_plane,far_plane);
+            lightCamera.setCamera(vec3f(pos.x-1.0, pos.y+5.0f,pos.z-2.0),vec3f(pos.x,0.0,pos.z-5.0),vec3f(0.0,1.0,0.0));
+            lightCamera.setOrthoProyection(-30.0,30.0,-30.0,30.0,near_plane,far_plane);
             lightCamera.createLightSpace();
 
             context.currentShader=shadowShader;

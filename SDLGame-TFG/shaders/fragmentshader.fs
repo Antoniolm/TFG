@@ -143,9 +143,6 @@ vec3 calculateDirLight(DirLight light,vec3 normal,vec3 viewDir){
     // Specular shading
     vec3 halfwayDir = normalize(lightDir +viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), material.shininess);
-        //vec3 reflectDir = reflect(-lightDir, normal);
-    //float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
-
 
     // Combine results
     vec3 ambient = light.ambient * material.ambient;
@@ -166,8 +163,6 @@ vec3 calculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewD
     // Specular shading
     vec3 halfwayDir = normalize(lightDir +viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), material.shininess);
-    //vec3 reflectDir = reflect(-lightDir, normal);
-    //float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
 
     // Attenuation
     float distance = length(light.position - fragPos);
@@ -194,8 +189,22 @@ float calculateShadow(vec4 fragPosLightSpace,vec3 normal, vec3 lightDir)
     // Get depth of current fragment from light's perspective
     float currentDepth = projCoords.z;
     // Check whether current frag pos is in shadow
-    float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);  
-    float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;  
+    float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);   
         
+    // Check whether current frag pos is in shadow
+    //PCF
+    float shadow = 0.0;
+    vec2 texelSize = 1.0 / textureSize(shadowMap, 0);
+    for(int x = -1; x <= 1; ++x){
+        for(int y = -1; y <= 1; ++y)    {
+            float pcfDepth = texture(shadowMap, projCoords.xy + vec2(x, y) * texelSize).r; 
+            shadow += currentDepth - bias > pcfDepth ? 1.0 : 0.0;        
+        }    
+    }
+    shadow /= 9.0;
+
+    if(projCoords.z>1.0)
+        shadow=0.0;
+
     return shadow;
 }
