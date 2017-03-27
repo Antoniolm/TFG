@@ -98,15 +98,15 @@ if(normalMapping){
 else {
     //If is a object in the scene
      if(noLight==0){   
-        /*vec3 viewDir = normalize(viewPos - FragPos);
+        vec3 viewDir = normalize(viewPos - FragPos);
      
         result = calculateDirLight(dirLight, norm, viewDir);
 
         for(int i = 0; i < numActivateLight; i++)
             result += calculatePointLight(pointLights[i], norm, FragPos, viewDir);  
            
-        color =texColor * vec4(result, 1.0f);*/
-        vec3 color2 = texture(ourTexture, TextCoord).rgb;
+        color =texColor * vec4(result, 1.0f);
+        /*vec3 color2 = texture(ourTexture, TextCoord).rgb;
         vec3 normal = normalize(Normal);
         vec3 lightColor = vec3(1.0);
         // Ambient
@@ -125,7 +125,7 @@ else {
         float shadow = calculateShadow(FragPosLightSpace,normal,lightDir);       
         vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular)) * color2; 
         
-        color = vec4(lighting, 1.0f);
+        color = vec4(lighting, 1.0f);*/
      }
      //If is a menu or text in the scene
      if(noLight==1)

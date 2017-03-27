@@ -61,7 +61,7 @@ void LightCamera::setCamera(vec3f eye,vec3f target,vec3f up){
     matrix[0]=xCamera.x;  matrix[1]=yCamera.x;  matrix[2]=zCamera.x;  matrix[3]=0;
 	matrix[4]=xCamera.y;  matrix[5]=yCamera.y;  matrix[6]=zCamera.y;  matrix[7]=0;
 	matrix[8]=xCamera.z;  matrix[9]=yCamera.z;  matrix[10]=zCamera.z; matrix[11]=0;
-	matrix[12]=0.0; matrix[13]=0.0; matrix[14]=-(zCamera.dot(eye)); matrix[15]=1;
+	matrix[12]=-(xCamera.dot(eye)); matrix[13]=-(yCamera.dot(eye)); matrix[14]=-(zCamera.dot(eye)); matrix[15]=1;
 
 	camera.setMatrix(matrix);
 }
