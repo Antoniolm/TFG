@@ -287,8 +287,6 @@ void RangedEnemy::updateState(GameState & gameState){
     vec3f posHero=hero->getPosition();
     vec3f distance=vec3f(position.x,position.y,position.z)-posHero;
 
-    checkNearCollision();
-
     if(time-currentTime>200)
         currentTime=time-50;
 

@@ -168,13 +168,13 @@ class AvatarMove: public Avatar
         Projectile * createProjectile(float damage);
 
     protected:
-        void checkNearCollision();
         RootMap * currentMap;
         ObjectScene * currentObject;
         Matrix4f * moveAvatar;
         avatarDirection direction;
         AcceleratedMovement * acceleratedMove;
         vec3f impactMovement;
+        vec3f lastPosition;
         bool isMoving,isFalling,isJumping,isMoveCollision,isHitting,isImpacted,isShielded;
         float currentTime,dmgDelay,impactTime;
     private:

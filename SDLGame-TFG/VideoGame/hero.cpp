@@ -37,6 +37,7 @@ Hero::Hero(vec3f aPos)
     life=100;
     maxLife=100;
     position=vec4f(aPos.x,aPos.y,aPos.z,1.0);
+    lastPosition=position;
     currentCoin=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
@@ -365,8 +366,6 @@ void Hero::updateState(GameState & gameState){
 
     float time=gameState.time;
     RootMap * rootMap=gameState.rootMap;
-
-    checkNearCollision();
 
     if(time-currentTime>200)
         currentTime=time-50;
