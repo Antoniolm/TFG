@@ -144,11 +144,12 @@ class RootMap : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will return the objectScene nearest of the posObj
+        *    The method will check if between the position first and position seoncd there is collision with
+        *    a objectScene
         *    \return ObjectScene *
         */
         //////////////////////////////////////////////////////////////////////////
-        pair<ObjectScene *,float> detectNearObject(const vec3f & posObj);
+        ObjectScene * collision(const vec3f & posFirst, const vec3f & posSecond);
 
         //////////////////////////////////////////////////////////////////////////
         /**

@@ -77,13 +77,6 @@ MainMenu::MainMenu()
 
     openSound=soundCollect->getSound(sOpen);
     moveSound=soundCollect->getSound(sCoin);
-
-    //Add the options
-    addOption(new Texture("./textures/mainMenuStart.png"));
-    addOption(new Texture("./textures/mainMenuCont.png"));
-    addOption(new Texture("./textures/mainMenuControl.png"));
-    addOption(new Texture("./textures/mainMenuOption.png"));
-    addOption(new Texture("./textures/mainMenuQuit.png"));
 }
 
 //**********************************************************************//
@@ -138,10 +131,12 @@ void MainMenu::updateState(GameState & gameState){
             menuDelay=time;
             moveSound->play();
         }
+
+        //If the user push an option
         if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             SavedManager * saveManager;
-            switch(currentOption){
-                case 0: //Start Game
+            switch(actionOption[currentOption]){
+                case START: //Start Game
                     activateMenu=false;
                     if(gameState.rootMap!=0)
                         delete gameState.rootMap;
@@ -150,7 +145,7 @@ void MainMenu::updateState(GameState & gameState){
                     gameState.rootMap=new RootMap("./maps/map00.json",true);
                     openSound->play();
                 break;
-                case 1: //Continue
+                case CONTINUE: //Continue
                     //Catch the saved progress and load the map
                     saveManager=SavedManager::getInstance();
                     saveManager->load();
@@ -165,15 +160,15 @@ void MainMenu::updateState(GameState & gameState){
                         openSound->play();
                     }
                 break;
-                case 2: //Controls
+                case CONTROLS: //Controls
                     gameState.controlMenu->activate();
                     openSound->play();
                 break;
-                case 3: //Option
+                case OPTION: //Option
                     gameState.optionMenu->activate();
                     openSound->play();
                 break;
-                case 4: //Exit
+                case EXIT: //Exit
                     (Profile::getInstance())->showResult();
                     Game::getInstance()->setClose(true);
                 break;
@@ -186,6 +181,13 @@ void MainMenu::updateState(GameState & gameState){
     }
 
     currentTime+=time-currentTime;
+}
+
+//**********************************************************************//
+
+void MainMenu::add(string fileName,MainMenuOption aOption){
+    addOption(new Texture(fileName.c_str()));
+    actionOption.push_back(aOption);
 }
 
 //**********************************************************************//

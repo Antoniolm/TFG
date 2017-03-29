@@ -148,7 +148,7 @@ void PauseMenu::updateState(GameState & gameState){
                         currentOption=0;
                         currentMaterial->setTexture(options[currentOption]);
                         (Profile::getInstance())->showResult();
-                        MainMenu::getInstance()->activate();
+                        gameState.mainMenu->activate();
                         activateMenu=false;
                     break;
 

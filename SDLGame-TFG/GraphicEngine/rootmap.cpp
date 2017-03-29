@@ -540,29 +540,29 @@ ObjectScene * RootMap::collision(const vec3f & indexObj){
 
 //**********************************************************************//
 
-pair<ObjectScene *,float> RootMap::detectNearObject(const vec3f & posObj){
+ObjectScene * RootMap::collision(const vec3f & posFirst, const vec3f & posSecond){
+    bool hasCollision=false;
     ObjectScene * result=0;
     vec3f pos;
     BoundingBox box;
-    float distance,minDistance=20.0;
-    int tam=indexMap[(int)posObj.x][(int)posObj.z*-1].size();
+    int tam=indexMap[(int)posFirst.x][(int)posFirst.z*-1].size();
 
-    vector<int>::iterator it=indexMap[(int)posObj.x][(int)posObj.z*-1].begin();
-    vector<int>::iterator endIt=indexMap[(int)posObj.x][(int)posObj.z*-1].end();
+    vector<int>::iterator it=indexMap[(int)posFirst.x][(int)posFirst.z*-1].begin();
+    vector<int>::iterator endIt=indexMap[(int)posFirst.x][(int)posFirst.z*-1].end();
 
     if(tam!=0 ){
-        for(;it!=endIt;it++){ //if There are object in that position (x,z)
+        for(;it!=endIt && !hasCollision;it++){ //if There are object in that position (x,z)
             pos=objs[(*it)]->getPosition();
             box=objs[(*it)]->getBoundingBox();
-            distance=posObj.y-((pos.y)+box.maxValue.y);
-            if(distance>=0.0 && minDistance>distance){
-                minDistance=distance;
+            if((posFirst.y <= pos.y && posSecond.y >= pos.y)){
+                hasCollision=true;
                 result=objs[(*it)];
             }
         }
     }
 
-    return pair<ObjectScene *,float> (result,minDistance);
+    return result;
+
 }
 
 //**********************************************************************//

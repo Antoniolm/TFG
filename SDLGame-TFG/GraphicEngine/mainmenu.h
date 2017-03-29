@@ -35,6 +35,17 @@
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "soundcollection.h"
+#include <string>
+
+enum MainMenuOption{
+    START,
+    CONTINUE,
+    CONTROLS,
+    OPTION,
+    EXIT
+};
+
+using namespace std;
 
 class MainMenu : public Menu
 {
@@ -62,6 +73,8 @@ class MainMenu : public Menu
         virtual void updateState(GameState & gameState);
 
         void setPosition(vec3f aPosition);
+
+        void add(string fileName,MainMenuOption aOption);
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will activate our menu
@@ -70,22 +83,16 @@ class MainMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         void activate();
 
-        static MainMenu * getInstance(){
-            if(instance == NULL)
-                instance = new MainMenu();
-
-            return instance;
-        }
-
-    protected:
-
-    private:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
         MainMenu();
+    protected:
+
+    private:
 
         static MainMenu* instance;
+        vector<MainMenuOption> actionOption;
         Sound * openSound,* moveSound;
 };
 

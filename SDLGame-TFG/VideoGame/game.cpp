@@ -47,7 +47,15 @@ Game::Game(){
     MeshCollection::getInstance();
     MaterialCollection::getInstance();
 
-    gameState.mainMenu=MainMenu::getInstance();
+    //Create MainMenu
+    gameState.mainMenu=new MainMenu();
+    gameState.mainMenu->add("./textures/mainMenuStart.png",START);
+    gameState.mainMenu->add("./textures/mainMenuCont.png",CONTINUE);
+    gameState.mainMenu->add("./textures/mainMenuControl.png",CONTROLS);
+    gameState.mainMenu->add("./textures/mainMenuOption.png",OPTION);
+    gameState.mainMenu->add("./textures/mainMenuQuit.png",EXIT);
+
+
     gameState.pauseMenu = new PauseMenu();
     gameState.deadMenu = new DeadMenu();
     gameState.loadScreen=new LoadingScreen(250);
