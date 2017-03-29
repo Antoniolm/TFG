@@ -29,7 +29,6 @@
 #include "../GraphicEngine/axisrotation.h"
 #include "../GraphicEngine/rootmap.h"
 #include "../GraphicEngine/camera.h"
-#include "../GraphicEngine/lightcamera.h"
 #include "../GraphicEngine/structdata.h"
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/controllermanager.h"

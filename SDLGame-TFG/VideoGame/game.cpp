@@ -223,14 +223,16 @@ void Game::loop(){
 
             //1- Render of our deph map for shadow mapping
             GLfloat near_plane = -1.0f, far_plane = 10.0f;
-            LightCamera lightCamera;
-            lightCamera.setCamera(vec3f(pos.x-1.0, pos.y+5.0f,pos.z-2.0),vec3f(pos.x,0.0,pos.z),vec3f(0.0,1.0,0.0));
-            lightCamera.setOrthoProyection(-20.0,20.0,-20.0,20.0,near_plane,far_plane);
-            lightCamera.createLightSpace();
+            Camera lightCamera(vec3f(pos.x-1.0, pos.y+5.0f,pos.z-2.0),vec3f(pos.x,0.0,pos.z),vec3f(0.0,1.0,0.0));
+            lightCamera.setOrthographicProjection(-20.0,20.0,-20.0,20.0,near_plane,far_plane);
+
+            Matrix4f lightSpace;
+            lightSpace.setMatrix(lightCamera.getView());
+            lightSpace.product(lightCamera.getOrthoProyection().getMatrix());
 
             context.currentShader=shadowShader;
             glUseProgram(context.currentShader->getProgram()); //We use the program now
-            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightCamera.getLightSpace().getMatrix());
+            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpace.getMatrix());
 
             depthTexture->setShadowBuffer(true);
             gameState.rootMap->visualization(context);
@@ -249,7 +251,7 @@ void Game::loop(){
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "shadowMap"), 2);
             glUniform3f(glGetUniformLocation(context.currentShader->getProgram(), "lightPosVertex"),pos.x-1.0, pos.y+5.0f,pos.z-2.0);
             gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
-            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightCamera.getLightSpace().getMatrix());
+            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpace.getMatrix());
 
             glActiveTexture(GL_TEXTURE2);
             depthTexture->bindTexture();
