@@ -34,6 +34,9 @@
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "soundcollection.h"
+#include <string>
+
+using namespace std;
 
 class ControlMenu : public Menu
 {
@@ -41,7 +44,7 @@ class ControlMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        ControlMenu();
+        ControlMenu(vec3f position,string fileName);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
