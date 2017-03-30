@@ -19,7 +19,7 @@
 
 #include "loadingscreen.h"
 
-LoadingScreen::LoadingScreen(float delay,string fileName)
+LoadingScreen::LoadingScreen(vec3f initPosition,float delay,string fileName)
 {
     currentOption=0;
     animationDelay=delay;
@@ -29,7 +29,7 @@ LoadingScreen::LoadingScreen(float delay,string fileName)
     addOption(new Texture("./textures/loading1.png"));
 
     positionMenu=new Matrix4f();
-    positionMenu->translation(0.0,6.77,11.0);
+    positionMenu->translation(initPosition.x,initPosition.y,initPosition.z);
 
     Matrix4f * scaleMenu=new Matrix4f();
     scaleMenu->scale(1.0,4.1,0.5);

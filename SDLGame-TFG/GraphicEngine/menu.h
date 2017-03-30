@@ -59,6 +59,8 @@ class Menu : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void addOption(Texture * aTexture);
 
+        void setPosition(vec3f aPosition);
+
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface

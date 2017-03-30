@@ -45,6 +45,12 @@ void Menu::addOption(Texture * aTexture){
 
 //**********************************************************************//
 
+void Menu::setPosition(vec3f aPosition){
+    positionMenu->translation(aPosition.x,aPosition.y,aPosition.z);
+}
+
+//**********************************************************************//
+
 void Menu::visualization(Context & cv){}
 
 //**********************************************************************//

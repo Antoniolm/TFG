@@ -77,8 +77,6 @@ class MainMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(GameState & gameState);
 
-        void setPosition(vec3f aPosition);
-
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will add a new texture and that texture has a functionality (MainMenuOption)

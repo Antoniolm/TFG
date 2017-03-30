@@ -192,13 +192,6 @@ void MainMenu::add(string fileName,MainMenuOption aOption){
 
 //**********************************************************************//
 
-void MainMenu::setPosition(vec3f aPosition){
-    positionMenu->translation(aPosition.x,aPosition.y+6.75,aPosition.z+11.0);
-}
-
-
-//**********************************************************************//
-
 void MainMenu::activate(){
     activateMenu=true;
     currentOption=0;
