@@ -13,6 +13,9 @@
     },
 
     "movie": [
+        {"texture":"./textures/movieScreen1.png"},
+        {"texture":"./textures/movieScreen1.png"},
+        {"texture":"./textures/movieScreen1.png"}
     ],
 
     "endMapRegion":{

@@ -24,6 +24,7 @@ MovieScreen::MovieScreen(const Value & movieFeatures)
 {
     currentOption=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();
+    positionMenu=new Matrix4f();
 
     if(movieFeatures.Size()==0){
         activateMenu=false;
@@ -38,7 +39,6 @@ MovieScreen::MovieScreen(const Value & movieFeatures)
             textures.push_back(movieFeatures[i]["texture"].GetString());
         }
 
-        positionMenu=new Matrix4f();
         positionMenu->identity();
 
         Matrix4f * scaleMenu=new Matrix4f();
