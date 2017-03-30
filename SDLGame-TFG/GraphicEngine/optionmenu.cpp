@@ -185,7 +185,7 @@ void OptionMenu::updateState(GameState & gameState){
 
             //Update the current option
             switch(currentOption){
-                case 0: //Exit
+                case 0: //Resolution
                     indexResolution--;
                     if(indexResolution==-1){
                         indexResolution=resolution.size()-1;
@@ -194,7 +194,7 @@ void OptionMenu::updateState(GameState & gameState){
                     sStream << resolution[indexResolution].first<< "x"<< resolution[indexResolution].second;
                     newOptionStr = sStream.str();
                 break;
-                case 1: //Exit
+                case 1: //Window type
                     newOptionStr = "FullScreen";
                     window=!window;
                     if(window)
@@ -207,8 +207,6 @@ void OptionMenu::updateState(GameState & gameState){
 
                     sStream << volume;
                     newOptionStr = sStream.str();
-
-                    //activateMenu=false;
                 break;
             }
 

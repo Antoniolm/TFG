@@ -19,15 +19,16 @@
 
 #include "loadingscreen.h"
 
-LoadingScreen::LoadingScreen(float delay)
+LoadingScreen::LoadingScreen(float delay,string fileName)
 {
     currentOption=0;
     animationDelay=delay;
     MeshCollection * meshCollect =MeshCollection::getInstance();
 
     currentMaterial=new Material(vec3f(1.0,1.0,1.0),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/loading1.png");
+    addOption(new Texture("./textures/loading1.png"));
 
-    Matrix4f * positionMenu=new Matrix4f();
+    positionMenu=new Matrix4f();
     positionMenu->translation(0.0,6.77,11.0);
 
     Matrix4f * scaleMenu=new Matrix4f();
@@ -42,11 +43,6 @@ LoadingScreen::LoadingScreen(float delay)
     root->add(scaleMenu);
     root->add(currentMaterial);
     root->add(meshCollect->getMesh(TEXT));
-
-    //Add the options
-    options.push_back(new Texture("./textures/loading1.png"));
-    options.push_back(new Texture("./textures/loading2.png"));
-    options.push_back(new Texture("./textures/loading3.png"));
 
     currentTime=SDL_GetTicks();
     menuDelay=currentTime;
@@ -87,3 +83,10 @@ void LoadingScreen::updateState(GameState & gameState){
 
     currentTime+=time-currentTime;
 }
+
+//**********************************************************************//
+
+void LoadingScreen::add(string fileName){
+    addOption(new Texture(fileName.c_str()));
+}
+

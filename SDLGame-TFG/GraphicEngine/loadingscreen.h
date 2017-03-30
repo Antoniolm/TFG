@@ -23,14 +23,16 @@
 #include "menu.h"
 #include "meshcollection.h"
 #include "materialcollection.h"
+#include <string>
 
+using namespace std;
 class LoadingScreen : public Menu
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        LoadingScreen(float delay);
+        LoadingScreen(float delay,string fileName);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -54,6 +56,13 @@ class LoadingScreen : public Menu
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will add a new texture
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void add(string fileName);
     protected:
 
     private:

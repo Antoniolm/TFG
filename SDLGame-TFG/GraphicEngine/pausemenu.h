@@ -76,7 +76,7 @@ class PauseMenu : public Menu
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void add(string fileName,MainMenuOption aOption);
+        void add(string fileName,PauseMenuOption aOption);
     protected:
 
     private:
