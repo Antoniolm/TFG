@@ -207,8 +207,10 @@ void Game::loop(){
 
                 hero=gameState.rootMap->getHero();
                 hero->setCoin(SavedManager::getInstance()->getCoin());
+                vec3f posH=hero->getPosition();
 
                 gameState.movie=gameState.rootMap->getMovie();
+                gameState.movie->setPosition(vec3f(posH.x,posH.y+6.77,posH.z+11.0));
                 gameState.movie->activateAllTexture();
                 firstTime=false;
             }

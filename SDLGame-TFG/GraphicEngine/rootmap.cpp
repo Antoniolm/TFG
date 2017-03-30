@@ -114,7 +114,6 @@ void RootMap::initialize(string fileMap){
     /////////////////////////////////////////
     vec3f positionHero=vec3f(document["heroPosition"][0].GetFloat(),document["heroPosition"][1].GetFloat(),document["heroPosition"][2].GetFloat());
     hero=new Hero(positionHero);
-
     mate=new Mate(positionHero);
 
     /////////////////////////////////////////
@@ -130,7 +129,7 @@ void RootMap::initialize(string fileMap){
     // Add movie to our map
     /////////////////////////////////////////
     const rapidjson::Value & movieFeature=document["movie"];
-    movie=new MovieScreen(positionHero,movieFeature);
+    movie=new MovieScreen(movieFeature);
 
     /////////////////////////////////////////
     // Add title to our map

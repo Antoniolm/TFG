@@ -20,7 +20,7 @@
 #include "moviescreen.h"
 #include "gamestate.h"
 
-MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
+MovieScreen::MovieScreen(const Value & movieFeatures)
 {
     currentOption=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();
@@ -38,8 +38,8 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
             textures.push_back(movieFeatures[i]["texture"].GetString());
         }
 
-        Matrix4f * positionMenu=new Matrix4f();
-        positionMenu->translation(pos.x,pos.y+6.77,pos.z+11.0);
+        positionMenu=new Matrix4f();
+        positionMenu->identity();
 
         Matrix4f * scaleMenu=new Matrix4f();
         scaleMenu->scale(1.0,4.1,0.5);
