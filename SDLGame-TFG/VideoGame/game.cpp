@@ -48,7 +48,7 @@ Game::Game(){
     MaterialCollection::getInstance();
 
     //Create MainMenu
-    gameState.mainMenu=new MainMenu();
+    gameState.mainMenu=new MainMenu(vec3f(0.0,6.77,11.0),"./textures/mainBackMenu.png");
     gameState.mainMenu->add("./textures/mainMenuStart.png",START);
     gameState.mainMenu->add("./textures/mainMenuCont.png",CONTINUE);
     gameState.mainMenu->add("./textures/mainMenuControl.png",CONTROLS);
@@ -56,9 +56,18 @@ Game::Game(){
     gameState.mainMenu->add("./textures/mainMenuQuit.png",EXIT);
 
 
-    gameState.pauseMenu = new PauseMenu();
+    //Create PauseMenu
+    gameState.pauseMenu = new PauseMenu(vec3f(0.0,6.77,11.0));
+    gameState.pauseMenu->add("./textures/menuPauseResume.png",pRESUME);
+    gameState.pauseMenu->add("./textures/menuPauseQuit.png",pQUIT);
+
     gameState.deadMenu = new DeadMenu();
-    gameState.loadScreen=new LoadingScreen(250);
+
+    //Create LoadingScreen
+    gameState.loadScreen=new LoadingScreen(vec3f(0.0,6.77,11.0),250,"./textures/loading1.png");
+    gameState.loadScreen->add("./textures/loading2.png");
+    gameState.loadScreen->add("./textures/loading3.png");
+
     gameState.optionMenu=new OptionMenu();
     gameState.controlMenu=new ControlMenu();
     heroState=new HeroState();

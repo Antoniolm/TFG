@@ -19,12 +19,13 @@
 
 #include "pausemenu.h"
 
-PauseMenu::PauseMenu()
+PauseMenu::PauseMenu(vec3f initPos)
 {
     currentOption=0;
     activateMenu=false;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();
+    initialPosition=initPos;
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
@@ -98,7 +99,7 @@ void PauseMenu::updateState(GameState & gameState){
             if(activateMenu){
                 (Profile::getInstance())->showResult();
                 position=gameState.rootMap->getHero()->getPosition();
-                positionMenu->translation(position.x,position.y+6.75,position.z+11.0);
+                positionMenu->translation(position.x+initialPosition.x,position.y+initialPosition.y,position.z+initialPosition.z);
 
                 //Consume the current events -> User has to push again the buttons
                 controller->setState(false,cUP);

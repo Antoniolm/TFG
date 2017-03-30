@@ -22,7 +22,7 @@
 
 MainMenu* MainMenu::instance = NULL;
 
-MainMenu::MainMenu()
+MainMenu::MainMenu(vec3f initPos,string fileName)
 {
     currentOption=0;
     activateMenu=true;
@@ -31,7 +31,7 @@ MainMenu::MainMenu()
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
     currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainMenuStart.png");
-    Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/mainBackMenu.png");
+    Material * materialBack=new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileName.c_str());
 
     positionMenu=new Matrix4f();
     positionMenu->translation(0.0,6.70,11.0);

@@ -46,7 +46,7 @@ class PauseMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        PauseMenu();
+        PauseMenu(vec3f initPos);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -80,6 +80,7 @@ class PauseMenu : public Menu
     protected:
 
     private:
+        vec3f initialPosition;
         vector<PauseMenuOption> actionOption;
         Sound * openSound,* moveSound;
         int channelOpen,channelMove;
