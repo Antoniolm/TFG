@@ -35,6 +35,11 @@
 #include "materialcollection.h"
 #include "soundcollection.h"
 
+enum PauseMenuOption{
+    pRESUME,
+    pQUIT
+};
+
 class PauseMenu : public Menu
 {
     public:
@@ -65,9 +70,17 @@ class PauseMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(GameState & gameState);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will add a new texture and that texture has a functionality (MainMenuOption)
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void add(string fileName,MainMenuOption aOption);
     protected:
 
     private:
+        vector<PauseMenuOption> actionOption;
         Sound * openSound,* moveSound;
         int channelOpen,channelMove;
 };

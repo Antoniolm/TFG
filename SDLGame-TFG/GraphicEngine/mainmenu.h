@@ -74,7 +74,14 @@ class MainMenu : public Menu
 
         void setPosition(vec3f aPosition);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will add a new texture and that texture has a functionality (MainMenuOption)
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void add(string fileName,MainMenuOption aOption);
+
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will activate our menu

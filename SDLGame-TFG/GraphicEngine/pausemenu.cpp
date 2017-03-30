@@ -58,10 +58,6 @@ PauseMenu::PauseMenu()
 
     openSound=soundCollect->getSound(sOpen);
     moveSound=soundCollect->getSound(sCoin);
-
-    //Add the options
-    addOption(new Texture("./textures/menuPauseResume.png"));
-    addOption(new Texture("./textures/menuPauseQuit.png"));
 }
 
 //**********************************************************************//
@@ -136,15 +132,16 @@ void PauseMenu::updateState(GameState & gameState){
                 menuDelay=time;
                 moveSound->play();
             }
+            //If the user push an option
             if(controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
-                switch(currentOption){
-                    case 0: //Resume
+                switch(actionOption[currentOption]){
+                    case pRESUME: //Resume
                         currentOption=0;
                          currentMaterial->setTexture(options[currentOption]);
                         activateMenu=false;
                         openSound->play();
                     break;
-                    case 1: //Exit
+                    case pQUIT: //Exit
                         currentOption=0;
                         currentMaterial->setTexture(options[currentOption]);
                         (Profile::getInstance())->showResult();
@@ -161,4 +158,11 @@ void PauseMenu::updateState(GameState & gameState){
 
         currentTime+=time-currentTime;
     }
+}
+
+//**********************************************************************//
+
+void PauseMenu::add(string fileName,PauseMenuOption aOption){
+    addOption(new Texture(fileName.c_str()));
+    actionOption.push_back(aOption);
 }
