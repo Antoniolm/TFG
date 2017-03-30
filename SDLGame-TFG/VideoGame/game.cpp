@@ -54,10 +54,10 @@ Game::Game(){
     gameState.mainMenu->add("./textures/mainMenuControl.png",CONTROLS);
     gameState.mainMenu->add("./textures/mainMenuOption.png",OPTION);
     gameState.mainMenu->add("./textures/mainMenuQuit.png",EXIT);
-
+    gameState.mainMenu->activate();
 
     //Create PauseMenu
-    gameState.pauseMenu = new PauseMenu(vec3f(0.0,6.77,11.0));
+    gameState.pauseMenu = new PauseMenu(vec3f(0.0,6.77,11.0),"./textures/menuBack.png");
     gameState.pauseMenu->add("./textures/menuPauseResume.png",pRESUME);
     gameState.pauseMenu->add("./textures/menuPauseQuit.png",pQUIT);
 

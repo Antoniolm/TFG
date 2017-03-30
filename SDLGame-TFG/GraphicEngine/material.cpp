@@ -55,7 +55,9 @@ Material::Material(const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &a
     if(aFileBumpTextur!="")
         bumpTexture=new Texture(aFileBumpTextur);
 
-    texture=new Texture(aFileTextur);
+    texture=0;
+    if(aFileTextur!="")
+        texture=new Texture(aFileTextur);
 }
 
 //**********************************************************************//
