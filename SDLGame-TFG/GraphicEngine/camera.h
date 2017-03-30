@@ -147,6 +147,8 @@ class Camera
 
         Matrix4f & getOrthoProyection();
 
+        Matrix4f & getPersProyection();
+
         //////////////////////////////////////////////////////////////////////////
         /**
         *   This method will return the position of our camera
@@ -192,6 +194,7 @@ class Camera
     private:
         Matrix4f camera;
         Matrix4f orthoProjection,perspecProjection;
+        vec3f initialPosition;
         vec3f position;
         vec3f target;
         vec3f up;

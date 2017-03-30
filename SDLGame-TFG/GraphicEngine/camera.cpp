@@ -30,6 +30,7 @@ Camera::Camera(){
 
 Camera::Camera(vec3f eye,vec3f aTarget,vec3f aUp){
     position=eye;
+    initialPosition=eye;
     target=aTarget;
     up=aUp;
     viewMode=false;
@@ -50,6 +51,7 @@ Camera::~Camera()
 
 void Camera::setCamera(vec3f eye,vec3f aTarget,vec3f aUp){
     position=eye;
+    initialPosition=eye;
     target=aTarget;
     up=aUp;
 
@@ -161,9 +163,7 @@ void Camera::update(GameState & gameState,GLuint shaderID,bool activateMenu){
         }
     }
     else { //else normal mode
-        //position=vec3f(posHero.x,posHero.y+1.0f,posHero.z+8.0f); // position for testing
-        //position=vec3f(posHero.x,posHero.y+6.0f,posHero.z+15.0f);
-        position=vec3f(posHero.x,posHero.y+8.0f,posHero.z+13.0f); //test camera
+        position=vec3f(posHero.x+initialPosition.x,posHero.y+initialPosition.y,posHero.z+initialPosition.z);
     }
 
     createCamera();//Create camera
@@ -191,6 +191,12 @@ GLfloat * Camera::getView(){
 
 Matrix4f & Camera::getOrthoProyection(){
     return orthoProjection;
+}
+
+//**********************************************************************//
+
+Matrix4f & Camera::getPersProyection(){
+    return perspecProjection;
 }
 
 //**********************************************************************//
