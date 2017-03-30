@@ -71,7 +71,7 @@ Game::Game(){
     gameState.loadScreen->add("./textures/loading3.png");
 
     gameState.optionMenu=new OptionMenu();
-    gameState.controlMenu=new ControlMenu();
+    gameState.controlMenu=new ControlMenu(vec3f(0.0,6.70,11.0),"./textures/mainBackMenu.png");
     heroState=new HeroState();
 
     isClosing=false;

@@ -78,9 +78,6 @@ Hero::Hero(vec3f aPos)
     //Dialog for actions
     font=TTF_OpenFont( "font/Xolonium-Regular.ttf", 40);
     texts.push_back(new Text(mADIALOG,font));
-    setDialog(" ",1);
-    texts[1]->setScaleDialog(vec3f(0.25,0.9,0.5));
-    texts[1]->setScaleText(vec3f(0.0,0.0,0.0));
     activatedTexts.push_back(false);
 
     //Coin Text
@@ -664,6 +661,11 @@ void Hero::setDialog(string message,int index){
     texts[index]->setPosition(vec3f(position.x,position.y+2.0f,position.z));
     texts[index]->setMessage(message);
     texts[index]->init();
+
+    if(index==1){
+        texts[1]->setScaleDialog(vec3f(0.25,0.9,0.5));
+        texts[1]->setScaleText(vec3f(0.0,0.0,0.0));
+    }
 }
 
 //**********************************************************************//
