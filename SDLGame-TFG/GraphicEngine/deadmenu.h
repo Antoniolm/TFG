@@ -34,6 +34,7 @@
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "soundcollection.h"
+#include <string>
 
 class DeadMenu : public Menu
 {
@@ -41,7 +42,7 @@ class DeadMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        DeadMenu();
+        DeadMenu(vec3f initialPos,string fileName);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -72,9 +73,19 @@ class DeadMenu : public Menu
         */
         //////////////////////////////////////////////////////////////////////////
         void activate();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will add a new texture
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void add(string fileName);
+
     protected:
 
     private:
+        vec3f initialPosition;
         Sound * openSound,* moveSound;
 };
 

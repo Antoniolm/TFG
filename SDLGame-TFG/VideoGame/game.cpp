@@ -62,7 +62,8 @@ Game::Game(){
     gameState.pauseMenu->add("./textures/menuPauseQuit.png",pQUIT);
 
     //Create deadMenu
-    gameState.deadMenu = new DeadMenu();
+    gameState.deadMenu = new DeadMenu(vec3f(0.0,6.77,11.0),"./textures/menuBack.png");
+    gameState.deadMenu->add("./textures/dieMenu.png");
 
     //Create LoadingScreen
     gameState.loadScreen=new LoadingScreen(vec3f(0.0,6.77,11.0),250,"./textures/loading1.png");

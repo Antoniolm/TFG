@@ -114,7 +114,9 @@ void Material::setShininess(float aShini){
 //**********************************************************************//
 
 void Material::setTexture(const string & aFileTextur){
-    texture=new Texture(aFileTextur);
+    texture=0;
+    if(aFileTextur!="")
+        texture=new Texture(aFileTextur);
 }
 
 //**********************************************************************//

@@ -19,15 +19,16 @@
 
 #include "deadmenu.h"
 
-DeadMenu::DeadMenu()
+DeadMenu::DeadMenu(vec3f initialPos,string fileName)
 {
     currentOption=0;
     activateMenu=false;
+    initialPosition=initialPos;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
-    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/dieMenu.png");
-    Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
+    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"");
+    Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileName.c_str());
 
     positionMenu=new Matrix4f();
     positionMenu->identity();
@@ -85,7 +86,7 @@ void DeadMenu::updateState(GameState & gameState){
 
     if(activateMenu){ //If the menu is activated
         position=gameState.rootMap->getHero()->getPosition();
-        positionMenu->translation(position.x,position.y+6.75,position.z+11.0);
+        positionMenu->translation(position.x+initialPosition.x,position.y+initialPosition.y,position.z+initialPosition.z);
 
         if(gameState.controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             menuDelay=time;
@@ -103,4 +104,10 @@ void DeadMenu::updateState(GameState & gameState){
 
 void DeadMenu::activate(){
     activateMenu=true;
+}
+
+//**********************************************************************//
+
+void DeadMenu::add(string fileName){
+    currentMaterial->setTexture(fileName.c_str());
 }

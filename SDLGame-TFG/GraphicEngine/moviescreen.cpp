@@ -24,7 +24,6 @@ MovieScreen::MovieScreen(vec3f pos,const Value & movieFeatures)
 {
     currentOption=0;
     MeshCollection * meshCollect =MeshCollection::getInstance();
-    MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
     if(movieFeatures.Size()==0){
         activateMenu=false;
