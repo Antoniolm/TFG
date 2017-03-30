@@ -2,7 +2,7 @@
     "bkgdMaterial":"mCUBE_DUNGB",
     "sound":"sounds/backsound.wav",
     "volSound":30.0,
-    "heroPosition":[57.5,5.5,-26],
+    "heroPosition":[7,3.5,-4],
     "nextMap":"./maps/map01.json",
 
     "title": {
@@ -13,9 +13,6 @@
     },
 
     "movie": [
-        {"texture":"./textures/movieScreen1.png"},
-        {"texture":"./textures/movieScreen2.png"},
-        {"texture":"./textures/movieScreen1.png"}
     ],
 
     "endMapRegion":{
@@ -28,8 +25,8 @@
                 "channel":"0",
                 "position":[1.0,1.0,1.0],
                 "ambient":[0.5,0.5,0.5],
-                "diffuse":[0.0,0.0,0.0],
-                "specular":[0.0,0.0,0.0] },
+                "diffuse":[1.0,1.0,1.0],
+                "specular":[1.0,1.0,1.0] },
 
             {   "type":1,
                 "channel":"0",
@@ -39,17 +36,7 @@
                 "specular":[1.0,1.0,1.0],
                 "constant":1.0,
                 "linear":0.7,
-                "quadratic":1.8 },
-
-            {   "type":1,
-                "channel":"1",
-                "position":[30.0,2.0,4.0],
-                "ambient":[1.0,1.0,1.0],
-                "diffuse":[1.0,1.0,1.0],
-                "specular":[1.0,1.0,1.0],
-                "constant":1.0,
-                "linear":0.09,
-                "quadratic":0.032 }
+                "quadratic":1.8 }
     ],
 
     "particleSystem":[
@@ -67,7 +54,7 @@
     "projectileSystem":[
         {   "radioActivity":[10.0,5.0,12.0],
             "position":[51.5,7.5,-35.5],
-            "velocity":[0.0,0.0,3.0],
+            "velocity":[0.0,0.0,4.0],
             "direction":0,
             "delay":4000,
             "material":"mARCHENEMY",
@@ -75,7 +62,7 @@
         },
         {   "radioActivity":[10.0,5.0,12.0],
             "position":[51.5,6.5,-35.5],
-            "velocity":[0.0,0.0,3.0],
+            "velocity":[0.0,0.0,4.0],
             "direction":0,
             "delay":4000,
             "material":"mARCHENEMY",
@@ -83,7 +70,7 @@
         },
         {   "radioActivity":[10.0,5.0,12.0],
             "position":[51.5,5.5,-35.5],
-            "velocity":[0.0,0.0,3.0],
+            "velocity":[0.0,0.0,4.0],
             "direction":0,
             "delay":4000,
             "material":"mARCHENEMY",
@@ -91,7 +78,7 @@
         },
         {   "radioActivity":[10.0,5.0,12.0],
             "position":[53.5,7.5,-35.5],
-            "velocity":[0.0,0.0,3.0],
+            "velocity":[0.0,0.0,4.0],
             "direction":0,
             "delay":4000,
             "material":"mARCHENEMY",
@@ -99,7 +86,7 @@
         },
         {   "radioActivity":[10.0,5.0,12.0],
             "position":[53.5,6.5,-35.5],
-            "velocity":[0.0,0.0,3.0],
+            "velocity":[0.0,0.0,4.0],
             "direction":0,
             "delay":4000,
             "material":"mARCHENEMY",
@@ -107,7 +94,7 @@
         },
         {   "radioActivity":[10.0,5.0,12.0],
             "position":[53.5,5.5,-35.5],
-            "velocity":[0.0,0.0,3.0],
+            "velocity":[0.0,0.0,4.0],
             "direction":0,
             "delay":4000,
             "material":"mARCHENEMY",
@@ -177,7 +164,7 @@
                 "value":10, 
                 "type":0},
             {   "position":[12.5,1.5,-3.5],
-                "value":10, 
+                "value":25, 
                 "type":1}
     ],
 
@@ -215,7 +202,7 @@
 
     "spikes":[
             {   "position":[50.5,4.5,-26.5],
-                "damage":-20
+                "damage":-25
             }
     ],
 
@@ -407,7 +394,7 @@
                 "materialTop":"mCUBE_DUNG",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
-                "damage":-40.0},
+                "damage":-25.0},
             {   "position":[30,3.5,18],
                 "YNumber":2,        
                 "XNumber":1,         

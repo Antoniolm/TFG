@@ -1042,7 +1042,7 @@
 	<stdlib.h>
 	<vector>
 
-1490705064 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1490893624 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -1681,7 +1681,7 @@
 	"structdata.h"
 	<SDL.h>
 
-1490780045 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
+1490910193 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\avatarmove.cpp
 	"avatarmove.h"
 	"../GraphicEngine/rootmap.h"
 	"enemy.h"
@@ -3164,4 +3164,9 @@
 1490543868 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\lightcamera.h
 	"structdata.h"
 	"matrix4f.h"
+
+1490901782 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmapping.cpp
+	"shadowmapping.h"
+
+1490901779 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmapping.h
 
