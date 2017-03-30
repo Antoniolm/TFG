@@ -34,6 +34,7 @@
 #include "meshcollection.h"
 #include "materialcollection.h"
 #include "soundcollection.h"
+#include <string>
 
 enum PauseMenuOption{
     pRESUME,
@@ -46,7 +47,7 @@ class PauseMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        PauseMenu(vec3f initPos);
+        PauseMenu(vec3f initPos,string fileName);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -77,6 +78,8 @@ class PauseMenu : public Menu
         */
         //////////////////////////////////////////////////////////////////////////
         void add(string fileName,PauseMenuOption aOption);
+
+        void activate();
     protected:
 
     private:

@@ -61,6 +61,7 @@ Game::Game(){
     gameState.pauseMenu->add("./textures/menuPauseResume.png",pRESUME);
     gameState.pauseMenu->add("./textures/menuPauseQuit.png",pQUIT);
 
+    //Create deadMenu
     gameState.deadMenu = new DeadMenu();
 
     //Create LoadingScreen

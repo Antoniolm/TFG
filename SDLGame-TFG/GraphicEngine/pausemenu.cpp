@@ -19,7 +19,7 @@
 
 #include "pausemenu.h"
 
-PauseMenu::PauseMenu(vec3f initPos)
+PauseMenu::PauseMenu(vec3f initPos,string fileName)
 {
     currentOption=0;
     activateMenu=false;
@@ -27,8 +27,8 @@ PauseMenu::PauseMenu(vec3f initPos)
     SoundCollection * soundCollect =SoundCollection::getInstance();
     initialPosition=initPos;
 
-    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuPauseResume.png");
-    Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"./textures/menuBack.png");
+    currentMaterial=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,"");
+    Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileName.c_str());
 
     positionMenu=new Matrix4f();
     positionMenu->identity();
@@ -166,4 +166,7 @@ void PauseMenu::updateState(GameState & gameState){
 void PauseMenu::add(string fileName,PauseMenuOption aOption){
     addOption(new Texture(fileName.c_str()));
     actionOption.push_back(aOption);
+
+    if(actionOption.size()==1)
+        currentMaterial->setTexture(options[0]);
 }
