@@ -54,7 +54,6 @@ void Camera::setCamera(vec3f eye,vec3f aTarget,vec3f aUp){
     initialPosition=eye;
     target=aTarget;
     up=aUp;
-
 }
 
 //**********************************************************************//

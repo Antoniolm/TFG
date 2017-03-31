@@ -158,6 +158,8 @@
 		<Unit filename="GraphicEngine/scriptlmd.h" />
 		<Unit filename="GraphicEngine/shader.cpp" />
 		<Unit filename="GraphicEngine/shader.h" />
+		<Unit filename="GraphicEngine/shadowmapping.cpp" />
+		<Unit filename="GraphicEngine/shadowmapping.h" />
 		<Unit filename="GraphicEngine/shadowtexture.cpp" />
 		<Unit filename="GraphicEngine/shadowtexture.h" />
 		<Unit filename="GraphicEngine/sound.cpp" />

@@ -959,7 +959,7 @@
 1489327007 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shader.cpp
 	"shader.h"
 
-1490877274 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
+1490956077 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.cpp
 	"camera.h"
 	"rootmap.h"
 
@@ -3169,4 +3169,14 @@
 	"shadowmapping.h"
 
 1490901779 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmapping.h
+
+1490956843 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmanager.cpp
+	"shadowmanager.h"
+
+1490956830 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmanager.h
+	"shadowtexture.h"
+	"shader.h"
+	"matrix4f.h"
+	"camera.h"
+	"structdata.h"
 
