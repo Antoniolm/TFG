@@ -32,7 +32,7 @@ class ShadowManager
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        ShadowManager(Shader * aShader,vec3f posLight,vec3f targetLight, vec3f upLight);
+        ShadowManager(Shader * aShader);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -46,13 +46,14 @@ class ShadowManager
         void setShader(Shader * aShader);
         Shader * getShader();
 
-        void generateShadow(GameState gameState);
+        void generateShadow(GameState & gameState,Context & context);
+        void activateShadowTexture();
         Matrix4f & getLightSpace();
 
+        ShadowTexture * depthTexture;
     protected:
 
     private:
-        ShadowTexture * depthTexture;
         Shader * shader;
         Camera * lightCamera;
         Matrix4f lightSpace;

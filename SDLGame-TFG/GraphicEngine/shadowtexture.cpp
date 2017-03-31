@@ -29,7 +29,7 @@ ShadowTexture::ShadowTexture()
 
 ShadowTexture::~ShadowTexture()
 {
-    //dtor
+    glDeleteTextures(1, &depthMap);
 }
 
 //**********************************************************************//

@@ -19,8 +19,8 @@
 
 #include "shadowmanager.h"
 
-ShadowManager::ShadowManager(Shader * aShader,vec3f posLight,vec3f targetLight, vec3f upLight){
-    lightCamera=new Camera(posLight,targetLight,upLight);
+ShadowManager::ShadowManager(Shader * aShader){
+    lightCamera=new Camera();
     shader=aShader;
     depthTexture=new ShadowTexture();
 }
@@ -29,6 +29,8 @@ ShadowManager::ShadowManager(Shader * aShader,vec3f posLight,vec3f targetLight, 
 
 ShadowManager::~ShadowManager(){
     delete lightCamera;
+    delete shader;
+    delete depthTexture;
 }
 
 //**********************************************************************//
@@ -64,9 +66,7 @@ Shader * ShadowManager::getShader(){
 
 //**********************************************************************//
 
-void ShadowManager::generateShadow(GameState gameState){
-    Context context;
-
+void ShadowManager::generateShadow(GameState & gameState,Context & context){
     lightSpace.setMatrix(lightCamera->getView());
     lightSpace.product(lightCamera->getOrthoProyection().getMatrix());
 
@@ -81,6 +81,14 @@ void ShadowManager::generateShadow(GameState gameState){
 
 //**********************************************************************//
 
+void ShadowManager::activateShadowTexture(){
+    depthTexture->bindTexture();
+}
+
+//**********************************************************************//
+
 Matrix4f & ShadowManager::getLightSpace(){
+    lightSpace.setMatrix(lightCamera->getView());
+    lightSpace.product(lightCamera->getOrthoProyection().getMatrix());
     return lightSpace;
 }

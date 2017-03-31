@@ -374,7 +374,7 @@
 	<string>
 	"sound.h"
 
-1490634012 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
+1490959525 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.h
 	"../GraphicEngine/window.h"
 	"../GraphicEngine/context.h"
 	"../GraphicEngine/nodescenegraph.h"
@@ -394,6 +394,7 @@
 	"../GraphicEngine/optionmanager.h"
 	"../GraphicEngine/herostate.h"
 	"../GraphicEngine/shadowtexture.h"
+	"../GraphicEngine/shadowmanager.h"
 	"projectile.h"
 	"hero.h"
 	<SDL_gamecontroller.h>
@@ -403,7 +404,7 @@
 	"window.h"
 	"file_obj.h"
 
-1490885061 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1490963743 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486059805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -2652,7 +2653,7 @@
 	"meshcollection.h"
 	<sstream>
 
-1490349141 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowtexture.cpp
+1490958549 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowtexture.cpp
 	"shadowtexture.h"
 
 1490349068 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowtexture.h
@@ -3170,10 +3171,10 @@
 
 1490901779 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmapping.h
 
-1490956843 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmanager.cpp
+1490963865 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmanager.cpp
 	"shadowmanager.h"
 
-1490956830 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmanager.h
+1490963861 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmanager.h
 	"shadowtexture.h"
 	"shader.h"
 	"matrix4f.h"
