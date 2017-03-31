@@ -174,7 +174,7 @@ class AvatarMove: public Avatar
         avatarDirection direction;
         AcceleratedMovement * acceleratedMove;
         vec3f impactMovement;
-        vec3f lastPosition;
+        float limitBottom;
         bool isMoving,isFalling,isJumping,isMoveCollision,isHitting,isImpacted,isShielded;
         float currentTime,dmgDelay,impactTime;
     private:

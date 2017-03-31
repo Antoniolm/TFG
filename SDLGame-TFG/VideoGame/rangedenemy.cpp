@@ -44,6 +44,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     isImpacted=false;
     isShielded=false;
     enemyActivate=false;
+    limitBottom=0.5;
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
 

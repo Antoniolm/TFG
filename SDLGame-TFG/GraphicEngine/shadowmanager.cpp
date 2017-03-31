@@ -71,7 +71,7 @@ void ShadowManager::generateShadow(GameState & gameState,Context & context){
     lightSpace.product(lightCamera->getOrthoProyection().getMatrix());
 
     context.currentShader=shader;
-    glUseProgram(context.currentShader->getProgram()); //We use the program now
+    glUseProgram(context.currentShader->getProgram());
     glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpace.getMatrix());
 
     depthTexture->setShadowBuffer(true);

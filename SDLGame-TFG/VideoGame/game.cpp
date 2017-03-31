@@ -39,9 +39,10 @@ Game::Game(){
 
     //Create our shader
     normalShader=new Shader("shaders/vertexshader.vs","shaders/fragmentshader.fs");
-    shadowShader=new Shader("shaders/depthShader.vs","shaders/depthShader.fs");
     context.currentShader=normalShader;
     glUseProgram(context.currentShader->getProgram()); //We use the program now
+
+    shadowManager=new ShadowManager(new Shader("shaders/depthShader.vs","shaders/depthShader.fs"));
 
     //Create ours menus
     MeshCollection::getInstance();
@@ -89,8 +90,8 @@ Game::Game(){
 Game::~Game(){
     delete window;
     delete notiGamePad;
-    delete shadowShader;
     delete normalShader;
+    delete shadowManager;
     delete options;
 
     MeshCollection * meshCollect= MeshCollection::getInstance();
@@ -101,6 +102,8 @@ Game::~Game(){
 
     SoundCollection * soundCollect= SoundCollection::getInstance();
     delete soundCollect;
+
+    //delete profile
 }
 
 //**********************************************************************//
@@ -120,20 +123,11 @@ void Game::loop(){
     Profile * profile=Profile::getInstance();
 
     //Create our camera
-    vec3f position(0,8.0f,13.0f);
-    vec3f direction(0.0,0.0,0.0);
-    vec3f up(0.0,1.0,0.0);
-
-    gameState.camera=new Camera(position,direction,up);
-    gameState.camera->activateCamera(context.currentShader->getProgram());
+    gameState.camera=new Camera(vec3f(0,8.0f,13.0f),vec3f(0.0,0.0,0.0),vec3f(0.0,1.0,0.0));
 
     pair<int,int> resolution=options->getResolution();
     gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution.first / (float) resolution.second), 0.1f, 200.0f);
     gameState.camera->setOrthographicProjection(-1,1,-1,1,-3,3);
-    gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
-
-    // Configure depth map FBO
-    ShadowTexture * depthTexture=new ShadowTexture();
 
     //Show our window.
     window->showScreen();
@@ -243,22 +237,9 @@ void Game::loop(){
             vec3f pos=hero->getPosition();
 
             //1- Render of our deph map for shadow mapping
-            GLfloat near_plane = -1.0f, far_plane = 10.0f;
-            Camera lightCamera(vec3f(pos.x-1.0, pos.y+5.0f,pos.z-2.0),vec3f(pos.x,0.0,pos.z),vec3f(0.0,1.0,0.0));
-            lightCamera.setOrthographicProjection(-20.0,20.0,-20.0,20.0,near_plane,far_plane);
-
-            Matrix4f lightSpace;
-            lightSpace.setMatrix(lightCamera.getView());
-            lightSpace.product(lightCamera.getOrthoProyection().getMatrix());
-
-            context.currentShader=shadowShader;
-            glUseProgram(context.currentShader->getProgram()); //We use the program now
-            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpace.getMatrix());
-
-            depthTexture->setShadowBuffer(true);
-            gameState.rootMap->visualization(context);
-            depthTexture->setShadowBuffer(false);
-
+            shadowManager->setCamera(vec3f(pos.x-1.0, pos.y+5.0f,pos.z-2.0),vec3f(pos.x,0.0,pos.z),vec3f(0.0,1.0,0.0));
+            shadowManager->setOrthoProjection(-20.0,20.0,-20.0,20.0,-1,10);
+            shadowManager->generateShadow(gameState,context);
 
             //2- Normal render of our scene
             glViewport(0, 0, windowW, windowH);
@@ -272,10 +253,10 @@ void Game::loop(){
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "shadowMap"), 2);
             glUniform3f(glGetUniformLocation(context.currentShader->getProgram(), "lightPosVertex"),pos.x-1.0, pos.y+5.0f,pos.z-2.0);
             gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
-            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpace.getMatrix());
+            glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, shadowManager->getLightSpace().getMatrix());
 
             glActiveTexture(GL_TEXTURE2);
-            depthTexture->bindTexture();
+            shadowManager->activateShadowTexture();
             gameState.rootMap->visualization(context);
 
 

@@ -39,6 +39,7 @@
 #include "../GraphicEngine/optionmanager.h"
 #include "../GraphicEngine/herostate.h"
 #include "../GraphicEngine/shadowtexture.h"
+#include "../GraphicEngine/shadowmanager.h"
 #include "projectile.h"
 #include "hero.h"
 #include <SDL_gamecontroller.h>
@@ -86,7 +87,8 @@ class Game
         Hero * hero;
         HeroState * heroState;
         Notification * notiGamePad;
-        Shader * shadowShader,* normalShader;
+        Shader * normalShader;
+        ShadowManager * shadowManager;
         Context context;
         bool isClosing;
 };
