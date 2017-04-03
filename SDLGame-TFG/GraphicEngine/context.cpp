@@ -24,6 +24,7 @@ Context::Context()
 {
     camera_mode=0;
     visualization_mode=0;
+    shadow_mode=false;
 }
 
 //**********************************************************************//

@@ -39,7 +39,7 @@ class ObjectScene : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        ObjectScene(Object3D * aObject3,float aDamage=0.0);
+        ObjectScene(Object3D * aObject3,bool shadow=false,float aDamage=0.0);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -107,6 +107,7 @@ class ObjectScene : public Object3D
         Object3D * object;
         Matrix4f matrix;
         MaterialIndex index;
+        bool hasShadow;
         float damage;
     private:
         //////////////////////////////////////////////////////////////////////////

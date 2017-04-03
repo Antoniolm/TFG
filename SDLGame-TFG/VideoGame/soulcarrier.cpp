@@ -53,7 +53,8 @@ SoulCarrier::~SoulCarrier()
 //**********************************************************************//
 
 void SoulCarrier::visualization(Context & cv){
-    root->visualization(cv);
+    if(!cv.shadow_mode)
+        root->visualization(cv);
 }
 
 //**********************************************************************//

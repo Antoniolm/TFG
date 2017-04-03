@@ -74,6 +74,7 @@ DecorationObject::DecorationObject(const rapidjson::Value & DOFeature,vec3f posD
 
     object=objNode;
     damage=0.0;
+    hasShadow=DOFeature["shadow"].GetBool();
 
 }
 

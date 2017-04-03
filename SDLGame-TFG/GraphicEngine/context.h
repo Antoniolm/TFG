@@ -47,6 +47,7 @@ class Context
 
         unsigned int visualization_mode;
         unsigned camera_mode;
+        bool shadow_mode;
         MatrixStack matrixStack;
         MaterialStack materialStack;
         Shader * currentShader;

@@ -900,7 +900,7 @@
     ],
 
     "decorationObject":[
-            {   "position":[6.0,1.9,-11.9],
+                        {   "position":[6.0,1.9,-11.9],
                 "transforms":[
                     {    "type":"scale",
                         "values":[0.9,1.0,1.1]
@@ -908,14 +908,16 @@
                 ],       
                 "material":"mBED",
                 "mesh":"BED",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[2.5,2.6,-4.0],
                 "transforms":[
                 ],       
                 "material":"mFURNITURE",
                 "mesh":"CUPBOARD",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[4.5,1.5,-13.5,
                             7.5,1.5,-13.5],
@@ -926,7 +928,8 @@
                 ],       
                 "material":"mWOOD",
                 "mesh":"BEDSIDETABLE",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[12.0,2.5,-12.5,
                             16.0,2.5,-12.5,
@@ -935,14 +938,16 @@
                 ],       
                 "material":"mWOOD",
                 "mesh":"BKSHELF",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[10.5,2.5,-9.5],
                 "transforms":[
                 ],       
                 "material":"mWOOD",
                 "mesh":"LADDER",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[12.0,2.3,-12.3,
                             16.0,2.3,-12.3,
@@ -951,7 +956,8 @@
                 ],       
                 "material":"mBOOKS",
                 "mesh":"BOOKS",
-                "collision": false
+                "collision": false,
+                "shadow": true
             },
             {   "position":[15.5,1.4,-8.5],
                 "transforms":[
@@ -961,7 +967,8 @@
                 ],       
                 "material":"mWOOD",
                 "mesh":"SMALLTABLE",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[14.5,1.5,-8.5],
                 "transforms":[
@@ -971,7 +978,8 @@
                 ],       
                 "material":"mCHAIR",
                 "mesh":"CHAIR",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[15.5,1.05,-8.5],
                 "transforms":[
@@ -981,7 +989,8 @@
                 ],       
                 "material":"mRUG",
                 "mesh":"RUG",
-                "collision": false
+                "collision": false,
+                "shadow": true
             },
             {   "position":[52.5,3.5,-30.45],
                 "transforms":[
@@ -991,7 +1000,8 @@
                 ],       
                 "material":"mDWATER",
                 "mesh":"CUBE",
-                "collision": false
+                "collision": false,
+                "shadow":false
             },
             {   "position":[34.5,4.0,-19],
                 "transforms":[
@@ -1001,7 +1011,8 @@
                 ],       
                 "material":"mDWATER",
                 "mesh":"CUBE",
-                "collision": false
+                "collision": false,
+                "shadow":false
             },
             {   "position":[25.5,7.2,-22,
                             29.5,7.2,-22],
@@ -1012,21 +1023,24 @@
                 ],       
                 "material":"mWINDOW",
                 "mesh":"WINDOW",
-                "collision": false
+                "collision": false,
+                "shadow":false
             },
             {   "position":[27.5,7.0,-22],
                 "transforms":[
                 ],       
                 "material":"mPILLAR",
                 "mesh":"PILLAR",
-                "collision": false
+                "collision": false,
+                "shadow": true
             },
             {   "position":[10.2,3.0,-6],
                 "transforms":[
                 ],       
                 "material":"mTORCH",
                 "mesh":"TORCH",
-                "collision": false
+                "collision": false,
+                "shadow": true
             },
             {   "position":[14.5,5.0,-4],
                 "transforms":[
@@ -1034,7 +1048,8 @@
                 ],       
                 "material":"mCHANDELIER",
                 "mesh":"CHANDELIER",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[15.5,2.1,-8.5],
                 "transforms":[
@@ -1042,7 +1057,8 @@
                 ],       
                 "material":"mCHANDELIER",
                 "mesh":"CHOLDER",
-                "collision": false
+                "collision": false,
+                "shadow": true
             },
             {   "position":[42.5,5.5,-28],
                 "transforms":[
@@ -1050,14 +1066,16 @@
                 ],       
                 "material":"mTORCH",
                 "mesh":"BARREL",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[44.5,5.3,-20],
                 "transforms":[
                 ],       
                 "material":"mWOOD",
                 "mesh":"BENCH",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[63.5,5.3,-33.5],
                 "transforms":[
@@ -1067,7 +1085,8 @@
                 ],       
                 "material":"mWOOD",
                 "mesh":"BENCH",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[72.5,7.0,-34.5,
                             72.5,7.0,-38.5,
@@ -1079,14 +1098,16 @@
                 ],       
                 "material":"mCOLUMN",
                 "mesh":"COLUMN",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[2.5,1.75,-6.5],
                 "transforms":[
                 ],       
                 "material":"mTRUNK",
                 "mesh":"TRUNK",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[63.5,5.5,-38.5],
                 "transforms":[
@@ -1096,21 +1117,24 @@
                 ],       
                 "material":"mTRUNK",
                 "mesh":"TRUNK",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[58,7.0,-32.5],
                 "transforms":[
                 ],       
                 "material":"mINVICUBE_WALL",
                 "mesh":"IWALLRIGHT",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[47,7.0,-29.5],
                 "transforms":[
                 ],       
                 "material":"mINVICUBE_WALL",
                 "mesh":"IWALLEFT",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[68.5,5.7,-38.5,
                             67.5,5.7,-38.5],
@@ -1118,14 +1142,16 @@
                 ],       
                 "material":"mPOT",
                 "mesh":"POT",
-                "collision": true
+                "collision": true,
+                "shadow": true
             },
             {   "position":[68.5,5.5,-37.5],
                 "transforms":[
                 ],       
                 "material":"mPOT",
                 "mesh":"POT2",
-                "collision": true
+                "collision": true,
+                "shadow": true
             }
 
 

@@ -27,8 +27,9 @@ ObjectScene::ObjectScene()
 
 //**********************************************************************//
 
-ObjectScene::ObjectScene(Object3D * aObject,float aDamage){
+ObjectScene::ObjectScene(Object3D * aObject,bool shadow,float aDamage){
     object=aObject;
+    hasShadow=shadow;
     damage=aDamage;
 }
 
@@ -42,7 +43,8 @@ ObjectScene::~ObjectScene()
 //**********************************************************************//
 
 void ObjectScene::visualization(Context & vis){
-    object->visualization(vis);
+    if(!vis.shadow_mode || (vis.shadow_mode && hasShadow))
+        object->visualization(vis);
 }
 
 //**********************************************************************//

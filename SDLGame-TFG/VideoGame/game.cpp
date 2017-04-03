@@ -237,11 +237,13 @@ void Game::loop(){
             vec3f pos=hero->getPosition();
 
             //1- Render of our deph map for shadow mapping
+            context.shadow_mode=true;
             shadowManager->setCamera(vec3f(pos.x-1.0, pos.y+5.0f,pos.z-2.0),vec3f(pos.x,0.0,pos.z),vec3f(0.0,1.0,0.0));
             shadowManager->setOrthoProjection(-20.0,20.0,-20.0,20.0,-1,10);
             shadowManager->generateShadow(gameState,context);
 
             //2- Normal render of our scene
+            context.shadow_mode=false;
             glViewport(0, 0, windowW, windowH);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             context.currentShader=normalShader;
