@@ -66,10 +66,12 @@ Shader * ShadowManager::getShader(){
 
 //**********************************************************************//
 
-void ShadowManager::generateShadow(GameState & gameState,Context & context){
+void ShadowManager::generateShadow(GameState & gameState){
     lightSpace.setMatrix(lightCamera->getView());
     lightSpace.product(lightCamera->getOrthoProyection().getMatrix());
 
+    Context context;
+    context.shadow_mode=true;
     context.currentShader=shader;
     glUseProgram(context.currentShader->getProgram());
     glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, lightSpace.getMatrix());
@@ -88,7 +90,5 @@ void ShadowManager::activateShadowTexture(){
 //**********************************************************************//
 
 Matrix4f & ShadowManager::getLightSpace(){
-    lightSpace.setMatrix(lightCamera->getView());
-    lightSpace.product(lightCamera->getOrthoProyection().getMatrix());
     return lightSpace;
 }

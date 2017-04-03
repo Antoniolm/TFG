@@ -46,7 +46,7 @@ class ShadowManager
         void setShader(Shader * aShader);
         Shader * getShader();
 
-        void generateShadow(GameState & gameState,Context & context);
+        void generateShadow(GameState & gameState);
         void activateShadowTexture();
         Matrix4f & getLightSpace();
 
