@@ -84,7 +84,6 @@ class Game
         Window * window;
         OptionManager * options;
         GameState gameState;
-        Hero * hero;
         HeroState * heroState;
         Notification * notiGamePad;
         Shader * normalShader;

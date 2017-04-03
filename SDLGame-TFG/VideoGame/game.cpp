@@ -199,9 +199,8 @@ void Game::loop(){
                 gameState.rootMap->activatedLight(context.currentShader->getProgram());
                 gameState.rootMap->activatedObjectGroup();
 
-                hero=gameState.rootMap->getHero();
-                hero->setCoin(SavedManager::getInstance()->getCoin());
-                vec3f posH=hero->getPosition();
+                gameState.rootMap->getHero()->setCoin(SavedManager::getInstance()->getCoin());
+                vec3f posH=gameState.rootMap->getHero()->getPosition();
 
                 gameState.movie=gameState.rootMap->getMovie();
                 gameState.movie->setPosition(vec3f(posH.x,posH.y+6.77,posH.z+11.0));
@@ -213,7 +212,7 @@ void Game::loop(){
             ///////////////////
             gameState.time=SDL_GetTicks();
 
-            if(hero->getLife()<=0.0){ //check if the hero is dead
+            if(gameState.rootMap->getHero()->getLife()<=0.0){ //check if the hero is dead
                 gameState.deadMenu->activate();
             }
             gameState.movie->updateState(gameState);
@@ -234,7 +233,7 @@ void Game::loop(){
             // VISUALIZATION
             ///////////////////
             time=SDL_GetTicks();
-            vec3f pos=hero->getPosition();
+            vec3f pos=gameState.rootMap->getHero()->getPosition();
 
             //1- Render of our deph map for shadow mapping
             context.shadow_mode=true;
@@ -275,13 +274,13 @@ void Game::loop(){
             if(gameState.rootMap->isFinished()){
                 //Get the next Map and save the match
                 fileMap=gameState.rootMap->getNextMap();
-                SavedManager::getInstance()->save(fileMap,hero->getCoin());
+                SavedManager::getInstance()->save(fileMap,gameState.rootMap->getHero()->getCoin());
 
                 //Delete the currentMap
                 delete gameState.rootMap;
 
                 //Save the progress and create the new map
-                SavedManager::getInstance()->save(fileMap,hero->getCoin());
+                SavedManager::getInstance()->save(fileMap,gameState.rootMap->getHero()->getCoin());
                 gameState.rootMap=new RootMap(fileMap,true);
 
                 gameState.controller->consumeButtons();
