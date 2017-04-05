@@ -404,7 +404,7 @@
 	"window.h"
 	"file_obj.h"
 
-1491303347 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1491415008 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1486059805 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -2491,7 +2491,7 @@
 1488043281 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.cpp
 	"endmapregion.h"
 
-1488043455 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.h
+1491401988 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.h
 	"region.h"
 	"structdata.h"
 	"SDL.h"
@@ -2500,7 +2500,7 @@
 	"gamestate.h"
 	"../lib/rapidjson/document.h"
 
-1487943780 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.cpp
+1491414294 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.cpp
 	"textregion.h"
 
 1490872786 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loadingscreen.cpp

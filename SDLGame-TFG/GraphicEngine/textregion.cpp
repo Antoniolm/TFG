@@ -36,6 +36,7 @@ TextRegion::TextRegion(const Value & regionFeatures){
     }
 
     activated=false;
+    lastState=false;
     currentTime=SDL_GetTicks();
     textDelay=currentTime;
 }
@@ -63,7 +64,7 @@ void TextRegion::updateState(GameState & gameState){
         currentTime=time-50;
 
     //check if the region will be activated in this frame
-    if((distance.x>-radioActivity.x && distance.x<radioActivity.x)&&
+    if(!activated && !lastState && (distance.x>-radioActivity.x && distance.x<radioActivity.x)&&
        (distance.y>-radioActivity.y && distance.y<radioActivity.y)&&
        (distance.z>-radioActivity.z && distance.z<radioActivity.z)){
             activated=true;
@@ -74,10 +75,12 @@ void TextRegion::updateState(GameState & gameState){
         if(textDelay<(time-timeBWstate)){ //If the time for the current text is finished
             mate->activateDialog(false);
             hero->activateDialog(false,0);
-
-            if(stateMachine.isLastState()) //if the talk is over
+            if(lastState)
                 activated=false;
-            else{ //if not our speakers obtains his new dialog
+
+            if(!lastState){
+                if(stateMachine.isLastState()) //if the talk is over
+                    lastState=true;
 
                 if(stateMachine.getCurrentSpeaker()==HERO_DIALOG){ //Speaker -> hero
                     hero->setDialog(stateMachine.getCurrentState(),0);
@@ -87,10 +90,10 @@ void TextRegion::updateState(GameState & gameState){
                     mate->setDialog(stateMachine.getCurrentState());
                     mate->activateDialog(true);
                 }
-                stateMachine.nextState();
+                if(!lastState)
+                    stateMachine.nextState();
+                textDelay=time;
             }
-            textDelay=time;
-
         }
 
     }

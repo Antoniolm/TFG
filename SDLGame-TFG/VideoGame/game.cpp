@@ -277,7 +277,6 @@ void Game::loop(){
                 delete gameState.rootMap;
 
                 //Save the progress and create the new map
-                SavedManager::getInstance()->save(fileMap,gameState.rootMap->getHero()->getCoin());
                 gameState.rootMap=new RootMap(fileMap,true);
 
                 gameState.controller->consumeButtons();

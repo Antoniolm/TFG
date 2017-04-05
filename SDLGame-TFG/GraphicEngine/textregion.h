@@ -54,6 +54,7 @@ class TextRegion : public Region
     protected:
 
     private:
+        bool lastState;
         IANpc stateMachine;
         float timeBWstate;
         float currentTime,textDelay;
