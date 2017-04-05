@@ -2,7 +2,7 @@
     "bkgdMaterial":"mCUBE_DUNGB",
     "sound":"sounds/backsound.wav",
     "volSound":30.0,
-    "heroPosition":[7,3.5,-4],
+    "heroPosition":[52,6.5,-30],
     "nextMap":"./maps/map01.json",
 
     "title": {
@@ -181,23 +181,17 @@
     ],
 
     "textRegion":[
-            {   "position":[8.5,0.0,-4.5],
+            {   "position":[48,8.0,-27],
                 "radioActivity":[3.0,3.0,3.0],
-                "timeBWstate":1000.0,
-                "dialog":[{"speaker":1,
-                           "string":"Oh!! Young warrior, you waked up"},
-                          {"speaker":1,
-                           "string":"You have been sleeping for 400 years!"},
-                          {"speaker":1,
-                           "string":"If you don't remember me, I'm Jame the buttler"},
+                "timeBWstate":2000.0,
+                "dialog":[{"speaker":2,
+                           "string":"Poor ghost wall!"},
                           {"speaker":2,
-                           "string":"The castle cursed your soul while you was slepping"},
+                           "string":"She died so soon"},
                           {"speaker":2,
-                           "string":"But don't be scared"},
+                           "string":"I knew his father. He was a greatful wall"},
                           {"speaker":2,
-                           "string":"If you obtain all the fragment of cursed crystal"},
-                          {"speaker":2,
-                           "string":"you would purify your soul"}
+                           "string":"Shut up!, I need to concentrate in the arrows"}
                         ]
             }
     ],
@@ -640,7 +634,7 @@
                 "YNumber":2,        
                 "XNumber":1,         
                 "ZNumber":1,         
-                "materialTop":"mCUBE_DUNG",
+                "materialTop":"mCUBE_SPIKE",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
                 "damage":0.0},

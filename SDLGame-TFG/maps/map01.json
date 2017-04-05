@@ -652,7 +652,7 @@
                 "YNumber":2,        
                 "XNumber":1,         
                 "ZNumber":1,         
-                "materialTop":"mCUBE_DUNG",
+                "materialTop":"mCUBE_SPIKE",
                 "materialMiddle":"mCUBE_DUNGB", 
                 "mesh":"CUBE", 
                 "damage":0.0},
