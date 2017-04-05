@@ -27,6 +27,7 @@ Texture::Texture(){
 
 Texture::Texture(const std::string& aFileName)
 {
+    std::cout<< "Texture ->"<< aFileName<< std::endl;
     fileName=aFileName;
     createTexture();
 }

@@ -43,10 +43,6 @@ Hero::Hero(vec3f aPos)
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
-
-    //Print a message for check
-    cout<< "< Game is loading our hero >"<< endl;
-
     //////////////////////////////////////////////////////
     /////           Initialize weapons               /////
     //////////////////////////////////////////////////////

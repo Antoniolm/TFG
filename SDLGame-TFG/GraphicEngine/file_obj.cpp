@@ -82,8 +82,9 @@ void FileObj::readEverything(const char * fileName,std::vector<vec3f> & vertex,s
         cout<< "Cannot open " << fileName << endl;
     }
     else{
-        cout<< "Game is loading ->"<< fileName<< endl;
+        cout<< "Geometry ->"<< fileName<< endl;
     }
+
     string line;
     while (getline(in, line))
     {

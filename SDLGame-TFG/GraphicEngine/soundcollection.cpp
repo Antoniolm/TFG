@@ -25,6 +25,7 @@ SoundCollection* SoundCollection::instance = NULL;
 
 SoundCollection::SoundCollection()
 {
+    cout<< "Game is loading -> sounds"<< endl;
     collection.addElement(new Sound("sounds/coin.wav",1,30,-1,0));
 
     collection.addElement(new Sound("sounds/openSound.wav",1,40,-1,0));

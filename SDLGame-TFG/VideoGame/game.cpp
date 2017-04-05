@@ -91,6 +91,7 @@ Game::~Game(){
     delete window;
     delete notiGamePad;
     delete normalShader;
+
     delete shadowManager;
     delete options;
 
@@ -102,7 +103,6 @@ Game::~Game(){
 
     SoundCollection * soundCollect= SoundCollection::getInstance();
     delete soundCollect;
-
     //delete profile
 }
 
@@ -236,8 +236,8 @@ void Game::loop(){
             vec3f pos=gameState.rootMap->getHero()->getPosition();
 
             //1- Render of our deph map for shadow mapping
-            shadowManager->setCamera(vec3f(pos.x-1.0, pos.y+5.0f,pos.z-2.0),vec3f(pos.x,0.0,pos.z),vec3f(0.0,1.0,0.0));
-            shadowManager->setOrthoProjection(-20.0,20.0,-20.0,20.0,-1,10);
+            shadowManager->setCamera(vec3f(pos.x-1.0, pos.y+8.0f,pos.z-2.0),vec3f(pos.x,0.0,pos.z),vec3f(0.0,1.0,0.0));
+            shadowManager->setOrthoProjection(-20.0,20.0,-20.0,20.0,-1,20);
             shadowManager->generateShadow(gameState);
 
             //2- Normal render of our scene
@@ -250,11 +250,11 @@ void Game::loop(){
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "normalMap"), 1);
             glUniform1i(glGetUniformLocation(context.currentShader->getProgram(), "shadowMap"), 2);
             glUniform3f(glGetUniformLocation(context.currentShader->getProgram(), "lightPosVertex"),pos.x-1.0, pos.y+5.0f,pos.z-2.0);
-            gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
             glUniformMatrix4fv(glGetUniformLocation(context.currentShader->getProgram(), "lightSpaceMatrix"), 1, GL_FALSE, shadowManager->getLightSpace().getMatrix());
 
             glActiveTexture(GL_TEXTURE2);
             shadowManager->activateShadowTexture();
+            gameState.camera->activatePerspecProjection(context.currentShader->getProgram());
             gameState.rootMap->visualization(context);
 
 

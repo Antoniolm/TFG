@@ -24,6 +24,7 @@ MeshCollection* MeshCollection::instance = NULL;
 
 MeshCollection::MeshCollection()
 {
+    cout<< "Game is loading -> geometries"<< endl;
     //Mesh 0
     Mesh * element=new Mesh("geometries/cube.obj",true);
     element->addLink();

@@ -48,9 +48,6 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     MeshCollection * meshCollect =MeshCollection::getInstance();
     MaterialCollection * materialCollect =MaterialCollection::getInstance();
 
-    //Print a message for check
-    cout<< "< Game is loading our enemy >"<< endl;
-
     //////////////////////////////////////////////////////
     /////           Initialize weapon               /////
     //////////////////////////////////////////////////////

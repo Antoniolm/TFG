@@ -24,17 +24,18 @@ MaterialCollection* MaterialCollection::instance = NULL;
 
 MaterialCollection::MaterialCollection()
 {
-    collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeon.png","./textures/cubeDungeonBump.png",mCUBE_DUNG));
+    cout<< "Game is loading -> materials"<< endl;
+    collection.addElement(new Material(vec3f(1.5f, 1.5f, 1.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeon.png","./textures/cubeDungeonBump.png",mCUBE_DUNG));
 
     collection.addElement(new Material(vec3f(1.0f, 1.0f, 1.0f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeonB.png","",mCUBE_DUNGB));
 
-    collection.addElement(new Material(vec3f(0.1f, 0.1f, 0.1f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeWall.png","./textures/cubeWallBump.png",mCUBE_WALL));
+    collection.addElement(new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeWall.png","./textures/cubeWallBump.png",mCUBE_WALL));
 
     collection.addElement(new Material(vec3f(0.7f, 0.7f, 0.7f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/invisiblecubeWall.png","",mINVICUBE_WALL));
 
-    collection.addElement(new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeTrap.png","",mCUBE_TRAP));
+    collection.addElement(new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeTrap.png","./textures/cubeTrapBump.png",mCUBE_TRAP));
 
-    collection.addElement(new Material(vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeonTrap.png","",mCUBE_SPIKE));
+    collection.addElement(new Material(vec3f(1.5f, 1.5f, 1.5f),vec3f(0.5f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/cubeDungeonTrap.png","./textures/cubeDungeonTrapBump.png",mCUBE_SPIKE));
 
     collection.addElement(new Material(vec3f(0.5f, 1.0f, 0.5f),vec3f(0.5f, 1.0f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),16.0f,"./textures/water.png","",mDWATER));
 

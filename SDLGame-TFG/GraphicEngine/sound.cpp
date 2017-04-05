@@ -68,6 +68,7 @@ Sound::Sound(const Sound & aSound){
 //**********************************************************************//
 
 Sound::Sound(const string & aFile,unsigned int aType,int aVolume,int aChannel,int aloop){
+    cout<< "Sound ->"<< aFile<<endl;
     file=aFile;
     type=aType;
     channel=aChannel;
