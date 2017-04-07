@@ -49,14 +49,13 @@ class ShadowManager
         void generateShadow(GameState & gameState);
         void activateShadowTexture();
         Matrix4f & getLightSpace();
-
-        ShadowTexture * depthTexture;
     protected:
 
     private:
         Shader * shader;
         Camera * lightCamera;
         Matrix4f lightSpace;
+        ShadowTexture * depthTexture;
 
 };
 

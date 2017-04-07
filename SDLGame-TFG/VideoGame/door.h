@@ -76,7 +76,6 @@ class Door : public ObjectScene
         SoulCarrier * sCarrier;
         Matrix4f * rotateDoor,* moveDoor;
         ScriptLMD * animation;
-        float delayTime;
         bool activated;
         int doorType;
         int doorID;

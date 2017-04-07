@@ -79,7 +79,6 @@ class Soul : public Object3D
         NodeSceneGraph * root;
         Matrix4f * transMatrix,* animationMatrix;
         AxisRotation * rotation;
-        float delayTime;
         bool activated;
         bool inCarrier;
 };
