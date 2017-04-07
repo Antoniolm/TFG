@@ -73,10 +73,8 @@ void ShadowTexture::setShadowBuffer(bool value){
         glViewport(0, 0, shadowWidth, shadowHeight);
         glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
         glClear(GL_DEPTH_BUFFER_BIT);
-        //glCullFace(GL_FRONT);
     }
     else{
-        //glCullFace(GL_BACK);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
 }

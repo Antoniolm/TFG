@@ -41,3 +41,28 @@ void Region::updateState(GameState & gameState){}
 bool Region::isActivated(){
     return activated;
 }
+
+//**********************************************************************//
+
+void Region::setPosition(vec3f value){
+    position=value;
+}
+
+//**********************************************************************//
+
+void Region::setRadioActivity(vec3f value){
+    radioActivity=value;
+}
+
+//**********************************************************************//
+
+vec3f Region::getPosition(){
+    return position;
+}
+
+//**********************************************************************//
+
+vec3f Region::getRadioActivity(){
+    return radioActivity;
+}
+

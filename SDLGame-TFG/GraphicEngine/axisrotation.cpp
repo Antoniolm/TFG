@@ -54,6 +54,24 @@ void AxisRotation::setParameters(float anAVelocity,float x,float y,float z){
 
 //**********************************************************************//
 
+float AxisRotation::getAngularVelocity(){
+    return angularVelocity;
+}
+
+//**********************************************************************//
+
+vec3f AxisRotation::getAxis(){
+    return axis;
+}
+
+//**********************************************************************//
+
+float AxisRotation::getCurrentGrade(){
+    return currentGrade;
+}
+
+//**********************************************************************//
+
 Matrix4f & AxisRotation::updateState(float time){
     time=time/1000;
 
@@ -68,3 +86,5 @@ Matrix4f & AxisRotation::updateState(float time){
 void AxisRotation::resetState(){
 
 }
+
+

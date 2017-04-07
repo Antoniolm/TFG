@@ -100,3 +100,14 @@ void TextRegion::updateState(GameState & gameState){
 
     currentTime+=time-currentTime;
 }
+//**********************************************************************//
+
+void TextRegion::setTimeBWstate(float value){
+    timeBWstate=value;
+}
+
+//**********************************************************************//
+
+float TextRegion::getTimeBWstate(){
+    return timeBWstate;
+}

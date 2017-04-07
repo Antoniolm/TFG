@@ -91,3 +91,14 @@ void AcceleratedMovement::resetState(){
     acceleration.z=0.0;
 }
 
+//**********************************************************************//
+
+vec3f AcceleratedMovement::getVelocity(){
+    return velocity;
+}
+
+//**********************************************************************//
+
+vec3f AcceleratedMovement::getAcceleration(){
+    return acceleration;
+}

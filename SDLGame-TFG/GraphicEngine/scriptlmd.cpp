@@ -69,3 +69,9 @@ void ScriptLMD::resetState(){
         (*it)->resetState();
     }
 }
+
+//**********************************************************************//
+
+int ScriptLMD::getNumState(){
+    return script.size();
+}

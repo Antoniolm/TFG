@@ -51,6 +51,10 @@ class TextRegion : public Region
         */
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
+
+        void setTimeBWstate(float value);
+        float getTimeBWstate();
+
     protected:
 
     private:

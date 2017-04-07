@@ -105,3 +105,45 @@ void OscillateRotation::resetState(){
     }
 }
 
+//**********************************************************************//
+
+float OscillateRotation::getMaxGrade(){
+    return maxGrade;
+}
+
+//**********************************************************************//
+
+float OscillateRotation::getMinGrade(){
+    return minGrade;
+}
+
+//**********************************************************************//
+
+float OscillateRotation::getInitialGrade(){
+    return initialGrade;
+}
+
+//**********************************************************************//
+
+float OscillateRotation::getCurrentGrade(){
+    return currentGrade;
+}
+
+//**********************************************************************//
+
+float OscillateRotation::getAngularVelocity(){
+    return angularVelocity;
+}
+
+//**********************************************************************//
+
+bool OscillateRotation::getIncrement(){
+    return increment;
+}
+
+//**********************************************************************//
+
+int OscillateRotation::getLoop(){
+    return loop;
+}
+
