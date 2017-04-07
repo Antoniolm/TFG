@@ -59,6 +59,12 @@ void Weapon::updateState(float time,ControllerManager * controller,RootMap * roo
 
 //**********************************************************************//
 
+void Weapon::setDamage(float value){
+    damage=value;
+}
+
+//**********************************************************************//
+
 float Weapon::getDamage(){
     return damage;
 }

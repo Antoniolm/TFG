@@ -53,6 +53,14 @@ class Texture
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *   This method will return the file of our texture
+        *   \return const std::string &
+        */
+        //////////////////////////////////////////////////////////////////////////
+        const std::string & getFile();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *   This method will bind that texture in our current Shader
         *   \return void
         */

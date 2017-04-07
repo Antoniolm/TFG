@@ -125,10 +125,41 @@ void Projectile::updateState(GameState & gameState){
     animationMatrix->setMatrix(rotation->updateState(time-currentTime).getMatrix());
     currentTime+=(time-currentTime);
 }
+
 //**********************************************************************//
 
 bool Projectile::isLive(){
     return live;
+}
+
+//**********************************************************************//
+
+void Projectile::setLive(bool value){
+    live=value;
+}
+
+//**********************************************************************//
+
+void Projectile::setDamage(float value){
+    damage=value;
+}
+
+//**********************************************************************//
+
+void Projectile::setVelocity(vec3f value){
+    velocity=value;
+}
+
+//**********************************************************************//
+
+vec3f Projectile::getVelocity(){
+    return velocity;
+}
+
+//**********************************************************************//
+
+float Projectile::getDamage(){
+    return damage;
 }
 
 //**********************************************************************//

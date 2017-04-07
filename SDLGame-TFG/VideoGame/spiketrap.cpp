@@ -124,6 +124,24 @@ void SpikeTrap::updateState(GameState & gameState ){
 
 //**********************************************************************//
 
+void SpikeTrap::setDamage(float value){
+    damage=value;
+}
+
+//**********************************************************************//
+
+float SpikeTrap::getDamage(){
+    return damage;
+}
+
+//**********************************************************************//
+
+bool SpikeTrap::isActivated(){
+    return activated;
+}
+
+//**********************************************************************//
+
 void SpikeTrap::initAnimation(){
     //////////////////////////////////////
     //Animation up

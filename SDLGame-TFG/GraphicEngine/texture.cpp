@@ -48,6 +48,12 @@ void Texture::setFile(const std::string& aFileName){
 
 //**********************************************************************//
 
+const std::string & Texture::getFile(){
+    return fileName;
+}
+
+//**********************************************************************//
+
 void Texture::bindTexture(int ch){
     if(ch==0)
         glActiveTexture(GL_TEXTURE0);

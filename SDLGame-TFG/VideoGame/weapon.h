@@ -67,6 +67,15 @@ class Weapon : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    It will set the damage of our weapon
+        *    @param value -> the new value of our damage
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setDamage(float value);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    It will return the damage of our weapon
         *    \return float
         */
