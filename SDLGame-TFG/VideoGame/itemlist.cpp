@@ -68,3 +68,21 @@ void ItemList::updateState(GameState & gameState ){
             it++;
     }
 }
+
+//**********************************************************************//
+
+const vector<Item *> & ItemList::getItems(){
+    return items;
+}
+
+//**********************************************************************//
+
+Item * ItemList::getItem(int index){
+    return items[index];
+}
+
+//**********************************************************************//
+
+int ItemList::getNumItem(){
+    return items.size();
+}

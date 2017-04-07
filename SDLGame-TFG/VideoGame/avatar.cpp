@@ -46,6 +46,12 @@ void Avatar::setLife(float aLife){
 
 //**********************************************************************//
 
+void Avatar::setMaxLife(float aMaxLife){
+    maxLife=aMaxLife;
+}
+
+//**********************************************************************//
+
 float Avatar::getLite(){
     return life;
 }

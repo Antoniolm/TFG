@@ -109,6 +109,11 @@ void Item::updateState(GameState & gameState){
     animationMatrix->setMatrix(rotation->updateState(time-currentTime).getMatrix());
     currentTime+=time-currentTime;
 }
+//**********************************************************************//
+
+void Item::setValue(int aValue){
+    value=aValue;
+}
 
 //**********************************************************************//
 

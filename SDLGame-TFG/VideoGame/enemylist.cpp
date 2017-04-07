@@ -85,3 +85,15 @@ void EnemyList::updateState(GameState & gameState){
 vector<Enemy *> & EnemyList::getEnemies(){
     return enemies;
 }
+
+//**********************************************************************//
+
+Enemy * EnemyList::getEnemy(int index){
+    return enemies[index];
+}
+
+//**********************************************************************//
+
+int EnemyList::getNumEnemy(){
+    return enemies.size();
+}

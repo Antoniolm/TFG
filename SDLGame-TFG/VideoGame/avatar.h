@@ -76,6 +76,14 @@ class Avatar: public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will set the maxlife of an avatar
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setMaxLife(float aMaxLife);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will get the life of an avatar
         *    \return float
         */

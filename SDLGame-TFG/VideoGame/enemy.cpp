@@ -69,6 +69,12 @@ bool Enemy::isActivate(){
 
 //**********************************************************************//
 
+void Enemy::setRadioActivity(vec3f radio){
+    radioActivity=radio;
+}
+
+//**********************************************************************//
+
 vec3f Enemy::getRadioActivity(){
     return radioActivity;
 }

@@ -92,6 +92,14 @@ class Enemy: public AvatarMove
 
         //////////////////////////////////////////////////////////////////////////
         /**
+        *    The method will set radioActivity of our enemy
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setRadioActivity(vec3f radio);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
         *    The method will get radioActivity of our enemy
         *    \return vec3f
         */

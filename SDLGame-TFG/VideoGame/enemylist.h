@@ -81,10 +81,26 @@ class EnemyList : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will return the enemies of our list
-        *    \return hero *
+        *    \return vector<Enemy *> &
         */
         //////////////////////////////////////////////////////////////////////////
         vector<Enemy *> & getEnemies();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return the enemy in the index position of our vector
+        *    \return enemy *
+        */
+        //////////////////////////////////////////////////////////////////////////
+        Enemy * getEnemy(int index);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will return the number of enemies of our vector
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
+        int getNumEnemy();
     protected:
 
     private:
