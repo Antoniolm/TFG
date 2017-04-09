@@ -44,7 +44,11 @@ class Door : public ObjectScene
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor
+        *    @param doorFeatures -> the value json that contain all the information of our door object
+        *    @param soulCarriers -> Vector of soulcarriers
+        *    @param ID -> ID of the soulCarrier linked to our door
+        */
         //////////////////////////////////////////////////////////////////////////
         Door(const Value & doorFeatures,const vector<SoulCarrier*> & soulCarriers,int ID);
 
@@ -56,6 +60,7 @@ class Door : public ObjectScene
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -65,6 +70,7 @@ class Door : public ObjectScene
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

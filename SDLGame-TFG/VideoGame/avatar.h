@@ -52,6 +52,7 @@ class Avatar: public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param vis -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -61,6 +62,7 @@ class Avatar: public Object3D
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -69,6 +71,7 @@ class Avatar: public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will set the life of an avatar
+        *    @param aLife -> The new value of our life
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -77,6 +80,7 @@ class Avatar: public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will set the maxlife of an avatar
+        *    @param aMaxLife -> The new value of our max life
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -101,6 +105,7 @@ class Avatar: public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will add the value to our life
+        *    @param value -> The value that the avatar will add to his life
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

@@ -45,6 +45,8 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will move our avatar
+        *    @param aMove -> the new movement of our avatar
+        *    @param aDir -> the new direction of our avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -53,17 +55,17 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will create the gravity for our avatar
-        *    \param velocity ->
+        *    \param time -> the current time in our application
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
         ObjectScene * gravity(float time);
 
-
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will jump our avatar
-        *    \param velocity ->
+        *    It will jump our avatar
+        *    \param velocity -> the velocity of our jump
+        *    @param acceleration -> the acceleration of our movement
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -72,7 +74,7 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will jump our avatar
-        *    \param time ->
+        *    \param time -> the current time in our application
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -80,23 +82,24 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will get the position of our avatar
-        *    \return void
+        *    It will get the position of our avatar
+        *    \return vec3f
         */
         //////////////////////////////////////////////////////////////////////////
         vec3f getPosition();
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will get the direction of our avatar
-        *    \return void
+        *    It will get the direction of our avatar
+        *    \return avatarDirection
         */
         //////////////////////////////////////////////////////////////////////////
         avatarDirection getDirection();
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will show the object in our interface
+        *    It will show the object in our interface
+        *    @param vis -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -106,6 +109,7 @@ class AvatarMove: public Avatar
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -113,7 +117,9 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will detect if the hero will be hurt for an attack
+        *    It will detect if the hero will be hurt for an attack
+        *    @param posAvatar -> Position of the avatar that did the hit
+        *    @param dirAvatar -> The direction of the avatar that did the hit
         *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
@@ -122,6 +128,8 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will detect if the hero will be able to protect him for an attack
+        *    @param posAvatar -> Position of the avatar that did the hit
+        *    @param dirAvatar -> The direction of the avatar that did the hit
         *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
@@ -129,7 +137,8 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will active an impactMove in our avatar
+        *    It will active an impactMove in our avatar
+        *    @param dirAvatar -> The direction of the avatar that did the hit
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -138,6 +147,8 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will manage the activated of an impact movement
+        *    @param dirAvatar -> The direction of the avatar that did the hit
+        *    @param enemies -> List of enemies that the avatar can't go through them
         *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
@@ -145,7 +156,8 @@ class AvatarMove: public Avatar
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will manage an impactMove that was activated in our avatar
+        *    It will manage an impactMove that was activated in our avatar
+        *    @param time -> The time of our application
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -154,6 +166,7 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will let to change the direction of our avatar
+        *    @param aDir -> the new direction of our avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -162,7 +175,8 @@ class AvatarMove: public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will create a projectile
-        *    \return void
+        *    @param damage -> the damage of the created projectile
+        *    \return Projectile *
         */
         //////////////////////////////////////////////////////////////////////////
         Projectile * createProjectile(float damage);

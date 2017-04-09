@@ -48,7 +48,11 @@ class Enemy: public AvatarMove
     public:
         Enemy();
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor
+        *    @param aLife -> the life that our enemy object will have
+        *    @param aPosition -> the initial position of our enemy
+        *    @param aRadioActivity -> the radio activity of our enemy
+        */
         //////////////////////////////////////////////////////////////////////////
         Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity);
 
@@ -60,6 +64,7 @@ class Enemy: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param vis -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -69,6 +74,7 @@ class Enemy: public AvatarMove
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -77,6 +83,7 @@ class Enemy: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will activated our enemy
+        *    @param value -> The value said if the enemy is activated or not
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -84,8 +91,8 @@ class Enemy: public AvatarMove
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will return if the enemy is activate or not
-        *    \return void
+        *    It will return if the enemy is activate or not
+        *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
         bool isActivate();
@@ -93,6 +100,7 @@ class Enemy: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will set radioActivity of our enemy
+        *    @param radio -> The new radio value of our enemy
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -117,6 +125,11 @@ class Enemy: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    Enemy will take damage when the hero use that method(but depend of some conditions)
+        *    @param posAvatar -> the position of our avatar
+        *    @param dirAvatar -> the direction of our avatar
+        *    @param posHero -> the position of our hero
+        *    @param value -> the value of the damage
+        *    @param enemies -> the vector of enemies to know if can do the impact movement
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -125,6 +138,7 @@ class Enemy: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    Enemy will take damage when he is on an objectScene with damage
+        *    @param value -> the value of the damage
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
