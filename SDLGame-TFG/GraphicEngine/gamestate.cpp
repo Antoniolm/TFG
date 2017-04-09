@@ -38,3 +38,49 @@ GameState::~GameState(){
     delete controlMenu;
     delete camera;
 }
+
+//**********************************************************************//
+
+void GameState::initPlay(GLuint shaderID){
+    rootMap->activatedLight(shaderID);
+    rootMap->activatedObjectGroup();
+
+    rootMap->getHero()->setCoin(SavedManager::getInstance()->getCoin());
+
+    vec3f posH=rootMap->getHero()->getPosition();
+
+    movie=rootMap->getMovie();
+    movie->setPosition(vec3f(posH.x,posH.y+6.77,posH.z+11.0));
+    movie->activateAllTexture();
+}
+
+//**********************************************************************//
+
+void GameState::updatePlay(){
+    movie->updateState(*this);
+    pauseMenu->updateState(*this);
+    deadMenu->updateState(*this);
+    rootMap->updateState(*this);
+}
+
+//**********************************************************************//
+
+void GameState::updateLoading(GLuint shaderID){
+    time=SDL_GetTicks();
+    camera->setPosition(vec3f(0.0,0.0,0.0),shaderID);
+    loadScreen->updateState(*this);
+
+    camera->activateOrthoProjection(shaderID);
+}
+
+//**********************************************************************//
+
+void GameState::updateMenu(GLuint shaderID){
+    time=SDL_GetTicks();
+    camera->setPosition(vec3f(0.0,0.0,0.0),shaderID);
+    mainMenu->updateState(*this);
+    optionMenu->updateState(*this);
+    controlMenu->updateState(*this);
+
+    camera->activateOrthoProjection(shaderID);
+}

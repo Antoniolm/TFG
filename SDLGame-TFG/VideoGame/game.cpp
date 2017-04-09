@@ -163,13 +163,8 @@ void Game::loop(){
 
         //CASE -> MAINMENU
         if(gameState.mainMenu->isActivate()){
-            gameState.time=SDL_GetTicks();
-            gameState.camera->setPosition(vec3f(0.0,0.0,0.0),context.currentShader->getProgram());
-            gameState.mainMenu->updateState(gameState);
-            gameState.optionMenu->updateState(gameState);
-            gameState.controlMenu->updateState(gameState);
+            gameState.updateMenu(context.currentShader->getProgram());
 
-            gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
             if(!gameState.optionMenu->isActivate() && !gameState.controlMenu->isActivate())
                 gameState.mainMenu->visualization(context);
 
@@ -181,11 +176,8 @@ void Game::loop(){
         //CASE -> LOADING
         else if(gameState.rootMap->isLoading()){
             //loading screen here
-            gameState.time=SDL_GetTicks();
-            gameState.camera->setPosition(vec3f(0.0,0.0,0.0),context.currentShader->getProgram());
-            gameState.loadScreen->updateState(gameState);
+            gameState.updateLoading(context.currentShader->getProgram());
 
-            gameState.camera->activateOrthoProjection(context.currentShader->getProgram());
             gameState.loadScreen->visualization(context);
             firstTime=true;
 
@@ -196,15 +188,8 @@ void Game::loop(){
         //CASE -> PLAYING
         else{
             if(firstTime){
-                gameState.rootMap->activatedLight(context.currentShader->getProgram());
-                gameState.rootMap->activatedObjectGroup();
-
-                gameState.rootMap->getHero()->setCoin(SavedManager::getInstance()->getCoin());
+                gameState.initPlay(context.currentShader->getProgram());
                 vec3f posH=gameState.rootMap->getHero()->getPosition();
-
-                gameState.movie=gameState.rootMap->getMovie();
-                gameState.movie->setPosition(vec3f(posH.x,posH.y+6.77,posH.z+11.0));
-                gameState.movie->activateAllTexture();
                 firstTime=false;
             }
             ///////////////////
@@ -215,10 +200,7 @@ void Game::loop(){
             if(gameState.rootMap->getHero()->getLife()<=0.0){ //check if the hero is dead
                 gameState.deadMenu->activate();
             }
-            gameState.movie->updateState(gameState);
-            gameState.pauseMenu->updateState(gameState);
-            gameState.deadMenu->updateState(gameState);
-            gameState.rootMap->updateState(gameState);
+            gameState.updatePlay();
             heroState->updateState(gameState);
 
             //Update the camera, lifeText, coinText, profile

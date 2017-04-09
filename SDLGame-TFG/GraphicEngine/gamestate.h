@@ -53,6 +53,11 @@ class GameState
         //////////////////////////////////////////////////////////////////////////
         virtual ~GameState();
 
+        void initPlay(GLuint shaderID);
+        void updatePlay();
+        void updateLoading(GLuint shaderID);
+        void updateMenu(GLuint shaderID);
+
         float time;
         ControllerManager * controller;
         RootMap * rootMap;
