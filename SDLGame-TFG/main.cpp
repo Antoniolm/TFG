@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include "VideoGame/game.h"
 #include <iostream>
-#include <SDL_mixer.h>
+#include "SDL2/SDL_mixer.h"
 
 int main(int argc, char* args[])
 {

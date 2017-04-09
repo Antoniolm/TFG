@@ -23,10 +23,11 @@
 #include "object3d.h"
 #include "structdata.h"
 #include "shader.h"
-#include <SDL.h>
-#include <SDL_opengl.h>
-#include <SDL_mixer.h>
-#include <SDL_TTF.h>
+#include "GL/glew.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_opengl.h"
+#include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_ttf.h"
 #include <vector>
 #include "mesh.h"
 #include "nodescenegraph.h"

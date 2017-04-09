@@ -20,7 +20,7 @@
 #ifndef SHADER_H
 #define SHADER_H
 
-#include <glew.h>
+#include "GL/glew.h"
 #include <string>
 #include <iostream>
 #include <fstream>

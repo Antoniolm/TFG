@@ -22,7 +22,7 @@
 
 #include "region.h"
 #include "structdata.h"
-#include "SDL.h"
+#include "SDL2/SDL.h"
 #include "ianpc.h"
 #include "rootmap.h"
 #include "gamestate.h"

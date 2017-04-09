@@ -21,7 +21,7 @@
 #define TEXTURE_H
 
 #include <string>
-#include <glew.h>
+#include "GL/glew.h"
 #include "stb_image.h"
 #include <iostream>
 

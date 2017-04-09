@@ -21,7 +21,7 @@
 #define OSCILLATEROTATION_H
 
 #include "matrix4fdynamic.h"
-#include <SDL.h>
+#include "SDL2/SDL.h"
 
 class OscillateRotation : public Matrix4fDynamic
 {

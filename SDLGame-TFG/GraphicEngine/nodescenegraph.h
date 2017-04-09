@@ -27,7 +27,7 @@
 #include "matrix4f.h"
 #include "material.h"
 #include <vector>
-#include <SDL.h>
+#include "SDL2/SDL.h"
 
 using namespace std;
 

@@ -23,7 +23,7 @@
 
 #include "matrix4fdynamic.h"
 #include "structdata.h"
-#include <SDL.h>
+#include "SDL2/SDL.h"
 
 class LinearMovement : public Matrix4fDynamic {
 

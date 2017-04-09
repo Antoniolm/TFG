@@ -25,7 +25,7 @@
 #include "controller.h"
 #include "keyboardcontroller.h"
 #include "controllermanager.h"
-#include "SDL.h"
+#include "SDL2/SDL.h"
 
 class Context;
 class RootMap;

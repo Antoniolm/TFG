@@ -54,8 +54,7 @@ uniform sampler2D normalMap;
 uniform sampler2D shadowMap; 
 
 //Definition of functions
-vec3 calculateDirLight(DirLight light,vec3 normal,vec3 viewDir);
-vec3 calculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
+vec3 calculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir,vec3 lightDir);
 float calculateShadow(vec4 fragPosLightSpace,vec3 normal, vec3 lightDir);
 
 void main()
@@ -74,14 +73,12 @@ if(normalMapping){
     // Transform normal vector to range [-1,1]
     norm = normalize(norm * 2.0 - 1.0);
 
-    // Get diffuse color
-    vec3 color2 = texture(ourTexture, TextCoord).rgb;
     // Ambient
-    vec3 ambient = color2;
+    vec3 ambient = texColor.rgb;
     // Diffuse
     vec3 lightDir = normalize(TangentLightPos - TangentFragPos);
     float diff = max(dot(lightDir, norm), 0.0);
-    vec3 diffuse = diff * color2;
+    vec3 diffuse = diff * texColor.rgb;
     // Specular
     vec3 viewDir = normalize(TangentViewPos - TangentFragPos);
     vec3 reflectDir = reflect(-lightDir, norm);
@@ -91,41 +88,40 @@ if(normalMapping){
     
     // Calculate shadow
     float shadow = calculateShadow(FragPosLightSpace,norm,lightDir);       
-    vec3 lighting = (ambient + (0.8 - shadow) * (diffuse + specular)) * color2;
+    vec3 lighting = (ambient + (0.8 - shadow) * (diffuse + specular)) * texColor.rgb;
 
-    color = vec4(lighting *( dirLight.ambient * material.ambient + diffuse * dirLight.diffuse * material.diffuse + specular * dirLight.specular * material.specular), 1.0f);   
+    result=vec3(0.0);
+    for(int i = 0; i < numActivateLight; i++)
+            result += calculatePointLight(pointLights[i], norm, FragPos, viewDir,lightDir); 
+
+    color = vec4(lighting* (result+(dirLight.ambient * material.ambient + diffuse * dirLight.diffuse * material.diffuse + specular * dirLight.specular * material.specular)), 1.0f);   
 }
 else {
     //If is a object in the scene
      if(noLight==0){   
-        vec3 viewDir = normalize(viewPos - FragPos);
-     
-        result = calculateDirLight(dirLight, norm, viewDir);
-
-        for(int i = 0; i < numActivateLight; i++)
-            result += calculatePointLight(pointLights[i], norm, FragPos, viewDir);  
-           
-        color =texColor * vec4(result, 1.0f);
-        /*vec3 color2 = texture(ourTexture, TextCoord).rgb;
-        vec3 normal = normalize(Normal);
         vec3 lightColor = vec3(1.0);
         // Ambient
-        vec3 ambient = 0.15 * color2;
+        vec3 ambient = texColor.rgb;
         // Diffuse
         vec3 lightDir = normalize(dirLight.direction - FragPos);
-        float diff = max(dot(lightDir, normal), 0.0);
+        float diff = max(dot(lightDir, norm), 0.0);
         vec3 diffuse = diff * lightColor;
         // Specular
         vec3 viewDir = normalize(viewPos - FragPos);
         float spec = 0.0;
         vec3 halfwayDir = normalize(lightDir + viewDir);  
-        spec = pow(max(dot(normal, halfwayDir), 0.0), 64.0);
+        spec = pow(max(dot(norm, halfwayDir), 0.0), 64.0);
         vec3 specular = spec * lightColor;    
         // Calculate shadow
-        float shadow = calculateShadow(FragPosLightSpace,normal,lightDir);       
-        vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular)) * color2; 
-        
-        color = vec4(lighting, 1.0f);*/
+        float shadow = calculateShadow(FragPosLightSpace,norm,lightDir);       
+        vec3 lighting = (ambient * material.ambient  + (1.0 - shadow) * (diffuse* material.diffuse  + specular  * material.specular)) * texColor.rgb; 
+    
+        //Added point Light
+        result=vec3(0.0);
+        for(int i = 0; i < numActivateLight; i++)
+            result += calculatePointLight(pointLights[i], norm, FragPos, viewDir,lightDir); 
+
+        color=texColor * (vec4(lighting, 1.0f) + vec4(result,1.0));
      }
      //If is a menu or text in the scene
      if(noLight==1)
@@ -134,43 +130,24 @@ else {
 
 }
 
-vec3 calculateDirLight(DirLight light,vec3 normal,vec3 viewDir){
-    vec3 lightDir = normalize(-light.direction);
-
-    // Diffuse shading
-    float diff = max(dot(normal, lightDir), 0.0);
-
-    // Specular shading
-    vec3 halfwayDir = normalize(lightDir +viewDir);
-    float spec = pow(max(dot(normal, halfwayDir), 0.0), material.shininess);
-
-    // Combine results
-    vec3 ambient = light.ambient * material.ambient;
-    vec3 diffuse = light.diffuse * (diff * material.ambient);
-    vec3 specular = light.specular * (spec * material.specular);
-    
-    return (ambient + diffuse + specular);
-
-}
-
-vec3 calculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
+vec3 calculatePointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir,vec3 lightDir)
 {
-    vec3 lightDir = normalize(light.position - fragPos);
+    //vec3 lightDir = normalize(light.position - fragPos);
 
     // Diffuse shading
-    float diff = max(dot(normal, lightDir), 0.0);
+    float diff = max(dot(lightDir,normal), 0.0);
 
     // Specular shading
-    vec3 halfwayDir = normalize(lightDir +viewDir);
+    vec3 halfwayDir = normalize(lightDir + viewDir);
     float spec = pow(max(dot(normal, halfwayDir), 0.0), material.shininess);
 
     // Attenuation
     float distance = length(light.position - fragPos);
     float attenuation = 1.0f / (light.constant + light.linear * distance + light.quadratic * (distance * distance));    
     // Combine results
-    vec3 ambient = light.ambient * material.ambient;
-    vec3 diffuse = light.diffuse * (diff * material.diffuse);
-    vec3 specular = light.specular * (spec * material.specular);
+    vec3 ambient = light.ambient *2.0 * material.ambient;
+    vec3 diffuse = light.diffuse * diff *2.0 * material.diffuse;
+    vec3 specular = light.specular *spec*2.0 * material.specular;
     ambient *= attenuation;
     diffuse *= attenuation;
     specular *= attenuation;
@@ -190,18 +167,18 @@ float calculateShadow(vec4 fragPosLightSpace,vec3 normal, vec3 lightDir)
     float currentDepth = projCoords.z;
     // Check whether current frag pos is in shadow
     float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);   
-        
+    //float shadow=currentDepth - bias > closestDepth ? 1.0 : 0.0;        
     // Check whether current frag pos is in shadow
     //PCF
     float shadow = 0.0;
     vec2 texelSize = 1.0 / textureSize(shadowMap, 0);
-    for(int x = -1; x <= 1; ++x){
-        for(int y = -1; y <= 1; ++y)    {
+    for(int x = 0; x <= 1; ++x){
+        for(int y = 0; y <= 1; ++y)    {
             float pcfDepth = texture(shadowMap, projCoords.xy + vec2(x, y) * texelSize).r; 
             shadow += currentDepth - bias > pcfDepth ? 1.0 : 0.0;        
         }    
     }
-    shadow /= 9.0;
+    shadow /= 4.0;
 
     if(projCoords.z>1.0)
         shadow=0.0;

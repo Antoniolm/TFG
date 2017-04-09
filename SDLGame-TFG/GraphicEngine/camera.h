@@ -23,8 +23,8 @@
 #include "structdata.h"
 #include "matrix4f.h"
 #include "shader.h"
-#include <glew.h>
-#include <SDL.h>
+#include "GL/glew.h"
+#include "SDL2/SDL.h"
 #include "controllermanager.h"
 #include "gamestate.h"
 

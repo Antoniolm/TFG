@@ -24,11 +24,11 @@
 #include <string>
 #include "context.h"
 #include "object3d.h"
-#include <glew.h>
-#include <SDL.h>
-#include <SDL_opengl.h>
+#include "GL/glew.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_opengl.h"
 #include <gl/glu.h>
-#include <gl/gl.h>
+#include <GL/gl.h>
 #include <fstream>
 #include "matrix4f.h"
 #include <iostream>

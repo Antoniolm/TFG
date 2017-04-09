@@ -26,7 +26,7 @@
 #include <sstream>
 #include <iostream>
 #include <istream>
-#include "glew.h"
+#include "GL/glew.h"
 #include <cstdlib>
 #include <math.h>
 #include "structdata.h"

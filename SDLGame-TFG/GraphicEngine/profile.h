@@ -21,7 +21,7 @@
 #define PROFILE_H
 
 #include <iostream>
-#include <SDL.h>
+#include "SDL2/SDL.h"
 
 using namespace std;
 

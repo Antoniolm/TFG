@@ -42,7 +42,6 @@
 #include "../GraphicEngine/shadowmanager.h"
 #include "projectile.h"
 #include "hero.h"
-#include <SDL_gamecontroller.h>
 #include <sstream>
 class Game
 {

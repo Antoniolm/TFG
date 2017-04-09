@@ -20,7 +20,7 @@
 #ifndef MATRIX4F_H
 #define MATRIX4F_H
 
-#include <glew.h>
+#include "GL/glew.h"
 #include <math.h>
 #include <iostream>
 #include "structdata.h"

@@ -28,7 +28,7 @@
 #include "../GraphicEngine/structdata.h"
 #include "../GraphicEngine/scriptlmd.h"
 #include "../lib/rapidjson/document.h"
-#include <SDL_TTF.h>
+#include "SDL2/SDL_ttf.h"
 
 using namespace rapidjson;
 
@@ -75,6 +75,14 @@ class Npc : public Avatar
         */
         //////////////////////////////////////////////////////////////////////////
         void nextDialog();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the number of dialog of our avatar
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        int getNumDialog();
 
         //////////////////////////////////////////////////////////////////////////
         /**
