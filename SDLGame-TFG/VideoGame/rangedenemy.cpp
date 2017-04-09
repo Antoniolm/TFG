@@ -86,6 +86,9 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     Matrix4f *transLeg=new Matrix4f();
     transLeg->translation(0.0,-0.6,0.0);
 
+    Matrix4f *transLegSecond=new Matrix4f();
+    transLegSecond->translation(0.0,-0.6,0.0);
+
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
@@ -95,7 +98,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
-    legRight->add(transLeg);
+    legRight->add(transLegSecond);
     legRight->add(meshCollect->getMesh(RFOOT));
 
     //////////////////////////////////////////////////////
@@ -144,6 +147,12 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     Matrix4f * transArms=new Matrix4f();
     transArms->translation(0.0,-0.3,-0.2);
 
+    Matrix4f * transElbowSecond=new Matrix4f();
+    transElbowSecond->translation(0.0,-0.4,0.0);
+
+    Matrix4f * transArmsSecond=new Matrix4f();
+    transArmsSecond->translation(0.0,-0.3,-0.2);
+
     //Arms
     NodeSceneGraph * handRight=new NodeSceneGraph();
     handRight->add(transElbow);
@@ -153,10 +162,9 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     handRight->add(weapon);
 
     NodeSceneGraph * handLeft=new NodeSceneGraph();
-    handLeft->add(transElbow);
+    handLeft->add(transElbowSecond);
     handLeft->add(moveElbowLeft);
     handLeft->add(transHandLeft);
-    //handLeft->add(scaleHandInvert);
     handLeft->add(rotateYHand);
     handLeft->add(meshCollect->getMesh(RHAND));
 
@@ -169,7 +177,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
 
     //Arm Right
     NodeSceneGraph * ArmRight=new NodeSceneGraph();
-    ArmRight->add(transArms);
+    ArmRight->add(transArmsSecond);
     ArmRight->add(moveArmRight);
     ArmRight->add(handRight);
 

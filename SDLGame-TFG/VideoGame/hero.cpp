@@ -100,6 +100,9 @@ Hero::Hero(vec3f aPos)
     Matrix4f *transLeg=new Matrix4f();
     transLeg->translation(0.0,-0.6,0.0);
 
+    Matrix4f *transLegSecond=new Matrix4f();
+    transLegSecond->translation(0.0,-0.6,0.0);
+
     //Leg Left
     NodeSceneGraph * legLeft=new NodeSceneGraph();
     legLeft->add(moveLegLeft);
@@ -110,7 +113,7 @@ Hero::Hero(vec3f aPos)
     //Leg Right
     NodeSceneGraph * legRight=new NodeSceneGraph();
     legRight->add(moveLegRight);
-    legRight->add(transLeg);
+    legRight->add(transLegSecond);
     legRight->add(materialCollect->getMaterial(mHERO));
     legRight->add(meshCollect->getMesh(KNEE));
 
@@ -169,8 +172,14 @@ Hero::Hero(vec3f aPos)
     Matrix4f * transElbow=new Matrix4f();
     transElbow->translation(0.0,-0.4,0.0);
 
+    Matrix4f * transElbowSecond=new Matrix4f();
+    transElbowSecond->translation(0.0,-0.4,0.0);
+
     Matrix4f * transArms=new Matrix4f();
     transArms->translation(0.0,-0.5,-0.2);
+
+    Matrix4f * transArmsSecond=new Matrix4f();
+    transArmsSecond->translation(0.0,-0.5,-0.2);
 
     Matrix4f * tranSword=new Matrix4f();
     tranSword->translation(0.05,-0.1,0.68);
@@ -188,11 +197,10 @@ Hero::Hero(vec3f aPos)
     handRight->add(currentWeapon);
 
     NodeSceneGraph * handLeft=new NodeSceneGraph();
-    handLeft->add(transElbow);
+    handLeft->add(transElbowSecond);
     handLeft->add(moveElbowLeft);
     handLeft->add(moveElbowTLeft);
     handLeft->add(transHandLeft);
-    //handLeft->add(scaleHandInvert);
     handLeft->add(rotateYHand);
     handLeft->add(meshCollect->getMesh(HANDS));
     handLeft->add(tranShield);
@@ -217,7 +225,7 @@ Hero::Hero(vec3f aPos)
 
     //Arm Right
     NodeSceneGraph * ArmRight=new NodeSceneGraph();
-    ArmRight->add(transArms);
+    ArmRight->add(transArmsSecond);
     ArmRight->add(moveArmRight);
     ArmRight->add(moveArmTRight);
     ArmRight->add(handRight);

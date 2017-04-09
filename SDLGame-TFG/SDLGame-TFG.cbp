@@ -34,9 +34,9 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="lib/sdl2/include/SDL2" />
+			<Add directory="lib/sdl2/include/" />
 			<Add directory="lib/SDL2_mixer-2.0.1/i686-w64-mingw32/include/SDL2" />
-			<Add directory="lib/glew-1.10.0/include/GL" />
+			<Add directory="lib/glew-1.10.0/include/" />
 			<Add directory="lib/SDL2_ttf-2.0.14/i686-w64-mingw32/include/SDL2" />
 		</Compiler>
 		<Linker>

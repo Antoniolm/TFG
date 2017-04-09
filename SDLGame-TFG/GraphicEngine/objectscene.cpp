@@ -125,7 +125,7 @@ void ObjectScene::generateBoundingbox(){
 void ObjectScene::obtainPosition(Context vis){
     object->obtainPosition(vis);
 
-    matrix=Matrix4f(vis.currentTransf);
+    matrix.setMatrix(vis.currentTransf.getMatrix());
     position=matrix.product(vec4f());
     index=vis.currentMaterialIndex;
     generateBoundingbox();
