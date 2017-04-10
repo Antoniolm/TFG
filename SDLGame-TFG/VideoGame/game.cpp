@@ -133,6 +133,9 @@ void Game::loop(){
     gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution.first / (float) resolution.second), 0.1f, 200.0f);
     gameState.camera->setOrthographicProjection(-1,1,-1,1,-3,3);
 
+    if(options->getWindow())
+        window->resizeWindow(resolution.second,resolution.first);
+
     //Show our window.
     window->showScreen();
     while (!isClosing)
@@ -236,7 +239,7 @@ void Game::loop(){
             shadowManager->generateShadow(gameState);
 
             //2- Normal render of our scene
-            glViewport(0, 0, windowW, windowH);
+            glViewport(0, 0, window->getWidth(), window->getHeight());
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             glUseProgram(context.currentShader->getProgram()); //We use the program now
             gameState.camera->activateCamera(context.currentShader->getProgram());

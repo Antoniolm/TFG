@@ -267,6 +267,11 @@ void OptionMenu::updateState(GameState & gameState){
                     //Update our setting
                     gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution[indexResolution].first / (float)resolution[indexResolution].second)
                                                                , 0.1f, 200.0f);
+
+                    if(window){
+                        Window::getInstance()->resizeWindow(resolution[indexResolution].second,resolution[indexResolution].first);
+                    }
+
                     SoundCollection::getInstance()->updateVolume((float)volume/100.0);
                     Window::getInstance()->fullScreen(!window);
                     activateMenu=false;
