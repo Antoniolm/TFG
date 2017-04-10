@@ -135,6 +135,8 @@ void Game::loop(){
 
     if(options->getWindow())
         window->resizeWindow(resolution.second,resolution.first);
+    else if(resolution.first==1400)
+        window->resizeWindow(800,1200);
 
     //Show our window.
     window->showScreen();

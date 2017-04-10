@@ -265,15 +265,19 @@ void OptionMenu::updateState(GameState & gameState){
                 case 3: //Save the new options and quit
                     OptionManager::getInstance()->save(resolution[indexResolution],window,volume);
                     //Update our setting
-                    gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution[indexResolution].first / (float)resolution[indexResolution].second)
+                    if(!Window::getInstance()->getIsFullScreen())
+                        gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution[indexResolution].first / (float)resolution[indexResolution].second)
                                                                , 0.1f, 200.0f);
 
+                    Window::getInstance()->fullScreen(!window);
+                    SDL_Delay(200);
                     if(window){
                         Window::getInstance()->resizeWindow(resolution[indexResolution].second,resolution[indexResolution].first);
                     }
+                    else if(resolution[indexResolution].second==1400)
+                        Window::getInstance()->resizeWindow(800,1200);
 
                     SoundCollection::getInstance()->updateVolume((float)volume/100.0);
-                    Window::getInstance()->fullScreen(!window);
                     activateMenu=false;
                 break;
                 case 4: //Quit without save the options
