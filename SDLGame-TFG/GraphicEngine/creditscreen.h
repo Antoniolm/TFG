@@ -80,6 +80,15 @@ class CreditScreen : public Menu
         //////////////////////////////////////////////////////////////////////////
         void activate();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will add a new texture
+        *    @param fileName -> the name of the file that our menu will be use
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void add(string fileName);
+
     protected:
 
     private:

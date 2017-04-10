@@ -3,7 +3,7 @@
     "sound":"sounds/backsound.wav",
     "volSound":30.0,
     "heroPosition":[7,2.0,-4],
-    "nextMap":"./maps/map00.json",
+    "nextMap":"",
 
     "title": {
         "position":[0.0,5.75,8.0],

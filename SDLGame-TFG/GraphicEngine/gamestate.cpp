@@ -33,6 +33,7 @@ GameState::~GameState(){
     delete pauseMenu;
     delete mainMenu;
     delete deadMenu;
+    delete creditScreen;
     delete loadScreen;
     delete optionMenu;
     delete controlMenu;
@@ -69,6 +70,16 @@ void GameState::updateLoading(GLuint shaderID){
     time=SDL_GetTicks();
     camera->setPosition(vec3f(0.0,0.0,0.0),shaderID);
     loadScreen->updateState(*this);
+
+    camera->activateOrthoProjection(shaderID);
+}
+
+//**********************************************************************//
+
+void GameState::updateCredit(GLuint shaderID){
+    time=SDL_GetTicks();
+    camera->setPosition(vec3f(0.0,0.0,0.0),shaderID);
+    creditScreen->updateState(*this);
 
     camera->activateOrthoProjection(shaderID);
 }

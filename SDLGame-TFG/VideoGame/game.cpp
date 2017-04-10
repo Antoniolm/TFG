@@ -66,6 +66,10 @@ Game::Game(){
     gameState.deadMenu = new DeadMenu(vec3f(0.0,6.77,11.0),"./textures/menuBack.png");
     gameState.deadMenu->add("./textures/dieMenu.png");
 
+    //Create creditScreen
+    gameState.creditScreen= new CreditScreen(vec3f(0.0,6.77,11.0),"./textures/menuBack.png");
+    gameState.creditScreen->add("./textures/dieMenu.png");
+
     //Create LoadingScreen
     gameState.loadScreen=new LoadingScreen(vec3f(0.0,6.77,11.0),250,"./textures/loading1.png");
     gameState.loadScreen->add("./textures/loading2.png");
@@ -185,6 +189,15 @@ void Game::loop(){
             gameState.controller->consumeButtons();
         }
 
+        //CASE -> CREDIT SCREEN
+        else if(gameState.creditScreen->isActivate()){
+            //loading screen here
+            gameState.updateCredit(context.currentShader->getProgram());
+
+            gameState.creditScreen->visualization(context);
+            firstTime=true;
+        }
+
         //CASE -> PLAYING
         else{
             if(firstTime){
@@ -253,13 +266,18 @@ void Game::loop(){
             if(gameState.rootMap->isFinished()){
                 //Get the next Map and save the match
                 fileMap=gameState.rootMap->getNextMap();
-                SavedManager::getInstance()->save(fileMap,gameState.rootMap->getHero()->getCoin());
+                if(fileMap!=""){
+                    SavedManager::getInstance()->save(fileMap,gameState.rootMap->getHero()->getCoin());
 
-                //Delete the currentMap
-                delete gameState.rootMap;
+                    //Delete the currentMap
+                    delete gameState.rootMap;
 
-                //Save the progress and create the new map
-                gameState.rootMap=new RootMap(fileMap,true);
+                    //Save the progress and create the new map
+                    gameState.rootMap=new RootMap(fileMap,true);
+                }
+                else
+                    gameState.creditScreen->activate();
+
 
                 gameState.controller->consumeButtons();
                 firstTime=true;

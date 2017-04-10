@@ -25,6 +25,7 @@
 #include "pausemenu.h"
 #include "mainmenu.h"
 #include "deadmenu.h"
+#include "creditscreen.h"
 #include "optionmenu.h"
 #include "controlmenu.h"
 #include "loadingscreen.h"
@@ -33,6 +34,7 @@
 #include "camera.h"
 
 class DeadMenu;
+class CreditScreen;
 class LoadingScreen;
 class MainMenu;
 class PauseMenu;
@@ -56,6 +58,7 @@ class GameState
         void initPlay(GLuint shaderID);
         void updatePlay();
         void updateLoading(GLuint shaderID);
+        void updateCredit(GLuint shaderID);
         void updateMenu(GLuint shaderID);
 
         float time;
@@ -64,6 +67,7 @@ class GameState
         PauseMenu * pauseMenu;
         MainMenu * mainMenu;
         DeadMenu * deadMenu;
+        CreditScreen * creditScreen;
         OptionMenu * optionMenu;
         ControlMenu * controlMenu;
         LoadingScreen * loadScreen;

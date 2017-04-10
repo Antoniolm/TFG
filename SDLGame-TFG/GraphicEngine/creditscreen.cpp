@@ -21,7 +21,7 @@
 
 CreditScreen::CreditScreen(vec3f initialPos,string fileName)
 {
-     currentOption=0;
+    currentOption=0;
     activateMenu=false;
     initialPosition=initialPos;
     MeshCollection * meshCollect =MeshCollection::getInstance();
@@ -31,7 +31,7 @@ CreditScreen::CreditScreen(vec3f initialPos,string fileName)
     Material * materialBack=new Material(vec3f(0.6f, 0.6f, 0.6f),vec3f(1.0f, 0.5f, 0.5f),vec3f(0.5f, 0.5f, 0.5f),32.0f,fileName.c_str());
 
     positionMenu=new Matrix4f();
-    positionMenu->identity();
+    positionMenu->translation(initialPosition.x,initialPosition.y,initialPosition.z);
 
     Matrix4f * betweenMenu=new Matrix4f();
     betweenMenu->translation(0.0,0.0,-0.1);
@@ -64,7 +64,7 @@ CreditScreen::CreditScreen(vec3f initialPos,string fileName)
 
 CreditScreen::~CreditScreen()
 {
-    //dtor
+    delete root;
 }
 
 //**********************************************************************//
@@ -85,12 +85,8 @@ void CreditScreen::updateState(GameState & gameState){
         currentTime=time-50;
 
     if(activateMenu){ //If the menu is activated
-        position=gameState.rootMap->getHero()->getPosition();
-        positionMenu->translation(position.x+initialPosition.x,position.y+initialPosition.y,position.z+initialPosition.z);
-
         if(gameState.controller->checkButton(cACTION) && menuDelay<(time-300)){ //If the user push the action intro
             menuDelay=time;
-            (Profile::getInstance())->showResult();
             gameState.mainMenu->activate();
             activateMenu=false;
             gameState.controller->consumeButtons();
@@ -106,3 +102,8 @@ void CreditScreen::activate(){
     activateMenu=true;
 }
 
+//**********************************************************************//
+
+void CreditScreen::add(string fileName){
+    currentMaterial->setTexture(fileName.c_str());
+}
