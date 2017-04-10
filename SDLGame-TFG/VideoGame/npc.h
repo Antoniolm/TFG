@@ -42,7 +42,9 @@ class Npc : public Avatar
         Npc();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor with parameters*/
+        /** Constructor with parameters
+        *    @param npcFeatures -> the value json that contain all the information of our door object
+        */
         //////////////////////////////////////////////////////////////////////////
         Npc(const Value & npcFeatures);
 
@@ -55,6 +57,7 @@ class Npc : public Avatar
         /**
         *    It will add a new dialog in our avatar
         *    \param state -> the new element of our vector
+        *    \param speaker -> the speaker of our new state
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -87,6 +90,7 @@ class Npc : public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -96,6 +100,7 @@ class Npc : public Avatar
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -104,6 +109,8 @@ class Npc : public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will activate our npc
+        *    @param value -> Bool that indicate if the conversation with our
+        *                    npc is enable or disable
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

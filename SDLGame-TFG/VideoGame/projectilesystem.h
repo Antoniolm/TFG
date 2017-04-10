@@ -34,12 +34,25 @@ class ProjectileSystem : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /**
+        *    Constructor
+        *    @param aRadio -> the radio activity of our projectile Sys
+        *    @param aPos -> the initial position of our projectile Sys
+        *    @param aVeloc -> the velocity of movement of our projectile
+        *    @param aDir -> the direction of our projectile Sys
+        *    @param aDelay -> the delay between projectile creation
+        *    @param aMesh -> the mesh that will visualize our projectile
+        *    @param aMterial -> the material that will have our projectile
+        */
         //////////////////////////////////////////////////////////////////////////
         ProjectileSystem(vec3f aRadio,vec3f aPos,vec3f aVeloc,int aDir,float aDelay,string aMesh,string aMaterial);
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor with json*/
+        /**
+        *   Constructor with json
+        *    @param projectileSys -> the value json that contain all the information
+        *                            of our projectile object
+        */
         //////////////////////////////////////////////////////////////////////////
         ProjectileSystem(const rapidjson::Value & projectileSys);
 
@@ -51,6 +64,7 @@ class ProjectileSystem : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -60,6 +74,7 @@ class ProjectileSystem : public Object3D
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

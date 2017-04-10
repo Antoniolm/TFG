@@ -133,10 +133,12 @@ void Game::loop(){
     gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution.first / (float) resolution.second), 0.1f, 200.0f);
     gameState.camera->setOrthographicProjection(-1,1,-1,1,-3,3);
 
+    ////
     if(options->getWindow())
         window->resizeWindow(resolution.second,resolution.first);
     else if(resolution.first==1400)
         window->resizeWindow(800,1200);
+    ////
 
     //Show our window.
     window->showScreen();

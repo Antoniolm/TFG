@@ -37,7 +37,9 @@ class Mate : public Avatar
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor
+        *    @param aPosition -> the initial position of our mate
+        */
         //////////////////////////////////////////////////////////////////////////
         Mate(vec3f aPosition);
 
@@ -49,6 +51,7 @@ class Mate : public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -58,6 +61,7 @@ class Mate : public Avatar
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -75,6 +79,7 @@ class Mate : public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will activate the text of our hero
+        *    @param value -> value indicate if the dialog will be enable or disable
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -94,6 +99,7 @@ class Mate : public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will give to our mate his next direction and position
+        *    @param posHero -> the current position of our hero
         *    \return pair<avatarDirection,vec3f>
         */
         //////////////////////////////////////////////////////////////////////////
@@ -102,6 +108,9 @@ class Mate : public Avatar
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will move our mate
+        *    @param time -> the current time of our application
+        *    @param aMove -> the new movement of our mate
+        *    @param aDir -> the new direction of our mate
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

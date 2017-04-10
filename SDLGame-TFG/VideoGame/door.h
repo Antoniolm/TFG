@@ -44,7 +44,8 @@ class Door : public ObjectScene
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor
+        /**
+        *    Constructor
         *    @param doorFeatures -> the value json that contain all the information of our door object
         *    @param soulCarriers -> Vector of soulcarriers
         *    @param ID -> ID of the soulCarrier linked to our door

@@ -39,7 +39,11 @@ class Item : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor
+        *    @param aPosition -> The initial position of our item
+        *    @param aValue -> the value of our item
+        *    @param aType -> the type of item that our item will be
+        */
         //////////////////////////////////////////////////////////////////////////
         Item(vec3f aPosition,int aValue,ItemIndex aType);
 
@@ -51,6 +55,7 @@ class Item : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param vis -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -60,6 +65,7 @@ class Item : public Object3D
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -69,6 +75,7 @@ class Item : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will set the value of our coin
+        *    @param aValue -> the new contain of our value
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -85,7 +92,7 @@ class Item : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will return if the hero took that coin or not
-        *    \return int
+        *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
         bool isTake();

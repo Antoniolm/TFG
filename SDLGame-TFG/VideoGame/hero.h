@@ -53,7 +53,9 @@ class Hero: public AvatarMove
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor
+        *    @param aPos -> the initial position of our hero
+        */
         //////////////////////////////////////////////////////////////////////////
         Hero(vec3f aPos);
 
@@ -65,6 +67,7 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param vis -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -74,6 +77,7 @@ class Hero: public AvatarMove
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -83,6 +87,7 @@ class Hero: public AvatarMove
         /**
         *    The method will enable the sound of our hero.That will use when the game
         *    will be pause.
+        *    @param value -> Bool that indicate if the sound is enable or disable
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -92,6 +97,7 @@ class Hero: public AvatarMove
         /**
         *    It will set a new message for our text
         *    \param message -> it is the new message that our text will show
+        *    @param index -> The index of our text in the vector of texts
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -100,6 +106,8 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will activate the text of our hero
+        *    @param value -> Bool that indicate if the text is enable or disable
+        *    @param index -> The index of our text in the vector of texts
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -108,6 +116,7 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will set the coins of our hero
+        *    @param value -> The new value of our coins.
         *    \return int
         */
         //////////////////////////////////////////////////////////////////////////
@@ -116,6 +125,7 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will set if the hero take a soul in his arm
+        *    @param aSoul -> the current soul that our hero has taken
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -132,7 +142,7 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will return if the hero is hitting or not
-        *    \return void
+        *    \return bool
         */
         //////////////////////////////////////////////////////////////////////////
         bool isHit();
@@ -164,6 +174,7 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will add a new coin to our current coins
+        *    @param value -> Adding to our courrent coint the value
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -172,6 +183,9 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    Hero will take damage when a enemy use that method(but depend of some conditions)
+        *    @param posAvatar -> the position of the enemy avatar
+        *    @param dirAvatar -> the direction of the enemy avatar
+        *    @param value -> the value of the damage
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -180,6 +194,7 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    Hero will take damage when he is on an objectScene with damage
+        *    @param value -> the value of the damage
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

@@ -36,7 +36,9 @@ class ItemList
         ItemList();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor
+        *   @param coinFeatures -> the value json that contain all the information of our items object
+        */
         //////////////////////////////////////////////////////////////////////////
         ItemList(const Value & coinFeatures);
 
@@ -45,11 +47,10 @@ class ItemList
         //////////////////////////////////////////////////////////////////////////
         virtual ~ItemList();
 
-
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will add a new enemy on the list
-        *    \param enemy -> The new element that will added on our list
+        *    \param coin -> The new element that will added on our list
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -58,6 +59,7 @@ class ItemList
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -67,6 +69,7 @@ class ItemList
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

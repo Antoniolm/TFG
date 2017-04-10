@@ -37,7 +37,12 @@ class RangedEnemy : public Enemy
         RangedEnemy();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /**
+        *   Constructor
+        *   @param aLife -> the max life of our enemy
+        *   @param aPosition -> the initial position of our enemy
+        *   @param aRadioActivity -> the radio activity of our enemy
+        */
         //////////////////////////////////////////////////////////////////////////
         RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity);
 
@@ -49,6 +54,7 @@ class RangedEnemy : public Enemy
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -58,6 +64,7 @@ class RangedEnemy : public Enemy
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

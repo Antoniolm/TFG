@@ -30,7 +30,12 @@ class MeleeEnemy : public Enemy
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /**
+        *   Constructor
+        *   @param aLife -> the max life of our enemy
+        *   @param aPosition -> the initial position of our enemy
+        *   @param aRadioActivity -> the radio activity of our enemy
+        */
         //////////////////////////////////////////////////////////////////////////
         MeleeEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity);
 
@@ -43,6 +48,7 @@ class MeleeEnemy : public Enemy
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

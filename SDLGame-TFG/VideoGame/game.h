@@ -61,6 +61,13 @@ class Game
         //////////////////////////////////////////////////////////////////////////
         void loop();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set if the game is closed or not
+        *    @param value -> Bool that said us if the game is closing or not
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setClose(bool value);
 
         static Game * getInstance(){

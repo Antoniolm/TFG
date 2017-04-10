@@ -49,7 +49,15 @@ class Projectile : public AvatarMove
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /**
+        *    Constructor
+        *    @param aPosition -> the initial position of our projectile
+        *    @param aVelocity -> the velocity of movement of our projectile
+        *    @param aDir -> the direction of our projectile
+        *    @param aDamage -> the damage of our projectile
+        *    @param mesh -> the mesh that will visualize our projectile
+        *    @param material -> the material that will have our projectile
+        */
         //////////////////////////////////////////////////////////////////////////
         Projectile(vec3f aPosition,vec3f aVelocity,avatarDirection aDir,float aDamage,string mesh,string material);
 
@@ -61,6 +69,7 @@ class Projectile : public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our scene
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
@@ -70,6 +79,7 @@ class Projectile : public AvatarMove
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

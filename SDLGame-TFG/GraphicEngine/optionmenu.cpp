@@ -268,7 +268,7 @@ void OptionMenu::updateState(GameState & gameState){
                     if(!Window::getInstance()->getIsFullScreen())
                         gameState.camera->setPerspectiveProjection(30.0f,(float)( (float) resolution[indexResolution].first / (float)resolution[indexResolution].second)
                                                                , 0.1f, 200.0f);
-
+                    ////
                     Window::getInstance()->fullScreen(!window);
                     SDL_Delay(200);
                     if(window){
@@ -276,6 +276,7 @@ void OptionMenu::updateState(GameState & gameState){
                     }
                     else if(resolution[indexResolution].second==1400)
                         Window::getInstance()->resizeWindow(800,1200);
+                    ////
 
                     SoundCollection::getInstance()->updateVolume((float)volume/100.0);
                     activateMenu=false;
