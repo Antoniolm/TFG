@@ -17,8 +17,9 @@
 // **
 // *********************************************************************
 
-#ifndef DEADMENU_H
-#define DEADMENU_H
+
+#ifndef CREDITSCREEN_H
+#define CREDITSCREEN_H
 
 #include "object3d.h"
 #include "rootmap.h"
@@ -36,7 +37,7 @@
 #include "soundcollection.h"
 #include <string>
 
-class DeadMenu : public Menu
+class CreditScreen : public Menu
 {
     public:
         //////////////////////////////////////////////////////////////////////////
@@ -45,12 +46,12 @@ class DeadMenu : public Menu
         *    @param fileName -> the name of the file with the texture of our menu
         */
         //////////////////////////////////////////////////////////////////////////
-        DeadMenu(vec3f initialPos,string fileName);
+        CreditScreen(vec3f initialPos,string fileName);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~DeadMenu();
+        virtual ~CreditScreen();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -79,15 +80,6 @@ class DeadMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         void activate();
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will add a new texture
-        *    @param fileName -> the name of the file that our menu will be use
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void add(string fileName);
-
     protected:
 
     private:
@@ -95,4 +87,4 @@ class DeadMenu : public Menu
         Sound * openSound,* moveSound;
 };
 
-#endif // DEADMENU_H
+#endif // CREDITSCREEN_H
