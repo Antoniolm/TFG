@@ -81,6 +81,13 @@ void Npc::addDialog(const string state,speakerMessage speaker){
 
 //**********************************************************************//
 
+void Npc::currentDialog(){
+    currentText->setMessage(stateMachine.getCurrentState());
+    currentText->init();
+}
+
+//**********************************************************************//
+
 void Npc::nextDialog(){
     if(stateMachine.isLastState()){
         npcActivate=false;
@@ -93,9 +100,8 @@ void Npc::nextDialog(){
 
 //**********************************************************************//
 
-void Npc::currentDialog(){
-    currentText->setMessage(stateMachine.getCurrentState());
-    currentText->init();
+int Npc::getNumDialog(){
+    return stateMachine.getNumState();
 }
 
 //**********************************************************************//
