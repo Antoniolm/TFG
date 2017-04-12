@@ -53,7 +53,7 @@ void Weapon::visualization(Context & cv){
 
 //**********************************************************************//
 
-void Weapon::updateState(float time,ControllerManager * controller,RootMap * rootMap ){
+void Weapon::updateState(GameState & gameState){
 
 }
 

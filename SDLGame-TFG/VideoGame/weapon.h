@@ -39,7 +39,14 @@ class Weapon : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /**
+        *    Constructor
+        *    @param aPos -> the initial position of our weapon
+        *    @param atype -> the type of weapon that will be our new weapon
+        *    @param aDamage -> the damage of our weapon
+        *    @param mesh -> the mesh that will have our weapon
+        *    @param material -> the material that will have our weapon
+        */
         //////////////////////////////////////////////////////////////////////////
         Weapon(vec3f aPos,WeaponType atype,float aDamage,MeshIndex mesh,MaterialIndex material);
 
@@ -51,6 +58,7 @@ class Weapon : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -64,13 +72,13 @@ class Weapon : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(float time,ControllerManager * controller,RootMap * rootMap);
+        void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will set the damage of our weapon
         *    @param value -> the new value of our damage
-        *    \return float
+        *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
         void setDamage(float value);
@@ -94,6 +102,7 @@ class Weapon : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will set our weapon like another weapon
+        *    @param weapon -> the new value of our object
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

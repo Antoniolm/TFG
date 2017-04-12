@@ -60,6 +60,8 @@
 		<Unit filename="GraphicEngine/controllermanager.h" />
 		<Unit filename="GraphicEngine/controlmenu.cpp" />
 		<Unit filename="GraphicEngine/controlmenu.h" />
+		<Unit filename="GraphicEngine/creditscreen.cpp" />
+		<Unit filename="GraphicEngine/creditscreen.h" />
 		<Unit filename="GraphicEngine/deadmenu.cpp" />
 		<Unit filename="GraphicEngine/deadmenu.h" />
 		<Unit filename="GraphicEngine/decorationobject.cpp" />

@@ -35,7 +35,10 @@ class Soul : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /**
+        *   Constructor
+        *    @param soulFeatures -> the value json that contain all the information of our soul object
+        */
         //////////////////////////////////////////////////////////////////////////
         Soul(const Value & soulFeatures);
 
@@ -47,6 +50,7 @@ class Soul : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -102,6 +106,8 @@ class Soul : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will calculate the position of our soul when is taken for a hero
+        *    @param posHero -> position of our hero
+        *    @param direction -> direction of our hero
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

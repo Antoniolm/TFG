@@ -34,7 +34,10 @@ class SpikeTrap : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /**
+        *   Constructor
+        *   @param spikeFeatures -> the value json that contain all the information of our spikeTrap object
+        */
         //////////////////////////////////////////////////////////////////////////
         SpikeTrap(const Value & spikeFeatures);
 
@@ -46,6 +49,7 @@ class SpikeTrap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -88,7 +92,15 @@ class SpikeTrap : public Object3D
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will initialize the animation of our hero
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void initAnimation();
+
+
         NodeSceneGraph * root;
         Matrix4f * transActivate;
         ScriptLMD * animationUp, * animationDown;

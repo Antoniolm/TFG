@@ -36,7 +36,10 @@ class SoulCarrier : public Object3D
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /**
+        *   Constructor
+        *   @param soulFeatures -> the value json that contain all the information of our soulCarrier object
+        */
         //////////////////////////////////////////////////////////////////////////
         SoulCarrier(const Value & soulFeatures);
 
@@ -48,6 +51,7 @@ class SoulCarrier : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -63,6 +67,12 @@ class SoulCarrier : public Object3D
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(GameState & gameState);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return if the object is activated or not
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
         bool isActivated();
 
     protected:
