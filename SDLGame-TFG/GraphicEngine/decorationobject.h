@@ -42,9 +42,12 @@ class DecorationObject : public ObjectScene
         virtual ~DecorationObject();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor json */
+        /** Constructor json
+        *   @param DOFeature -> the value json that contain all the information of our decoration object
+        *   @param posDecoration -> the position of our decoration object
+        */
         //////////////////////////////////////////////////////////////////////////
-        DecorationObject(const rapidjson::Value & lightFeature,vec3f posDecoration);
+        DecorationObject(const rapidjson::Value & DOFeature,vec3f posDecoration);
 
     protected:
 

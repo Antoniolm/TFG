@@ -33,12 +33,22 @@ class AcceleratedMovement : public Matrix4fDynamic
         AcceleratedMovement();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor with parameters*/
+        /** Constructor with parameters
+        *   @param xVelo -> axis x of our velocity
+        *   @param yVelo -> axis y of our velocity
+        *   @param zVelo -> axis z of our velocity
+        *   @param xAccel -> axis x of our acceleration
+        *   @param yAccel -> axis y of our acceleration
+        *   @param zAccel -> axis z of our acceleration
+        */
         //////////////////////////////////////////////////////////////////////////
         AcceleratedMovement(float xVelo,float yVelo,float zVelo,float xAccel,float yAccel,float zAccel );
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor with parameters*/
+        /** Constructor with parameters
+        *   @param aVelocity -> the value of our velocity
+        *   @param aAcceleration -> the value of our acceleration
+        */
         //////////////////////////////////////////////////////////////////////////
         AcceleratedMovement(const vec3f & aVelocity,const vec3f & aAcceleration);
 
@@ -50,9 +60,12 @@ class AcceleratedMovement : public Matrix4fDynamic
         //////////////////////////////////////////////////////////////////////////
         /**
         *   Set the value of some parameters in the object
-        *   \param x -> axis X
-        *   \param y -> axis Y
-        *   \param z -> axis Z
+        *   @param xVelo -> axis x of our velocity
+        *   @param yVelo -> axis y of our velocity
+        *   @param zVelo -> axis z of our velocity
+        *   @param xAccel -> axis x of our acceleration
+        *   @param yAccel -> axis y of our acceleration
+        *   @param zAccel -> axis z of our acceleration
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -61,9 +74,8 @@ class AcceleratedMovement : public Matrix4fDynamic
         //////////////////////////////////////////////////////////////////////////
         /**
         *   Set the value of some parameters in the object
-        *   \param x -> axis X
-        *   \param y -> axis Y
-        *   \param z -> axis Z
+        *   @param aVelocity -> the value of our velocity
+        *   @param aAcceleration -> the value of our acceleration
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -73,6 +85,7 @@ class AcceleratedMovement : public Matrix4fDynamic
         /**
         *    The method will update the state of the Matrix4xf. That change need the
         *    current time in our application
+        *   @param time -> the time between the lastTime and the currentTime
         *    \return the new state of the matrix4f
         */
         //////////////////////////////////////////////////////////////////////////

@@ -41,6 +41,7 @@ class AnimationList
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will add a new animation
+        *    @param animation -> the new element added to our animation list
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -49,6 +50,7 @@ class AnimationList
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will activate an animation
+        *    @param the position of the scriptLMD that our want to activate
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -57,6 +59,7 @@ class AnimationList
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will update the current animation
+        *    @param time -> the time between the lastTime and the currentTime
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -65,6 +68,7 @@ class AnimationList
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will reset an animation
+        *    @param the position of the scriptLMD that our want to reset
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

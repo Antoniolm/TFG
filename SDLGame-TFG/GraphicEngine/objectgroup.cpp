@@ -68,7 +68,6 @@ void ObjectGroup::addObject(vec3f position,MeshIndex meshIndex){
 //**********************************************************************//
 
 void ObjectGroup::init(){
-    //FileObj::getInstance()->calculate_bump(vertex,triangles,textureCord,tangent,biTangent);
     mesh=new Mesh(vertex,triangles,normals,textureCord,tangent,biTangent);
     root->add(mesh);
 
@@ -92,3 +91,8 @@ void ObjectGroup::visualization(Context & vis){
 void ObjectGroup::updateState(GameState & gameState){
 }
 
+//**********************************************************************//
+
+Mesh * ObjectGroup::getMesh(){
+    return mesh;
+}

@@ -20,8 +20,10 @@
 
 #include "shadowtexture.h"
 
-ShadowTexture::ShadowTexture()
+ShadowTexture::ShadowTexture(GLuint width,GLuint height)
 {
+    shadowWidth=width;
+    shadowHeight=height;
     createTexture();
 }
 
@@ -44,8 +46,6 @@ void ShadowTexture::createTexture(){
     ////////////////////////////////////////
     // Configure depth map FBO
     ////////////////////////////////////////
-    shadowWidth = 1024;
-    shadowHeight = 1024;
     glGenFramebuffers(1, &depthMapFBO);
     // - Create depth texture
     glGenTextures(1, &depthMap);
@@ -91,4 +91,22 @@ GLuint ShadowTexture::getTexture(){
     return depthMap;
 }
 
+//**********************************************************************//
+
+void ShadowTexture::setSize(GLuint width,GLuint height){
+    shadowWidth=width;
+    shadowHeight=height;
+}
+
+//**********************************************************************//
+
+GLuint ShadowTexture::getHeight(){
+    return shadowHeight;
+}
+
+//**********************************************************************//
+
+GLuint ShadowTexture::getWidth(){
+    return shadowWidth;
+}
 

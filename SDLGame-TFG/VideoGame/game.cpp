@@ -68,7 +68,7 @@ Game::Game(){
 
     //Create creditScreen
     gameState.creditScreen= new CreditScreen(vec3f(0.0,6.77,11.0),"./textures/menuBack.png");
-    gameState.creditScreen->add("./textures/dieMenu.png");
+    gameState.creditScreen->add("./textures/creditScreen.png");
 
     //Create LoadingScreen
     gameState.loadScreen=new LoadingScreen(vec3f(0.0,6.77,11.0),250,"./textures/loading1.png");
@@ -209,7 +209,6 @@ void Game::loop(){
         else{
             if(firstTime){
                 gameState.initPlay(context.currentShader->getProgram());
-                vec3f posH=gameState.rootMap->getHero()->getPosition();
                 firstTime=false;
             }
             ///////////////////

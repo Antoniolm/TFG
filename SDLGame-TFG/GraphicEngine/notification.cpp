@@ -112,6 +112,22 @@ void Notification::updateState(GameState & gameState){
 
 
     currentTime+=time-currentTime;
+}
 
+//**********************************************************************//
 
+void Notification::setPosition(vec3f value){
+    position=vec4f(value.x,value.y,value.z,1.0);
+}
+
+//**********************************************************************//
+
+void Notification::setInitialTime(float value){
+    initialTime=value;
+}
+
+//**********************************************************************//
+
+float Notification::getInitialTime(){
+    return initialTime;
 }

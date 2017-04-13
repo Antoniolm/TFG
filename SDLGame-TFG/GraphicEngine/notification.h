@@ -65,6 +65,32 @@ class Notification : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set the position of our notification
+        *    @param value -> the new position of our notification
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setPosition(vec3f value);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set the initial time of our notification
+        *    @param value -> the initial time of our notification
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setInitialTime(float value);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the initial time of our notification
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
+        float getInitialTime();
+
     protected:
 
     private:

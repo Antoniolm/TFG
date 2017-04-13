@@ -90,3 +90,14 @@ void LoadingScreen::add(string fileName){
     addOption(new Texture(fileName.c_str()));
 }
 
+//**********************************************************************//
+
+void LoadingScreen::setDelay(float aniDelay){
+    animationDelay=aniDelay;
+}
+
+//**********************************************************************//
+
+float LoadingScreen::getDelay(){
+    return animationDelay;
+}

@@ -42,24 +42,28 @@ class Collection
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will add a new element of our collection
-        *    \return void
+        *   It will add a new element of our collection
+        *   @param element -> the new element of our collection
+        *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
         void addElement(T * element);
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will add a new index in our enumMap
-        *    \return void
+        *   It will add a new index in our enumMap
+        *   @param index -> the new index of our enum
+        *   @param value -> the value of our new index
+        *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
         void addIndex(string index,T2 value);
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will return a T -> parameters a enum element
-        *    \return T*
+        *   It will return a T -> parameters a enum element
+        *   @param value -> the "index" of the element that will be returned
+        *   \return T*
         */
         //////////////////////////////////////////////////////////////////////////
         T * getElement(T2 value);
@@ -67,6 +71,7 @@ class Collection
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will return a T -> parameters a string
+        *    @param index -> the index of the element that will be returned
         *    \return T *
         */
         //////////////////////////////////////////////////////////////////////////

@@ -131,3 +131,20 @@ void ObjectScene::obtainPosition(Context vis){
     generateBoundingbox();
 }
 
+//**********************************************************************//
+
+void ObjectScene::setDamage(float value){
+    damage=value;
+}
+
+//**********************************************************************//
+
+void ObjectScene::setShadow(bool value){
+    hasShadow=value;
+}
+
+//**********************************************************************//
+
+bool ObjectScene::isShadow(){
+    return hasShadow;
+}

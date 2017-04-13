@@ -41,6 +41,7 @@ class GamepadController : public Controller
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will update the event/buttons of our gamepadcontroller
+        *    @param event -> our current event
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

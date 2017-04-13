@@ -30,7 +30,9 @@ class EndMapRegion : public Region
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor
+        *    @param regionFeatures -> the value json that contain all the information of our endMapRegion object
+        */
         //////////////////////////////////////////////////////////////////////////
         EndMapRegion(const Value & regionFeatures);
 
@@ -43,6 +45,7 @@ class EndMapRegion : public Region
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

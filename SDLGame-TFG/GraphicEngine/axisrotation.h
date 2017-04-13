@@ -33,7 +33,13 @@ class AxisRotation : public Matrix4fDynamic
         AxisRotation();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor
+        *   @param anAVelocity -> the angular velocity of our axis rotation
+        *                          (Grade per second)
+        *   @param x -> axis X
+        *   @param y -> axis Y
+        *   @param z -> axis Z
+        */
         //////////////////////////////////////////////////////////////////////////
         AxisRotation(float anAVelocity,float x,float y,float z);
 
@@ -45,10 +51,10 @@ class AxisRotation : public Matrix4fDynamic
         //////////////////////////////////////////////////////////////////////////
         /**
         *   Set the value of some parameters in the object
-        *   \param anAVelocity -> Grade per second
-        *   \param x -> axis X
-        *   \param y -> axis Y
-        *   \param z -> axis Z
+        *   @param anAVelocity -> Grade per second
+        *   @param x -> axis X
+        *   @param y -> axis Y
+        *   @param z -> axis Z
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -58,7 +64,7 @@ class AxisRotation : public Matrix4fDynamic
         /**
         *    The method will update the state of the Matrix4xf. That change need the
         *    current time in our application
-        *    \param time -> time to control our state
+        *    @param time -> the time between the lastTime and the currentTime
         *    \return the new state of the matrix4f
         */
         //////////////////////////////////////////////////////////////////////////

@@ -100,6 +100,7 @@ class Camera
         //////////////////////////////////////////////////////////////////////////
         /**
         *   This method will activate our camera
+        *   @param shaderID -> the id of our current activated shader
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -108,6 +109,7 @@ class Camera
         //////////////////////////////////////////////////////////////////////////
         /**
         *   This method will activate our current orthographic projection
+        *   @param shaderID -> the id of our current activated shader
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -116,6 +118,7 @@ class Camera
         //////////////////////////////////////////////////////////////////////////
         /**
         *   This method will activate our current perspective projection
+        *   @param shaderID -> the id of our current activated shader
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -124,6 +127,9 @@ class Camera
         //////////////////////////////////////////////////////////////////////////
         /**
         *   It will move the position of our camera
+        *   @param gameState -> the current state of our game
+        *   @param shaderID -> the id of our current activated shader
+        *   @param activateMenu -> if the menu is activated or not
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -139,21 +145,33 @@ class Camera
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *   This method will return our camera
-        *   \return GLfloat
-         */
+        *   It will return our camera
+        *   \return GLfloat *
+        */
         //////////////////////////////////////////////////////////////////////////
         GLfloat * getView();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will return our orthographic projection
+        *   \return Matrix4f &
+        */
+        //////////////////////////////////////////////////////////////////////////
         Matrix4f & getOrthoProyection();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will return our perspective projection
+        *   \return Matrix4f &
+        */
+        //////////////////////////////////////////////////////////////////////////
         Matrix4f & getPersProyection();
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *   This method will return the position of our camera
+        *   It will return the position of our camera
         *   \return vec3f
-         */
+        */
         //////////////////////////////////////////////////////////////////////////
         vec3f getPosition();
 
@@ -161,15 +179,15 @@ class Camera
         /**
         *   This method will return the target of our camera
         *   \return vec3f
-         */
+        */
         //////////////////////////////////////////////////////////////////////////
         vec3f getTarget();
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *   This method will return the up of our camera
+        *   It will return the up of our camera
         *   \return vec3f
-         */
+        */
         //////////////////////////////////////////////////////////////////////////
         vec3f getUp();
 
@@ -177,15 +195,17 @@ class Camera
         /**
         *   It will return if our camera is in viewMode or not
         *   \return bool
-         */
+        */
         //////////////////////////////////////////////////////////////////////////
         bool isViewMode();
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *   It will set the position and direction of our camera
+        *   @param aPosition -> the new position of our camera
+        *   @param shaderID -> the id of our current activated shader
         *   \return void
-         */
+        */
         //////////////////////////////////////////////////////////////////////////
         void setPosition(vec3f aPosition,GLuint shaderID);
 

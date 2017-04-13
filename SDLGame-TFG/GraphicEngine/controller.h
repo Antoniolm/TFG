@@ -52,6 +52,8 @@ class Controller
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will change the state of a button of our controller
+        *    @param value -> the state of our button
+        *    @param button -> the index of the button that our want to change
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -59,8 +61,9 @@ class Controller
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will update the event/buttons of our gamepadcontroller
-        *    \return void
+        *   It will update the event/buttons of our gamepadcontroller
+        *   @param event -> our current event
+        *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
         virtual void checkEvent(SDL_Event & event);
@@ -68,6 +71,7 @@ class Controller
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will check a button of our system
+        *    @param  button -> the index of the button that our want to check
         *    \return bool -> true if the buttons is down - false if is down
         */
         //////////////////////////////////////////////////////////////////////////
@@ -76,6 +80,7 @@ class Controller
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will obtain the current state of our keyboard
+        *    @param currentKeyStates -> the state of our keyboard
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -88,6 +93,7 @@ class Controller
         */
         //////////////////////////////////////////////////////////////////////////
         void consumeButtons();
+
     protected:
         bool buttons[11];
         bool stateButtons[11]; //check if the button has been consumed for one object.

@@ -42,7 +42,10 @@ class ControlMenu : public Menu
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor
+        *    @param position -> the initial position of our menu
+        *    @param fileName -> the name of the file of our background
+        */
         //////////////////////////////////////////////////////////////////////////
         ControlMenu(vec3f position,string fileName);
 
@@ -54,6 +57,7 @@ class ControlMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -63,6 +67,7 @@ class ControlMenu : public Menu
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

@@ -41,6 +41,8 @@ class ControllerManager
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will change the state of a button of our controller
+        *    @param value -> the state of our button
+        *    @param button -> the index of the button that our want to change
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -49,6 +51,7 @@ class ControllerManager
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will update the event/buttons of our gamepadcontroller
+        *    @param event -> our current event
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -57,6 +60,7 @@ class ControllerManager
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will check a button of our system
+        *    @param  button -> the index of the button that our want to check
         *    \return bool -> true if the buttons is down - false if is down
         */
         //////////////////////////////////////////////////////////////////////////
@@ -65,6 +69,7 @@ class ControllerManager
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will obtain the current state of our keyboard
+        *    @param currentKeyStates -> the state of our keyboard
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
