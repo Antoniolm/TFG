@@ -71,6 +71,16 @@ class ParticleSystem : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
+        void setParameters(int numParticle,string aMaterial,vec3f aScale,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime);
+        int getNumParticle();
+        Material * getMaterial();
+        vec3f getScale();
+        vec3f getMaxPos();
+        vec3f getMinPos();
+        vec3f getVelocity();
+        float getMinTime();
+        float getMaxTime();
+
     protected:
 
     private:

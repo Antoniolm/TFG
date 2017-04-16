@@ -139,7 +139,7 @@
 
     "enemies":[
             {   
-                "life":75,
+                "life":50,
                 "position":[76.5,5.5,-40.5],
                 "radioActivity":[2.0,2.0,2.0],
                 "type":"ranged"

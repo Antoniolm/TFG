@@ -67,3 +67,9 @@ int AnimationList::getState(){
 ScriptLMD * AnimationList::getAnimation(){
     return animations[currentAnimation];
 }
+
+//**********************************************************************//
+
+int AnimationList::getNumAnimation(){
+    return animations.size();
+}

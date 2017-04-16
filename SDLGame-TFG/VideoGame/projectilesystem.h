@@ -80,6 +80,86 @@ class ProjectileSystem : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set all the parameters of our projectile system object
+        *    @param aRadio -> the radio activity of our projectile Sys
+        *    @param aPos -> the initial position of our projectile Sys
+        *    @param aVeloc -> the velocity of movement of our projectile
+        *    @param aDir -> the direction of our projectile Sys
+        *    @param aDelay -> the delay between projectile creation
+        *    @param aMesh -> the mesh that will visualize our projectile
+        *    @param aMterial -> the material that will have our projectile
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void setParameters(vec3f aRadio,vec3f aPos,vec3f aVeloc,int aDir,float aDelay,string aMesh,string aMaterial);
+
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the lived arrow of our system
+        *    \return list<Projectile *> &
+        */
+        //////////////////////////////////////////////////////////////////////////
+        list<Projectile *> & getArrows();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the radio of our system
+        *    \return vec3f
+        */
+        //////////////////////////////////////////////////////////////////////////
+        vec3f getRadio();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the position of our system
+        *    \return vec3f
+        */
+        //////////////////////////////////////////////////////////////////////////
+        vec3f getPosition();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the velocity of our system
+        *    \return vec3f
+        */
+        //////////////////////////////////////////////////////////////////////////
+        vec3f getVelocity();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the direction ouf the arrow of our system
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
+        int getDir();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the delay between projectiles of our system
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
+        float getDelay();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the mesh of our system
+        *    \return string
+        */
+        //////////////////////////////////////////////////////////////////////////
+        string getMesh();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the material of our system
+        *    \return string
+        */
+        //////////////////////////////////////////////////////////////////////////
+        string getMaterial();
+
     protected:
 
     private:

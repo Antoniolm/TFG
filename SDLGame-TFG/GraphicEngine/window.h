@@ -20,14 +20,12 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
-#include <glew.h>
-#include <SDL.h>
-#include <SDL_gamecontroller.h>
-#include <SDL_opengl.h>
-#include <SDL_mixer.h>
-#include <SDL_TTF.h>
+#include "GL/glew.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_mixer.h"
+#include "SDL2/SDL_ttf.h"
 #include <gl/glu.h>
-#include <gl/gl.h>
+#include <GL/gl.h>
 #include <stdio.h>
 #include <string>
 #include "sound.h"
@@ -84,6 +82,8 @@ class Window
         //////////////////////////////////////////////////////////////////////////
         void hideScreen();
 
+
+
         //////////////////////////////////////////////////////////////////////////
         /**
         *    Will update the current screen in the window.
@@ -106,6 +106,25 @@ class Window
         //////////////////////////////////////////////////////////////////////////
         void resizeWindow(int windowH,int windowW);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the width of our window
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
+        int getWidth();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the height of our window
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
+        int getHeight();
+
+        void setTitle(string aTitle);
+        string getTitle();
+
         static Window * getInstance(){
             if(instance == NULL)
                 instance = new Window();
@@ -114,6 +133,7 @@ class Window
         }
 
         void fullScreen(bool value);
+        bool getIsFullScreen();
     protected:
 
     private:
@@ -122,9 +142,11 @@ class Window
         //////////////////////////////////////////////////////////////////////////
         Window();
 
+        void setIcon();
         static Window* instance;
         SDL_Window * window;
         SDL_GLContext context;
+        bool fullScreenMode;
         string title;
         int height;
         int width;

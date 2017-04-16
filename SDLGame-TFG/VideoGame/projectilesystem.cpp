@@ -96,3 +96,66 @@ void ProjectileSystem::updateState(GameState & gameState){
 
     currentTime+=(time-currentTime);
 }
+
+//**********************************************************************//
+
+void ProjectileSystem::setParameters(vec3f aRadio,vec3f aPos,vec3f aVeloc,int aDir,float aDelay,string aMesh,string aMaterial){
+    radioActivity=aRadio;
+    position=aPos;
+    velocity=aVeloc;
+
+    direction=(avatarDirection)aDir;
+    timeBWprojectile=aDelay;//time between one projectile and another
+    mesh=aMesh;
+    material=aMaterial;
+    currentTime=SDL_GetTicks();
+    projectileDelay=currentTime;
+}
+
+//**********************************************************************//
+
+list<Projectile *> & ProjectileSystem::getArrows(){
+    return projectiles;
+}
+
+//**********************************************************************//
+
+vec3f ProjectileSystem::getRadio(){
+    return radioActivity;
+}
+
+//**********************************************************************//
+
+vec3f ProjectileSystem::getPosition(){
+    return position;
+}
+
+//**********************************************************************//
+
+vec3f ProjectileSystem::getVelocity(){
+    return velocity;
+}
+
+//**********************************************************************//
+
+int ProjectileSystem::getDir(){
+    return direction;
+}
+
+//**********************************************************************//
+
+float ProjectileSystem::getDelay(){
+    return timeBWprojectile;
+}
+
+//**********************************************************************//
+
+string ProjectileSystem::getMesh(){
+    return mesh;
+}
+
+//**********************************************************************//
+
+string ProjectileSystem::getMaterial(){
+    return material;
+}

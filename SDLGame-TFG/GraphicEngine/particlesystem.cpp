@@ -114,3 +114,71 @@ void ParticleSystem::updateState(GameState & gameState){
 
     currentTime+=(time-currentTime);
 }
+
+//**********************************************************************//
+void ParticleSystem::setParameters(int numParticle,string aMaterial,vec3f aScale,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime){
+    vec3f pos=(aMaxPos-aMinPos)/2;
+    position=vec4f(pos.x,pos.y,pos.z,1.0);
+
+    MaterialCollection * materialCollect=MaterialCollection::getInstance();
+
+    material=materialCollect->getMaterial(aMaterial);
+    scale=aScale;
+    nParticles=numParticle;
+    minPos=aMinPos;
+    maxPos=aMaxPos;
+    velocity=aVelocity;
+    minTime=aMinTime;
+    maxTime=aMaxTime;
+    currentParticles=0;
+    currentTime=SDL_GetTicks();
+
+}
+
+//**********************************************************************//
+
+int ParticleSystem::getNumParticle(){
+    return nParticles;
+}
+
+//**********************************************************************//
+
+Material * ParticleSystem::getMaterial(){
+    return material;
+}
+
+//**********************************************************************//
+
+vec3f ParticleSystem::getScale(){
+    return scale;
+}
+
+//**********************************************************************//
+
+vec3f ParticleSystem::getMaxPos(){
+    return maxPos;
+}
+
+//**********************************************************************//
+
+vec3f ParticleSystem::getMinPos(){
+    return minPos;
+}
+
+//**********************************************************************//
+
+vec3f ParticleSystem::getVelocity(){
+    return velocity;
+}
+
+//**********************************************************************//
+
+float ParticleSystem::getMinTime(){
+    return minTime;
+}
+
+//**********************************************************************//
+
+float ParticleSystem::getMaxTime(){
+    return maxTime;
+}

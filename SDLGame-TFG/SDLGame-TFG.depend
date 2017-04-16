@@ -360,7 +360,7 @@
 1476032874 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\game.h
 	"GraphicEngine/window.h"
 
-1491825256 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
+1492352912 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
 	"GL/glew.h"
 	"SDL2/SDL.h"
 	"SDL2/SDL_mixer.h"
@@ -396,11 +396,11 @@
 	"hero.h"
 	<sstream>
 
-1491825418 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1492341403 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"file_obj.h"
 
-1492039420 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1492342094 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1491572000 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -1653,7 +1653,7 @@
 	"material.h"
 	<vector>
 
-1491760192 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
+1492076706 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.cpp
 	"objectscene.h"
 	"gamestate.h"
 
@@ -2105,10 +2105,10 @@
 1480306734 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\internal\strfunc.h
 	"../stream.h"
 
-1487777773 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
+1492343008 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
 	"particlesystem.h"
 
-1487165373 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
+1492342961 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
 	"object3d.h"
 	"nodescenegraph.h"
 	"context.h"
@@ -2207,10 +2207,10 @@
 	"enemylist.h"
 	<vector>
 
-1490000819 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
+1492343930 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.cpp
 	"projectilesystem.h"
 
-1491831320 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.h
+1492345222 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\projectilesystem.h
 	"projectile.h"
 	"../GraphicEngine/nodescenegraph.h"
 	<string>
@@ -2263,10 +2263,10 @@
 	"materialcollection.h"
 	"meshcollection.h"
 
-1487944266 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\animationlist.cpp
+1492343281 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\animationlist.cpp
 	"animationlist.h"
 
-1492036477 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\animationlist.h
+1492343246 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\animationlist.h
 	<vector>
 	"scriptlmd.h"
 
@@ -3563,4 +3563,6 @@
 
 1491822505 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\creditscreen.cpp
 	"creditscreen.h"
+
+1492351382 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\icon.c
 

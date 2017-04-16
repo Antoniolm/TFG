@@ -28,6 +28,7 @@ Window::Window(){
     title="Test";
     height=800;
     width=600;
+    fullScreenMode=false;
 }
 
 //**********************************************************************//
@@ -67,6 +68,7 @@ bool Window::createWindow(){
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
 
         window = SDL_CreateWindow(title.c_str() , 20, 30, height, width, SDL_WINDOW_OPENGL | SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE);
+
 		if (window == NULL) {
 			printf("SDL_Error: %s\n", SDL_GetError());
 			salida=false;
@@ -99,6 +101,7 @@ bool Window::createWindow(){
     //glEnable(GL_FRAMEBUFFER_SRGB);
     Mix_AllocateChannels(16);
 
+    setIcon();
     return salida;
 }
 
@@ -112,6 +115,24 @@ void Window::showScreen(){
 
 void Window::hideScreen(){
     SDL_HideWindow(window);
+}
+
+//**********************************************************************//
+
+void Window::setIcon(){
+    #include "icon.c"
+
+    Uint32 rmask, gmask, bmask, amask;
+    rmask = 0x000000ff;
+    gmask = 0x0000ff00;
+    bmask = 0x00ff0000;
+    amask = (my_icon.bytes_per_pixel == 3) ? 0 : 0xff000000;
+
+    SDL_Surface* icon = SDL_CreateRGBSurfaceFrom((void*)my_icon.pixel_data, my_icon.width,my_icon.height,
+                                                 my_icon.bytes_per_pixel*8, my_icon.bytes_per_pixel*my_icon.width,
+                                                 rmask, gmask, bmask, amask);
+    SDL_SetWindowIcon(window, icon);
+    SDL_FreeSurface(icon);
 }
 
 //**********************************************************************//
@@ -139,9 +160,41 @@ void Window::resizeWindow(int windowH,int windowW){
 
 //**********************************************************************//
 
+int Window::getWidth(){
+    return width;
+}
+
+//**********************************************************************//
+
+int Window::getHeight(){
+    return height;
+}
+
+//**********************************************************************//
+
+void Window::setTitle(string aTitle){
+    title=aTitle;
+    SDL_SetWindowTitle(window,title.c_str());
+}
+
+//**********************************************************************//
+
+string Window::getTitle(){
+    return title;
+}
+
+//**********************************************************************//
+
 void Window::fullScreen(bool value){
-    if(value)
+    fullScreenMode=value;
+    if(fullScreenMode)
         SDL_SetWindowFullscreen(window,SDL_TRUE);
     else
         SDL_SetWindowFullscreen(window,SDL_FALSE);
+}
+
+//**********************************************************************//
+
+bool Window::getIsFullScreen(){
+    return fullScreenMode;
 }
