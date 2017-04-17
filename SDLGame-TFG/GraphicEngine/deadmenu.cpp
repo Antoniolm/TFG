@@ -65,6 +65,8 @@ DeadMenu::DeadMenu(vec3f initialPos,string fileName)
 DeadMenu::~DeadMenu()
 {
     delete root;
+
+    delete currentMaterial;
 }
 
 //**********************************************************************//

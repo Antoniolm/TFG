@@ -20,8 +20,6 @@
 #include "mainmenu.h"
 #include "game.h"
 
-MainMenu* MainMenu::instance = NULL;
-
 MainMenu::MainMenu(vec3f initPos,string fileName)
 {
     currentOption=0;
@@ -84,8 +82,10 @@ MainMenu::~MainMenu()
 {
     delete root;
 
-    for(unsigned i=0;i<options.size();i++)
-        delete options[i];
+    for(vector<Texture *>::iterator it = options.begin() ; it != options.end(); ++it){
+        if((*it)->getFile()!=currentMaterial->getTexture()->getFile())
+            delete (*it);
+    }
 
     delete currentMaterial;
 

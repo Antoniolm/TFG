@@ -95,8 +95,6 @@ class MainMenu : public Menu
     protected:
 
     private:
-
-        static MainMenu* instance;
         vector<MainMenuOption> actionOption;
         Sound * openSound,* moveSound;
 };

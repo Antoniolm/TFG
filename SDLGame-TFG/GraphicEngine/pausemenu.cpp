@@ -67,8 +67,9 @@ PauseMenu::~PauseMenu()
 {
     delete root;
 
-     for(vector<Texture *>::iterator it = options.begin() ; it != options.end(); ++it){
-        delete (*it);
+    for(vector<Texture *>::iterator it = options.begin() ; it != options.end(); ++it){
+        if((*it)->getFile()!=currentMaterial->getTexture()->getFile())
+            delete (*it);
     }
 
     delete currentMaterial;

@@ -84,6 +84,9 @@
 		<Unit filename="GraphicEngine/ianpc.h" />
 		<Unit filename="GraphicEngine/iarangedenemy.cpp" />
 		<Unit filename="GraphicEngine/iarangedenemy.h" />
+		<Unit filename="GraphicEngine/icon.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="GraphicEngine/keyboardcontroller.cpp" />
 		<Unit filename="GraphicEngine/keyboardcontroller.h" />
 		<Unit filename="GraphicEngine/light.cpp" />
