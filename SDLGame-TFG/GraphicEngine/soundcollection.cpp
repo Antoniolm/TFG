@@ -36,13 +36,14 @@ SoundCollection::SoundCollection()
 
     collection.addElement(new Sound("sounds/shoot.wav",1,50,-1,0));
 
-    collection.addElement(new Sound("sounds/sword.wav",1,1,-1,0));
+    collection.addElement(new Sound("sounds/sword.wav",1,5,-1,0));
 
     collection.addElement(new Sound("sounds/arrowHit.wav",1,20,-1,0));
 
     collection.addElement(new Sound("sounds/shield.wav",1,40,-1,0));
     collection.addElement(new Sound("sounds/heroHit.wav",1,20,-1,0));
     collection.addElement(new Sound("sounds/walking.wav",1,40,-1,-1));
+    collection.addElement(new Sound("sounds/jump.wav",1,20,-1,0));
 
     //Create our map
     collection.addIndex("sCoin",sCoin);
@@ -55,6 +56,7 @@ SoundCollection::SoundCollection()
     collection.addIndex("sSHIELD",sSHIELD);
     collection.addIndex("HHIT",HHIT);
     collection.addIndex("sWALK",sWALK);
+    collection.addIndex("sJUMP",sJUMP);
 }
 
 //**********************************************************************//

@@ -37,7 +37,8 @@ enum SoundIndex{
     sARROW,
     sSHIELD,
     HHIT,
-    sWALK
+    sWALK,
+    sJUMP
 };
 
 class SoundCollection

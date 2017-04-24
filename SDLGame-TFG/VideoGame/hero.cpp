@@ -59,6 +59,7 @@ Hero::Hero(vec3f aPos)
     heroSound.push_back(soundCollect->getSound(sSHIELD));
     heroSound.push_back(soundCollect->getSound(SHOOT));
     heroSound.push_back(soundCollect->getSound(sSWORD));
+    heroSound.push_back(soundCollect->getSound(sJUMP));
 
     for(unsigned i=0;i<heroSound.size();i++)
         channelSound.push_back(-1);
@@ -552,6 +553,7 @@ void Hero::updateState(GameState & gameState){
         int currentIndexAnimation;
         switch(currentWeapon->getType()){
             case MELEE: //If is the sword
+
                 animations.activate(1);
                 currentIndexAnimation=(animations.getAnimation())->getScriptState(7);
                 if((currentIndexAnimation==0 || currentIndexAnimation==2 || currentIndexAnimation==4) && swordDelay<(time-250)){
@@ -570,6 +572,7 @@ void Hero::updateState(GameState & gameState){
 
             break;
             case RANGED: //if is the crossbow
+
                 animations.activate(6);
                 ScriptLMD * animationHit=animations.getAnimation();
                 if(animationHit->getScriptState(6)==1 && shootDelay<(time-700)){

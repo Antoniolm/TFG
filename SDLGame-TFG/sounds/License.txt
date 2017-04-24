@@ -8,3 +8,4 @@ Bow01.wav by Erdie is licensed under Creative Commons 3 (https://creativecommons
 sword_02.wav by dermotte is licensed under Creative Commons 3.0 http://www.freesound.org/people/dermotte/sounds/263011/ -> used in the sound : sword.wav
 Footsteps of soldier on ground.wav by Iberian_Runa is licensed under Creative Commons 3.0 http://www.freesound.org/people/Iberian_Runa/sounds/243794/ -> used in the sound : walking.wav
 arrow_damage.wav by braqoon is licensed under Creative Commons 0.0 http://www.freesound.org/people/braqoon/sounds/161098/ -> used in the sound : arrowHit.wav
+jump.wav by acebrian is licensed under Creative Commons 0.0 http://www.freesound.org/people/acebrian/sounds/380471/ -> used in the soudn : jump.wav
