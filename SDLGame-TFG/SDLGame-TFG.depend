@@ -360,7 +360,7 @@
 1476032874 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\game.h
 	"GraphicEngine/window.h"
 
-1492352912 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
+1492942557 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
 	"GL/glew.h"
 	"SDL2/SDL.h"
 	"SDL2/SDL_mixer.h"
@@ -1040,7 +1040,7 @@
 	<stdlib.h>
 	<vector>
 
-1491753856 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
+1493071860 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\hero.cpp
 	"hero.h"
 	"weapon.h"
 	"projectile.h"
@@ -2165,10 +2165,10 @@
 	<map>
 	<string>
 
-1491388044 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
+1493073473 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
 	"soundcollection.h"
 
-1489173149 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.h
+1493072538 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.h
 	"sound.h"
 	<vector>
 	<map>
@@ -2444,16 +2444,17 @@
 	"../lib/rapidjson/document.h"
 	"gamestate.h"
 
-1491568956 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\spiketrap.cpp
+1493073228 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\spiketrap.cpp
 	"spiketrap.h"
 
-1491992985 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\spiketrap.h
+1493072657 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\spiketrap.h
 	"../GraphicEngine/object3d.h"
 	"../GraphicEngine/nodescenegraph.h"
 	"../GraphicEngine/matrix4f.h"
 	"../GraphicEngine/matrix4fdynamic.h"
 	"../GraphicEngine/meshcollection.h"
 	"../GraphicEngine/materialcollection.h"
+	"../GraphicEngine/soundcollection.h"
 	"../lib/rapidjson/document.h"
 
 1491821587 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.h

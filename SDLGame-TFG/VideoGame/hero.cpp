@@ -465,6 +465,7 @@ void Hero::updateState(GameState & gameState){
     if(controller->checkButton(cJUMP) && !isJumping && !isFalling && !isImpacted && !isShielded && jumpDelay<(time-600) ){
         activeJump(vec3f(velocityHero.x,15.0,velocityHero.y),vec3f(accelerationHero.x,5.0,accelerationHero.z));
         jumpDelay=time;
+        channelSound[5]=heroSound[5]->play();
     }
 
     //Case-> Push L bottom to hit

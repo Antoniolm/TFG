@@ -26,6 +26,7 @@
 #include "../GraphicEngine/matrix4fdynamic.h"
 #include "../GraphicEngine/meshcollection.h"
 #include "../GraphicEngine/materialcollection.h"
+#include "../GraphicEngine/soundcollection.h"
 #include "../lib/rapidjson/document.h"
 
 using namespace rapidjson;
@@ -108,6 +109,7 @@ class SpikeTrap : public Object3D
         float activatedTime;
         float damage;
         bool activated,delayActivated;
+        Sound *activatedTrap,* animationSound;
 };
 
 #endif // SPIKETRAP_H

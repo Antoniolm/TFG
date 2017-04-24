@@ -44,6 +44,7 @@ SoundCollection::SoundCollection()
     collection.addElement(new Sound("sounds/heroHit.wav",1,20,-1,0));
     collection.addElement(new Sound("sounds/walking.wav",1,40,-1,-1));
     collection.addElement(new Sound("sounds/jump.wav",1,20,-1,0));
+    collection.addElement(new Sound("sounds/trapActivated.wav",1,20,-1,0));
 
     //Create our map
     collection.addIndex("sCoin",sCoin);
@@ -57,6 +58,7 @@ SoundCollection::SoundCollection()
     collection.addIndex("HHIT",HHIT);
     collection.addIndex("sWALK",sWALK);
     collection.addIndex("sJUMP",sJUMP);
+    collection.addIndex("sATRAP",sATRAP);
 }
 
 //**********************************************************************//
