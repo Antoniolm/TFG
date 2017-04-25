@@ -29,7 +29,7 @@ SpikeTrap::SpikeTrap(const Value & spikeFeatures)
     SoundCollection * soundCollect= SoundCollection::getInstance();
 
     activatedTrap=soundCollect->getSound(sATRAP);
-    //animationSound;
+    animationSound=soundCollect->getSound(sNTRAP);
 
     Matrix4f * transObject=new Matrix4f();
     transObject->translation(position.x,position.y,position.z);
@@ -91,9 +91,10 @@ void SpikeTrap::updateState(GameState & gameState ){
         activatedTrap->play(0);
     }
 
-    if(activated && desactivatedDelay<(time-1500) && distance>0.75){ //if hero is far of an activated trap
+    if(activated && desactivatedDelay<(time-2100) && distance>0.75){ //if hero is far of an activated trap
         activated=false;
         delayActivated=false;
+        animationSound->play(0);
     }
 
     if(activated){ // if is activated
@@ -104,8 +105,10 @@ void SpikeTrap::updateState(GameState & gameState ){
             }
         }
         else { //If is in delayTime
-            if(delayTime<(time-500))
+            if(delayTime<(time-600)){
                 delayActivated=false;
+                animationSound->play(0);
+            }
         }
     }
 

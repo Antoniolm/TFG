@@ -39,7 +39,8 @@ enum SoundIndex{
     HHIT,
     sWALK,
     sJUMP,
-    sATRAP
+    sATRAP,
+    sNTRAP
 };
 
 class SoundCollection
