@@ -164,7 +164,12 @@ void MainMenu::updateState(GameState & gameState){
                 break;
                 case CONTINUE: //Continue
                     //Catch the saved progress and load the map
+                    saveManager=SavedManager::getInstance();
+                    saveManager->load();
+
+                    fileLoad=saveManager->getMap();
                     activateMenu=false;
+
                     if(gameState.rootMap!=0)
                         delete gameState.rootMap;
 
