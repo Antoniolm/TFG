@@ -28,18 +28,6 @@ Sound::Sound()
 
 Sound::~Sound()
 {
-
-  switch(type){
-        case 0: //Background music
-            Mix_FreeMusic(music);
-        break;
-
-        case 1: //Effect
-            Mix_FreeChunk(effect);
-        break;
-    }
-
-
 }
 
 //**********************************************************************//
@@ -52,17 +40,6 @@ Sound::Sound(const Sound & aSound){
     volume=aSound.volume;
     currentVolume=volume;
 
-    switch(type){
-        case 0: //Background music
-            music= Mix_LoadMUS(&file[0u]);
-            if( music == NULL ) cout<< "Unable to load the background music ->"<< file<<endl;
-        break;
-
-        case 1: //Effect
-            effect= Mix_LoadWAV(&file[0u]);
-            if( effect == NULL) cout<< "Unable to load the effect ->"<< file<<endl;
-        break;
-    }
 }
 
 //**********************************************************************//
@@ -76,129 +53,34 @@ Sound::Sound(const string & aFile,unsigned int aType,int aVolume,int aChannel,in
     volume=aVolume;
     currentVolume=volume;
 
-    switch(type){
-        case 0: //Background music
-            music= Mix_LoadMUS(&file[0u]);
-            if( music == NULL ) cout<< "Unable to load the background music ->"<< file<<endl;
-        break;
-
-        case 1: //Effect
-            effect= Mix_LoadWAV(&file[0u]);
-            if( effect == NULL) cout<< "Unable to load the effect ->"<< file<<endl;
-        break;
-    }
-
 }
 
 //**********************************************************************//
 
 int Sound::play(float distance){
     int currentChannel=channel;
-    switch(type){
-        case 0: //Background music
-            if(Mix_PlayingMusic()==0){
-                Mix_PlayMusic(music, loop);
-                Mix_VolumeMusic(volume);
-            }
-        break;
-
-        case 1: //Effect
-            if(channel!=-1){ //if have a channel
-                Mix_PlayChannel(channel,effect,loop);
-                Mix_Volume(channel,volume);
-            }
-            else{ //if sound has channel -1 ->take the first free channel
-                currentChannel=Mix_PlayChannel(-1,effect,loop);
-                Mix_Volume(currentChannel,calculateVolume(distance));
-            }
-
-        break;
-    }
     return currentChannel;
 }
 
 //**********************************************************************//
 
 void Sound::stop(int currentChannel){
-    switch(type){
-        case 0: //Background music
-            if(Mix_PlayingMusic()==1)
-                Mix_HaltMusic();
-        break;
-
-        case 1: //Effect
-            if(channel!=-1 && Mix_Playing(channel)==1){
-                Mix_HaltChannel(channel);
-            }
-            else if(channel==-1 && currentChannel!=-1)
-                Mix_HaltChannel(currentChannel);
-
-        break;
-    }
 }
 
 //**********************************************************************//
 
 void Sound::pause(int currentChannel){
-    switch(type){
-        case 0: //Background music
-            if(Mix_PausedMusic()==0)
-                Mix_PauseMusic();
-        break;
-
-        case 1: //Effect
-            if(channel!=-1 && Mix_Paused(channel)==0){
-                Mix_Pause(channel);
-            }
-            else if(channel==-1 && currentChannel!=-1)
-                    Mix_Pause(currentChannel);
-
-        break;
-    }
 }
 
 //**********************************************************************//
 
 void Sound::resume(int currentChannel){
-    switch(type){
-        case 0: //Background music
-            if(Mix_PausedMusic()==1)
-                Mix_ResumeMusic();
-        break;
-
-        case 1: //Effect
-            if(channel!=-1 && Mix_Paused(channel)==1){
-                Mix_Resume(channel);
-            }
-            else if(channel==-1 && currentChannel!=-1)
-                Mix_Resume(currentChannel);
-
-        break;
-    }
-
 }
 
 //**********************************************************************//
 
 bool Sound::isPlaying(int currentChannel){
     bool result=false;
-    switch(type){
-        case 0: //Background music
-            if(Mix_PlayingMusic()==1)
-                result=true;
-        break;
-
-        case 1: //Effect
-            if(channel!=-1 && Mix_Playing(channel)==1){
-                result=true;
-            }
-            else if(channel==-1 && currentChannel!=-1){
-                if(Mix_Playing(currentChannel)==1)
-                    result=true;
-            }
-
-        break;
-    }
 
     return result;
 }
@@ -208,22 +90,6 @@ bool Sound::isPlaying(int currentChannel){
 bool Sound::isPause(int currentChannel){
     bool result=false;
 
-    switch(type){
-        case 0: //Background music
-            if(Mix_PausedMusic()==1)
-                result=true;
-        break;
-
-        case 1: //Effect
-            if(channel!=-1 && Mix_Paused(channel)==1){
-                result=true;
-            }
-            else if(channel==-1 && currentChannel!=-1){
-                if(Mix_Paused(currentChannel)==1)
-                    result=true;
-            }
-        break;
-    }
     return result;
 }
 
@@ -238,24 +104,6 @@ bool Sound::loadSound(const string & aFile,unsigned int aType,int aVolume,int aC
     currentVolume=volume;
 
     bool result = true;
-
-    switch(type){
-        case 0: //Background music
-        music= Mix_LoadMUS(&file[0u]);
-        if( music == NULL ){
-          cout<< "Unable to load the background music ->"<< file<<endl;
-          result=false;
-        }
-        break;
-
-        case 1: //Effect
-        effect= Mix_LoadWAV(&file[0u]);
-        if( effect == NULL){
-          cout<< "Unable to load the effect ->"<< file<<endl;
-          result=false;
-        }
-        break;
-    }
 
     return result;
 }

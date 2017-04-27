@@ -105,8 +105,10 @@ Game::~Game(){
     MaterialCollection * materialCollect= MaterialCollection::getInstance();
     delete materialCollect;
 
+    cout<< "yep"<<endl;
     SoundCollection * soundCollect= SoundCollection::getInstance();
     delete soundCollect;
+    cout<< "yep"<<endl;
     //delete profile
 }
 

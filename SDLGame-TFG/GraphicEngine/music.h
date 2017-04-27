@@ -116,6 +116,7 @@ class Music : public Sound
     protected:
 
     private:
+        Mix_Music * music;
 };
 
 #endif // MUSIC_H

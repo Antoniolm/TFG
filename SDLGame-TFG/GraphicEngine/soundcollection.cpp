@@ -30,7 +30,7 @@ SoundCollection::SoundCollection()
 
     collection.addElement(new Effect("sounds/openSound.wav",1,40,-1,0));
 
-    collection.addElement(new Effect("sounds/walking.wav",1,40,-1,-1));
+    collection.addElement(new Effect("sounds/backsound.wav",1,40,-1,-1));
 
     collection.addElement(new Effect("sounds/enemyHit.wav",1,50,-1,0));
 

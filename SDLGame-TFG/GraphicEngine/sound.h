@@ -62,7 +62,7 @@ class Sound
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        bool loadSound(const string & aFile,unsigned int aType,int aVolume=128 ,int aChannel=-1, int aloop=-1);
+        virtual bool loadSound(const string & aFile,unsigned int aType,int aVolume=128 ,int aChannel=-1, int aloop=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -71,7 +71,7 @@ class Sound
         *    \return int
         */
         //////////////////////////////////////////////////////////////////////////
-        int play(float distance=0);
+        virtual int play(float distance=0);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -79,7 +79,7 @@ class Sound
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void stop(int currentChannel=-1);
+        virtual void stop(int currentChannel=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -87,7 +87,7 @@ class Sound
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void pause(int currentChannel=-1);
+        virtual void pause(int currentChannel=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -95,7 +95,7 @@ class Sound
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void resume(int currentChannel=-1);
+        virtual void resume(int currentChannel=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -104,7 +104,7 @@ class Sound
         *                 false-> The sound is not playing
         */
         //////////////////////////////////////////////////////////////////////////
-        bool isPlaying(int currentChannel=-1);
+        virtual bool isPlaying(int currentChannel=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -113,7 +113,7 @@ class Sound
         *                 false-> The sound is not paused
         */
         //////////////////////////////////////////////////////////////////////////
-        bool isPause(int currentChannel=-1);
+        virtual bool isPause(int currentChannel=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -149,10 +149,6 @@ class Sound
         int channel; //Variable for effect
         int loop; //Variable for all type of sound. -> Number of loop in a reproduction
         int volume,currentVolume;
-        union{
-            Mix_Music * music;
-            Mix_Chunk * effect;
-        };
         string file;
 
     private:

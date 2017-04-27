@@ -134,6 +134,7 @@ class Effect : public Sound
     protected:
 
     private:
+        Mix_Chunk * effect;
 };
 
 #endif // EFFECT_H

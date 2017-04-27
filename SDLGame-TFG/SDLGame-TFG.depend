@@ -401,7 +401,7 @@
 	"file_obj.h"
 	"icon.c"
 
-1493316139 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1493320500 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1491572000 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -511,13 +511,13 @@
 	"begin_code.h"
 	"close_code.h"
 
-1493317840 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.h
+1493321363 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.h
 	"SDL2/SDL_mixer.h"
 	<string>
 	<iostream>
 	<unistd.h>
 
-1491388424 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.cpp
+1493321172 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.cpp
 	"sound.h"
 
 1382591223 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\sdl2\include\sdl2\sdl_opengl.h
@@ -1845,7 +1845,7 @@
 1492460209 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
 	"pausemenu.h"
 
-1493319730 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
+1493319884 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
 	"mainmenu.h"
 	"game.h"
 
@@ -2166,7 +2166,7 @@
 	<map>
 	<string>
 
-1493318996 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
+1493320774 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
 	"soundcollection.h"
 
 1493318976 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.h
@@ -3573,17 +3573,17 @@
 
 1492351382 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\icon.c
 
-1493317879 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\music.h
+1493320956 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\music.h
 	"sound.h"
 	<unistd.h>
 
 1493317875 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\music.cpp
 	"music.h"
 
-1493318683 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\effect.h
+1493320980 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\effect.h
 	"sound.h"
 	<unistd.h>
 
-1493318939 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\effect.cpp
+1493320868 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\effect.cpp
 	"effect.h"
 

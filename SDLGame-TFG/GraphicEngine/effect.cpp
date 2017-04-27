@@ -28,7 +28,8 @@ Effect::Effect()
 
 Effect::~Effect()
 {
-    Mix_FreeChunk(effect);
+    if(effect!=NULL)
+        Mix_FreeChunk(effect);
 }
 
 //**********************************************************************//

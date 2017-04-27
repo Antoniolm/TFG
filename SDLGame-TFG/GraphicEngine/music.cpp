@@ -28,7 +28,8 @@ Music::Music()
 
 Music::~Music()
 {
-    Mix_FreeMusic(music);
+    if(music !=NULL)
+        Mix_FreeMusic(music);
 }
 
 //**********************************************************************//
