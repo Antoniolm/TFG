@@ -21,6 +21,8 @@
 #define SOUNDCOLLECTION_H
 
 #include "sound.h"
+#include "effect.h"
+#include "music.h"
 #include <vector>
 #include <map>
 #include <string>
