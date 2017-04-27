@@ -74,6 +74,11 @@ MainMenu::MainMenu(vec3f initPos,string fileName)
 
     openSound=soundCollect->getSound(sOpen);
     moveSound=soundCollect->getSound(sCoin);
+
+    //Check if the user has a progress
+    checkUserProgress();
+
+
 }
 
 //**********************************************************************//
@@ -103,7 +108,7 @@ void MainMenu::visualization(Context & cv){
 
 void MainMenu::updateState(GameState & gameState){
     vec3f position;
-     string fileLoad;
+    string fileLoad;
 
     float time=gameState.time;
     ControllerManager * controller=gameState.controller;
@@ -112,19 +117,29 @@ void MainMenu::updateState(GameState & gameState){
         currentTime=time-50;
 
     if(activateMenu && !gameState.optionMenu->isActivate() && !gameState.controlMenu->isActivate()){ //If the menu is activated
-        if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the action move on the menu
+        if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the up move on the menu
             currentOption-=1;
-            if(currentOption==-1)
+
+            if(actionOption[currentOption]==CONTINUE && !hasSave)
+                currentOption-=1;
+
+            if(currentOption<=-1){
                 currentOption=(options.size()-1);
+            }
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
             moveSound->play();
         }
-        else if(controller->checkButton(cDOWN) && menuDelay<(time-300)){ //If the user push the action move on the menu
+        else if(controller->checkButton(cDOWN) && menuDelay<(time-300)){ //If the user push the down move on the menu
             currentOption++;
-            if((unsigned)currentOption==options.size())
+
+            if(actionOption[currentOption]==CONTINUE && !hasSave)
+                currentOption++;
+
+            if((unsigned)currentOption>=options.size()){
                 currentOption=0;
+            }
 
             currentMaterial->setTexture(options[currentOption]);
             menuDelay=time;
@@ -142,22 +157,17 @@ void MainMenu::updateState(GameState & gameState){
 
                     SavedManager::getInstance()->save("",0);
                     gameState.rootMap=new RootMap("./maps/map00.json",true);
+                    checkUserProgress();
                     openSound->play();
                 break;
                 case CONTINUE: //Continue
                     //Catch the saved progress and load the map
-                    saveManager=SavedManager::getInstance();
-                    saveManager->load();
-                    fileLoad=saveManager->getMap();
+                    activateMenu=false;
+                    if(gameState.rootMap!=0)
+                        delete gameState.rootMap;
 
-                    if(fileLoad!=""){
-                        activateMenu=false;
-                        if(gameState.rootMap!=0)
-                            delete gameState.rootMap;
-
-                        gameState.rootMap=new RootMap(fileLoad,true);
-                        openSound->play();
-                    }
+                    gameState.rootMap=new RootMap(fileLoad,true);
+                    openSound->play();
                 break;
                 case CONTROLS: //Controls
                     gameState.controlMenu->activate();
@@ -197,4 +207,15 @@ void MainMenu::activate(){
     currentMaterial->setTexture(options[currentOption]);
 }
 
+//**********************************************************************//
+
+void MainMenu::checkUserProgress(){
+    SavedManager * saveManager=SavedManager::getInstance();
+    saveManager->load();
+
+    hasSave=false;
+    if(saveManager->getMap()!="")
+        hasSave=true;
+
+}
 

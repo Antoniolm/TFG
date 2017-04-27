@@ -92,11 +92,14 @@ class MainMenu : public Menu
         */
         //////////////////////////////////////////////////////////////////////////
         void activate();
+
+        void checkUserProgress();
     protected:
 
     private:
         vector<MainMenuOption> actionOption;
         Sound * openSound,* moveSound;
+        bool hasSave;
 };
 
 #endif // MAINMENU_H
