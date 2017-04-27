@@ -511,7 +511,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1491760458 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.h
+1493317840 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound.h
 	"SDL2/SDL_mixer.h"
 	<string>
 	<iostream>
@@ -906,7 +906,7 @@
 	"objectgroup.h"
 	<stdlib.h>
 
-1490704155 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1493318192 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -939,6 +939,7 @@
 	"voxel.h"
 	"voxelgroup.h"
 	"sound.h"
+	"music.h"
 	"controller.h"
 	"keyboardcontroller.h"
 	"textregion.h"
@@ -1844,7 +1845,7 @@
 1492460209 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
 	"pausemenu.h"
 
-1493316412 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
+1493316732 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
 	"mainmenu.h"
 	"game.h"
 
@@ -3569,4 +3570,11 @@
 1492351382 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\icon.c
 
 1492351382 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\icon.c
+
+1493317879 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\music.h
+	"sound.h"
+	<unistd.h>
+
+1493317875 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\music.cpp
+	"music.h"
 

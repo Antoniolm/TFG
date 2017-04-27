@@ -52,6 +52,7 @@
 #include "voxel.h"
 #include "voxelgroup.h"
 #include "sound.h"
+#include "music.h"
 #include "controller.h"
 #include "keyboardcontroller.h"
 #include "textregion.h"

@@ -120,6 +120,7 @@ void MainMenu::updateState(GameState & gameState){
         if(controller->checkButton(cUP) && menuDelay<(time-300)){ //If the user push the up move on the menu
             currentOption-=1;
 
+            //If the option is "Continue" and the user doesn't have a progress
             if(actionOption[currentOption]==CONTINUE && !hasSave)
                 currentOption-=1;
 
@@ -134,6 +135,7 @@ void MainMenu::updateState(GameState & gameState){
         else if(controller->checkButton(cDOWN) && menuDelay<(time-300)){ //If the user push the down move on the menu
             currentOption++;
 
+            //If the option is "Continue" and the user doesn't have a progress
             if(actionOption[currentOption]==CONTINUE && !hasSave)
                 currentOption++;
 

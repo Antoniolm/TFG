@@ -17,29 +17,32 @@
 // **
 // *********************************************************************
 
-#ifndef SOUND_H
-#define SOUND_H
+#ifndef MUSIC_H
+#define MUSIC_H
 
-#include "SDL2/SDL_mixer.h"
-#include <string>
-#include <iostream>
+#include "sound.h"
 #include <unistd.h>
+
 
 #define MAX_CHANNEl 16
 using namespace std;
-
-class Sound
+class Music : public Sound
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        Sound();
+        Music();
+
+        //////////////////////////////////////////////////////////////////////////
+        /** Destructor */
+        //////////////////////////////////////////////////////////////////////////
+        virtual ~Music();
 
         //////////////////////////////////////////////////////////////////////////
         /**  Copy constructor */
         //////////////////////////////////////////////////////////////////////////
-        Sound(const Sound & aSound);
+        Music(Music & aSound);
 
         //////////////////////////////////////////////////////////////////////////
         /**  Constructor with some parameters
@@ -47,12 +50,7 @@ class Sound
         *    \param aType -> int with the type of element(music or effect)
         */
         //////////////////////////////////////////////////////////////////////////
-        Sound(const string & aFile,unsigned int aType,int aVolume=128,int aChannel=-1, int aloop=-1);
-
-        //////////////////////////////////////////////////////////////////////////
-        /** Destructor */
-        //////////////////////////////////////////////////////////////////////////
-        virtual ~Sound();
+        Music(const string & aFile,unsigned int aType,int aVolume=128,int aChannel=-1, int aloop=-1);
 
         /////////////////////////////////////////////////////////////////////////
         /**
@@ -115,49 +113,9 @@ class Sound
         //////////////////////////////////////////////////////////////////////////
         bool isPause(int currentChannel=-1);
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will get the type of sound that the object has.
-        *    \return unsigned int
-        */
-        //////////////////////////////////////////////////////////////////////////
-        unsigned int getType();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will get the name of sound file
-        *    \return string
-        */
-        //////////////////////////////////////////////////////////////////////////
-        string & getFile();
-
-        void updateVolume(int currentChannel,float distance);
-
-        void changeVolume(float percentage);
-
     protected:
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will calculate the volume of our sound and that
-        *    depends of the distance with the hero
-        *    \return int
-        */
-        //////////////////////////////////////////////////////////////////////////
-        int calculateVolume(float distance);
-
-        unsigned int type;   //0=background music, 1=effect
-        int channel; //Variable for effect
-        int loop; //Variable for all type of sound. -> Number of loop in a reproduction
-        int volume,currentVolume;
-        union{
-            Mix_Music * music;
-            Mix_Chunk * effect;
-        };
-        string file;
 
     private:
-
-
 };
 
-#endif // SOUND_H
+#endif // MUSIC_H

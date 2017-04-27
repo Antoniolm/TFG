@@ -346,8 +346,8 @@ void RootMap::initialize(string fileMap){
     }
     /////////////////////////////////////////
     // Add sound of our map
-    backSound=new Sound(document["sound"].GetString(),0,document["volSound"].GetFloat());
-    //backSound->play();
+    backSound=new Music(document["sound"].GetString(),0,document["volSound"].GetFloat());
+    backSound->play();
 
     SDL_Delay(2000);
 
