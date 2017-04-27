@@ -37,19 +37,6 @@ class Sound
         Sound();
 
         //////////////////////////////////////////////////////////////////////////
-        /**  Copy constructor */
-        //////////////////////////////////////////////////////////////////////////
-        Sound(const Sound & aSound);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**  Constructor with some parameters
-        *    \param aFile -> string with the name of a file.
-        *    \param aType -> int with the type of element(music or effect)
-        */
-        //////////////////////////////////////////////////////////////////////////
-        Sound(const string & aFile,unsigned int aType,int aVolume=128,int aChannel=-1, int aloop=-1);
-
-        //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Sound();
@@ -62,7 +49,7 @@ class Sound
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual bool loadSound(const string & aFile,unsigned int aType,int aVolume=128 ,int aChannel=-1, int aloop=-1);
+        virtual bool loadSound(const string & aFile,int aVolume=128 ,int aChannel=-1, int aloop=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -117,21 +104,13 @@ class Sound
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will get the type of sound that the object has.
-        *    \return unsigned int
-        */
-        //////////////////////////////////////////////////////////////////////////
-        unsigned int getType();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
         *    The method will get the name of sound file
         *    \return string
         */
         //////////////////////////////////////////////////////////////////////////
         string & getFile();
 
-        void updateVolume(int currentChannel,float distance);
+        virtual void updateVolume(int currentChannel,float distance);
 
         void changeVolume(float percentage);
 
@@ -145,7 +124,6 @@ class Sound
         //////////////////////////////////////////////////////////////////////////
         int calculateVolume(float distance);
 
-        unsigned int type;   //0=background music, 1=effect
         int channel; //Variable for effect
         int loop; //Variable for all type of sound. -> Number of loop in a reproduction
         int volume,currentVolume;

@@ -32,80 +32,38 @@ Sound::~Sound()
 
 //**********************************************************************//
 
-Sound::Sound(const Sound & aSound){
-    file=aSound.file;
-    type=aSound.type;
-    channel=aSound.channel;
-    loop=aSound.loop;
-    volume=aSound.volume;
-    currentVolume=volume;
-
-}
-
-//**********************************************************************//
-
-Sound::Sound(const string & aFile,unsigned int aType,int aVolume,int aChannel,int aloop){
-    cout<< "Sound ->"<< aFile<<endl;
-    file=aFile;
-    type=aType;
-    channel=aChannel;
-    loop=aloop;
-    volume=aVolume;
-    currentVolume=volume;
-
-}
-
-//**********************************************************************//
-
 int Sound::play(float distance){
-    int currentChannel=channel;
-    return currentChannel;
+    return 0;
 }
 
 //**********************************************************************//
 
-void Sound::stop(int currentChannel){
-}
+void Sound::stop(int currentChannel){}
 
 //**********************************************************************//
 
-void Sound::pause(int currentChannel){
-}
+void Sound::pause(int currentChannel){}
 
 //**********************************************************************//
 
-void Sound::resume(int currentChannel){
-}
+void Sound::resume(int currentChannel){}
 
 //**********************************************************************//
 
 bool Sound::isPlaying(int currentChannel){
-    bool result=false;
-
-    return result;
+    return false;
 }
 
 //**********************************************************************//
 
 bool Sound::isPause(int currentChannel){
-    bool result=false;
-
-    return result;
+    return false;
 }
 
 //**********************************************************************//
 
-bool Sound::loadSound(const string & aFile,unsigned int aType,int aVolume,int aChannel,int aloop){
-    file=aFile;
-    type=aType;
-    channel=aChannel;
-    loop=aloop;
-    volume=aVolume;
-    currentVolume=volume;
-
-    bool result = true;
-
-    return result;
+bool Sound::loadSound(const string & aFile,int aVolume,int aChannel,int aloop){
+    return false;
 }
 
 //**********************************************************************//
@@ -117,9 +75,6 @@ string & Sound::getFile(){
 //**********************************************************************//
 
 void Sound::updateVolume(int currentChannel,float distance){
-    if(type==1 && currentChannel!=-1){
-        Mix_Volume(currentChannel,calculateVolume(distance));
-    }
 }
 
 //**********************************************************************//

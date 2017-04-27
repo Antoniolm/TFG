@@ -36,7 +36,6 @@ Effect::~Effect()
 
 Effect::Effect(const Effect & aSound){
     file=aSound.file;
-    type=aSound.type;
     channel=aSound.channel;
     loop=aSound.loop;
     volume=aSound.volume;
@@ -50,10 +49,9 @@ Effect::Effect(const Effect & aSound){
 
 //**********************************************************************//
 
-Effect::Effect(const string & aFile,unsigned int aType,int aVolume,int aChannel,int aloop){
+Effect::Effect(const string & aFile,int aVolume,int aChannel,int aloop){
     cout<< "Sound ->"<< aFile<<endl;
     file=aFile;
-    type=aType;
     channel=aChannel;
     loop=aloop;
     volume=aVolume;
@@ -146,9 +144,8 @@ bool Effect::isPause(int currentChannel){
 
 //**********************************************************************//
 
-bool Effect::loadSound(const string & aFile,unsigned int aType,int aVolume,int aChannel,int aloop){
+bool Effect::loadSound(const string & aFile,int aVolume,int aChannel,int aloop){
     file=aFile;
-    type=aType;
     channel=aChannel;
     loop=aloop;
     volume=aVolume;
@@ -174,7 +171,7 @@ string & Effect::getFile(){
 //**********************************************************************//
 
 void Effect::updateVolume(int currentChannel,float distance){
-    if(type==1 && currentChannel!=-1){
+    if(currentChannel!=-1){
         Mix_Volume(currentChannel,calculateVolume(distance));
     }
 }

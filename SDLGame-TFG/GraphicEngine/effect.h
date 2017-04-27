@@ -45,7 +45,7 @@ class Effect : public Sound
         *    \param aType -> int with the type of element(music or effect)
         */
         //////////////////////////////////////////////////////////////////////////
-        Effect(const string & aFile,unsigned int aType,int aVolume=128,int aChannel=-1, int aloop=-1);
+        Effect(const string & aFile,int aVolume=128,int aChannel=-1, int aloop=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -60,7 +60,7 @@ class Effect : public Sound
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        bool loadSound(const string & aFile,unsigned int aType,int aVolume=128 ,int aChannel=-1, int aloop=-1);
+        bool loadSound(const string & aFile,int aVolume=128 ,int aChannel=-1, int aloop=-1);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -112,14 +112,6 @@ class Effect : public Sound
         */
         //////////////////////////////////////////////////////////////////////////
         bool isPause(int currentChannel=-1);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    The method will get the type of sound that the object has.
-        *    \return unsigned int
-        */
-        //////////////////////////////////////////////////////////////////////////
-        unsigned int getType();
 
         //////////////////////////////////////////////////////////////////////////
         /**

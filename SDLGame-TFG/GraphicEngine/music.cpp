@@ -36,7 +36,6 @@ Music::~Music()
 
 Music::Music(Music & aSound){
     file=aSound.file;
-    type=aSound.type;
     channel=aSound.channel;
     loop=aSound.loop;
     volume=aSound.volume;
@@ -48,10 +47,9 @@ Music::Music(Music & aSound){
 
 //**********************************************************************//
 
-Music::Music(const string & aFile,unsigned int aType,int aVolume,int aChannel,int aloop){
-    cout<< "Sound ->"<< aFile<<endl;
+Music::Music(const string & aFile,int aVolume,int aChannel,int aloop){
+    cout<< "Music ->"<< aFile<<endl;
     file=aFile;
-    type=aType;
     channel=aChannel;
     loop=aloop;
     volume=aVolume;
@@ -119,9 +117,8 @@ bool Music::isPause(int currentChannel){
 
 //**********************************************************************//
 
-bool Music::loadSound(const string & aFile,unsigned int aType,int aVolume,int aChannel,int aloop){
+bool Music::loadSound(const string & aFile,int aVolume,int aChannel,int aloop){
     file=aFile;
-    type=aType;
     channel=aChannel;
     loop=aloop;
     volume=aVolume;
