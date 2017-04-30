@@ -26,26 +26,26 @@ SoundCollection* SoundCollection::instance = NULL;
 SoundCollection::SoundCollection()
 {
     cout<< "Game is loading -> sounds"<< endl;
-    collection.addElement(new Effect("sounds/coin.wav",1,30,-1,0));
+    collection.addElement(new Effect("sounds/coin.wav",30,-1,0));
 
-    collection.addElement(new Effect("sounds/openSound.wav",1,40,-1,0));
+    collection.addElement(new Effect("sounds/openSound.wav",40,-1,0));
 
-    collection.addElement(new Effect("sounds/backsound.wav",1,40,-1,-1));
+    collection.addElement(new Effect("sounds/backsound.wav",40,-1,-1));
 
-    collection.addElement(new Effect("sounds/enemyHit.wav",1,50,-1,0));
+    collection.addElement(new Effect("sounds/enemyHit.wav",50,-1,0));
 
-    collection.addElement(new Effect("sounds/shoot.wav",1,50,-1,0));
+    collection.addElement(new Effect("sounds/shoot.wav",50,-1,0));
 
-    collection.addElement(new Effect("sounds/sword.wav",1,5,-1,0));
+    collection.addElement(new Effect("sounds/sword.wav",5,-1,0));
 
-    collection.addElement(new Effect("sounds/arrowHit.wav",1,20,-1,0));
+    collection.addElement(new Effect("sounds/arrowHit.wav",20,-1,0));
 
-    collection.addElement(new Effect("sounds/shield.wav",1,40,-1,0));
-    collection.addElement(new Effect("sounds/heroHit.wav",1,20,-1,0));
-    collection.addElement(new Effect("sounds/walking.wav",1,40,-1,-1));
-    collection.addElement(new Effect("sounds/jump.wav",1,20,-1,0));
-    collection.addElement(new Effect("sounds/trapActivated.wav",1,40,-1,0));
-    collection.addElement(new Effect("sounds/animationTrap.wav",1,20,-1,0));
+    collection.addElement(new Effect("sounds/shield.wav",40,-1,0));
+    collection.addElement(new Effect("sounds/heroHit.wav",20,-1,0));
+    collection.addElement(new Effect("sounds/walking.wav",40,-1,-1));
+    collection.addElement(new Effect("sounds/jump.wav",20,-1,0));
+    collection.addElement(new Effect("sounds/trapActivated.wav",40,-1,0));
+    collection.addElement(new Effect("sounds/animationTrap.wav",20,-1,0));
 
     //Create our map
     collection.addIndex("sCoin",sCoin);

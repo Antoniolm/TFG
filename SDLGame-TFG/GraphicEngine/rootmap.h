@@ -25,6 +25,8 @@
 #include <list>
 #include <vector>
 #include <map>
+#include "directionallight.h"
+#include "pointlight.h"
 #include "matrix4f.h"
 #include "matrix4fdynamic.h"
 #include "linearmovement.h"

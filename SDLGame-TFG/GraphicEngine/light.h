@@ -42,26 +42,6 @@ class Light
         Light();
 
         //////////////////////////////////////////////////////////////////////////
-        /** Copy constructor */
-        //////////////////////////////////////////////////////////////////////////
-        Light(const Light & aLight);
-
-        //////////////////////////////////////////////////////////////////////////
-        /** Constructor with parameters */
-        //////////////////////////////////////////////////////////////////////////
-        Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,string nlight="0");
-
-        //////////////////////////////////////////////////////////////////////////
-        /** Constructor with parameters */
-        //////////////////////////////////////////////////////////////////////////
-        Light(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic,string nlight="0");
-
-        //////////////////////////////////////////////////////////////////////////
-        /** Constructor with json */
-        //////////////////////////////////////////////////////////////////////////
-        Light(const rapidjson::Value & lightFeature);
-
-        //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
         virtual ~Light();
@@ -72,8 +52,7 @@ class Light
         *   \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activate(GLuint shaderID);
-
+        virtual void activate(GLuint shaderID);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -85,25 +64,8 @@ class Light
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *   This method will set a directional light
-        *   \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void setDirectionalLight(const vec3f & aDir,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular);
-
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *   This method will set a point light
-        *   \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void setPointLight(const vec3f & aPos,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular,float aConstant,float aLinear,float aQuadratic);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
         *   This method will get the position in our light
-        *   \return void
+        *   \return vec3f
         */
         //////////////////////////////////////////////////////////////////////////
         vec3f getPosition();
@@ -111,7 +73,7 @@ class Light
         //////////////////////////////////////////////////////////////////////////
         /**
         *   This method will get the ambient in our light
-        *   \return void
+        *   \return vec3f
         */
         //////////////////////////////////////////////////////////////////////////
         vec3f getAmbient();
@@ -119,7 +81,7 @@ class Light
         //////////////////////////////////////////////////////////////////////////
         /**
         *   This method will get the diffuse in our light
-        *   \return void
+        *   \return vec3f
         */
         //////////////////////////////////////////////////////////////////////////
         vec3f getDiffuse();
@@ -127,7 +89,7 @@ class Light
         //////////////////////////////////////////////////////////////////////////
         /**
         *   This method will get the specular in our light
-        *   \return void
+        *   \return vec3f
         */
         //////////////////////////////////////////////////////////////////////////
         vec3f getSpecular();
@@ -135,24 +97,20 @@ class Light
         //////////////////////////////////////////////////////////////////////////
         /**
         *   This method will get the shininess in our light
-        *   \return void
+        *   \return float
         */
         //////////////////////////////////////////////////////////////////////////
         float getShininess();
 
     protected:
-
-    private:
         typeLight type;
         vec3f position;
         vec3f ambient;
         vec3f diffuse;
         vec3f specular;
 
-        float constant;
-        float linear;
-        float quadratic;
-        string nLight;
+    private:
+
 };
 
 #endif // LIGHT_H

@@ -401,7 +401,7 @@
 	"file_obj.h"
 	"icon.c"
 
-1493320500 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1493333492 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1491572000 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -899,19 +899,21 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1493319264 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1493549871 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/enemylist.h"
 	"../VideoGame/itemlist.h"
 	"objectgroup.h"
 	<stdlib.h>
 
-1493318192 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1493559344 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
 	<vector>
 	<map>
+	"directionallight.h"
+	"pointlight.h"
 	"matrix4f.h"
 	"matrix4fdynamic.h"
 	"linearmovement.h"
@@ -1616,10 +1618,10 @@
 	"texture.h"
 	"shader.h"
 
-1487261440 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
+1493558806 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.cpp
 	"light.h"
 
-1487261299 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.h
+1493558493 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light.h
 	"structdata.h"
 	"shader.h"
 	<string>
@@ -2166,7 +2168,7 @@
 	<map>
 	<string>
 
-1493320774 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
+1493322593 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.cpp
 	"soundcollection.h"
 
 1493318976 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\soundcollection.h
@@ -3577,7 +3579,7 @@
 	"sound.h"
 	<unistd.h>
 
-1493322068 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\music.cpp
+1493322462 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\music.cpp
 	"music.h"
 
 1493322024 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\effect.h
@@ -3586,4 +3588,16 @@
 
 1493322113 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\effect.cpp
 	"effect.h"
+
+1493558615 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\directionallight.cpp
+	"directionallight.h"
+
+1493558314 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\directionallight.h
+	"light.h"
+
+1493558611 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pointlight.cpp
+	"pointlight.h"
+
+1493558317 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pointlight.h
+	"light.h"
 

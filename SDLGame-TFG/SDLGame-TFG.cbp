@@ -66,6 +66,8 @@
 		<Unit filename="GraphicEngine/deadmenu.h" />
 		<Unit filename="GraphicEngine/decorationobject.cpp" />
 		<Unit filename="GraphicEngine/decorationobject.h" />
+		<Unit filename="GraphicEngine/effect.cpp" />
+		<Unit filename="GraphicEngine/effect.h" />
 		<Unit filename="GraphicEngine/endmapregion.cpp" />
 		<Unit filename="GraphicEngine/endmapregion.h" />
 		<Unit filename="GraphicEngine/file_obj.cpp" />
@@ -123,6 +125,8 @@
 		<Unit filename="GraphicEngine/meshcollection.h" />
 		<Unit filename="GraphicEngine/moviescreen.cpp" />
 		<Unit filename="GraphicEngine/moviescreen.h" />
+		<Unit filename="GraphicEngine/music.cpp" />
+		<Unit filename="GraphicEngine/music.h" />
 		<Unit filename="GraphicEngine/nodescenegraph.cpp" />
 		<Unit filename="GraphicEngine/nodescenegraph.h" />
 		<Unit filename="GraphicEngine/notification.cpp" />
