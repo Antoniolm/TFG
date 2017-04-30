@@ -401,7 +401,7 @@
 	"file_obj.h"
 	"icon.c"
 
-1493333492 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1493580275 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1491572000 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -899,7 +899,7 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1493549871 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1493581095 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/enemylist.h"
 	"../VideoGame/itemlist.h"
@@ -1844,7 +1844,7 @@
 	"soundcollection.h"
 	<string>
 
-1492460209 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
+1493580541 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\pausemenu.cpp
 	"pausemenu.h"
 
 1493319884 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mainmenu.cpp
@@ -2003,7 +2003,7 @@
 1480303134 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\include\rapidjson\internal\strfunc.h
 	"../stream.h"
 
-1492459964 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\deadmenu.cpp
+1493580526 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\deadmenu.cpp
 	"deadmenu.h"
 
 1480306734 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\rapidjson\document.h
@@ -2476,7 +2476,7 @@
 	"rootmap.h"
 	"camera.h"
 
-1491821799 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.cpp
+1493580254 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.cpp
 	"gamestate.h"
 
 1487769737 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loaderthread.cpp
@@ -2534,7 +2534,7 @@
 	"materialcollection.h"
 	"../lib/rapidjson/document.h"
 
-1490910919 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.cpp
+1493581412 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\moviescreen.cpp
 	"moviescreen.h"
 	"gamestate.h"
 
@@ -2547,10 +2547,10 @@
 	"gamestate.h"
 	"../lib/rapidjson/document.h"
 
-1491570893 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\region.h
+1493563451 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\region.h
 	"structdata.h"
 
-1491570986 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\region.cpp
+1493563440 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\region.cpp
 	"region.h"
 	"gamestate.h"
 

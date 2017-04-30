@@ -352,7 +352,6 @@ void RootMap::initialize(string fileMap){
     /////////////////////////////////////////
     // Add sound of our map
     backSound=new Music(document["sound"].GetString(),document["volSound"].GetFloat());
-    backSound->play();
 
     SDL_Delay(2000);
 
@@ -463,7 +462,8 @@ void RootMap::updateState(GameState & gameState){
     if(time-currentTime>200)
         currentTime=time-50;
 
-    if(!gameState.movie->isActivated() && !gameState.pauseMenu->isActivate() && !gameState.deadMenu->isActivate() && !gameState.camera->isViewMode()){
+    if(!gameState.movie->isActivated() && !gameState.mainMenu->isActivate() && !gameState.pauseMenu->isActivate()
+       && !gameState.deadMenu->isActivate() && !gameState.camera->isViewMode()){
         //Update the hero
         hero->updateState(gameState);
 
@@ -536,8 +536,12 @@ void RootMap::updateState(GameState & gameState){
 //**********************************************************************//
 
 void RootMap::enableSound(bool value){
-    if(value)
-        backSound->resume();
+    if(value){
+        if(backSound->isPlaying())
+            backSound->resume();
+        else
+            backSound->play();
+    }
     else{
         backSound->pause();
     }
