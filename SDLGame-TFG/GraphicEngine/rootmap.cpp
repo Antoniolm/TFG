@@ -131,7 +131,12 @@ void RootMap::initialize(string fileMap){
     const rapidjson::Value & lightFeature=document["light"];
     for(unsigned currentLight=0;currentLight<lightFeature.Size();currentLight++){
         //Create our light
-        lights.push_back(new Light(lightFeature[currentLight]));
+        if(lightFeature[currentLight]["type"].GetFloat()==0)
+            lights.push_back(new DirectionalLight(lightFeature[currentLight]));
+        else
+            lights.push_back(new PointLight(lightFeature[currentLight]));
+
+
     }
 
     /////////////////////////////////////////
@@ -346,8 +351,8 @@ void RootMap::initialize(string fileMap){
     }
     /////////////////////////////////////////
     // Add sound of our map
-    backSound=new Music(document["sound"].GetString(),0,document["volSound"].GetFloat());
-    //backSound->play();
+    backSound=new Music(document["sound"].GetString(),document["volSound"].GetFloat());
+    backSound->play();
 
     SDL_Delay(2000);
 
