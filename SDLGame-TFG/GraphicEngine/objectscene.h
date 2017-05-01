@@ -52,7 +52,7 @@ class ObjectScene : public Object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
-        void visualization(Context & vis);
+        virtual void visualization(Context & vis);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -61,7 +61,7 @@ class ObjectScene : public Object3D
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(GameState & gameState);
+        virtual void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**

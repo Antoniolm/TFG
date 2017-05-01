@@ -20,18 +20,6 @@
 #include "enemy.h"
 #include "../GraphicEngine/iaenemy.h"
 
-Enemy::Enemy(){
-
-}
-
-//**********************************************************************//
-
-Enemy::Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
-{
-}
-
-//**********************************************************************//
-
 Enemy::~Enemy()
 {
 }

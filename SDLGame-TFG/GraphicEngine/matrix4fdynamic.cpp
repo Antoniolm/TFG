@@ -19,6 +19,10 @@
 
 #include "matrix4fdynamic.h"
 
+Matrix4fDynamic::~Matrix4fDynamic(){
+
+}
+
 //**********************************************************************//
 
 Matrix4f & Matrix4fDynamic::updateState(float time){

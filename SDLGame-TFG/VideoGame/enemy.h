@@ -46,15 +46,6 @@ class Weapon;
 class Enemy: public AvatarMove
 {
     public:
-        Enemy();
-        //////////////////////////////////////////////////////////////////////////
-        /** Constructor
-        *    @param aLife -> the life that our enemy object will have
-        *    @param aPosition -> the initial position of our enemy
-        *    @param aRadioActivity -> the radio activity of our enemy
-        */
-        //////////////////////////////////////////////////////////////////////////
-        Enemy(float aLife,vec3f aPosition,vec3f aRadioActivity);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
@@ -68,7 +59,7 @@ class Enemy: public AvatarMove
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void visualization(Context & cv);
+        virtual void visualization(Context & cv);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -78,7 +69,7 @@ class Enemy: public AvatarMove
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(GameState & gameState);
+        virtual void updateState(GameState & gameState) = 0;
 
         //////////////////////////////////////////////////////////////////////////
         /**

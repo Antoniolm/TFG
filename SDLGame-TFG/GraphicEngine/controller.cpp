@@ -19,11 +19,6 @@
 
 #include "controller.h"
 
-Controller::Controller()
-{
-    //ctor
-}
-
 //**********************************************************************//
 
 Controller::~Controller()

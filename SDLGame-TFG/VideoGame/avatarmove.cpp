@@ -22,11 +22,6 @@
 #include "enemy.h"
 #include "projectile.h"
 
-AvatarMove::AvatarMove(){
-}
-
-//**********************************************************************//
-
 AvatarMove::~AvatarMove(){
 }
 
