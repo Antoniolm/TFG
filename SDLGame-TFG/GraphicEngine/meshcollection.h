@@ -56,7 +56,6 @@ enum MeshIndex{
     BEDSIDETABLE,//25
     ARROW,      //26
     BKSHELF,    //27
-    FIREPLACE,  //28
     SMALLTABLE, //29
     CHAIR,      //30
     RUG,        //31

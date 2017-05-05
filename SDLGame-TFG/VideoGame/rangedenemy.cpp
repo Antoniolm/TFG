@@ -58,7 +58,7 @@ RangedEnemy::RangedEnemy(float aLife,vec3f aPosition,vec3f aRadioActivity)
     //////////////////////////////////////////////////////
     SoundCollection * soundCollect =SoundCollection::getInstance();
 
-    enemySound.push_back(soundCollect->getSound(EMOVE));
+    enemySound.push_back(soundCollect->getSound(sWALK));
     enemySound.push_back(soundCollect->getSound(EHIT));
     enemySound.push_back(soundCollect->getSound(SHOOT));
 

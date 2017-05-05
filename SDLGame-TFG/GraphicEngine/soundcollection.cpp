@@ -30,8 +30,6 @@ SoundCollection::SoundCollection()
 
     collection.addElement(new Effect("sounds/openSound.wav",40,-1,0));
 
-    collection.addElement(new Effect("sounds/backsound.wav",40,-1,-1));
-
     collection.addElement(new Effect("sounds/enemyHit.wav",50,-1,0));
 
     collection.addElement(new Effect("sounds/shoot.wav",50,-1,0));
@@ -50,7 +48,6 @@ SoundCollection::SoundCollection()
     //Create our map
     collection.addIndex("sCoin",sCoin);
     collection.addIndex("sOpen",sOpen);
-    collection.addIndex("EMOVE",EMOVE);
     collection.addIndex("EHIT",EHIT);
     collection.addIndex("SHOOT",SHOOT);
     collection.addIndex("sSWORD",sSWORD);

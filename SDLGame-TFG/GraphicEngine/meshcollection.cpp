@@ -167,10 +167,6 @@ MeshCollection::MeshCollection()
     element->addLink();
     collection.addElement(element);
 
-    element=new Mesh("geometries/firePlace.obj");
-    element->addLink();
-    collection.addElement(element);
-
     element=new Mesh("geometries/smallTable.obj");
     element->addLink();
     collection.addElement(element);
@@ -312,7 +308,6 @@ MeshCollection::MeshCollection()
     collection.addIndex("BEDSIDETABLE",BEDSIDETABLE);
     collection.addIndex("ARROW",ARROW);
     collection.addIndex("BKSHELF",BKSHELF);
-    collection.addIndex("FIREPLACE",FIREPLACE);
     collection.addIndex("SMALLTABLE",SMALLTABLE);
     collection.addIndex("CHAIR",CHAIR);
     collection.addIndex("RUG",RUG);
