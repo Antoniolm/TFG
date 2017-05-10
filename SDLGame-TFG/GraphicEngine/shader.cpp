@@ -56,14 +56,12 @@ bool Shader::compileFragmentShaders(const string & aFragmentfile){
     //Initialize local variable
     bool result=true;
     GLint isShaderCompiled;
-    fragmentID = glCreateShader(GL_FRAGMENT_SHADER);
-
-    //Obtaining the code of our shaders
     string fShaderCode = LoadFileTxt(fragmentfile);
 
+
 	//Compiling our FragmentShader
-    char const * FragmentSourcePointer = fShaderCode.c_str();
-	glShaderSource(fragmentID, 1, &FragmentSourcePointer , NULL);
+	fragmentID = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentID, 1,  (const GLchar**)&fShaderCode, NULL);
 	glCompileShader(fragmentID);
 
 	//Check Fragment Shader
@@ -87,14 +85,11 @@ bool Shader::compileVertexShaders(const string & aVertexfile){
     //Initialize local variable
     bool result=true;
     GLint isShaderCompiled;
-    vertexID = glCreateShader(GL_VERTEX_SHADER);
-
-    //Obtaining the code of our shaders
     string vShaderCode = LoadFileTxt(vertexfile);
 
     //Compiling our vertexShader
-    const char *VertexSourcePointer = vShaderCode.c_str();
-    glShaderSource(vertexID,1,&VertexSourcePointer,NULL);
+    vertexID = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexID,1,(const GLchar**)&vShaderCode,NULL);
     glCompileShader(vertexID);
 
     //Check Vertex Shader
@@ -162,17 +157,15 @@ GLuint Shader::getProgram(){
 
 string Shader::LoadFileTxt(const string & file){
 
-    string content;
-    ifstream sourceFile;
-    sourceFile.open(file.c_str(),ifstream::in);
+    string content="";
+    ifstream sourceFile(file.c_str(),ifstream::in);
 
-    if( sourceFile.is_open() )
-	{
+    if( sourceFile.is_open() ){
         content.assign( ( istreambuf_iterator< char >( sourceFile ) ), istreambuf_iterator< char >() );
         sourceFile.close();
 	}
     else{
-        content="Unable to access the file"+ file;
+        cout<<"Unable to access the file : "+ file<<endl;
     }
 
     return content;

@@ -1,6 +1,6 @@
 {
     "bkgdMaterial":"mCUBE_DUNGB",
-    "sound":"sounds/backsound.wav",
+    "sound":"sounds/backSoundLoop.wav",
     "volSound":30.0,
     "heroPosition":[7,2.0,-4],
     "nextMap":"./maps/map01.json",
