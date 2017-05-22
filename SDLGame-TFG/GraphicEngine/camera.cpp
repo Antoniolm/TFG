@@ -226,7 +226,7 @@ bool Camera::isViewMode(){
 
 void Camera::setPosition(vec3f aPosition,GLuint shaderID){
 
-    position=vec3f(aPosition.x,aPosition.y+8.0f,aPosition.z+13.0f); //test camera
+    position=vec3f(aPosition.x+initialPosition.x,aPosition.y+initialPosition.y,aPosition.z+initialPosition.z); //test camera
     target=aPosition;
 
     createCamera();//Create camera
