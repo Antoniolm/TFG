@@ -23,8 +23,8 @@
 #include "object3d.h"
 #include "context.h"
 #include "nodescenegraph.h"
-#include "meshcollection.h"
-#include "materialcollection.h"
+#include "collection/meshcollection.h"
+#include "collection/materialcollection.h"
 #include "../lib/rapidjson/document.h"
 #include "gamestate.h"
 

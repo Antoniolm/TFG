@@ -20,16 +20,16 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include "controllermanager.h"
-#include "menu.h"
-#include "pausemenu.h"
-#include "mainmenu.h"
-#include "deadmenu.h"
-#include "creditscreen.h"
-#include "optionmenu.h"
-#include "controlmenu.h"
-#include "loadingscreen.h"
-#include "moviescreen.h"
+#include "controller/controllermanager.h"
+#include "./menu/menu.h"
+#include "./menu/pausemenu.h"
+#include "./menu/mainmenu.h"
+#include "./menu/deadmenu.h"
+#include "./menu/creditscreen.h"
+#include "./menu/optionmenu.h"
+#include "./menu/controlmenu.h"
+#include "./menu/loadingscreen.h"
+#include "./menu/moviescreen.h"
 #include "rootmap.h"
 #include "camera.h"
 

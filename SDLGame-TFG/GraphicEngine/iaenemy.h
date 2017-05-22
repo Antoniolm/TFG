@@ -20,7 +20,7 @@
 #ifndef IAENEMY_H
 #define IAENEMY_H
 
-#include "structdata.h"
+#include "matrix/structdata.h"
 #include <iostream>
 #include <math.h>
 #include "../VideoGame/enemylist.h"

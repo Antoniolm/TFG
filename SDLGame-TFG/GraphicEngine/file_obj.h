@@ -29,7 +29,7 @@
 #include "GL/glew.h"
 #include <cstdlib>
 #include <math.h>
-#include "structdata.h"
+#include "matrix/structdata.h"
 
 using namespace std;
 

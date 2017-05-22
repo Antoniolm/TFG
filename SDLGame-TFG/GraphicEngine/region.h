@@ -20,7 +20,7 @@
 #ifndef REGION_H
 #define REGION_H
 
-#include "structdata.h"
+#include "matrix/structdata.h"
 
 class GameState;
 class Region

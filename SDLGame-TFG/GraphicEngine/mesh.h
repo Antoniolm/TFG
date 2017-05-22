@@ -30,9 +30,9 @@
 #include <gl/glu.h>
 #include <GL/gl.h>
 #include <fstream>
-#include "matrix4f.h"
+#include "matrix/matrix4f.h"
 #include <iostream>
-#include "structdata.h"
+#include "matrix/structdata.h"
 #include "rootmap.h"
 #include "shader.h"
 #include "file_obj.h"

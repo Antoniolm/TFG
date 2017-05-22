@@ -17,29 +17,27 @@
 // **
 // *********************************************************************
 
-#ifndef MOVIESCREEN_H
-#define MOVIESCREEN_H
+#ifndef LOADINGSCREEN_H
+#define LOADINGSCREEN_H
 
 #include "menu.h"
-#include "meshcollection.h"
-#include "materialcollection.h"
-#include "../lib/rapidjson/document.h"
+#include "collection/meshcollection.h"
+#include "collection/materialcollection.h"
+#include <string>
 
-using namespace rapidjson;
-
-class GameState;
-class MovieScreen : public Menu
+using namespace std;
+class LoadingScreen : public Menu
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        MovieScreen(const Value & movieFeatures);
+        LoadingScreen(vec3f initPosition,float delay,string fileName);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~MovieScreen();
+        virtual ~LoadingScreen();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -60,34 +58,32 @@ class MovieScreen : public Menu
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will set if the movie is activated or not
+        *    It will add a new texture
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setActivate(bool value);
+        void add(string fileName);
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will return if the movie is activated or not
-        *    \return bool
-        */
-        //////////////////////////////////////////////////////////////////////////
-        bool isActivated();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will activate all the texture of our movie (require when our rootMap
-        *    is created in a thread)
+        *    It will set the delay of our animation
+        *    @param aniDelay -> the new delay of our animation
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activateAllTexture();
+        void setDelay(float aniDelay);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the delay of our animation
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
+        float getDelay();
     protected:
 
     private:
-        vector<string> textures;
+        float animationDelay;
 };
 
-#endif // MOVIESCREEN_H
-
+#endif // LOADINGSCREEN_H

@@ -20,12 +20,12 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "structdata.h"
-#include "matrix4f.h"
+#include "matrix/structdata.h"
+#include "matrix/matrix4f.h"
 #include "shader.h"
 #include "GL/glew.h"
 #include "SDL2/SDL.h"
-#include "controllermanager.h"
+#include "controller/controllermanager.h"
 #include "gamestate.h"
 
 class RootMap;

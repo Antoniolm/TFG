@@ -21,7 +21,7 @@
 #ifndef SCRIPTANIMATION_H
 #define SCRIPTANIMATION_H
 
-#include "matrix4f.h"
+#include "matrix/matrix4f.h"
 
 class ScriptAnimation
 {

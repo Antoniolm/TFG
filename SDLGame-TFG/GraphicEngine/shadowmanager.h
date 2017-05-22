@@ -22,9 +22,9 @@
 
 #include "shadowtexture.h"
 #include "shader.h"
-#include "matrix4f.h"
+#include "matrix/matrix4f.h"
 #include "camera.h"
-#include "structdata.h"
+#include "matrix/structdata.h"
 
 class ShadowManager
 {

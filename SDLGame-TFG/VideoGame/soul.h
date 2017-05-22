@@ -22,11 +22,11 @@
 
 #include "../GraphicEngine/object3d.h"
 #include "../GraphicEngine/nodescenegraph.h"
-#include "../GraphicEngine/matrix4f.h"
-#include "../GraphicEngine/matrix4fdynamic.h"
-#include "../GraphicEngine/meshcollection.h"
-#include "../GraphicEngine/materialcollection.h"
-#include "../GraphicEngine/axisrotation.h"
+#include "../GraphicEngine/matrix/matrix4f.h"
+#include "../GraphicEngine/matrix/matrix4fdynamic.h"
+#include "../GraphicEngine/collection/meshcollection.h"
+#include "../GraphicEngine/collection/materialcollection.h"
+#include "../GraphicEngine/matrix/axisrotation.h"
 #include "../lib/rapidjson/document.h"
 
 using namespace rapidjson;

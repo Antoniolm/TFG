@@ -17,27 +17,41 @@
 // **
 // *********************************************************************
 
-#ifndef LOADINGSCREEN_H
-#define LOADINGSCREEN_H
+#ifndef OPTIONMENU_H
+#define OPTIONMENU_H
 
+#include "object3d.h"
+#include "rootmap.h"
+#include "context.h"
+#include "mesh.h"
+#include "nodescenegraph.h"
+#include "texture.h"
+#include "material.h"
+#include "sound.h"
 #include "menu.h"
-#include "meshcollection.h"
-#include "materialcollection.h"
-#include <string>
+#include "profile.h"
+#include "mainmenu.h"
+#include "collection/meshcollection.h"
+#include "collection/materialcollection.h"
+#include "collection/soundcollection.h"
+#include "optionmanager.h"
+#include "window.h"
+#include <cstdlib>
 
 using namespace std;
-class LoadingScreen : public Menu
+
+class OptionMenu : public Menu
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        LoadingScreen(vec3f initPosition,float delay,string fileName);
+        OptionMenu();
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~LoadingScreen();
+        virtual ~OptionMenu();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -45,7 +59,7 @@ class LoadingScreen : public Menu
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void visualization(Context & cv);
+        virtual void visualization(Context & cv);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -54,36 +68,29 @@ class LoadingScreen : public Menu
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void updateState(GameState & gameState);
+        virtual void updateState(GameState & gameState);
+
+        void setPosition(vec3f aPosition);
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will add a new texture
+        *    The method will activate our menu
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void add(string fileName);
+        void activate();
 
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will set the delay of our animation
-        *    @param aniDelay -> the new delay of our animation
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void setDelay(float aniDelay);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will return the delay of our animation
-        *    \return float
-        */
-        //////////////////////////////////////////////////////////////////////////
-        float getDelay();
     protected:
 
     private:
-        float animationDelay;
+        void updateOption(int option,string value);
+        void initOptions();
+        vector<pair<int,int> > resolution;
+        int indexResolution;
+        bool window; //False -> Fullscreen
+        int volume;
+        Text * resolText,* windText,* volText;
+        Sound * openSound,* moveSound;
 };
 
-#endif // LOADINGSCREEN_H
+#endif // OPTIONMENU_H

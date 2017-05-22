@@ -21,9 +21,9 @@
 #define OBJECTSCENE_H
 
 #include "object3d.h"
-#include "matrix4f.h"
-#include "materialcollection.h"
-#include "structdata.h"
+#include "matrix/matrix4f.h"
+#include "collection/materialcollection.h"
+#include "matrix/structdata.h"
 
 
 class GameState;

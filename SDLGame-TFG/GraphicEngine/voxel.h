@@ -24,9 +24,9 @@
 #include "../lib/rapidjson/document.h"
 #include "nodescenegraph.h"
 #include "object3d.h"
-#include "matrix4f.h"
-#include "materialcollection.h"
-#include "meshcollection.h"
+#include "matrix/matrix4f.h"
+#include "collection/materialcollection.h"
+#include "collection/meshcollection.h"
 
 class Voxel : public ObjectScene
 {

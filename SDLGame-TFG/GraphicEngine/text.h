@@ -21,7 +21,7 @@
 #define TEXT_H
 
 #include "object3d.h"
-#include "structdata.h"
+#include "matrix/structdata.h"
 #include "shader.h"
 #include "GL/glew.h"
 #include "SDL2/SDL.h"

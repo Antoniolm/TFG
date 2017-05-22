@@ -17,42 +17,29 @@
 // **
 // *********************************************************************
 
-#ifndef PAUSEMENU_H
-#define PAUSEMENU_H
+#ifndef MOVIESCREEN_H
+#define MOVIESCREEN_H
 
-#include "object3d.h"
-#include "rootmap.h"
-#include "context.h"
-#include "mesh.h"
-#include "nodescenegraph.h"
-#include "texture.h"
-#include "material.h"
-#include "sound.h"
 #include "menu.h"
-#include "profile.h"
-#include "mainmenu.h"
-#include "meshcollection.h"
-#include "materialcollection.h"
-#include "soundcollection.h"
-#include <string>
+#include "collection/meshcollection.h"
+#include "collection/materialcollection.h"
+#include "../lib/rapidjson/document.h"
 
-enum PauseMenuOption{
-    pRESUME,
-    pQUIT
-};
+using namespace rapidjson;
 
-class PauseMenu : public Menu
+class GameState;
+class MovieScreen : public Menu
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        PauseMenu(vec3f initPos,string fileName);
+        MovieScreen(const Value & movieFeatures);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~PauseMenu();
+        virtual ~MovieScreen();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -60,7 +47,7 @@ class PauseMenu : public Menu
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void visualization(Context & cv);
+        void visualization(Context & cv);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -69,24 +56,38 @@ class PauseMenu : public Menu
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(GameState & gameState);
+        void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will add a new texture and that texture has a functionality (MainMenuOption)
+        *    It will set if the movie is activated or not
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void add(string fileName,PauseMenuOption aOption);
+        void setActivate(bool value);
 
-        void activate();
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return if the movie is activated or not
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isActivated();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will activate all the texture of our movie (require when our rootMap
+        *    is created in a thread)
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void activateAllTexture();
+
     protected:
 
     private:
-        vec3f initialPosition;
-        vector<PauseMenuOption> actionOption;
-        Sound * openSound,* moveSound;
-        int channelOpen,channelMove;
+        vector<string> textures;
 };
 
-#endif // PAUSEMENU_H
+#endif // MOVIESCREEN_H
+

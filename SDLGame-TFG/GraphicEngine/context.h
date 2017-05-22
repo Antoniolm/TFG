@@ -21,8 +21,8 @@
 #define CONTEXT_H
 
 #include "matrixstack.h"
-#include "structdata.h"
-#include "materialcollection.h"
+#include "matrix/structdata.h"
+#include "./collection/materialcollection.h"
 #include "object3d.h"
 #include "materialstack.h"
 #include "light.h"

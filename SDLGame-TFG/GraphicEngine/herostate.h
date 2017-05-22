@@ -22,8 +22,8 @@
 
 #include "object3d.h"
 #include "text.h"
-#include "materialcollection.h"
-#include "meshcollection.h"
+#include "collection/materialcollection.h"
+#include "collection/meshcollection.h"
 #include <sstream>
 
 class HeroState : public Object3D

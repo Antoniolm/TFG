@@ -158,7 +158,7 @@ void MainMenu::updateState(GameState & gameState){
                         delete gameState.rootMap;
 
                     SavedManager::getInstance()->save("",0);
-                    gameState.rootMap=new RootMap("./maps/map00.json",true);
+                    gameState.rootMap=new RootMap("./maps/map01.json",true);
                     checkUserProgress();
                     openSound->play();
                 break;

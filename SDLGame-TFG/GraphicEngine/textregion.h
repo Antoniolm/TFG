@@ -21,7 +21,7 @@
 #define TEXTREGION_H
 
 #include "region.h"
-#include "structdata.h"
+#include "matrix/structdata.h"
 #include "SDL2/SDL.h"
 #include "ianpc.h"
 #include "rootmap.h"

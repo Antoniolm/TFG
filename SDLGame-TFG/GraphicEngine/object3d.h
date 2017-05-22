@@ -21,10 +21,10 @@
 #define OBJECT3D_H
 
 #include "context.h"
-#include "structdata.h"
-#include "controller.h"
-#include "keyboardcontroller.h"
-#include "controllermanager.h"
+#include "matrix/structdata.h"
+#include "controller/controller.h"
+#include "controller/keyboardcontroller.h"
+#include "controller/controllermanager.h"
 #include "SDL2/SDL.h"
 
 class Context;

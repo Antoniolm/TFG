@@ -23,8 +23,8 @@
 
 #include "object3d.h"
 #include "context.h"
-#include "matrix4fdynamic.h"
-#include "matrix4f.h"
+#include "matrix/matrix4fdynamic.h"
+#include "matrix/matrix4f.h"
 #include "material.h"
 #include <vector>
 #include "SDL2/SDL.h"

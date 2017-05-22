@@ -21,9 +21,9 @@
 #define AVATARMOVE_H
 
 #include "avatar.h"
-#include "../GraphicEngine/matrix4f.h"
-#include "../GraphicEngine/acceleratedmovement.h"
-#include "../GraphicEngine/linearmovement.h"
+#include "../GraphicEngine/matrix/matrix4f.h"
+#include "../GraphicEngine/matrix/acceleratedmovement.h"
+#include "../GraphicEngine/matrix/linearmovement.h"
 #include "../GraphicEngine/objectscene.h"
 
 class RootMap;

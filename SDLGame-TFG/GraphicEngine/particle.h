@@ -24,8 +24,8 @@
 #include "mesh.h"
 #include "context.h"
 #include "rootmap.h"
-#include "meshcollection.h"
-#include "materialcollection.h"
+#include "./collection/meshcollection.h"
+#include "collection/materialcollection.h"
 #include <stdlib.h>
 
 class NodeSceneGraph;

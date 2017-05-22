@@ -17,8 +17,8 @@
 // **
 // *********************************************************************
 
-#ifndef OPTIONMENU_H
-#define OPTIONMENU_H
+#ifndef PAUSEMENU_H
+#define PAUSEMENU_H
 
 #include "object3d.h"
 #include "rootmap.h"
@@ -31,27 +31,28 @@
 #include "menu.h"
 #include "profile.h"
 #include "mainmenu.h"
-#include "meshcollection.h"
-#include "materialcollection.h"
-#include "soundcollection.h"
-#include "optionmanager.h"
-#include "window.h"
-#include <cstdlib>
+#include "collection/meshcollection.h"
+#include "collection/materialcollection.h"
+#include "collection/soundcollection.h"
+#include <string>
 
-using namespace std;
+enum PauseMenuOption{
+    pRESUME,
+    pQUIT
+};
 
-class OptionMenu : public Menu
+class PauseMenu : public Menu
 {
     public:
         //////////////////////////////////////////////////////////////////////////
         /** Constructor */
         //////////////////////////////////////////////////////////////////////////
-        OptionMenu();
+        PauseMenu(vec3f initPos,string fileName);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~OptionMenu();
+        virtual ~PauseMenu();
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -70,27 +71,22 @@ class OptionMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(GameState & gameState);
 
-        void setPosition(vec3f aPosition);
-
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will activate our menu
+        *    It will add a new texture and that texture has a functionality (MainMenuOption)
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activate();
+        void add(string fileName,PauseMenuOption aOption);
 
+        void activate();
     protected:
 
     private:
-        void updateOption(int option,string value);
-        void initOptions();
-        vector<pair<int,int> > resolution;
-        int indexResolution;
-        bool window; //False -> Fullscreen
-        int volume;
-        Text * resolText,* windText,* volText;
+        vec3f initialPosition;
+        vector<PauseMenuOption> actionOption;
         Sound * openSound,* moveSound;
+        int channelOpen,channelMove;
 };
 
-#endif // OPTIONMENU_H
+#endif // PAUSEMENU_H

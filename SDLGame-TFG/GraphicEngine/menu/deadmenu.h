@@ -17,10 +17,9 @@
 // **
 // *********************************************************************
 
-#ifndef MAINMENU_H
-#define MAINMENU_H
+#ifndef DEADMENU_H
+#define DEADMENU_H
 
-#include "savedmanager.h"
 #include "object3d.h"
 #include "rootmap.h"
 #include "context.h"
@@ -32,37 +31,31 @@
 #include "menu.h"
 #include "profile.h"
 #include "mainmenu.h"
-#include "meshcollection.h"
-#include "materialcollection.h"
-#include "soundcollection.h"
+#include "collection/meshcollection.h"
+#include "collection/materialcollection.h"
+#include "collection/soundcollection.h"
 #include <string>
 
-enum MainMenuOption{
-    START,
-    CONTINUE,
-    CONTROLS,
-    OPTION,
-    EXIT
-};
-
-using namespace std;
-
-class MainMenu : public Menu
+class DeadMenu : public Menu
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor */
+        /** Constructor
+        *    @param initialPos -> Initial position of our menu
+        *    @param fileName -> the name of the file with the texture of our menu
+        */
         //////////////////////////////////////////////////////////////////////////
-        MainMenu(vec3f initPos,string fileName);
+        DeadMenu(vec3f initialPos,string fileName);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~MainMenu();
+        virtual ~DeadMenu();
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -72,18 +65,11 @@ class MainMenu : public Menu
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
         virtual void updateState(GameState & gameState);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will add a new texture and that texture has a functionality (MainMenuOption)
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void add(string fileName,MainMenuOption aOption);
 
         //////////////////////////////////////////////////////////////////////////
         /**
@@ -93,13 +79,20 @@ class MainMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         void activate();
 
-        void checkUserProgress();
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will add a new texture
+        *    @param fileName -> the name of the file that our menu will be use
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void add(string fileName);
+
     protected:
 
     private:
-        vector<MainMenuOption> actionOption;
+        vec3f initialPosition;
         Sound * openSound,* moveSound;
-        bool hasSave;
 };
 
-#endif // MAINMENU_H
+#endif // DEADMENU_H

@@ -20,7 +20,7 @@
 #ifndef LIGHT_H
 #define LIGHT_H
 
-#include "structdata.h"
+#include "matrix/structdata.h"
 #include "shader.h"
 #include <string>
 #include <cstdlib>

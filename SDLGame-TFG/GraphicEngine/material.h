@@ -20,9 +20,9 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include "structdata.h"
+#include "matrix/structdata.h"
 #include <string>
-#include "materialcollection.h"
+#include "./Collection/materialcollection.h"
 #include "texture.h"
 #include "shader.h"
 
