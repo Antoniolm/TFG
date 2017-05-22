@@ -31,7 +31,7 @@ ObjectGroup::ObjectGroup(MaterialIndex materialIndex){
 
 ObjectGroup::~ObjectGroup()
 {
-    delete mesh;
+    delete root;
 }
 
 //**********************************************************************//
@@ -67,15 +67,17 @@ void ObjectGroup::addObject(vec3f position,MeshIndex meshIndex){
 //**********************************************************************//
 
 void ObjectGroup::init(){
-    mesh=new Mesh(vertex,triangles,normals,textureCord,tangent,biTangent);
-    root->add(mesh);
+    if(!vertex.empty()){
+        mesh=new Mesh(vertex,triangles,normals,textureCord,tangent,biTangent);
+        root->add(mesh);
 
-    vertex.clear();
-    normals.clear();
-    textureCord.clear();
-    triangles.clear();
-    tangent.clear();
-    biTangent.clear();
+        vertex.clear();
+        normals.clear();
+        textureCord.clear();
+        triangles.clear();
+        tangent.clear();
+        biTangent.clear();
+    }
 }
 
 //**********************************************************************//
