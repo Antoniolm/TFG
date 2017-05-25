@@ -22,7 +22,7 @@
 
 #include <vector>
 #include <string>
-#include "context.h"
+#include "context/context.h"
 #include "object3d.h"
 #include "GL/glew.h"
 #include "SDL2/SDL.h"
@@ -34,7 +34,7 @@
 #include <iostream>
 #include "matrix/structdata.h"
 #include "rootmap.h"
-#include "shader.h"
+#include "context/shader.h"
 #include "file_obj.h"
 
 using namespace std;

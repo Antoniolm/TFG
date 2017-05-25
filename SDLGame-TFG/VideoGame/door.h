@@ -24,7 +24,7 @@
 #include "../GraphicEngine/nodescenegraph.h"
 #include "../GraphicEngine/matrix/matrix4f.h"
 #include "../GraphicEngine/matrix/matrix4fdynamic.h"
-#include "../GraphicEngine/scriptlmd.h"
+#include "../GraphicEngine/animation/scriptlmd.h"
 #include "../GraphicEngine/collection/meshcollection.h"
 #include "../GraphicEngine/collection/materialcollection.h"
 #include "soulcarrier.h"

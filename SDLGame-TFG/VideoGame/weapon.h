@@ -28,7 +28,7 @@
 #include "../GraphicEngine/collection/meshcollection.h"
 #include "../GraphicEngine/collection/soundcollection.h"
 #include "../GraphicEngine/matrix/axisrotation.h"
-#include "../GraphicEngine/sound.h"
+#include "../GraphicEngine/sound/sound.h"
 
 enum WeaponType{
     RANGED,

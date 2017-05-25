@@ -21,7 +21,7 @@
 #define SHADOWMANAGER_H
 
 #include "shadowtexture.h"
-#include "shader.h"
+#include "context/shader.h"
 #include "matrix/matrix4f.h"
 #include "camera.h"
 #include "matrix/structdata.h"

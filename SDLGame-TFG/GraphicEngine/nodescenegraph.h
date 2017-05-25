@@ -22,7 +22,7 @@
 #define NODESCENEGRAPH_H
 
 #include "object3d.h"
-#include "context.h"
+#include "context/context.h"
 #include "matrix/matrix4fdynamic.h"
 #include "matrix/matrix4f.h"
 #include "material.h"

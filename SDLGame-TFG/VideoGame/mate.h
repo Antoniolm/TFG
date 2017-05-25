@@ -28,9 +28,9 @@
 #include "../GraphicEngine/collection/meshcollection.h"
 #include "../GraphicEngine/collection/soundcollection.h"
 #include "../GraphicEngine/matrix/axisrotation.h"
-#include "../GraphicEngine/sound.h"
+#include "../GraphicEngine/sound/sound.h"
 #include "../GraphicEngine/text.h"
-#include "../GraphicEngine/animationlist.h"
+#include "../GraphicEngine/animation/animationlist.h"
 #include "avatar.h"
 
 class Mate : public Avatar

@@ -20,7 +20,7 @@
 #ifndef OBJECT3D_H
 #define OBJECT3D_H
 
-#include "context.h"
+#include "context/context.h"
 #include "matrix/structdata.h"
 #include "controller/controller.h"
 #include "controller/keyboardcontroller.h"

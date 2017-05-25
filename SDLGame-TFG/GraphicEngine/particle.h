@@ -22,7 +22,7 @@
 
 #include "object3d.h"
 #include "mesh.h"
-#include "context.h"
+#include "context/context.h"
 #include "rootmap.h"
 #include "./collection/meshcollection.h"
 #include "collection/materialcollection.h"

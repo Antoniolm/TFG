@@ -20,13 +20,13 @@
 #ifndef NPC_H
 #define NPC_H
 
-#include "../GraphicEngine/ianpc.h"
+#include "../GraphicEngine/ia/ianpc.h"
 #include "avatar.h"
 #include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/collection/meshcollection.h"
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/matrix/structdata.h"
-#include "../GraphicEngine/scriptlmd.h"
+#include "../GraphicEngine/animation/scriptlmd.h"
 #include "../lib/rapidjson/document.h"
 #include "SDL2/SDL_ttf.h"
 

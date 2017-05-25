@@ -19,13 +19,13 @@
 
 #include "menu.h"
 #include "gamestate.h"
-#include "context.h"
+#include "context/context.h"
 #include "mesh.h"
 #include "nodescenegraph.h"
 #include "texture.h"
 #include "material.h"
 #include "profile.h"
-#include "sound.h"
+#include "sound/sound.h"
 
 Menu::~Menu()
 {

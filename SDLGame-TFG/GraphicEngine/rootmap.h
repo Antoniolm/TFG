@@ -25,8 +25,8 @@
 #include <list>
 #include <vector>
 #include <map>
-#include "directionallight.h"
-#include "pointlight.h"
+#include "light/directionallight.h"
+#include "light/pointlight.h"
 #include "matrix/matrix4f.h"
 #include "matrix/matrix4fdynamic.h"
 #include "matrix/linearmovement.h"
@@ -53,8 +53,8 @@
 #include "decorationobject.h"
 #include "voxel.h"
 #include "voxelgroup.h"
-#include "sound.h"
-#include "music.h"
+#include "sound/sound.h"
+#include "sound/music.h"
 #include "controller/controller.h"
 #include "controller/keyboardcontroller.h"
 #include "textregion.h"

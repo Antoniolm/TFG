@@ -22,7 +22,7 @@
 
 #include <thread>
 #include "rootmap.h"
-#include "shader.h"
+#include "context/shader.h"
 #include <string>
 
 using namespace std;

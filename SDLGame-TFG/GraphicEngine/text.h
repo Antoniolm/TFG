@@ -22,7 +22,7 @@
 
 #include "object3d.h"
 #include "matrix/structdata.h"
-#include "shader.h"
+#include "context/shader.h"
 #include "GL/glew.h"
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_opengl.h"

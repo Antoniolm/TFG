@@ -28,7 +28,7 @@
 #include <GL/gl.h>
 #include <stdio.h>
 #include <string>
-#include "sound.h"
+#include "sound/sound.h"
 
 using namespace std;
 class Window

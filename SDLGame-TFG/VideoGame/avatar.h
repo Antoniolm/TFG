@@ -21,7 +21,7 @@
 #define AVATAR_H
 
 #include "../GraphicEngine/object3d.h"
-#include "../GraphicEngine/context.h"
+#include "../GraphicEngine/context/context.h"
 #include "../GraphicEngine/nodescenegraph.h"
 
 enum avatarDirection

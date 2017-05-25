@@ -22,7 +22,7 @@
 
 #include "object3d.h"
 #include "nodescenegraph.h"
-#include "context.h"
+#include "context/context.h"
 #include "./collection/materialcollection.h"
 #include "rootmap.h"
 #include <list>

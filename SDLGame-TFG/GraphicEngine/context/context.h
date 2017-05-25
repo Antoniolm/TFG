@@ -25,7 +25,7 @@
 #include "./collection/materialcollection.h"
 #include "object3d.h"
 #include "materialstack.h"
-#include "light.h"
+#include "light/light.h"
 #include "shader.h"
 #include <vector>
 

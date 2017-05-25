@@ -22,7 +22,7 @@
 
 #include "matrix/structdata.h"
 #include "matrix/matrix4f.h"
-#include "shader.h"
+#include "context/shader.h"
 #include "GL/glew.h"
 #include "SDL2/SDL.h"
 #include "controller/controllermanager.h"

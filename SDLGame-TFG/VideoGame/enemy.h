@@ -25,14 +25,14 @@
 #include "avatarmove.h"
 #include "../GraphicEngine/mesh.h"
 #include "../GraphicEngine/collection/meshcollection.h"
-#include "../GraphicEngine/scriptlmd.h"
-#include "../GraphicEngine/animationlist.h"
-#include "../GraphicEngine/context.h"
+#include "../GraphicEngine/animation/scriptlmd.h"
+#include "../GraphicEngine/animation/animationlist.h"
+#include "../GraphicEngine/context/context.h"
 #include "../GraphicEngine/matrix/matrixscript.h"
 #include "../GraphicEngine/rootmap.h"
 #include "../GraphicEngine/matrix/matrix4f.h"
 #include "../GraphicEngine/matrix/acceleratedmovement.h"
-#include "../GraphicEngine/sound.h"
+#include "../GraphicEngine/sound/sound.h"
 #include "../GraphicEngine/text.h"
 #include <stdlib.h>
 

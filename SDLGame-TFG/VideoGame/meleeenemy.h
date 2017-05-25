@@ -22,7 +22,7 @@
 
 #include "enemy.h"
 #include "../lib/rapidjson/document.h"
-#include "../GraphicEngine/iameleeenemy.h"
+#include "../GraphicEngine/ia/iameleeenemy.h"
 #include "enemylist.h"
 #include "weapon.h"
 

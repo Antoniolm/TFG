@@ -21,7 +21,7 @@
 #define LIGHT_H
 
 #include "matrix/structdata.h"
-#include "shader.h"
+#include "context/shader.h"
 #include <string>
 #include <cstdlib>
 #include "../lib/rapidjson/document.h"

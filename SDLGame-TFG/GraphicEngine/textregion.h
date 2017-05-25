@@ -23,7 +23,7 @@
 #include "region.h"
 #include "matrix/structdata.h"
 #include "SDL2/SDL.h"
-#include "ianpc.h"
+#include "ia/ianpc.h"
 #include "rootmap.h"
 #include "gamestate.h"
 #include "../lib/rapidjson/document.h"

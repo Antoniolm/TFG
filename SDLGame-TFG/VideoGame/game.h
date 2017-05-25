@@ -21,9 +21,9 @@
 #define GAME_H
 
 #include "../GraphicEngine/window.h"
-#include "../GraphicEngine/context.h"
+#include "../GraphicEngine/context/context.h"
 #include "../GraphicEngine/nodescenegraph.h"
-#include "../GraphicEngine/sound.h"
+#include "../GraphicEngine/sound/sound.h"
 #include "../GraphicEngine/matrix/matrixstatic.h"
 #include "../GraphicEngine/matrix/linearmovement.h"
 #include "../GraphicEngine/matrix/axisrotation.h"

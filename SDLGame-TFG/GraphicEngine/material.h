@@ -24,7 +24,7 @@
 #include <string>
 #include "./Collection/materialcollection.h"
 #include "texture.h"
-#include "shader.h"
+#include "context/shader.h"
 
 using namespace std;
 
