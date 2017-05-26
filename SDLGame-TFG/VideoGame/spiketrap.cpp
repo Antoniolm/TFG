@@ -160,7 +160,7 @@ void SpikeTrap::initAnimation(){
 
     MatrixScript * scriptUp=new MatrixScript();
 
-    scriptUp->add(0.15,movementUp);
+    scriptUp->add(0.12,movementUp);
     scriptUp->add(0.5,notMove);
 
     animationUp->add(scriptUp);
@@ -174,7 +174,7 @@ void SpikeTrap::initAnimation(){
 
     MatrixScript * scriptDown=new MatrixScript();
 
-    scriptDown->add(0.15,movementDown);
+    scriptDown->add(0.12,movementDown);
     scriptDown->add(0.5,notMove);
 
     animationDown->add(scriptDown);

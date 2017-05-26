@@ -3,7 +3,7 @@
     "bkgdPosition":[160,2.0,-4],
     "sound":"sounds/backSoundLoop.wav",
     "volSound":30.0,
-    "heroPosition":[150,4.5,-18],
+    "heroPosition":[203,2.0,-4],
     "nextMap":"",
 
     "title": {
@@ -62,14 +62,26 @@
     ],
 
     "souls":[
+            {   "position":[202.5,1.5,-4] },
+            {   "position":[175.5,1.5,-14.5] }
             
     ],
 
     "soulCarrier":[
+            {   "position":[205 ,1.1,-8.0] },
+            {   "position":[165,1.1,-8] }
             
     ],
 
     "door":[
+            {   "position":[203.0,2.5,-9.5],
+                "soulCarrier":0,
+                "direction":0
+            },
+            {   "position":[164.5,2.5,-16.0],
+                "soulCarrier":1,
+                "direction":1
+            }
             
     ],
 
@@ -79,7 +91,39 @@
 
 
     "spikes":[
-            
+        {   "position":[189.5,0.6,-5.5],
+            "damage":-25
+        },
+        {   "position":[189.5,0.6,-6.5],
+            "damage":-25
+        },
+        {   "position":[186.5,0.6,-5.5],
+            "damage":-25
+        },
+        {   "position":[186.5,0.6,-6.5],
+            "damage":-25
+        },
+        {   "position":[183.5,0.6,-5.5],
+            "damage":-25
+        },
+        {   "position":[183.5,0.6,-6.5],
+            "damage":-25
+        },
+        {   "position":[170.5,0.6,-10.5],
+            "damage":-25
+        }, 
+        {   "position":[170.5,0.6,-13.5],
+            "damage":-25
+        },
+        {   "position":[154.5,0.6,-18.5],
+            "damage":-25
+        },
+        {   "position":[154.5,0.6,-19.5],
+            "damage":-25
+        },
+        {   "position":[154.5,0.6,-20.5],
+            "damage":-25
+        }
     ],
 
     "voxelGroup":[
@@ -391,7 +435,7 @@
             {   "position":[163,4.5,7],
                 "YNumber":4,        
                 "XNumber":1,        
-                "ZNumber":6,         
+                "ZNumber":7,         
                 "materialTop":"mCUBE_WALL",
                 "materialMiddle":"mCUBE_WALL", 
                 "mesh":"CUBE", 
