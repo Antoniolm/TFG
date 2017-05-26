@@ -261,7 +261,7 @@ void RootMap::initialize(string fileMap){
     ////////////////////////////////////////////
     // Background
     Matrix4f * transObj=new Matrix4f();
-    transObj->translation(0.0f,0.0f,0.0f);
+    transObj->translation(document["bkgdPosition"][0].GetFloat(),document["bkgdPosition"][1].GetFloat(),document["bkgdPosition"][2].GetFloat());
 
     Matrix4f *scaleBack =new Matrix4f();
     scaleBack->scale(10.0,5.0,10.0);
