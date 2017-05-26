@@ -3,7 +3,7 @@
     "bkgdPosition":[160,2.0,-4],
     "sound":"sounds/backSoundLoop.wav",
     "volSound":30.0,
-    "heroPosition":[150,4.5,-18],
+    "heroPosition":[203,2.0,-4],
     "nextMap":"",
 
     "title": {
@@ -45,7 +45,30 @@
     ],
 
     "projectileSystem":[
-        
+        {   "radioActivity":[10.0,5.0,10.0],
+            "position":[204,1.5,-10.5],
+            "velocity":[-4.0,0.0,0.0],
+            "direction":2,
+            "delay":3000,
+            "material":"mARCHENEMY",
+            "mesh":"ARROW"
+        },
+        {   "radioActivity":[10.0,5.0,10.0],
+            "position":[204,1.5,-11.5],
+            "velocity":[-4.0,0.0,0.0],
+            "direction":2,
+            "delay":3000,
+            "material":"mARCHENEMY",
+            "mesh":"ARROW"
+        },
+        {   "radioActivity":[10.0,5.0,10.0],
+            "position":[204,1.5,-12.5],
+            "velocity":[-4.0,0.0,0.0],
+            "direction":2,
+            "delay":3000,
+            "material":"mARCHENEMY",
+            "mesh":"ARROW"
+        }
     ],
 
     "npcs":[
@@ -58,7 +81,59 @@
     ],
 
     "items":[
-            
+        {   "position":[190.5,1.5,-3.5],
+            "value":1, 
+            "type":0},   
+        {   "position":[190.5,1.5,-7.5],
+            "value":1, 
+            "type":0},   
+        {   "position":[186.5,1.5,-6],
+            "value":1, 
+            "type":0},
+        {   "position":[182.5,1.5,-4.5],
+            "value":1, 
+            "type":0},
+        {   "position":[182.5,1.5,-7.5],
+            "value":1, 
+            "type":0},
+
+        {   "position":[172.5,1.5,-8.5],
+            "value":1, 
+            "type":0},
+        {   "position":[172.5,1.5,-11.5],
+            "value":1, 
+            "type":0},
+        {   "position":[172.5,1.5,-14.5],
+            "value":1, 
+            "type":0},  
+        {   "position":[170.5,1.5,-10.5],
+            "value":1, 
+            "type":0},
+        {   "position":[170.5,1.5,-13.5],
+            "value":1, 
+            "type":0},
+        {   "position":[168.5,1.5,-8.5],
+            "value":1, 
+            "type":0},
+        {   "position":[168.5,1.5,-11.5],
+            "value":1, 
+            "type":0},  
+        {   "position":[168.5,1.5,-14.5],
+            "value":1, 
+            "type":0},
+        {   "position":[152,1.5,-19.5],
+            "value":1, 
+            "type":0},
+        {   "position":[157,1.5,-19.5],
+            "value":1, 
+            "type":0},
+
+        {   "position":[175.5,1.5,-12.5],
+            "value":25, 
+            "type":1}
+               
+                
+
     ],
 
     "souls":[
@@ -223,7 +298,7 @@
                 "YNumber":2,        
                 "XNumber":1,        
                 "ZNumber":3,         
-                "materialTop":"mCUBE_TRAP",
+                "materialTop":"mCUBE_WALL",
                 "materialMiddle":"mCUBE_TRAP", 
                 "mesh":"CUBE", 
                 "damage":0.0 },    
