@@ -105,6 +105,13 @@ class Sound
         //////////////////////////////////////////////////////////////////////////
         string & getFile();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will update the volume of our sound according to the distance
+        *    between the hero and the object that will produce the sound
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         virtual void updateVolume(int currentChannel,float distance);
 
         void changeVolume(float percentage);

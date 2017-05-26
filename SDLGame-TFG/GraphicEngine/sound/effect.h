@@ -121,6 +121,13 @@ class Effect : public Sound
         //////////////////////////////////////////////////////////////////////////
         string & getFile();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will update the volume of our sound according to the distance
+        *    between the hero and the object that will produce the sound
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void updateVolume(int currentChannel,float distance);
 
     protected:

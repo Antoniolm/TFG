@@ -51,6 +51,7 @@ class Notification : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -60,6 +61,7 @@ class Notification : public Object3D
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

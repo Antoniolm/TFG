@@ -19,9 +19,9 @@
 
 
 #include "enemylist.h"
-#include "enemy.h"
-#include "rangedenemy.h"
-#include "meleeenemy.h"
+#include "avatar/enemy.h"
+#include "avatar/rangedenemy.h"
+#include "avatar/meleeenemy.h"
 
 EnemyList::EnemyList(){
 }

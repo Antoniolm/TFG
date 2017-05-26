@@ -21,7 +21,7 @@
 #define PARTICLE_H
 
 #include "object3d.h"
-#include "mesh.h"
+#include "mesh/mesh.h"
 #include "context/context.h"
 #include "rootmap.h"
 #include "./collection/meshcollection.h"
@@ -50,6 +50,7 @@ class Particle : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -59,6 +60,7 @@ class Particle : public Object3D
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

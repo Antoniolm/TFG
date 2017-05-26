@@ -35,12 +35,12 @@
 #include "matrix/oscillaterotation.h"
 #include "particlesystem.h"
 #include "particle.h"
-#include "mesh.h"
+#include "mesh/mesh.h"
 #include "objectscene.h"
-#include "../VideoGame/hero.h"
-#include "../VideoGame/mate.h"
-#include "../VideoGame/npc.h"
-#include "../VideoGame/enemy.h"
+#include "../VideoGame/avatar/hero.h"
+#include "../VideoGame/avatar/mate.h"
+#include "../VideoGame/avatar/npc.h"
+#include "../VideoGame/avatar/enemy.h"
 #include "../VideoGame/projectilesystem.h"
 #include "../VideoGame/soul.h"
 #include "../VideoGame/soulcarrier.h"
@@ -113,15 +113,17 @@ class RootMap : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
-        /////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
         void visualization(Context & vis);
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////

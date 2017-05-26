@@ -29,10 +29,10 @@
 #include "SDL2/SDL_mixer.h"
 #include "SDL2/SDL_ttf.h"
 #include <vector>
-#include "mesh.h"
+#include "mesh/mesh.h"
 #include "nodescenegraph.h"
-#include "texture.h"
-#include "material.h"
+#include "material/texture.h"
+#include "material/material.h"
 
 using namespace std;
 class NodeSceneGraph;
@@ -57,6 +57,10 @@ class Text : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will set all the parameters for the use of our text
+        *    @param material
+        *    @param * aFont
+        *    @param aColor
+        *    @param ahasDialog
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -99,6 +103,7 @@ class Text : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -108,13 +113,30 @@ class Text : public Object3D
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will change the size of our dialog
+        *    @param value -> the scale value for our dialog
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setScaleDialog(vec3f value);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will change the size(by scale) of our text
+        *    @param value -> the scale value for our text
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setScaleText(vec3f value);
+
     protected:
 
     private:

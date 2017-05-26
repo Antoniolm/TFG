@@ -22,7 +22,7 @@
 
 #include "../GraphicEngine/object3d.h"
 #include "../GraphicEngine/nodescenegraph.h"
-#include "../GraphicEngine/material.h"
+#include "../GraphicEngine/material/material.h"
 #include "../GraphicEngine/matrix/matrix4f.h"
 #include "../GraphicEngine/matrix/matrix4fdynamic.h"
 #include "../GraphicEngine/collection/meshcollection.h"

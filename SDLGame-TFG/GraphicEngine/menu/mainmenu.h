@@ -24,10 +24,10 @@
 #include "object3d.h"
 #include "rootmap.h"
 #include "context/context.h"
-#include "mesh.h"
+#include "mesh/mesh.h"
 #include "nodescenegraph.h"
-#include "texture.h"
-#include "material.h"
+#include "material/texture.h"
+#include "material/material.h"
 #include "sound/sound.h"
 #include "menu.h"
 #include "profile.h"
@@ -93,6 +93,12 @@ class MainMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         void activate();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    Check if the user has a progress or not
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void checkUserProgress();
     protected:
 

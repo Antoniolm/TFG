@@ -20,7 +20,7 @@
 #ifndef SHADOWTEXTURE_H
 #define SHADOWTEXTURE_H
 
-#include "texture.h"
+#include "material/texture.h"
 
 class ShadowTexture : public Texture
 {
@@ -102,6 +102,7 @@ class ShadowTexture : public Texture
         */
         //////////////////////////////////////////////////////////////////////////
         void createTexture();
+
         GLuint depthMapFBO,depthMap;
         GLuint shadowHeight,shadowWidth;
 };

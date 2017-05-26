@@ -51,10 +51,43 @@ class GamepadController : public Controller
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set the event/buttons of our gamepad controller
+        *    @param value -> the new boolean value (activated or not)
+        *    @param button -> the specify button that will change its state
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setButton(bool value,Uint8 button);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will update the joystick move of our gamepad controller
+        *    @param x -> the new x position
+        *    @param y -> the new y position
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void updateJoystickMove(Sint16 x,Sint16 y);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will add our gamePad in our game
+        *    @param id -> id in the system of our gamePad
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void addGamepad(int id);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will remove our gamePad
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void removeGamepad();
+
         SDL_GameController * controller;
         SDL_Joystick *joy;
         int instanceID;

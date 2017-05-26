@@ -17,41 +17,45 @@
 // **
 // *********************************************************************
 
-#ifndef MATE_H
-#define MATE_H
+#ifndef ENEMY_H
+#define ENEMY_H
 
-#include "../GraphicEngine/object3d.h"
-#include "../GraphicEngine/nodescenegraph.h"
-#include "../GraphicEngine/material.h"
-#include "../GraphicEngine/matrix/matrix4f.h"
-#include "../GraphicEngine/matrix/matrix4fdynamic.h"
+
+#include "avatar.h"
+#include "avatarmove.h"
+#include "../GraphicEngine/mesh/mesh.h"
 #include "../GraphicEngine/collection/meshcollection.h"
-#include "../GraphicEngine/collection/soundcollection.h"
-#include "../GraphicEngine/matrix/axisrotation.h"
+#include "../GraphicEngine/animation/scriptlmd.h"
+#include "../GraphicEngine/animation/animationlist.h"
+#include "../GraphicEngine/context/context.h"
+#include "../GraphicEngine/matrix/matrixscript.h"
+#include "../GraphicEngine/rootmap.h"
+#include "../GraphicEngine/matrix/matrix4f.h"
+#include "../GraphicEngine/matrix/acceleratedmovement.h"
 #include "../GraphicEngine/sound/sound.h"
 #include "../GraphicEngine/text.h"
-#include "../GraphicEngine/animation/animationlist.h"
-#include "avatar.h"
+#include <stdlib.h>
 
-class Mate : public Avatar
+#include <vector>
+
+using namespace std;
+class RootMap;
+class Text;
+class IAEnemy;
+class Weapon;
+class Enemy: public AvatarMove
 {
     public:
-        //////////////////////////////////////////////////////////////////////////
-        /** Constructor
-        *    @param aPosition -> the initial position of our mate
-        */
-        //////////////////////////////////////////////////////////////////////////
-        Mate(vec3f aPosition);
 
         //////////////////////////////////////////////////////////////////////////
         /** Destructor */
         //////////////////////////////////////////////////////////////////////////
-        virtual ~Mate();
+        virtual ~Enemy();
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
-        *    @param cv -> the context of our visualization
+        *    @param vis -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -65,64 +69,86 @@ class Mate : public Avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        virtual void updateState(GameState & gameState);
+        virtual void updateState(GameState & gameState) = 0;
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will set a new message for our text
-        *    \param message -> it is the new message that our text will show
+        *    The method will activated our enemy
+        *    @param value -> The value said if the enemy is activated or not
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void setDialog(string message);
+        void activatedEnemy(bool value);
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will activate the text of our hero
-        *    @param value -> value indicate if the dialog will be enable or disable
+        *    It will return if the enemy is activate or not
+        *    \return bool
+        */
+        //////////////////////////////////////////////////////////////////////////
+        bool isActivate();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will set radioActivity of our enemy
+        *    @param radio -> The new radio value of our enemy
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
-        void activateDialog(bool value);
+        void setRadioActivity(vec3f radio);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get radioActivity of our enemy
+        *    \return vec3f
+        */
+        //////////////////////////////////////////////////////////////////////////
+        vec3f getRadioActivity();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the life of our hero
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
+        float getLife();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    Enemy will take damage when the hero use that method(but depend of some conditions)
+        *    @param posAvatar -> the position of our avatar
+        *    @param dirAvatar -> the direction of our avatar
+        *    @param posHero -> the position of our hero
+        *    @param value -> the value of the damage
+        *    @param enemies -> the vector of enemies to know if can do the impact movement
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void takeDamage(vec3f posAvatar,avatarDirection dirAvatar,vec3f posHero,float value,const vector<Enemy *> & enemies);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    Enemy will take damage when he is on an objectScene with damage
+        *    @param value -> the value of the damage
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
+        void takeDamage(float value);
 
     protected:
-
-    private:
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will initialize the animation of our mate
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void initAnimation();
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will give to our mate his next direction and position
-        *    @param posHero -> the current position of our hero
-        *    \return pair<avatarDirection,vec3f>
-        */
-        //////////////////////////////////////////////////////////////////////////
-        pair<avatarDirection,vec3f> nextPosition(vec3f posHero);
-
-        //////////////////////////////////////////////////////////////////////////
-        /**
-        *    It will move our mate
-        *    @param time -> the current time of our application
-        *    @param aMove -> the new movement of our mate
-        *    @param aDir -> the new direction of our mate
-        *    \return void
-        */
-        //////////////////////////////////////////////////////////////////////////
-        void moveMate(float time,vec3f aMove,avatarDirection aDir);
-
         vector<Matrix4f *> moveMatrix;
+        vector<Sound *> enemySound;
         pair<avatarDirection,vec3f> currentMove;
-        Matrix4f * moveAvatar;
-        avatarDirection direction;
-        ScriptLMD * animation;
+        AnimationList animations;
+        Weapon * weapon;
+        vec3f radioActivity;
+        IAEnemy * IA;
+        bool enemyActivate;
+        bool activatedDialog;
         Text * currentText;
-        bool textActivated;
+        float jumpDelay,hitDelay,IADelay;
+    private:
+
 };
 
-#endif // MATE_H
+#endif // ENEMY_H

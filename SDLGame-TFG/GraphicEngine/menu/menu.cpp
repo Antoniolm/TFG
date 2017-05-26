@@ -20,10 +20,10 @@
 #include "menu.h"
 #include "gamestate.h"
 #include "context/context.h"
-#include "mesh.h"
+#include "mesh/mesh.h"
 #include "nodescenegraph.h"
-#include "texture.h"
-#include "material.h"
+#include "material/texture.h"
+#include "material/material.h"
 #include "profile.h"
 #include "sound/sound.h"
 

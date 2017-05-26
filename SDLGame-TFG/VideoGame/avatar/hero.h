@@ -22,7 +22,7 @@
 
 #include "avatar.h"
 #include "avatarmove.h"
-#include "../GraphicEngine/mesh.h"
+#include "../GraphicEngine/mesh/mesh.h"
 #include "../GraphicEngine/collection/meshcollection.h"
 #include "../GraphicEngine/collection/materialcollection.h"
 #include "../GraphicEngine/collection/soundcollection.h"

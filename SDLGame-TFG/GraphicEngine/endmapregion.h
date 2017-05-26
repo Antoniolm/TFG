@@ -30,8 +30,9 @@ class EndMapRegion : public Region
 {
     public:
         //////////////////////////////////////////////////////////////////////////
-        /** Constructor
-        *    @param regionFeatures -> the value json that contain all the information of our endMapRegion object
+        /**
+        *   Constructor
+        *   @param regionFeatures -> the value json that contain all the information of our endMapRegion object
         */
         //////////////////////////////////////////////////////////////////////////
         EndMapRegion(const Value & regionFeatures);

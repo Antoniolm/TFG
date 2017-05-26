@@ -39,15 +39,79 @@ class ShadowManager
         //////////////////////////////////////////////////////////////////////////
         virtual ~ShadowManager();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   Set the value for the light projection of our shadow manager
+        *   \param left
+        *   \param right
+        *   \param bottom
+        *   \param top
+        *   \param near
+        *   \param far
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setOrthoProjection(float left,float right,float bottom,float top,float nearPro,float farPro);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   Set the light camera of our shadow manager
+        *   \param posLight -> Position of the camera
+        *   \param targetLight -> Target of the camera
+        *   \param upLight -> The inclination of the camera
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setCamera(vec3f posLight,vec3f targetLight, vec3f upLight);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will get the light camera of our shadow manager
+        *   \return camera *
+        */
+        //////////////////////////////////////////////////////////////////////////
         Camera * getCamera();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will set the shader that will use our shadow manager
+        *   \param * aShader
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setShader(Shader * aShader);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will get the shader that will use our shadow manager
+        *   \return Shader *
+        */
+        //////////////////////////////////////////////////////////////////////////
         Shader * getShader();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will generate the shadow of our scene
+        *   \param & gameState
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void generateShadow(GameState & gameState);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will activate the shadow texture of our scene
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void activateShadowTexture();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will get the light space of our shadow manage
+        *   \return Matrix4f &
+        */
+        //////////////////////////////////////////////////////////////////////////
         Matrix4f & getLightSpace();
     protected:
 

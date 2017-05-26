@@ -62,6 +62,7 @@ class Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -71,6 +72,7 @@ class Object3D
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -94,15 +96,34 @@ class Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    \return vec4f with the mesh position
+        *   It will get the position of our object3D
+        *   \return vec4f with the mesh position
         */
         //////////////////////////////////////////////////////////////////////////
         vec4f getPosition();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will remove a link of our object3D
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void removeLink();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will add a link in our object3D
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void addLink();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will get the position of our object3D
+        *   \return int -> Number of link of our object
+        */
+        //////////////////////////////////////////////////////////////////////////
         int getCountLink();
 
     protected:

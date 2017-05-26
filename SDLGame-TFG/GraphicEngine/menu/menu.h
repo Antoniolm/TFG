@@ -21,14 +21,6 @@
 #define MENU_H
 
 #include "object3d.h"
-/*#include "gamestate.h"
-#include "context.h"
-#include "mesh.h"
-#include "nodescenegraph.h"
-#include "texture.h"
-#include "material.h"
-
-#include "sound.h"*/
 
 class NodeSceneGraph;
 class Mesh;
@@ -54,6 +46,13 @@ class Menu : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void addOption(Texture * aTexture);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set the position of our menu
+        *    @param aPosition -> the new position of our menu
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setPosition(vec3f aPosition);
 
         //////////////////////////////////////////////////////////////////////////

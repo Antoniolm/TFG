@@ -23,10 +23,10 @@
 #include "object3d.h"
 #include "rootmap.h"
 #include "context/context.h"
-#include "mesh.h"
+#include "mesh/mesh.h"
 #include "nodescenegraph.h"
-#include "texture.h"
-#include "material.h"
+#include "material/texture.h"
+#include "material/material.h"
 #include "sound/sound.h"
 #include "menu.h"
 #include "profile.h"
@@ -79,6 +79,12 @@ class PauseMenu : public Menu
         //////////////////////////////////////////////////////////////////////////
         void add(string fileName,PauseMenuOption aOption);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will activate our pause menu
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void activate();
     protected:
 

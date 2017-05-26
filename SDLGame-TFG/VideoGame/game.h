@@ -41,7 +41,7 @@
 #include "../GraphicEngine/shadowtexture.h"
 #include "../GraphicEngine/shadowmanager.h"
 #include "projectile.h"
-#include "hero.h"
+#include "avatar/hero.h"
 #include <sstream>
 class Game
 {

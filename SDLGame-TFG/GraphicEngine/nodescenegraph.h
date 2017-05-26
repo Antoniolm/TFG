@@ -25,7 +25,7 @@
 #include "context/context.h"
 #include "matrix/matrix4fdynamic.h"
 #include "matrix/matrix4f.h"
-#include "material.h"
+#include "material/material.h"
 #include <vector>
 #include "SDL2/SDL.h"
 
@@ -87,24 +87,26 @@ class NodeSceneGraph : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
-        /////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
         void visualization(Context & cv);
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
-        //////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will obtain the boundingBox of the object.
-        *    \return void
+        *    \return boundingbox
         */
         //////////////////////////////////////////////////////////////////////////
         BoundingBox getBoundingBox();
@@ -112,6 +114,7 @@ class NodeSceneGraph : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will obtain the boundingBox of the object.
+        *    \param cv -> the context of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -128,6 +131,7 @@ class NodeSceneGraph : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will add a new element in our NodeSceneGraph
+        *    \param anObject -> the new element will be an object3D
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
@@ -136,6 +140,7 @@ class NodeSceneGraph : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will add a new element in our NodeSceneGraph
+        *    \param aMatrix -> the new element will be a matrix4f
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////
@@ -144,6 +149,7 @@ class NodeSceneGraph : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will add a new element in our NodeSceneGraph
+        *    \param aMaterial -> the new element will be a material
         *    \return void
         */
         /////////////////////////////////////////////////////////////////////////

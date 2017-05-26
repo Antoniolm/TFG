@@ -22,7 +22,7 @@
 
 #include "../GraphicEngine/ia/ianpc.h"
 #include "avatar.h"
-#include "../GraphicEngine/mesh.h"
+#include "../GraphicEngine/mesh/mesh.h"
 #include "../GraphicEngine/collection/meshcollection.h"
 #include "../GraphicEngine/text.h"
 #include "../GraphicEngine/matrix/structdata.h"

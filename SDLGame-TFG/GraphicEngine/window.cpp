@@ -18,7 +18,7 @@
 // *********************************************************************
 
 #include "window.h"
-#include "file_obj.h"
+#include "mesh/file_obj.h"
 
 Window* Window::instance = NULL;
 

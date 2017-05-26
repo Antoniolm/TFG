@@ -20,7 +20,7 @@
 #ifndef MESHCOLLECTION_H
 #define MESHCOLLECTION_H
 
-#include "mesh.h"
+#include "mesh/mesh.h"
 #include "collection.h"
 #include "collection.cpp"
 class Mesh;

@@ -20,10 +20,10 @@
 #ifndef PROJECTILE_H
 #define PROJECTILE_H
 
-#include "avatar.h"
-#include "avatarmove.h"
-#include "../GraphicEngine/mesh.h"
-#include "../GraphicEngine/material.h"
+#include "avatar/avatar.h"
+#include "avatar/avatarmove.h"
+#include "../GraphicEngine/mesh/mesh.h"
+#include "../GraphicEngine/material/material.h"
 #include "../GraphicEngine/collection/meshcollection.h"
 #include "../GraphicEngine/collection/materialcollection.h"
 #include "../GraphicEngine/collection/soundcollection.h"
@@ -35,7 +35,7 @@
 #include "../GraphicEngine/objectscene.h"
 #include "../GraphicEngine/sound/sound.h"
 #include "../GraphicEngine/text.h"
-#include "enemy.h"
+#include "avatar/enemy.h"
 #include "enemylist.h"
 
 #include <vector>

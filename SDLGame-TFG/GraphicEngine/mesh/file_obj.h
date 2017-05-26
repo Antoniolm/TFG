@@ -57,7 +57,7 @@ class FileObj{
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will calculate the normals of a object
+        *    The method will calculate the normals of an object
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -65,13 +65,19 @@ class FileObj{
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will calculate the origin of a object
+        *    The method will calculate the origin of an object
         *    \return vec3f
         */
         //////////////////////////////////////////////////////////////////////////
         vec3f calculate_origin(std::vector<vec3f> & vertex);
 
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will calculate the bump map of an object
+        *    \return vec3f
+        */
+        //////////////////////////////////////////////////////////////////////////
         void calculate_bump(std::vector<vec3f> & vertex,std::vector<GLushort> & triangles,std::vector<vec2f> & textCoord,std::vector<vec3f> & tangent,std::vector<vec3f> & bitTangent);
 
         static FileObj * getInstance(){

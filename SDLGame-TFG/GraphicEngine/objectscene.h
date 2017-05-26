@@ -49,15 +49,17 @@ class ObjectScene : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
-        /////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
         virtual void visualization(Context & vis);
 
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -66,6 +68,7 @@ class ObjectScene : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will set the damage that the object do to an avatar
+        *    @param value -> the damage that the object will do in an avatar
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -74,6 +77,7 @@ class ObjectScene : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will set if the shadow is enable or disable in this object
+        *    @param value -> will be tru if the object will have shadow in the scene
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -81,8 +85,8 @@ class ObjectScene : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    The method will obtain the boundingBox of the object.
-        *    \return void
+        *    The method will obtain the position of the object.
+        *    \return vec3f
         */
         //////////////////////////////////////////////////////////////////////////
         vec3f getPosition();
@@ -90,7 +94,7 @@ class ObjectScene : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will obtain the boundingBox of the object.
-        *    \return void
+        *    \return boundingBox
         */
         //////////////////////////////////////////////////////////////////////////
         BoundingBox getBoundingBox();
@@ -113,8 +117,8 @@ class ObjectScene : public Object3D
 
         //////////////////////////////////////////////////////////////////////////
         /**
-        *    It will get the materialIndex
-        *    \return float
+        *    It will get the material type of our objectScene
+        *    \return MaterialIndex
         */
         //////////////////////////////////////////////////////////////////////////
         MaterialIndex getMaterialIndex();
@@ -122,10 +126,12 @@ class ObjectScene : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will obtain the position of our objectScene
+        *    @param vis -> the context of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
         void obtainPosition(Context vis);
+
     protected:
         vec4f position;
         Object3D * object;
@@ -134,6 +140,7 @@ class ObjectScene : public Object3D
         bool hasShadow;
         float damage;
     private:
+
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will generate the next boundingBox of the object.

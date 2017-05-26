@@ -57,6 +57,7 @@ class ParticleSystem : public Object3D
         //////////////////////////////////////////////////////////////////////////
         /**
         *    The method will show the object in our interface
+        *    @param cv -> the context of our visualization
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -66,19 +67,90 @@ class ParticleSystem : public Object3D
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
+        *    @param gameState -> the current state of our game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
         void updateState(GameState & gameState);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will set some parameters of our particle system
+        *    @param numParticle
+        *    @param aMaterial
+        *    @param aScale
+        *    @param aMinPos
+        *    @param aMaxPos
+        *    @param aVelocity
+        *    @param aMinTime
+        *    @param aMaxTime
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setParameters(int numParticle,string aMaterial,vec3f aScale,vec3f aMinPos,vec3f aMaxPos,vec3f aVelocity,float aMinTime,float aMaxTime);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the number of particle of our particle system
+        *    \return int
+        */
+        //////////////////////////////////////////////////////////////////////////
         int getNumParticle();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the material of our particle system
+        *    \return material *
+        */
+        //////////////////////////////////////////////////////////////////////////
         Material * getMaterial();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the scale of our particle
+        *    \return vec3f
+        */
+        //////////////////////////////////////////////////////////////////////////
         vec3f getScale();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get max position of our particle
+        *    \return vec3f
+        */
+        //////////////////////////////////////////////////////////////////////////
         vec3f getMaxPos();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get min position of our particle
+        *    \return vec3f
+        */
+        //////////////////////////////////////////////////////////////////////////
         vec3f getMinPos();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the velocity of our particle
+        *    \return vec3f
+        */
+        //////////////////////////////////////////////////////////////////////////
         vec3f getVelocity();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the min time life of our particle
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
         float getMinTime();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    The method will get the max time life of our particle
+        *    \return float
+        */
+        //////////////////////////////////////////////////////////////////////////
         float getMaxTime();
 
     protected:

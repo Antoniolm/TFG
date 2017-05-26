@@ -55,10 +55,49 @@ class GameState
         //////////////////////////////////////////////////////////////////////////
         virtual ~GameState();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will init the match
+        *   @param shaderID -> the id of our current activated shader
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void initPlay(GLuint shaderID);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will update the match
+        *   @param shaderID -> the id of our current activated shader
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void updatePlay();
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will update the loading screen
+        *   @param shaderID -> the id of our current activated shader
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void updateLoading(GLuint shaderID);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will update the credit screen
+        *   @param shaderID -> the id of our current activated shader
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void updateCredit(GLuint shaderID);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will update the main menu
+        *   @param shaderID -> the id of our current activated shader
+        *   \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void updateMenu(GLuint shaderID);
 
         float time;
