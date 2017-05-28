@@ -3,7 +3,7 @@
     "bkgdPosition":[160,2.0,-4],
     "sound":"sounds/backSoundLoop.wav",
     "volSound":30.0,
-    "heroPosition":[203,2.0,-4],
+    "heroPosition":[203,2.0,-3],
     "nextMap":"",
 
     "title": {
@@ -31,17 +31,62 @@
 
             {   "type":1,
                 "channel":"0",
-                "position":[10.2,3.5,-6.0],
+                "position":[204.5,3.5,-8.7],
+                "ambient":[1.0,1.0,1.0],
+                "diffuse":[1.0,1.0,1.0],
+                "specular":[1.0,1.0,1.0],
+                "constant":1.0,
+                "linear":0.7,
+                "quadratic":1.8 },
+            {   "type":1,
+                "channel":"1",
+                "position":[138.2,3.5,-22],
+                "ambient":[1.0,1.0,1.0],
+                "diffuse":[1.0,1.0,1.0],
+                "specular":[1.0,1.0,1.0],
+                "constant":1.0,
+                "linear":0.7,
+                "quadratic":1.8 },
+            {   "type":1,
+                "channel":"2",
+                "position":[160.2,3.5,-14],
                 "ambient":[1.0,1.0,1.0],
                 "diffuse":[1.0,1.0,1.0],
                 "specular":[1.0,1.0,1.0],
                 "constant":1.0,
                 "linear":0.7,
                 "quadratic":1.8 }
+                            
     ],
 
     "particleSystem":[
-       
+        {   "number":20,
+            "material":"mFIRE",
+            "scale":[0.05,0.05,0.05],
+            "minPosition":[138.35,3.0,-22],
+            "maxPosition":[138.15,3.0,-22],
+            "velocity":[0.0,0.5,0.0],
+            "minLife":500,
+            "maxLife":1000
+        },
+        {   "number":20,
+            "material":"mFIRE",
+            "scale":[0.05,0.05,0.05],
+            "minPosition":[204.35,3.0,-8.8],
+            "maxPosition":[204.65,3.0,-8.7],
+            "velocity":[0.0,0.5,0.0],
+            "minLife":500,
+            "maxLife":1000
+        },
+        {   "number":20,
+            "material":"mFIRE",
+            "scale":[0.05,0.05,0.05],
+            "minPosition":[160.35,3.0,-14],
+            "maxPosition":[160.15,3.0,-14],
+            "velocity":[0.0,0.5,0.0],
+            "minLife":500,
+            "maxLife":1000
+        }
     ],
 
     "projectileSystem":[
@@ -74,36 +119,20 @@
     "npcs":[
             {   "position":[205.5,2.0,-5.5],
                 "dialog":[{"speaker":0,
-                           "string":"Oh!! Young warrior, you waked up"},
+                           "string":"You have to drop a soul in the soul carrier"},
                           {"speaker":0,
-                           "string":"You have been sleeping for 400 years!"},
+                           "string":"if you want to open this heavy door"},
                           {"speaker":0,
-                           "string":"If you don't remember me, I'm Jame the buttler"},
-                          {"speaker":0,
-                           "string":"The castle cursed your soul while you was slepping"},
-                          {"speaker":0,
-                           "string":"But don't be scared"},
-                          {"speaker":0,
-                           "string":"If you obtain all the fragment of cursed crystal"},
-                          {"speaker":0,
-                           "string":"you would purify your soul"}
+                           "string":"Good luck brave warrior"}
                         ]
             },
             {   "position":[140.5,2.0,-20.5],
                 "dialog":[{"speaker":0,
-                           "string":"Oh!! Young warrior, you waked up"},
+                           "string":"Hello brave warrior"},
                           {"speaker":0,
-                           "string":"You have been sleeping for 400 years!"},
+                           "string":"This is the end of this demo"},
                           {"speaker":0,
-                           "string":"If you don't remember me, I'm Jame the buttler"},
-                          {"speaker":0,
-                           "string":"The castle cursed your soul while you was slepping"},
-                          {"speaker":0,
-                           "string":"But don't be scared"},
-                          {"speaker":0,
-                           "string":"If you obtain all the fragment of cursed crystal"},
-                          {"speaker":0,
-                           "string":"you would purify your soul"}
+                           "string":"You can finish it"}
                         ]
             }
 
@@ -212,7 +241,15 @@
     ],
 
     "textRegion":[
-           
+         {   "position":[203,1.5,-3],
+                "radioActivity":[2.0,3.0,2.0],
+                "timeBWstate":3000.0,
+                "dialog":[{"speaker":2,
+                           "string":"How will you open that door?"},
+                          {"speaker":1,
+                           "string":"I don't know, Jame the buttler can know about this"}
+                        ]
+            }  
     ],
 
 
