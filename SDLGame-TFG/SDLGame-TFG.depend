@@ -401,7 +401,7 @@
 	"mesh/file_obj.h"
 	"icon.c"
 
-1495020168 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1495975123 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1491572000 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -3754,9 +3754,9 @@
 	"collection.h"
 	"collection.cpp"
 
-1491400202 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection\materialcollection.cpp
+1496069080 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection\materialcollection.cpp
 	"materialcollection.h"
-	"material.h"
+	"material/material.h"
 
 1493979983 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection\meshcollection.cpp
 	"meshcollection.h"
@@ -4024,10 +4024,10 @@
 1493663204 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound\sound.cpp
 	"sound.h"
 
-1495735061 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material\material.h
+1496069034 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material\material.h
 	"matrix/structdata.h"
 	<string>
-	"./Collection/materialcollection.h"
+	"./collection/materialcollection.h"
 	"texture.h"
 	"context/shader.h"
 

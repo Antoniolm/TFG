@@ -1076,15 +1076,7 @@
                 "collision": false,
                 "shadow": true
             },
-            {   "position":[14.5,5.0,-4],
-                "transforms":[
-                    
-                ],       
-                "material":"mCHANDELIER",
-                "mesh":"CHANDELIER",
-                "collision": true,
-                "shadow": true
-            },
+            
             {   "position":[15.5,2.1,-8.5],
                 "transforms":[
                     

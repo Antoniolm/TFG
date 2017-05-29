@@ -22,7 +22,7 @@
 
 #include "matrix/structdata.h"
 #include <string>
-#include "./Collection/materialcollection.h"
+#include "./collection/materialcollection.h"
 #include "texture.h"
 #include "context/shader.h"
 
