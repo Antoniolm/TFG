@@ -4,6 +4,7 @@ Autor: Antonio David López Machado
 
 Tutor: Carlos Ureña Almagro
 
-Universidad : UGR - ETSIIT
+Universidad de Granada (UGR)
+Escuela Técnica Superior de Ingenierías Informática y de Telecomunicación (ETSIIT)
 
 
