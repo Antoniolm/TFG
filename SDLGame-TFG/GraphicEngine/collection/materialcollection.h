@@ -120,8 +120,8 @@ class MaterialCollection
         //////////////////////////////////////////////////////////////////////////
         MaterialCollection();
 
-        static MaterialCollection* instance;
-        Collection<Material,MaterialIndex> collection;
+        static MaterialCollection* instance;           // Instance of MaterialCollection
+        Collection<Material,MaterialIndex> collection; // Collection object
 };
 
 #endif // MATERIALCOLLECTION_H

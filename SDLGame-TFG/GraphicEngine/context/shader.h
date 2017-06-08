@@ -100,8 +100,11 @@ class Shader
     protected:
 
     private:
-        string vertexfile,fragmentfile;
-        GLuint programID,fragmentID,vertexID;
+        string vertexfile;      // File of the vertex shader
+        string fragmentfile;    // File of the fragment shader
+        GLuint programID;       // Id of the program shader
+        GLuint fragmentID;      // Id of the compiled fragment shader
+        GLuint vertexID;        // Id of the compiled vertex shader
 
         //////////////////////////////////////////////////////////////////////////
         /**

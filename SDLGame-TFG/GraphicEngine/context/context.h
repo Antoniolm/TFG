@@ -45,15 +45,16 @@ class Context
         //////////////////////////////////////////////////////////////////////////
         virtual ~Context();
 
-        unsigned int visualization_mode;
-        unsigned camera_mode;
-        bool shadow_mode;
-        MatrixStack matrixStack;
-        MaterialStack materialStack;
-        Shader * currentShader;
-        Matrix4f currentTransf;
-        MaterialIndex currentMaterialIndex;
-        vec3f minVisualPosition,maxVisualPosition;
+        unsigned int visualization_mode;    // Visualization mode
+        unsigned camera_mode;               // camera mode
+        bool shadow_mode;                   // flag shadow mode
+        MatrixStack matrixStack;            // Stack of matrix
+        MaterialStack materialStack;        // Stack of material
+        Shader * currentShader;             // Current shader
+        Matrix4f currentTransf;             // current Matrix
+        MaterialIndex currentMaterialIndex; // Current material inde
+        vec3f minVisualPosition;            // Max visualization position
+        vec3f maxVisualPosition;            // Min visualization position
 
 
     protected:

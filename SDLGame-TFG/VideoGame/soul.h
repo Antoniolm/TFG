@@ -113,11 +113,12 @@ class Soul : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void calculatePosition(vec3f posHero,avatarDirection direction);
 
-        NodeSceneGraph * root;
-        Matrix4f * transMatrix,* animationMatrix;
-        AxisRotation * rotation;
-        bool activated;
-        bool inCarrier;
+        NodeSceneGraph * root;      // Root of the object
+        Matrix4f * transMatrix;     // Matrix for the position
+        Matrix4f * animationMatrix; // Animation of the soul
+        AxisRotation * rotation;    // Rotation movement
+        bool activated;             // Flag of activation
+        bool inCarrier;             // Flag to know if the soul is inside a soul carrier
 };
 
 #endif // SOUL_H

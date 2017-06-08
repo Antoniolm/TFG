@@ -136,17 +136,17 @@ class Enemy: public AvatarMove
         void takeDamage(float value);
 
     protected:
-        vector<Matrix4f *> moveMatrix;
-        vector<Sound *> enemySound;
-        pair<avatarDirection,vec3f> currentMove;
-        AnimationList animations;
-        Weapon * weapon;
-        vec3f radioActivity;
-        IAEnemy * IA;
-        bool enemyActivate;
-        bool activatedDialog;
-        Text * currentText;
-        float jumpDelay,hitDelay,IADelay;
+        vector<Matrix4f *> moveMatrix;              // Vector of movement matrix
+        vector<Sound *> enemySound;                 // Vector of sound
+        pair<avatarDirection,vec3f> currentMove;    // Current Move of the enemy
+        AnimationList animations;                   // List of animations of the enemy
+        Weapon * weapon;                            // Weapon of the enemy
+        vec3f radioActivity;                        // Radio activity of the enemy
+        IAEnemy * IA;                               // Ia of the enemy
+        bool enemyActivate;                         // Flag for activation
+        bool activatedDialog;                       // Flag for activation
+        Text * currentText;                         // Text for the damage
+        float jumpDelay,hitDelay,IADelay;           // Some delay between action
     private:
 
 };

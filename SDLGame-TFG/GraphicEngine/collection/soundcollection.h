@@ -91,8 +91,8 @@ class SoundCollection
         //////////////////////////////////////////////////////////////////////////
         SoundCollection();
 
-        static SoundCollection* instance;
-        Collection<Sound,SoundIndex> collection;
+        static SoundCollection* instance;        // Instance of soundCollection
+        Collection<Sound,SoundIndex> collection; // Collection object
 };
 
 #endif // SOUNDCOLLECTION_H

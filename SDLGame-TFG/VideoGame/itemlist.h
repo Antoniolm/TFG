@@ -102,7 +102,7 @@ class ItemList
     protected:
 
     private:
-        vector<Item *> items;
+        vector<Item *> items;   // Vector of items
 };
 
 #endif // ITEMLIST_H

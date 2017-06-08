@@ -107,8 +107,9 @@ class Avatar: public Object3D
         void addLife(float value);
 
     protected:
-        NodeSceneGraph * root;
-        float life,maxLife;
+        NodeSceneGraph * root;  // Root of the avatar
+        float life;             // Current life of the avatar
+        float maxLife;          // Max life of the avatar
     private:
 
 };

@@ -152,12 +152,12 @@ class Npc : public Avatar
         //////////////////////////////////////////////////////////////////////////
         void initAnimation();
 
-        IANpc stateMachine;
-        Text * currentText;
-        ScriptLMD animation;
-        vector<Matrix4f *> moveMatrix;
-        bool npcActivate,heroActivate;
-        float dialogTime;
+        IANpc stateMachine;             // State of machine
+        Text * currentText;             // Current text of the npc
+        ScriptLMD animation;            // Animation of the npc
+        vector<Matrix4f *> moveMatrix;  // Vector of movement
+        bool npcActivate,heroActivate;  // Flag of the conversation
+        float dialogTime;               // Time between states
 };
 
 #endif // NPC_H

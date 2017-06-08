@@ -81,8 +81,8 @@ class RangedEnemy : public Enemy
         //////////////////////////////////////////////////////////////////////////
         void initAnimation();
 
-        vector<Projectile *> projectiles;
-        IAEnemy * secondIA;
+        vector<Projectile *> projectiles;   // Vector of projectiles
+        IAEnemy * secondIA;                 // Second Ia of the enemy
 };
 
 #endif // RANGEDENEMY_H

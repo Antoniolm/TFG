@@ -148,12 +148,13 @@ class Projectile : public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void calculateHead();
 
-        Sound * soundHit;
-        vec3f velocity,projectileHead;
-        bool live;
-        float damage;
-        Matrix4f * animationMatrix;
-        AxisRotation * rotation;
+        Sound * soundHit;           // Sound of hit
+        vec3f velocity;             // Velocity of the projectile
+        vec3f projectileHead;       // Position of the head projectile
+        bool live;                  // flag to know if the projectile is live or not
+        float damage;               // Damage of the projectile
+        Matrix4f * animationMatrix; // Animation of the projectile
+        AxisRotation * rotation;    // Rotation movement
 
 };
 

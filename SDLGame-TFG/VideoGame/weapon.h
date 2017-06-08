@@ -111,9 +111,9 @@ class Weapon : public Object3D
     protected:
 
     private:
-        float damage;
-        NodeSceneGraph * root;
-        WeaponType type;
+        float damage;           // Damage of the weapon
+        NodeSceneGraph * root;  // Root of the weapon
+        WeaponType type;        // Type of the weapon
 };
 
 #endif // WEAPON_H

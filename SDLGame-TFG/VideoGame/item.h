@@ -100,13 +100,13 @@ class Item : public Object3D
     protected:
 
     private:
-        int value;
-        NodeSceneGraph * root;
-        Matrix4f * animationMatrix;
-        AxisRotation * rotation;
-        Sound * soundTake;
-        bool notTake;
-        ItemIndex type;
+        int value;                  // Value of the item
+        NodeSceneGraph * root;      // Root of the object
+        Matrix4f * animationMatrix; // Matrix 4x4 of the animation
+        AxisRotation * rotation;    // Rotation movement
+        Sound * soundTake;          // Sound of taken coin
+        bool notTake;               // Flag to not taken coin
+        ItemIndex type;             // Type of the item( potion or crystal )
 };
 
 #endif // ITEM_H

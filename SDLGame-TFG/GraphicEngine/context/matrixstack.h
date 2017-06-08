@@ -127,8 +127,8 @@ class MatrixStack
     protected:
 
     private:
-        Matrix4f currentMatrix;
-        std::vector<Matrix4f> mainStack;
+        Matrix4f currentMatrix;          // Current Matrix 4x4 in the stack
+        std::vector<Matrix4f> mainStack; // Matrix
 };
 
 #endif // MATRIXSTACK_H

@@ -94,8 +94,8 @@ class ScriptLMD : public ScriptAnimation
     protected:
 
     private:
-        vector<MatrixScript *> script;
-        float currentTime;
+        vector<MatrixScript *> script;  // Vector of matrixScript *
+        float currentTime;              // Current time of the script
 
 };
 

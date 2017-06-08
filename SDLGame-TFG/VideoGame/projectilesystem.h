@@ -163,12 +163,15 @@ class ProjectileSystem : public Object3D
     protected:
 
     private:
-        list<Projectile *> projectiles;
-        vec3f radioActivity,position,velocity;
-        avatarDirection direction;
-        float projectileDelay; //time delay
-        float timeBWprojectile;//time between one projectile and another
-        string mesh,material;
+        list<Projectile *> projectiles; // List of projectiles
+        vec3f radioActivity;            // Radio activity of the projectile system
+        vec3f position;                 // Initial position of the projectiles
+        vec3f velocity;                 // Velocity of the projectiles
+        avatarDirection direction;      // direction of the projectiles
+        float projectileDelay;          // time delay
+        float timeBWprojectile;         // time between one projectile and another
+        string mesh;                    // Mesh for the projectiles
+        string material;                // Material for the projectiles
 };
 
 #endif // PROJECTILESYSTEM_H

@@ -110,7 +110,7 @@ class EnemyList : public Object3D
     protected:
 
     private:
-        vector<Enemy *> enemies;
+        vector<Enemy *> enemies;    // Vector of enemies
 };
 
 #endif // ENEMYLIST_H

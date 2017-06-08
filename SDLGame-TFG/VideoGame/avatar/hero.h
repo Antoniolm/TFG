@@ -210,17 +210,21 @@ class Hero: public AvatarMove
         //////////////////////////////////////////////////////////////////////////
         void initAnimation();
 
-        vector<Projectile *> projectiles;
-        vector<Matrix4f *> moveMatrix;
-        vector<Sound *> heroSound;
-        vector<int> channelSound;
-        AnimationList animations;
-        vector<Text *> texts;
-        vector<bool> activatedTexts;
-        Soul * soul;
-        Weapon * currentWeapon,* meleeWeapon,* rangedWeapon;
+        vector<Projectile *> projectiles;   // Vector of projectiles
+        vector<Matrix4f *> moveMatrix;      // Vector of movements
+        vector<Sound *> heroSound;          // Vector of sounds
+        vector<int> channelSound;           // Vector of channels for the sound
+        AnimationList animations;           // List of animations of the hero
+        vector<Text *> texts;               // Vector of texts
+        vector<bool> activatedTexts;        // Vector of state of texts
+        Soul * soul;                        // Soul catch in the arms of the hero
+        Weapon * currentWeapon;             // Current weapon of the hero
+        Weapon * meleeWeapon;               // Close weapon of the hero
+        Weapon * rangedWeapon;              // Ranged weapon of the hero
+
+        //Some delays for action of the hero
         float jumpDelay,hitDelay,coinDelay,shieldDelay,swapDelay,shootDelay,swordDelay;
-        int currentCoin;
+        int currentCoin;    //Current coin of the hero
 };
 
 #endif // HERO_H

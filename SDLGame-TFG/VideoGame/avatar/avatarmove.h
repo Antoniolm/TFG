@@ -177,15 +177,19 @@ class AvatarMove: public Avatar
         Projectile * createProjectile(float damage);
 
     protected:
-        RootMap * currentMap;
-        ObjectScene * currentObject;
-        Matrix4f * moveAvatar;
-        avatarDirection direction;
-        AcceleratedMovement * acceleratedMove;
-        vec3f impactMovement;
-        float limitBottom;
+        RootMap * currentMap;                   // Current Map
+        ObjectScene * currentObject;            // Current object
+        Matrix4f * moveAvatar;                  // Matrix 4x4 of the avatar
+        avatarDirection direction;              // Direction of the avatar
+        AcceleratedMovement * acceleratedMove;  // Accelerated movement
+        vec3f impactMovement;                   // Impact movement
+        float limitBottom;                      // LimitBottom of the avatar
+
+        //Some flag for know the state of the hero
         bool isMoving,isFalling,isJumping,isMoveCollision,isHitting,isImpacted,isShielded;
-        float currentTime,dmgDelay,impactTime;
+        float currentTime;// Current time of the application
+        float dmgDelay;   // Time between damage
+        float impactTime; // Time for an impact
     private:
 };
 

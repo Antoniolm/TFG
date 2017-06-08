@@ -116,13 +116,13 @@ class Mate : public Avatar
         //////////////////////////////////////////////////////////////////////////
         void moveMate(float time,vec3f aMove,avatarDirection aDir);
 
-        vector<Matrix4f *> moveMatrix;
-        pair<avatarDirection,vec3f> currentMove;
-        Matrix4f * moveAvatar;
-        avatarDirection direction;
-        ScriptLMD * animation;
-        Text * currentText;
-        bool textActivated;
+        vector<Matrix4f *> moveMatrix;           // Vector of movement
+        pair<avatarDirection,vec3f> currentMove; // Current move of the mate
+        Matrix4f * moveAvatar;                   // Matrix 4x4 of movement of the mate
+        avatarDirection direction;               // Direction of the mate
+        ScriptLMD * animation;                   // Animation of the mate
+        Text * currentText;                      // Current text of the mate
+        bool textActivated;                      // Flag for the activation of the dialog
 };
 
 #endif // MATE_H

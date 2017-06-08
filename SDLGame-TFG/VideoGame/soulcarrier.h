@@ -78,11 +78,12 @@ class SoulCarrier : public Object3D
     protected:
 
     private:
-        NodeSceneGraph * root;
-        Matrix4f * transMatrix,* animationMatrix;
-        AxisRotation * rotation;
-        float delayTime;
-        bool activated;
+        NodeSceneGraph * root;      // Root of the object
+        Matrix4f * transMatrix;     // Matrix for the position
+        Matrix4f * animationMatrix; // Animation of the soul
+        AxisRotation * rotation;    // Rotation movement
+        float delayTime;            // Delay time
+        bool activated;             // Flag of activation
 };
 
 #endif // SOULCARRIER_H

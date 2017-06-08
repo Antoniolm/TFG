@@ -64,7 +64,7 @@ class MaterialStack
     protected:
 
     private:
-        std::vector<Material*> mainStack;
+        std::vector<Material*> mainStack;   //Stack of material
 };
 
 #endif // MATERIALSTACK_H

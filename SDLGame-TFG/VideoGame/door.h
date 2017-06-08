@@ -71,7 +71,7 @@ class Door : public ObjectScene
         /**
         *    The method will update the state of the object. That change need the
         *    current time in our application
-        *    @param gameState -> the current state of our game
+        *    @param gameState -> the current state of the game
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -79,13 +79,21 @@ class Door : public ObjectScene
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will initialize the animation of the door
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void initAnimation();
-        SoulCarrier * sCarrier;
-        Matrix4f * rotateDoor,* moveDoor;
-        ScriptLMD * animation;
-        bool activated;
-        int doorType;
-        int doorID;
+
+        SoulCarrier * sCarrier; // SoulCarrier linked with the door
+        Matrix4f * rotateDoor;  // Matrix 4x4 for rotation of the door
+        Matrix4f * moveDoor;    // Matrix 4x4 for position of the door
+        ScriptLMD * animation;  // Animation of the door
+        bool activated;         // Flag of activation
+        int doorType;           // Door type
+        int doorID;             // Id of the door
 };
 
 #endif // DOOR_H

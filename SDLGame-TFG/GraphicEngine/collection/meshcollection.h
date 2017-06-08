@@ -125,8 +125,8 @@ class MeshCollection
         //////////////////////////////////////////////////////////////////////////
         MeshCollection();
 
-        static MeshCollection* instance;
-        Collection<Mesh,MeshIndex> collection;
+        static MeshCollection* instance;       // Instance of MeshCollection
+        Collection<Mesh,MeshIndex> collection; // Collection object
 };
 
 #endif // MESHCOLLECTION_H

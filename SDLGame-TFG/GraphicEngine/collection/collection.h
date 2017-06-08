@@ -88,8 +88,8 @@ class Collection
     protected:
 
     private:
-        vector<T *> collection;
-        map<string,T2> enumMap;
+        vector<T *> collection; // Vector of elements
+        map<string,T2> enumMap; // Map of elements
 
 };
 

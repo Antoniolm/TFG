@@ -86,16 +86,16 @@ class Game
         //////////////////////////////////////////////////////////////////////////
         Game();
 
-        static Game* instance;
-        Window * window;
-        OptionManager * options;
-        GameState gameState;
-        HeroState * heroState;
-        Notification * notiGamePad;
-        Shader * normalShader;
-        ShadowManager * shadowManager;
-        Context context;
-        bool isClosing;
+        static Game* instance;          // Instance of game
+        Window * window;                // Window object
+        OptionManager * options;        // Option Manager
+        GameState gameState;            // State of the game
+        HeroState * heroState;          // State of the hero
+        Notification * notiGamePad;     // Notification of connected game pad
+        Shader * normalShader;          // Normal shader
+        ShadowManager * shadowManager;  // Shadow shader
+        Context context;                // OpenGL context
+        bool isClosing;                 // Flag to close game
 };
 
 #endif // GAME_H
