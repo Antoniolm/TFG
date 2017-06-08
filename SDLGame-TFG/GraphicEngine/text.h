@@ -140,16 +140,19 @@ class Text : public Object3D
     protected:
 
     private:
-        Matrix4f * positionText,* scaleText;
-        Matrix4f * positionBack,* scaleBack;
-        SDL_Surface * surface;
-        bool hasDialog;
-        string fileTexture;
-        string message;
-        GLuint textureText;
-        TTF_Font* font;
-        SDL_Color color;
-        NodeSceneGraph * textNode,* backNode;
+        Matrix4f * positionText;    // Position of the text object
+        Matrix4f * scaleText;       // Scale of the text object
+        Matrix4f * positionBack;    // Position of the background Text object
+        Matrix4f * scaleBack;       // Scale of the background Text object
+        SDL_Surface * surface;      // Text object generator
+        bool hasDialog;             // Flag if the text has background Text object or not
+        string fileTexture;         // File with the texture of background text
+        string message;             // Message in the text object
+        GLuint textureText;         // Texture with the text
+        TTF_Font* font;             // Font of the text
+        SDL_Color color;            // Color of the text
+        NodeSceneGraph * textNode;  // Node of the text object
+        NodeSceneGraph * backNode;  // Node of the background text object
 };
 
 #endif // TEXT_H

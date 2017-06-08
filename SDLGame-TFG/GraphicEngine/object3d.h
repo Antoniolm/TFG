@@ -127,10 +127,10 @@ class Object3D
         int getCountLink();
 
     protected:
-        float currentTime;
-        vec4f position;
-        int countLink;
-        BoundingBox boundingBox;
+        float currentTime;          // Time of the application
+        vec4f position;             // Position of the object
+        int countLink;              // Number of links of the object
+        BoundingBox boundingBox;    // Bounding box of the object
 
     private:
 

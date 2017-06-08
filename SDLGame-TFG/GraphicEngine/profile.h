@@ -80,13 +80,13 @@ class Profile
         //////////////////////////////////////////////////////////////////////////
         Profile();
 
-        int nFrame;
-        float initialTime;
-        float totalVisualTime;
-        float totalUpdateTime;
-        float fps;
+        int nFrame;              // Number of frames
+        float initialTime;       // Initial time of the application
+        float totalVisualTime;   // Time used in the visualization of object
+        float totalUpdateTime;   // Time used in the update of object
+        float fps;               // Frame per second
 
-        static Profile* instance;
+        static Profile* instance;// Instance of the profile
 };
 
 #endif // PROFILE_H

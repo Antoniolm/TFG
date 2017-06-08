@@ -86,7 +86,7 @@ class MovieScreen : public Menu
     protected:
 
     private:
-        vector<string> textures;
+        vector<string> textures;    // Vector of textures of the movie screen
 };
 
 #endif // MOVIESCREEN_H

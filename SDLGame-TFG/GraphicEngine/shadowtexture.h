@@ -103,8 +103,10 @@ class ShadowTexture : public Texture
         //////////////////////////////////////////////////////////////////////////
         void createTexture();
 
-        GLuint depthMapFBO,depthMap;
-        GLuint shadowHeight,shadowWidth;
+        GLuint depthMapFBO;   // Frame buffer of depth texture
+        GLuint depthMap;      // Texture of depth
+        GLuint shadowHeight;  // Height of shadow texture
+        GLuint shadowWidth;   // Width of shadow texture
 };
 
 #endif // SHADOWTEXTURE_H

@@ -94,10 +94,10 @@ class PointLight : public Light
     protected:
 
     private:
-        float constant;
-        float linear;
-        float quadratic;
-        string nLight;
+        float constant;   // Constant component
+        float linear;     // linear component
+        float quadratic;  // Quadratic component
+        string nLight;    // Number of light
 };
 
 #endif // POINTLIGHT_H

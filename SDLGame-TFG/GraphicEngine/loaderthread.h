@@ -59,9 +59,9 @@ class LoaderThread
     protected:
 
     private:
-        std::thread * loader;
-        static RootMap * rootMap;
-        static string fileMap;
+        std::thread * loader;       // Thread that will load the map
+        static RootMap * rootMap;   // Object where the map will be load
+        static string fileMap;      // File that contains the map to load
 };
 
 #endif // LOADERTHREAD_H

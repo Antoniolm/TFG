@@ -60,11 +60,12 @@ class HeroState : public Object3D
     protected:
 
     private:
-        NodeSceneGraph * root;
-        Text * coinText;
-        Material * currentMaterialLife;
-        Matrix4f * positionState;
-        int currentLife,currentCoin;
+        NodeSceneGraph * root;          // Root of the scene graph of hero state
+        Text * coinText;                // Text that show the coin score
+        Material * currentMaterialLife; // Texture of the current life of the hero
+        Matrix4f * positionState;       // Matrix 4x4 with the position of the object
+        int currentLife;                // Current life of the hero
+        int currentCoin;                // Current coins of the hero
 };
 
 #endif // HEROSTATE_H

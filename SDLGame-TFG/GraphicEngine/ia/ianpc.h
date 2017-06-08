@@ -128,8 +128,8 @@ class IANpc
     protected:
 
     private:
-        vector<pair<speakerMessage,string> >  states;
-        int currentState;
+        vector<pair<speakerMessage,string> >  states;   // Vector of states
+        int currentState;                               // Current state of the state machine
 
 };
 

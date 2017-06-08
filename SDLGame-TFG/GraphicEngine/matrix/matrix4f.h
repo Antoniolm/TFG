@@ -126,7 +126,7 @@ class Matrix4f
     protected:
 
     private:
-        GLfloat * matrix;
+        GLfloat * matrix;   // Matrix 4x4
 };
 
 #endif // MATRIX4F_H

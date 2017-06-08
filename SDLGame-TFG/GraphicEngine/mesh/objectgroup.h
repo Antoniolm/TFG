@@ -83,14 +83,14 @@ class ObjectGroup : public Object3D
     protected:
 
     private:
-        vector<vec3f> vertex;
-        vector<GLushort> triangles;
-        vector<vec3f> normals;
-        vector<vec2f> textureCord;
-        vector<vec3f> tangent;
-        vector<vec3f> biTangent;
-        NodeSceneGraph * root;
-        Mesh * mesh;
+        vector<vec3f> vertex;       // Vector of vertex
+        vector<GLushort> triangles; // Vector of triangles
+        vector<vec3f> normals;      // Vector of normals
+        vector<vec2f> textureCord;  // Vector of coordinate texture
+        vector<vec3f> tangent;      // Vector of tangents
+        vector<vec3f> biTangent;    // Vector of bitangents
+        NodeSceneGraph * root;      // Root of the group of objects
+        Mesh * mesh;                // Mesh of the group of objects
 };
 
 #endif // OBJECTGROUP_H

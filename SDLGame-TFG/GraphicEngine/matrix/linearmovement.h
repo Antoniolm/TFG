@@ -91,8 +91,8 @@ class LinearMovement : public Matrix4fDynamic {
     protected:
 
     private:
-        vec3f velocity;
-        float currentTime;
+        vec3f velocity;     // Velocity of the movement
+        float currentTime;  // Current time of the movement
 };
 
 #endif // LINEARMOVEMENT_H

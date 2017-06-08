@@ -86,8 +86,8 @@ class ControllerManager
     protected:
 
     private:
-        KeyboardController keyboardController;
-        GamepadController gamepadController;
+        KeyboardController keyboardController;  // Keyboard controller
+        GamepadController gamepadController;    // Game pad controller
 };
 
 #endif // CONTROLLERMANAGER_H

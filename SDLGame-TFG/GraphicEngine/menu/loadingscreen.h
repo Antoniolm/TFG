@@ -83,7 +83,7 @@ class LoadingScreen : public Menu
     protected:
 
     private:
-        float animationDelay;
+        float animationDelay;  // Delay between animations
 };
 
 #endif // LOADINGSCREEN_H

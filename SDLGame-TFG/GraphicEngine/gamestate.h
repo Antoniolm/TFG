@@ -100,18 +100,19 @@ class GameState
         //////////////////////////////////////////////////////////////////////////
         void updateMenu(GLuint shaderID);
 
-        float time;
-        ControllerManager * controller;
-        RootMap * rootMap;
-        PauseMenu * pauseMenu;
-        MainMenu * mainMenu;
-        DeadMenu * deadMenu;
-        CreditScreen * creditScreen;
-        OptionMenu * optionMenu;
-        ControlMenu * controlMenu;
-        LoadingScreen * loadScreen;
-        MovieScreen * movie;
-        Camera * camera;
+        float time;                     // Time of the application
+        ControllerManager * controller; // Manager of the controllers
+        RootMap * rootMap;              // Map/Scene of the video game
+        PauseMenu * pauseMenu;          // Menu of pause
+        MainMenu * mainMenu;            // Main menu
+        DeadMenu * deadMenu;            // Menu of death
+        CreditScreen * creditScreen;    // Screen of credit
+        OptionMenu * optionMenu;        // Menu of options
+        ControlMenu * controlMenu;      // Menu of controls
+        LoadingScreen * loadScreen;     // Screen of load
+        MovieScreen * movie;            // Screen of movie
+        Camera * camera;                // Camera of the video game
+
 
     protected:
 

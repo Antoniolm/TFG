@@ -82,13 +82,13 @@ class Menu : public Object3D
 
 
     protected:
-        NodeSceneGraph * root;
-        Matrix4f * positionMenu;
-        bool activateMenu;
-        vector<Texture *> options;
-        int currentOption;
-        Material * currentMaterial;
-        float menuDelay;
+        NodeSceneGraph * root;      // Root of the object
+        Matrix4f * positionMenu;    // Position of the menu
+        bool activateMenu;          // Flag for activated menu
+        vector<Texture *> options;  // Vector of options
+        int currentOption;          // Current option
+        Material * currentMaterial; // Current material
+        float menuDelay;            // Delay between options
 
     private:
 

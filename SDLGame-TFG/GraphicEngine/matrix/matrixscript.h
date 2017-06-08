@@ -89,9 +89,9 @@ class MatrixScript : public Matrix4fDynamic
     protected:
 
     private:
-        float currentTime;
-        int currentMove;
-        vector<pair<float,Matrix4fDynamic *> > script;
+        float currentTime;                              //Current time of the application
+        int currentMove;                                //Current movement of the script
+        vector<pair<float,Matrix4fDynamic *> > script;  //Vector of movements
 };
 
 #endif // MATRIXSCRIPT_H

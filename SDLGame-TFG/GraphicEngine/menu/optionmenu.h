@@ -90,14 +90,32 @@ class OptionMenu : public Menu
     protected:
 
     private:
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *   It will update the option of the menu
+        *   @param option -> option to update
+        *   @param value -> the new value of that option
+        */
+        //////////////////////////////////////////////////////////////////////////
         void updateOption(int option,string value);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will initialize the options of the menu
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void initOptions();
-        vector<pair<int,int> > resolution;
-        int indexResolution;
-        bool window; //False -> Fullscreen
-        int volume;
-        Text * resolText,* windText,* volText;
-        Sound * openSound,* moveSound;
+
+        vector<pair<int,int> > resolution; //Vector of resolutions
+        int indexResolution;    // Index for the current resolution
+        bool window;            // False -> full screen
+        int volume;             // Current volume
+        Text * resolText;       // Text for current resolution
+        Text * windText;        // Text for current window mode
+        Text * volText;         // Text for current volume
+        Sound * openSound;      // Sound for open an option
+        Sound * moveSound;      // Sound for movement
 };
 
 #endif // OPTIONMENU_H

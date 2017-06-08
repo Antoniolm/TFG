@@ -141,16 +141,16 @@ class OscillateRotation : public Matrix4fDynamic
     protected:
 
     private:
-        vec3f direction;
-        float maxGrade;
-        float minGrade;
-        float initialGrade;
-        float currentGrade;
-        float angularVelocity;
-        float currentTime;
-        bool increment;
-        int loop;
-        int currentLoop;
+        vec3f direction;        // Direction of the movement
+        float maxGrade;         // Max grade of the movement
+        float minGrade;         // Min grade of the movement
+        float initialGrade;     // Initial grade of the movement
+        float currentGrade;     // Current grade of the movement
+        float angularVelocity;  // Angular velocity of the movement
+        float currentTime;      // Current time of the application
+        bool increment;         // Flag to detect the increment/decrement
+        int loop;               // Number of loop of the movement
+        int currentLoop;        // Current loop
 
 };
 

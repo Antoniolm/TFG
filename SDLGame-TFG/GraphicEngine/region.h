@@ -81,9 +81,9 @@ class Region
         vec3f getRadioActivity();
 
     protected:
-        vec3f position;
-        vec3f radioActivity;
-        bool activated;
+        vec3f position;     // Position of the region
+        vec3f radioActivity;// Radio of activity of the region
+        bool activated;     // Flag of the region was activated
 
     private:
 

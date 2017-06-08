@@ -114,6 +114,12 @@ class Sound
         //////////////////////////////////////////////////////////////////////////
         virtual void updateVolume(int currentChannel,float distance);
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will change the volume of our sound
+        *    \return void
+        */
+        //////////////////////////////////////////////////////////////////////////
         void changeVolume(float percentage);
 
     protected:
@@ -126,10 +132,11 @@ class Sound
         //////////////////////////////////////////////////////////////////////////
         int calculateVolume(float distance);
 
-        int channel; //Variable for effect
-        int loop; //Variable for all type of sound. -> Number of loop in a reproduction
-        int volume,currentVolume;
-        string file;
+        int channel;              // Channel where the effect will be play
+        int loop;                 // Number of loop in a reproduction
+        int volume;               // Initial volume of the sound
+        int currentVolume;        // Current volume of the sound
+        string file;              // File of the sound (wav extension)
 
     private:
 

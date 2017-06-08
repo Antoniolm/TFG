@@ -248,31 +248,31 @@ class RootMap : public Object3D
 
     private:
         void deleteObject3d(Object3D * obj);
-        vector<int> indexMap[500][500];
-        vector<ObjectScene *> objs;
-        vector<ObjectGroup *> objectGroup;
-        vector<ObjectScene *> decorationObjs;
-        vector<Npc *> npcList;
-        vector<ParticleSystem *> particleSystem;
-        vector<ProjectileSystem *> projectileSystem;
-        vector<TextRegion *> regions;
-        vector<SpikeTrap *> spikes;
-        vector<Soul *> souls;
-        vector<SoulCarrier *> soulCarriers;
-        vector<Door *> doors;
-        vector<Light *> lights;
-        EndMapRegion * endMapRegion;
-        Notification * title;
-        ObjectScene * background;
-        EnemyList * enemyList;
-        ItemList *itemList;
-        Sound * backSound;
-        Hero * hero;
-        Mate * mate;
-        MovieScreen * movie;
-        string nextMapFile;
-        LoaderThread * loader;
-        bool loading;
+        vector<int> indexMap[500][500];             // Array of vector for spacial indexation
+        vector<ObjectScene *> objs;                 // Vector of objects scene
+        vector<ObjectGroup *> objectGroup;          // Vector of groups of objects
+        vector<ObjectScene *> decorationObjs;       // Vector of decorations objects
+        vector<Npc *> npcList;                      // Vector of npcs
+        vector<ParticleSystem *> particleSystem;    // Vector of particles systems
+        vector<ProjectileSystem *> projectileSystem;// Vector of projectiles systems
+        vector<TextRegion *> regions;               // Vector of regions
+        vector<SpikeTrap *> spikes;                 // Vector of spikes traps
+        vector<Soul *> souls;                       // Vector of souls
+        vector<SoulCarrier *> soulCarriers;         // Vector of souls carriers
+        vector<Door *> doors;                       // Vector of doors
+        vector<Light *> lights;                     // Vector of lights
+        EndMapRegion * endMapRegion;                // End region of the map
+        Notification * title;                       // Title of the map
+        ObjectScene * background;                   // Background of the map
+        EnemyList * enemyList;                      // List of enemies in the map
+        ItemList *itemList;                         // List of items in the map
+        Sound * backSound;                          // back sound of the map
+        Hero * hero;                                // Hero in the map
+        Mate * mate;                                // Mate in the map
+        MovieScreen * movie;                        // Screen of movie of the map
+        string nextMapFile;                         // Next map
+        LoaderThread * loader;                      // Loader of map
+        bool loading;                               // Flag the map is loading
 };
 
 #endif // ROOTMAP_H

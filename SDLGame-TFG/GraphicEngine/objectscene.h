@@ -133,12 +133,12 @@ class ObjectScene : public Object3D
         void obtainPosition(Context vis);
 
     protected:
-        vec4f position;
-        Object3D * object;
-        Matrix4f matrix;
-        MaterialIndex index;
-        bool hasShadow;
-        float damage;
+        vec4f position;     // Position of the object scene
+        Object3D * object;  // Object of the object scene
+        Matrix4f matrix;    // Matrix 4x4 with the transformation in the object
+        MaterialIndex index;// Material index of the object
+        bool hasShadow;     // Flag to know if the object has shadow
+        float damage;       // Damage that the object do to an avatar
     private:
 
         //////////////////////////////////////////////////////////////////////////

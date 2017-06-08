@@ -116,10 +116,10 @@ class ShadowManager
     protected:
 
     private:
-        Shader * shader;
-        Camera * lightCamera;
-        Matrix4f lightSpace;
-        ShadowTexture * depthTexture;
+        Shader * shader;                //Shader for shadow generation
+        Camera * lightCamera;           //Camera of the light to generate shadow
+        Matrix4f lightSpace;            //Space of the light to generate shadow
+        ShadowTexture * depthTexture;   //Texture with the depth of the scene
 
 };
 

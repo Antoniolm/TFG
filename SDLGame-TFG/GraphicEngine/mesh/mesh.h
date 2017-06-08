@@ -184,18 +184,18 @@ class Mesh : public Object3D
         //////////////////////////////////////////////////////////////////////////
         void generateBoundingBox(const vector<vec3f> & vertex);
 
-        static const unsigned int NUM_BUFFERS = 6;
-        GLuint vertexArrayBuffers[NUM_BUFFERS];
-        GLuint vertexArrayObject;
-        string objFile;
-        int numIndex;
-        bool saveInfo;
-        vector<vec3f> vertex;
-        vector<GLushort> triangles;
-        vector<vec3f> normals;
-        vector<vec2f> textureCord;
-        vector<vec3f> bitTangent;
-        vector<vec3f> tangent;
+        static const unsigned int NUM_BUFFERS = 6; // Number of buffers
+        GLuint vertexArrayBuffers[NUM_BUFFERS];    // Vertex Array buffer
+        GLuint vertexArrayObject;                  // Vertex Array Object
+        string objFile;                            // File with the model 3D
+        int numIndex;                              // number of index
+        bool saveInfo;                             // Flag to save or not the info of its model
+        vector<vec3f> vertex;                      // Vector of vertex
+        vector<GLushort> triangles;                // Vector of triangles
+        vector<vec3f> normals;                     // Vector of normals
+        vector<vec2f> textureCord;                 // Vector of coordinate of texture
+        vector<vec3f> bitTangent;                  // Vector of bitangent
+        vector<vec3f> tangent;                     // Vector of tangent
 };
 
 #endif // MESH_H

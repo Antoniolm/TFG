@@ -360,7 +360,7 @@
 1476032874 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\game.h
 	"GraphicEngine/window.h"
 
-1495736529 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
+1496925037 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.h
 	"GL/glew.h"
 	"SDL2/SDL.h"
 	"SDL2/SDL_mixer.h"
@@ -396,12 +396,12 @@
 	"avatar/hero.h"
 	<sstream>
 
-1495794848 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
+1496399888 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\window.cpp
 	"window.h"
 	"mesh/file_obj.h"
 	"icon.c"
 
-1495975123 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
+1496151794 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\videogame\game.cpp
 	"game.h"
 
 1491572000 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\axisrotation.cpp
@@ -439,7 +439,7 @@
 	"rootmap.h"
 	"gamestate.h"
 
-1495750505 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\object3d.h
+1496921347 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\object3d.h
 	"context/context.h"
 	"matrix/structdata.h"
 	"controller/controller.h"
@@ -463,7 +463,7 @@
 1491389647 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.cpp
 	"nodescenegraph.h"
 
-1495750336 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
+1496919850 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\nodescenegraph.h
 	"object3d.h"
 	"context/context.h"
 	"matrix/matrix4fdynamic.h"
@@ -899,14 +899,14 @@
 1417088502 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\file_ply_stl.hpp
 	<vector>
 
-1495800876 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
+1496405245 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.cpp
 	"rootmap.h"
 	"../VideoGame/enemylist.h"
 	"../VideoGame/itemlist.h"
 	"mesh/objectgroup.h"
 	<stdlib.h>
 
-1495752854 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
+1496922292 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\rootmap.h
 	"object3d.h"
 	"nodescenegraph.h"
 	<list>
@@ -964,7 +964,7 @@
 	"camera.h"
 	"rootmap.h"
 
-1495735053 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
+1496919539 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\camera.h
 	"matrix/structdata.h"
 	"matrix/matrix4f.h"
 	"context/shader.h"
@@ -1661,7 +1661,7 @@
 	"objectscene.h"
 	"gamestate.h"
 
-1495750670 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
+1496921343 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\objectscene.h
 	"object3d.h"
 	"matrix/matrix4f.h"
 	"collection/materialcollection.h"
@@ -1703,7 +1703,7 @@
 1492027785 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.cpp
 	"text.h"
 
-1495752109 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
+1496923975 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\text.h
 	"object3d.h"
 	"matrix/structdata.h"
 	"context/shader.h"
@@ -2112,7 +2112,7 @@
 1492343008 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.cpp
 	"particlesystem.h"
 
-1495751527 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
+1496921721 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particlesystem.h
 	"object3d.h"
 	"nodescenegraph.h"
 	"context/context.h"
@@ -2123,7 +2123,7 @@
 	<string>
 	"../lib/rapidjson/document.h"
 
-1495751084 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particle.h
+1496921558 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\particle.h
 	"object3d.h"
 	"mesh/mesh.h"
 	"context/context.h"
@@ -2376,7 +2376,7 @@
 1486828817 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\profile.cpp
 	"profile.h"
 
-1491760487 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\profile.h
+1496921858 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\profile.h
 	<iostream>
 	"SDL2/SDL.h"
 
@@ -2440,7 +2440,7 @@
 1492075608 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\notification.cpp
 	"notification.h"
 
-1495750379 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\notification.h
+1496920014 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\notification.h
 	"object3d.h"
 	"context/context.h"
 	"nodescenegraph.h"
@@ -2462,7 +2462,7 @@
 	"../GraphicEngine/collection/soundcollection.h"
 	"../lib/rapidjson/document.h"
 
-1495750149 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.h
+1496919514 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\gamestate.h
 	"controller/controllermanager.h"
 	"./menu/menu.h"
 	"./menu/pausemenu.h"
@@ -2482,7 +2482,7 @@
 1487769737 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loaderthread.cpp
 	"loaderthread.h"
 
-1495735181 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loaderthread.h
+1496919727 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\loaderthread.h
 	<thread>
 	"rootmap.h"
 	"context/shader.h"
@@ -2496,7 +2496,7 @@
 1488043281 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\endmapregion.cpp
 	"endmapregion.h"
 
-1495752167 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.h
+1496924240 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\textregion.h
 	"region.h"
 	"matrix/structdata.h"
 	"SDL2/SDL.h"
@@ -2517,7 +2517,7 @@
 	"materialcollection.h"
 	<string>
 
-1488050456 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\savedmanager.h
+1496922353 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\savedmanager.h
 	"../lib/rapidjson/document.h"
 	"../lib/rapidjson/stringbuffer.h"
 	"../lib/rapidjson/filereadstream.h"
@@ -2547,7 +2547,7 @@
 	"gamestate.h"
 	"../lib/rapidjson/document.h"
 
-1495487251 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\region.h
+1496921945 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\region.h
 	"matrix/structdata.h"
 
 1493662909 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\region.cpp
@@ -2620,7 +2620,7 @@
 1489167422 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmanager.cpp
 	"optionmanager.h"
 
-1495750773 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmanager.h
+1496921336 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\optionmanager.h
 	"../lib/rapidjson/document.h"
 	"../lib/rapidjson/stringbuffer.h"
 	"../lib/rapidjson/filereadstream.h"
@@ -2651,7 +2651,7 @@
 1489961113 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\herostate.cpp
 	"herostate.h"
 
-1495750341 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\herostate.h
+1496919501 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\herostate.h
 	"object3d.h"
 	"text.h"
 	"collection/materialcollection.h"
@@ -2661,7 +2661,7 @@
 1492075931 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowtexture.cpp
 	"shadowtexture.h"
 
-1495752176 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowtexture.h
+1496923044 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowtexture.h
 	"material/texture.h"
 
 1473889501 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\lib\glm\glm\glm.hpp
@@ -3179,7 +3179,7 @@
 1491259260 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmanager.cpp
 	"shadowmanager.h"
 
-1495751991 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmanager.h
+1496922419 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\shadowmanager.h
 	"shadowtexture.h"
 	"context/shader.h"
 	"matrix/matrix4f.h"
@@ -3619,10 +3619,10 @@
 1489171897 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection\collection.cpp
 	"collection.h"
 
-1495752718 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\menu.h
+1496928387 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\menu.h
 	"object3d.h"
 
-1495752767 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\pausemenu.h
+1496926618 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\pausemenu.h
 	"object3d.h"
 	"rootmap.h"
 	"context/context.h"
@@ -3639,7 +3639,7 @@
 	"collection/soundcollection.h"
 	<string>
 
-1495752671 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\mainmenu.h
+1496926451 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\mainmenu.h
 	"savedmanager.h"
 	"object3d.h"
 	"rootmap.h"
@@ -3657,7 +3657,7 @@
 	"collection/soundcollection.h"
 	<string>
 
-1495745447 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\deadmenu.h
+1496926414 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\deadmenu.h
 	"object3d.h"
 	"rootmap.h"
 	"context/context.h"
@@ -3674,7 +3674,7 @@
 	"collection/soundcollection.h"
 	<string>
 
-1495745523 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\creditscreen.h
+1496926396 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\creditscreen.h
 	"object3d.h"
 	"rootmap.h"
 	"context/context.h"
@@ -3691,7 +3691,7 @@
 	"collection/soundcollection.h"
 	<string>
 
-1495752738 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\optionmenu.h
+1496927289 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\optionmenu.h
 	"object3d.h"
 	"rootmap.h"
 	"context/context.h"
@@ -3710,7 +3710,7 @@
 	"window.h"
 	<cstdlib>
 
-1495745569 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\controlmenu.h
+1496926218 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\controlmenu.h
 	"object3d.h"
 	"rootmap.h"
 	"context/context.h"
@@ -3727,13 +3727,13 @@
 	"collection/soundcollection.h"
 	<string>
 
-1495485980 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\loadingscreen.h
+1496926430 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\loadingscreen.h
 	"menu.h"
 	"collection/meshcollection.h"
 	"collection/materialcollection.h"
 	<string>
 
-1495485906 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\moviescreen.h
+1496926470 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\moviescreen.h
 	"menu.h"
 	"collection/meshcollection.h"
 	"collection/materialcollection.h"
@@ -3744,7 +3744,7 @@
 	"collection.h"
 	"collection.cpp"
 
-1495736182 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection\soundcollection.h
+1496405247 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection\soundcollection.h
 	"sound/sound.h"
 	"sound/effect.h"
 	"sound/music.h"
@@ -3761,7 +3761,7 @@
 1493979983 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection\meshcollection.cpp
 	"meshcollection.h"
 
-1493980889 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection\soundcollection.cpp
+1496405251 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\collection\soundcollection.cpp
 	"soundcollection.h"
 
 1490885057 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\menu\controlmenu.cpp
@@ -3804,15 +3804,15 @@
 1491572483 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\acceleratedmovement.cpp
 	"acceleratedmovement.h"
 
-1492033089 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\acceleratedmovement.h
+1496927565 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\acceleratedmovement.h
 	"matrix4fdynamic.h"
 	"structdata.h"
 	"SDL2/SDL.h"
 
-1493663091 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\matrix4fdynamic.h
+1496927815 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\matrix4fdynamic.h
 	"matrix4f.h"
 
-1491760212 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\matrix4f.h
+1496927813 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\matrix4f.h
 	"GL/glew.h"
 	<math.h>
 	<iostream>
@@ -3825,14 +3825,14 @@
 1491572000 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\axisrotation.cpp
 	"axisrotation.h"
 
-1492036616 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\axisrotation.h
+1496927748 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\axisrotation.h
 	"matrix4fdynamic.h"
 	"structdata.h"
 
 1480336420 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\linearmovement.cpp
 	"linearmovement.h"
 
-1491760745 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\linearmovement.h
+1496927779 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\linearmovement.h
 	"matrix4fdynamic.h"
 	"structdata.h"
 	"SDL2/SDL.h"
@@ -3846,7 +3846,7 @@
 1487944579 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\matrixscript.cpp
 	"matrixscript.h"
 
-1483286278 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\matrixscript.h
+1496928067 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\matrixscript.h
 	<vector>
 	"matrix4fdynamic.h"
 
@@ -3859,20 +3859,20 @@
 1491573305 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\oscillaterotation.cpp
 	"oscillaterotation.h"
 
-1491760499 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\oscillaterotation.h
+1496928201 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\matrix\oscillaterotation.h
 	"matrix4fdynamic.h"
 	"SDL2/SDL.h"
 
 1493665929 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\controller.cpp
 	"controller.h"
 
-1493665993 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\controller.h
+1496932096 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\controller.h
 	"SDL2/SDL.h"
 
 1487356004 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\controllermanager.cpp
 	"controllermanager.h"
 
-1492038340 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\controllermanager.h
+1496932122 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\controllermanager.h
 	"controller.h"
 	"keyboardcontroller.h"
 	"gamepadcontroller.h"
@@ -3880,11 +3880,11 @@
 1486403710 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\keyboardcontroller.h
 	"controller.h"
 
-1495752437 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\gamepadcontroller.h
+1496932169 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\gamepadcontroller.h
 	"controller.h"
 	<iostream>
 
-1489532462 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\gamepadcontroller.cpp
+1496402446 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\gamepadcontroller.cpp
 	"gamepadcontroller.h"
 
 1487173833 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\controller\keyboardcontroller.cpp
@@ -3949,7 +3949,7 @@
 1494419236 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\context\shader.cpp
 	"shader.h"
 
-1486660303 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ia\ianpc.h
+1496932043 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ia\ianpc.h
 	<vector>
 	<string>
 
@@ -3979,30 +3979,30 @@
 1488134193 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\ia\iarangedenemy.cpp
 	"iarangedenemy.h"
 
-1495735065 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light\light.h
+1496930969 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light\light.h
 	"matrix/structdata.h"
 	"context/shader.h"
 	<string>
 	<cstdlib>
 	"../lib/rapidjson/document.h"
 
-1493558314 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light\directionallight.h
+1496928814 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light\directionallight.h
 	"light.h"
 
-1493558317 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light\pointlight.h
+1496931004 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light\pointlight.h
 	"light.h"
 
-1495752956 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound\sound.h
+1496925420 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound\sound.h
 	"SDL2/SDL_mixer.h"
 	<string>
 	<iostream>
 	<unistd.h>
 
-1495752964 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound\effect.h
+1496925297 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound\effect.h
 	"sound.h"
 	<unistd.h>
 
-1493322464 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound\music.h
+1496925317 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound\music.h
 	"sound.h"
 	<unistd.h>
 
@@ -4012,7 +4012,7 @@
 1493665052 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light\light.cpp
 	"light.h"
 
-1493558611 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light\pointlight.cpp
+1496929043 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\light\pointlight.cpp
 	"pointlight.h"
 
 1493322113 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound\effect.cpp
@@ -4024,14 +4024,14 @@
 1493663204 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\sound\sound.cpp
 	"sound.h"
 
-1496069034 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material\material.h
+1496928767 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material\material.h
 	"matrix/structdata.h"
 	<string>
 	"./collection/materialcollection.h"
 	"texture.h"
 	"context/shader.h"
 
-1491760426 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material\texture.h
+1496928442 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material\texture.h
 	<string>
 	"GL/glew.h"
 	"stb_image.h"
@@ -4040,7 +4040,7 @@
 1489867679 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\material\stb_image.h
 	<stdio.h>
 
-1495735109 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh\mesh.h
+1496925918 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh\mesh.h
 	<vector>
 	<string>
 	"context/context.h"
@@ -4058,7 +4058,7 @@
 	"context/shader.h"
 	"file_obj.h"
 
-1495752801 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh\file_obj.h
+1496925434 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh\file_obj.h
 	<vector>
 	<string>
 	<fstream>
@@ -4095,7 +4095,7 @@
 1495481678 source:c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh\objectgroup.cpp
 	"objectgroup.h"
 
-1495752857 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh\objectgroup.h
+1496926011 c:\users\lenovo\documents\github\tfg\sdlgame-tfg\graphicengine\mesh\objectgroup.h
 	"collection/materialcollection.h"
 	"nodescenegraph.h"
 	"collection/meshcollection.h"

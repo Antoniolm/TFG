@@ -91,8 +91,9 @@ class DeadMenu : public Menu
     protected:
 
     private:
-        vec3f initialPosition;
-        Sound * openSound,* moveSound;
+        vec3f initialPosition; // Initial position of the menu
+        Sound * openSound;     // Sound for open an option
+        Sound * moveSound;     // Sound for movement
 };
 
 #endif // DEADMENU_H

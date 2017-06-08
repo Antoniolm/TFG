@@ -73,10 +73,11 @@ class TextRegion : public Region
     protected:
 
     private:
-        bool lastState;
-        IANpc stateMachine;
-        float timeBWstate;
-        float currentTime,textDelay;
+        bool lastState;     // Flag if the state is the last of the texts
+        IANpc stateMachine; // State machine that manage the texts of the conversation
+        float timeBWstate;  // Time between text of the conversation
+        float currentTime;  // Current time of the application
+        float textDelay;    // Delay of the conversation
 };
 
 #endif // TEXTREGION_H

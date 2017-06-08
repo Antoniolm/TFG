@@ -158,8 +158,9 @@ class NodeSceneGraph : public Object3D
     protected:
 
     private:
-        vector<EntryNGE> entrance;
-        bool invert,noLight;
+        vector<EntryNGE> entrance;  // Vector of nodes
+        bool invert;                // Flag of invert normal
+        bool noLight;               // Flag of don't apply light in the node
 };
 
 #endif // NODESCENEGRAPH_H

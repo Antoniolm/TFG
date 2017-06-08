@@ -92,10 +92,10 @@ class OptionManager
         //////////////////////////////////////////////////////////////////////////
         OptionManager();
 
-        static OptionManager* instance;
-        std::pair<int,int> resolution;
-        bool window;
-        int volume;
+        static OptionManager* instance; // Instance of the optionManager
+        std::pair<int,int> resolution;  // Current resolution of the video game
+        bool window;                    // Current mode (full screen or  window)
+        int volume;                     // Current volume of the video game
 };
 
 #endif // OPTIONMANAGER_H

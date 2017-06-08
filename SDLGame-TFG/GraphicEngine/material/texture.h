@@ -68,8 +68,8 @@ class Texture
     	void bindTexture(int ch=0);
 
     protected:
-        std::string fileName;
-        GLuint texture;
+        std::string fileName;   //file with the texture
+        GLuint texture;         //id of the texture in opengl context
     private:
         //////////////////////////////////////////////////////////////////////////
         /**

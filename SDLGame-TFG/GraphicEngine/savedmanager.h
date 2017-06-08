@@ -84,9 +84,9 @@ class SavedManager
         //////////////////////////////////////////////////////////////////////////
         SavedManager();
 
-        static SavedManager* instance;
-        std::string currentMap;
-        int coins;
+        static SavedManager* instance;  //Instance of saved manager
+        std::string currentMap;         //Current Map of the user progress
+        int coins;                      //Current coins of the user progress
 
 };
 

@@ -96,11 +96,11 @@ class Notification : public Object3D
     protected:
 
     private:
-        NodeSceneGraph * root;
-        Matrix4f * transNoti;
-        float visibleTime; //Time that our notification will be activated
-        float initialTime;
-        bool activatedNoti;
+        NodeSceneGraph * root;  // Root of the scene graph of the notification
+        Matrix4f * transNoti;   // Matrix 4x4 with the position of the notification
+        float visibleTime;      // Time that notification will be activated
+        float initialTime;      // The initial time of the notification
+        bool activatedNoti;     // Flag of the notification was activated
 
 };
 

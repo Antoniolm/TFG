@@ -67,8 +67,6 @@ class DirectionalLight : public Light
         //////////////////////////////////////////////////////////////////////////
         void setParameters(const vec3f & aDir,const vec3f & anAmbient,const vec3f & aDiffuse,const vec3f &aSpecular);
 
-
-
     protected:
 
     private:

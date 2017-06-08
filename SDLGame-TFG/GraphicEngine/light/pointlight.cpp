@@ -56,7 +56,6 @@ PointLight::PointLight(const vec3f & aPos,const vec3f & anAmbient,const vec3f & 
     linear=aLinear;
     quadratic=aQuadratic;
 
-    type=point;
     nLight=nlight;
 }
 

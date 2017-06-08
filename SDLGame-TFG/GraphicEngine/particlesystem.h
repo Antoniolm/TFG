@@ -156,12 +156,16 @@ class ParticleSystem : public Object3D
     protected:
 
     private:
-        list<Particle *> particles;
-        int nParticles;         //total number of particles that our system has to have with life
-        int currentParticles;   //number of live particles in our system
-        vec3f maxPos,minPos,velocity,scale;
-        float minTime,maxTime;
-        Material * material;
+        list<Particle *> particles; // List of particles in the system
+        int nParticles;             // Total number of particles that the system has to have with life
+        int currentParticles;       // Number of live particles in the system
+        vec3f maxPos;               // Max position for the particles
+        vec3f minPos;               // Min position for the particles
+        vec3f velocity;             // Velocity for the particles
+        vec3f scale;                // Scale of the particles
+        float minTime;              // Min time of life for the particles
+        float maxTime;              // Max time of life for the particles
+        Material * material;        // Material applied in the particles
 };
 
 #endif // PARTICLESYSTEM_H

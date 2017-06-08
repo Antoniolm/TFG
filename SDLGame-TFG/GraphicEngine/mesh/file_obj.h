@@ -91,7 +91,8 @@ class FileObj{
         /** Constructor  */
         //////////////////////////////////////////////////////////////////////////
         FileObj();
-        static FileObj* instance;
+
+        static FileObj* instance;   //Instance of the fileObj
 
 };
 

@@ -76,10 +76,11 @@ class Particle : public Object3D
     protected:
 
     private:
-        vec3f position,velocity;
-        NodeSceneGraph *root;
-        Matrix4f * transMatrix;
-        float remainingTime;
+        vec3f position;         // Current position of the particle
+        vec3f velocity;         // Current velocity of the particle
+        NodeSceneGraph *root;   // Root of the scene graph of particle
+        Matrix4f * transMatrix; // Matrix 4x4 with the transformation in the particle
+        float remainingTime;    // Time of life of the particle
 };
 
 #endif // PARTICLE_H

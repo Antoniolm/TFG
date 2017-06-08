@@ -99,6 +99,8 @@ class Window
         //////////////////////////////////////////////////////////////////////////
         /**
         *    It will resize our window
+        *    @param windowH -> the new value of the width size
+        *    @param windowW -> the new value of the width size
         *    \return void
         */
         //////////////////////////////////////////////////////////////////////////
@@ -120,7 +122,20 @@ class Window
         //////////////////////////////////////////////////////////////////////////
         int getHeight();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set the title of the window
+        *    @param title -> the new title of the window
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setTitle(string aTitle);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return the title of the window
+        *    \return string
+        */
+        //////////////////////////////////////////////////////////////////////////
         string getTitle();
 
         static Window * getInstance(){
@@ -130,8 +145,22 @@ class Window
             return instance;
         }
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set the mode of the window (full screen/ window mode)
+        *    @param value -> the new value of the flag
+        */
+        //////////////////////////////////////////////////////////////////////////
         void fullScreen(bool value);
+
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will return is the window is in full screen
+        *    \return bool true if the window is in full screen
+        */
+        //////////////////////////////////////////////////////////////////////////
         bool getIsFullScreen();
+
     protected:
 
     private:
@@ -140,14 +169,20 @@ class Window
         //////////////////////////////////////////////////////////////////////////
         Window();
 
+        //////////////////////////////////////////////////////////////////////////
+        /**
+        *    It will set the icon of the window
+        */
+        //////////////////////////////////////////////////////////////////////////
         void setIcon();
-        static Window* instance;
-        SDL_Window * window;
-        SDL_GLContext context;
-        bool fullScreenMode;
-        string title;
-        int height;
-        int width;
+
+        static Window* instance;    // Instance of the window
+        SDL_Window * window;        // Window of the object
+        SDL_GLContext context;      // OpenGL context of the object
+        bool fullScreenMode;        // Flag of window mode
+        string title;               // Title of the window
+        int height;                 // Height of the window
+        int width;                  // Width of the window
 };
 
 #endif // WINDOW_H

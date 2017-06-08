@@ -56,7 +56,7 @@ class Matrix4fDynamic
         Matrix4f & getMatrix();
 
     protected:
-        Matrix4f currentMatrix;
+        Matrix4f currentMatrix; // Matrix 4x4
 
     private:
 };

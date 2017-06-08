@@ -89,10 +89,12 @@ class PauseMenu : public Menu
     protected:
 
     private:
-        vec3f initialPosition;
-        vector<PauseMenuOption> actionOption;
-        Sound * openSound,* moveSound;
-        int channelOpen,channelMove;
+        vec3f initialPosition;                  // Initial position of the menu
+        vector<PauseMenuOption> actionOption;   // Vector of options of the menu
+        Sound * openSound;                      // Sound for open an option
+        Sound * moveSound;                      // Sound for movement
+        int channelOpen;                        // Channel of open sound
+        int channelMove;                        // Channel of move sound
 };
 
 #endif // PAUSEMENU_H

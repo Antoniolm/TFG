@@ -175,13 +175,13 @@ class Material
     protected:
 
     private:
-        vec3f ambient;
-        vec3f diffuse;
-        vec3f specular;
-        float shininess;
-        Texture * texture;
-        Texture * bumpTexture;
-        MaterialIndex index;
+        vec3f ambient;          // Ambient component
+        vec3f diffuse;          // Diffuse component
+        vec3f specular;         // Specular component
+        float shininess;        // Shininess component
+        Texture * texture;      // Texture of the material
+        Texture * bumpTexture;  // bump texture of the material
+        MaterialIndex index;    // Index of the material
 };
 
 #endif // MATERIAL_H

@@ -133,7 +133,7 @@ class Effect : public Sound
     protected:
 
     private:
-        Mix_Chunk * effect;
+        Mix_Chunk * effect; // Effect object
 };
 
 #endif // EFFECT_H

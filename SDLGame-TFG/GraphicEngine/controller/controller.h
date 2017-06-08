@@ -90,8 +90,8 @@ class Controller
         void consumeButtons();
 
     protected:
-        bool buttons[11];
-        bool stateButtons[11]; //check if the button has been consumed for one object.
+        bool buttons[11];       // Buttons of the system
+        bool stateButtons[11];  // check if the button has been consumed for one object.
     private:
 
 };

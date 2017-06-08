@@ -103,8 +103,9 @@ class MainMenu : public Menu
     protected:
 
     private:
-        vector<MainMenuOption> actionOption;
-        Sound * openSound,* moveSound;
+        vector<MainMenuOption> actionOption; // Vector of option of the menu
+        Sound * openSound;                   // Sound for open an option
+        Sound * moveSound;                   // Sound for movement
         bool hasSave;
 };
 

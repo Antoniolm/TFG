@@ -118,8 +118,9 @@ class AcceleratedMovement : public Matrix4fDynamic
     protected:
 
     private:
-        vec3f velocity, acceleration;
-        float currentTime;
+        vec3f velocity;     // Velocity of the movement
+        vec3f acceleration; // Acceleration of the movement
+        float currentTime;  // Current time of the movement
 };
 
 #endif // ACCELERATEDMOVEMENT_H

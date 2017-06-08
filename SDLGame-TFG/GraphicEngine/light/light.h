@@ -26,12 +26,6 @@
 #include <cstdlib>
 #include "../lib/rapidjson/document.h"
 
-enum typeLight{
-    directional,
-    point
-
-};
-
 class Light
 {
     public:
@@ -97,11 +91,10 @@ class Light
         float getShininess();
 
     protected:
-        typeLight type;
-        vec3f position;
-        vec3f ambient;
-        vec3f diffuse;
-        vec3f specular;
+        vec3f position; // Position of the light
+        vec3f ambient;  // Ambient component of the light
+        vec3f diffuse;  // Diffuse component of the light
+        vec3f specular; // Specular component of the light
 
     private:
 

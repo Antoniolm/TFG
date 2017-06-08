@@ -88,9 +88,8 @@ class GamepadController : public Controller
         //////////////////////////////////////////////////////////////////////////
         void removeGamepad();
 
-        SDL_GameController * controller;
-        SDL_Joystick *joy;
-        int instanceID;
+        SDL_GameController * controller;    // Game pad of the controller
+        SDL_Joystick *joy;                  // Joystick of the game pad
 };
 
 #endif // GAMEPADCONTROLLER_H
