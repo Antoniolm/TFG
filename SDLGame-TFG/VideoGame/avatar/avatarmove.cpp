@@ -258,7 +258,8 @@ ObjectScene * AvatarMove::gravity(float time){
 
     if(!isJumping){
         GLfloat * moveGravity=acceleratedMove->updateState(time-currentTime).getMatrix();
-
+        if(moveGravity[13]<-0.5)
+            moveGravity[13]=-0.5;
     //Get the tenth of our position
     tenthValueX=posHero.x-(int)posHero.x;
     tenthValueZ=(int)posHero.z-posHero.z;
